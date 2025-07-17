@@ -1,0 +1,12 @@
+gputil==1.4.0
+matplotlib==3.10.3
+numpy==2.3.1
+pandas==2.3.1
+python-constraint==1.4.0
+PyYAML==6.0.1
+PyYAML==6.0.2
+scheduler==0.8.8
+scipy==1.16.0
+seaborn==0.13.2
+torch==2.7.1
+tqdm==4.66.5
