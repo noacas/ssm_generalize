@@ -16,6 +16,7 @@ def train_gd(
         init_scale: float,
         lr: float,
         epochs: int,
+        calc_loss_only_on_last_output: bool = True,
     ):
     """
     Trains only the diagonal transition matrix A of the student SSM.
@@ -44,7 +45,8 @@ def train_gd(
         # forward pass on the full sequence
         y_pred = model(dataset)
         loss_train, loss_gen = gd_sensing_loss(y_pred=y_pred,
-                                               y_teacher=y_teacher)
+                                               y_teacher=y_teacher,
+                                               calc_loss_only_on_last_output=calc_loss_only_on_last_output)
         loss_train.backward()
         optimizer.step()
 
@@ -54,7 +56,7 @@ def train_gd(
             if epoch % 10 == 0:  # test every 10 epochs
                 test_hist.append(loss_gen.item())
 
-    return test_hist[-1] if test_hist else float("nan")
+    return test_hist[-1] if test_hist else float("nan"), train_hist[-1] if train_hist else float("nan")
 
 
 def train_gnc(seed: int,
@@ -64,7 +66,9 @@ def train_gnc(seed: int,
              dataset: torch.Tensor,
              eps_train: float,
              num_samples: int,
-             batch_size: int):
+             batch_size: int,
+             calc_loss_only_on_last_output=True,
+              ):
     torch.manual_seed(seed)
     prior_gen_losses = []
     gnc_gen_losses = []
@@ -72,7 +76,7 @@ def train_gnc(seed: int,
     for batch in range(math.ceil(num_samples / batch_size)):
         bs = min(batch_size, num_samples - batch * batch_size)
         students = generate_students(student_dim, bs, device)
-        train_losses, gen_losses = gnc_sensing_loss(students=students, y_teacher=y_teacher, x=dataset)
+        train_losses, gen_losses = gnc_sensing_loss(students=students, y_teacher=y_teacher, x=dataset, calc_loss_only_on_last_output=calc_loss_only_on_last_output)
         succ_mask = train_losses < eps_train
         prior_gen_losses.extend(gen_losses.cpu().tolist())
         gnc_gen_losses.extend(gen_losses[succ_mask].cpu().tolist())

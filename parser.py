@@ -58,11 +58,12 @@ def parse_args() -> argparse.Namespace:  # noqa: C901 – a bit long but flat
     g.add_argument("--teacher_rank", type=int, default=1, help="Rank of the teacher matrix")
     g.add_argument("--teacher_dim", type=int, default=2, help="Dimension of the teacher matrix")
     g.add_argument("--student_dims", type=int, default=list(range(3, 16)), help="Dimensions of the student matrix")
+    g.add_argument("--calc_loss_only_on_last_output", type=bool, default=True, help="Calculate loss only on last output")
+    g.add_argument("--eps_train", type=float, default=0.001, help="Training loss threshold for successful trial")
 
     g = parser.add_argument_group("Guess & Check hyperparameters")
     g.add_argument("--gnc_num_samples", type=int, default=int(1e8), help="Number of G&C samples")
     g.add_argument("--gnc_batch_size", type=int, default=int(1e7), help="Batch sizes for G&C")
-    g.add_argument("--gnc_eps_train", type=float, default=0.001, help="Training loss threshold for successful G&C trial")
 
     g = parser.add_argument_group("Gradient Descent hyper‑parameters")
     g.add_argument("--gd_lr", type=float, default=1e-2, help="Learning rate for GD")

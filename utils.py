@@ -1,3 +1,4 @@
+from datetime import datetime
 from typing import Tuple
 
 import numpy as np
@@ -21,7 +22,7 @@ def filename_extensions(teacher_rank: int,
                         sequence_length: int,
                         num_measurements: int,
                         ) -> str:
-    ext = f'_t_rank={teacher_rank}_seq_len={sequence_length}_num_measurements={num_measurements}'
+    ext = f't_rank={teacher_rank}_seq_len={sequence_length}_num_measurements={num_measurements}_time={datetime.now().strftime("%Y%m%d-%H%M%S")}'
     return ext
 
 

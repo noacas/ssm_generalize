@@ -31,23 +31,29 @@ def run_experiment(args, device):
                                         device,
                                         y_teacher,
                                         dataset,
-                                        args.gnc_eps_train,
+                                        args.eps_train,
                                         args.gnc_num_samples,
-                                        args.gnc_batch_size)
+                                        args.gnc_batch_size,
+                                        args.calc_loss_only_on_last_output)
             gnc_gen_losses[student_dim_idx, seed] = gnc_gen_loss
             t1 = time.time()
             print(f'Finished G&C, time elapsed={t1 - t0}s')
 
             print("Starting GD")
             t0 = time.time()
-            gd_gen_loss = train_gd(seed,
+            gd_gen_loss, gd_train_loss = train_gd(seed,
                                    student_dim,
                                    device,
                                    y_teacher,
                                    dataset,
                                    args.gd_init_scale,
                                    args.gd_lr,
-                                   args.gd_epochs)
+                                   args.gd_epochs,
+                                   args.calc_loss_only_on_last_output)
+            if np.isnan(gd_train_loss):
+                print(f'Warning: GD train is NaN for student_dim={student_dim}, seed={seed}')
+            elif gd_train_loss > args.eps_train:
+                print(f'Warning: GD train loss {gd_train_loss} is above threshold for student_dim={student_dim}, seed={seed}')
             gd_gen_losses[student_dim_idx, seed] = gd_gen_loss
             t1 = time.time()
             print(f'Finished GD, time elapsed={t1 - t0}s')
