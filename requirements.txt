@@ -1,10 +1,10 @@
 gputil==1.4.0
-matplotlib==3.10.3
-numpy==2.3.1
+matplotlib==3.9.4
+numpy==2.0.2
 pandas==2.3.1
 python-constraint==1.4.0
 scheduler==0.8.8
-scipy==1.16.0
+scipy==1.13.1
 seaborn==0.13.2
 torch==2.7.1
 tqdm==4.66.5

@@ -63,7 +63,7 @@ def parse_args() -> argparse.Namespace:  # noqa: C901 – a bit long but flat
     g.add_argument(
         "--no-calc_loss_only_on_last_output", dest="calc_loss_only_on_last_output", action="store_false", help="Do not calculate loss only on last output"
     )
-    g.add_argument("--eps_train", type=float, default=int(1e-4), help="Training loss threshold for successful trial")
+    g.add_argument("--eps_train", type=float, default=float(1e-5), help="Training loss threshold for successful trial")
 
     g = parser.add_argument_group("Guess & Check hyperparameters")
     g.add_argument(
