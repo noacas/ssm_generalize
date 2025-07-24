@@ -71,7 +71,7 @@ def run_experiment(args, device):
                 logging.info(f'Finished seed={seed}')
             logging.info('----------------------------------------------------------------------------------------------------------------------------------------------')
             logging.info('----------------------------------------------------------------------------------------------------------------------------------------------')
-            logging.info(f'Finished student_dim={student_dim} with G&C avg gen_loss = {np.nanmean(gnc_gen_losses[student_dim_idx, :])}, GD avg gen_loss = {np.nanmean(gd_gen_losses[student_dim_idx, :])}')
+            logging.info(f'Finished student_dim={student_dim} with G&C avg gen_loss = {np.nanmean(gnc_gen_losses[teacher_rank_idx, student_dim_idx, :])}, GD avg gen_loss = {np.nanmean(gd_gen_losses[teacher_rank_idx, student_dim_idx, :])}')
             logging.info('----------------------------------------------------------------------------------------------------------------------------------------------')
 
     return gnc_gen_losses, gd_gen_losses
