@@ -10,7 +10,7 @@ import GPUtil
 def setup_logging(log_dir):
     # save logs to file
     logging.basicConfig(
-        filename=log_dir / 'logs.log',
+        filename=log_dir / f'logs_{datetime.now().strftime("%Y%m%d-%H%M%S")}.log',
         filemode='a',
         level=logging.INFO,
         format='%(asctime)s - %(levelname)s - %(message)s'

@@ -112,8 +112,8 @@ def save_results_to_csv(
 
 
 def main():
-    setup_logging(args.log_dir)
     args = parse_args()
+    setup_logging(args.log_dir)
     device = get_available_device()
     logging.info(f'Using device {device}.')
     gnc_gen_losses, gd_gen_losses = run_experiment(args, device)
