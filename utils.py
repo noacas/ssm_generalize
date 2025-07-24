@@ -7,7 +7,7 @@ import torch
 import GPUtil
 
 
-def setup_logging(log_dir: pathlib.Path):
+def setup_logging(log_dir):
     # save logs to file
     logging.basicConfig(
         filename=log_dir / 'logs.log',
