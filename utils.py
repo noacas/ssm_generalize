@@ -1,9 +1,20 @@
 from datetime import datetime
 from typing import Tuple
+import logging
 
 import numpy as np
 import torch
 import GPUtil
+
+
+def setup_logging(log_dir: pathlib.Path):
+    # save logs to file
+    logging.basicConfig(
+        filename=log_dir / 'logs.log',
+        filemode='a',
+        level=logging.INFO,
+        format='%(asctime)s - %(levelname)s - %(message)s'
+    )
 
 
 def get_available_device(max_load: float = 0.3,
@@ -18,11 +29,10 @@ def get_available_device(max_load: float = 0.3,
         return torch.device('cpu')
 
 
-def filename_extensions(teacher_rank: int,
-                        sequence_length: int,
+def filename_extensions(sequence_length: int,
                         num_measurements: int,
                         ) -> str:
-    ext = f't_rank={teacher_rank}_seq_len={sequence_length}_num_measurements={num_measurements}_time={datetime.now().strftime("%Y%m%d-%H%M%S")}'
+    ext = f'_seq_len={sequence_length}_num_measurements={num_measurements}_time={datetime.now().strftime("%Y%m%d-%H%M%S")}'
     return ext
 
 

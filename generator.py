@@ -18,12 +18,12 @@ def generate_dataset(num_measurements: int,
 
 
 def generate_teacher(teacher_rank: int,
-                     teacher_dim: int,
                      student_dim: int,
                      device: torch.device):
     """
     Generates the teacher matrices A, B, and C for the given rank and dimensions.
     """
+    teacher_dim = teacher_rank if teacher_rank > 1 else 2
     A_teacher = torch.zeros(teacher_dim, device=device)
     A_teacher[:teacher_rank] = torch.normal(mean=0, std=1, size=(teacher_rank,))
 

@@ -1,4 +1,5 @@
 import math
+import logging
 
 from generator import generate_students
 from loss import gnc_sensing_loss, gd_sensing_loss
@@ -83,5 +84,5 @@ def train_gnc(seed: int,
     mean_prior = sum(prior_gen_losses) / len(prior_gen_losses)
     mean_gnc = sum(gnc_gen_losses) / len(gnc_gen_losses) if gnc_gen_losses else float("nan")
     if len(gnc_gen_losses) == 0:
-        print("No GNC sensing losses")
+        logging.info("No GNC sensing losses")
     return mean_prior, mean_gnc

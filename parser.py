@@ -55,19 +55,35 @@ def parse_args() -> argparse.Namespace:  # noqa: C901 – a bit long but flat
     g.add_argument("--num_seeds", type=int, default=8, help="Number of random seeds per setting")
     g.add_argument("--num_measurements", type=int, default=3, help="Number of measurements")
     g.add_argument("--sequence_length", type=int, default=3, help="Length of the measurement sequence")
-    g.add_argument("--teacher_rank", type=int, default=1, help="Rank of the teacher matrix")
-    g.add_argument("--teacher_dim", type=int, default=2, help="Dimension of the teacher matrix")
+    g.add_argument("--teacher_ranks", type=int, default=list(range(1, 4)), help="Ranks of the teacher matrix")
     g.add_argument("--student_dims", type=int, default=list(range(3, 16)), help="Dimensions of the student matrix")
-    g.add_argument("--calc_loss_only_on_last_output", type=bool, default=True, help="Calculate loss only on last output")
-    g.add_argument("--eps_train", type=float, default=0.001, help="Training loss threshold for successful trial")
+    g.add_argument(
+        "--calc_loss_only_on_last_output", dest="calc_loss_only_on_last_output", action="store_true", help="Calculate loss only on last output (default: True)", default=True
+    )
+    g.add_argument(
+        "--no-calc_loss_only_on_last_output", dest="calc_loss_only_on_last_output", action="store_false", help="Do not calculate loss only on last output"
+    )
+    g.add_argument("--eps_train", type=float, default=int(1e-4), help="Training loss threshold for successful trial")
 
     g = parser.add_argument_group("Guess & Check hyperparameters")
+    g.add_argument(
+        "--gnc", dest="gnc", action="store_true", help="Enable Guess & Check (default: True)", default=True
+    )
+    g.add_argument(
+        "--no-gnc", dest="gnc", action="store_false", help="Disable Guess & Check"
+    )
     g.add_argument("--gnc_num_samples", type=int, default=int(1e8), help="Number of G&C samples")
     g.add_argument("--gnc_batch_size", type=int, default=int(1e7), help="Batch sizes for G&C")
 
     g = parser.add_argument_group("Gradient Descent hyper‑parameters")
+    g.add_argument(
+        "--gd", dest="gd", action="store_true", help="Enable Gradient Descent (default: True)", default=True
+    )
+    g.add_argument(
+        "--no-gd", dest="gd", action="store_false", help="Disable Gradient Descent"
+    )
     g.add_argument("--gd_lr", type=float, default=1e-2, help="Learning rate for GD")
-    g.add_argument("--gd_epochs", type=int, default=int(1e5), help="Number of epochs for GD")
+    g.add_argument("--gd_epochs", type=int, default=int(1e4), help="Number of epochs for GD")
     g.add_argument("--gd_init_scale", type=float, default=1e-2, help="Initialization scale for GD")
 
     # ------------------------------------------------------------------
@@ -80,6 +96,7 @@ def parse_args() -> argparse.Namespace:  # noqa: C901 – a bit long but flat
     )
     parser.add_argument("--results_dir", type=pathlib.Path, default=pathlib.Path("./results"), help="Results directory")
     parser.add_argument("--figures_dir", type=pathlib.Path, default=pathlib.Path("./figures"), help="Figures directory")
+    parser.add_argument("--log_dir", type=pathlib.Path, default=pathlib.Path("./logs"), help="Logs directory")
 
     # ---- first round parse (just to grab --config) --------------------
     if "--config" in parser.parse_known_args()[0]._get_args():  # type: ignore
@@ -100,5 +117,6 @@ def parse_args() -> argparse.Namespace:  # noqa: C901 – a bit long but flat
     # Final tweaks ------------------------------------------------------
     args.results_dir.mkdir(parents=True, exist_ok=True)
     args.figures_dir.mkdir(parents=True, exist_ok=True)
+    args.log_dir.mkdir(parents=True, exist_ok=True)
 
     return args
