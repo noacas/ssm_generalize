@@ -59,7 +59,8 @@ def run_experiment(args, device):
                                         args.gd_init_scale,
                                         args.gd_lr,
                                         args.gd_epochs,
-                                        args.calc_loss_only_on_last_output)
+                                        args.calc_loss_only_on_last_output,
+                                        args.gd_optimizer)
                     if np.isnan(gd_train_loss):
                         logging.info(f'Warning: GD train is NaN for student_dim={student_dim}, seed={seed}')
                     elif gd_train_loss > args.eps_train:
@@ -86,6 +87,9 @@ def save_results_to_csv(
     num_measurements,
     sequence_length,
     results_dir,
+    gd,
+    gnc,
+
 ):
     """
     Save G&C and GD results to a CSV file.
@@ -100,13 +104,19 @@ def save_results_to_csv(
                 "teacher_rank": teacher_rank,
                 "student_dim": student_dim,
             }
-            # Add G&C results for all seeds
-            for seed in range(num_seeds):
-                row[f"gnc_gen_seed={seed}"] = gnc_gen_losses[t_idx, s_idx, seed]
-            # Add GD results for all seeds
-            for seed in range(num_seeds):
-                row[f"gd_gen_seed={seed}"] = gd_gen_losses[t_idx, s_idx, seed]
+
+            if gnc:
+                # Add G&C results for all seeds
+                for seed in range(num_seeds):
+                    row[f"gnc_gen_seed={seed}"] = gnc_gen_losses[t_idx, s_idx, seed]
+            
+            if gd:
+                # Add GD results for all seeds
+                for seed in range(num_seeds):
+                    row[f"gd_gen_seed={seed}"] = gd_gen_losses[t_idx, s_idx, seed]
+            
             rows.append(row)
+
     df = pd.DataFrame(rows)
     df.to_csv(csv_path, index=False)
 
@@ -116,6 +126,7 @@ def main():
     setup_logging(args.log_dir)
     device = get_available_device()
     logging.info(f'Using device {device}.')
+    logging.info(f'Args: {args}')
     gnc_gen_losses, gd_gen_losses = run_experiment(args, device)
 
     
@@ -128,6 +139,8 @@ def main():
         args.num_measurements,
         args.sequence_length,
         args.results_dir,
+        args.gd,
+        args.gnc,
     )
 
     plot(args.student_dims,
@@ -136,7 +149,9 @@ def main():
          args.teacher_ranks,
          args.sequence_length,
          args.num_measurements,
-         args.figures_dir)
+         args.figures_dir,
+         args.gnc,
+         args.gd)
 
     logging.info(f"Finished experiments, results saved to {args.results_dir}, figures saved to {args.figures_dir}")
 

@@ -1,0 +1,273 @@
+2025-07-29 17:28:21,855 - INFO - Using device mps.
+2025-07-29 17:28:21,865 - INFO - Starting teacher_rank=1
+2025-07-29 17:28:21,865 - INFO - Starting student_dim=3
+2025-07-29 17:28:21,865 - INFO - Starting seed=0
+2025-07-29 17:28:21,870 - INFO - A_teacher is 0.5166347026824951
+2025-07-29 17:28:21,896 - INFO - Starting GD
+2025-07-29 17:28:22,423 - INFO - initial model: max A_j index: 0
+2025-07-29 17:28:22,423 - INFO - initial model: A values are [0.01540996041148901, -0.0029342889320105314, -0.021787893027067184]
+2025-07-29 18:34:18,433 - INFO - final model: max A_j index: 0
+2025-07-29 18:34:18,433 - INFO - final model: A values are [0.5059795379638672, 0.1243290975689888, -0.0483907014131546]
+2025-07-29 18:34:18,437 - INFO - final model: average A value: 0.193972647190094
+2025-07-29 18:34:18,441 - INFO - final model: variance of A values: 0.08046925812959671
+2025-07-29 18:34:18,441 - INFO - train loss is 5.205151319387369e-05
+2025-07-29 18:34:18,441 - INFO - impulse response loss is 0.004382295534014702
+2025-07-29 18:34:18,446 - INFO - Warning: GD train loss 5.205151319387369e-05 is above threshold 1e-05 for student_dim=3, seed=0
+2025-07-29 18:34:18,446 - INFO - Finished GD, time elapsed=3956.5506069660187s
+2025-07-29 18:34:18,447 - INFO - Finished seed=0
+2025-07-29 18:34:18,447 - INFO - Starting seed=1
+2025-07-29 18:34:18,447 - INFO - A_teacher is 0.556843101978302
+2025-07-29 18:34:18,448 - INFO - Starting GD
+2025-07-29 18:34:18,455 - INFO - initial model: max A_j index: 0
+2025-07-29 18:34:18,455 - INFO - initial model: A values are [0.006613521371036768, 0.0026692410465329885, 0.0006167725659906864]
+2025-07-29 20:04:52,662 - INFO - final model: max A_j index: 0
+2025-07-29 20:04:52,662 - INFO - final model: A values are [0.5567395687103271, 0.023177361115813255, -0.023128477856516838]
+2025-07-29 20:04:52,662 - INFO - final model: average A value: 0.18559616804122925
+2025-07-29 20:04:52,663 - INFO - final model: variance of A values: 0.10384662449359894
+2025-07-29 20:04:52,663 - INFO - train loss is 2.15348904930579e-07
+2025-07-29 20:04:52,663 - INFO - impulse response loss is 9.327510497314506e-07
+2025-07-29 20:04:52,671 - INFO - Finished GD, time elapsed=5434.222666025162s
+2025-07-29 20:04:52,671 - INFO - Finished seed=1
+2025-07-29 20:04:52,671 - INFO - Starting seed=2
+2025-07-29 20:04:52,671 - INFO - A_teacher is 0.5621317625045776
+2025-07-29 20:04:52,672 - INFO - Starting GD
+2025-07-29 20:04:52,675 - INFO - initial model: max A_j index: 0
+2025-07-29 20:04:52,675 - INFO - initial model: A values are [0.0039229681715369225, -0.0022356400731951, -0.0031950026750564575]
+2025-07-29 20:44:58,849 - INFO - final model: max A_j index: 0
+2025-07-29 20:44:58,850 - INFO - final model: A values are [0.5616602301597595, 0.02176215499639511, -0.021182488650083542]
+2025-07-29 20:44:58,850 - INFO - final model: average A value: 0.187413290143013
+2025-07-29 20:44:58,851 - INFO - final model: variance of A values: 0.10550663620233536
+2025-07-29 20:44:58,851 - INFO - train loss is 2.1169856267988507e-07
+2025-07-29 20:44:58,851 - INFO - impulse response loss is 4.7609486841793114e-07
+2025-07-29 20:44:58,859 - INFO - Finished GD, time elapsed=2406.186747789383s
+2025-07-29 20:44:58,859 - INFO - Finished seed=2
+2025-07-29 20:44:58,859 - INFO - Starting seed=3
+2025-07-29 20:44:58,860 - INFO - A_teacher is 0.3794962763786316
+2025-07-29 20:44:58,861 - INFO - Starting GD
+2025-07-29 20:44:58,862 - INFO - initial model: max A_j index: 0
+2025-07-29 20:44:58,862 - INFO - initial model: A values are [0.008032760582864285, 0.0017483338015154004, 0.0008897809311747551]
+2025-07-29 21:16:57,704 - INFO - final model: max A_j index: 0
+2025-07-29 21:16:57,704 - INFO - final model: A values are [0.37815728783607483, 0.020838921889662743, -0.01980491355061531]
+2025-07-29 21:16:57,705 - INFO - final model: average A value: 0.12639708817005157
+2025-07-29 21:16:57,705 - INFO - final model: variance of A values: 0.047950372099876404
+2025-07-29 21:16:57,705 - INFO - train loss is 1.2179943098544754e-07
+2025-07-29 21:16:57,705 - INFO - impulse response loss is 5.437897243609768e-07
+2025-07-29 21:16:57,715 - INFO - Finished GD, time elapsed=1918.8539490699768s
+2025-07-29 21:16:57,715 - INFO - Finished seed=3
+2025-07-29 21:16:57,715 - INFO - Starting seed=4
+2025-07-29 21:16:57,716 - INFO - A_teacher is 0.4386281967163086
+2025-07-29 21:16:57,718 - INFO - Starting GD
+2025-07-29 21:16:57,719 - INFO - initial model: max A_j index: 2
+2025-07-29 21:16:57,719 - INFO - initial model: A values are [-0.016052763909101486, 0.002324857050552964, 0.022398700937628746]
+2025-07-29 21:48:16,701 - INFO - final model: max A_j index: 2
+2025-07-29 21:48:16,702 - INFO - final model: A values are [-0.07267032563686371, 0.0775981917977333, 0.4289173185825348]
+2025-07-29 21:48:16,702 - INFO - final model: average A value: 0.1446150690317154
+2025-07-29 21:48:16,702 - INFO - final model: variance of A values: 0.06626597791910172
+2025-07-29 21:48:16,702 - INFO - train loss is 6.414670679077972e-06
+2025-07-29 21:48:16,702 - INFO - impulse response loss is 6.995232251938432e-05
+2025-07-29 21:48:16,711 - INFO - Finished GD, time elapsed=1878.9932310581207s
+2025-07-29 21:48:16,711 - INFO - Finished seed=4
+2025-07-29 21:48:16,711 - INFO - Starting seed=5
+2025-07-29 21:48:16,712 - INFO - A_teacher is 0.5847293734550476
+2025-07-29 21:48:16,713 - INFO - Starting GD
+2025-07-29 21:48:16,714 - INFO - initial model: max A_j index: 0
+2025-07-29 21:48:16,714 - INFO - initial model: A values are [-0.004867807496339083, -0.006038215477019548, -0.005580962169915438]
+2025-07-29 23:11:11,771 - INFO - final model: max A_j index: 0
+2025-07-29 23:11:11,772 - INFO - final model: A values are [0.5815090537071228, -0.055552221834659576, 0.06311745941638947]
+2025-07-29 23:11:11,772 - INFO - final model: average A value: 0.1963580846786499
+2025-07-29 23:11:11,772 - INFO - final model: variance of A values: 0.11477656662464142
+2025-07-29 23:11:11,772 - INFO - train loss is 4.880820597463753e-06
+2025-07-29 23:11:11,772 - INFO - impulse response loss is 4.6528752136509866e-05
+2025-07-29 23:11:11,783 - INFO - Finished GD, time elapsed=4975.070623874664s
+2025-07-29 23:11:11,784 - INFO - Finished seed=5
+2025-07-29 23:11:11,784 - INFO - Starting seed=6
+2025-07-29 23:11:11,785 - INFO - A_teacher is 0.5667524337768555
+2025-07-29 23:11:11,786 - INFO - Starting GD
+2025-07-29 23:11:11,787 - INFO - initial model: max A_j index: 2
+2025-07-29 23:11:11,788 - INFO - initial model: A values are [-0.018743986263871193, -0.009936632588505745, 0.0071846721693873405]
+2025-07-29 23:54:07,381 - INFO - final model: max A_j index: 2
+2025-07-29 23:54:07,382 - INFO - final model: A values are [0.1880260556936264, 0.1887492537498474, 0.19902223348617554]
+2025-07-29 23:54:07,382 - INFO - final model: average A value: 0.19193251430988312
+2025-07-29 23:54:07,382 - INFO - final model: variance of A values: 3.782884232350625e-05
+2025-07-29 23:54:07,382 - INFO - train loss is 0.000730907719116658
+2025-07-29 23:54:07,382 - INFO - impulse response loss is 0.08011369407176971
+2025-07-29 23:54:07,392 - INFO - Warning: GD train loss 0.000730907719116658 is above threshold 1e-05 for student_dim=3, seed=6
+2025-07-29 23:54:07,392 - INFO - Finished GD, time elapsed=2575.6059079170227s
+2025-07-29 23:54:07,392 - INFO - Finished seed=6
+2025-07-29 23:54:07,392 - INFO - Starting seed=7
+2025-07-29 23:54:07,393 - INFO - A_teacher is 0.43015462160110474
+2025-07-29 23:54:07,394 - INFO - Starting GD
+2025-07-29 23:54:07,396 - INFO - initial model: max A_j index: 2
+2025-07-29 23:54:07,396 - INFO - initial model: A values are [-0.0014679508749395609, 0.00786141213029623, 0.009468216449022293]
+2025-07-30 00:24:16,614 - INFO - final model: max A_j index: 2
+2025-07-30 00:24:16,615 - INFO - final model: A values are [-0.04114894941449165, 0.0389019213616848, 0.4294976592063904]
+2025-07-30 00:24:16,615 - INFO - final model: average A value: 0.14241687953472137
+2025-07-30 00:24:16,616 - INFO - final model: variance of A values: 0.06341356039047241
+2025-07-30 00:24:16,616 - INFO - train loss is 4.161384822509717e-06
+2025-07-30 00:24:16,616 - INFO - impulse response loss is 1.55948491737945e-05
+2025-07-30 00:24:16,629 - INFO - Finished GD, time elapsed=1809.2349569797516s
+2025-07-30 00:24:16,629 - INFO - Finished seed=7
+2025-07-30 00:24:16,630 - INFO - ----------------------------------------------------------------------------------------------------------------------------------------------
+2025-07-30 00:24:16,630 - INFO - ----------------------------------------------------------------------------------------------------------------------------------------------
+2025-07-30 00:24:16,630 - INFO - Finished student_dim=3 with G&C avg gen_loss = 0.0, GD avg gen_loss = 0.010578752270657077
+2025-07-30 00:24:16,630 - INFO - ----------------------------------------------------------------------------------------------------------------------------------------------
+2025-07-30 00:24:16,630 - INFO - Starting student_dim=4
+2025-07-30 00:24:16,630 - INFO - Starting seed=0
+2025-07-30 00:24:16,631 - INFO - A_teacher is 0.3885655999183655
+2025-07-30 00:24:16,636 - INFO - Starting GD
+2025-07-30 00:24:16,641 - INFO - initial model: max A_j index: 0
+2025-07-30 00:24:16,641 - INFO - initial model: A values are [0.01540996041148901, -0.0029342889320105314, -0.021787893027067184, 0.005684312433004379]
+2025-07-30 00:54:39,178 - INFO - final model: max A_j index: 0
+2025-07-30 00:54:39,178 - INFO - final model: A values are [0.35159745812416077, 0.04281694442033768, -0.14019125699996948, 0.13514567911624908]
+2025-07-30 00:54:39,182 - INFO - final model: average A value: 0.09734220802783966
+2025-07-30 00:54:39,185 - INFO - final model: variance of A values: 0.04182332381606102
+2025-07-30 00:54:39,185 - INFO - train loss is 2.3285760107683018e-05
+2025-07-30 00:54:39,185 - INFO - impulse response loss is 0.00043772696517407894
+2025-07-30 00:54:39,195 - INFO - Warning: GD train loss 2.3285760107683018e-05 is above threshold 1e-05 for student_dim=4, seed=0
+2025-07-30 00:54:39,195 - INFO - Finished GD, time elapsed=1822.5594182014465s
+2025-07-30 00:54:39,195 - INFO - Finished seed=0
+2025-07-30 00:54:39,196 - INFO - Starting seed=1
+2025-07-30 00:54:39,197 - INFO - A_teacher is 0.3915477693080902
+2025-07-30 00:54:39,198 - INFO - Starting GD
+2025-07-30 00:54:39,199 - INFO - initial model: max A_j index: 0
+2025-07-30 00:54:39,200 - INFO - initial model: A values are [0.006613521371036768, 0.0026692410465329885, 0.0006167725659906864, 0.006213173270225525]
+2025-07-30 01:24:57,500 - INFO - final model: max A_j index: 0
+2025-07-30 01:24:57,503 - INFO - final model: A values are [0.2760689854621887, -0.013454748317599297, -0.11270080506801605, 0.2440054565668106]
+2025-07-30 01:24:57,504 - INFO - final model: average A value: 0.09847971796989441
+2025-07-30 01:24:57,504 - INFO - final model: variance of A values: 0.0366140753030777
+2025-07-30 01:24:57,504 - INFO - train loss is 6.660832877969369e-05
+2025-07-30 01:24:57,504 - INFO - impulse response loss is 0.0008936910307966173
+2025-07-30 01:24:57,515 - INFO - Warning: GD train loss 6.660832877969369e-05 is above threshold 1e-05 for student_dim=4, seed=1
+2025-07-30 01:24:57,516 - INFO - Finished GD, time elapsed=1818.3175439834595s
+2025-07-30 01:24:57,516 - INFO - Finished seed=1
+2025-07-30 01:24:57,516 - INFO - Starting seed=2
+2025-07-30 01:24:57,517 - INFO - A_teacher is 0.45480939745903015
+2025-07-30 01:24:57,518 - INFO - Starting GD
+2025-07-30 01:24:57,519 - INFO - initial model: max A_j index: 0
+2025-07-30 01:24:57,520 - INFO - initial model: A values are [0.0039229681715369225, -0.0022356400731951, -0.0031950026750564575, -0.012050370685756207]
+2025-07-30 01:55:22,981 - INFO - final model: max A_j index: 0
+2025-07-30 01:55:22,983 - INFO - final model: A values are [0.13834229111671448, 0.1317911148071289, 0.13077279925346375, 0.12141107767820358]
+2025-07-30 01:55:22,983 - INFO - final model: average A value: 0.13057932257652283
+2025-07-30 01:55:22,983 - INFO - final model: variance of A values: 4.860875924350694e-05
+2025-07-30 01:55:22,983 - INFO - train loss is 0.00011153555533383042
+2025-07-30 01:55:22,983 - INFO - impulse response loss is 0.03271608054637909
+2025-07-30 01:55:22,993 - INFO - Warning: GD train loss 0.00011153555533383042 is above threshold 1e-05 for student_dim=4, seed=2
+2025-07-30 01:55:22,993 - INFO - Finished GD, time elapsed=1825.4748179912567s
+2025-07-30 01:55:22,993 - INFO - Finished seed=2
+2025-07-30 01:55:22,993 - INFO - Starting seed=3
+2025-07-30 01:55:22,994 - INFO - A_teacher is 0.6044463515281677
+2025-07-30 01:55:22,995 - INFO - Starting GD
+2025-07-30 01:55:22,997 - INFO - initial model: max A_j index: 0
+2025-07-30 01:55:22,997 - INFO - initial model: A values are [0.008032760582864285, 0.0017483338015154004, 0.0008897809311747551, -0.006137180142104626]
+2025-07-30 02:25:39,626 - INFO - final model: max A_j index: 0
+2025-07-30 02:25:39,627 - INFO - final model: A values are [0.47330600023269653, 0.15573224425315857, 0.11319156736135483, -0.2545532286167145]
+2025-07-30 02:25:39,627 - INFO - final model: average A value: 0.12191914021968842
+2025-07-30 02:25:39,628 - INFO - final model: variance of A values: 0.08880788087844849
+2025-07-30 02:25:39,628 - INFO - train loss is 4.138472377235303e-06
+2025-07-30 02:25:39,628 - INFO - impulse response loss is 0.03722705692052841
+2025-07-30 02:25:39,638 - INFO - Finished GD, time elapsed=1816.642627954483s
+2025-07-30 02:25:39,638 - INFO - Finished seed=3
+2025-07-30 02:25:39,638 - INFO - Starting seed=4
+2025-07-30 02:25:39,639 - INFO - A_teacher is 0.504618227481842
+2025-07-30 02:25:39,640 - INFO - Starting GD
+2025-07-30 02:25:39,642 - INFO - initial model: max A_j index: 2
+2025-07-30 02:25:39,642 - INFO - initial model: A values are [-0.016052763909101486, 0.002324857050552964, 0.022398700937628746, 0.00847293809056282]
+2025-07-30 02:59:15,747 - INFO - final model: max A_j index: 2
+2025-07-30 02:59:15,747 - INFO - final model: A values are [-0.04818994179368019, 0.005997197702527046, 0.5018107295036316, 0.04753141105175018]
+2025-07-30 02:59:15,748 - INFO - final model: average A value: 0.12678734958171844
+2025-07-30 02:59:15,748 - INFO - final model: variance of A values: 0.06404378265142441
+2025-07-30 02:59:15,748 - INFO - train loss is 6.182689958222909e-06
+2025-07-30 02:59:15,748 - INFO - impulse response loss is 1.620334296603687e-05
+2025-07-30 02:59:15,757 - INFO - Finished GD, time elapsed=2016.1167781352997s
+2025-07-30 02:59:15,757 - INFO - Finished seed=4
+2025-07-30 02:59:15,757 - INFO - Starting seed=5
+2025-07-30 02:59:15,758 - INFO - A_teacher is 0.6200644373893738
+2025-07-30 02:59:15,759 - INFO - Starting GD
+2025-07-30 02:59:15,761 - INFO - initial model: max A_j index: 3
+2025-07-30 02:59:15,761 - INFO - initial model: A values are [-0.004867807496339083, -0.006038215477019548, -0.005580962169915438, 0.006675242446362972]
+2025-07-30 03:44:05,468 - INFO - final model: max A_j index: 3
+2025-07-30 03:44:05,469 - INFO - final model: A values are [0.00481078727170825, -0.0040376149117946625, -0.0007435570587404072, 0.620021402835846]
+2025-07-30 03:44:05,470 - INFO - final model: average A value: 0.15501275658607483
+2025-07-30 03:44:05,470 - INFO - final model: variance of A values: 0.09611691534519196
+2025-07-30 03:44:05,470 - INFO - train loss is 8.130125017657974e-09
+2025-07-30 03:44:05,470 - INFO - impulse response loss is 4.502288319940817e-09
+2025-07-30 03:44:05,480 - INFO - Finished GD, time elapsed=2689.7210779190063s
+2025-07-30 03:44:05,481 - INFO - Finished seed=5
+2025-07-30 03:44:05,481 - INFO - Starting seed=6
+2025-07-30 03:44:05,482 - INFO - A_teacher is 0.4802584946155548
+2025-07-30 03:44:05,483 - INFO - Starting GD
+2025-07-30 03:44:05,484 - INFO - initial model: max A_j index: 2
+2025-07-30 03:44:05,485 - INFO - initial model: A values are [-0.018743986263871193, -0.009936632588505745, 0.0071846721693873405, -0.006984538398683071]
+2025-07-30 04:14:24,764 - INFO - final model: max A_j index: 2
+2025-07-30 04:14:24,766 - INFO - final model: A values are [-0.14921937882900238, 0.05501125007867813, 0.4257622957229614, 0.12368929386138916]
+2025-07-30 04:14:24,766 - INFO - final model: average A value: 0.11381085962057114
+2025-07-30 04:14:24,767 - INFO - final model: variance of A values: 0.05668453127145767
+2025-07-30 04:14:24,767 - INFO - train loss is 2.0346642486401834e-06
+2025-07-30 04:14:24,767 - INFO - impulse response loss is 0.0023019108921289444
+2025-07-30 04:14:24,777 - INFO - Finished GD, time elapsed=1819.2937121391296s
+2025-07-30 04:14:24,777 - INFO - Finished seed=6
+2025-07-30 04:14:24,777 - INFO - Starting seed=7
+2025-07-30 04:14:24,778 - INFO - A_teacher is 0.3528444766998291
+2025-07-30 04:14:24,779 - INFO - Starting GD
+2025-07-30 04:14:24,781 - INFO - initial model: max A_j index: 2
+2025-07-30 04:14:24,781 - INFO - initial model: A values are [-0.0014679508749395609, 0.00786141213029623, 0.009468216449022293, -0.011143439449369907]
+2025-07-30 05:43:28,063 - INFO - final model: max A_j index: 2
+2025-07-30 05:43:28,065 - INFO - final model: A values are [0.03575412184000015, 0.21626204252243042, 0.2560535967350006, -0.1422528475522995]
+2025-07-30 05:43:28,065 - INFO - final model: average A value: 0.09145422279834747
+2025-07-30 05:43:28,065 - INFO - final model: variance of A values: 0.033463817089796066
+2025-07-30 05:43:28,065 - INFO - train loss is 2.3220054572448134e-05
+2025-07-30 05:43:28,065 - INFO - impulse response loss is 0.0007240776903927326
+2025-07-30 05:43:28,075 - INFO - Warning: GD train loss 2.3220054572448134e-05 is above threshold 1e-05 for student_dim=4, seed=7
+2025-07-30 05:43:28,075 - INFO - Finished GD, time elapsed=5343.295938014984s
+2025-07-30 05:43:28,075 - INFO - Finished seed=7
+2025-07-30 05:43:28,075 - INFO - ----------------------------------------------------------------------------------------------------------------------------------------------
+2025-07-30 05:43:28,075 - INFO - ----------------------------------------------------------------------------------------------------------------------------------------------
+2025-07-30 05:43:28,076 - INFO - Finished student_dim=4 with G&C avg gen_loss = 0.0, GD avg gen_loss = 0.009289593986331779
+2025-07-30 05:43:28,076 - INFO - ----------------------------------------------------------------------------------------------------------------------------------------------
+2025-07-30 05:43:28,076 - INFO - Starting student_dim=5
+2025-07-30 05:43:28,076 - INFO - Starting seed=0
+2025-07-30 05:43:28,077 - INFO - A_teacher is 0.6690790057182312
+2025-07-30 05:43:28,082 - INFO - Starting GD
+2025-07-30 05:43:28,089 - INFO - initial model: max A_j index: 0
+2025-07-30 05:43:28,089 - INFO - initial model: A values are [0.01540996041148901, -0.0029342889320105314, -0.021787893027067184, 0.005684312433004379, -0.010845223441720009]
+2025-07-30 06:19:06,771 - INFO - final model: max A_j index: 0
+2025-07-30 06:19:06,772 - INFO - final model: A values are [0.21569420397281647, 0.20857210457324982, 0.20264071226119995, 0.21503567695617676, 0.20272281765937805]
+2025-07-30 06:19:06,778 - INFO - final model: average A value: 0.20893311500549316
+2025-07-30 06:19:06,782 - INFO - final model: variance of A values: 4.031150456285104e-05
+2025-07-30 06:19:06,782 - INFO - train loss is 0.0007289950735867023
+2025-07-30 06:19:06,782 - INFO - impulse response loss is 0.29445916414260864
+2025-07-30 06:19:06,792 - INFO - Warning: GD train loss 0.0007289950735867023 is above threshold 1e-05 for student_dim=5, seed=0
+2025-07-30 06:19:06,792 - INFO - Finished GD, time elapsed=2138.710476875305s
+2025-07-30 06:19:06,792 - INFO - Finished seed=0
+2025-07-30 06:19:06,792 - INFO - Starting seed=1
+2025-07-30 06:19:06,793 - INFO - A_teacher is 0.36014047265052795
+2025-07-30 06:19:06,795 - INFO - Starting GD
+2025-07-30 06:19:06,796 - INFO - initial model: max A_j index: 0
+2025-07-30 06:19:06,796 - INFO - initial model: A values are [0.006613521371036768, 0.0026692410465329885, 0.0006167725659906864, 0.006213173270225525, -0.0045190597884356976]
+2025-07-30 07:43:38,253 - INFO - final model: max A_j index: 0
+2025-07-30 07:43:38,255 - INFO - final model: A values are [0.21712875366210938, 0.07140398025512695, 0.010945918969810009, 0.19746452569961548, -0.1320963203907013]
+2025-07-30 07:43:38,256 - INFO - final model: average A value: 0.07296936959028244
+2025-07-30 07:43:38,256 - INFO - final model: variance of A values: 0.02054556831717491
+2025-07-30 07:43:38,256 - INFO - train loss is 0.00012823325232602656
+2025-07-30 07:43:38,256 - INFO - impulse response loss is 0.0015647055115550756
+2025-07-30 07:43:38,267 - INFO - Warning: GD train loss 0.00012823325232602656 is above threshold 1e-05 for student_dim=5, seed=1
+2025-07-30 07:43:38,267 - INFO - Finished GD, time elapsed=5071.4728128910065s
+2025-07-30 07:43:38,267 - INFO - Finished seed=1
+2025-07-30 07:43:38,268 - INFO - Starting seed=2
+2025-07-30 07:43:38,269 - INFO - A_teacher is 0.48338696360588074
+2025-07-30 07:43:38,270 - INFO - Starting GD
+2025-07-30 07:43:38,272 - INFO - initial model: max A_j index: 4
+2025-07-30 07:43:38,272 - INFO - initial model: A values are [0.0039229681715369225, -0.0022356400731951, -0.0031950026750564575, -0.012050370685756207, 0.010444634594023228]
+2025-07-30 09:01:54,637 - INFO - final model: max A_j index: 4
+2025-07-30 09:01:54,638 - INFO - final model: A values are [0.21184228360652924, 0.0330134853720665, 0.007831450551748276, -0.17452318966388702, 0.4153585433959961]
+2025-07-30 09:01:54,639 - INFO - final model: average A value: 0.0987045168876648
+2025-07-30 09:01:54,639 - INFO - final model: variance of A values: 0.05007413029670715
+2025-07-30 09:01:54,639 - INFO - train loss is 5.646766567224404e-06
+2025-07-30 09:01:54,639 - INFO - impulse response loss is 0.0021911635994911194
+2025-07-30 09:01:54,649 - INFO - Finished GD, time elapsed=4696.3787541389465s
+2025-07-30 09:01:54,649 - INFO - Finished seed=2
+2025-07-30 09:01:54,649 - INFO - Starting seed=3
+2025-07-30 09:01:54,650 - INFO - A_teacher is 0.4366772174835205
+2025-07-30 09:01:54,651 - INFO - Starting GD
+2025-07-30 09:01:54,653 - INFO - initial model: max A_j index: 0
+2025-07-30 09:01:54,653 - INFO - initial model: A values are [0.008032760582864285, 0.0017483338015154004, 0.0008897809311747551, -0.006137180142104626, 0.0004618245002347976]

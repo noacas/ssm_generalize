@@ -7,6 +7,7 @@ from model import DiagonalSSM
 
 import torch
 from torch.optim import Adam
+from torch.optim import SGD
 
 def train_gd(
         seed: int,
@@ -18,6 +19,7 @@ def train_gd(
         lr: float,
         epochs: int,
         calc_loss_only_on_last_output: bool = True,
+        optimizer: str = "adam",
     ):
     """
     Trains only the diagonal transition matrix A of the student SSM.
@@ -34,7 +36,17 @@ def train_gd(
                         init_scale=init_scale
                         ).to(device)
 
-    optimizer = Adam(model.parameters(), lr=lr)
+    if optimizer == "adam":
+        optimizer = Adam(model.parameters(), lr=lr)
+    elif optimizer == "gd":
+        optimizer = SGD(model.parameters(), lr=lr)
+    else:
+        raise ValueError(f"Invalid optimizer: {optimizer}")
+
+    # log index of A_j that is the largest
+    max_A_j_idx = torch.argmax(model.A_diag)
+    logging.info(f"initial model: max A_j index: {max_A_j_idx}")
+    logging.info(f"initial model: A values are {model.A_diag.cpu().tolist()}")
 
     # --- keep track of losses ------------------------------------------------
     train_hist, test_hist = [], []
@@ -57,6 +69,13 @@ def train_gd(
             if epoch % 10 == 0:  # test every 10 epochs
                 test_hist.append(loss_gen.item())
 
+    max_A_j_idx = torch.argmax(model.A_diag)
+    logging.info(f"final model: max A_j index: {max_A_j_idx}")
+    logging.info(f"final model: A values are {model.A_diag.cpu().tolist()}")
+    logging.info(f"final model: average A value: {model.A_diag.mean().item()}")
+    logging.info(f"final model: variance of A values: {model.A_diag.var().item()}")
+    logging.info(f"train loss is {train_hist[-1]}")
+    logging.info(f"impulse response loss is {test_hist[-1]}")
     return test_hist[-1] if test_hist else float("nan"), train_hist[-1] if train_hist else float("nan")
 
 

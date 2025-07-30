@@ -1,4 +1,5 @@
 import math
+import logging
 
 import torch
 
@@ -25,7 +26,8 @@ def generate_teacher(teacher_rank: int,
     """
     teacher_dim = teacher_rank if teacher_rank > 1 else 2
     A_teacher = torch.zeros(teacher_dim, device=device)
-    A_teacher[:teacher_rank] = torch.normal(mean=0, std=1, size=(teacher_rank,))
+    A_teacher[:teacher_rank] = torch.normal(mean=0.5, std=0.1, size=(teacher_rank,))
+    logging.info(f"A_teacher is {A_teacher[0].item()}")
 
     B_teacher = torch.zeros(1, teacher_dim, device=device)
     B_teacher[0, 0] = 1  # First entry is 1

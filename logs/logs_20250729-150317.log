@@ -1,0 +1,8 @@
+2025-07-29 15:03:17,230 - INFO - Using device mps.
+2025-07-29 15:03:17,241 - INFO - Starting teacher_rank=1
+2025-07-29 15:03:17,241 - INFO - Starting student_dim=3
+2025-07-29 15:03:17,241 - INFO - Starting seed=0
+2025-07-29 15:03:17,246 - INFO - A_teacher is 0.5081153512001038
+2025-07-29 15:03:17,272 - INFO - Starting GD
+2025-07-29 15:03:17,805 - INFO - initial model: max A_j index: 0
+2025-07-29 15:03:17,805 - INFO - initial model: A values are [0.01540996041148901, -0.0029342889320105314, -0.021787893027067184]
