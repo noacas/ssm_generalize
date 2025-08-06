@@ -1,0 +1,7 @@
+2025-08-03 17:25:43,491 - INFO - Using device mps.
+2025-08-03 17:25:43,491 - INFO - Args: Namespace(num_seeds=1, num_measurements=1, input_e1=True, sequence_length=3, teacher_ranks=[1], student_dims=[3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19], calc_loss_only_on_last_output=True, eps_train=1e-06, gnc=True, gnc_num_samples=100000000, gnc_batch_size=10000000, gd=False, gd_lr=0.01, gd_epochs=100000, gd_init_scale=0.01, gd_optimizer='adam', config=None, results_dir=PosixPath('results'), figures_dir=PosixPath('figures'), log_dir=PosixPath('logs'))
+2025-08-03 17:25:43,501 - INFO - Starting teacher_rank=1
+2025-08-03 17:25:43,501 - INFO - Starting student_dim=3
+2025-08-03 17:25:43,502 - INFO - Starting seed=0
+2025-08-03 17:25:43,510 - INFO - A_teacher is 0.5522521734237671
+2025-08-03 17:25:43,572 - INFO - Starting G&C

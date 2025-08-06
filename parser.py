@@ -54,9 +54,10 @@ def parse_args() -> argparse.Namespace:  # noqa: C901 – a bit long but flat
     g = parser.add_argument_group("Problem dimensions & data generation")
     g.add_argument("--num_seeds", type=int, default=8, help="Number of random seeds per setting")
     g.add_argument("--num_measurements", type=int, default=1, help="Number of measurements")
+    g.add_argument("--input_e1", dest="input_e1", action="store_true", help="Use e1 as input", default=False)
     g.add_argument("--sequence_length", type=int, default=3, help="Length of the measurement sequence")
     g.add_argument("--teacher_ranks", type=int, default=list(range(1, 2)), help="Ranks of the teacher matrix")
-    g.add_argument("--student_dims", type=int, default=list(range(3, 20)), help="Dimensions of the student matrix")
+    g.add_argument("--student_dims", type=int, default=list(range(10, 35)), help="Dimensions of the student matrix")
     g.add_argument(
         "--calc_loss_only_on_last_output", dest="calc_loss_only_on_last_output", action="store_true", help="Calculate loss only on last output (default: True)", default=True
     )
@@ -72,7 +73,7 @@ def parse_args() -> argparse.Namespace:  # noqa: C901 – a bit long but flat
     g.add_argument(
         "--no-gnc", dest="gnc", action="store_false", help="Disable Guess & Check"
     )
-    g.add_argument("--gnc_num_samples", type=int, default=int(1e8), help="Number of G&C samples")
+    g.add_argument("--gnc_num_samples", type=int, default=int(1e9), help="Number of G&C samples")
     g.add_argument("--gnc_batch_size", type=int, default=int(1e7), help="Batch sizes for G&C")
 
     g = parser.add_argument_group("Gradient Descent hyper‑parameters")
@@ -82,8 +83,8 @@ def parse_args() -> argparse.Namespace:  # noqa: C901 – a bit long but flat
     g.add_argument(
         "--no-gd", dest="gd", action="store_false", help="Disable Gradient Descent"
     )
-    g.add_argument("--gd_lr", type=float, default=1e-2, help="Learning rate for GD")
-    g.add_argument("--gd_epochs", type=int, default=int(1e5), help="Number of epochs for GD")
+    g.add_argument("--gd_lr", type=float, default=1e-3, help="Learning rate for GD")
+    g.add_argument("--gd_epochs", type=int, default=int(1e6), help="Number of epochs for GD")
     g.add_argument("--gd_init_scale", type=float, default=1e-2, help="Initialization scale for GD")
     g.add_argument("--gd_optimizer", type=str, default="adam", help="Optimizer for GD", choices=["adam", "gd"])
 
@@ -114,6 +115,12 @@ def parse_args() -> argparse.Namespace:  # noqa: C901 – a bit long but flat
         parser.set_defaults(**cfg_dict)
         # re‑parse now with new defaults (and original CLI flags win)
         args = parser.parse_args()
+
+    # ------------------------------------------------------------------
+    # if input is e1 then num_seeds = 1 and num_measurements = 1
+    if args.input_e1:
+        args.num_seeds = 1
+        args.num_measurements = 1
 
     # Final tweaks ------------------------------------------------------
     args.results_dir.mkdir(parents=True, exist_ok=True)

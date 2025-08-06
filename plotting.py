@@ -9,14 +9,13 @@ from utils import filename_extensions, median_iqr
 def plot(student_dims: list,
          gnc_gen_losses: np.ndarray,
          gd_gen_losses: np.ndarray,
+         gnc_mean_priors: np.ndarray,
          teacher_ranks: list,
          sequence_length: int,
-         num_measurements: int,
+         plot_filename: str,
          figures_dir: str = './figures',
          gnc: bool = True,
          gd: bool = True):
-    os.makedirs(figures_dir, exist_ok=True)
-    plot_filename = 'results_plot' + filename_extensions(sequence_length, num_measurements)
 
     plt.rc('xtick', labelsize=14)
     plt.rc('ytick', labelsize=14)
@@ -31,11 +30,17 @@ def plot(student_dims: list,
     for t_idx, teacher_rank in enumerate(teacher_ranks):
         if gnc:
             gnc_med, gnc_iqr = median_iqr(gnc_gen_losses[t_idx])
+            gnc_mean_prior_med, gnc_mean_prior_iqr = median_iqr(gnc_mean_priors[t_idx])
             ax.errorbar(
-            student_dims, gnc_med, yerr=gnc_iqr,
-            fmt="o-", capsize=3, label=f"G&C (Rank={teacher_rank})",
-            linewidth=2.5, elinewidth=1.5
-        )
+                student_dims, gnc_med, yerr=gnc_iqr,
+                fmt="o-", capsize=3, label=f"G&C (Rank={teacher_rank})",
+                linewidth=2.5, elinewidth=1.5
+            )
+            ax.errorbar(
+                student_dims, gnc_mean_prior_med, yerr=gnc_mean_prior_iqr,
+                fmt="o-", capsize=3, label=f"G&C Prior (Rank={teacher_rank})",
+                linewidth=2.5, elinewidth=1.5
+            )
         
         if gd:
             gd_med, gd_iqr = median_iqr(gd_gen_losses[t_idx])

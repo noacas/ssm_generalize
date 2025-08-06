@@ -5,6 +5,7 @@ from tqdm.contrib import tenumerate
 import tqdm
 import numpy as np
 import pandas as pd
+import torch
 
 from loss import get_y_teacher
 from plotting import plot
@@ -18,6 +19,7 @@ from utils import filename_extensions, get_available_device
 def run_experiment(args, device):
     gd_gen_losses = np.zeros((len(args.teacher_ranks), len(args.student_dims), args.num_seeds))
     gnc_gen_losses = np.zeros((len(args.teacher_ranks), len(args.student_dims), args.num_seeds))
+    gnc_mean_priors = np.zeros((len(args.teacher_ranks), len(args.student_dims), args.num_seeds))
 
     for teacher_rank_idx, teacher_rank in tenumerate(args.teacher_ranks, desc="Teacher ranks", position=0, leave=True):
         logging.info(f'Starting teacher_rank={teacher_rank}')
@@ -26,15 +28,16 @@ def run_experiment(args, device):
 
             for seed in tqdm.trange(args.num_seeds, desc="Seeds", position=2, leave=True):
                 logging.info(f'Starting seed={seed}')
+                torch.manual_seed(seed)
                 teacher = generate_teacher(teacher_rank, student_dim, device)
-                dataset = generate_dataset(args.num_measurements, args.sequence_length, device)
+                dataset = generate_dataset(args.num_measurements, args.sequence_length, args.input_e1, device)
                 y_teacher = get_y_teacher(teacher, dataset)
 
                 # G&C
                 if args.gnc:
                     logging.info("Starting G&C")
                     t0 = time.time()
-                    _, gnc_gen_loss = train_gnc(seed,
+                    mean_prior, gnc_gen_loss = train_gnc(seed,
                                                 student_dim,
                                                 device,
                                                 y_teacher,
@@ -42,8 +45,10 @@ def run_experiment(args, device):
                                                 args.eps_train,
                                                 args.gnc_num_samples,
                                                 args.gnc_batch_size,
+                                                args.sequence_length,
                                                 args.calc_loss_only_on_last_output)
                     gnc_gen_losses[teacher_rank_idx, student_dim_idx, seed] = gnc_gen_loss
+                    gnc_mean_priors[teacher_rank_idx, student_dim_idx, seed] = mean_prior
                     t1 = time.time()
                     logging.info(f'Finished G&C, time elapsed={t1 - t0}s')
 
@@ -72,10 +77,14 @@ def run_experiment(args, device):
                 logging.info(f'Finished seed={seed}')
             logging.info('----------------------------------------------------------------------------------------------------------------------------------------------')
             logging.info('----------------------------------------------------------------------------------------------------------------------------------------------')
-            logging.info(f'Finished student_dim={student_dim} with G&C avg gen_loss = {np.nanmean(gnc_gen_losses[teacher_rank_idx, student_dim_idx, :])}, GD avg gen_loss = {np.nanmean(gd_gen_losses[teacher_rank_idx, student_dim_idx, :])}')
+            logging.info(f'Finished student_dim={student_dim}')
+            if args.gnc:
+                logging.info(f'G&C avg gen_loss = {np.nanmean(gnc_gen_losses[teacher_rank_idx, student_dim_idx, :])}')
+            if args.gd:
+                logging.info(f'GD avg gen_loss = {np.nanmean(gd_gen_losses[teacher_rank_idx, student_dim_idx, :])}')
             logging.info('----------------------------------------------------------------------------------------------------------------------------------------------')
 
-    return gnc_gen_losses, gd_gen_losses
+    return gnc_gen_losses, gd_gen_losses, gnc_mean_priors
 
 
 def save_results_to_csv(
@@ -84,8 +93,7 @@ def save_results_to_csv(
     teacher_ranks,
     student_dims,
     num_seeds,
-    num_measurements,
-    sequence_length,
+    results_filename,
     results_dir,
     gd,
     gnc,
@@ -95,7 +103,6 @@ def save_results_to_csv(
     Save G&C and GD results to a CSV file.
     Each row: (teacher_rank, student_dim, [gnc_gen_seed_0, ..., gnc_gen_seed_N, gd_gen_seed_0, ..., gd_gen_seed_N])
     """
-    results_filename = 'results' + filename_extensions(sequence_length, num_measurements) + '.csv'
     csv_path = results_dir / results_filename
     rows = []
     for t_idx, teacher_rank in enumerate(teacher_ranks):
@@ -127,17 +134,18 @@ def main():
     device = get_available_device()
     logging.info(f'Using device {device}.')
     logging.info(f'Args: {args}')
-    gnc_gen_losses, gd_gen_losses = run_experiment(args, device)
+    gnc_gen_losses, gd_gen_losses, gnc_mean_priors = run_experiment(args, device)
 
-    
+    results_filename = 'results' + filename_extensions(args) + '.csv'
+    plot_filename = 'plot' + filename_extensions(args)
+
     save_results_to_csv(
         gnc_gen_losses,
         gd_gen_losses,
         args.teacher_ranks,
         args.student_dims,
         args.num_seeds,
-        args.num_measurements,
-        args.sequence_length,
+        results_filename,
         args.results_dir,
         args.gd,
         args.gnc,
@@ -146,14 +154,15 @@ def main():
     plot(args.student_dims,
          gnc_gen_losses,
          gd_gen_losses,
+         gnc_mean_priors,
          args.teacher_ranks,
          args.sequence_length,
-         args.num_measurements,
+         plot_filename,
          args.figures_dir,
          args.gnc,
          args.gd)
 
-    logging.info(f"Finished experiments, results saved to {args.results_dir}, figures saved to {args.figures_dir}")
+    logging.info(f"Finished experiments, results saved to {results_filename}, figures saved to {plot_filename}")
 
 if __name__ == "__main__":
     main()

@@ -1,0 +1,200 @@
+2025-08-03 13:19:00,825 - INFO - Using device mps.
+2025-08-03 13:19:00,825 - INFO - Args: Namespace(num_seeds=8, num_measurements=1, input_e1=True, sequence_length=3, teacher_ranks=[1], student_dims=[3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], calc_loss_only_on_last_output=True, eps_train=1e-05, gnc=True, gnc_num_samples=100000000, gnc_batch_size=10000000, gd=False, gd_lr=0.01, gd_epochs=100000, gd_init_scale=0.01, gd_optimizer='adam', config=None, results_dir=PosixPath('results'), figures_dir=PosixPath('figures'), log_dir=PosixPath('logs'))
+2025-08-03 13:19:00,835 - INFO - Starting teacher_rank=1
+2025-08-03 13:19:00,836 - INFO - Starting student_dim=3
+2025-08-03 13:19:00,836 - INFO - Starting seed=0
+2025-08-03 13:19:00,842 - INFO - A_teacher is 0.37927141785621643
+2025-08-03 13:19:00,866 - INFO - Starting G&C
+2025-08-03 13:19:03,708 - INFO - Finished G&C, time elapsed=2.8426601886749268s
+2025-08-03 13:19:03,708 - INFO - Finished seed=0
+2025-08-03 13:19:03,709 - INFO - Starting seed=1
+2025-08-03 13:19:03,709 - INFO - A_teacher is 0.6540995836257935
+2025-08-03 13:19:03,710 - INFO - Starting G&C
+2025-08-03 13:19:06,530 - INFO - Finished G&C, time elapsed=2.8190879821777344s
+2025-08-03 13:19:06,530 - INFO - Finished seed=1
+2025-08-03 13:19:06,530 - INFO - Starting seed=2
+2025-08-03 13:19:06,531 - INFO - A_teacher is 0.5661352276802063
+2025-08-03 13:19:06,532 - INFO - Starting G&C
+2025-08-03 13:19:09,334 - INFO - Finished G&C, time elapsed=2.80173397064209s
+2025-08-03 13:19:09,334 - INFO - Finished seed=2
+2025-08-03 13:19:09,334 - INFO - Starting seed=3
+2025-08-03 13:19:09,335 - INFO - A_teacher is 0.539229691028595
+2025-08-03 13:19:09,336 - INFO - Starting G&C
+2025-08-03 13:19:12,099 - INFO - Finished G&C, time elapsed=2.76310396194458s
+2025-08-03 13:19:12,099 - INFO - Finished seed=3
+2025-08-03 13:19:12,099 - INFO - Starting seed=4
+2025-08-03 13:19:12,100 - INFO - A_teacher is 0.5803276300430298
+2025-08-03 13:19:12,101 - INFO - Starting G&C
+2025-08-03 13:19:14,833 - INFO - Finished G&C, time elapsed=2.731255054473877s
+2025-08-03 13:19:14,833 - INFO - Finished seed=4
+2025-08-03 13:19:14,833 - INFO - Starting seed=5
+2025-08-03 13:19:14,834 - INFO - A_teacher is 0.33947238326072693
+2025-08-03 13:19:14,835 - INFO - Starting G&C
+2025-08-03 13:19:17,585 - INFO - Finished G&C, time elapsed=2.750570058822632s
+2025-08-03 13:19:17,585 - INFO - Finished seed=5
+2025-08-03 13:19:17,585 - INFO - Starting seed=6
+2025-08-03 13:19:17,587 - INFO - A_teacher is 0.45132192969322205
+2025-08-03 13:19:17,588 - INFO - Starting G&C
+2025-08-03 13:19:20,410 - INFO - Finished G&C, time elapsed=2.8220510482788086s
+2025-08-03 13:19:20,410 - INFO - Finished seed=6
+2025-08-03 13:19:20,410 - INFO - Starting seed=7
+2025-08-03 13:19:20,411 - INFO - A_teacher is 0.31256014108657837
+2025-08-03 13:19:20,412 - INFO - Starting G&C
+2025-08-03 13:19:23,180 - INFO - Finished G&C, time elapsed=2.767914056777954s
+2025-08-03 13:19:23,180 - INFO - Finished seed=7
+2025-08-03 13:19:23,180 - INFO - ----------------------------------------------------------------------------------------------------------------------------------------------
+2025-08-03 13:19:23,180 - INFO - ----------------------------------------------------------------------------------------------------------------------------------------------
+2025-08-03 13:19:23,181 - INFO - Finished student_dim=3 with G&C avg gen_loss = 0.4855407782198927, GD avg gen_loss = 0.0
+2025-08-03 13:19:23,181 - INFO - ----------------------------------------------------------------------------------------------------------------------------------------------
+2025-08-03 13:19:23,181 - INFO - Starting student_dim=4
+2025-08-03 13:19:23,181 - INFO - Starting seed=0
+2025-08-03 13:19:23,182 - INFO - A_teacher is 0.48532047867774963
+2025-08-03 13:19:23,186 - INFO - Starting G&C
+2025-08-03 13:19:26,017 - INFO - Finished G&C, time elapsed=2.8312630653381348s
+2025-08-03 13:19:26,017 - INFO - Finished seed=0
+2025-08-03 13:19:26,017 - INFO - Starting seed=1
+2025-08-03 13:19:26,018 - INFO - A_teacher is 0.6540995836257935
+2025-08-03 13:19:26,019 - INFO - Starting G&C
+2025-08-03 13:19:28,823 - INFO - Finished G&C, time elapsed=2.8032000064849854s
+2025-08-03 13:19:28,823 - INFO - Finished seed=1
+2025-08-03 13:19:28,823 - INFO - Starting seed=2
+2025-08-03 13:19:28,824 - INFO - A_teacher is 0.5661352276802063
+2025-08-03 13:19:28,825 - INFO - Starting G&C
+2025-08-03 13:19:31,651 - INFO - Finished G&C, time elapsed=2.82608699798584s
+2025-08-03 13:19:31,651 - INFO - Finished seed=2
+2025-08-03 13:19:31,651 - INFO - Starting seed=3
+2025-08-03 13:19:31,653 - INFO - A_teacher is 0.539229691028595
+2025-08-03 13:19:31,653 - INFO - Starting G&C
+2025-08-03 13:19:34,526 - INFO - Finished G&C, time elapsed=2.8727800846099854s
+2025-08-03 13:19:34,526 - INFO - Finished seed=3
+2025-08-03 13:19:34,526 - INFO - Starting seed=4
+2025-08-03 13:19:34,528 - INFO - A_teacher is 0.5803276300430298
+2025-08-03 13:19:34,529 - INFO - Starting G&C
+2025-08-03 13:19:37,386 - INFO - Finished G&C, time elapsed=2.8573429584503174s
+2025-08-03 13:19:37,386 - INFO - Finished seed=4
+2025-08-03 13:19:37,387 - INFO - Starting seed=5
+2025-08-03 13:19:37,388 - INFO - A_teacher is 0.33947238326072693
+2025-08-03 13:19:37,389 - INFO - Starting G&C
+2025-08-03 13:19:40,218 - INFO - Finished G&C, time elapsed=2.8294637203216553s
+2025-08-03 13:19:40,218 - INFO - Finished seed=5
+2025-08-03 13:19:40,218 - INFO - Starting seed=6
+2025-08-03 13:19:40,220 - INFO - A_teacher is 0.45132192969322205
+2025-08-03 13:19:40,221 - INFO - Starting G&C
+2025-08-03 13:19:43,042 - INFO - Finished G&C, time elapsed=2.8213303089141846s
+2025-08-03 13:19:43,042 - INFO - Finished seed=6
+2025-08-03 13:19:43,042 - INFO - Starting seed=7
+2025-08-03 13:19:43,043 - INFO - A_teacher is 0.31256014108657837
+2025-08-03 13:19:43,044 - INFO - Starting G&C
+2025-08-03 13:19:45,924 - INFO - Finished G&C, time elapsed=2.879586935043335s
+2025-08-03 13:19:45,924 - INFO - Finished seed=7
+2025-08-03 13:19:45,924 - INFO - ----------------------------------------------------------------------------------------------------------------------------------------------
+2025-08-03 13:19:45,924 - INFO - ----------------------------------------------------------------------------------------------------------------------------------------------
+2025-08-03 13:19:45,924 - INFO - Finished student_dim=4 with G&C avg gen_loss = 0.4831489006709719, GD avg gen_loss = 0.0
+2025-08-03 13:19:45,924 - INFO - ----------------------------------------------------------------------------------------------------------------------------------------------
+2025-08-03 13:19:45,925 - INFO - Starting student_dim=5
+2025-08-03 13:19:45,925 - INFO - Starting seed=0
+2025-08-03 13:19:45,926 - INFO - A_teacher is 0.48532047867774963
+2025-08-03 13:19:45,929 - INFO - Starting G&C
+2025-08-03 13:19:48,867 - INFO - Finished G&C, time elapsed=2.937739610671997s
+2025-08-03 13:19:48,867 - INFO - Finished seed=0
+2025-08-03 13:19:48,867 - INFO - Starting seed=1
+2025-08-03 13:19:48,868 - INFO - A_teacher is 0.6540995836257935
+2025-08-03 13:19:48,869 - INFO - Starting G&C
+2025-08-03 13:19:51,746 - INFO - Finished G&C, time elapsed=2.8769748210906982s
+2025-08-03 13:19:51,746 - INFO - Finished seed=1
+2025-08-03 13:19:51,746 - INFO - Starting seed=2
+2025-08-03 13:19:51,748 - INFO - A_teacher is 0.5661352276802063
+2025-08-03 13:19:51,749 - INFO - Starting G&C
+2025-08-03 13:19:54,636 - INFO - Finished G&C, time elapsed=2.8869900703430176s
+2025-08-03 13:19:54,636 - INFO - Finished seed=2
+2025-08-03 13:19:54,636 - INFO - Starting seed=3
+2025-08-03 13:19:54,637 - INFO - A_teacher is 0.539229691028595
+2025-08-03 13:19:54,638 - INFO - Starting G&C
+2025-08-03 13:19:57,582 - INFO - Finished G&C, time elapsed=2.9440040588378906s
+2025-08-03 13:19:57,582 - INFO - Finished seed=3
+2025-08-03 13:19:57,582 - INFO - Starting seed=4
+2025-08-03 13:19:57,584 - INFO - A_teacher is 0.5803276300430298
+2025-08-03 13:19:57,585 - INFO - Starting G&C
+2025-08-03 13:20:00,554 - INFO - Finished G&C, time elapsed=2.9691550731658936s
+2025-08-03 13:20:00,554 - INFO - Finished seed=4
+2025-08-03 13:20:00,554 - INFO - Starting seed=5
+2025-08-03 13:20:00,555 - INFO - A_teacher is 0.33947238326072693
+2025-08-03 13:20:00,556 - INFO - Starting G&C
+2025-08-03 13:20:03,459 - INFO - Finished G&C, time elapsed=2.902567148208618s
+2025-08-03 13:20:03,459 - INFO - Finished seed=5
+2025-08-03 13:20:03,459 - INFO - Starting seed=6
+2025-08-03 13:20:03,460 - INFO - A_teacher is 0.45132192969322205
+2025-08-03 13:20:03,461 - INFO - Starting G&C
+2025-08-03 13:20:06,356 - INFO - Finished G&C, time elapsed=2.89469313621521s
+2025-08-03 13:20:06,356 - INFO - Finished seed=6
+2025-08-03 13:20:06,356 - INFO - Starting seed=7
+2025-08-03 13:20:06,357 - INFO - A_teacher is 0.31256014108657837
+2025-08-03 13:20:06,358 - INFO - Starting G&C
+2025-08-03 13:20:09,256 - INFO - Finished G&C, time elapsed=2.898620843887329s
+2025-08-03 13:20:09,256 - INFO - Finished seed=7
+2025-08-03 13:20:09,257 - INFO - ----------------------------------------------------------------------------------------------------------------------------------------------
+2025-08-03 13:20:09,257 - INFO - ----------------------------------------------------------------------------------------------------------------------------------------------
+2025-08-03 13:20:09,257 - INFO - Finished student_dim=5 with G&C avg gen_loss = 0.5879553195349534, GD avg gen_loss = 0.0
+2025-08-03 13:20:09,257 - INFO - ----------------------------------------------------------------------------------------------------------------------------------------------
+2025-08-03 13:20:09,257 - INFO - Starting student_dim=6
+2025-08-03 13:20:09,257 - INFO - Starting seed=0
+2025-08-03 13:20:09,258 - INFO - A_teacher is 0.48532047867774963
+2025-08-03 13:20:09,261 - INFO - Starting G&C
+2025-08-03 13:20:12,280 - INFO - No GNC sensing losses
+2025-08-03 13:20:12,624 - INFO - Finished G&C, time elapsed=3.3626868724823s
+2025-08-03 13:20:12,624 - INFO - Finished seed=0
+2025-08-03 13:20:12,624 - INFO - Starting seed=1
+2025-08-03 13:20:12,625 - INFO - A_teacher is 0.6540995836257935
+2025-08-03 13:20:12,626 - INFO - Starting G&C
+2025-08-03 13:20:15,594 - INFO - Finished G&C, time elapsed=2.9678421020507812s
+2025-08-03 13:20:15,594 - INFO - Finished seed=1
+2025-08-03 13:20:15,595 - INFO - Starting seed=2
+2025-08-03 13:20:15,596 - INFO - A_teacher is 0.5661352276802063
+2025-08-03 13:20:15,597 - INFO - Starting G&C
+2025-08-03 13:20:18,261 - INFO - No GNC sensing losses
+2025-08-03 13:20:18,595 - INFO - Finished G&C, time elapsed=2.997903823852539s
+2025-08-03 13:20:18,595 - INFO - Finished seed=2
+2025-08-03 13:20:18,595 - INFO - Starting seed=3
+2025-08-03 13:20:18,596 - INFO - A_teacher is 0.539229691028595
+2025-08-03 13:20:18,597 - INFO - Starting G&C
+2025-08-03 13:20:21,206 - INFO - No GNC sensing losses
+2025-08-03 13:20:21,546 - INFO - Finished G&C, time elapsed=2.948641777038574s
+2025-08-03 13:20:21,546 - INFO - Finished seed=3
+2025-08-03 13:20:21,546 - INFO - Starting seed=4
+2025-08-03 13:20:21,547 - INFO - A_teacher is 0.5803276300430298
+2025-08-03 13:20:21,548 - INFO - Starting G&C
+2025-08-03 13:20:24,141 - INFO - No GNC sensing losses
+2025-08-03 13:20:24,476 - INFO - Finished G&C, time elapsed=2.927903890609741s
+2025-08-03 13:20:24,476 - INFO - Finished seed=4
+2025-08-03 13:20:24,476 - INFO - Starting seed=5
+2025-08-03 13:20:24,478 - INFO - A_teacher is 0.33947238326072693
+2025-08-03 13:20:24,479 - INFO - Starting G&C
+2025-08-03 13:20:27,113 - INFO - No GNC sensing losses
+2025-08-03 13:20:27,472 - INFO - Finished G&C, time elapsed=2.9932761192321777s
+2025-08-03 13:20:27,472 - INFO - Finished seed=5
+2025-08-03 13:20:27,472 - INFO - Starting seed=6
+2025-08-03 13:20:27,473 - INFO - A_teacher is 0.45132192969322205
+2025-08-03 13:20:27,474 - INFO - Starting G&C
+2025-08-03 13:20:30,074 - INFO - No GNC sensing losses
+2025-08-03 13:20:30,427 - INFO - Finished G&C, time elapsed=2.9522030353546143s
+2025-08-03 13:20:30,427 - INFO - Finished seed=6
+2025-08-03 13:20:30,427 - INFO - Starting seed=7
+2025-08-03 13:20:30,428 - INFO - A_teacher is 0.31256014108657837
+2025-08-03 13:20:30,429 - INFO - Starting G&C
+2025-08-03 13:20:33,068 - INFO - No GNC sensing losses
+2025-08-03 13:20:33,408 - INFO - Finished G&C, time elapsed=2.9785168170928955s
+2025-08-03 13:20:33,408 - INFO - Finished seed=7
+2025-08-03 13:20:33,408 - INFO - ----------------------------------------------------------------------------------------------------------------------------------------------
+2025-08-03 13:20:33,408 - INFO - ----------------------------------------------------------------------------------------------------------------------------------------------
+2025-08-03 13:20:33,409 - INFO - Finished student_dim=6 with G&C avg gen_loss = 2.5788769721984863, GD avg gen_loss = 0.0
+2025-08-03 13:20:33,409 - INFO - ----------------------------------------------------------------------------------------------------------------------------------------------
+2025-08-03 13:20:33,409 - INFO - Starting student_dim=7
+2025-08-03 13:20:33,409 - INFO - Starting seed=0
+2025-08-03 13:20:33,410 - INFO - A_teacher is 0.48532047867774963
+2025-08-03 13:20:33,413 - INFO - Starting G&C
+2025-08-03 13:20:36,566 - INFO - No GNC sensing losses
+2025-08-03 13:20:36,897 - INFO - Finished G&C, time elapsed=3.483670949935913s
+2025-08-03 13:20:36,897 - INFO - Finished seed=0
+2025-08-03 13:20:36,897 - INFO - Starting seed=1
+2025-08-03 13:20:36,898 - INFO - A_teacher is 0.6540995836257935
+2025-08-03 13:20:36,899 - INFO - Starting G&C

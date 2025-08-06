@@ -1,0 +1,9 @@
+2025-08-03 13:51:22,961 - INFO - Using device mps.
+2025-08-03 13:51:22,962 - INFO - Args: Namespace(num_seeds=8, num_measurements=1, input_e1=False, sequence_length=3, teacher_ranks=[1], student_dims=[3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], calc_loss_only_on_last_output=True, eps_train=1e-05, gnc=True, gnc_num_samples=100000000, gnc_batch_size=10000000, gd=True, gd_lr=0.01, gd_epochs=100000, gd_init_scale=0.01, gd_optimizer='adam', config=None, results_dir=PosixPath('results'), figures_dir=PosixPath('figures'), log_dir=PosixPath('logs'))
+2025-08-03 13:51:22,972 - INFO - Starting teacher_rank=1
+2025-08-03 13:51:22,972 - INFO - Starting student_dim=3
+2025-08-03 13:51:22,972 - INFO - Starting seed=0
+2025-08-03 13:51:22,977 - INFO - A_teacher is 0.4905969500541687
+2025-08-03 13:51:22,999 - INFO - Starting G&C
+2025-08-03 13:51:23,314 - INFO - succ_mask: torch.Size([10000000, 1])
+2025-08-03 13:51:23,314 - INFO - gen_losses: torch.Size([10000000])

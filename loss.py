@@ -21,7 +21,10 @@ def get_train_and_gen_from_y(y: torch.Tensor, calc_loss_only_on_last_output=True
         y = y.unsqueeze(0) # Add batch dimension
     # y should now be (batch_size, num_measurements, sequence_length, output_dim)
     if calc_loss_only_on_last_output:
-        y_train = y[:, :-1, -1, :]  # Exclude the last measurement for training loss and get only the last output
+        if y.shape[1] == 1: # If there is only one measurement, we don't need to exclude the last measurement
+            y_train = y[:, -1, -1, :]
+        else:
+            y_train = y[:, :-1, -1, :]  # Exclude the last measurement for training loss and get only the last output
     else:
         y_train = y[:, :-1, :, :]
 
@@ -56,7 +59,10 @@ def sensing_loss(y_teacher: torch.Tensor,
         # y_*_train: (batch_size, num_measurements, output_dim)
         # y_*_gen: (batch_size, sequence_length, output_dim)
         if calc_loss_only_on_last_output:
-            mse_loss = torch.mean((y_student_train - y_teacher_train) ** 2, dim=(1, 2))  # Mean squared error on training output
+            if y_student_train.shape[1] == 1:
+                mse_loss = torch.mean((y_student_train - y_teacher_train) ** 2, dim=(1))
+            else:
+                mse_loss = torch.mean((y_student_train - y_teacher_train) ** 2, dim=(1, 2)) # Mean squared error on training output
         else:
             mse_loss = torch.mean((y_student_train - y_teacher_train) ** 2, dim=(1, 2, 3))
         general_loss = torch.sum((y_student_gen - y_teacher_gen) ** 2, dim=(1, 2))  # Sum of squares on generalization output

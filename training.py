@@ -25,7 +25,6 @@ def train_gd(
     Trains only the diagonal transition matrix A of the student SSM.
     B and C stay fixed to 1s as defined inside DiagonalSSM.
     """
-    torch.manual_seed(seed)
 
     # --- build student -------------------------------------------------------
     _, _, input_dim = dataset.shape
@@ -87,18 +86,20 @@ def train_gnc(seed: int,
              eps_train: float,
              num_samples: int,
              batch_size: int,
+             sequence_length: int,
              calc_loss_only_on_last_output=True,
               ):
-    torch.manual_seed(seed)
     prior_gen_losses = []
     gnc_gen_losses = []
+    eps_train_by_dim = eps_train / student_dim
 
     for batch in range(math.ceil(num_samples / batch_size)):
         bs = min(batch_size, num_samples - batch * batch_size)
-        students = generate_students(student_dim, bs, device)
+        students = generate_students(student_dim, bs, sequence_length, device)
         train_losses, gen_losses = gnc_sensing_loss(students=students, y_teacher=y_teacher, x=dataset, calc_loss_only_on_last_output=calc_loss_only_on_last_output)
-        succ_mask = train_losses < eps_train
+        succ_mask = train_losses < eps_train_by_dim
         prior_gen_losses.extend(gen_losses.cpu().tolist())
+        succ_mask = succ_mask.squeeze(-1)
         gnc_gen_losses.extend(gen_losses[succ_mask].cpu().tolist())
     mean_prior = sum(prior_gen_losses) / len(prior_gen_losses)
     mean_gnc = sum(gnc_gen_losses) / len(gnc_gen_losses) if gnc_gen_losses else float("nan")

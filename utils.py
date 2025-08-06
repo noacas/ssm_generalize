@@ -29,10 +29,13 @@ def get_available_device(max_load: float = 0.3,
         return torch.device('cpu')
 
 
-def filename_extensions(sequence_length: int,
-                        num_measurements: int,
-                        ) -> str:
-    ext = f'_seq_len={sequence_length}_num_measurements={num_measurements}_time={datetime.now().strftime("%Y%m%d-%H%M%S")}'
+def filename_extensions(args) -> str:
+    if args.gnc and not args.gd:
+        ext = f'_gnc_seq_len={args.sequence_length}_num_measurements={args.num_measurements}_input_e1={args.input_e1}_time={datetime.now().strftime("%Y%m%d-%H%M%S")}'
+    elif not args.gnc and args.gd:
+        ext = f'_gd_seq_len={args.sequence_length}_num_measurements={args.num_measurements}_input_e1={args.input_e1}_time={datetime.now().strftime("%Y%m%d-%H%M%S")}'
+    else:
+        ext = f'_seq_len={args.sequence_length}_num_measurements={args.num_measurements}_input_e1={args.input_e1}_time={datetime.now().strftime("%Y%m%d-%H%M%S")}'
     return ext
 
 
