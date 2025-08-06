@@ -22,6 +22,7 @@ def run_experiment(args, device):
     gnc_gen_losses = np.zeros((len(args.teacher_ranks), len(args.student_dims), args.num_seeds))
     gnc_mean_priors = np.zeros((len(args.teacher_ranks), len(args.student_dims), args.num_seeds))
     gnc_theoretical_losses = np.zeros((len(args.teacher_ranks), len(args.student_dims), args.num_seeds))
+    gnc_theoretical_asymptotic_losses = np.zeros((len(args.teacher_ranks), len(args.student_dims), args.num_seeds))
 
     for teacher_rank_idx, teacher_rank in tenumerate(args.teacher_ranks, desc="Teacher ranks", position=0, leave=True):
         logging.info(f'Starting teacher_rank={teacher_rank}')
@@ -51,7 +52,9 @@ def run_experiment(args, device):
                                                 args.calc_loss_only_on_last_output)
                     gnc_gen_losses[teacher_rank_idx, student_dim_idx, seed] = gnc_gen_loss
                     gnc_mean_priors[teacher_rank_idx, student_dim_idx, seed] = mean_prior
-                    gnc_theoretical_losses[teacher_rank_idx, student_dim_idx, seed] = gnc_theoretical_loss(teacher, dataset, student_dim, device)
+                    theoretical_loss, theoretical_asymptotic_loss = gnc_theoretical_loss(teacher, dataset, student_dim, device)
+                    gnc_theoretical_losses[teacher_rank_idx, student_dim_idx, seed] = theoretical_loss.item()
+                    gnc_theoretical_asymptotic_losses[teacher_rank_idx, student_dim_idx, seed] = theoretical_asymptotic_loss.item()
                     t1 = time.time()
                     logging.info(f'Finished G&C, time elapsed={t1 - t0}s')
 
@@ -84,6 +87,7 @@ def run_experiment(args, device):
             if args.gnc:
                 logging.info(f'G&C avg gen_loss = {np.nanmean(gnc_gen_losses[teacher_rank_idx, student_dim_idx, :])}')
                 logging.info(f'G&C avg theoretical_loss = {np.nanmean(gnc_theoretical_losses[teacher_rank_idx, student_dim_idx, :])}')
+                logging.info(f'G&C avg theoretical_asymptotic_loss = {np.nanmean(gnc_theoretical_asymptotic_losses[teacher_rank_idx, student_dim_idx, :])}')
             if args.gd:
                 logging.info(f'GD avg gen_loss = {np.nanmean(gd_gen_losses[teacher_rank_idx, student_dim_idx, :])}')
             logging.info('----------------------------------------------------------------------------------------------------------------------------------------------')
@@ -138,7 +142,7 @@ def main():
     device = get_available_device()
     logging.info(f'Using device {device}.')
     logging.info(f'Args: {args}')
-    gnc_gen_losses, gd_gen_losses, gnc_mean_priors, gnc_theoretical_losses = run_experiment(args, device)
+    gnc_gen_losses, gd_gen_losses, gnc_mean_priors, gnc_theoretical_losses, gnc_theoretical_asymptotic_losses = run_experiment(args, device)
 
     results_filename = 'results' + filename_extensions(args) + '.csv'
     plot_filename = 'plot' + filename_extensions(args)
@@ -160,6 +164,7 @@ def main():
          gd_gen_losses,
          gnc_mean_priors,
          gnc_theoretical_losses,
+         gnc_theoretical_asymptotic_losses,
          args.teacher_ranks,
          args.sequence_length,
          plot_filename,
