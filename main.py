@@ -92,7 +92,7 @@ def run_experiment(args, device):
                 logging.info(f'GD avg gen_loss = {np.nanmean(gd_gen_losses[teacher_rank_idx, student_dim_idx, :])}')
             logging.info('----------------------------------------------------------------------------------------------------------------------------------------------')
 
-    return gnc_gen_losses, gd_gen_losses, gnc_mean_priors, gnc_theoretical_losses
+    return gnc_gen_losses, gd_gen_losses, gnc_mean_priors, gnc_theoretical_losses, gnc_theoretical_asymptotic_losses
 
 
 def save_results_to_csv(
