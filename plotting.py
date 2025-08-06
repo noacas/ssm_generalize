@@ -10,6 +10,7 @@ def plot(student_dims: list,
          gnc_gen_losses: np.ndarray,
          gd_gen_losses: np.ndarray,
          gnc_mean_priors: np.ndarray,
+         gnc_theoretical_losses: np.ndarray,
          teacher_ranks: list,
          sequence_length: int,
          plot_filename: str,
@@ -41,7 +42,13 @@ def plot(student_dims: list,
                 fmt="o-", capsize=3, label=f"G&C Prior (Rank={teacher_rank})",
                 linewidth=2.5, elinewidth=1.5
             )
-        
+            gnc_theoretical_med, gnc_theoretical_iqr = median_iqr(gnc_theoretical_losses[t_idx])
+            ax.errorbar(
+                student_dims, gnc_theoretical_med, yerr=gnc_theoretical_iqr,
+                fmt="o-", capsize=3, label=f"G&C Theoretical (Rank={teacher_rank})",
+                linewidth=2.5, elinewidth=1.5
+            )
+            
         if gd:
             gd_med, gd_iqr = median_iqr(gd_gen_losses[t_idx])
             ax.errorbar(
