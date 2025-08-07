@@ -1,5 +1,6 @@
 import math
 import torch
+import logging
 
 
 def double_factorial(n):
@@ -117,6 +118,9 @@ def calc_asymptotic_coefficients(teacher, w, sequence_length, device):
     variance_component = torch.trace(sigma_1) - (w_transpose_sigma_0_sigma_1_w + w_transpose_sigma_1_sigma_0_w - w_transpose_sigma_1_w) / w_transpose_sigma_0_w
     
     B = 2 * torch.dot(mu_c_0, mu_c_1) + variance_component
+
+    delta_l_infinity = 1 - 2 * alpha * w_transpose_mu_0 / w[0].item() - (w_transpose_mu_0**2) /  (w[0].item() **2)
+    logging.info(f"delta_l_infinity: {delta_l_infinity} for w={w}")
     
     return A, B
 
@@ -168,9 +172,10 @@ def gnc_theoretical_loss(teacher, dataset, student_dim, device):
 if __name__ == "__main__":
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     from generator import generate_teacher, generate_dataset
-    for d in range(15, 40):
-        torch.manual_seed(0)
-        teacher = generate_teacher(1, d, device)
-        dataset = generate_dataset(1, 5, False, device)
-        exact_loss, asymptotic_loss = gnc_theoretical_loss(teacher, dataset, d, device)
-        print(f"d={d}: Exact={exact_loss.item():.6f}, Asymptotic={asymptotic_loss.item():.6f}")
+    for seed in range(10):
+        for d in range(1000, 10000, 1000):
+            torch.manual_seed(seed)
+            teacher = generate_teacher(1, d, device)
+            dataset = generate_dataset(1, 5, False, device)
+            exact_loss, asymptotic_loss = gnc_theoretical_loss(teacher, dataset, d, device)
+            print(f"d={d}: Exact={exact_loss.item():.6f}, Asymptotic={asymptotic_loss.item():.6f}")
