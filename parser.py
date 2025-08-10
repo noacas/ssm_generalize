@@ -55,7 +55,7 @@ def parse_args() -> argparse.Namespace:  # noqa: C901 – a bit long but flat
     g.add_argument("--num_seeds", type=int, default=12, help="Number of random seeds per setting")
     g.add_argument("--num_measurements", type=int, default=1, help="Number of measurements")
     g.add_argument("--input_e1", dest="input_e1", action="store_true", help="Use e1 as input", default=False)
-    g.add_argument("--sequence_length", type=int, default=3, help="Length of the measurement sequence")
+    g.add_argument("--sequence_length", type=int, default=5, help="Length of the measurement sequence")
     g.add_argument("--teacher_ranks", type=int, default=list(range(1, 2)), help="Ranks of the teacher matrix")
     g.add_argument("--student_dims", type=int, default=list(range(500, 600, 10)), help="Dimensions of the student matrix")
     g.add_argument(
