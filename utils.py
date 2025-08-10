@@ -29,6 +29,28 @@ def get_available_device(max_load: float = 0.3,
         return torch.device('cpu')
 
 
+def get_available_gpus(max_load: float = 0.3,
+                       max_memory: float = 0.3,
+                       max_gpus: int = None) -> list:
+    """
+    Get multiple available GPUs that are under the load and memory thresholds.
+    
+    Args:
+        max_load: Maximum GPU load threshold (0.0 to 1.0)
+        max_memory: Maximum GPU memory usage threshold (0.0 to 1.0)
+        max_gpus: Maximum number of GPUs to return (None for all available)
+    
+    Returns:
+        List of available GPU IDs
+    """
+    available_gpus = GPUtil.getAvailable(order='first', maxLoad=max_load, maxMemory=max_memory, limit=torch.cuda.device_count())
+    
+    if max_gpus is not None:
+        available_gpus = available_gpus[:max_gpus]
+    
+    return available_gpus
+
+
 def filename_extensions(args) -> str:
     if args.gnc and not args.gd:
         ext = f'_gnc_seq_len={args.sequence_length}_num_measurements={args.num_measurements}_input_e1={args.input_e1}_time={datetime.now().strftime("%Y%m%d-%H%M%S")}'

@@ -1,0 +1,20 @@
+2025-08-10 17:59:51,345 - INFO - Using device cuda:0.
+2025-08-10 17:59:51,345 - INFO - Args: Namespace(num_seeds=8, num_measurements=1, input_e1=False, sequence_length=3, teacher_ranks=[1], student_dims=[500, 510, 520, 530, 540, 550, 560, 570, 580, 590], calc_loss_only_on_last_output=True, eps_train=1e-05, gnc=True, gnc_num_samples=10000000000, gnc_batch_size=100000, gd=False, gd_lr=0.001, gd_epochs=1000000, gd_init_scale=0.01, gd_optimizer='adam', config=None, results_dir=PosixPath('results'), figures_dir=PosixPath('figures'), log_dir=PosixPath('logs'))
+2025-08-10 17:59:51,558 - INFO - Starting teacher_rank=1
+2025-08-10 17:59:51,558 - INFO - Starting student_dim=500
+2025-08-10 17:59:52,583 - INFO - A_teacher is 0.539229691028595
+2025-08-10 17:59:52,589 - INFO - dataset is tensor([[[-0.2236],
+         [-0.3195],
+         [-1.2050]]])
+2025-08-10 17:59:52,591 - INFO - A_teacher is 0.5803276300430298
+2025-08-10 17:59:52,599 - INFO - dataset is tensor([[[ 0.1748],
+         [ 0.0890],
+         [-0.6137]]])
+2025-08-10 17:59:52,604 - INFO - A_teacher is 0.5661352276802063
+2025-08-10 17:59:52,611 - INFO - dataset is tensor([[[0.2669],
+         [0.0617],
+         [0.6213]]])
+2025-08-10 17:59:52,625 - INFO - A_teacher is 0.6540995836257935
+2025-08-10 17:59:52,631 - INFO - dataset is tensor([[[-0.2934],
+         [-2.1788],
+         [ 0.5684]]])

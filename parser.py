@@ -52,19 +52,19 @@ def parse_args() -> argparse.Namespace:  # noqa: C901 – a bit long but flat
     # Generic experiment parameters                                     |
     # ------------------------------------------------------------------
     g = parser.add_argument_group("Problem dimensions & data generation")
-    g.add_argument("--num_seeds", type=int, default=8, help="Number of random seeds per setting")
+    g.add_argument("--num_seeds", type=int, default=12, help="Number of random seeds per setting")
     g.add_argument("--num_measurements", type=int, default=1, help="Number of measurements")
     g.add_argument("--input_e1", dest="input_e1", action="store_true", help="Use e1 as input", default=False)
     g.add_argument("--sequence_length", type=int, default=3, help="Length of the measurement sequence")
     g.add_argument("--teacher_ranks", type=int, default=list(range(1, 2)), help="Ranks of the teacher matrix")
-    g.add_argument("--student_dims", type=int, default=list(range(15, 40)), help="Dimensions of the student matrix")
+    g.add_argument("--student_dims", type=int, default=list(range(500, 600, 10)), help="Dimensions of the student matrix")
     g.add_argument(
         "--calc_loss_only_on_last_output", dest="calc_loss_only_on_last_output", action="store_true", help="Calculate loss only on last output (default: True)", default=True
     )
     g.add_argument(
         "--no-calc_loss_only_on_last_output", dest="calc_loss_only_on_last_output", action="store_false", help="Do not calculate loss only on last output"
     )
-    g.add_argument("--eps_train", type=float, default=float(1e-12), help="Training loss threshold for successful trial")
+    g.add_argument("--eps_train", type=float, default=float(1e-5), help="Training loss threshold for successful trial")
 
     g = parser.add_argument_group("Guess & Check hyperparameters")
     g.add_argument(
@@ -73,12 +73,12 @@ def parse_args() -> argparse.Namespace:  # noqa: C901 – a bit long but flat
     g.add_argument(
         "--no-gnc", dest="gnc", action="store_false", help="Disable Guess & Check"
     )
-    g.add_argument("--gnc_num_samples", type=int, default=int(1e8), help="Number of G&C samples")
-    g.add_argument("--gnc_batch_size", type=int, default=int(1e6), help="Batch sizes for G&C")
+    g.add_argument("--gnc_num_samples", type=int, default=int(1e12), help="Number of G&C samples")
+    g.add_argument("--gnc_batch_size", type=int, default=int(1e3), help="Batch sizes for G&C")
 
     g = parser.add_argument_group("Gradient Descent hyper‑parameters")
     g.add_argument(
-        "--gd", dest="gd", action="store_true", help="Enable Gradient Descent (default: True)", default=True
+        "--gd", dest="gd", action="store_true", help="Enable Gradient Descent (default: True)", default=False
     )
     g.add_argument(
         "--no-gd", dest="gd", action="store_false", help="Disable Gradient Descent"

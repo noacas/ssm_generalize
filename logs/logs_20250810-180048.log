@@ -1,0 +1,36 @@
+2025-08-10 18:00:49,054 - INFO - Using device cuda:0.
+2025-08-10 18:00:49,054 - INFO - Args: Namespace(num_seeds=8, num_measurements=1, input_e1=False, sequence_length=3, teacher_ranks=[1], student_dims=[500, 510, 520, 530, 540, 550, 560, 570, 580, 590], calc_loss_only_on_last_output=True, eps_train=1e-05, gnc=True, gnc_num_samples=10000000000, gnc_batch_size=100000, gd=False, gd_lr=0.001, gd_epochs=1000000, gd_init_scale=0.01, gd_optimizer='adam', config=None, results_dir=PosixPath('results'), figures_dir=PosixPath('figures'), log_dir=PosixPath('logs'))
+2025-08-10 18:00:49,278 - INFO - Starting teacher_rank=1
+2025-08-10 18:00:49,279 - INFO - Starting student_dim=500
+2025-08-10 18:00:50,348 - INFO - A_teacher is 0.6540995836257935
+2025-08-10 18:00:50,359 - INFO - dataset is tensor([[[-0.2934],
+         [-2.1788],
+         [ 0.5684]]])
+2025-08-10 18:00:50,400 - INFO - A_teacher is 0.5803276300430298
+2025-08-10 18:00:50,401 - INFO - A_teacher is 0.539229691028595
+2025-08-10 18:00:50,407 - INFO - dataset is tensor([[[ 0.1748],
+         [ 0.0890],
+         [-0.6137]]])
+2025-08-10 18:00:50,409 - INFO - dataset is tensor([[[-0.2236],
+         [-0.3195],
+         [-1.2050]]])
+2025-08-10 18:00:50,410 - INFO - A_teacher is 0.5661352276802063
+2025-08-10 18:00:50,418 - INFO - dataset is tensor([[[0.2669],
+         [0.0617],
+         [0.6213]]])
+2025-08-10 21:33:45,385 - INFO - A_teacher is 0.48532047867774963
+2025-08-10 21:33:45,385 - INFO - A_teacher is 0.45132192969322205
+2025-08-10 21:33:45,385 - INFO - A_teacher is 0.33947238326072693
+2025-08-10 21:33:45,385 - INFO - A_teacher is 0.31256014108657837
+2025-08-10 21:33:46,412 - INFO - dataset is tensor([[[-0.6038],
+         [-0.5581],
+         [ 0.6675]]])
+2025-08-10 21:33:46,412 - INFO - dataset is tensor([[[0.2325],
+         [2.2399],
+         [0.8473]]])
+2025-08-10 21:33:46,412 - INFO - dataset is tensor([[[-0.9937],
+         [ 0.7185],
+         [-0.6985]]])
+2025-08-10 21:33:46,412 - INFO - dataset is tensor([[[ 0.7861],
+         [ 0.9468],
+         [-1.1143]]])
