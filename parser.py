@@ -57,7 +57,7 @@ def parse_args() -> argparse.Namespace:  # noqa: C901 – a bit long but flat
     g.add_argument("--input_e1", dest="input_e1", action="store_true", help="Use e1 as input", default=False)
     g.add_argument("--sequence_length", type=int, default=5, help="Length of the measurement sequence")
     g.add_argument("--teacher_ranks", type=int, default=list(range(1, 2)), help="Ranks of the teacher matrix")
-    g.add_argument("--student_dims", type=int, default=list(range(20, 40, 10)), help="Dimensions of the student matrix")
+    g.add_argument("--student_dims", type=int, default=list(range(400, 600, 10)), help="Dimensions of the student matrix")
     g.add_argument(
         "--calc_loss_only_on_last_output", dest="calc_loss_only_on_last_output", action="store_true", help="Calculate loss only on last output (default: True)", default=True
     )
@@ -73,7 +73,7 @@ def parse_args() -> argparse.Namespace:  # noqa: C901 – a bit long but flat
     g.add_argument(
         "--no-gnc", dest="gnc", action="store_false", help="Disable Guess & Check"
     )
-    g.add_argument("--gnc_num_samples", type=int, default=int(1000), help="Number of G&C samples")
+    g.add_argument("--gnc_num_samples", type=int, default=int(1e12), help="Number of G&C samples")
     g.add_argument("--gnc_batch_size", type=int, default=int(1e3), help="Batch sizes for G&C")
 
     g = parser.add_argument_group("Gradient Descent hyper‑parameters")
