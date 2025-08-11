@@ -1,6 +1,7 @@
 from datetime import datetime
 from typing import Tuple
 import logging
+import os
 
 import numpy as np
 import torch
@@ -8,13 +9,39 @@ import GPUtil
 
 
 def setup_logging(log_dir):
-    # save logs to file
-    logging.basicConfig(
-        filename=log_dir / f'logs_{datetime.now().strftime("%Y%m%d-%H%M%S")}.log',
-        filemode='a',
-        level=logging.INFO,
-        format='%(asctime)s - %(levelname)s - %(message)s'
-    )
+    # is log dir maybe a log path?
+    if os.path.isfile(log_dir):
+        log_filename = log_dir
+    else:
+        # Configure logging to both file and console
+        log_filename = log_dir / f'logs_{datetime.now().strftime("%Y%m%d-%H%M%S")}.log'
+    
+    # Create formatter
+    formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+    
+    # Create file handler
+    file_handler = logging.FileHandler(log_filename, mode='a')
+    file_handler.setLevel(logging.INFO)
+    file_handler.setFormatter(formatter)
+    
+    # Create console handler
+    console_handler = logging.StreamHandler()
+    console_handler.setLevel(logging.INFO)
+    console_handler.setFormatter(formatter)
+    
+    # Configure root logger
+    root_logger = logging.getLogger()
+    root_logger.setLevel(logging.INFO)
+    
+    # Remove any existing handlers to avoid duplicates
+    for handler in root_logger.handlers[:]:
+        root_logger.removeHandler(handler)
+    
+    # Add our handlers
+    root_logger.addHandler(file_handler)
+    root_logger.addHandler(console_handler)
+
+    return log_filename
 
 
 def get_available_device(max_load: float = 0.3,

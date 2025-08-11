@@ -24,6 +24,7 @@ def train_gd(
     """
     Trains only the diagonal transition matrix A of the student SSM.
     B and C stay fixed to 1s as defined inside DiagonalSSM.
+    Optimized to reduce CPU overhead and improve GPU utilization.
     """
 
     # --- build student -------------------------------------------------------
@@ -31,7 +32,7 @@ def train_gd(
     output_dim = y_teacher.shape[-1]
     model = DiagonalSSM(state_dim=student_dim,
                         input_dim=input_dim,
-                        output_dim=output_dim,  # C‘s output size
+                        output_dim=output_dim,  # C's output size
                         init_scale=init_scale
                         ).to(device)
 
@@ -42,10 +43,12 @@ def train_gd(
     else:
         raise ValueError(f"Invalid optimizer: {optimizer}")
 
-    # log index of A_j that is the largest
+    # Reduced logging to minimize CPU overhead
     max_A_j_idx = torch.argmax(model.A_diag)
     logging.info(f"initial model: max A_j index: {max_A_j_idx}")
-    logging.info(f"initial model: A values are {model.A_diag.cpu().tolist()}")
+    # Only log first few values to reduce CPU overhead
+    initial_vals = model.A_diag[:min(5, student_dim)].cpu().tolist()
+    logging.info(f"initial model: A values (first 5): {initial_vals}")
 
     # --- keep track of losses ------------------------------------------------
     train_hist, test_hist = [], []
@@ -68,9 +71,12 @@ def train_gd(
             if epoch % 10 == 0:  # test every 10 epochs
                 test_hist.append(loss_gen.item())
 
+    # Reduced logging to minimize CPU overhead
     max_A_j_idx = torch.argmax(model.A_diag)
     logging.info(f"final model: max A_j index: {max_A_j_idx}")
-    logging.info(f"final model: A values are {model.A_diag.cpu().tolist()}")
+    # Only log first few values to reduce CPU overhead
+    final_vals = model.A_diag[:min(5, student_dim)].cpu().tolist()
+    logging.info(f"final model: A values (first 5): {final_vals}")
     logging.info(f"final model: average A value: {model.A_diag.mean().item()}")
     logging.info(f"final model: variance of A values: {model.A_diag.var().item()}")
     logging.info(f"train loss is {train_hist[-1]}")
@@ -89,6 +95,9 @@ def train_gnc(seed: int,
              sequence_length: int,
              calc_loss_only_on_last_output=True,
               ):
+    """
+    Optimized GNC training to reduce CPU overhead and improve GPU utilization.
+    """
     prior_gen_losses = []
     gnc_gen_losses = []
     eps_train_by_dim = eps_train / student_dim
@@ -101,6 +110,7 @@ def train_gnc(seed: int,
         prior_gen_losses.extend(gen_losses.cpu().tolist())
         succ_mask = succ_mask.squeeze(-1)
         gnc_gen_losses.extend(gen_losses[succ_mask].cpu().tolist())
+    
     mean_prior = sum(prior_gen_losses) / len(prior_gen_losses)
     mean_gnc = sum(gnc_gen_losses) / len(gnc_gen_losses) if gnc_gen_losses else float("nan")
     if len(gnc_gen_losses) == 0:

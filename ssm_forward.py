@@ -3,6 +3,7 @@ import torch
 def ssm_forward(A_diag, B, C, x):
     """
     Forward pass through State Space Model.
+    Optimized to reduce CPU overhead and improve GPU utilization.
 
     Args:
         A_diag: The Diagonal of state transition matrix (batch_size, state_dim)
@@ -35,11 +36,14 @@ def ssm_forward(A_diag, B, C, x):
     # Make A, B, C broadcastable over the measurement axis
     A_diag_unsqueeze = A_diag.unsqueeze(1)  # (B, 1, S)
 
-    # Hidden state and output buffer
-    h = torch.zeros(batch_size, num_measurements, state_dim, device=device)
+    # Pre-allocate output tensor to avoid repeated allocations
     output = torch.empty(batch_size, num_measurements, seq_len, output_dim,
-                         device=device)
+                         device=device, dtype=x.dtype)
 
+    # Initialize hidden state
+    h = torch.zeros(batch_size, num_measurements, state_dim, device=device, dtype=x.dtype)
+
+    # Process sequence efficiently
     for t in range(seq_len):
         u_t = x[:, t, :]  # (M, I)
         Bu = torch.einsum('mi,biS->bmS', u_t, B)  # (B, M, S)

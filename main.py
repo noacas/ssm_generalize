@@ -164,6 +164,7 @@ def main():
          gd_gen_losses,
          gnc_mean_priors,
          gnc_theoretical_losses,
+         gnc_theoretical_asymptotic_losses,
          args.teacher_ranks,
          args.sequence_length,
          plot_filename,
