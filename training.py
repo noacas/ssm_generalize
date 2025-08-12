@@ -91,7 +91,7 @@ def train_gnc(
 
     for batch in range(math.ceil(num_samples / batch_size)):
         bs = min(batch_size, num_samples - batch * batch_size)
-        students = generate_students(student_dim, bs, sequence_length, device)
+        students = generate_students(student_dim, bs, device)
         train_losses, gen_losses = get_losses(students, w, alpha_teacher)
         succ_mask = train_losses < eps_train_by_dim
 
