@@ -118,10 +118,7 @@ def calc_asymptotic_coefficients(alpha_teacher, w, sequence_length, device):
     return A, B
 
 
-def gnc_theoretical_loss(alpha_teacher, dataset, student_dim, device):
-    # In both cases, we want the first measurement without the last time step, reversed
-    w = torch.flip(dataset[0, :-1, :], dims=[0])
-    
+def gnc_theoretical_loss(alpha_teacher, w, student_dim, device):
     # Get sequence length from dataset
     sequence_length = dataset.shape[1]
 
@@ -161,11 +158,11 @@ def gnc_theoretical_loss(alpha_teacher, dataset, student_dim, device):
 
 if __name__ == "__main__":
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    from generator import generate_teacher, generate_dataset
+    from generator import generate_teacher_alpha, generate_w
     for seed in range(10):
         for d in range(1000, 10000, 1000):
             torch.manual_seed(seed)
-            alpha_teacher = generate_teacher(d, device)
-            dataset = generate_dataset(1, 5, False, device)
+            alpha_teacher = generate_teacher_alpha(d, device)
+            dataset = generate_w(5, False, device)
             exact_loss, asymptotic_loss = gnc_theoretical_loss(alpha_teacher, dataset, d, device)
             print(f"d={d}: Exact={exact_loss.item():.6f}, Asymptotic={asymptotic_loss.item():.6f}")

@@ -12,138 +12,16 @@ import os
 from save_results import save_results_to_csv
 from checkpoint import CheckpointManager
 
-from loss import get_y_teacher
 from plotting import plot
 
-from generator import generate_teacher, generate_dataset
+from generator import generate_teacher_alpha, generate_w
 from parser import parse_args
 from training import train_gnc, train_gd
 from utils import filename_extensions, get_available_gpus
 from theoretical_loss import gnc_theoretical_loss
 
 
-def run_single_seed_worker(experiment_data):
-    """
-    Worker function for running a single seed experiment.
-    This function will be called by DataLoader workers.
-    """
-    teacher_rank_idx = experiment_data['teacher_rank_idx']
-    teacher_rank = experiment_data['teacher_rank']
-    student_dim_idx = experiment_data['student_dim_idx']
-    student_dim = experiment_data['student_dim']
-    seed = experiment_data['seed']
-    gpu_id = experiment_data['gpu_id']
-    args_dict = experiment_data['args_dict']
-    
-    # Set up logging for this worker process
-    log_file = experiment_data.get('log_file', None)
-    if log_file:
-        setup_logging(log_file)
-    
-    # Set the GPU for this process
-    device = torch.device(f'cuda:{gpu_id}')
-    torch.cuda.set_device(device)
-    
-    logging.info(f"Starting experiment: teacher_rank={teacher_rank}, student_dim={student_dim}, seed={seed}, GPU={gpu_id}")
-    
-    # Set seed for reproducibility
-    torch.manual_seed(seed)
-    
-    try:
-        with torch.no_grad():
-            # Generate teacher and dataset (now optimized to generate directly on device)
-            logging.info(f"Generating teacher on GPU {gpu_id}...")
-            start_time = time.time()
-            teacher = generate_teacher(teacher_rank, student_dim, device)
-            teacher_time = time.time() - start_time
-            logging.info(f"Teacher generation completed in {teacher_time:.2f} seconds")
-            
-            logging.info(f"Generating dataset on GPU {gpu_id}...")
-            start_time = time.time()
-            dataset = generate_dataset(args_dict['num_measurements'], args_dict['sequence_length'], 
-                                    args_dict['input_e1'], device)
-            dataset_time = time.time() - start_time
-            logging.info(f"Dataset generation completed in {dataset_time:.2f} seconds")
-            
-            logging.info(f"Calculating y_teacher on GPU {gpu_id}...")
-            start_time = time.time()
-            y_teacher = get_y_teacher(teacher, dataset)
-            y_teacher_time = time.time() - start_time
-            logging.info(f"y_teacher calculation completed in {y_teacher_time:.2f} seconds")
-            
-            results = {
-                'teacher_rank_idx': teacher_rank_idx,
-                'student_dim_idx': student_dim_idx,
-                'seed': seed,
-                'gpu_id': gpu_id,
-                'gnc_gen_loss': None,
-                'gnc_mean_prior': None,
-                'gnc_theoretical_loss': None,
-                'gnc_theoretical_asymptotic_loss': None,
-                'gd_gen_loss': None,
-                'gd_train_loss': None,
-            }
-        
-            # G&C
-            if args_dict['gnc']:
-                try:
-                    batch_size = args_dict['gnc_batch_size']
-                    
-                    logging.info(f"Starting G&C training on GPU {gpu_id}...")
-                    start_time = time.time()
-                    mean_prior, gnc_gen_loss = train_gnc(seed, student_dim, device, y_teacher, dataset,
-                                                        args_dict['eps_train'], args_dict['gnc_num_samples'],
-                                                        batch_size, args_dict['sequence_length'],
-                                                        args_dict['calc_loss_only_on_last_output'])
-                    training_time = time.time() - start_time
-                    logging.info(f"G&C training completed in {training_time:.2f} seconds on GPU {gpu_id}")
-                    results['gnc_gen_loss'] = gnc_gen_loss
-                    results['gnc_mean_prior'] = mean_prior
-                    
-                    logging.info(f"Starting theoretical loss calculation on GPU {gpu_id}...")
-                    start_time = time.time()
-                    theoretical_loss, theoretical_asymptotic_loss = gnc_theoretical_loss(teacher, dataset, student_dim, device)
-                    theory_time = time.time() - start_time
-                    logging.info(f"Theoretical loss calculation completed in {theory_time:.2f} seconds on GPU {gpu_id}")
-                    results['gnc_theoretical_loss'] = theoretical_loss.item()
-                    results['gnc_theoretical_asymptotic_loss'] = theoretical_asymptotic_loss.item()
-                
-                except Exception as e:
-                    logging.error(f"G&C failed for teacher_rank={teacher_rank}, student_dim={student_dim}, seed={seed}, GPU={gpu_id}: {e}")
-            
-        # GD
-        if args_dict['gd']:
-            try:
-                gd_gen_loss, gd_train_loss = train_gd(seed, student_dim, device, y_teacher, dataset,
-                                                     args_dict['gd_init_scale'], args_dict['gd_lr'],
-                                                     args_dict['gd_epochs'], args_dict['calc_loss_only_on_last_output'],
-                                                     args_dict['gd_optimizer'])
-                results['gd_gen_loss'] = gd_gen_loss
-                results['gd_train_loss'] = gd_train_loss
-            
-            except Exception as e:
-                logging.error(f"GD failed for teacher_rank={teacher_rank}, student_dim={student_dim}, seed={seed}, GPU={gpu_id}: {e}")
-        
-        del teacher, dataset, y_teacher
-
-        torch.cuda.empty_cache()
-        
-        logging.info(f"Completed experiment: teacher_rank={teacher_rank}, student_dim={student_dim}, seed={seed}, GPU={gpu_id}")
-        return results
-        
-    except Exception as e:
-        logging.error(f"Error in run_single_seed_worker for teacher_rank={teacher_rank}, student_dim={student_dim}, seed={seed}, GPU={gpu_id}: {e}")
-        logging.error(traceback.format_exc())
-        return {
-            'teacher_rank_idx': teacher_rank_idx,
-            'student_dim_idx': student_dim_idx,
-            'seed': seed,
-            'gpu_id': gpu_id,
-            'error': str(e)
-        }
-
-
-def process_worker(process_id, gpu_id, seed_range, args_dict, teacher_ranks, student_dims, 
+def process_worker(process_id, gpu_id, seed_range, args_dict, student_dims, 
                   results_queue, checkpoint_queue, log_file):
     """
     Worker process that runs experiments for a specific range of seeds on a dedicated GPU.
@@ -153,7 +31,6 @@ def process_worker(process_id, gpu_id, seed_range, args_dict, teacher_ranks, stu
         gpu_id: GPU device ID to use
         seed_range: Range of seeds to process (start, end)
         args_dict: Experiment arguments
-        teacher_ranks: List of teacher ranks
         student_dims: List of student dimensions
         results_queue: Queue to send results to main process
         checkpoint_queue: Queue to send checkpoint updates to main process
@@ -176,106 +53,102 @@ def process_worker(process_id, gpu_id, seed_range, args_dict, teacher_ranks, stu
     
     start_seed, end_seed = seed_range
     completed_experiments = 0
-    total_experiments = (end_seed - start_seed) * len(teacher_ranks) * len(student_dims)
+    total_experiments = (end_seed - start_seed) * len(student_dims)
     
     for seed in range(start_seed, end_seed):
-        for teacher_rank_idx, teacher_rank in enumerate(teacher_ranks):
-            for student_dim_idx, student_dim in enumerate(student_dims):
-                # Set seed for reproducibility
-                torch.manual_seed(seed)
-                
-                # Reduced logging to minimize CPU overhead
-                if completed_experiments % 10 == 0:  # Log every 10th experiment
-                    logging.info(f"Process {process_id}: Starting experiment - teacher_rank={teacher_rank}, student_dim={student_dim}, seed={seed}")
-                
-                try:
-                    with torch.no_grad():
-                        # Generate teacher and dataset
-                        teacher = generate_teacher(teacher_rank, student_dim, device)
-                        dataset = generate_dataset(args_dict['num_measurements'], args_dict['sequence_length'], 
-                                                args_dict['input_e1'], device)
-                        y_teacher = get_y_teacher(teacher, dataset)
-                        
-                        results = {
-                            'teacher_rank_idx': teacher_rank_idx,
-                            'student_dim_idx': student_dim_idx,
-                            'seed': seed,
-                            'gpu_id': gpu_id,
-                            'process_id': process_id,
-                            'gnc_gen_loss': None,
-                            'gnc_mean_prior': None,
-                            'gnc_theoretical_loss': None,
-                            'gnc_theoretical_asymptotic_loss': None,
-                            'gd_gen_loss': None,
-                            'gd_train_loss': None,
-                        }
-                    
-                    # G&C
-                    if args_dict['gnc']:
-                        try:
-                            batch_size = args_dict['gnc_batch_size']
-                            mean_prior, gnc_gen_loss = train_gnc(seed, student_dim, device, y_teacher, dataset,
-                                                                args_dict['eps_train'], args_dict['gnc_num_samples'],
-                                                                batch_size, args_dict['sequence_length'],
-                                                                args_dict['calc_loss_only_on_last_output'])
-                            results['gnc_gen_loss'] = gnc_gen_loss
-                            results['gnc_mean_prior'] = mean_prior
-                            
-                            theoretical_loss, theoretical_asymptotic_loss = gnc_theoretical_loss(teacher, dataset, student_dim, device)
-                            results['gnc_theoretical_loss'] = theoretical_loss.item()
-                            results['gnc_theoretical_asymptotic_loss'] = theoretical_asymptotic_loss.item()
-                        
-                        except Exception as e:
-                            logging.error(f"G&C failed for teacher_rank={teacher_rank}, student_dim={student_dim}, seed={seed}: {e}")
-                    
-                    # GD
-                    if args_dict['gd']:
-                        try:
-                            gd_gen_loss, gd_train_loss = train_gd(seed, student_dim, device, y_teacher, dataset,
-                                                                 args_dict['gd_init_scale'], args_dict['gd_lr'],
-                                                                 args_dict['gd_epochs'], args_dict['calc_loss_only_on_last_output'],
-                                                                 args_dict['gd_optimizer'])
-                            results['gd_gen_loss'] = gd_gen_loss
-                            results['gd_train_loss'] = gd_train_loss
-                        
-                        except Exception as e:
-                            logging.error(f"GD failed for teacher_rank={teacher_rank}, student_dim={student_dim}, seed={seed}: {e}")
-                    
-                    del teacher, dataset, y_teacher
-                    torch.cuda.empty_cache()
-                    
-                    # Send result to main process
-                    results_queue.put(results)
-                    
-                    completed_experiments += 1
-                    
-                    # Batch operations to reduce CPU overhead
-                    if completed_experiments % 10 == 0:
-                        # Send checkpoint update
-                        checkpoint_queue.put({
-                            'type': 'progress',
-                            'process_id': process_id,
-                            'completed': completed_experiments,
-                            'total': total_experiments
-                        })
-                    
-                    logging.info(f"Process {process_id}: Completed experiment - teacher_rank={teacher_rank}, student_dim={student_dim}, seed={seed}")
-                
-                except Exception as e:
-                    logging.error(f"Process {process_id}: Error in experiment - teacher_rank={teacher_rank}, student_dim={student_dim}, seed={seed}: {e}")
-                    logging.error(traceback.format_exc())
-                    
-                    # Send error result
-                    error_result = {
-                        'teacher_rank_idx': teacher_rank_idx,
+        torch.manual_seed(seed)
+        with torch.no_grad():
+            alpha_teacher = generate_teacher_alpha(device)
+            w = generate_w(args_dict['sequence_length'], device)
+
+        for student_dim_idx, student_dim in enumerate(student_dims):
+            # Set seed for reproducibility
+            torch.manual_seed(seed)
+            
+            # Reduced logging to minimize CPU overhead
+            if completed_experiments % 10 == 0:  # Log every 10th experiment
+                logging.info(f"Process {process_id}: Starting experiment - student_dim={student_dim}, seed={seed}")
+            
+            try:
+                with torch.no_grad():
+                    results = {
                         'student_dim_idx': student_dim_idx,
                         'seed': seed,
                         'gpu_id': gpu_id,
                         'process_id': process_id,
-                        'error': str(e)
+                        'gnc_gen_loss': None,
+                        'gnc_mean_prior': None,
+                        'gnc_theoretical_loss': None,
+                        'gnc_theoretical_asymptotic_loss': None,
+                        'gd_gen_loss': None,
+                        'gd_train_loss': None,
                     }
-                    results_queue.put(error_result)
-                    completed_experiments += 1
+                
+                    # G&C
+                    if args_dict['gnc']:
+                        try:
+                            batch_size = args_dict['gnc_batch_size']
+                            mean_prior, gnc_gen_loss = train_gnc(student_dim, device, alpha_teacher, w,
+                                                                args_dict['eps_train'], args_dict['gnc_num_samples'],
+                                                                batch_size, args_dict['sequence_length']
+                                                                )
+                            results['gnc_gen_loss'] = gnc_gen_loss
+                            results['gnc_mean_prior'] = mean_prior
+                            
+                            theoretical_loss, theoretical_asymptotic_loss = gnc_theoretical_loss(alpha_teacher, w, student_dim, device)
+                            results['gnc_theoretical_loss'] = theoretical_loss.item()
+                            results['gnc_theoretical_asymptotic_loss'] = theoretical_asymptotic_loss.item()
+                        
+                        except Exception as e:
+                            logging.error(f"G&C failed for student_dim={student_dim}, seed={seed}: {e}")
+                    
+                # GD
+                if args_dict['gd']:
+                    try:
+                        gd_gen_loss, gd_train_loss = train_gd(student_dim, device, alpha_teacher, dataset,
+                                                                args_dict['gd_init_scale'], args_dict['gd_lr'],
+                                                                args_dict['gd_epochs'],
+                                                                args_dict['gd_optimizer'])
+                        results['gd_gen_loss'] = gd_gen_loss
+                        results['gd_train_loss'] = gd_train_loss
+                    
+                    except Exception as e:
+                        logging.error(f"GD failed for student_dim={student_dim}, seed={seed}: {e}")
+                
+                del teacher, dataset, y_teacher
+                torch.cuda.empty_cache()
+                
+                # Send result to main process
+                results_queue.put(results)
+                
+                completed_experiments += 1
+                
+                # Batch operations to reduce CPU overhead
+                if completed_experiments % 10 == 0:
+                    # Send checkpoint update
+                    checkpoint_queue.put({
+                        'type': 'progress',
+                        'process_id': process_id,
+                        'completed': completed_experiments,
+                        'total': total_experiments
+                    })
+                
+                logging.info(f"Process {process_id}: Completed experiment - student_dim={student_dim}, seed={seed}")
+            
+            except Exception as e:
+                logging.error(f"Process {process_id}: Error in experiment - student_dim={student_dim}, seed={seed}: {e}")
+                logging.error(traceback.format_exc())
+                
+                # Send error result
+                error_result = {
+                    'student_dim_idx': student_dim_idx,
+                    'seed': seed,
+                    'gpu_id': gpu_id,
+                    'process_id': process_id,
+                    'error': str(e)
+                }
+                results_queue.put(error_result)
+                completed_experiments += 1
     
     # Send completion signal
     checkpoint_queue.put({
@@ -294,11 +167,11 @@ def run_experiment(args):
     checkpoint_manager = CheckpointManager(args, checkpoint_interval=checkpoint_interval)
     
     # Initialize result arrays
-    gd_gen_losses = np.zeros((len(args.teacher_ranks), len(args.student_dims), args.num_seeds))
-    gnc_gen_losses = np.zeros((len(args.teacher_ranks), len(args.student_dims), args.num_seeds))
-    gnc_mean_priors = np.zeros((len(args.teacher_ranks), len(args.student_dims), args.num_seeds))
-    gnc_theoretical_losses = np.zeros((len(args.teacher_ranks), len(args.student_dims), args.num_seeds))
-    gnc_theoretical_asymptotic_losses = np.zeros((len(args.teacher_ranks), len(args.student_dims), args.num_seeds))
+    gd_gen_losses = np.zeros((len(args.student_dims), args.num_seeds))
+    gnc_gen_losses = np.zeros((len(args.student_dims), args.num_seeds))
+    gnc_mean_priors = np.zeros((len(args.student_dims), args.num_seeds))
+    gnc_theoretical_losses = np.zeros((len(args.student_dims), args.num_seeds))
+    gnc_theoretical_asymptotic_losses = np.zeros((len(args.student_dims), args.num_seeds))
 
     # Get available GPUs
     available_gpus = get_available_gpus(max_gpus=args.max_gpus)
@@ -318,9 +191,7 @@ def run_experiment(args):
 
     # Convert args to dict for serialization
     args_dict = {
-        'num_measurements': args.num_measurements,
         'sequence_length': args.sequence_length,
-        'input_e1': args.input_e1,
         'eps_train': args.eps_train,
         'gnc': args.gnc,
         'gnc_num_samples': args.gnc_num_samples,
@@ -330,7 +201,6 @@ def run_experiment(args):
         'gd_epochs': args.gd_epochs,
         'gd_init_scale': args.gd_init_scale,
         'gd_optimizer': args.gd_optimizer,
-        'calc_loss_only_on_last_output': args.calc_loss_only_on_last_output,
     }
 
     # Distribute seeds across processes
@@ -359,7 +229,7 @@ def run_experiment(args):
         
         process = Process(
             target=process_worker,
-            args=(i, gpu_id, seed_range, args_dict, args.teacher_ranks, args.student_dims,
+            args=(i, gpu_id, seed_range, args_dict, args.student_dims,
                   results_queue, checkpoint_queue, args.log_file)
         )
         processes.append(process)
@@ -367,7 +237,7 @@ def run_experiment(args):
     
     # Monitor progress and collect results
     completed_experiments = 0
-    total_experiments = args.num_seeds * len(args.teacher_ranks) * len(args.student_dims)
+    total_experiments = args.num_seeds * len(args.student_dims)
     completed_processes = 0
     
     # Track process completion
@@ -405,19 +275,18 @@ def run_experiment(args):
                     continue
                 
                 seed = result['seed']
-                teacher_rank_idx = result['teacher_rank_idx']
                 student_dim_idx = result['student_dim_idx']
                 
                 if result['gnc_gen_loss'] is not None:
-                    gnc_gen_losses[teacher_rank_idx, student_dim_idx, seed] = result['gnc_gen_loss']
+                    gnc_gen_losses[student_dim_idx, seed] = result['gnc_gen_loss']
                 if result['gnc_mean_prior'] is not None:
-                    gnc_mean_priors[teacher_rank_idx, student_dim_idx, seed] = result['gnc_mean_prior']
+                    gnc_mean_priors[student_dim_idx, seed] = result['gnc_mean_prior']
                 if result['gnc_theoretical_loss'] is not None:
-                    gnc_theoretical_losses[teacher_rank_idx, student_dim_idx, seed] = result['gnc_theoretical_loss']
+                    gnc_theoretical_losses[student_dim_idx, seed] = result['gnc_theoretical_loss']
                 if result['gnc_theoretical_asymptotic_loss'] is not None:
-                    gnc_theoretical_asymptotic_losses[teacher_rank_idx, student_dim_idx, seed] = result['gnc_theoretical_asymptotic_loss']
+                    gnc_theoretical_asymptotic_losses[student_dim_idx, seed] = result['gnc_theoretical_asymptotic_loss']
                 if result['gd_gen_loss'] is not None:
-                    gd_gen_losses[teacher_rank_idx, student_dim_idx, seed] = result['gd_gen_loss']
+                    gd_gen_losses[student_dim_idx, seed] = result['gd_gen_loss']
                 
                 # Update checkpoint every 50 experiments
                 if completed_experiments % 50 == 0:
@@ -435,9 +304,9 @@ def run_experiment(args):
             
             # Sleep to reduce CPU usage
             if not processed_something:
-                time.sleep(1)  # 100ms sleep when idle
+                time.sleep(10)  # 100ms sleep when idle
             else:
-                time.sleep(0.1)  # 10ms sleep when processing
+                time.sleep(1)  # 10ms sleep when processing
     
     # Wait for all processes to finish
     for process in processes:
@@ -463,7 +332,6 @@ def main():
         gd_gen_losses,
         gnc_theoretical_losses,
         gnc_theoretical_asymptotic_losses,
-        args.teacher_ranks,
         args.student_dims,
         args.num_seeds,
         results_filename,
@@ -478,7 +346,6 @@ def main():
             gnc_mean_priors,
             gnc_theoretical_losses,
             gnc_theoretical_asymptotic_losses,
-            args.teacher_ranks,
             args.sequence_length,
             plot_filename,
             args.figures_dir,
