@@ -1,0 +1,4 @@
+2025-08-11 18:51:20,819 - INFO - Args: Namespace(num_seeds=1, num_measurements=1, input_e1=False, sequence_length=5, teacher_ranks=1, student_dims=500, calc_loss_only_on_last_output=True, eps_train=1e-05, gnc=True, gnc_num_samples=100000, gnc_batch_size=1024, gd=False, gd_lr=0.001, gd_epochs=1000000, gd_init_scale=0.01, gd_optimizer='adam', config=None, results_dir=PosixPath('test_results/results'), figures_dir=PosixPath('test_results/figures'), checkpoint_interval=3600, resume_from_checkpoint=False, log_dir=PosixPath('test_results/logs'), profile_main=True, profile_workers=True, profile_dir=PosixPath('test_results/profiles'), log_file=PosixPath('test_results/logs/logs_20250811-185120.log'))
+2025-08-11 18:51:20,820 - INFO - CPU monitoring and profiling disabled for debugging
+2025-08-11 18:51:21,165 - ERROR - Error occurred: object of type 'int' has no len()
+2025-08-11 18:51:21,177 - INFO - Saved main profile to test_results/profiles/main_20250811_185121.prof

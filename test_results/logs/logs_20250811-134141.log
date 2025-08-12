@@ -1,0 +1,13 @@
+2025-08-11 13:41:41,456 - INFO - Args: Namespace(num_seeds=8, num_measurements=1, input_e1=False, sequence_length=5, teacher_ranks=[1], student_dims=[400, 410, 420, 430, 440, 450, 460, 470, 480, 490, 500, 510, 520, 530, 540, 550, 560, 570, 580, 590, 600, 610, 620, 630, 640, 650, 660, 670, 680, 690, 700, 710, 720, 730, 740, 750, 760, 770, 780, 790], calc_loss_only_on_last_output=True, eps_train=1e-05, gnc=True, gnc_num_samples=100000000000000, gnc_batch_size=1000, gd=False, gd_lr=0.001, gd_epochs=1000000, gd_init_scale=0.01, gd_optimizer='adam', config=None, results_dir=PosixPath('test_results/results'), figures_dir=PosixPath('test_results/figures'), checkpoint_interval=3600, resume_from_checkpoint=False, log_dir=PosixPath('test_results/logs'), log_file=PosixPath('test_results/logs/logs_20250811-134141.log'))
+2025-08-11 13:41:41,457 - INFO - CPU monitoring started (threshold: 85.0%, check interval: 30.0s)
+2025-08-11 13:41:41,458 - INFO - CPU profiling started
+2025-08-11 13:41:41,919 - INFO - Using GPUs: [0, 1, 2, 3]
+2025-08-11 13:41:42,041 - INFO - Created 320 parameter combinations
+2025-08-11 13:41:42,041 - INFO - Teacher ranks: [1], Student dims: 40, Seeds: 8
+2025-08-11 13:41:42,043 - INFO - Using original parameter distribution with 320 tasks
+2025-08-11 13:41:42,043 - INFO - Running 320 total experiments with 4-process pool
+2025-08-11 13:41:42,043 - INFO - Using single-process execution to eliminate CPU overhead
+2025-08-11 13:41:42,088 - INFO - Starting experiment: teacher_rank=1, student_dim=400, seed=0, GPU=0
+2025-08-11 13:41:42,298 - INFO - A_teacher[0] is 0.40753376483917236
+2025-08-11 13:42:02,936 - INFO - Received shutdown signal. Saving checkpoint and exiting...
+2025-08-11 13:42:03,592 - INFO - Received shutdown signal. Saving checkpoint and exiting...

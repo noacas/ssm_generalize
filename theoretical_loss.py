@@ -17,25 +17,23 @@ def a_m_expectation(student_dim, m):
     return student_dim**(-m/2) * double_factorial(m-1)  if m % 2 == 0 else 0
 
 
-def teacher_for_m(teacher, m):
-    # teacher is a tuple of (A_teacher, B_teacher, C_teacher)
-    A_teacher, B_teacher, C_teacher = teacher
+def teacher_for_m(alpha_teacher, m):
     # Calculate teacher's m-th power response
     # This would need to be implemented based on the specific teacher structure
     # For now, using a placeholder that sums the teacher's parameters
-    return (A_teacher**m).sum()
+    return alpha_teacher**m
 
 
-def calc_mu(student_dim, teacher, sequence_length, device):
+def calc_mu(student_dim, alpha_teacher, sequence_length, device):
     # calculate the expected value of the student's output minus the teacher for the impulse response input
     # result is a vector of length sequence length - 1
     mu = torch.empty(sequence_length - 1, device=device)
     for m in range(1, sequence_length):
-        mu[m-1] = student_dim * a_m_expectation(student_dim, m) - teacher_for_m(teacher, m)
+        mu[m-1] = student_dim * a_m_expectation(student_dim, m) - teacher_for_m(alpha_teacher, m)
     return mu
 
 
-def calc_sigma(student_dim, teacher, sequence_length, device):
+def calc_sigma(student_dim, sequence_length, device):
     # covariance matrix of the student's output minus the teacher for the impulse response input
     sigma = torch.empty((sequence_length - 1, sequence_length - 1), device=device)
     for m in range(1, sequence_length-1):
@@ -44,7 +42,7 @@ def calc_sigma(student_dim, teacher, sequence_length, device):
     return sigma
 
 
-def calc_asymptotic_coefficients(teacher, w, sequence_length, device):
+def calc_asymptotic_coefficients(alpha_teacher, w, sequence_length, device):
     """
     Calculate asymptotic coefficients A and B for the loss expansion:
     L(d) = A + B/d + O(1/d^2)
@@ -53,22 +51,17 @@ def calc_asymptotic_coefficients(teacher, w, sequence_length, device):
     μ_S(d) = μ_0 + μ_1/d + O(1/d^2)
     Σ_S(d) = Σ_0 + Σ_1/d + O(1/d^(3/2))
     """
-    # Extract teacher parameters (assuming teacher is a tuple of (A_teacher, B_teacher, C_teacher))
-    A_teacher, _, _ = teacher
-    # for simplicity, we'll assume α = A_teacher[0] (teacher of rank 1)
-    alpha = A_teacher[0]
-    
     # Calculate μ_0 and μ_1
     mu_0 = torch.empty(sequence_length - 1, device=device)
     mu_1 = torch.empty(sequence_length - 1, device=device)
     
     for m in range(1, sequence_length):
         if m % 2 == 1:  # odd m
-            mu_0[m-1] = -alpha**m
+            mu_0[m-1] = -alpha_teacher**m
         elif m == 2:  # m = 2
-            mu_0[m-1] = 1 - alpha**m
+            mu_0[m-1] = 1 - alpha_teacher**m
         else:  # m >= 4, even
-            mu_0[m-1] = -alpha**m
+            mu_0[m-1] = -alpha_teacher**m
         
         # μ_1 has non-zero term only for m = 4
         if m == 4:
@@ -119,24 +112,21 @@ def calc_asymptotic_coefficients(teacher, w, sequence_length, device):
     
     B = 2 * torch.dot(mu_c_0, mu_c_1) + variance_component
 
-    delta_l_infinity = 1 - 2 * alpha * w_transpose_mu_0 / w[0].item() - (w_transpose_mu_0**2) /  (w[0].item() **2)
+    delta_l_infinity = 1 - 2 * alpha_teacher * w_transpose_mu_0 / w[0].item() - (w_transpose_mu_0**2) /  (w[0].item() **2)
     logging.info(f"delta_l_infinity: {delta_l_infinity} for w={w}")
     
     return A, B
 
 
-def gnc_theoretical_loss(teacher, dataset, student_dim, device):
-    # only training set, without the last input of each sequence in reverse
-    # When input_e1=False, dataset has shape (num_measurements, sequence_length, 1) where index 0 is random data and index 1 is impulse response
-    # When input_e1=True, dataset has shape (1, sequence_length, 1) and is just the impulse response
+def gnc_theoretical_loss(alpha_teacher, dataset, student_dim, device):
     # In both cases, we want the first measurement without the last time step, reversed
     w = torch.flip(dataset[0, :-1, :], dims=[0])
     
     # Get sequence length from dataset
     sequence_length = dataset.shape[1]
 
-    mu = calc_mu(student_dim, teacher, sequence_length, device)
-    sigma = calc_sigma(student_dim, teacher, sequence_length, device)
+    mu = calc_mu(student_dim, alpha_teacher, sequence_length, device)
+    sigma = calc_sigma(student_dim, sequence_length, device)
     
     # Calculate the conditional expectation E[||S||^2 | w^T S = 0]
     # where S ~ N(mu_S, Sigma_S) and we condition on w^T S = 0
@@ -161,7 +151,7 @@ def gnc_theoretical_loss(teacher, dataset, student_dim, device):
     conditional_expectation = prior_loss + mean_shift_term1 + mean_shift_term2 + variance_reduction
 
     # Calculate asymptotic coefficients
-    A, B = calc_asymptotic_coefficients(teacher, w, sequence_length, device)
+    A, B = calc_asymptotic_coefficients(alpha_teacher, w, sequence_length, device)
     
     # Asymptotic conditional expectation: A + B/d
     asymptotic_conditional_expectation = A + B / student_dim
@@ -175,7 +165,7 @@ if __name__ == "__main__":
     for seed in range(10):
         for d in range(1000, 10000, 1000):
             torch.manual_seed(seed)
-            teacher = generate_teacher(1, d, device)
+            alpha_teacher = generate_teacher(d, device)
             dataset = generate_dataset(1, 5, False, device)
-            exact_loss, asymptotic_loss = gnc_theoretical_loss(teacher, dataset, d, device)
+            exact_loss, asymptotic_loss = gnc_theoretical_loss(alpha_teacher, dataset, d, device)
             print(f"d={d}: Exact={exact_loss.item():.6f}, Asymptotic={asymptotic_loss.item():.6f}")

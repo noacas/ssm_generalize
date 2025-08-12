@@ -1,57 +1,21 @@
 import torch
 
-def ssm_forward(A_diag, B, C, x):
-    """
-    Forward pass through State Space Model.
-    Optimized to reduce CPU overhead and improve GPU utilization.
-
-    Args:
-        A_diag: The Diagonal of state transition matrix (batch_size, state_dim)
-        B: Input matrix (batch_size, input_dim, state_dim)
-        C: Output matrix (batch_size, state_dim, output_dim)
-        x: Input sequence (num_measurements, sequence_length, input_dim)
-
-    Returns:
-        y: Output sequence (batch_size, num_measurements, sequence_length, output_dim)
-    """
+def ssm_forward(A_diag, x, alpha_teacher):
     # if no batch dimension is provided, add it
     if A_diag.dim() == 1:
-        A_diag = A_diag.unsqueeze(0)  # (1, state_dim)
-    if B.dim() == 2:
-        B = B.unsqueeze(0)
-    if C.dim() == 2:
-        C = C.unsqueeze(0)
-
-    # x:           (num_measurements, seq_len, input_dim)
-    # A_diag:      (batch_size, state_dim)                  – diagonal of A
-    # B:           (batch_size, input_dim,  state_dim)      – input matrix
-    # C:           (batch_size, state_dim,  output_dim)     – read‑out
+        A_diag = A_diag.unsqueeze(0)  # (batch_size, state_dim)
 
     device = x.device
-    num_measurements, seq_len, input_dim = x.shape
-    state_dim = A_diag.size(1)
-    output_dim = C.size(2)
-    batch_size = A_diag.size(0)
+    # s should be a matrix of x.shape with the entry in the m-th position being tr(A_diag**(m+1)) - alpha_teacher**(m+1) keeping the batches separate
+    result = torch.empty(x.shape[0], x.shape[1], device=x.device)
+    temp_A = A_diag.clone(device=device)
+    temp_alpha = alpha_teacher
+    s[:, 0] = torch.trace(temp, dim1=-2, dim2=-1) - temp_alpha
+    for m in range(1, x.shape[1]):
+        # temp_A is a batch matrix of size (batch_size, state_dim) where temp_A[i, j] at time t is A_diag[i, j]**(t+1)
+        temp_A = torch.einsum("bi,bj->bij", temp_A, A_diag)
+        temp_alpha = temp_alpha * alpha_teacher
+        s[:, m] = torch.trace(temp_A, dim1=-2, dim2=-1) - temp_alpha
+    sx = torch.einsum("bi,mj->bmi", s, x)
+    return 
 
-    # Make A, B, C broadcastable over the measurement axis
-    A_diag_unsqueeze = A_diag.unsqueeze(1)  # (B, 1, S)
-
-    # Pre-allocate output tensor to avoid repeated allocations
-    output = torch.empty(batch_size, num_measurements, seq_len, output_dim,
-                         device=device, dtype=x.dtype)
-
-    # Initialize hidden state
-    h = torch.zeros(batch_size, num_measurements, state_dim, device=device, dtype=x.dtype)
-
-    # Process sequence efficiently
-    for t in range(seq_len):
-        u_t = x[:, t, :]  # (M, I)
-        Bu = torch.einsum('mi,biS->bmS', u_t, B)  # (B, M, S)
-        h = h * A_diag_unsqueeze + Bu  # (B, M, S)
-
-        # y_t = h @ C
-        y_t = torch.einsum('bmS,bSo->bmo', h, C)  # (B, M, O)
-
-        output[:, :, t, :] = y_t
-
-    return output

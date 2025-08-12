@@ -54,16 +54,8 @@ def parse_args() -> argparse.Namespace:  # noqa: C901 – a bit long but flat
     g = parser.add_argument_group("Problem dimensions & data generation")
     g.add_argument("--num_seeds", type=int, default=8, help="Number of random seeds per setting")
     g.add_argument("--num_measurements", type=int, default=1, help="Number of measurements")
-    g.add_argument("--input_e1", dest="input_e1", action="store_true", help="Use e1 as input", default=False)
     g.add_argument("--sequence_length", type=int, default=5, help="Length of the measurement sequence")
-    g.add_argument("--teacher_ranks", type=int, default=list(range(1, 2)), help="Ranks of the teacher matrix")
-    g.add_argument("--student_dims", type=int, default=list(range(400, 600, 10)), help="Dimensions of the student matrix")
-    g.add_argument(
-        "--calc_loss_only_on_last_output", dest="calc_loss_only_on_last_output", action="store_true", help="Calculate loss only on last output (default: True)", default=True
-    )
-    g.add_argument(
-        "--no-calc_loss_only_on_last_output", dest="calc_loss_only_on_last_output", action="store_false", help="Do not calculate loss only on last output"
-    )
+    g.add_argument("--student_dims", type=int, nargs='+', default=list(range(400, 800, 10)), help="Student dimensions (one or more integers)")
     g.add_argument("--eps_train", type=float, default=float(1e-5), help="Training loss threshold for successful trial")
 
     g = parser.add_argument_group("Guess & Check hyperparameters")
@@ -73,7 +65,7 @@ def parse_args() -> argparse.Namespace:  # noqa: C901 – a bit long but flat
     g.add_argument(
         "--no-gnc", dest="gnc", action="store_false", help="Disable Guess & Check"
     )
-    g.add_argument("--gnc_num_samples", type=int, default=int(1e12), help="Number of G&C samples")
+    g.add_argument("--gnc_num_samples", type=int, default=int(1e10), help="Number of G&C samples")
     g.add_argument("--gnc_batch_size", type=int, default=int(1e3), help="Batch sizes for G&C")
 
     g = parser.add_argument_group("Gradient Descent hyper‑parameters")
@@ -96,9 +88,14 @@ def parse_args() -> argparse.Namespace:  # noqa: C901 – a bit long but flat
         type=pathlib.Path,
         help="Optional YAML or JSON config file (CLI flags override)",
     )
-    parser.add_argument("--results_dir", type=pathlib.Path, default=pathlib.Path("./results"), help="Results directory")
-    parser.add_argument("--figures_dir", type=pathlib.Path, default=pathlib.Path("./figures"), help="Figures directory")
-    parser.add_argument("--log_dir", type=pathlib.Path, default=pathlib.Path("./logs"), help="Logs directory")
+    parser.add_argument("--results_dir", type=pathlib.Path, default=pathlib.Path("./test_results/results"), help="Results directory")
+    parser.add_argument("--figures_dir", type=pathlib.Path, default=pathlib.Path("./test_results/figures"), help="Figures directory")
+    parser.add_argument("--checkpoint_interval", type=int, default=3600, help="Checkpoint interval in seconds (default: 3600 = 1 hour)")
+    parser.add_argument("--resume_from_checkpoint", action="store_true", help="Resume from the latest checkpoint if available")
+    parser.add_argument("--log_dir", type=pathlib.Path, default=pathlib.Path("./test_results/logs"), help="Logs directory")
+
+    g = parser.add_argument_group("GPU settings")
+    g.add_argument("--max_gpus", type=int, default=4, help="Maximum number of GPUs to use")
 
     # ---- first round parse (just to grab --config) --------------------
     if "--config" in parser.parse_known_args()[0]._get_args():  # type: ignore
@@ -126,5 +123,11 @@ def parse_args() -> argparse.Namespace:  # noqa: C901 – a bit long but flat
     args.results_dir.mkdir(parents=True, exist_ok=True)
     args.figures_dir.mkdir(parents=True, exist_ok=True)
     args.log_dir.mkdir(parents=True, exist_ok=True)
+
+    # Normalize to lists in case config provided single ints
+    if not isinstance(args.teacher_ranks, (list, tuple)):
+        args.teacher_ranks = [int(args.teacher_ranks)]
+    if not isinstance(args.student_dims, (list, tuple)):
+        args.student_dims = [int(args.student_dims)]
 
     return args

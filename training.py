@@ -9,6 +9,7 @@ import torch
 from torch.optim import Adam
 from torch.optim import SGD
 
+
 def train_gd(
         seed: int,
         student_dim: int,
@@ -47,7 +48,7 @@ def train_gd(
     max_A_j_idx = torch.argmax(model.A_diag)
     logging.info(f"initial model: max A_j index: {max_A_j_idx}")
     # Only log first few values to reduce CPU overhead
-    initial_vals = model.A_diag[:min(5, student_dim)].cpu().tolist()
+    initial_vals = model.A_diag[:min(5, student_dim)].detach().cpu().tolist()
     logging.info(f"initial model: A values (first 5): {initial_vals}")
 
     # --- keep track of losses ------------------------------------------------
@@ -75,13 +76,14 @@ def train_gd(
     max_A_j_idx = torch.argmax(model.A_diag)
     logging.info(f"final model: max A_j index: {max_A_j_idx}")
     # Only log first few values to reduce CPU overhead
-    final_vals = model.A_diag[:min(5, student_dim)].cpu().tolist()
+    final_vals = model.A_diag[:min(5, student_dim)].detach().cpu().tolist()
     logging.info(f"final model: A values (first 5): {final_vals}")
     logging.info(f"final model: average A value: {model.A_diag.mean().item()}")
     logging.info(f"final model: variance of A values: {model.A_diag.var().item()}")
     logging.info(f"train loss is {train_hist[-1]}")
     logging.info(f"impulse response loss is {test_hist[-1]}")
     return test_hist[-1] if test_hist else float("nan"), train_hist[-1] if train_hist else float("nan")
+
 
 
 def train_gnc(seed: int,
@@ -98,8 +100,11 @@ def train_gnc(seed: int,
     """
     Optimized GNC training to reduce CPU overhead and improve GPU utilization.
     """
-    prior_gen_losses = []
-    gnc_gen_losses = []
+    # Accumulate losses on device to avoid per-sample CPU transfers
+    prior_gen_sum = torch.tensor(0.0, device=device)
+    prior_count = 0
+    succ_gen_sum = torch.tensor(0.0, device=device)
+    succ_count = 0
     eps_train_by_dim = eps_train / student_dim
 
     for batch in range(math.ceil(num_samples / batch_size)):
@@ -107,12 +112,20 @@ def train_gnc(seed: int,
         students = generate_students(student_dim, bs, sequence_length, device)
         train_losses, gen_losses = gnc_sensing_loss(students=students, y_teacher=y_teacher, x=dataset, calc_loss_only_on_last_output=calc_loss_only_on_last_output)
         succ_mask = train_losses < eps_train_by_dim
-        prior_gen_losses.extend(gen_losses.cpu().tolist())
+
+        # Update accumulators on device
+        prior_gen_sum = prior_gen_sum + gen_losses.sum()
+        prior_count += gen_losses.numel()
+
         succ_mask = succ_mask.squeeze(-1)
-        gnc_gen_losses.extend(gen_losses[succ_mask].cpu().tolist())
-    
-    mean_prior = sum(prior_gen_losses) / len(prior_gen_losses)
-    mean_gnc = sum(gnc_gen_losses) / len(gnc_gen_losses) if gnc_gen_losses else float("nan")
-    if len(gnc_gen_losses) == 0:
+        if succ_mask.any():
+            succ_gen_sum = succ_gen_sum + gen_losses[succ_mask].sum()
+            succ_count += succ_mask.sum().item()  # Single CPU transfer
+
+        torch.cuda.empty_cache()
+
+    mean_prior = (prior_gen_sum / max(1, prior_count)).item()
+    mean_gnc = (succ_gen_sum / succ_count).item() if succ_count > 0 else float("nan")
+    if succ_count == 0:
         logging.info("No GNC sensing losses")
     return mean_prior, mean_gnc

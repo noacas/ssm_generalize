@@ -1,0 +1,47 @@
+2025-08-11 13:30:12,589 - INFO - Args: Namespace(num_seeds=8, num_measurements=1, input_e1=False, sequence_length=5, teacher_ranks=[1], student_dims=[400, 410, 420, 430, 440, 450, 460, 470, 480, 490, 500, 510, 520, 530, 540, 550, 560, 570, 580, 590, 600, 610, 620, 630, 640, 650, 660, 670, 680, 690, 700, 710, 720, 730, 740, 750, 760, 770, 780, 790], calc_loss_only_on_last_output=True, eps_train=1e-05, gnc=True, gnc_num_samples=100000000000000, gnc_batch_size=1000, gd=False, gd_lr=0.001, gd_epochs=1000000, gd_init_scale=0.01, gd_optimizer='adam', config=None, results_dir=PosixPath('test_results/results'), figures_dir=PosixPath('test_results/figures'), checkpoint_interval=3600, resume_from_checkpoint=False, log_dir=PosixPath('test_results/logs'), log_file=PosixPath('test_results/logs/logs_20250811-133012.log'))
+2025-08-11 13:30:12,590 - INFO - CPU monitoring started (threshold: 80.0%, check interval: 60.0s)
+2025-08-11 13:30:12,591 - INFO - CPU profiling started
+2025-08-11 13:30:13,057 - INFO - Using GPUs: [0, 1, 2, 3]
+2025-08-11 13:30:13,163 - INFO - Created 320 parameter combinations
+2025-08-11 13:30:13,164 - INFO - Teacher ranks: [1], Student dims: 40, Seeds: 8
+2025-08-11 13:30:13,165 - INFO - Using original parameter distribution with 320 tasks
+2025-08-11 13:30:13,165 - INFO - Running 320 total experiments with dynamic 4-process pool
+2025-08-11 13:30:21,318 - INFO - Starting experiment: teacher_rank=1, student_dim=400, seed=0, GPU=0
+2025-08-11 13:30:21,603 - INFO - A_teacher[0] is 0.40753376483917236
+2025-08-11 13:30:22,037 - INFO - Starting experiment: teacher_rank=1, student_dim=400, seed=1, GPU=1
+2025-08-11 13:30:22,082 - INFO - A_teacher[0] is 0.47037220001220703
+2025-08-11 13:30:22,153 - INFO - Starting experiment: teacher_rank=1, student_dim=400, seed=2, GPU=2
+2025-08-11 13:30:22,172 - INFO - Starting experiment: teacher_rank=1, student_dim=400, seed=3, GPU=3
+2025-08-11 13:30:22,192 - INFO - A_teacher[0] is 0.5022341012954712
+2025-08-11 13:30:22,200 - INFO - A_teacher[0] is 0.5426344871520996
+2025-08-11 13:30:36,061 - INFO - Received shutdown signal. Saving checkpoint and exiting...
+2025-08-11 13:30:37,580 - INFO - CPU Profiling Results:
+2025-08-11 13:30:37,580 - INFO -          14274 function calls (14116 primitive calls) in 25.558 seconds
+
+   Ordered by: cumulative time
+   List reduced from 690 to 20 due to restriction <20>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+      7/6    0.000    0.000   44.313    7.386 /home/fodl/noacaspi/miniconda3/envs/ssm_generalize/lib/python3.13/threading.py:641(wait)
+        1    0.000    0.000   23.328   23.328 /home/fodl/noacaspi/ssm_generalize/main_multi_gpu.py:393(run_experiment)
+        1    0.000    0.000   23.328   23.328 /home/fodl/noacaspi/miniconda3/envs/ssm_generalize/lib/python3.13/multiprocessing/pool.py:738(__exit__)
+        1    0.000    0.000   23.328   23.328 /home/fodl/noacaspi/miniconda3/envs/ssm_generalize/lib/python3.13/multiprocessing/pool.py:654(terminate)
+        1    0.000    0.000   23.328   23.328 /home/fodl/noacaspi/miniconda3/envs/ssm_generalize/lib/python3.13/multiprocessing/util.py:197(__call__)
+        1    0.000    0.000   23.328   23.328 /home/fodl/noacaspi/miniconda3/envs/ssm_generalize/lib/python3.13/multiprocessing/pool.py:680(_terminate_pool)
+       22    0.495    0.022   23.327    1.060 {built-in method posix.waitpid}
+       20    0.000    0.000   23.327    1.166 /home/fodl/noacaspi/miniconda3/envs/ssm_generalize/lib/python3.13/multiprocessing/popen_fork.py:25(poll)
+      165    0.001    0.000   22.841    0.138 /home/fodl/noacaspi/miniconda3/envs/ssm_generalize/lib/python3.13/multiprocessing/connection.py:202(send)
+        8    0.000    0.000   22.834    2.854 /home/fodl/noacaspi/miniconda3/envs/ssm_generalize/lib/python3.13/multiprocessing/process.py:224(exitcode)
+  169/168    0.001    0.000   22.832    0.136 /home/fodl/noacaspi/miniconda3/envs/ssm_generalize/lib/python3.13/multiprocessing/connection.py:406(_send_bytes)
+      3/1    0.000    0.000   22.832   22.832 /home/fodl/noacaspi/miniconda3/envs/ssm_generalize/lib/python3.13/threading.py:983(run)
+        1    0.000    0.000   22.832   22.832 /home/fodl/noacaspi/miniconda3/envs/ssm_generalize/lib/python3.13/multiprocessing/pool.py:573(_handle_results)
+      9/1    0.000    0.000   22.831   22.831 /home/fodl/noacaspi/miniconda3/envs/ssm_generalize/lib/python3.13/multiprocessing/connection.py:246(recv)
+  169/168    0.001    0.000   22.831    0.136 /home/fodl/noacaspi/miniconda3/envs/ssm_generalize/lib/python3.13/multiprocessing/connection.py:381(_send)
+        1    0.000    0.000   22.831   22.831 /home/fodl/noacaspi/miniconda3/envs/ssm_generalize/lib/python3.13/multiprocessing/pool.py:671(_help_stuff_finish)
+        1    0.000    0.000   22.830   22.830 /home/fodl/noacaspi/miniconda3/envs/ssm_generalize/lib/python3.13/multiprocessing/pool.py:527(_handle_tasks)
+        1    0.000    0.000   22.823   22.823 /home/fodl/noacaspi/miniconda3/envs/ssm_generalize/lib/python3.13/site-packages/tqdm/std.py:1160(__iter__)
+        1    0.000    0.000    2.820    2.820 /home/fodl/noacaspi/miniconda3/envs/ssm_generalize/lib/python3.13/multiprocessing/pool.py:853(next)
+        4    0.000    0.000    1.000    0.250 /home/fodl/noacaspi/miniconda3/envs/ssm_generalize/lib/python3.13/threading.py:1058(join)
+
+
+
