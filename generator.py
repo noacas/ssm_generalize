@@ -9,7 +9,7 @@ def generate_w(sequence_length: int,
 
 
 def generate_teacher_alpha(device):
-    return torch.normal(mean=0.5, std=0.1, device=device)
+    return torch.normal(mean=0.5, std=0.1, size=1, device=device)
 
 
 def generate_students(student_dim: int, bs: int, device: torch.device):
