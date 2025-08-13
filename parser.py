@@ -113,12 +113,6 @@ def parse_args() -> argparse.Namespace:  # noqa: C901 – a bit long but flat
         # re‑parse now with new defaults (and original CLI flags win)
         args = parser.parse_args()
 
-    # ------------------------------------------------------------------
-    # if input is e1 then num_seeds = 1 and num_measurements = 1
-    if args.input_e1:
-        args.num_seeds = 1
-        args.num_measurements = 1
-
     # Final tweaks ------------------------------------------------------
     args.results_dir.mkdir(parents=True, exist_ok=True)
     args.figures_dir.mkdir(parents=True, exist_ok=True)
