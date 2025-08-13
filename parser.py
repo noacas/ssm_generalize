@@ -53,7 +53,6 @@ def parse_args() -> argparse.Namespace:  # noqa: C901 – a bit long but flat
     # ------------------------------------------------------------------
     g = parser.add_argument_group("Problem dimensions & data generation")
     g.add_argument("--num_seeds", type=int, default=8, help="Number of random seeds per setting")
-    #g.add_argument("--num_measurements", type=int, default=1, help="Number of measurements")
     g.add_argument("--sequence_length", type=int, default=5, help="Length of the measurement sequence")
     g.add_argument("--student_dims", type=int, nargs='+', default=list(range(400, 800, 10)), help="Student dimensions (one or more integers)")
     g.add_argument("--eps_train", type=float, default=float(1e-5), help="Training loss threshold for successful trial")
@@ -113,20 +112,12 @@ def parse_args() -> argparse.Namespace:  # noqa: C901 – a bit long but flat
         # re‑parse now with new defaults (and original CLI flags win)
         args = parser.parse_args()
 
-    # ------------------------------------------------------------------
-    # if input is e1 then num_seeds = 1 and num_measurements = 1
-    if args.input_e1:
-        args.num_seeds = 1
-        args.num_measurements = 1
-
     # Final tweaks ------------------------------------------------------
     args.results_dir.mkdir(parents=True, exist_ok=True)
     args.figures_dir.mkdir(parents=True, exist_ok=True)
     args.log_dir.mkdir(parents=True, exist_ok=True)
 
     # Normalize to lists in case config provided single ints
-    if not isinstance(args.teacher_ranks, (list, tuple)):
-        args.teacher_ranks = [int(args.teacher_ranks)]
     if not isinstance(args.student_dims, (list, tuple)):
         args.student_dims = [int(args.student_dims)]
 
