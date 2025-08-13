@@ -120,7 +120,7 @@ def calc_asymptotic_coefficients(alpha_teacher, w, sequence_length, device):
 
 def gnc_theoretical_loss(alpha_teacher, w, student_dim, device):
     # Get sequence length from dataset
-    sequence_length = dataset.shape[1]
+    sequence_length = .shape[1]
 
     mu = calc_mu(student_dim, alpha_teacher, sequence_length, device)
     sigma = calc_sigma(student_dim, sequence_length, device)

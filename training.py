@@ -44,7 +44,7 @@ def train_gd(
 
     # --- keep track of losses ------------------------------------------------
     train_hist, test_hist = [], []
-    dataset = dataset.to(device)
+    w = w.to(device)
 
     for epoch in range(epochs):
         optimizer.zero_grad()

@@ -105,7 +105,7 @@ def process_worker(process_id, gpu_id, seed_range, args_dict, student_dims,
                 # GD
                 if args_dict['gd']:
                     try:
-                        gd_gen_loss, gd_train_loss = train_gd(student_dim, device, alpha_teacher, dataset,
+                        gd_gen_loss, gd_train_loss = train_gd(student_dim, device, alpha_teacher, w,
                                                                 args_dict['gd_init_scale'], args_dict['gd_lr'],
                                                                 args_dict['gd_epochs'],
                                                                 args_dict['gd_optimizer'])

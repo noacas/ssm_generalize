@@ -69,7 +69,7 @@ def parse_args() -> argparse.Namespace:  # noqa: C901 – a bit long but flat
 
     g = parser.add_argument_group("Gradient Descent hyper‑parameters")
     g.add_argument(
-        "--gd", dest="gd", action="store_true", help="Enable Gradient Descent (default: True)", default=False
+        "--gd", dest="gd", action="store_true", help="Enable Gradient Descent", default=False
     )
     g.add_argument(
         "--no-gd", dest="gd", action="store_false", help="Disable Gradient Descent"
