@@ -101,6 +101,7 @@ def process_worker(process_id, gpu_id, seed_range, args_dict, student_dims,
                         
                         except Exception as e:
                             logging.error(f"G&C failed for student_dim={student_dim}, seed={seed}: {e}")
+                            logging.error(traceback.format_exc())
                     
                 # GD
                 if args_dict['gd']:
