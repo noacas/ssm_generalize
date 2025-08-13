@@ -115,7 +115,6 @@ def process_worker(process_id, gpu_id, seed_range, args_dict, student_dims,
                     except Exception as e:
                         logging.error(f"GD failed for student_dim={student_dim}, seed={seed}: {e}")
                 
-                del teacher, dataset, y_teacher
                 torch.cuda.empty_cache()
                 
                 # Send result to main process
@@ -149,6 +148,9 @@ def process_worker(process_id, gpu_id, seed_range, args_dict, student_dims,
                 }
                 results_queue.put(error_result)
                 completed_experiments += 1
+
+        del w, alpha_teacher
+        torch.cuda.empty_cache()
     
     # Send completion signal
     checkpoint_queue.put({
