@@ -46,7 +46,7 @@ def plot(student_dims: list,
             fmt="o-", capsize=3, label=f"G&C Theoretical",
             linewidth=2.5, elinewidth=1.5
         )
-        gnc_theoretical_asymptotic_med, gnc_theoretical_asymptotic_iqr = median_iqr(gnc_theoretical_asymptotic_losses[t_idx])
+        gnc_theoretical_asymptotic_med, gnc_theoretical_asymptotic_iqr = median_iqr(gnc_theoretical_asymptotic_losses)
         ax.errorbar(
             student_dims, gnc_theoretical_asymptotic_med, yerr=gnc_theoretical_asymptotic_iqr,
             fmt="o-", capsize=3, label=f"G&C Theoretical Asymptotic",
@@ -98,3 +98,15 @@ def plot(student_dims: list,
     fig.savefig(outfile_base + ".png", dpi=300, bbox_inches="tight")
     fig.savefig(outfile_base + ".pdf", dpi=300, bbox_inches="tight")
     plt.close(fig)
+
+
+if __name__ == "__main__":
+    student_dims = [10, 20, 30, 40, 50]
+    seeds = [0,1]
+    gnc_gen_losses = np.random.rand(len(student_dims), len(seeds))
+    gd_gen_losses = np.random.rand(len(student_dims), len(seeds))
+    gnc_mean_priors = np.random.rand(len(student_dims), len(seeds))
+    gnc_theoretical_losses = np.random.rand(len(student_dims), len(seeds))
+    gnc_theoretical_asymptotic_losses = np.random.rand(len(student_dims), len(seeds))
+    sequence_length = 5
+    plot(student_dims, gnc_gen_losses, gd_gen_losses, gnc_mean_priors, gnc_theoretical_losses, gnc_theoretical_asymptotic_losses, sequence_length, "test", gnc=True, gd=False)
