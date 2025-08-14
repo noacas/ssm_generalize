@@ -54,8 +54,9 @@ def get_losses(A_diag: torch.Tensor, w: torch.Tensor, alpha_teacher: float):
         alpha_current = alpha_current * alpha_teacher
 
     # Compute losses
-    # train_loss_i = <s_i, w>
-    train_loss = (s * w_expanded.to(dtype)).sum(dim=1)
+    # train_loss_i = (<s_i, w>)**2
+    dot_sw = (s * w_expanded.to(dtype)).sum(dim=1)
+    train_loss = dot_sw.pow(2)
 
     # gen_loss_i = ||s_i||_2^2
     gen_loss = (s * s).sum(dim=1)
@@ -70,7 +71,7 @@ def test_get_losses():
     train_loss, gen_loss = get_losses(A_diag, w, alpha_teacher)
     s1 = torch.tensor([0.55-0.5, 0.45**2-0.5**2, 0.4**3-0.5**3, 0.4**4-0.5**4])
     s2 = torch.tensor([0.3-0.5, 0.4**2-0.5**2, 0.3**3-0.5**3, 0.3**4-0.5**4])
-    assert torch.allclose(train_loss, torch.tensor([torch.dot(s1, w), torch.dot(s2, w)]))
+    assert torch.allclose(train_loss, torch.tensor([torch.dot(s1, w)**2, torch.dot(s2, w)**2]))
     assert torch.allclose(gen_loss, torch.tensor([torch.dot(s1, s1), torch.dot(s2, s2)]))
 
 if __name__ == "__main__":
