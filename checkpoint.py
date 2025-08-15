@@ -1,6 +1,7 @@
 import time
 import threading
 import logging
+import pickle
 from pathlib import Path
 
 class CheckpointManager:
@@ -20,7 +21,7 @@ class CheckpointManager:
             'completed_experiments': 0,
             'total_experiments': 0
         }
-        self.checkpoint_dir = args.results_dir / 'checkpoints'
+        self.checkpoint_dir = args.checkpoint_dir
         self.checkpoint_dir.mkdir(parents=True, exist_ok=True)
         
     def update_results(self, new_results, completed_count, total_count):
@@ -40,12 +41,11 @@ class CheckpointManager:
         """Save current results as a checkpoint."""
         try:
             timestamp = time.strftime("%Y%m%d_%H%M%S")
-            checkpoint_filename = f'checkpoint_{timestamp}.csv'
+            checkpoint_filename = f'checkpoint_{timestamp}.pkl'
             checkpoint_path = self.checkpoint_dir / checkpoint_filename
             # save current results to checkpoint_path
-            with open(checkpoint_path, 'w') as f:
-                for key, value in self.current_results.items():
-                    f.write(f"{key}: {value}\n")
+            with open(checkpoint_path, 'wb') as f:
+                pickle.dump(self.current_results, f)
                 
             progress = (self.current_results['completed_experiments'] / 
                         self.current_results['total_experiments'] * 100)
@@ -66,7 +66,7 @@ class CheckpointManager:
         if not checkpoint_dir.exists():
             return None
         
-        checkpoint_files = list(checkpoint_dir.glob('checkpoint_*.csv'))
+        checkpoint_files = list(checkpoint_dir.glob('checkpoint_*.pkl'))
         if not checkpoint_files:
             return None
         
@@ -75,5 +75,8 @@ class CheckpointManager:
         latest_checkpoint = checkpoint_files[0]
         
         print(f"Found latest checkpoint: {latest_checkpoint}")
-        return latest_checkpoint
+        
+        with open(latest_checkpoint, 'rb') as f:
+            results = pickle.load(f)
+        return results
 

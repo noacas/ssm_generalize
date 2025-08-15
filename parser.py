@@ -65,7 +65,7 @@ def parse_args() -> argparse.Namespace:  # noqa: C901 – a bit long but flat
         "--no-gnc", dest="gnc", action="store_false", help="Disable Guess & Check"
     )
     g.add_argument("--gnc_num_samples", type=int, default=int(1e10), help="Number of G&C samples")
-    g.add_argument("--gnc_batch_size", type=int, default=int(1e3), help="Batch sizes for G&C")
+    g.add_argument("--gnc_batch_size", type=int, default=int(1e5), help="Batch sizes for G&C")
 
     g = parser.add_argument_group("Gradient Descent hyper‑parameters")
     g.add_argument(
@@ -89,6 +89,7 @@ def parse_args() -> argparse.Namespace:  # noqa: C901 – a bit long but flat
     )
     parser.add_argument("--results_dir", type=pathlib.Path, default=pathlib.Path("./test_results/results"), help="Results directory")
     parser.add_argument("--figures_dir", type=pathlib.Path, default=pathlib.Path("./test_results/figures"), help="Figures directory")
+    parser.add_argument("--checkpoint_dir", type=pathlib.Path, default=pathlib.Path("./test_results/checkpoints"), help="Checkpoints directory")
     parser.add_argument("--checkpoint_interval", type=int, default=3600, help="Checkpoint interval in seconds (default: 3600 = 1 hour)")
     parser.add_argument("--resume_from_checkpoint", action="store_true", help="Resume from the latest checkpoint if available")
     parser.add_argument("--log_dir", type=pathlib.Path, default=pathlib.Path("./test_results/logs"), help="Logs directory")
@@ -116,6 +117,7 @@ def parse_args() -> argparse.Namespace:  # noqa: C901 – a bit long but flat
     args.results_dir.mkdir(parents=True, exist_ok=True)
     args.figures_dir.mkdir(parents=True, exist_ok=True)
     args.log_dir.mkdir(parents=True, exist_ok=True)
+    args.checkpoint_dir.mkdir(parents=True, exist_ok=True)
 
     # Normalize to lists in case config provided single ints
     if not isinstance(args.student_dims, (list, tuple)):

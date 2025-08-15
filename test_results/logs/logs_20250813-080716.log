@@ -1,0 +1,119 @@
+2025-08-13 08:07:16,563 - INFO - Args: Namespace(num_seeds=8, sequence_length=5, student_dims=[400, 410, 420, 430, 440, 450, 460, 470, 480, 490, 500, 510, 520, 530, 540, 550, 560, 570, 580, 590, 600, 610, 620, 630, 640, 650, 660, 670, 680, 690, 700, 710, 720, 730, 740, 750, 760, 770, 780, 790], eps_train=1e-05, gnc=True, gnc_num_samples=10000000000, gnc_batch_size=1000, gd=False, gd_lr=0.001, gd_epochs=1000000, gd_init_scale=0.01, gd_optimizer='adam', config=None, results_dir=PosixPath('test_results/results'), figures_dir=PosixPath('test_results/figures'), checkpoint_interval=3600, resume_from_checkpoint=False, log_dir=PosixPath('test_results/logs'), max_gpus=4, log_file=PosixPath('test_results/logs/logs_20250813-080716.log'))
+2025-08-13 08:07:16,758 - INFO - Using GPUs: [0, 1, 2, 3]
+2025-08-13 08:07:16,758 - INFO - Starting 4 processes on 4 GPUs
+2025-08-13 08:07:21,931 - INFO - Process 1 started on GPU 1, processing seeds 2-3
+2025-08-13 08:07:21,938 - INFO - Process 1: Starting experiment - student_dim=400, seed=2
+2025-08-13 08:07:22,085 - INFO - Process 0 started on GPU 0, processing seeds 0-1
+2025-08-13 08:07:22,228 - INFO - Process 2 started on GPU 2, processing seeds 4-5
+2025-08-13 08:07:22,255 - INFO - Process 2: Starting experiment - student_dim=400, seed=4
+2025-08-13 08:07:22,448 - INFO - Process 0: Starting experiment - student_dim=400, seed=0
+2025-08-13 08:07:22,536 - INFO - Process 3 started on GPU 3, processing seeds 6-7
+2025-08-13 08:07:22,544 - INFO - Process 3: Starting experiment - student_dim=400, seed=6
+2025-08-13 09:37:23,075 - ERROR - G&C failed for student_dim=400, seed=4: name 'dataset' is not defined
+2025-08-13 09:37:23,076 - ERROR - Process 2: Error in experiment - student_dim=400, seed=4: cannot access local variable 'teacher' where it is not associated with a value
+2025-08-13 09:37:23,081 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 118, in process_worker
+    del teacher, dataset, y_teacher
+        ^^^^^^^
+UnboundLocalError: cannot access local variable 'teacher' where it is not associated with a value
+
+2025-08-13 09:37:26,938 - ERROR - Error in experiment: cannot access local variable 'teacher' where it is not associated with a value
+2025-08-13 09:38:19,573 - ERROR - G&C failed for student_dim=400, seed=0: name 'dataset' is not defined
+2025-08-13 09:38:19,575 - ERROR - Process 0: Error in experiment - student_dim=400, seed=0: cannot access local variable 'teacher' where it is not associated with a value
+2025-08-13 09:38:19,576 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 118, in process_worker
+    del teacher, dataset, y_teacher
+        ^^^^^^^
+UnboundLocalError: cannot access local variable 'teacher' where it is not associated with a value
+
+2025-08-13 09:38:26,940 - ERROR - Error in experiment: cannot access local variable 'teacher' where it is not associated with a value
+2025-08-13 09:39:36,898 - ERROR - G&C failed for student_dim=400, seed=6: name 'dataset' is not defined
+2025-08-13 09:39:36,899 - ERROR - Process 3: Error in experiment - student_dim=400, seed=6: cannot access local variable 'teacher' where it is not associated with a value
+2025-08-13 09:39:36,904 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 118, in process_worker
+    del teacher, dataset, y_teacher
+        ^^^^^^^
+UnboundLocalError: cannot access local variable 'teacher' where it is not associated with a value
+
+2025-08-13 09:39:36,943 - ERROR - Error in experiment: cannot access local variable 'teacher' where it is not associated with a value
+2025-08-13 09:44:24,505 - ERROR - G&C failed for student_dim=400, seed=2: name 'dataset' is not defined
+2025-08-13 09:44:24,507 - ERROR - Process 1: Error in experiment - student_dim=400, seed=2: cannot access local variable 'teacher' where it is not associated with a value
+2025-08-13 09:44:24,513 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 118, in process_worker
+    del teacher, dataset, y_teacher
+        ^^^^^^^
+UnboundLocalError: cannot access local variable 'teacher' where it is not associated with a value
+
+2025-08-13 09:44:26,957 - ERROR - Error in experiment: cannot access local variable 'teacher' where it is not associated with a value
+2025-08-13 11:13:02,067 - ERROR - G&C failed for student_dim=410, seed=4: name 'dataset' is not defined
+2025-08-13 11:13:02,068 - ERROR - Process 2: Error in experiment - student_dim=410, seed=4: cannot access local variable 'teacher' where it is not associated with a value
+2025-08-13 11:13:02,070 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 118, in process_worker
+    del teacher, dataset, y_teacher
+        ^^^^^^^
+UnboundLocalError: cannot access local variable 'teacher' where it is not associated with a value
+
+2025-08-13 11:13:07,102 - ERROR - Error in experiment: cannot access local variable 'teacher' where it is not associated with a value
+2025-08-13 11:15:15,398 - ERROR - G&C failed for student_dim=410, seed=0: name 'dataset' is not defined
+2025-08-13 11:15:15,400 - ERROR - Process 0: Error in experiment - student_dim=410, seed=0: cannot access local variable 'teacher' where it is not associated with a value
+2025-08-13 11:15:15,405 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 118, in process_worker
+    del teacher, dataset, y_teacher
+        ^^^^^^^
+UnboundLocalError: cannot access local variable 'teacher' where it is not associated with a value
+
+2025-08-13 11:15:17,107 - ERROR - Error in experiment: cannot access local variable 'teacher' where it is not associated with a value
+2025-08-13 11:15:24,597 - ERROR - G&C failed for student_dim=410, seed=6: name 'dataset' is not defined
+2025-08-13 11:15:24,597 - ERROR - Process 3: Error in experiment - student_dim=410, seed=6: cannot access local variable 'teacher' where it is not associated with a value
+2025-08-13 11:15:24,598 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 118, in process_worker
+    del teacher, dataset, y_teacher
+        ^^^^^^^
+UnboundLocalError: cannot access local variable 'teacher' where it is not associated with a value
+
+2025-08-13 11:15:27,108 - ERROR - Error in experiment: cannot access local variable 'teacher' where it is not associated with a value
+2025-08-13 11:20:17,869 - ERROR - G&C failed for student_dim=410, seed=2: name 'dataset' is not defined
+2025-08-13 11:20:17,871 - ERROR - Process 1: Error in experiment - student_dim=410, seed=2: cannot access local variable 'teacher' where it is not associated with a value
+2025-08-13 11:20:17,875 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 118, in process_worker
+    del teacher, dataset, y_teacher
+        ^^^^^^^
+UnboundLocalError: cannot access local variable 'teacher' where it is not associated with a value
+
+2025-08-13 11:20:27,118 - ERROR - Error in experiment: cannot access local variable 'teacher' where it is not associated with a value
+2025-08-13 12:46:47,145 - ERROR - G&C failed for student_dim=420, seed=6: name 'dataset' is not defined
+2025-08-13 12:46:47,148 - ERROR - Process 3: Error in experiment - student_dim=420, seed=6: cannot access local variable 'teacher' where it is not associated with a value
+2025-08-13 12:46:47,152 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 118, in process_worker
+    del teacher, dataset, y_teacher
+        ^^^^^^^
+UnboundLocalError: cannot access local variable 'teacher' where it is not associated with a value
+
+2025-08-13 12:46:47,256 - ERROR - Error in experiment: cannot access local variable 'teacher' where it is not associated with a value
+2025-08-13 12:47:12,138 - ERROR - G&C failed for student_dim=420, seed=0: name 'dataset' is not defined
+2025-08-13 12:47:12,139 - ERROR - Process 0: Error in experiment - student_dim=420, seed=0: cannot access local variable 'teacher' where it is not associated with a value
+2025-08-13 12:47:12,140 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 118, in process_worker
+    del teacher, dataset, y_teacher
+        ^^^^^^^
+UnboundLocalError: cannot access local variable 'teacher' where it is not associated with a value
+
+2025-08-13 12:47:17,258 - ERROR - Error in experiment: cannot access local variable 'teacher' where it is not associated with a value
+2025-08-13 12:48:34,146 - ERROR - G&C failed for student_dim=420, seed=4: name 'dataset' is not defined
+2025-08-13 12:48:34,147 - ERROR - Process 2: Error in experiment - student_dim=420, seed=4: cannot access local variable 'teacher' where it is not associated with a value
+2025-08-13 12:48:34,155 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 118, in process_worker
+    del teacher, dataset, y_teacher
+        ^^^^^^^
+UnboundLocalError: cannot access local variable 'teacher' where it is not associated with a value
+
+2025-08-13 12:48:37,260 - ERROR - Error in experiment: cannot access local variable 'teacher' where it is not associated with a value
+2025-08-13 12:53:51,390 - ERROR - G&C failed for student_dim=420, seed=2: name 'dataset' is not defined
+2025-08-13 12:53:51,391 - ERROR - Process 1: Error in experiment - student_dim=420, seed=2: cannot access local variable 'teacher' where it is not associated with a value
+2025-08-13 12:53:51,394 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 118, in process_worker
+    del teacher, dataset, y_teacher
+        ^^^^^^^
+UnboundLocalError: cannot access local variable 'teacher' where it is not associated with a value
+
+2025-08-13 12:53:57,269 - ERROR - Error in experiment: cannot access local variable 'teacher' where it is not associated with a value
