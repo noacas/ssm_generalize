@@ -13,4 +13,4 @@ def generate_teacher_alpha(device):
 
 
 def generate_students(student_dim: int, bs: int, device: torch.device):
-    return torch.normal(mean=0, std=1/student_dim**0.5, size=(bs, student_dim), device=device)
+    return torch.normal(mean=0, std=1/(student_dim**0.5), size=(bs, student_dim), device=device)

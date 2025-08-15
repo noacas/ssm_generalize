@@ -30,7 +30,7 @@ def print_checkpoint_summary(results):
 def main():
     """Load the latest checkpoint and create a plot."""
     # Define the checkpoint directory
-    checkpoint_dir = Path("test_results/results/checkpoints")
+    checkpoint_dir = Path("test_results/checkpoints")
     
     # Find the latest checkpoint
     results = CheckpointManager.load_latest_checkpoint(checkpoint_dir)
@@ -57,14 +57,14 @@ def main():
     
     # Determine student dimensions based on the data shape
     num_student_dims = gnc_gen_losses.shape[0]
-    student_dims = list(range(1, num_student_dims + 1))  # Assuming dimensions start from 1
+    student_dims = list(range(400, 800, 10))  # Assuming dimensions start from 1
     
     # Determine sequence length from the filename or use a default
     # You might want to extract this from the checkpoint filename or add it to the checkpoint data
     sequence_length = 5  # Default value, adjust as needed
     
     # Create output directory for figures
-    figures_dir = Path("figures")
+    figures_dir = Path("test_results/figures")
     figures_dir.mkdir(exist_ok=True)
     
     # Generate plot filename based on checkpoint timestamp

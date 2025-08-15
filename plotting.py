@@ -23,7 +23,7 @@ def plot(student_dims: list,
     height = 10  # Height for side-by-side plots
     width = 30  # Increased width for side-by-side plots
 
-    fig, (ax, ax2) = plt.subplots(figsize=(width, height), nrows=1, ncols=2, sharey=True)
+    fig, (ax, ax2) = plt.subplots(figsize=(width, height), nrows=1, ncols=2, sharey=False)
 
     fig.suptitle(f'Sequence Length = {sequence_length}', fontsize=14)
 
