@@ -88,9 +88,9 @@ def process_worker(process_id, gpu_id, seed_range, args_dict, student_dims,
                     if args_dict['gnc']:
                         try:
                             batch_size = args_dict['gnc_batch_size']
-                            mean_prior, gnc_gen_loss = train_gnc(student_dim, device, alpha_teacher, w,
+                            mean_prior, gnc_gen_loss = train_gnc(seed, student_dim, device, alpha_teacher, w,
                                                                 args_dict['eps_train'], args_dict['gnc_num_samples'],
-                                                                batch_size, args_dict['sequence_length']
+                                                                batch_size
                                                                 )
                             results['gnc_gen_loss'] = gnc_gen_loss
                             results['gnc_mean_prior'] = mean_prior

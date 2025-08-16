@@ -70,6 +70,7 @@ def train_gd(
 
 
 def train_gnc(
+             seed: int,
              student_dim: int,
              device: torch.device,
              alpha_teacher: float,
@@ -77,7 +78,6 @@ def train_gnc(
              eps_train: float,
              num_samples: int,
              batch_size: int,
-             sequence_length: int,
               ):
     """
     Optimized GNC training to reduce CPU overhead and improve GPU utilization.
@@ -109,5 +109,5 @@ def train_gnc(
     mean_prior = (prior_gen_sum / max(1, prior_count)).item()
     mean_gnc = (succ_gen_sum / succ_count).item() if succ_count > 0 else float("nan")
     if succ_count == 0:
-        logging.info("No GNC sensing losses")
+        logging.warning(f"No GNC sensing losses for student dimension {student_dim} seed {seed}")
     return mean_prior, mean_gnc
