@@ -64,7 +64,7 @@ def parse_args() -> argparse.Namespace:  # noqa: C901 – a bit long but flat
     g.add_argument(
         "--no-gnc", dest="gnc", action="store_false", help="Disable Guess & Check"
     )
-    g.add_argument("--gnc_num_samples", type=int, default=int(1e10), help="Number of G&C samples")
+    g.add_argument("--gnc_num_samples", type=int, default=int(1e12), help="Number of G&C samples")
     g.add_argument("--gnc_batch_size", type=int, default=int(1e6), help="Batch sizes for G&C")
 
     g = parser.add_argument_group("Gradient Descent hyper‑parameters")

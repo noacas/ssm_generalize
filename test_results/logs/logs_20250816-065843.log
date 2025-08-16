@@ -1,0 +1,675 @@
+2025-08-16 06:58:43,183 - INFO - Args: Namespace(num_seeds=8, sequence_length=5, student_dims=[100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230, 240, 250, 260, 270, 280, 290, 300, 310, 320, 330, 340, 350, 360, 370, 380, 390], eps_train=0.001, gnc=True, gnc_num_samples=10000000000, gnc_batch_size=1000000, gd=False, gd_lr=0.001, gd_epochs=1000000, gd_init_scale=0.01, gd_optimizer='adam', config=None, results_dir=PosixPath('test_results/results'), figures_dir=PosixPath('test_results/figures'), checkpoint_dir=PosixPath('test_results/checkpoints'), checkpoint_interval=3600, resume_from_checkpoint=False, log_dir=PosixPath('test_results/logs'), max_gpus=4, log_file=PosixPath('test_results/logs/logs_20250816-065843.log'))
+2025-08-16 06:58:43,389 - INFO - Using GPUs: [0, 1, 2, 3]
+2025-08-16 06:58:43,390 - INFO - Starting 4 processes on 4 GPUs
+2025-08-16 06:58:52,321 - INFO - Process 0 started on GPU 0, processing seeds 0-1
+2025-08-16 06:58:52,744 - INFO - Process 2 started on GPU 2, processing seeds 4-5
+2025-08-16 06:58:52,747 - INFO - Process 1 started on GPU 1, processing seeds 2-3
+2025-08-16 06:58:52,756 - INFO - Process 2: Starting experiment - student_dim=100, seed=4
+2025-08-16 06:58:52,758 - INFO - Process 3 started on GPU 3, processing seeds 6-7
+2025-08-16 06:58:52,764 - INFO - Process 1: Starting experiment - student_dim=100, seed=2
+2025-08-16 06:58:52,771 - INFO - Process 3: Starting experiment - student_dim=100, seed=6
+2025-08-16 06:58:52,820 - INFO - Process 0: Starting experiment - student_dim=100, seed=0
+2025-08-16 07:00:10,036 - INFO - delta_l_infinity: tensor([-5.2844], device='cuda:2') for w=tensor([-0.2938,  0.7819, -1.4731,  1.0391], device='cuda:2')
+2025-08-16 07:00:10,043 - INFO - Process 2: Completed experiment - student_dim=100, seed=4
+2025-08-16 07:00:12,136 - INFO - delta_l_infinity: tensor([-6.5654], device='cuda:0') for w=tensor([ 0.1808, -0.5523,  0.9238, -0.7350], device='cuda:0')
+2025-08-16 07:00:12,142 - INFO - Process 0: Completed experiment - student_dim=100, seed=0
+2025-08-16 07:00:20,630 - INFO - delta_l_infinity: tensor([1.2949], device='cuda:3') for w=tensor([ 1.9899, -0.1324, -0.3380, -0.7933], device='cuda:3')
+2025-08-16 07:00:20,632 - INFO - Process 3: Completed experiment - student_dim=100, seed=6
+2025-08-16 07:00:20,688 - INFO - delta_l_infinity: tensor([0.9446], device='cuda:1') for w=tensor([ 2.2669,  1.3477, -1.4438, -1.0484], device='cuda:1')
+2025-08-16 07:00:20,692 - INFO - Process 1: Completed experiment - student_dim=100, seed=2
+2025-08-16 07:01:35,267 - INFO - delta_l_infinity: tensor([-5.2844], device='cuda:2') for w=tensor([-0.2938,  0.7819, -1.4731,  1.0391], device='cuda:2')
+2025-08-16 07:01:35,275 - INFO - Process 2: Completed experiment - student_dim=110, seed=4
+2025-08-16 07:01:38,610 - INFO - delta_l_infinity: tensor([-6.5654], device='cuda:0') for w=tensor([ 0.1808, -0.5523,  0.9238, -0.7350], device='cuda:0')
+2025-08-16 07:01:38,615 - INFO - Process 0: Completed experiment - student_dim=110, seed=0
+2025-08-16 07:01:49,224 - INFO - delta_l_infinity: tensor([1.2949], device='cuda:3') for w=tensor([ 1.9899, -0.1324, -0.3380, -0.7933], device='cuda:3')
+2025-08-16 07:01:49,241 - INFO - Process 3: Completed experiment - student_dim=110, seed=6
+2025-08-16 07:01:52,982 - INFO - delta_l_infinity: tensor([0.9446], device='cuda:1') for w=tensor([ 2.2669,  1.3477, -1.4438, -1.0484], device='cuda:1')
+2025-08-16 07:01:52,987 - INFO - Process 1: Completed experiment - student_dim=110, seed=2
+2025-08-16 07:03:14,275 - INFO - delta_l_infinity: tensor([-5.2844], device='cuda:2') for w=tensor([-0.2938,  0.7819, -1.4731,  1.0391], device='cuda:2')
+2025-08-16 07:03:14,281 - INFO - Process 2: Completed experiment - student_dim=120, seed=4
+2025-08-16 07:03:17,657 - INFO - delta_l_infinity: tensor([-6.5654], device='cuda:0') for w=tensor([ 0.1808, -0.5523,  0.9238, -0.7350], device='cuda:0')
+2025-08-16 07:03:17,661 - INFO - Process 0: Completed experiment - student_dim=120, seed=0
+2025-08-16 07:03:22,426 - INFO - delta_l_infinity: tensor([1.2949], device='cuda:3') for w=tensor([ 1.9899, -0.1324, -0.3380, -0.7933], device='cuda:3')
+2025-08-16 07:03:22,447 - INFO - Process 3: Completed experiment - student_dim=120, seed=6
+2025-08-16 07:03:25,868 - INFO - delta_l_infinity: tensor([0.9446], device='cuda:1') for w=tensor([ 2.2669,  1.3477, -1.4438, -1.0484], device='cuda:1')
+2025-08-16 07:03:25,873 - INFO - Process 1: Completed experiment - student_dim=120, seed=2
+2025-08-16 07:05:03,106 - INFO - delta_l_infinity: tensor([-5.2844], device='cuda:2') for w=tensor([-0.2938,  0.7819, -1.4731,  1.0391], device='cuda:2')
+2025-08-16 07:05:03,135 - INFO - Process 2: Completed experiment - student_dim=130, seed=4
+2025-08-16 07:05:04,369 - INFO - delta_l_infinity: tensor([1.2949], device='cuda:3') for w=tensor([ 1.9899, -0.1324, -0.3380, -0.7933], device='cuda:3')
+2025-08-16 07:05:04,390 - INFO - Process 3: Completed experiment - student_dim=130, seed=6
+2025-08-16 07:05:06,396 - INFO - delta_l_infinity: tensor([-6.5654], device='cuda:0') for w=tensor([ 0.1808, -0.5523,  0.9238, -0.7350], device='cuda:0')
+2025-08-16 07:05:06,427 - INFO - Process 0: Completed experiment - student_dim=130, seed=0
+2025-08-16 07:05:06,515 - INFO - delta_l_infinity: tensor([0.9446], device='cuda:1') for w=tensor([ 2.2669,  1.3477, -1.4438, -1.0484], device='cuda:1')
+2025-08-16 07:05:06,521 - INFO - Process 1: Completed experiment - student_dim=130, seed=2
+2025-08-16 07:06:54,645 - INFO - delta_l_infinity: tensor([1.2949], device='cuda:3') for w=tensor([ 1.9899, -0.1324, -0.3380, -0.7933], device='cuda:3')
+2025-08-16 07:06:54,668 - INFO - Process 3: Completed experiment - student_dim=140, seed=6
+2025-08-16 07:06:55,173 - WARNING - No GNC sensing losses for student dimension 140 seed 2
+2025-08-16 07:06:55,183 - INFO - delta_l_infinity: tensor([0.9446], device='cuda:1') for w=tensor([ 2.2669,  1.3477, -1.4438, -1.0484], device='cuda:1')
+2025-08-16 07:06:55,190 - INFO - Process 1: Completed experiment - student_dim=140, seed=2
+2025-08-16 07:06:57,138 - INFO - delta_l_infinity: tensor([-5.2844], device='cuda:2') for w=tensor([-0.2938,  0.7819, -1.4731,  1.0391], device='cuda:2')
+2025-08-16 07:06:57,144 - INFO - Process 2: Completed experiment - student_dim=140, seed=4
+2025-08-16 07:07:00,115 - INFO - delta_l_infinity: tensor([-6.5654], device='cuda:0') for w=tensor([ 0.1808, -0.5523,  0.9238, -0.7350], device='cuda:0')
+2025-08-16 07:07:00,122 - INFO - Process 0: Completed experiment - student_dim=140, seed=0
+2025-08-16 07:08:51,469 - WARNING - No GNC sensing losses for student dimension 150 seed 2
+2025-08-16 07:08:51,478 - INFO - delta_l_infinity: tensor([0.9446], device='cuda:1') for w=tensor([ 2.2669,  1.3477, -1.4438, -1.0484], device='cuda:1')
+2025-08-16 07:08:51,484 - INFO - Process 1: Completed experiment - student_dim=150, seed=2
+2025-08-16 07:08:52,497 - INFO - delta_l_infinity: tensor([1.2949], device='cuda:3') for w=tensor([ 1.9899, -0.1324, -0.3380, -0.7933], device='cuda:3')
+2025-08-16 07:08:52,529 - INFO - Process 3: Completed experiment - student_dim=150, seed=6
+2025-08-16 07:08:59,162 - INFO - delta_l_infinity: tensor([-5.2844], device='cuda:2') for w=tensor([-0.2938,  0.7819, -1.4731,  1.0391], device='cuda:2')
+2025-08-16 07:08:59,194 - INFO - Process 2: Completed experiment - student_dim=150, seed=4
+2025-08-16 07:09:01,889 - INFO - delta_l_infinity: tensor([-6.5654], device='cuda:0') for w=tensor([ 0.1808, -0.5523,  0.9238, -0.7350], device='cuda:0')
+2025-08-16 07:09:01,915 - INFO - Process 0: Completed experiment - student_dim=150, seed=0
+2025-08-16 07:10:55,386 - INFO - delta_l_infinity: tensor([0.9446], device='cuda:1') for w=tensor([ 2.2669,  1.3477, -1.4438, -1.0484], device='cuda:1')
+2025-08-16 07:10:55,396 - INFO - Process 1: Completed experiment - student_dim=160, seed=2
+2025-08-16 07:11:03,905 - INFO - delta_l_infinity: tensor([1.2949], device='cuda:3') for w=tensor([ 1.9899, -0.1324, -0.3380, -0.7933], device='cuda:3')
+2025-08-16 07:11:03,915 - INFO - Process 3: Completed experiment - student_dim=160, seed=6
+2025-08-16 07:11:09,207 - INFO - delta_l_infinity: tensor([-5.2844], device='cuda:2') for w=tensor([-0.2938,  0.7819, -1.4731,  1.0391], device='cuda:2')
+2025-08-16 07:11:09,213 - INFO - Process 2: Completed experiment - student_dim=160, seed=4
+2025-08-16 07:11:12,089 - INFO - delta_l_infinity: tensor([-6.5654], device='cuda:0') for w=tensor([ 0.1808, -0.5523,  0.9238, -0.7350], device='cuda:0')
+2025-08-16 07:11:12,125 - INFO - Process 0: Completed experiment - student_dim=160, seed=0
+2025-08-16 07:13:06,927 - WARNING - No GNC sensing losses for student dimension 170 seed 2
+2025-08-16 07:13:06,943 - INFO - delta_l_infinity: tensor([0.9446], device='cuda:1') for w=tensor([ 2.2669,  1.3477, -1.4438, -1.0484], device='cuda:1')
+2025-08-16 07:13:06,951 - INFO - Process 1: Completed experiment - student_dim=170, seed=2
+2025-08-16 07:13:23,660 - INFO - delta_l_infinity: tensor([1.2949], device='cuda:3') for w=tensor([ 1.9899, -0.1324, -0.3380, -0.7933], device='cuda:3')
+2025-08-16 07:13:23,688 - INFO - Process 3: Completed experiment - student_dim=170, seed=6
+2025-08-16 07:13:27,710 - INFO - delta_l_infinity: tensor([-5.2844], device='cuda:2') for w=tensor([-0.2938,  0.7819, -1.4731,  1.0391], device='cuda:2')
+2025-08-16 07:13:27,716 - INFO - Process 2: Completed experiment - student_dim=170, seed=4
+2025-08-16 07:13:30,178 - INFO - delta_l_infinity: tensor([-6.5654], device='cuda:0') for w=tensor([ 0.1808, -0.5523,  0.9238, -0.7350], device='cuda:0')
+2025-08-16 07:13:30,183 - INFO - Process 0: Completed experiment - student_dim=170, seed=0
+2025-08-16 07:15:28,594 - WARNING - No GNC sensing losses for student dimension 180 seed 2
+2025-08-16 07:15:28,601 - INFO - delta_l_infinity: tensor([0.9446], device='cuda:1') for w=tensor([ 2.2669,  1.3477, -1.4438, -1.0484], device='cuda:1')
+2025-08-16 07:15:28,640 - INFO - Process 1: Completed experiment - student_dim=180, seed=2
+2025-08-16 07:15:46,529 - INFO - delta_l_infinity: tensor([1.2949], device='cuda:3') for w=tensor([ 1.9899, -0.1324, -0.3380, -0.7933], device='cuda:3')
+2025-08-16 07:15:46,534 - INFO - Process 3: Completed experiment - student_dim=180, seed=6
+2025-08-16 07:15:47,166 - INFO - delta_l_infinity: tensor([-5.2844], device='cuda:2') for w=tensor([-0.2938,  0.7819, -1.4731,  1.0391], device='cuda:2')
+2025-08-16 07:15:47,203 - INFO - Process 2: Completed experiment - student_dim=180, seed=4
+2025-08-16 07:15:51,044 - INFO - delta_l_infinity: tensor([-6.5654], device='cuda:0') for w=tensor([ 0.1808, -0.5523,  0.9238, -0.7350], device='cuda:0')
+2025-08-16 07:15:51,051 - INFO - Process 0: Completed experiment - student_dim=180, seed=0
+2025-08-16 07:17:55,468 - WARNING - No GNC sensing losses for student dimension 190 seed 2
+2025-08-16 07:17:55,475 - INFO - delta_l_infinity: tensor([0.9446], device='cuda:1') for w=tensor([ 2.2669,  1.3477, -1.4438, -1.0484], device='cuda:1')
+2025-08-16 07:17:55,483 - INFO - Process 1: Completed experiment - student_dim=190, seed=2
+2025-08-16 07:17:55,514 - INFO - Process 1: Starting experiment - student_dim=200, seed=2
+2025-08-16 07:18:16,813 - WARNING - No GNC sensing losses for student dimension 190 seed 6
+2025-08-16 07:18:16,819 - INFO - delta_l_infinity: tensor([1.2949], device='cuda:3') for w=tensor([ 1.9899, -0.1324, -0.3380, -0.7933], device='cuda:3')
+2025-08-16 07:18:16,826 - INFO - Process 3: Completed experiment - student_dim=190, seed=6
+2025-08-16 07:18:16,827 - INFO - Process 3: Starting experiment - student_dim=200, seed=6
+2025-08-16 07:18:20,512 - INFO - delta_l_infinity: tensor([-5.2844], device='cuda:2') for w=tensor([-0.2938,  0.7819, -1.4731,  1.0391], device='cuda:2')
+2025-08-16 07:18:20,522 - INFO - Process 2: Completed experiment - student_dim=190, seed=4
+2025-08-16 07:18:20,524 - INFO - Process 2: Starting experiment - student_dim=200, seed=4
+2025-08-16 07:18:24,455 - INFO - delta_l_infinity: tensor([-6.5654], device='cuda:0') for w=tensor([ 0.1808, -0.5523,  0.9238, -0.7350], device='cuda:0')
+2025-08-16 07:18:24,494 - INFO - Process 0: Completed experiment - student_dim=190, seed=0
+2025-08-16 07:18:24,496 - INFO - Process 0: Starting experiment - student_dim=200, seed=0
+2025-08-16 07:20:29,920 - WARNING - No GNC sensing losses for student dimension 200 seed 2
+2025-08-16 07:20:29,927 - INFO - delta_l_infinity: tensor([0.9446], device='cuda:1') for w=tensor([ 2.2669,  1.3477, -1.4438, -1.0484], device='cuda:1')
+2025-08-16 07:20:29,934 - INFO - Process 1: Completed experiment - student_dim=200, seed=2
+2025-08-16 07:20:55,400 - WARNING - No GNC sensing losses for student dimension 200 seed 6
+2025-08-16 07:20:55,406 - INFO - delta_l_infinity: tensor([1.2949], device='cuda:3') for w=tensor([ 1.9899, -0.1324, -0.3380, -0.7933], device='cuda:3')
+2025-08-16 07:20:55,432 - INFO - Process 3: Completed experiment - student_dim=200, seed=6
+2025-08-16 07:21:02,496 - INFO - delta_l_infinity: tensor([-5.2844], device='cuda:2') for w=tensor([-0.2938,  0.7819, -1.4731,  1.0391], device='cuda:2')
+2025-08-16 07:21:02,528 - INFO - Process 2: Completed experiment - student_dim=200, seed=4
+2025-08-16 07:21:06,354 - INFO - delta_l_infinity: tensor([-6.5654], device='cuda:0') for w=tensor([ 0.1808, -0.5523,  0.9238, -0.7350], device='cuda:0')
+2025-08-16 07:21:06,393 - INFO - Process 0: Completed experiment - student_dim=200, seed=0
+2025-08-16 07:23:17,964 - WARNING - No GNC sensing losses for student dimension 210 seed 2
+2025-08-16 07:23:17,974 - INFO - delta_l_infinity: tensor([0.9446], device='cuda:1') for w=tensor([ 2.2669,  1.3477, -1.4438, -1.0484], device='cuda:1')
+2025-08-16 07:23:18,007 - INFO - Process 1: Completed experiment - student_dim=210, seed=2
+2025-08-16 07:23:34,238 - WARNING - No GNC sensing losses for student dimension 210 seed 6
+2025-08-16 07:23:34,245 - INFO - delta_l_infinity: tensor([1.2949], device='cuda:3') for w=tensor([ 1.9899, -0.1324, -0.3380, -0.7933], device='cuda:3')
+2025-08-16 07:23:34,251 - INFO - Process 3: Completed experiment - student_dim=210, seed=6
+2025-08-16 07:23:57,432 - INFO - delta_l_infinity: tensor([-5.2844], device='cuda:2') for w=tensor([-0.2938,  0.7819, -1.4731,  1.0391], device='cuda:2')
+2025-08-16 07:23:57,438 - INFO - Process 2: Completed experiment - student_dim=210, seed=4
+2025-08-16 07:24:00,904 - INFO - delta_l_infinity: tensor([-6.5654], device='cuda:0') for w=tensor([ 0.1808, -0.5523,  0.9238, -0.7350], device='cuda:0')
+2025-08-16 07:24:00,944 - INFO - Process 0: Completed experiment - student_dim=210, seed=0
+2025-08-16 07:26:08,279 - WARNING - No GNC sensing losses for student dimension 220 seed 2
+2025-08-16 07:26:08,288 - INFO - delta_l_infinity: tensor([0.9446], device='cuda:1') for w=tensor([ 2.2669,  1.3477, -1.4438, -1.0484], device='cuda:1')
+2025-08-16 07:26:08,297 - INFO - Process 1: Completed experiment - student_dim=220, seed=2
+2025-08-16 07:26:31,380 - WARNING - No GNC sensing losses for student dimension 220 seed 6
+2025-08-16 07:26:31,385 - INFO - delta_l_infinity: tensor([1.2949], device='cuda:3') for w=tensor([ 1.9899, -0.1324, -0.3380, -0.7933], device='cuda:3')
+2025-08-16 07:26:31,422 - INFO - Process 3: Completed experiment - student_dim=220, seed=6
+2025-08-16 07:26:59,360 - INFO - delta_l_infinity: tensor([-5.2844], device='cuda:2') for w=tensor([-0.2938,  0.7819, -1.4731,  1.0391], device='cuda:2')
+2025-08-16 07:26:59,399 - INFO - Process 2: Completed experiment - student_dim=220, seed=4
+2025-08-16 07:27:02,768 - INFO - delta_l_infinity: tensor([-6.5654], device='cuda:0') for w=tensor([ 0.1808, -0.5523,  0.9238, -0.7350], device='cuda:0')
+2025-08-16 07:27:02,774 - INFO - Process 0: Completed experiment - student_dim=220, seed=0
+2025-08-16 07:29:05,630 - WARNING - No GNC sensing losses for student dimension 230 seed 2
+2025-08-16 07:29:05,637 - INFO - delta_l_infinity: tensor([0.9446], device='cuda:1') for w=tensor([ 2.2669,  1.3477, -1.4438, -1.0484], device='cuda:1')
+2025-08-16 07:29:05,646 - INFO - Process 1: Completed experiment - student_dim=230, seed=2
+2025-08-16 07:29:34,344 - WARNING - No GNC sensing losses for student dimension 230 seed 6
+2025-08-16 07:29:34,350 - INFO - delta_l_infinity: tensor([1.2949], device='cuda:3') for w=tensor([ 1.9899, -0.1324, -0.3380, -0.7933], device='cuda:3')
+2025-08-16 07:29:34,359 - INFO - Process 3: Completed experiment - student_dim=230, seed=6
+2025-08-16 07:30:06,761 - INFO - delta_l_infinity: tensor([-5.2844], device='cuda:2') for w=tensor([-0.2938,  0.7819, -1.4731,  1.0391], device='cuda:2')
+2025-08-16 07:30:06,768 - INFO - Process 2: Completed experiment - student_dim=230, seed=4
+2025-08-16 07:30:09,525 - INFO - delta_l_infinity: tensor([-6.5654], device='cuda:0') for w=tensor([ 0.1808, -0.5523,  0.9238, -0.7350], device='cuda:0')
+2025-08-16 07:30:09,533 - INFO - Process 0: Completed experiment - student_dim=230, seed=0
+2025-08-16 07:32:10,611 - WARNING - No GNC sensing losses for student dimension 240 seed 2
+2025-08-16 07:32:10,620 - INFO - delta_l_infinity: tensor([0.9446], device='cuda:1') for w=tensor([ 2.2669,  1.3477, -1.4438, -1.0484], device='cuda:1')
+2025-08-16 07:32:10,628 - INFO - Process 1: Completed experiment - student_dim=240, seed=2
+2025-08-16 07:32:44,072 - WARNING - No GNC sensing losses for student dimension 240 seed 6
+2025-08-16 07:32:44,080 - INFO - delta_l_infinity: tensor([1.2949], device='cuda:3') for w=tensor([ 1.9899, -0.1324, -0.3380, -0.7933], device='cuda:3')
+2025-08-16 07:32:44,086 - INFO - Process 3: Completed experiment - student_dim=240, seed=6
+2025-08-16 07:33:20,360 - INFO - delta_l_infinity: tensor([-5.2844], device='cuda:2') for w=tensor([-0.2938,  0.7819, -1.4731,  1.0391], device='cuda:2')
+2025-08-16 07:33:20,400 - INFO - Process 2: Completed experiment - student_dim=240, seed=4
+2025-08-16 07:33:23,344 - INFO - delta_l_infinity: tensor([-6.5654], device='cuda:0') for w=tensor([ 0.1808, -0.5523,  0.9238, -0.7350], device='cuda:0')
+2025-08-16 07:33:23,386 - INFO - Process 0: Completed experiment - student_dim=240, seed=0
+2025-08-16 07:35:23,277 - WARNING - No GNC sensing losses for student dimension 250 seed 2
+2025-08-16 07:35:23,284 - INFO - delta_l_infinity: tensor([0.9446], device='cuda:1') for w=tensor([ 2.2669,  1.3477, -1.4438, -1.0484], device='cuda:1')
+2025-08-16 07:35:23,290 - INFO - Process 1: Completed experiment - student_dim=250, seed=2
+2025-08-16 07:36:03,259 - WARNING - No GNC sensing losses for student dimension 250 seed 6
+2025-08-16 07:36:03,265 - INFO - delta_l_infinity: tensor([1.2949], device='cuda:3') for w=tensor([ 1.9899, -0.1324, -0.3380, -0.7933], device='cuda:3')
+2025-08-16 07:36:03,303 - INFO - Process 3: Completed experiment - student_dim=250, seed=6
+2025-08-16 07:36:43,129 - INFO - delta_l_infinity: tensor([-5.2844], device='cuda:2') for w=tensor([-0.2938,  0.7819, -1.4731,  1.0391], device='cuda:2')
+2025-08-16 07:36:43,138 - INFO - Process 2: Completed experiment - student_dim=250, seed=4
+2025-08-16 07:36:45,887 - INFO - delta_l_infinity: tensor([-6.5654], device='cuda:0') for w=tensor([ 0.1808, -0.5523,  0.9238, -0.7350], device='cuda:0')
+2025-08-16 07:36:45,936 - INFO - Process 0: Completed experiment - student_dim=250, seed=0
+2025-08-16 07:38:43,495 - WARNING - No GNC sensing losses for student dimension 260 seed 2
+2025-08-16 07:38:43,503 - INFO - delta_l_infinity: tensor([0.9446], device='cuda:1') for w=tensor([ 2.2669,  1.3477, -1.4438, -1.0484], device='cuda:1')
+2025-08-16 07:38:43,510 - INFO - Process 1: Completed experiment - student_dim=260, seed=2
+2025-08-16 07:39:30,636 - WARNING - No GNC sensing losses for student dimension 260 seed 6
+2025-08-16 07:39:30,642 - INFO - delta_l_infinity: tensor([1.2949], device='cuda:3') for w=tensor([ 1.9899, -0.1324, -0.3380, -0.7933], device='cuda:3')
+2025-08-16 07:39:30,686 - INFO - Process 3: Completed experiment - student_dim=260, seed=6
+2025-08-16 07:40:13,689 - INFO - delta_l_infinity: tensor([-5.2844], device='cuda:2') for w=tensor([-0.2938,  0.7819, -1.4731,  1.0391], device='cuda:2')
+2025-08-16 07:40:13,697 - INFO - Process 2: Completed experiment - student_dim=260, seed=4
+2025-08-16 07:40:16,208 - INFO - delta_l_infinity: tensor([-6.5654], device='cuda:0') for w=tensor([ 0.1808, -0.5523,  0.9238, -0.7350], device='cuda:0')
+2025-08-16 07:40:16,249 - INFO - Process 0: Completed experiment - student_dim=260, seed=0
+2025-08-16 07:42:11,368 - WARNING - No GNC sensing losses for student dimension 270 seed 2
+2025-08-16 07:42:11,377 - INFO - delta_l_infinity: tensor([0.9446], device='cuda:1') for w=tensor([ 2.2669,  1.3477, -1.4438, -1.0484], device='cuda:1')
+2025-08-16 07:42:11,386 - INFO - Process 1: Completed experiment - student_dim=270, seed=2
+2025-08-16 07:43:04,278 - WARNING - No GNC sensing losses for student dimension 270 seed 6
+2025-08-16 07:43:04,283 - INFO - delta_l_infinity: tensor([1.2949], device='cuda:3') for w=tensor([ 1.9899, -0.1324, -0.3380, -0.7933], device='cuda:3')
+2025-08-16 07:43:04,293 - INFO - Process 3: Completed experiment - student_dim=270, seed=6
+2025-08-16 07:43:50,589 - INFO - delta_l_infinity: tensor([-5.2844], device='cuda:2') for w=tensor([-0.2938,  0.7819, -1.4731,  1.0391], device='cuda:2')
+2025-08-16 07:43:50,640 - INFO - Process 2: Completed experiment - student_dim=270, seed=4
+2025-08-16 07:43:53,139 - INFO - delta_l_infinity: tensor([-6.5654], device='cuda:0') for w=tensor([ 0.1808, -0.5523,  0.9238, -0.7350], device='cuda:0')
+2025-08-16 07:43:53,145 - INFO - Process 0: Completed experiment - student_dim=270, seed=0
+2025-08-16 07:45:47,279 - WARNING - No GNC sensing losses for student dimension 280 seed 2
+2025-08-16 07:45:47,287 - INFO - delta_l_infinity: tensor([0.9446], device='cuda:1') for w=tensor([ 2.2669,  1.3477, -1.4438, -1.0484], device='cuda:1')
+2025-08-16 07:45:47,294 - INFO - Process 1: Completed experiment - student_dim=280, seed=2
+2025-08-16 07:46:46,662 - WARNING - No GNC sensing losses for student dimension 280 seed 6
+2025-08-16 07:46:46,667 - INFO - delta_l_infinity: tensor([1.2949], device='cuda:3') for w=tensor([ 1.9899, -0.1324, -0.3380, -0.7933], device='cuda:3')
+2025-08-16 07:46:46,720 - INFO - Process 3: Completed experiment - student_dim=280, seed=6
+2025-08-16 07:47:36,905 - INFO - delta_l_infinity: tensor([-5.2844], device='cuda:2') for w=tensor([-0.2938,  0.7819, -1.4731,  1.0391], device='cuda:2')
+2025-08-16 07:47:36,913 - INFO - Process 2: Completed experiment - student_dim=280, seed=4
+2025-08-16 07:47:39,675 - INFO - delta_l_infinity: tensor([-6.5654], device='cuda:0') for w=tensor([ 0.1808, -0.5523,  0.9238, -0.7350], device='cuda:0')
+2025-08-16 07:47:39,685 - INFO - Process 0: Completed experiment - student_dim=280, seed=0
+2025-08-16 07:49:30,788 - WARNING - No GNC sensing losses for student dimension 290 seed 2
+2025-08-16 07:49:30,795 - INFO - delta_l_infinity: tensor([0.9446], device='cuda:1') for w=tensor([ 2.2669,  1.3477, -1.4438, -1.0484], device='cuda:1')
+2025-08-16 07:49:30,804 - INFO - Process 1: Completed experiment - student_dim=290, seed=2
+2025-08-16 07:49:30,836 - INFO - Process 1: Starting experiment - student_dim=300, seed=2
+2025-08-16 07:50:38,419 - WARNING - No GNC sensing losses for student dimension 290 seed 6
+2025-08-16 07:50:38,427 - INFO - delta_l_infinity: tensor([1.2949], device='cuda:3') for w=tensor([ 1.9899, -0.1324, -0.3380, -0.7933], device='cuda:3')
+2025-08-16 07:50:38,435 - INFO - Process 3: Completed experiment - student_dim=290, seed=6
+2025-08-16 07:50:38,463 - INFO - Process 3: Starting experiment - student_dim=300, seed=6
+2025-08-16 07:51:32,552 - INFO - delta_l_infinity: tensor([-5.2844], device='cuda:2') for w=tensor([-0.2938,  0.7819, -1.4731,  1.0391], device='cuda:2')
+2025-08-16 07:51:32,563 - INFO - Process 2: Completed experiment - student_dim=290, seed=4
+2025-08-16 07:51:32,565 - INFO - Process 2: Starting experiment - student_dim=300, seed=4
+2025-08-16 07:51:35,199 - INFO - delta_l_infinity: tensor([-6.5654], device='cuda:0') for w=tensor([ 0.1808, -0.5523,  0.9238, -0.7350], device='cuda:0')
+2025-08-16 07:51:35,206 - INFO - Process 0: Completed experiment - student_dim=290, seed=0
+2025-08-16 07:51:35,209 - INFO - Process 0: Starting experiment - student_dim=300, seed=0
+2025-08-16 07:53:21,985 - WARNING - No GNC sensing losses for student dimension 300 seed 2
+2025-08-16 07:53:21,993 - INFO - delta_l_infinity: tensor([0.9446], device='cuda:1') for w=tensor([ 2.2669,  1.3477, -1.4438, -1.0484], device='cuda:1')
+2025-08-16 07:53:22,001 - INFO - Process 1: Completed experiment - student_dim=300, seed=2
+2025-08-16 07:54:40,252 - WARNING - No GNC sensing losses for student dimension 300 seed 6
+2025-08-16 07:54:40,261 - INFO - delta_l_infinity: tensor([1.2949], device='cuda:3') for w=tensor([ 1.9899, -0.1324, -0.3380, -0.7933], device='cuda:3')
+2025-08-16 07:54:40,271 - INFO - Process 3: Completed experiment - student_dim=300, seed=6
+2025-08-16 07:55:39,107 - INFO - delta_l_infinity: tensor([-5.2844], device='cuda:2') for w=tensor([-0.2938,  0.7819, -1.4731,  1.0391], device='cuda:2')
+2025-08-16 07:55:39,160 - INFO - Process 2: Completed experiment - student_dim=300, seed=4
+2025-08-16 07:55:42,310 - INFO - delta_l_infinity: tensor([-6.5654], device='cuda:0') for w=tensor([ 0.1808, -0.5523,  0.9238, -0.7350], device='cuda:0')
+2025-08-16 07:55:42,364 - INFO - Process 0: Completed experiment - student_dim=300, seed=0
+2025-08-16 07:57:20,743 - WARNING - No GNC sensing losses for student dimension 310 seed 2
+2025-08-16 07:57:20,750 - INFO - delta_l_infinity: tensor([0.9446], device='cuda:1') for w=tensor([ 2.2669,  1.3477, -1.4438, -1.0484], device='cuda:1')
+2025-08-16 07:57:20,757 - INFO - Process 1: Completed experiment - student_dim=310, seed=2
+2025-08-16 07:58:51,265 - WARNING - No GNC sensing losses for student dimension 310 seed 6
+2025-08-16 07:58:51,273 - INFO - delta_l_infinity: tensor([1.2949], device='cuda:3') for w=tensor([ 1.9899, -0.1324, -0.3380, -0.7933], device='cuda:3')
+2025-08-16 07:58:51,282 - INFO - Process 3: Completed experiment - student_dim=310, seed=6
+2025-08-16 07:59:54,422 - INFO - delta_l_infinity: tensor([-5.2844], device='cuda:2') for w=tensor([-0.2938,  0.7819, -1.4731,  1.0391], device='cuda:2')
+2025-08-16 07:59:54,462 - INFO - Process 2: Completed experiment - student_dim=310, seed=4
+2025-08-16 07:59:57,683 - INFO - delta_l_infinity: tensor([-6.5654], device='cuda:0') for w=tensor([ 0.1808, -0.5523,  0.9238, -0.7350], device='cuda:0')
+2025-08-16 07:59:57,691 - INFO - Process 0: Completed experiment - student_dim=310, seed=0
+2025-08-16 08:01:27,118 - WARNING - No GNC sensing losses for student dimension 320 seed 2
+2025-08-16 08:01:27,126 - INFO - delta_l_infinity: tensor([0.9446], device='cuda:1') for w=tensor([ 2.2669,  1.3477, -1.4438, -1.0484], device='cuda:1')
+2025-08-16 08:01:27,136 - INFO - Process 1: Completed experiment - student_dim=320, seed=2
+2025-08-16 08:03:06,055 - WARNING - No GNC sensing losses for student dimension 320 seed 6
+2025-08-16 08:03:06,061 - INFO - delta_l_infinity: tensor([1.2949], device='cuda:3') for w=tensor([ 1.9899, -0.1324, -0.3380, -0.7933], device='cuda:3')
+2025-08-16 08:03:06,073 - INFO - Process 3: Completed experiment - student_dim=320, seed=6
+2025-08-16 08:04:12,363 - INFO - delta_l_infinity: tensor([-5.2844], device='cuda:2') for w=tensor([-0.2938,  0.7819, -1.4731,  1.0391], device='cuda:2')
+2025-08-16 08:04:12,376 - INFO - Process 2: Completed experiment - student_dim=320, seed=4
+2025-08-16 08:04:15,529 - INFO - delta_l_infinity: tensor([-6.5654], device='cuda:0') for w=tensor([ 0.1808, -0.5523,  0.9238, -0.7350], device='cuda:0')
+2025-08-16 08:04:15,537 - INFO - Process 0: Completed experiment - student_dim=320, seed=0
+2025-08-16 08:05:41,380 - WARNING - No GNC sensing losses for student dimension 330 seed 2
+2025-08-16 08:05:41,386 - INFO - delta_l_infinity: tensor([0.9446], device='cuda:1') for w=tensor([ 2.2669,  1.3477, -1.4438, -1.0484], device='cuda:1')
+2025-08-16 08:05:41,396 - INFO - Process 1: Completed experiment - student_dim=330, seed=2
+2025-08-16 08:07:27,638 - WARNING - No GNC sensing losses for student dimension 330 seed 6
+2025-08-16 08:07:27,646 - INFO - delta_l_infinity: tensor([1.2949], device='cuda:3') for w=tensor([ 1.9899, -0.1324, -0.3380, -0.7933], device='cuda:3')
+2025-08-16 08:07:27,712 - INFO - Process 3: Completed experiment - student_dim=330, seed=6
+2025-08-16 08:08:42,147 - INFO - delta_l_infinity: tensor([-5.2844], device='cuda:2') for w=tensor([-0.2938,  0.7819, -1.4731,  1.0391], device='cuda:2')
+2025-08-16 08:08:42,159 - INFO - Process 2: Completed experiment - student_dim=330, seed=4
+2025-08-16 08:08:45,461 - INFO - delta_l_infinity: tensor([-6.5654], device='cuda:0') for w=tensor([ 0.1808, -0.5523,  0.9238, -0.7350], device='cuda:0')
+2025-08-16 08:08:45,525 - INFO - Process 0: Completed experiment - student_dim=330, seed=0
+2025-08-16 08:10:03,040 - WARNING - No GNC sensing losses for student dimension 340 seed 2
+2025-08-16 08:10:03,048 - INFO - delta_l_infinity: tensor([0.9446], device='cuda:1') for w=tensor([ 2.2669,  1.3477, -1.4438, -1.0484], device='cuda:1')
+2025-08-16 08:10:03,059 - INFO - Process 1: Completed experiment - student_dim=340, seed=2
+2025-08-16 08:11:58,773 - WARNING - No GNC sensing losses for student dimension 340 seed 6
+2025-08-16 08:11:58,782 - INFO - delta_l_infinity: tensor([1.2949], device='cuda:3') for w=tensor([ 1.9899, -0.1324, -0.3380, -0.7933], device='cuda:3')
+2025-08-16 08:11:58,792 - INFO - Process 3: Completed experiment - student_dim=340, seed=6
+2025-08-16 08:13:20,330 - INFO - delta_l_infinity: tensor([-5.2844], device='cuda:2') for w=tensor([-0.2938,  0.7819, -1.4731,  1.0391], device='cuda:2')
+2025-08-16 08:13:20,342 - INFO - Process 2: Completed experiment - student_dim=340, seed=4
+2025-08-16 08:13:22,740 - INFO - delta_l_infinity: tensor([-6.5654], device='cuda:0') for w=tensor([ 0.1808, -0.5523,  0.9238, -0.7350], device='cuda:0')
+2025-08-16 08:13:22,793 - INFO - Process 0: Completed experiment - student_dim=340, seed=0
+2025-08-16 08:14:32,493 - WARNING - No GNC sensing losses for student dimension 350 seed 2
+2025-08-16 08:14:32,503 - INFO - delta_l_infinity: tensor([0.9446], device='cuda:1') for w=tensor([ 2.2669,  1.3477, -1.4438, -1.0484], device='cuda:1')
+2025-08-16 08:14:32,514 - INFO - Process 1: Completed experiment - student_dim=350, seed=2
+2025-08-16 08:16:33,761 - WARNING - No GNC sensing losses for student dimension 350 seed 6
+2025-08-16 08:16:33,770 - INFO - delta_l_infinity: tensor([1.2949], device='cuda:3') for w=tensor([ 1.9899, -0.1324, -0.3380, -0.7933], device='cuda:3')
+2025-08-16 08:16:33,780 - INFO - Process 3: Completed experiment - student_dim=350, seed=6
+2025-08-16 08:18:03,502 - INFO - delta_l_infinity: tensor([-5.2844], device='cuda:2') for w=tensor([-0.2938,  0.7819, -1.4731,  1.0391], device='cuda:2')
+2025-08-16 08:18:03,514 - INFO - Process 2: Completed experiment - student_dim=350, seed=4
+2025-08-16 08:18:05,951 - INFO - delta_l_infinity: tensor([-6.5654], device='cuda:0') for w=tensor([ 0.1808, -0.5523,  0.9238, -0.7350], device='cuda:0')
+2025-08-16 08:18:05,962 - INFO - Process 0: Completed experiment - student_dim=350, seed=0
+2025-08-16 08:19:10,498 - WARNING - No GNC sensing losses for student dimension 360 seed 2
+2025-08-16 08:19:10,504 - INFO - delta_l_infinity: tensor([0.9446], device='cuda:1') for w=tensor([ 2.2669,  1.3477, -1.4438, -1.0484], device='cuda:1')
+2025-08-16 08:19:10,516 - INFO - Process 1: Completed experiment - student_dim=360, seed=2
+2025-08-16 08:21:19,930 - WARNING - No GNC sensing losses for student dimension 360 seed 6
+2025-08-16 08:21:19,937 - INFO - delta_l_infinity: tensor([1.2949], device='cuda:3') for w=tensor([ 1.9899, -0.1324, -0.3380, -0.7933], device='cuda:3')
+2025-08-16 08:21:19,992 - INFO - Process 3: Completed experiment - student_dim=360, seed=6
+2025-08-16 08:22:56,083 - INFO - delta_l_infinity: tensor([-5.2844], device='cuda:2') for w=tensor([-0.2938,  0.7819, -1.4731,  1.0391], device='cuda:2')
+2025-08-16 08:22:56,150 - INFO - Process 2: Completed experiment - student_dim=360, seed=4
+2025-08-16 08:22:58,866 - INFO - delta_l_infinity: tensor([-6.5654], device='cuda:0') for w=tensor([ 0.1808, -0.5523,  0.9238, -0.7350], device='cuda:0')
+2025-08-16 08:22:58,934 - INFO - Process 0: Completed experiment - student_dim=360, seed=0
+2025-08-16 08:23:55,035 - WARNING - No GNC sensing losses for student dimension 370 seed 2
+2025-08-16 08:23:55,041 - INFO - delta_l_infinity: tensor([0.9446], device='cuda:1') for w=tensor([ 2.2669,  1.3477, -1.4438, -1.0484], device='cuda:1')
+2025-08-16 08:23:55,049 - INFO - Process 1: Completed experiment - student_dim=370, seed=2
+2025-08-16 08:26:14,841 - WARNING - No GNC sensing losses for student dimension 370 seed 6
+2025-08-16 08:26:14,855 - INFO - delta_l_infinity: tensor([1.2949], device='cuda:3') for w=tensor([ 1.9899, -0.1324, -0.3380, -0.7933], device='cuda:3')
+2025-08-16 08:26:14,910 - INFO - Process 3: Completed experiment - student_dim=370, seed=6
+2025-08-16 08:27:57,388 - INFO - delta_l_infinity: tensor([-5.2844], device='cuda:2') for w=tensor([-0.2938,  0.7819, -1.4731,  1.0391], device='cuda:2')
+2025-08-16 08:27:57,400 - INFO - Process 2: Completed experiment - student_dim=370, seed=4
+2025-08-16 08:27:59,960 - INFO - delta_l_infinity: tensor([-6.5654], device='cuda:0') for w=tensor([ 0.1808, -0.5523,  0.9238, -0.7350], device='cuda:0')
+2025-08-16 08:27:59,968 - INFO - Process 0: Completed experiment - student_dim=370, seed=0
+2025-08-16 08:28:47,272 - WARNING - No GNC sensing losses for student dimension 380 seed 2
+2025-08-16 08:28:47,278 - INFO - delta_l_infinity: tensor([0.9446], device='cuda:1') for w=tensor([ 2.2669,  1.3477, -1.4438, -1.0484], device='cuda:1')
+2025-08-16 08:28:47,285 - INFO - Process 1: Completed experiment - student_dim=380, seed=2
+2025-08-16 08:31:19,915 - WARNING - No GNC sensing losses for student dimension 380 seed 6
+2025-08-16 08:31:19,923 - INFO - delta_l_infinity: tensor([1.2949], device='cuda:3') for w=tensor([ 1.9899, -0.1324, -0.3380, -0.7933], device='cuda:3')
+2025-08-16 08:31:19,996 - INFO - Process 3: Completed experiment - student_dim=380, seed=6
+2025-08-16 08:33:08,754 - INFO - delta_l_infinity: tensor([-5.2844], device='cuda:2') for w=tensor([-0.2938,  0.7819, -1.4731,  1.0391], device='cuda:2')
+2025-08-16 08:33:08,768 - INFO - Process 2: Completed experiment - student_dim=380, seed=4
+2025-08-16 08:33:11,224 - INFO - delta_l_infinity: tensor([-6.5654], device='cuda:0') for w=tensor([ 0.1808, -0.5523,  0.9238, -0.7350], device='cuda:0')
+2025-08-16 08:33:11,233 - INFO - Process 0: Completed experiment - student_dim=380, seed=0
+2025-08-16 08:33:47,989 - WARNING - No GNC sensing losses for student dimension 390 seed 2
+2025-08-16 08:33:47,994 - INFO - delta_l_infinity: tensor([0.9446], device='cuda:1') for w=tensor([ 2.2669,  1.3477, -1.4438, -1.0484], device='cuda:1')
+2025-08-16 08:33:48,002 - INFO - Process 1: Completed experiment - student_dim=390, seed=2
+2025-08-16 08:33:48,004 - INFO - Process 1: Starting experiment - student_dim=100, seed=3
+2025-08-16 08:36:28,488 - WARNING - No GNC sensing losses for student dimension 390 seed 6
+2025-08-16 08:36:28,496 - INFO - delta_l_infinity: tensor([1.2949], device='cuda:3') for w=tensor([ 1.9899, -0.1324, -0.3380, -0.7933], device='cuda:3')
+2025-08-16 08:36:28,506 - INFO - Process 3: Completed experiment - student_dim=390, seed=6
+2025-08-16 08:36:28,543 - INFO - Process 3: Starting experiment - student_dim=100, seed=7
+2025-08-16 08:36:31,185 - WARNING - No GNC sensing losses for student dimension 100 seed 3
+2025-08-16 08:36:31,190 - INFO - delta_l_infinity: tensor([1.2448], device='cuda:1') for w=tensor([-0.5162, -0.2217, -0.5594,  0.5542], device='cuda:1')
+2025-08-16 08:36:31,253 - INFO - Process 1: Completed experiment - student_dim=100, seed=3
+2025-08-16 08:38:11,176 - INFO - delta_l_infinity: tensor([-5.2844], device='cuda:2') for w=tensor([-0.2938,  0.7819, -1.4731,  1.0391], device='cuda:2')
+2025-08-16 08:38:11,185 - INFO - Process 2: Completed experiment - student_dim=390, seed=4
+2025-08-16 08:38:11,213 - INFO - Process 2: Starting experiment - student_dim=100, seed=5
+2025-08-16 08:38:22,304 - INFO - delta_l_infinity: tensor([-6.5654], device='cuda:0') for w=tensor([ 0.1808, -0.5523,  0.9238, -0.7350], device='cuda:0')
+2025-08-16 08:38:22,316 - INFO - Process 0: Completed experiment - student_dim=390, seed=0
+2025-08-16 08:38:22,318 - INFO - Process 0: Starting experiment - student_dim=100, seed=1
+2025-08-16 08:38:50,703 - INFO - delta_l_infinity: tensor([1.1422], device='cuda:3') for w=tensor([-1.2870, -0.3958,  0.3756,  0.2573], device='cuda:3')
+2025-08-16 08:38:50,710 - INFO - Process 3: Completed experiment - student_dim=100, seed=7
+2025-08-16 08:39:02,498 - WARNING - No GNC sensing losses for student dimension 110 seed 3
+2025-08-16 08:39:02,503 - INFO - delta_l_infinity: tensor([1.2448], device='cuda:1') for w=tensor([-0.5162, -0.2217, -0.5594,  0.5542], device='cuda:1')
+2025-08-16 08:39:02,799 - INFO - Process 1: Completed experiment - student_dim=110, seed=3
+2025-08-16 08:39:35,767 - INFO - delta_l_infinity: tensor([1.0599], device='cuda:2') for w=tensor([ 1.2089, -0.6117,  1.4826, -1.1513], device='cuda:2')
+2025-08-16 08:39:35,772 - INFO - Process 2: Completed experiment - student_dim=100, seed=5
+2025-08-16 08:39:39,790 - WARNING - No GNC sensing losses for student dimension 100 seed 1
+2025-08-16 08:39:39,795 - INFO - delta_l_infinity: tensor([0.8931], device='cuda:0') for w=tensor([-0.6340, -0.6431, -0.6420, -1.4471], device='cuda:0')
+2025-08-16 08:39:39,818 - INFO - Process 0: Completed experiment - student_dim=100, seed=1
+2025-08-16 08:40:22,981 - INFO - delta_l_infinity: tensor([1.1422], device='cuda:3') for w=tensor([-1.2870, -0.3958,  0.3756,  0.2573], device='cuda:3')
+2025-08-16 08:40:22,986 - INFO - Process 3: Completed experiment - student_dim=110, seed=7
+2025-08-16 08:40:35,654 - WARNING - No GNC sensing losses for student dimension 120 seed 3
+2025-08-16 08:40:35,659 - INFO - delta_l_infinity: tensor([1.2448], device='cuda:1') for w=tensor([-0.5162, -0.2217, -0.5594,  0.5542], device='cuda:1')
+2025-08-16 08:40:35,663 - INFO - Process 1: Completed experiment - student_dim=120, seed=3
+2025-08-16 08:41:07,109 - INFO - delta_l_infinity: tensor([1.0599], device='cuda:2') for w=tensor([ 1.2089, -0.6117,  1.4826, -1.1513], device='cuda:2')
+2025-08-16 08:41:07,132 - INFO - Process 2: Completed experiment - student_dim=110, seed=5
+2025-08-16 08:41:10,805 - WARNING - No GNC sensing losses for student dimension 110 seed 1
+2025-08-16 08:41:10,811 - INFO - delta_l_infinity: tensor([0.8931], device='cuda:0') for w=tensor([-0.6340, -0.6431, -0.6420, -1.4471], device='cuda:0')
+2025-08-16 08:41:10,832 - INFO - Process 0: Completed experiment - student_dim=110, seed=1
+2025-08-16 08:42:03,223 - INFO - delta_l_infinity: tensor([1.1422], device='cuda:3') for w=tensor([-1.2870, -0.3958,  0.3756,  0.2573], device='cuda:3')
+2025-08-16 08:42:03,227 - INFO - Process 3: Completed experiment - student_dim=120, seed=7
+2025-08-16 08:42:16,301 - WARNING - No GNC sensing losses for student dimension 130 seed 3
+2025-08-16 08:42:16,306 - INFO - delta_l_infinity: tensor([1.2448], device='cuda:1') for w=tensor([-0.5162, -0.2217, -0.5594,  0.5542], device='cuda:1')
+2025-08-16 08:42:16,310 - INFO - Process 1: Completed experiment - student_dim=130, seed=3
+2025-08-16 08:42:53,473 - INFO - delta_l_infinity: tensor([1.0599], device='cuda:2') for w=tensor([ 1.2089, -0.6117,  1.4826, -1.1513], device='cuda:2')
+2025-08-16 08:42:53,479 - INFO - Process 2: Completed experiment - student_dim=120, seed=5
+2025-08-16 08:42:57,296 - WARNING - No GNC sensing losses for student dimension 120 seed 1
+2025-08-16 08:42:57,302 - INFO - delta_l_infinity: tensor([0.8931], device='cuda:0') for w=tensor([-0.6340, -0.6431, -0.6420, -1.4471], device='cuda:0')
+2025-08-16 08:42:57,317 - INFO - Process 0: Completed experiment - student_dim=120, seed=1
+2025-08-16 08:43:49,425 - INFO - delta_l_infinity: tensor([1.1422], device='cuda:3') for w=tensor([-1.2870, -0.3958,  0.3756,  0.2573], device='cuda:3')
+2025-08-16 08:43:49,430 - INFO - Process 3: Completed experiment - student_dim=130, seed=7
+2025-08-16 08:44:04,963 - WARNING - No GNC sensing losses for student dimension 140 seed 3
+2025-08-16 08:44:04,968 - INFO - delta_l_infinity: tensor([1.2448], device='cuda:1') for w=tensor([-0.5162, -0.2217, -0.5594,  0.5542], device='cuda:1')
+2025-08-16 08:44:05,230 - INFO - Process 1: Completed experiment - student_dim=140, seed=3
+2025-08-16 08:44:45,601 - INFO - delta_l_infinity: tensor([1.0599], device='cuda:2') for w=tensor([ 1.2089, -0.6117,  1.4826, -1.1513], device='cuda:2')
+2025-08-16 08:44:45,607 - INFO - Process 2: Completed experiment - student_dim=130, seed=5
+2025-08-16 08:44:49,354 - WARNING - No GNC sensing losses for student dimension 130 seed 1
+2025-08-16 08:44:49,363 - INFO - delta_l_infinity: tensor([0.8931], device='cuda:0') for w=tensor([-0.6340, -0.6431, -0.6420, -1.4471], device='cuda:0')
+2025-08-16 08:44:49,369 - INFO - Process 0: Completed experiment - student_dim=130, seed=1
+2025-08-16 08:45:43,918 - INFO - delta_l_infinity: tensor([1.1422], device='cuda:3') for w=tensor([-1.2870, -0.3958,  0.3756,  0.2573], device='cuda:3')
+2025-08-16 08:45:43,923 - INFO - Process 3: Completed experiment - student_dim=140, seed=7
+2025-08-16 08:46:01,390 - WARNING - No GNC sensing losses for student dimension 150 seed 3
+2025-08-16 08:46:01,395 - INFO - delta_l_infinity: tensor([1.2448], device='cuda:1') for w=tensor([-0.5162, -0.2217, -0.5594,  0.5542], device='cuda:1')
+2025-08-16 08:46:01,401 - INFO - Process 1: Completed experiment - student_dim=150, seed=3
+2025-08-16 08:46:43,029 - INFO - delta_l_infinity: tensor([1.0599], device='cuda:2') for w=tensor([ 1.2089, -0.6117,  1.4826, -1.1513], device='cuda:2')
+2025-08-16 08:46:43,034 - INFO - Process 2: Completed experiment - student_dim=140, seed=5
+2025-08-16 08:46:46,750 - WARNING - No GNC sensing losses for student dimension 140 seed 1
+2025-08-16 08:46:46,756 - INFO - delta_l_infinity: tensor([0.8931], device='cuda:0') for w=tensor([-0.6340, -0.6431, -0.6420, -1.4471], device='cuda:0')
+2025-08-16 08:46:46,762 - INFO - Process 0: Completed experiment - student_dim=140, seed=1
+2025-08-16 08:47:46,498 - INFO - delta_l_infinity: tensor([1.1422], device='cuda:3') for w=tensor([-1.2870, -0.3958,  0.3756,  0.2573], device='cuda:3')
+2025-08-16 08:47:46,503 - INFO - Process 3: Completed experiment - student_dim=150, seed=7
+2025-08-16 08:48:05,309 - WARNING - No GNC sensing losses for student dimension 160 seed 3
+2025-08-16 08:48:05,314 - INFO - delta_l_infinity: tensor([1.2448], device='cuda:1') for w=tensor([-0.5162, -0.2217, -0.5594,  0.5542], device='cuda:1')
+2025-08-16 08:48:05,322 - INFO - Process 1: Completed experiment - student_dim=160, seed=3
+2025-08-16 08:48:48,093 - INFO - delta_l_infinity: tensor([1.0599], device='cuda:2') for w=tensor([ 1.2089, -0.6117,  1.4826, -1.1513], device='cuda:2')
+2025-08-16 08:48:48,120 - INFO - Process 2: Completed experiment - student_dim=150, seed=5
+2025-08-16 08:48:51,831 - WARNING - No GNC sensing losses for student dimension 150 seed 1
+2025-08-16 08:48:51,836 - INFO - delta_l_infinity: tensor([0.8931], device='cuda:0') for w=tensor([-0.6340, -0.6431, -0.6420, -1.4471], device='cuda:0')
+2025-08-16 08:48:51,865 - INFO - Process 0: Completed experiment - student_dim=150, seed=1
+2025-08-16 08:50:01,571 - INFO - delta_l_infinity: tensor([1.1422], device='cuda:3') for w=tensor([-1.2870, -0.3958,  0.3756,  0.2573], device='cuda:3')
+2025-08-16 08:50:01,581 - INFO - Process 3: Completed experiment - student_dim=160, seed=7
+2025-08-16 08:50:16,875 - WARNING - No GNC sensing losses for student dimension 170 seed 3
+2025-08-16 08:50:16,881 - INFO - delta_l_infinity: tensor([1.2448], device='cuda:1') for w=tensor([-0.5162, -0.2217, -0.5594,  0.5542], device='cuda:1')
+2025-08-16 08:50:16,885 - INFO - Process 1: Completed experiment - student_dim=170, seed=3
+2025-08-16 08:50:59,591 - WARNING - No GNC sensing losses for student dimension 160 seed 5
+2025-08-16 08:50:59,597 - INFO - delta_l_infinity: tensor([1.0599], device='cuda:2') for w=tensor([ 1.2089, -0.6117,  1.4826, -1.1513], device='cuda:2')
+2025-08-16 08:50:59,603 - INFO - Process 2: Completed experiment - student_dim=160, seed=5
+2025-08-16 08:51:02,730 - WARNING - No GNC sensing losses for student dimension 160 seed 1
+2025-08-16 08:51:02,735 - INFO - delta_l_infinity: tensor([0.8931], device='cuda:0') for w=tensor([-0.6340, -0.6431, -0.6420, -1.4471], device='cuda:0')
+2025-08-16 08:51:02,764 - INFO - Process 0: Completed experiment - student_dim=160, seed=1
+2025-08-16 08:52:20,823 - WARNING - No GNC sensing losses for student dimension 170 seed 7
+2025-08-16 08:52:20,833 - INFO - delta_l_infinity: tensor([1.1422], device='cuda:3') for w=tensor([-1.2870, -0.3958,  0.3756,  0.2573], device='cuda:3')
+2025-08-16 08:52:20,839 - INFO - Process 3: Completed experiment - student_dim=170, seed=7
+2025-08-16 08:52:36,069 - WARNING - No GNC sensing losses for student dimension 180 seed 3
+2025-08-16 08:52:36,074 - INFO - delta_l_infinity: tensor([1.2448], device='cuda:1') for w=tensor([-0.5162, -0.2217, -0.5594,  0.5542], device='cuda:1')
+2025-08-16 08:52:36,079 - INFO - Process 1: Completed experiment - student_dim=180, seed=3
+2025-08-16 08:53:16,414 - WARNING - No GNC sensing losses for student dimension 170 seed 5
+2025-08-16 08:53:16,421 - INFO - delta_l_infinity: tensor([1.0599], device='cuda:2') for w=tensor([ 1.2089, -0.6117,  1.4826, -1.1513], device='cuda:2')
+2025-08-16 08:53:16,427 - INFO - Process 2: Completed experiment - student_dim=170, seed=5
+2025-08-16 08:53:19,397 - WARNING - No GNC sensing losses for student dimension 170 seed 1
+2025-08-16 08:53:19,403 - INFO - delta_l_infinity: tensor([0.8931], device='cuda:0') for w=tensor([-0.6340, -0.6431, -0.6420, -1.4471], device='cuda:0')
+2025-08-16 08:53:19,433 - INFO - Process 0: Completed experiment - student_dim=170, seed=1
+2025-08-16 08:54:47,335 - WARNING - No GNC sensing losses for student dimension 180 seed 7
+2025-08-16 08:54:47,343 - INFO - delta_l_infinity: tensor([1.1422], device='cuda:3') for w=tensor([-1.2870, -0.3958,  0.3756,  0.2573], device='cuda:3')
+2025-08-16 08:54:47,374 - INFO - Process 3: Completed experiment - student_dim=180, seed=7
+2025-08-16 08:55:02,856 - WARNING - No GNC sensing losses for student dimension 190 seed 3
+2025-08-16 08:55:02,861 - INFO - delta_l_infinity: tensor([1.2448], device='cuda:1') for w=tensor([-0.5162, -0.2217, -0.5594,  0.5542], device='cuda:1')
+2025-08-16 08:55:03,126 - INFO - Process 1: Completed experiment - student_dim=190, seed=3
+2025-08-16 08:55:03,128 - INFO - Process 1: Starting experiment - student_dim=200, seed=3
+2025-08-16 08:55:40,384 - WARNING - No GNC sensing losses for student dimension 180 seed 5
+2025-08-16 08:55:40,392 - INFO - delta_l_infinity: tensor([1.0599], device='cuda:2') for w=tensor([ 1.2089, -0.6117,  1.4826, -1.1513], device='cuda:2')
+2025-08-16 08:55:40,400 - INFO - Process 2: Completed experiment - student_dim=180, seed=5
+2025-08-16 08:55:43,709 - WARNING - No GNC sensing losses for student dimension 180 seed 1
+2025-08-16 08:55:43,715 - INFO - delta_l_infinity: tensor([0.8931], device='cuda:0') for w=tensor([-0.6340, -0.6431, -0.6420, -1.4471], device='cuda:0')
+2025-08-16 08:55:43,749 - INFO - Process 0: Completed experiment - student_dim=180, seed=1
+2025-08-16 08:57:21,235 - WARNING - No GNC sensing losses for student dimension 190 seed 7
+2025-08-16 08:57:21,243 - INFO - delta_l_infinity: tensor([1.1422], device='cuda:3') for w=tensor([-1.2870, -0.3958,  0.3756,  0.2573], device='cuda:3')
+2025-08-16 08:57:21,286 - INFO - Process 3: Completed experiment - student_dim=190, seed=7
+2025-08-16 08:57:21,312 - INFO - Process 3: Starting experiment - student_dim=200, seed=7
+2025-08-16 08:57:37,546 - WARNING - No GNC sensing losses for student dimension 200 seed 3
+2025-08-16 08:57:37,552 - INFO - delta_l_infinity: tensor([1.2448], device='cuda:1') for w=tensor([-0.5162, -0.2217, -0.5594,  0.5542], device='cuda:1')
+2025-08-16 08:57:37,558 - INFO - Process 1: Completed experiment - student_dim=200, seed=3
+2025-08-16 08:58:17,207 - WARNING - No GNC sensing losses for student dimension 190 seed 5
+2025-08-16 08:58:17,212 - INFO - delta_l_infinity: tensor([1.0599], device='cuda:2') for w=tensor([ 1.2089, -0.6117,  1.4826, -1.1513], device='cuda:2')
+2025-08-16 08:58:17,256 - INFO - Process 2: Completed experiment - student_dim=190, seed=5
+2025-08-16 08:58:17,258 - INFO - Process 2: Starting experiment - student_dim=200, seed=5
+2025-08-16 08:58:20,529 - WARNING - No GNC sensing losses for student dimension 190 seed 1
+2025-08-16 08:58:20,535 - INFO - delta_l_infinity: tensor([0.8931], device='cuda:0') for w=tensor([-0.6340, -0.6431, -0.6420, -1.4471], device='cuda:0')
+2025-08-16 08:58:20,573 - INFO - Process 0: Completed experiment - student_dim=190, seed=1
+2025-08-16 08:58:20,576 - INFO - Process 0: Starting experiment - student_dim=200, seed=1
+2025-08-16 09:00:04,095 - WARNING - No GNC sensing losses for student dimension 200 seed 7
+2025-08-16 09:00:04,103 - INFO - delta_l_infinity: tensor([1.1422], device='cuda:3') for w=tensor([-1.2870, -0.3958,  0.3756,  0.2573], device='cuda:3')
+2025-08-16 09:00:04,140 - INFO - Process 3: Completed experiment - student_dim=200, seed=7
+2025-08-16 09:00:19,638 - WARNING - No GNC sensing losses for student dimension 210 seed 3
+2025-08-16 09:00:19,643 - INFO - delta_l_infinity: tensor([1.2448], device='cuda:1') for w=tensor([-0.5162, -0.2217, -0.5594,  0.5542], device='cuda:1')
+2025-08-16 09:00:19,650 - INFO - Process 1: Completed experiment - student_dim=210, seed=3
+2025-08-16 09:01:02,356 - WARNING - No GNC sensing losses for student dimension 200 seed 5
+2025-08-16 09:01:02,370 - INFO - delta_l_infinity: tensor([1.0599], device='cuda:2') for w=tensor([ 1.2089, -0.6117,  1.4826, -1.1513], device='cuda:2')
+2025-08-16 09:01:02,379 - INFO - Process 2: Completed experiment - student_dim=200, seed=5
+2025-08-16 09:01:05,587 - WARNING - No GNC sensing losses for student dimension 200 seed 1
+2025-08-16 09:01:05,594 - INFO - delta_l_infinity: tensor([0.8931], device='cuda:0') for w=tensor([-0.6340, -0.6431, -0.6420, -1.4471], device='cuda:0')
+2025-08-16 09:01:05,601 - INFO - Process 0: Completed experiment - student_dim=200, seed=1
+2025-08-16 09:02:50,196 - WARNING - No GNC sensing losses for student dimension 210 seed 7
+2025-08-16 09:02:50,204 - INFO - delta_l_infinity: tensor([1.1422], device='cuda:3') for w=tensor([-1.2870, -0.3958,  0.3756,  0.2573], device='cuda:3')
+2025-08-16 09:02:50,243 - INFO - Process 3: Completed experiment - student_dim=210, seed=7
+2025-08-16 09:03:09,346 - WARNING - No GNC sensing losses for student dimension 220 seed 3
+2025-08-16 09:03:09,352 - INFO - delta_l_infinity: tensor([1.2448], device='cuda:1') for w=tensor([-0.5162, -0.2217, -0.5594,  0.5542], device='cuda:1')
+2025-08-16 09:03:09,358 - INFO - Process 1: Completed experiment - student_dim=220, seed=3
+2025-08-16 09:03:55,873 - WARNING - No GNC sensing losses for student dimension 210 seed 5
+2025-08-16 09:03:55,881 - INFO - delta_l_infinity: tensor([1.0599], device='cuda:2') for w=tensor([ 1.2089, -0.6117,  1.4826, -1.1513], device='cuda:2')
+2025-08-16 09:03:55,887 - INFO - Process 2: Completed experiment - student_dim=210, seed=5
+2025-08-16 09:03:59,018 - WARNING - No GNC sensing losses for student dimension 210 seed 1
+2025-08-16 09:03:59,023 - INFO - delta_l_infinity: tensor([0.8931], device='cuda:0') for w=tensor([-0.6340, -0.6431, -0.6420, -1.4471], device='cuda:0')
+2025-08-16 09:03:59,053 - INFO - Process 0: Completed experiment - student_dim=210, seed=1
+2025-08-16 09:05:50,562 - WARNING - No GNC sensing losses for student dimension 220 seed 7
+2025-08-16 09:05:50,571 - INFO - delta_l_infinity: tensor([1.1422], device='cuda:3') for w=tensor([-1.2870, -0.3958,  0.3756,  0.2573], device='cuda:3')
+2025-08-16 09:05:50,610 - INFO - Process 3: Completed experiment - student_dim=220, seed=7
+2025-08-16 09:06:06,675 - WARNING - No GNC sensing losses for student dimension 230 seed 3
+2025-08-16 09:06:06,680 - INFO - delta_l_infinity: tensor([1.2448], device='cuda:1') for w=tensor([-0.5162, -0.2217, -0.5594,  0.5542], device='cuda:1')
+2025-08-16 09:06:06,687 - INFO - Process 1: Completed experiment - student_dim=230, seed=3
+2025-08-16 09:06:58,545 - WARNING - No GNC sensing losses for student dimension 220 seed 5
+2025-08-16 09:06:58,551 - INFO - delta_l_infinity: tensor([1.0599], device='cuda:2') for w=tensor([ 1.2089, -0.6117,  1.4826, -1.1513], device='cuda:2')
+2025-08-16 09:06:58,558 - INFO - Process 2: Completed experiment - student_dim=220, seed=5
+2025-08-16 09:07:01,114 - WARNING - No GNC sensing losses for student dimension 220 seed 1
+2025-08-16 09:07:01,119 - INFO - delta_l_infinity: tensor([0.8931], device='cuda:0') for w=tensor([-0.6340, -0.6431, -0.6420, -1.4471], device='cuda:0')
+2025-08-16 09:07:01,127 - INFO - Process 0: Completed experiment - student_dim=220, seed=1
+2025-08-16 09:08:55,012 - WARNING - No GNC sensing losses for student dimension 230 seed 7
+2025-08-16 09:08:55,019 - INFO - delta_l_infinity: tensor([1.1422], device='cuda:3') for w=tensor([-1.2870, -0.3958,  0.3756,  0.2573], device='cuda:3')
+2025-08-16 09:08:55,062 - INFO - Process 3: Completed experiment - student_dim=230, seed=7
+2025-08-16 09:09:11,682 - WARNING - No GNC sensing losses for student dimension 240 seed 3
+2025-08-16 09:09:11,687 - INFO - delta_l_infinity: tensor([1.2448], device='cuda:1') for w=tensor([-0.5162, -0.2217, -0.5594,  0.5542], device='cuda:1')
+2025-08-16 09:09:11,695 - INFO - Process 1: Completed experiment - student_dim=240, seed=3
+2025-08-16 09:10:05,167 - WARNING - No GNC sensing losses for student dimension 230 seed 5
+2025-08-16 09:10:05,175 - INFO - delta_l_infinity: tensor([1.0599], device='cuda:2') for w=tensor([ 1.2089, -0.6117,  1.4826, -1.1513], device='cuda:2')
+2025-08-16 09:10:05,182 - INFO - Process 2: Completed experiment - student_dim=230, seed=5
+2025-08-16 09:10:07,710 - WARNING - No GNC sensing losses for student dimension 230 seed 1
+2025-08-16 09:10:07,718 - INFO - delta_l_infinity: tensor([0.8931], device='cuda:0') for w=tensor([-0.6340, -0.6431, -0.6420, -1.4471], device='cuda:0')
+2025-08-16 09:10:07,725 - INFO - Process 0: Completed experiment - student_dim=230, seed=1
+2025-08-16 09:12:08,727 - WARNING - No GNC sensing losses for student dimension 240 seed 7
+2025-08-16 09:12:08,737 - INFO - delta_l_infinity: tensor([1.1422], device='cuda:3') for w=tensor([-1.2870, -0.3958,  0.3756,  0.2573], device='cuda:3')
+2025-08-16 09:12:08,744 - INFO - Process 3: Completed experiment - student_dim=240, seed=7
+2025-08-16 09:12:24,306 - WARNING - No GNC sensing losses for student dimension 250 seed 3
+2025-08-16 09:12:24,311 - INFO - delta_l_infinity: tensor([1.2448], device='cuda:1') for w=tensor([-0.5162, -0.2217, -0.5594,  0.5542], device='cuda:1')
+2025-08-16 09:12:24,318 - INFO - Process 1: Completed experiment - student_dim=250, seed=3
+2025-08-16 09:13:22,772 - WARNING - No GNC sensing losses for student dimension 240 seed 5
+2025-08-16 09:13:22,777 - INFO - delta_l_infinity: tensor([1.0599], device='cuda:2') for w=tensor([ 1.2089, -0.6117,  1.4826, -1.1513], device='cuda:2')
+2025-08-16 09:13:22,816 - INFO - Process 2: Completed experiment - student_dim=240, seed=5
+2025-08-16 09:13:24,831 - WARNING - No GNC sensing losses for student dimension 240 seed 1
+2025-08-16 09:13:24,837 - INFO - delta_l_infinity: tensor([0.8931], device='cuda:0') for w=tensor([-0.6340, -0.6431, -0.6420, -1.4471], device='cuda:0')
+2025-08-16 09:13:24,846 - INFO - Process 0: Completed experiment - student_dim=240, seed=1
+2025-08-16 09:15:33,103 - WARNING - No GNC sensing losses for student dimension 250 seed 7
+2025-08-16 09:15:33,112 - INFO - delta_l_infinity: tensor([1.1422], device='cuda:3') for w=tensor([-1.2870, -0.3958,  0.3756,  0.2573], device='cuda:3')
+2025-08-16 09:15:33,120 - INFO - Process 3: Completed experiment - student_dim=250, seed=7
+2025-08-16 09:15:44,531 - WARNING - No GNC sensing losses for student dimension 260 seed 3
+2025-08-16 09:15:44,536 - INFO - delta_l_infinity: tensor([1.2448], device='cuda:1') for w=tensor([-0.5162, -0.2217, -0.5594,  0.5542], device='cuda:1')
+2025-08-16 09:15:44,545 - INFO - Process 1: Completed experiment - student_dim=260, seed=3
+2025-08-16 09:16:49,691 - WARNING - No GNC sensing losses for student dimension 250 seed 5
+2025-08-16 09:16:49,698 - INFO - delta_l_infinity: tensor([1.0599], device='cuda:2') for w=tensor([ 1.2089, -0.6117,  1.4826, -1.1513], device='cuda:2')
+2025-08-16 09:16:49,747 - INFO - Process 2: Completed experiment - student_dim=250, seed=5
+2025-08-16 09:16:51,500 - WARNING - No GNC sensing losses for student dimension 250 seed 1
+2025-08-16 09:16:51,506 - INFO - delta_l_infinity: tensor([0.8931], device='cuda:0') for w=tensor([-0.6340, -0.6431, -0.6420, -1.4471], device='cuda:0')
+2025-08-16 09:16:51,516 - INFO - Process 0: Completed experiment - student_dim=250, seed=1
+2025-08-16 09:19:01,505 - WARNING - No GNC sensing losses for student dimension 260 seed 7
+2025-08-16 09:19:01,513 - INFO - delta_l_infinity: tensor([1.1422], device='cuda:3') for w=tensor([-1.2870, -0.3958,  0.3756,  0.2573], device='cuda:3')
+2025-08-16 09:19:01,521 - INFO - Process 3: Completed experiment - student_dim=260, seed=7
+2025-08-16 09:19:12,441 - WARNING - No GNC sensing losses for student dimension 270 seed 3
+2025-08-16 09:19:12,446 - INFO - delta_l_infinity: tensor([1.2448], device='cuda:1') for w=tensor([-0.5162, -0.2217, -0.5594,  0.5542], device='cuda:1')
+2025-08-16 09:19:12,455 - INFO - Process 1: Completed experiment - student_dim=270, seed=3
+2025-08-16 09:20:20,546 - WARNING - No GNC sensing losses for student dimension 260 seed 5
+2025-08-16 09:20:20,554 - INFO - delta_l_infinity: tensor([1.0599], device='cuda:2') for w=tensor([ 1.2089, -0.6117,  1.4826, -1.1513], device='cuda:2')
+2025-08-16 09:20:20,602 - INFO - Process 2: Completed experiment - student_dim=260, seed=5
+2025-08-16 09:20:22,252 - WARNING - No GNC sensing losses for student dimension 260 seed 1
+2025-08-16 09:20:22,260 - INFO - delta_l_infinity: tensor([0.8931], device='cuda:0') for w=tensor([-0.6340, -0.6431, -0.6420, -1.4471], device='cuda:0')
+2025-08-16 09:20:22,306 - INFO - Process 0: Completed experiment - student_dim=260, seed=1
+2025-08-16 09:22:37,891 - WARNING - No GNC sensing losses for student dimension 270 seed 7
+2025-08-16 09:22:37,897 - INFO - delta_l_infinity: tensor([1.1422], device='cuda:3') for w=tensor([-1.2870, -0.3958,  0.3756,  0.2573], device='cuda:3')
+2025-08-16 09:22:37,905 - INFO - Process 3: Completed experiment - student_dim=270, seed=7
+2025-08-16 09:22:48,340 - WARNING - No GNC sensing losses for student dimension 280 seed 3
+2025-08-16 09:22:48,345 - INFO - delta_l_infinity: tensor([1.2448], device='cuda:1') for w=tensor([-0.5162, -0.2217, -0.5594,  0.5542], device='cuda:1')
+2025-08-16 09:22:48,354 - INFO - Process 1: Completed experiment - student_dim=280, seed=3
+2025-08-16 09:23:59,966 - WARNING - No GNC sensing losses for student dimension 270 seed 5
+2025-08-16 09:23:59,973 - INFO - delta_l_infinity: tensor([1.0599], device='cuda:2') for w=tensor([ 1.2089, -0.6117,  1.4826, -1.1513], device='cuda:2')
+2025-08-16 09:24:00,028 - INFO - Process 2: Completed experiment - student_dim=270, seed=5
+2025-08-16 09:24:01,576 - WARNING - No GNC sensing losses for student dimension 270 seed 1
+2025-08-16 09:24:01,582 - INFO - delta_l_infinity: tensor([0.8931], device='cuda:0') for w=tensor([-0.6340, -0.6431, -0.6420, -1.4471], device='cuda:0')
+2025-08-16 09:24:01,635 - INFO - Process 0: Completed experiment - student_dim=270, seed=1
+2025-08-16 09:26:22,830 - WARNING - No GNC sensing losses for student dimension 280 seed 7
+2025-08-16 09:26:22,838 - INFO - delta_l_infinity: tensor([1.1422], device='cuda:3') for w=tensor([-1.2870, -0.3958,  0.3756,  0.2573], device='cuda:3')
+2025-08-16 09:26:22,847 - INFO - Process 3: Completed experiment - student_dim=280, seed=7
+2025-08-16 09:26:31,837 - WARNING - No GNC sensing losses for student dimension 290 seed 3
+2025-08-16 09:26:31,842 - INFO - delta_l_infinity: tensor([1.2448], device='cuda:1') for w=tensor([-0.5162, -0.2217, -0.5594,  0.5542], device='cuda:1')
+2025-08-16 09:26:31,852 - INFO - Process 1: Completed experiment - student_dim=290, seed=3
+2025-08-16 09:26:31,854 - INFO - Process 1: Starting experiment - student_dim=300, seed=3
+2025-08-16 09:27:47,396 - WARNING - No GNC sensing losses for student dimension 280 seed 5
+2025-08-16 09:27:47,403 - INFO - delta_l_infinity: tensor([1.0599], device='cuda:2') for w=tensor([ 1.2089, -0.6117,  1.4826, -1.1513], device='cuda:2')
+2025-08-16 09:27:47,453 - INFO - Process 2: Completed experiment - student_dim=280, seed=5
+2025-08-16 09:27:50,401 - WARNING - No GNC sensing losses for student dimension 280 seed 1
+2025-08-16 09:27:50,406 - INFO - delta_l_infinity: tensor([0.8931], device='cuda:0') for w=tensor([-0.6340, -0.6431, -0.6420, -1.4471], device='cuda:0')
+2025-08-16 09:27:50,455 - INFO - Process 0: Completed experiment - student_dim=280, seed=1
+2025-08-16 09:30:16,728 - WARNING - No GNC sensing losses for student dimension 290 seed 7
+2025-08-16 09:30:16,736 - INFO - delta_l_infinity: tensor([1.1422], device='cuda:3') for w=tensor([-1.2870, -0.3958,  0.3756,  0.2573], device='cuda:3')
+2025-08-16 09:30:16,783 - INFO - Process 3: Completed experiment - student_dim=290, seed=7
+2025-08-16 09:30:16,815 - INFO - Process 3: Starting experiment - student_dim=300, seed=7
+2025-08-16 09:30:23,041 - WARNING - No GNC sensing losses for student dimension 300 seed 3
+2025-08-16 09:30:23,046 - INFO - delta_l_infinity: tensor([1.2448], device='cuda:1') for w=tensor([-0.5162, -0.2217, -0.5594,  0.5542], device='cuda:1')
+2025-08-16 09:30:23,054 - INFO - Process 1: Completed experiment - student_dim=300, seed=3
+2025-08-16 09:31:44,371 - WARNING - No GNC sensing losses for student dimension 290 seed 5
+2025-08-16 09:31:44,379 - INFO - delta_l_infinity: tensor([1.0599], device='cuda:2') for w=tensor([ 1.2089, -0.6117,  1.4826, -1.1513], device='cuda:2')
+2025-08-16 09:31:44,385 - INFO - Process 2: Completed experiment - student_dim=290, seed=5
+2025-08-16 09:31:44,418 - INFO - Process 2: Starting experiment - student_dim=300, seed=5
+2025-08-16 09:31:48,040 - WARNING - No GNC sensing losses for student dimension 290 seed 1
+2025-08-16 09:31:48,045 - INFO - delta_l_infinity: tensor([0.8931], device='cuda:0') for w=tensor([-0.6340, -0.6431, -0.6420, -1.4471], device='cuda:0')
+2025-08-16 09:31:48,099 - INFO - Process 0: Completed experiment - student_dim=290, seed=1
+2025-08-16 09:31:48,101 - INFO - Process 0: Starting experiment - student_dim=300, seed=1
+2025-08-16 09:31:52,966 - INFO - Checkpoint saved: test_results/checkpoints/checkpoint_20250816_093152.pkl (83.3% complete)
+2025-08-16 09:34:20,681 - WARNING - No GNC sensing losses for student dimension 300 seed 7
+2025-08-16 09:34:20,690 - INFO - delta_l_infinity: tensor([1.1422], device='cuda:3') for w=tensor([-1.2870, -0.3958,  0.3756,  0.2573], device='cuda:3')
+2025-08-16 09:34:20,749 - INFO - Process 3: Completed experiment - student_dim=300, seed=7
+2025-08-16 09:34:21,781 - WARNING - No GNC sensing losses for student dimension 310 seed 3
+2025-08-16 09:34:21,786 - INFO - delta_l_infinity: tensor([1.2448], device='cuda:1') for w=tensor([-0.5162, -0.2217, -0.5594,  0.5542], device='cuda:1')
+2025-08-16 09:34:21,791 - INFO - Process 1: Completed experiment - student_dim=310, seed=3
+2025-08-16 09:35:52,518 - WARNING - No GNC sensing losses for student dimension 300 seed 5
+2025-08-16 09:35:52,526 - INFO - delta_l_infinity: tensor([1.0599], device='cuda:2') for w=tensor([ 1.2089, -0.6117,  1.4826, -1.1513], device='cuda:2')
+2025-08-16 09:35:52,532 - INFO - Process 2: Completed experiment - student_dim=300, seed=5
+2025-08-16 09:35:56,169 - WARNING - No GNC sensing losses for student dimension 300 seed 1
+2025-08-16 09:35:56,175 - INFO - delta_l_infinity: tensor([0.8931], device='cuda:0') for w=tensor([-0.6340, -0.6431, -0.6420, -1.4471], device='cuda:0')
+2025-08-16 09:35:56,184 - INFO - Process 0: Completed experiment - student_dim=300, seed=1
+2025-08-16 09:38:28,184 - WARNING - No GNC sensing losses for student dimension 320 seed 3
+2025-08-16 09:38:28,191 - INFO - delta_l_infinity: tensor([1.2448], device='cuda:1') for w=tensor([-0.5162, -0.2217, -0.5594,  0.5542], device='cuda:1')
+2025-08-16 09:38:28,200 - INFO - Process 1: Completed experiment - student_dim=320, seed=3
+2025-08-16 09:38:32,768 - WARNING - No GNC sensing losses for student dimension 310 seed 7
+2025-08-16 09:38:32,774 - INFO - delta_l_infinity: tensor([1.1422], device='cuda:3') for w=tensor([-1.2870, -0.3958,  0.3756,  0.2573], device='cuda:3')
+2025-08-16 09:38:32,842 - INFO - Process 3: Completed experiment - student_dim=310, seed=7
+2025-08-16 09:40:05,019 - WARNING - No GNC sensing losses for student dimension 310 seed 5
+2025-08-16 09:40:05,029 - INFO - delta_l_infinity: tensor([1.0599], device='cuda:2') for w=tensor([ 1.2089, -0.6117,  1.4826, -1.1513], device='cuda:2')
+2025-08-16 09:40:05,038 - INFO - Process 2: Completed experiment - student_dim=310, seed=5
+2025-08-16 09:40:08,894 - WARNING - No GNC sensing losses for student dimension 310 seed 1
+2025-08-16 09:40:08,899 - INFO - delta_l_infinity: tensor([0.8931], device='cuda:0') for w=tensor([-0.6340, -0.6431, -0.6420, -1.4471], device='cuda:0')
+2025-08-16 09:40:08,965 - INFO - Process 0: Completed experiment - student_dim=310, seed=1
+2025-08-16 09:42:42,227 - WARNING - No GNC sensing losses for student dimension 330 seed 3
+2025-08-16 09:42:42,234 - INFO - delta_l_infinity: tensor([1.2448], device='cuda:1') for w=tensor([-0.5162, -0.2217, -0.5594,  0.5542], device='cuda:1')
+2025-08-16 09:42:42,243 - INFO - Process 1: Completed experiment - student_dim=330, seed=3
+2025-08-16 09:42:47,182 - WARNING - No GNC sensing losses for student dimension 320 seed 7
+2025-08-16 09:42:47,189 - INFO - delta_l_infinity: tensor([1.1422], device='cuda:3') for w=tensor([-1.2870, -0.3958,  0.3756,  0.2573], device='cuda:3')
+2025-08-16 09:42:47,260 - INFO - Process 3: Completed experiment - student_dim=320, seed=7
+2025-08-16 09:44:21,736 - WARNING - No GNC sensing losses for student dimension 320 seed 5
+2025-08-16 09:44:21,743 - INFO - delta_l_infinity: tensor([1.0599], device='cuda:2') for w=tensor([ 1.2089, -0.6117,  1.4826, -1.1513], device='cuda:2')
+2025-08-16 09:44:21,820 - INFO - Process 2: Completed experiment - student_dim=320, seed=5
+2025-08-16 09:44:25,960 - WARNING - No GNC sensing losses for student dimension 320 seed 1
+2025-08-16 09:44:25,966 - INFO - delta_l_infinity: tensor([0.8931], device='cuda:0') for w=tensor([-0.6340, -0.6431, -0.6420, -1.4471], device='cuda:0')
+2025-08-16 09:44:25,974 - INFO - Process 0: Completed experiment - student_dim=320, seed=1
+2025-08-16 09:47:03,858 - WARNING - No GNC sensing losses for student dimension 340 seed 3
+2025-08-16 09:47:03,874 - INFO - delta_l_infinity: tensor([1.2448], device='cuda:1') for w=tensor([-0.5162, -0.2217, -0.5594,  0.5542], device='cuda:1')
+2025-08-16 09:47:03,883 - INFO - Process 1: Completed experiment - student_dim=340, seed=3
+2025-08-16 09:47:12,368 - WARNING - No GNC sensing losses for student dimension 330 seed 7
+2025-08-16 09:47:12,374 - INFO - delta_l_infinity: tensor([1.1422], device='cuda:3') for w=tensor([-1.2870, -0.3958,  0.3756,  0.2573], device='cuda:3')
+2025-08-16 09:47:12,444 - INFO - Process 3: Completed experiment - student_dim=330, seed=7
+2025-08-16 09:48:49,946 - WARNING - No GNC sensing losses for student dimension 330 seed 5
+2025-08-16 09:48:49,955 - INFO - delta_l_infinity: tensor([1.0599], device='cuda:2') for w=tensor([ 1.2089, -0.6117,  1.4826, -1.1513], device='cuda:2')
+2025-08-16 09:48:49,962 - INFO - Process 2: Completed experiment - student_dim=330, seed=5
+2025-08-16 09:48:53,899 - WARNING - No GNC sensing losses for student dimension 330 seed 1
+2025-08-16 09:48:53,904 - INFO - delta_l_infinity: tensor([0.8931], device='cuda:0') for w=tensor([-0.6340, -0.6431, -0.6420, -1.4471], device='cuda:0')
+2025-08-16 09:48:53,971 - INFO - Process 0: Completed experiment - student_dim=330, seed=1
+2025-08-16 09:51:33,203 - WARNING - No GNC sensing losses for student dimension 350 seed 3
+2025-08-16 09:51:33,210 - INFO - delta_l_infinity: tensor([1.2448], device='cuda:1') for w=tensor([-0.5162, -0.2217, -0.5594,  0.5542], device='cuda:1')
+2025-08-16 09:51:33,219 - INFO - Process 1: Completed experiment - student_dim=350, seed=3
+2025-08-16 09:51:44,799 - WARNING - No GNC sensing losses for student dimension 340 seed 7
+2025-08-16 09:51:44,805 - INFO - delta_l_infinity: tensor([1.1422], device='cuda:3') for w=tensor([-1.2870, -0.3958,  0.3756,  0.2573], device='cuda:3')
+2025-08-16 09:51:44,875 - INFO - Process 3: Completed experiment - student_dim=340, seed=7
+2025-08-16 09:53:24,105 - WARNING - No GNC sensing losses for student dimension 340 seed 5
+2025-08-16 09:53:24,112 - INFO - delta_l_infinity: tensor([1.0599], device='cuda:2') for w=tensor([ 1.2089, -0.6117,  1.4826, -1.1513], device='cuda:2')
+2025-08-16 09:53:24,122 - INFO - Process 2: Completed experiment - student_dim=340, seed=5
+2025-08-16 09:53:27,624 - WARNING - No GNC sensing losses for student dimension 340 seed 1
+2025-08-16 09:53:27,629 - INFO - delta_l_infinity: tensor([0.8931], device='cuda:0') for w=tensor([-0.6340, -0.6431, -0.6420, -1.4471], device='cuda:0')
+2025-08-16 09:53:27,696 - INFO - Process 0: Completed experiment - student_dim=340, seed=1
+2025-08-16 09:56:10,430 - WARNING - No GNC sensing losses for student dimension 360 seed 3
+2025-08-16 09:56:10,437 - INFO - delta_l_infinity: tensor([1.2448], device='cuda:1') for w=tensor([-0.5162, -0.2217, -0.5594,  0.5542], device='cuda:1')
+2025-08-16 09:56:10,484 - INFO - Process 1: Completed experiment - student_dim=360, seed=3
+2025-08-16 09:56:22,546 - WARNING - No GNC sensing losses for student dimension 350 seed 7
+2025-08-16 09:56:22,552 - INFO - delta_l_infinity: tensor([1.1422], device='cuda:3') for w=tensor([-1.2870, -0.3958,  0.3756,  0.2573], device='cuda:3')
+2025-08-16 09:56:22,625 - INFO - Process 3: Completed experiment - student_dim=350, seed=7
+2025-08-16 09:58:04,529 - WARNING - No GNC sensing losses for student dimension 350 seed 5
+2025-08-16 09:58:04,539 - INFO - delta_l_infinity: tensor([1.0599], device='cuda:2') for w=tensor([ 1.2089, -0.6117,  1.4826, -1.1513], device='cuda:2')
+2025-08-16 09:58:04,616 - INFO - Process 2: Completed experiment - student_dim=350, seed=5
+2025-08-16 09:58:08,715 - WARNING - No GNC sensing losses for student dimension 350 seed 1
+2025-08-16 09:58:08,721 - INFO - delta_l_infinity: tensor([0.8931], device='cuda:0') for w=tensor([-0.6340, -0.6431, -0.6420, -1.4471], device='cuda:0')
+2025-08-16 09:58:08,728 - INFO - Process 0: Completed experiment - student_dim=350, seed=1
+2025-08-16 10:00:55,221 - WARNING - No GNC sensing losses for student dimension 370 seed 3
+2025-08-16 10:00:55,229 - INFO - delta_l_infinity: tensor([1.2448], device='cuda:1') for w=tensor([-0.5162, -0.2217, -0.5594,  0.5542], device='cuda:1')
+2025-08-16 10:00:55,240 - INFO - Process 1: Completed experiment - student_dim=370, seed=3
+2025-08-16 10:01:12,537 - WARNING - No GNC sensing losses for student dimension 360 seed 7
+2025-08-16 10:01:12,543 - INFO - delta_l_infinity: tensor([1.1422], device='cuda:3') for w=tensor([-1.2870, -0.3958,  0.3756,  0.2573], device='cuda:3')
+2025-08-16 10:01:12,594 - INFO - Process 3: Completed experiment - student_dim=360, seed=7
+2025-08-16 10:02:58,920 - WARNING - No GNC sensing losses for student dimension 360 seed 5
+2025-08-16 10:02:58,927 - INFO - delta_l_infinity: tensor([1.0599], device='cuda:2') for w=tensor([ 1.2089, -0.6117,  1.4826, -1.1513], device='cuda:2')
+2025-08-16 10:02:58,993 - INFO - Process 2: Completed experiment - student_dim=360, seed=5
+2025-08-16 10:03:03,278 - WARNING - No GNC sensing losses for student dimension 360 seed 1
+2025-08-16 10:03:03,285 - INFO - delta_l_infinity: tensor([0.8931], device='cuda:0') for w=tensor([-0.6340, -0.6431, -0.6420, -1.4471], device='cuda:0')
+2025-08-16 10:03:03,345 - INFO - Process 0: Completed experiment - student_dim=360, seed=1
+2025-08-16 10:05:47,688 - WARNING - No GNC sensing losses for student dimension 380 seed 3
+2025-08-16 10:05:47,695 - INFO - delta_l_infinity: tensor([1.2448], device='cuda:1') for w=tensor([-0.5162, -0.2217, -0.5594,  0.5542], device='cuda:1')
+2025-08-16 10:05:47,705 - INFO - Process 1: Completed experiment - student_dim=380, seed=3
+2025-08-16 10:06:11,043 - WARNING - No GNC sensing losses for student dimension 370 seed 7
+2025-08-16 10:06:11,048 - INFO - delta_l_infinity: tensor([1.1422], device='cuda:3') for w=tensor([-1.2870, -0.3958,  0.3756,  0.2573], device='cuda:3')
+2025-08-16 10:06:11,118 - INFO - Process 3: Completed experiment - student_dim=370, seed=7
+2025-08-16 10:07:59,561 - WARNING - No GNC sensing losses for student dimension 370 seed 5
+2025-08-16 10:07:59,569 - INFO - delta_l_infinity: tensor([1.0599], device='cuda:2') for w=tensor([ 1.2089, -0.6117,  1.4826, -1.1513], device='cuda:2')
+2025-08-16 10:07:59,621 - INFO - Process 2: Completed experiment - student_dim=370, seed=5
+2025-08-16 10:08:04,873 - WARNING - No GNC sensing losses for student dimension 370 seed 1
+2025-08-16 10:08:04,878 - INFO - delta_l_infinity: tensor([0.8931], device='cuda:0') for w=tensor([-0.6340, -0.6431, -0.6420, -1.4471], device='cuda:0')
+2025-08-16 10:08:04,945 - INFO - Process 0: Completed experiment - student_dim=370, seed=1
+2025-08-16 10:10:47,575 - WARNING - No GNC sensing losses for student dimension 390 seed 3
+2025-08-16 10:10:47,582 - INFO - delta_l_infinity: tensor([1.2448], device='cuda:1') for w=tensor([-0.5162, -0.2217, -0.5594,  0.5542], device='cuda:1')
+2025-08-16 10:10:47,590 - INFO - Process 1: Completed experiment - student_dim=390, seed=3
+2025-08-16 10:10:47,590 - INFO - Process 1 completed on GPU 1
+2025-08-16 10:10:58,076 - INFO - Process 1 completed
+2025-08-16 10:11:17,376 - WARNING - No GNC sensing losses for student dimension 380 seed 7
+2025-08-16 10:11:17,381 - INFO - delta_l_infinity: tensor([1.1422], device='cuda:3') for w=tensor([-1.2870, -0.3958,  0.3756,  0.2573], device='cuda:3')
+2025-08-16 10:11:17,447 - INFO - Process 3: Completed experiment - student_dim=380, seed=7
+2025-08-16 10:13:03,667 - WARNING - No GNC sensing losses for student dimension 380 seed 5
+2025-08-16 10:13:03,677 - INFO - delta_l_infinity: tensor([1.0599], device='cuda:2') for w=tensor([ 1.2089, -0.6117,  1.4826, -1.1513], device='cuda:2')
+2025-08-16 10:13:03,733 - INFO - Process 2: Completed experiment - student_dim=380, seed=5
+2025-08-16 10:13:07,951 - WARNING - No GNC sensing losses for student dimension 380 seed 1
+2025-08-16 10:13:07,956 - INFO - delta_l_infinity: tensor([0.8931], device='cuda:0') for w=tensor([-0.6340, -0.6431, -0.6420, -1.4471], device='cuda:0')
+2025-08-16 10:13:08,018 - INFO - Process 0: Completed experiment - student_dim=380, seed=1
+2025-08-16 10:16:15,718 - WARNING - No GNC sensing losses for student dimension 390 seed 7
+2025-08-16 10:16:15,726 - INFO - delta_l_infinity: tensor([1.1422], device='cuda:3') for w=tensor([-1.2870, -0.3958,  0.3756,  0.2573], device='cuda:3')
+2025-08-16 10:16:15,793 - INFO - Process 3: Completed experiment - student_dim=390, seed=7
+2025-08-16 10:16:15,794 - INFO - Process 3 completed on GPU 3
+2025-08-16 10:16:23,092 - INFO - Process 3 completed
+2025-08-16 10:18:04,952 - WARNING - No GNC sensing losses for student dimension 390 seed 5
+2025-08-16 10:18:04,975 - INFO - delta_l_infinity: tensor([1.0599], device='cuda:2') for w=tensor([ 1.2089, -0.6117,  1.4826, -1.1513], device='cuda:2')
+2025-08-16 10:18:04,984 - INFO - Process 2: Completed experiment - student_dim=390, seed=5
+2025-08-16 10:18:04,986 - INFO - Process 2 completed on GPU 2
+2025-08-16 10:18:07,914 - WARNING - No GNC sensing losses for student dimension 390 seed 1
+2025-08-16 10:18:07,926 - INFO - delta_l_infinity: tensor([0.8931], device='cuda:0') for w=tensor([-0.6340, -0.6431, -0.6420, -1.4471], device='cuda:0')
+2025-08-16 10:18:07,934 - INFO - Process 0: Completed experiment - student_dim=390, seed=1
+2025-08-16 10:18:07,934 - INFO - Process 0 completed on GPU 0
+2025-08-16 10:18:15,097 - INFO - Process 2 completed
+2025-08-16 10:18:17,099 - INFO - Process 0 completed
+2025-08-16 10:18:18,137 - INFO - Checkpoint saved: test_results/checkpoints/checkpoint_20250816_101818.pkl (83.3% complete)
+2025-08-16 10:18:18,138 - INFO - Final checkpoint saved

@@ -5,6 +5,7 @@ from pathlib import Path
 from checkpoint import CheckpointManager
 from plotting import plot
 from datetime import datetime
+from save_results import save_results_to_csv
 
 
 def print_checkpoint_summary(results):
@@ -57,7 +58,7 @@ def main():
     
     # Determine student dimensions based on the data shape
     num_student_dims = gnc_gen_losses.shape[0]
-    student_dims = list(range(400, 800, 10))  # Assuming dimensions start from 1
+    student_dims = list(range(100, 400, 10))  # Assuming dimensions start from 1
     
     # Determine sequence length from the filename or use a default
     # You might want to extract this from the checkpoint filename or add it to the checkpoint data
@@ -98,6 +99,25 @@ def main():
         print(f"Error creating plot: {e}")
         import traceback
         traceback.print_exc()
+    
+    # Save the results to a CSV file
+    results_filename = f"checkpoint_results_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv"
+    results_dir = Path("test_results/results")
+    results_dir.mkdir(exist_ok=True)
+    results_path = results_dir / results_filename
+    save_results_to_csv(
+        gnc_gen_losses,
+        gd_gen_losses,
+        gnc_theoretical_losses,
+        gnc_theoretical_asymptotic_losses,
+        student_dims,
+        num_seeds=8,
+        results_filename=results_filename,
+        results_dir=results_dir,
+        gd=False,
+        gnc=True,
+    )
+    print(f"Results saved to: {results_path}")
 
 
 if __name__ == "__main__":
