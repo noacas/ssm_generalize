@@ -159,10 +159,12 @@ def gnc_theoretical_loss(alpha_teacher, w, student_dim, device):
 if __name__ == "__main__":
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     from generator import generate_teacher_alpha, generate_w
-    for seed in range(10):
-        for d in range(1000, 10000, 1000):
-            torch.manual_seed(seed)
-            alpha_teacher = generate_teacher_alpha(device)
-            dataset = generate_w(5, device)
+    for seed in range(1):
+        torch.manual_seed(seed)
+        alpha_teacher = generate_teacher_alpha(device)
+        dataset = generate_w(5, device)
+        print(f"alpha_teacher={alpha_teacher}")
+        print(f"dataset={dataset}")
+        for d in range(100, 400, 10):
             exact_loss, asymptotic_loss = gnc_theoretical_loss(alpha_teacher, dataset, d, device)
             print(f"d={d}: Exact={exact_loss.item():.6f}, Asymptotic={asymptotic_loss.item():.6f}")

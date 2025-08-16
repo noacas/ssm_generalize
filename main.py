@@ -60,6 +60,7 @@ def process_worker(process_id, gpu_id, seed_range, args_dict, student_dims,
         with torch.no_grad():
             alpha_teacher = generate_teacher_alpha(device)
             w = generate_w(args_dict['sequence_length'], device)
+            logging.info(f"for seed {seed}, alpha_teacher={alpha_teacher}, w={w}")
 
         for student_dim_idx, student_dim in enumerate(student_dims):
             # Set seed for reproducibility
