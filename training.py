@@ -87,13 +87,12 @@ def train_gnc(
     prior_count = 0
     succ_gen_sum = torch.tensor(0.0, device=device)
     succ_count = 0
-    eps_train_by_dim = eps_train / student_dim
 
     for batch in range(math.ceil(num_samples / batch_size)):
         bs = min(batch_size, num_samples - batch * batch_size)
         students = generate_students(student_dim, bs, device)
         train_losses, gen_losses = get_losses(students, w, alpha_teacher)
-        succ_mask = train_losses < eps_train_by_dim
+        succ_mask = train_losses < eps_train
 
         # Update accumulators on device
         prior_gen_sum = prior_gen_sum + gen_losses.sum()

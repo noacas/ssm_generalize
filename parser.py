@@ -54,7 +54,7 @@ def parse_args() -> argparse.Namespace:  # noqa: C901 – a bit long but flat
     g = parser.add_argument_group("Problem dimensions & data generation")
     g.add_argument("--num_seeds", type=int, default=8, help="Number of random seeds per setting")
     g.add_argument("--sequence_length", type=int, default=5, help="Length of the measurement sequence")
-    g.add_argument("--student_dims", type=int, nargs='+', default=list(range(100, 400, 10)), help="Student dimensions (one or more integers)")
+    g.add_argument("--student_dims", type=int, nargs='+', default=list(range(100, 300, 10)), help="Student dimensions (one or more integers)")
     g.add_argument("--eps_train", type=float, default=float(1e-3), help="Training loss threshold for successful trial")
 
     g = parser.add_argument_group("Guess & Check hyperparameters")
@@ -64,7 +64,7 @@ def parse_args() -> argparse.Namespace:  # noqa: C901 – a bit long but flat
     g.add_argument(
         "--no-gnc", dest="gnc", action="store_false", help="Disable Guess & Check"
     )
-    g.add_argument("--gnc_num_samples", type=int, default=int(1e12), help="Number of G&C samples")
+    g.add_argument("--gnc_num_samples", type=int, default=int(1e10), help="Number of G&C samples")
     g.add_argument("--gnc_batch_size", type=int, default=int(1e6), help="Batch sizes for G&C")
 
     g = parser.add_argument_group("Gradient Descent hyper‑parameters")
