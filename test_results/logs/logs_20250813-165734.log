@@ -1,0 +1,55 @@
+2025-08-13 16:57:34,951 - INFO - Args: Namespace(num_seeds=8, sequence_length=5, student_dims=[400, 410, 420, 430, 440, 450, 460, 470, 480, 490, 500, 510, 520, 530, 540, 550, 560, 570, 580, 590, 600, 610, 620, 630, 640, 650, 660, 670, 680, 690, 700, 710, 720, 730, 740, 750, 760, 770, 780, 790], eps_train=1e-05, gnc=True, gnc_num_samples=10000000000, gnc_batch_size=1000, gd=False, gd_lr=0.001, gd_epochs=1000000, gd_init_scale=0.01, gd_optimizer='adam', config=None, results_dir=PosixPath('test_results/results'), figures_dir=PosixPath('test_results/figures'), checkpoint_interval=3600, resume_from_checkpoint=False, log_dir=PosixPath('test_results/logs'), max_gpus=4, log_file=PosixPath('test_results/logs/logs_20250813-165734.log'))
+2025-08-13 16:57:35,131 - INFO - Using GPUs: [0, 1, 2, 3]
+2025-08-13 16:57:35,131 - INFO - Starting 4 processes on 4 GPUs
+2025-08-13 16:57:40,113 - INFO - Process 0 started on GPU 0, processing seeds 0-1
+2025-08-13 16:57:40,717 - INFO - Process 0: Starting experiment - student_dim=400, seed=0
+2025-08-13 16:57:40,725 - INFO - Process 2 started on GPU 2, processing seeds 4-5
+2025-08-13 16:57:40,733 - INFO - Process 1 started on GPU 1, processing seeds 2-3
+2025-08-13 16:57:40,737 - INFO - Process 3 started on GPU 3, processing seeds 6-7
+2025-08-13 16:57:40,737 - INFO - Process 2: Starting experiment - student_dim=400, seed=4
+2025-08-13 16:57:40,740 - INFO - Process 1: Starting experiment - student_dim=400, seed=2
+2025-08-13 16:57:40,744 - INFO - Process 3: Starting experiment - student_dim=400, seed=6
+2025-08-13 18:29:53,689 - ERROR - G&C failed for student_dim=400, seed=6: tuple index out of range
+2025-08-13 18:29:53,695 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 98, in process_worker
+    theoretical_loss, theoretical_asymptotic_loss = gnc_theoretical_loss(alpha_teacher, w, student_dim, device)
+                                                    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fodl/noacaspi/ssm_generalize/theoretical_loss.py", line 123, in gnc_theoretical_loss
+    sequence_length = w.shape[1]
+                      ~~~~~~~^^^
+IndexError: tuple index out of range
+
+2025-08-13 18:29:53,697 - INFO - Process 3: Completed experiment - student_dim=400, seed=6
+2025-08-13 18:34:45,895 - ERROR - G&C failed for student_dim=400, seed=2: tuple index out of range
+2025-08-13 18:34:45,900 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 98, in process_worker
+    theoretical_loss, theoretical_asymptotic_loss = gnc_theoretical_loss(alpha_teacher, w, student_dim, device)
+                                                    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fodl/noacaspi/ssm_generalize/theoretical_loss.py", line 123, in gnc_theoretical_loss
+    sequence_length = w.shape[1]
+                      ~~~~~~~^^^
+IndexError: tuple index out of range
+
+2025-08-13 18:34:45,902 - INFO - Process 1: Completed experiment - student_dim=400, seed=2
+2025-08-13 18:39:11,675 - ERROR - G&C failed for student_dim=400, seed=4: tuple index out of range
+2025-08-13 18:39:11,683 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 98, in process_worker
+    theoretical_loss, theoretical_asymptotic_loss = gnc_theoretical_loss(alpha_teacher, w, student_dim, device)
+                                                    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fodl/noacaspi/ssm_generalize/theoretical_loss.py", line 123, in gnc_theoretical_loss
+    sequence_length = w.shape[1]
+                      ~~~~~~~^^^
+IndexError: tuple index out of range
+
+2025-08-13 18:39:11,685 - INFO - Process 2: Completed experiment - student_dim=400, seed=4
+2025-08-13 19:10:09,711 - ERROR - G&C failed for student_dim=400, seed=0: tuple index out of range
+2025-08-13 19:10:09,880 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 98, in process_worker
+    theoretical_loss, theoretical_asymptotic_loss = gnc_theoretical_loss(alpha_teacher, w, student_dim, device)
+                                                    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fodl/noacaspi/ssm_generalize/theoretical_loss.py", line 123, in gnc_theoretical_loss
+    sequence_length = w.shape[1]
+                      ~~~~~~~^^^
+IndexError: tuple index out of range
+
+2025-08-13 19:10:09,884 - INFO - Process 0: Completed experiment - student_dim=400, seed=0

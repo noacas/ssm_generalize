@@ -1,0 +1,11 @@
+2025-08-13 08:03:47,193 - INFO - Args: Namespace(num_seeds=8, sequence_length=5, student_dims=[400, 410, 420, 430, 440, 450, 460, 470, 480, 490, 500, 510, 520, 530, 540, 550, 560, 570, 580, 590, 600, 610, 620, 630, 640, 650, 660, 670, 680, 690, 700, 710, 720, 730, 740, 750, 760, 770, 780, 790], eps_train=1e-05, gnc=True, gnc_num_samples=10000000000, gnc_batch_size=1000, gd=False, gd_lr=0.001, gd_epochs=1000000, gd_init_scale=0.01, gd_optimizer='adam', config=None, results_dir=PosixPath('test_results/results'), figures_dir=PosixPath('test_results/figures'), checkpoint_interval=3600, resume_from_checkpoint=False, log_dir=PosixPath('test_results/logs'), max_gpus=4, log_file=PosixPath('test_results/logs/logs_20250813-080347.log'))
+2025-08-13 08:03:47,363 - INFO - Using GPUs: [0, 1, 2, 3]
+2025-08-13 08:03:47,363 - INFO - Starting 4 processes on 4 GPUs
+2025-08-13 08:03:52,546 - INFO - Process 0 started on GPU 0, processing seeds 0-1
+2025-08-13 08:03:52,834 - INFO - Process 1 started on GPU 1, processing seeds 2-3
+2025-08-13 08:03:52,843 - INFO - Process 1: Starting experiment - student_dim=400, seed=2
+2025-08-13 08:03:52,882 - INFO - Process 0: Starting experiment - student_dim=400, seed=0
+2025-08-13 08:03:53,264 - INFO - Process 3 started on GPU 3, processing seeds 6-7
+2025-08-13 08:03:53,271 - INFO - Process 3: Starting experiment - student_dim=400, seed=6
+2025-08-13 08:03:53,305 - INFO - Process 2 started on GPU 2, processing seeds 4-5
+2025-08-13 08:03:53,312 - INFO - Process 2: Starting experiment - student_dim=400, seed=4

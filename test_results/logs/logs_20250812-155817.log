@@ -1,0 +1,75 @@
+2025-08-12 15:58:17,412 - INFO - Starting multi-GPU test
+2025-08-12 15:58:17,610 - INFO - Using GPUs: [0, 1]
+2025-08-12 15:58:17,610 - INFO - Starting 2 processes on 2 GPUs
+2025-08-12 15:58:21,358 - INFO - Process 0 started on GPU 0, processing seeds 0-1
+2025-08-12 15:58:21,361 - INFO - Process 0: Starting experiment - teacher_rank=2, student_dim=4, seed=0
+2025-08-12 15:58:21,579 - INFO - A_teacher[0] is 0.40753376483917236
+2025-08-12 15:58:21,697 - INFO - Process 1 started on GPU 1, processing seeds 2-3
+2025-08-12 15:58:21,701 - INFO - Process 1: Starting experiment - teacher_rank=2, student_dim=4, seed=2
+2025-08-12 15:58:21,717 - INFO - A_teacher[0] is 0.5022341012954712
+2025-08-12 15:58:21,939 - INFO - No GNC sensing losses
+2025-08-12 15:58:21,994 - INFO - delta_l_infinity: -0.026935815811157227 for w=tensor([[-0.7350],
+        [ 0.9238],
+        [-0.5523],
+        [ 0.1808]], device='cuda:0')
+2025-08-12 15:58:22,092 - INFO - delta_l_infinity: -0.5173013210296631 for w=tensor([[-1.0484],
+        [-1.4438],
+        [ 1.3477],
+        [ 2.2669]], device='cuda:1')
+2025-08-12 15:58:43,193 - INFO - initial model: max A_j index: 0
+2025-08-12 15:58:43,208 - INFO - initial model: max A_j index: 0
+2025-08-12 15:58:43,237 - INFO - initial model: A values (first 5): [0.039229683578014374, -0.02235640212893486, -0.031950026750564575, -0.12050371617078781]
+2025-08-12 15:58:43,238 - INFO - initial model: A values (first 5): [0.15409961342811584, -0.0293428897857666, -0.21787893772125244, 0.05684312805533409]
+2025-08-12 15:58:44,336 - INFO - final model: max A_j index: 0
+2025-08-12 15:58:44,337 - INFO - final model: A values (first 5): [0.25285401940345764, 0.06940439343452454, -0.11921102553606033, 0.15560433268547058]
+2025-08-12 15:58:44,337 - INFO - final model: average A value: 0.08966293185949326
+2025-08-12 15:58:44,340 - INFO - final model: variance of A values: 0.025006113573908806
+2025-08-12 15:58:44,340 - INFO - train loss is 1.3655511140823364
+2025-08-12 15:58:44,340 - INFO - impulse response loss is 3.970003843307495
+2025-08-12 15:58:44,342 - INFO - Process 0: Completed experiment - teacher_rank=2, student_dim=4, seed=0
+2025-08-12 15:58:44,342 - INFO - final model: max A_j index: 0
+2025-08-12 15:58:44,343 - INFO - final model: A values (first 5): [0.13916906714439392, 0.0775977224111557, 0.0680069625377655, -0.020511779934167862]
+2025-08-12 15:58:44,343 - INFO - final model: average A value: 0.06606549024581909
+2025-08-12 15:58:44,344 - INFO - final model: variance of A values: 0.0043255058117210865
+2025-08-12 15:58:44,344 - INFO - train loss is 4.183651924133301
+2025-08-12 15:58:44,344 - INFO - impulse response loss is 4.716024398803711
+2025-08-12 15:58:44,345 - INFO - Process 1: Completed experiment - teacher_rank=2, student_dim=4, seed=2
+2025-08-12 15:58:44,393 - INFO - Process 1: Starting experiment - teacher_rank=2, student_dim=4, seed=3
+2025-08-12 15:58:44,394 - INFO - Process 0: Starting experiment - teacher_rank=2, student_dim=4, seed=1
+2025-08-12 15:58:44,394 - INFO - A_teacher[0] is 0.5426344871520996
+2025-08-12 15:58:44,395 - INFO - A_teacher[0] is 0.47037220001220703
+2025-08-12 15:58:44,402 - INFO - No GNC sensing losses
+2025-08-12 15:58:44,404 - INFO - No GNC sensing losses
+2025-08-12 15:58:44,410 - INFO - delta_l_infinity: 0.9723169803619385 for w=tensor([[ 0.5542],
+        [-0.5594],
+        [-0.2217],
+        [-0.5162]], device='cuda:1')
+2025-08-12 15:58:44,411 - INFO - initial model: max A_j index: 0
+2025-08-12 15:58:44,412 - INFO - initial model: A values (first 5): [0.080327607691288, 0.017483338713645935, 0.008897810243070126, -0.061371803283691406]
+2025-08-12 15:58:44,413 - INFO - delta_l_infinity: 1.1440778970718384 for w=tensor([[-1.4471],
+        [-0.6420],
+        [-0.6431],
+        [-0.6340]], device='cuda:0')
+2025-08-12 15:58:44,414 - INFO - initial model: max A_j index: 0
+2025-08-12 15:58:44,415 - INFO - initial model: A values (first 5): [0.0661352202296257, 0.026692410930991173, 0.0061677261255681515, 0.06213173270225525]
+2025-08-12 15:58:44,468 - INFO - final model: max A_j index: 0
+2025-08-12 15:58:44,469 - INFO - final model: A values (first 5): [0.17972803115844727, 0.11681442707777023, 0.10821957886219025, 0.037875980138778687]
+2025-08-12 15:58:44,469 - INFO - final model: average A value: 0.11065950989723206
+2025-08-12 15:58:44,469 - INFO - final model: variance of A values: 0.003370580030605197
+2025-08-12 15:58:44,469 - INFO - train loss is 2.7379443645477295
+2025-08-12 15:58:44,470 - INFO - impulse response loss is 4.006211757659912
+2025-08-12 15:58:44,470 - INFO - Process 1: Completed experiment - teacher_rank=2, student_dim=4, seed=3
+2025-08-12 15:58:44,471 - INFO - Process 1 completed on GPU 1
+2025-08-12 15:58:44,477 - INFO - final model: max A_j index: 0
+2025-08-12 15:58:44,478 - INFO - final model: A values (first 5): [0.16652728617191315, 0.12708896398544312, 0.10656960308551788, 0.16252397000789642]
+2025-08-12 15:58:44,478 - INFO - final model: average A value: 0.14067745208740234
+2025-08-12 15:58:44,478 - INFO - final model: variance of A values: 0.0008311587735079229
+2025-08-12 15:58:44,478 - INFO - train loss is 11.422528266906738
+2025-08-12 15:58:44,479 - INFO - impulse response loss is 14.067158699035645
+2025-08-12 15:58:44,479 - INFO - Process 0: Completed experiment - teacher_rank=2, student_dim=4, seed=1
+2025-08-12 15:58:44,480 - INFO - Process 0 completed on GPU 0
+2025-08-12 15:58:44,523 - INFO - Process 1 completed
+2025-08-12 15:58:44,625 - INFO - Process 0 completed
+2025-08-12 15:58:46,044 - ERROR - Failed to save checkpoint: division by zero
+2025-08-12 15:58:46,044 - INFO - Final checkpoint saved
+2025-08-12 15:58:46,046 - INFO - Multi-GPU test completed successfully!

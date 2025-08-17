@@ -3,7 +3,7 @@ from typing import Optional, Tuple
 import torch
 import torch.nn as nn
 
-from ssm_forward import ssm_forward
+from losses import get_losses
 
 
 class DiagonalSSM(nn.Module):
@@ -14,10 +14,10 @@ class DiagonalSSM(nn.Module):
         self.output_dim = output_dim
 
         self.A_diag = nn.Parameter(init_scale * torch.randn(state_dim))
-        self.register_buffer("B", torch.ones(input_dim, state_dim))
-        self.register_buffer("C", torch.ones(state_dim, output_dim))
 
     def forward(self,
-                x: torch.Tensor
+                w: torch.Tensor,
+                alpha_teacher: float
                 ) -> Tuple[torch.Tensor]:
-        return ssm_forward(self.A_diag, self.B, self.C, x)
+        train_loss, gen_loss = get_losses(self.A_diag, w, alpha_teacher)
+        return train_loss, gen_loss

@@ -16,3 +16,4 @@ dependencies:
   - seaborn=0.13.2
   - pytorch=2.7.1
   - tqdm=4.66.5
+  - psutil=3.3.11
