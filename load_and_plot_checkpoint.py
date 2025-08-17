@@ -44,29 +44,22 @@ def main():
     print_checkpoint_summary(results)
     
     # Extract the data arrays needed for plotting
+    student_dims = results.get('student_dims')
+    sequence_length = results.get('sequence_length')
     gnc_gen_losses = results.get('gnc_gen_losses')
     gd_gen_losses = results.get('gd_gen_losses')
     gnc_mean_priors = results.get('gnc_mean_priors')
     gnc_theoretical_losses = results.get('gnc_theoretical_losses')
     gnc_theoretical_asymptotic_losses = results.get('gnc_theoretical_asymptotic_losses')
+    num_seeds = results.get('num_seeds')
+    figures_dir = results.get('figures_dir')
+    results_dir = results.get('results_dir')
     
     # Check if we have the required data and it's a numpy array
     if gnc_gen_losses is None or not isinstance(gnc_gen_losses, np.ndarray):
         print("Error: gnc_gen_losses not found or not a numpy array in checkpoint!")
         print(f"Type of gnc_gen_losses: {type(gnc_gen_losses)}")
         return
-    
-    # Determine student dimensions based on the data shape
-    num_student_dims = gnc_gen_losses.shape[0]
-    student_dims = list(range(100, 400, 10))  # Assuming dimensions start from 1
-    
-    # Determine sequence length from the filename or use a default
-    # You might want to extract this from the checkpoint filename or add it to the checkpoint data
-    sequence_length = 5  # Default value, adjust as needed
-    
-    # Create output directory for figures
-    figures_dir = Path("test_results/figures")
-    figures_dir.mkdir(exist_ok=True)
     
     # Generate plot filename based on checkpoint timestamp
 
@@ -88,7 +81,7 @@ def main():
             sequence_length=sequence_length,
             plot_filename=plot_filename,
             figures_dir=str(figures_dir),
-            gnc=True,
+            gnc=gnc_gen_losses is not None and isinstance(gnc_gen_losses, np.ndarray) and np.any(gnc_gen_losses != 0),
             gd=gd_gen_losses is not None and isinstance(gd_gen_losses, np.ndarray) and np.any(gd_gen_losses != 0)
         )
         
@@ -102,8 +95,6 @@ def main():
     
     # Save the results to a CSV file
     results_filename = f"checkpoint_results_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv"
-    results_dir = Path("test_results/results")
-    results_dir.mkdir(exist_ok=True)
     results_path = results_dir / results_filename
     save_results_to_csv(
         gnc_gen_losses,
@@ -111,11 +102,11 @@ def main():
         gnc_theoretical_losses,
         gnc_theoretical_asymptotic_losses,
         student_dims,
-        num_seeds=8,
+        num_seeds=num_seeds,
         results_filename=results_filename,
         results_dir=results_dir,
-        gd=False,
-        gnc=True,
+        gd=gd_gen_losses is not None and isinstance(gd_gen_losses, np.ndarray) and np.any(gd_gen_losses != 0),
+        gnc=gnc_gen_losses is not None and isinstance(gnc_gen_losses, np.ndarray) and np.any(gnc_gen_losses != 0)
     )
     print(f"Results saved to: {results_path}")
 
