@@ -1,0 +1,1355 @@
+2025-08-11 12:33:07,246 - INFO - Args: Namespace(num_seeds=8, num_measurements=1, input_e1=False, sequence_length=5, teacher_ranks=[1], student_dims=[400, 410, 420, 430, 440, 450, 460, 470, 480, 490, 500, 510, 520, 530, 540, 550, 560, 570, 580, 590], calc_loss_only_on_last_output=True, eps_train=1e-05, gnc=True, gnc_num_samples=1000, gnc_batch_size=1000, gd=False, gd_lr=0.001, gd_epochs=1000000, gd_init_scale=0.01, gd_optimizer='adam', config=None, results_dir=PosixPath('test_results/results'), figures_dir=PosixPath('test_results/figures'), checkpoint_interval=3600, resume_from_checkpoint=False, log_dir=PosixPath('test_results/logs'), log_file=PosixPath('test_results/logs/logs_20250811-123307.log'))
+2025-08-11 12:33:07,683 - INFO - Using GPUs: [0, 1, 2, 3]
+2025-08-11 12:33:07,783 - INFO - Running 160 total experiments on 4 processes
+2025-08-11 12:33:11,698 - INFO - Starting experiment: teacher_rank=1, student_dim=400, seed=0, GPU=0
+2025-08-11 12:33:12,414 - INFO - A_teacher[0] is 0.40753376483917236
+2025-08-11 12:33:12,445 - INFO - Starting experiment: teacher_rank=1, student_dim=400, seed=2, GPU=2
+2025-08-11 12:33:12,461 - INFO - Starting experiment: teacher_rank=1, student_dim=400, seed=1, GPU=1
+2025-08-11 12:33:12,472 - INFO - A_teacher[0] is 0.5022341012954712
+2025-08-11 12:33:12,482 - INFO - A_teacher[0] is 0.47037220001220703
+2025-08-11 12:33:12,621 - INFO - Starting experiment: teacher_rank=1, student_dim=400, seed=3, GPU=3
+2025-08-11 12:33:12,641 - INFO - A_teacher[0] is 0.5426344871520996
+2025-08-11 12:33:13,622 - INFO - No GNC sensing losses
+2025-08-11 12:33:13,622 - INFO - No GNC sensing losses
+2025-08-11 12:33:13,622 - INFO - No GNC sensing losses
+2025-08-11 12:33:13,634 - INFO - No GNC sensing losses
+2025-08-11 12:33:14,403 - INFO - delta_l_infinity: 1.1440778970718384 for w=tensor([[-1.4471],
+        [-0.6420],
+        [-0.6431],
+        [-0.6340]], device='cuda:1')
+2025-08-11 12:33:14,404 - INFO - Completed experiment: teacher_rank=1, student_dim=400, seed=1, GPU=1
+2025-08-11 12:33:14,405 - INFO - delta_l_infinity: -0.026935815811157227 for w=tensor([[-0.7350],
+        [ 0.9238],
+        [-0.5523],
+        [ 0.1808]], device='cuda:0')
+2025-08-11 12:33:14,405 - INFO - delta_l_infinity: 0.9723169803619385 for w=tensor([[ 0.5542],
+        [-0.5594],
+        [-0.2217],
+        [-0.5162]], device='cuda:3')
+2025-08-11 12:33:14,407 - INFO - Starting experiment: teacher_rank=1, student_dim=400, seed=4, GPU=0
+2025-08-11 12:33:14,407 - INFO - Completed experiment: teacher_rank=1, student_dim=400, seed=0, GPU=0
+2025-08-11 12:33:14,407 - INFO - Completed experiment: teacher_rank=1, student_dim=400, seed=3, GPU=3
+2025-08-11 12:33:14,412 - INFO - delta_l_infinity: -0.5173013210296631 for w=tensor([[-1.0484],
+        [-1.4438],
+        [ 1.3477],
+        [ 2.2669]], device='cuda:2')
+2025-08-11 12:33:14,451 - INFO - Completed experiment: teacher_rank=1, student_dim=400, seed=2, GPU=2
+2025-08-11 12:33:14,452 - INFO - A_teacher[0] is 0.30494755506515503
+2025-08-11 12:33:14,560 - INFO - No GNC sensing losses
+2025-08-11 12:33:14,594 - INFO - delta_l_infinity: -0.6091740131378174 for w=tensor([[ 1.0391],
+        [-1.4731],
+        [ 0.7819],
+        [-0.2938]], device='cuda:0')
+2025-08-11 12:33:14,596 - INFO - Completed experiment: teacher_rank=1, student_dim=400, seed=4, GPU=0
+2025-08-11 12:33:14,597 - INFO - Starting experiment: teacher_rank=1, student_dim=410, seed=0, GPU=0
+2025-08-11 12:33:14,598 - INFO - A_teacher[0] is 0.40753376483917236
+2025-08-11 12:33:14,606 - INFO - No GNC sensing losses
+2025-08-11 12:33:14,610 - INFO - delta_l_infinity: -0.026935815811157227 for w=tensor([[-0.7350],
+        [ 0.9238],
+        [-0.5523],
+        [ 0.1808]], device='cuda:0')
+2025-08-11 12:33:14,617 - INFO - Completed experiment: teacher_rank=1, student_dim=410, seed=0, GPU=0
+2025-08-11 12:33:14,619 - INFO - Starting experiment: teacher_rank=1, student_dim=410, seed=1, GPU=1
+2025-08-11 12:33:14,621 - INFO - A_teacher[0] is 0.47037220001220703
+2025-08-11 12:33:14,627 - INFO - No GNC sensing losses
+2025-08-11 12:33:14,633 - INFO - delta_l_infinity: 1.1440778970718384 for w=tensor([[-1.4471],
+        [-0.6420],
+        [-0.6431],
+        [-0.6340]], device='cuda:1')
+2025-08-11 12:33:14,635 - INFO - Completed experiment: teacher_rank=1, student_dim=410, seed=1, GPU=1
+2025-08-11 12:33:14,728 - INFO - Starting experiment: teacher_rank=1, student_dim=400, seed=6, GPU=2
+2025-08-11 12:33:14,733 - INFO - Starting experiment: teacher_rank=1, student_dim=400, seed=5, GPU=1
+2025-08-11 12:33:14,738 - INFO - A_teacher[0] is 0.5432507991790771
+2025-08-11 12:33:14,750 - INFO - A_teacher[0] is 0.5309687256813049
+2025-08-11 12:33:14,847 - INFO - No GNC sensing losses
+2025-08-11 12:33:14,849 - INFO - Starting experiment: teacher_rank=1, student_dim=400, seed=7, GPU=3
+2025-08-11 12:33:14,858 - INFO - No GNC sensing losses
+2025-08-11 12:33:14,864 - INFO - A_teacher[0] is 0.46951529383659363
+2025-08-11 12:33:14,871 - INFO - Starting experiment: teacher_rank=1, student_dim=410, seed=2, GPU=2
+2025-08-11 12:33:14,879 - INFO - A_teacher[0] is 0.5022341012954712
+2025-08-11 12:33:14,881 - INFO - delta_l_infinity: 1.0530073642730713 for w=tensor([[-0.7933],
+        [-0.3380],
+        [-0.1324],
+        [ 1.9899]], device='cuda:2')
+2025-08-11 12:33:14,883 - INFO - Completed experiment: teacher_rank=1, student_dim=400, seed=6, GPU=2
+2025-08-11 12:33:14,884 - INFO - Starting experiment: teacher_rank=1, student_dim=410, seed=3, GPU=3
+2025-08-11 12:33:14,885 - INFO - A_teacher[0] is 0.5426344871520996
+2025-08-11 12:33:14,888 - INFO - No GNC sensing losses
+2025-08-11 12:33:14,891 - INFO - delta_l_infinity: 0.9723169803619385 for w=tensor([[ 0.5542],
+        [-0.5594],
+        [-0.2217],
+        [-0.5162]], device='cuda:3')
+2025-08-11 12:33:14,892 - INFO - Completed experiment: teacher_rank=1, student_dim=410, seed=3, GPU=3
+2025-08-11 12:33:14,893 - INFO - Starting experiment: teacher_rank=1, student_dim=410, seed=4, GPU=0
+2025-08-11 12:33:14,896 - INFO - delta_l_infinity: 0.4341754913330078 for w=tensor([[-1.1513],
+        [ 1.4826],
+        [-0.6117],
+        [ 1.2089]], device='cuda:1')
+2025-08-11 12:33:14,898 - INFO - Completed experiment: teacher_rank=1, student_dim=400, seed=5, GPU=1
+2025-08-11 12:33:14,899 - INFO - Starting experiment: teacher_rank=1, student_dim=410, seed=5, GPU=1
+2025-08-11 12:33:14,899 - INFO - A_teacher[0] is 0.30494755506515503
+2025-08-11 12:33:14,900 - INFO - A_teacher[0] is 0.5309687256813049
+2025-08-11 12:33:14,903 - INFO - No GNC sensing losses
+2025-08-11 12:33:14,906 - INFO - delta_l_infinity: 0.4341754913330078 for w=tensor([[-1.1513],
+        [ 1.4826],
+        [-0.6117],
+        [ 1.2089]], device='cuda:1')
+2025-08-11 12:33:14,906 - INFO - Completed experiment: teacher_rank=1, student_dim=410, seed=5, GPU=1
+2025-08-11 12:33:14,968 - INFO - No GNC sensing losses
+2025-08-11 12:33:14,999 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,004 - INFO - delta_l_infinity: -0.5173013210296631 for w=tensor([[-1.0484],
+        [-1.4438],
+        [ 1.3477],
+        [ 2.2669]], device='cuda:2')
+2025-08-11 12:33:15,005 - INFO - Completed experiment: teacher_rank=1, student_dim=410, seed=2, GPU=2
+2025-08-11 12:33:15,014 - INFO - delta_l_infinity: -1.1510425806045532 for w=tensor([[ 0.2573],
+        [ 0.3756],
+        [-0.3958],
+        [-1.2870]], device='cuda:3')
+2025-08-11 12:33:15,034 - INFO - delta_l_infinity: -0.6091740131378174 for w=tensor([[ 1.0391],
+        [-1.4731],
+        [ 0.7819],
+        [-0.2938]], device='cuda:0')
+2025-08-11 12:33:15,045 - INFO - Completed experiment: teacher_rank=1, student_dim=400, seed=7, GPU=3
+2025-08-11 12:33:15,046 - INFO - Completed experiment: teacher_rank=1, student_dim=410, seed=4, GPU=0
+2025-08-11 12:33:15,048 - INFO - Starting experiment: teacher_rank=1, student_dim=420, seed=0, GPU=0
+2025-08-11 12:33:15,090 - INFO - A_teacher[0] is 0.40753376483917236
+2025-08-11 12:33:15,119 - INFO - Starting experiment: teacher_rank=1, student_dim=410, seed=6, GPU=2
+2025-08-11 12:33:15,131 - INFO - A_teacher[0] is 0.5432507991790771
+2025-08-11 12:33:15,156 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,194 - INFO - delta_l_infinity: -0.026935815811157227 for w=tensor([[-0.7350],
+        [ 0.9238],
+        [-0.5523],
+        [ 0.1808]], device='cuda:0')
+2025-08-11 12:33:15,195 - INFO - Completed experiment: teacher_rank=1, student_dim=420, seed=0, GPU=0
+2025-08-11 12:33:15,197 - INFO - Starting experiment: teacher_rank=1, student_dim=420, seed=2, GPU=2
+2025-08-11 12:33:15,198 - INFO - A_teacher[0] is 0.5022341012954712
+2025-08-11 12:33:15,202 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,209 - INFO - delta_l_infinity: -0.5173013210296631 for w=tensor([[-1.0484],
+        [-1.4438],
+        [ 1.3477],
+        [ 2.2669]], device='cuda:2')
+2025-08-11 12:33:15,210 - INFO - Completed experiment: teacher_rank=1, student_dim=420, seed=2, GPU=2
+2025-08-11 12:33:15,211 - INFO - Starting experiment: teacher_rank=1, student_dim=420, seed=3, GPU=3
+2025-08-11 12:33:15,213 - INFO - A_teacher[0] is 0.5426344871520996
+2025-08-11 12:33:15,216 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,219 - INFO - delta_l_infinity: 0.9723169803619385 for w=tensor([[ 0.5542],
+        [-0.5594],
+        [-0.2217],
+        [-0.5162]], device='cuda:3')
+2025-08-11 12:33:15,221 - INFO - Completed experiment: teacher_rank=1, student_dim=420, seed=3, GPU=3
+2025-08-11 12:33:15,222 - INFO - Starting experiment: teacher_rank=1, student_dim=420, seed=4, GPU=0
+2025-08-11 12:33:15,224 - INFO - A_teacher[0] is 0.30494755506515503
+2025-08-11 12:33:15,227 - INFO - delta_l_infinity: 1.0530073642730713 for w=tensor([[-0.7933],
+        [-0.3380],
+        [-0.1324],
+        [ 1.9899]], device='cuda:2')
+2025-08-11 12:33:15,227 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,228 - INFO - Completed experiment: teacher_rank=1, student_dim=410, seed=6, GPU=2
+2025-08-11 12:33:15,229 - INFO - Starting experiment: teacher_rank=1, student_dim=420, seed=5, GPU=1
+2025-08-11 12:33:15,230 - INFO - A_teacher[0] is 0.5309687256813049
+2025-08-11 12:33:15,232 - INFO - delta_l_infinity: -0.6091740131378174 for w=tensor([[ 1.0391],
+        [-1.4731],
+        [ 0.7819],
+        [-0.2938]], device='cuda:0')
+2025-08-11 12:33:15,233 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,233 - INFO - Completed experiment: teacher_rank=1, student_dim=420, seed=4, GPU=0
+2025-08-11 12:33:15,235 - INFO - Starting experiment: teacher_rank=1, student_dim=420, seed=6, GPU=2
+2025-08-11 12:33:15,236 - INFO - delta_l_infinity: 0.4341754913330078 for w=tensor([[-1.1513],
+        [ 1.4826],
+        [-0.6117],
+        [ 1.2089]], device='cuda:1')
+2025-08-11 12:33:15,236 - INFO - A_teacher[0] is 0.5432507991790771
+2025-08-11 12:33:15,237 - INFO - Completed experiment: teacher_rank=1, student_dim=420, seed=5, GPU=1
+2025-08-11 12:33:15,240 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,244 - INFO - delta_l_infinity: 1.0530073642730713 for w=tensor([[-0.7933],
+        [-0.3380],
+        [-0.1324],
+        [ 1.9899]], device='cuda:2')
+2025-08-11 12:33:15,247 - INFO - Starting experiment: teacher_rank=1, student_dim=410, seed=7, GPU=3
+2025-08-11 12:33:15,251 - INFO - Starting experiment: teacher_rank=1, student_dim=420, seed=1, GPU=1
+2025-08-11 12:33:15,276 - INFO - Completed experiment: teacher_rank=1, student_dim=420, seed=6, GPU=2
+2025-08-11 12:33:15,278 - INFO - Starting experiment: teacher_rank=1, student_dim=430, seed=0, GPU=0
+2025-08-11 12:33:15,282 - INFO - A_teacher[0] is 0.40753376483917236
+2025-08-11 12:33:15,284 - INFO - A_teacher[0] is 0.47037220001220703
+2025-08-11 12:33:15,288 - INFO - A_teacher[0] is 0.46951529383659363
+2025-08-11 12:33:15,294 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,302 - INFO - delta_l_infinity: -0.026935815811157227 for w=tensor([[-0.7350],
+        [ 0.9238],
+        [-0.5523],
+        [ 0.1808]], device='cuda:0')
+2025-08-11 12:33:15,304 - INFO - Completed experiment: teacher_rank=1, student_dim=430, seed=0, GPU=0
+2025-08-11 12:33:15,374 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,374 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,408 - INFO - delta_l_infinity: 1.1440778970718384 for w=tensor([[-1.4471],
+        [-0.6420],
+        [-0.6431],
+        [-0.6340]], device='cuda:1')
+2025-08-11 12:33:15,409 - INFO - delta_l_infinity: -1.1510425806045532 for w=tensor([[ 0.2573],
+        [ 0.3756],
+        [-0.3958],
+        [-1.2870]], device='cuda:3')
+2025-08-11 12:33:15,409 - INFO - Completed experiment: teacher_rank=1, student_dim=420, seed=1, GPU=1
+2025-08-11 12:33:15,410 - INFO - Completed experiment: teacher_rank=1, student_dim=410, seed=7, GPU=3
+2025-08-11 12:33:15,411 - INFO - Starting experiment: teacher_rank=1, student_dim=430, seed=2, GPU=2
+2025-08-11 12:33:15,412 - INFO - Starting experiment: teacher_rank=1, student_dim=430, seed=3, GPU=3
+2025-08-11 12:33:15,412 - INFO - A_teacher[0] is 0.5022341012954712
+2025-08-11 12:33:15,413 - INFO - A_teacher[0] is 0.5426344871520996
+2025-08-11 12:33:15,415 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,416 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,419 - INFO - delta_l_infinity: -0.5173013210296631 for w=tensor([[-1.0484],
+        [-1.4438],
+        [ 1.3477],
+        [ 2.2669]], device='cuda:2')
+2025-08-11 12:33:15,419 - INFO - delta_l_infinity: 0.9723169803619385 for w=tensor([[ 0.5542],
+        [-0.5594],
+        [-0.2217],
+        [-0.5162]], device='cuda:3')
+2025-08-11 12:33:15,420 - INFO - Completed experiment: teacher_rank=1, student_dim=430, seed=2, GPU=2
+2025-08-11 12:33:15,420 - INFO - Completed experiment: teacher_rank=1, student_dim=430, seed=3, GPU=3
+2025-08-11 12:33:15,422 - INFO - Starting experiment: teacher_rank=1, student_dim=430, seed=5, GPU=1
+2025-08-11 12:33:15,423 - INFO - Starting experiment: teacher_rank=1, student_dim=430, seed=4, GPU=0
+2025-08-11 12:33:15,426 - INFO - A_teacher[0] is 0.5309687256813049
+2025-08-11 12:33:15,426 - INFO - A_teacher[0] is 0.30494755506515503
+2025-08-11 12:33:15,431 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,431 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,434 - INFO - delta_l_infinity: -0.6091740131378174 for w=tensor([[ 1.0391],
+        [-1.4731],
+        [ 0.7819],
+        [-0.2938]], device='cuda:0')
+2025-08-11 12:33:15,436 - INFO - delta_l_infinity: 0.4341754913330078 for w=tensor([[-1.1513],
+        [ 1.4826],
+        [-0.6117],
+        [ 1.2089]], device='cuda:1')
+2025-08-11 12:33:15,437 - INFO - Completed experiment: teacher_rank=1, student_dim=430, seed=5, GPU=1
+2025-08-11 12:33:15,438 - INFO - Completed experiment: teacher_rank=1, student_dim=430, seed=4, GPU=0
+2025-08-11 12:33:15,439 - INFO - Starting experiment: teacher_rank=1, student_dim=430, seed=6, GPU=2
+2025-08-11 12:33:15,440 - INFO - Starting experiment: teacher_rank=1, student_dim=430, seed=7, GPU=3
+2025-08-11 12:33:15,440 - INFO - A_teacher[0] is 0.5432507991790771
+2025-08-11 12:33:15,441 - INFO - A_teacher[0] is 0.46951529383659363
+2025-08-11 12:33:15,443 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,446 - INFO - delta_l_infinity: 1.0530073642730713 for w=tensor([[-0.7933],
+        [-0.3380],
+        [-0.1324],
+        [ 1.9899]], device='cuda:2')
+2025-08-11 12:33:15,447 - INFO - delta_l_infinity: -1.1510425806045532 for w=tensor([[ 0.2573],
+        [ 0.3756],
+        [-0.3958],
+        [-1.2870]], device='cuda:3')
+2025-08-11 12:33:15,448 - INFO - Completed experiment: teacher_rank=1, student_dim=430, seed=6, GPU=2
+2025-08-11 12:33:15,448 - INFO - Completed experiment: teacher_rank=1, student_dim=430, seed=7, GPU=3
+2025-08-11 12:33:15,449 - INFO - Starting experiment: teacher_rank=1, student_dim=440, seed=0, GPU=0
+2025-08-11 12:33:15,450 - INFO - Starting experiment: teacher_rank=1, student_dim=440, seed=1, GPU=1
+2025-08-11 12:33:15,451 - INFO - A_teacher[0] is 0.40753376483917236
+2025-08-11 12:33:15,452 - INFO - A_teacher[0] is 0.47037220001220703
+2025-08-11 12:33:15,454 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,455 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,457 - INFO - delta_l_infinity: -0.026935815811157227 for w=tensor([[-0.7350],
+        [ 0.9238],
+        [-0.5523],
+        [ 0.1808]], device='cuda:0')
+2025-08-11 12:33:15,457 - INFO - Completed experiment: teacher_rank=1, student_dim=440, seed=0, GPU=0
+2025-08-11 12:33:15,458 - INFO - delta_l_infinity: 1.1440778970718384 for w=tensor([[-1.4471],
+        [-0.6420],
+        [-0.6431],
+        [-0.6340]], device='cuda:1')
+2025-08-11 12:33:15,458 - INFO - Completed experiment: teacher_rank=1, student_dim=440, seed=1, GPU=1
+2025-08-11 12:33:15,459 - INFO - Starting experiment: teacher_rank=1, student_dim=440, seed=2, GPU=2
+2025-08-11 12:33:15,460 - INFO - A_teacher[0] is 0.5022341012954712
+2025-08-11 12:33:15,460 - INFO - Starting experiment: teacher_rank=1, student_dim=440, seed=3, GPU=3
+2025-08-11 12:33:15,461 - INFO - A_teacher[0] is 0.5426344871520996
+2025-08-11 12:33:15,463 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,464 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,466 - INFO - delta_l_infinity: -0.5173013210296631 for w=tensor([[-1.0484],
+        [-1.4438],
+        [ 1.3477],
+        [ 2.2669]], device='cuda:2')
+2025-08-11 12:33:15,467 - INFO - delta_l_infinity: 0.9723169803619385 for w=tensor([[ 0.5542],
+        [-0.5594],
+        [-0.2217],
+        [-0.5162]], device='cuda:3')
+2025-08-11 12:33:15,467 - INFO - Completed experiment: teacher_rank=1, student_dim=440, seed=2, GPU=2
+2025-08-11 12:33:15,468 - INFO - Completed experiment: teacher_rank=1, student_dim=440, seed=3, GPU=3
+2025-08-11 12:33:15,469 - INFO - Starting experiment: teacher_rank=1, student_dim=440, seed=4, GPU=0
+2025-08-11 12:33:15,470 - INFO - A_teacher[0] is 0.30494755506515503
+2025-08-11 12:33:15,470 - INFO - Starting experiment: teacher_rank=1, student_dim=440, seed=5, GPU=1
+2025-08-11 12:33:15,471 - INFO - A_teacher[0] is 0.5309687256813049
+2025-08-11 12:33:15,471 - INFO - Starting experiment: teacher_rank=1, student_dim=420, seed=7, GPU=3
+2025-08-11 12:33:15,472 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,474 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,475 - INFO - delta_l_infinity: -0.6091740131378174 for w=tensor([[ 1.0391],
+        [-1.4731],
+        [ 0.7819],
+        [-0.2938]], device='cuda:0')
+2025-08-11 12:33:15,476 - INFO - Completed experiment: teacher_rank=1, student_dim=440, seed=4, GPU=0
+2025-08-11 12:33:15,478 - INFO - Starting experiment: teacher_rank=1, student_dim=440, seed=6, GPU=2
+2025-08-11 12:33:15,478 - INFO - delta_l_infinity: 0.4341754913330078 for w=tensor([[-1.1513],
+        [ 1.4826],
+        [-0.6117],
+        [ 1.2089]], device='cuda:1')
+2025-08-11 12:33:15,479 - INFO - A_teacher[0] is 0.5432507991790771
+2025-08-11 12:33:15,479 - INFO - Completed experiment: teacher_rank=1, student_dim=440, seed=5, GPU=1
+2025-08-11 12:33:15,479 - INFO - A_teacher[0] is 0.46951529383659363
+2025-08-11 12:33:15,481 - INFO - Starting experiment: teacher_rank=1, student_dim=440, seed=7, GPU=3
+2025-08-11 12:33:15,482 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,482 - INFO - A_teacher[0] is 0.46951529383659363
+2025-08-11 12:33:15,484 - INFO - delta_l_infinity: 1.0530073642730713 for w=tensor([[-0.7933],
+        [-0.3380],
+        [-0.1324],
+        [ 1.9899]], device='cuda:2')
+2025-08-11 12:33:15,485 - INFO - Completed experiment: teacher_rank=1, student_dim=440, seed=6, GPU=2
+2025-08-11 12:33:15,487 - INFO - Starting experiment: teacher_rank=1, student_dim=450, seed=0, GPU=0
+2025-08-11 12:33:15,488 - INFO - A_teacher[0] is 0.40753376483917236
+2025-08-11 12:33:15,488 - INFO - delta_l_infinity: -1.1510425806045532 for w=tensor([[ 0.2573],
+        [ 0.3756],
+        [-0.3958],
+        [-1.2870]], device='cuda:3')
+2025-08-11 12:33:15,490 - INFO - Completed experiment: teacher_rank=1, student_dim=440, seed=7, GPU=3
+2025-08-11 12:33:15,491 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,491 - INFO - Starting experiment: teacher_rank=1, student_dim=450, seed=1, GPU=1
+2025-08-11 12:33:15,492 - INFO - A_teacher[0] is 0.47037220001220703
+2025-08-11 12:33:15,493 - INFO - delta_l_infinity: -0.026935815811157227 for w=tensor([[-0.7350],
+        [ 0.9238],
+        [-0.5523],
+        [ 0.1808]], device='cuda:0')
+2025-08-11 12:33:15,494 - INFO - Completed experiment: teacher_rank=1, student_dim=450, seed=0, GPU=0
+2025-08-11 12:33:15,495 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,496 - INFO - Starting experiment: teacher_rank=1, student_dim=450, seed=2, GPU=2
+2025-08-11 12:33:15,497 - INFO - A_teacher[0] is 0.5022341012954712
+2025-08-11 12:33:15,498 - INFO - delta_l_infinity: 1.1440778970718384 for w=tensor([[-1.4471],
+        [-0.6420],
+        [-0.6431],
+        [-0.6340]], device='cuda:1')
+2025-08-11 12:33:15,499 - INFO - Completed experiment: teacher_rank=1, student_dim=450, seed=1, GPU=1
+2025-08-11 12:33:15,499 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,501 - INFO - Starting experiment: teacher_rank=1, student_dim=450, seed=3, GPU=3
+2025-08-11 12:33:15,501 - INFO - A_teacher[0] is 0.5426344871520996
+2025-08-11 12:33:15,502 - INFO - delta_l_infinity: -0.5173013210296631 for w=tensor([[-1.0484],
+        [-1.4438],
+        [ 1.3477],
+        [ 2.2669]], device='cuda:2')
+2025-08-11 12:33:15,503 - INFO - Completed experiment: teacher_rank=1, student_dim=450, seed=2, GPU=2
+2025-08-11 12:33:15,504 - INFO - Starting experiment: teacher_rank=1, student_dim=450, seed=4, GPU=0
+2025-08-11 12:33:15,505 - INFO - A_teacher[0] is 0.30494755506515503
+2025-08-11 12:33:15,507 - INFO - delta_l_infinity: 0.9723169803619385 for w=tensor([[ 0.5542],
+        [-0.5594],
+        [-0.2217],
+        [-0.5162]], device='cuda:3')
+2025-08-11 12:33:15,508 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,508 - INFO - Completed experiment: teacher_rank=1, student_dim=450, seed=3, GPU=3
+2025-08-11 12:33:15,510 - INFO - Starting experiment: teacher_rank=1, student_dim=450, seed=5, GPU=1
+2025-08-11 12:33:15,510 - INFO - delta_l_infinity: -0.6091740131378174 for w=tensor([[ 1.0391],
+        [-1.4731],
+        [ 0.7819],
+        [-0.2938]], device='cuda:0')
+2025-08-11 12:33:15,510 - INFO - A_teacher[0] is 0.5309687256813049
+2025-08-11 12:33:15,511 - INFO - Starting experiment: teacher_rank=1, student_dim=430, seed=1, GPU=1
+2025-08-11 12:33:15,511 - INFO - Completed experiment: teacher_rank=1, student_dim=450, seed=4, GPU=0
+2025-08-11 12:33:15,513 - INFO - Starting experiment: teacher_rank=1, student_dim=450, seed=6, GPU=2
+2025-08-11 12:33:15,513 - INFO - A_teacher[0] is 0.5432507991790771
+2025-08-11 12:33:15,514 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,517 - INFO - delta_l_infinity: 0.4341754913330078 for w=tensor([[-1.1513],
+        [ 1.4826],
+        [-0.6117],
+        [ 1.2089]], device='cuda:1')
+2025-08-11 12:33:15,518 - INFO - Completed experiment: teacher_rank=1, student_dim=450, seed=5, GPU=1
+2025-08-11 12:33:15,519 - INFO - delta_l_infinity: 1.0530073642730713 for w=tensor([[-0.7933],
+        [-0.3380],
+        [-0.1324],
+        [ 1.9899]], device='cuda:2')
+2025-08-11 12:33:15,519 - INFO - A_teacher[0] is 0.47037220001220703
+2025-08-11 12:33:15,519 - INFO - Completed experiment: teacher_rank=1, student_dim=450, seed=6, GPU=2
+2025-08-11 12:33:15,520 - INFO - Starting experiment: teacher_rank=1, student_dim=450, seed=7, GPU=3
+2025-08-11 12:33:15,521 - INFO - Starting experiment: teacher_rank=1, student_dim=460, seed=0, GPU=0
+2025-08-11 12:33:15,521 - INFO - A_teacher[0] is 0.46951529383659363
+2025-08-11 12:33:15,522 - INFO - A_teacher[0] is 0.40753376483917236
+2025-08-11 12:33:15,524 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,527 - INFO - delta_l_infinity: -0.026935815811157227 for w=tensor([[-0.7350],
+        [ 0.9238],
+        [-0.5523],
+        [ 0.1808]], device='cuda:0')
+2025-08-11 12:33:15,528 - INFO - Completed experiment: teacher_rank=1, student_dim=460, seed=0, GPU=0
+2025-08-11 12:33:15,528 - INFO - delta_l_infinity: -1.1510425806045532 for w=tensor([[ 0.2573],
+        [ 0.3756],
+        [-0.3958],
+        [-1.2870]], device='cuda:3')
+2025-08-11 12:33:15,529 - INFO - Starting experiment: teacher_rank=1, student_dim=460, seed=1, GPU=1
+2025-08-11 12:33:15,529 - INFO - Completed experiment: teacher_rank=1, student_dim=450, seed=7, GPU=3
+2025-08-11 12:33:15,530 - INFO - A_teacher[0] is 0.47037220001220703
+2025-08-11 12:33:15,531 - INFO - Starting experiment: teacher_rank=1, student_dim=460, seed=2, GPU=2
+2025-08-11 12:33:15,532 - INFO - A_teacher[0] is 0.5022341012954712
+2025-08-11 12:33:15,533 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,535 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,535 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,536 - INFO - delta_l_infinity: 1.1440778970718384 for w=tensor([[-1.4471],
+        [-0.6420],
+        [-0.6431],
+        [-0.6340]], device='cuda:1')
+2025-08-11 12:33:15,537 - INFO - Completed experiment: teacher_rank=1, student_dim=460, seed=1, GPU=1
+2025-08-11 12:33:15,538 - INFO - delta_l_infinity: -0.5173013210296631 for w=tensor([[-1.0484],
+        [-1.4438],
+        [ 1.3477],
+        [ 2.2669]], device='cuda:2')
+2025-08-11 12:33:15,539 - INFO - Starting experiment: teacher_rank=1, student_dim=460, seed=3, GPU=3
+2025-08-11 12:33:15,539 - INFO - Completed experiment: teacher_rank=1, student_dim=460, seed=2, GPU=2
+2025-08-11 12:33:15,540 - INFO - A_teacher[0] is 0.5426344871520996
+2025-08-11 12:33:15,541 - INFO - Starting experiment: teacher_rank=1, student_dim=460, seed=4, GPU=0
+2025-08-11 12:33:15,542 - INFO - A_teacher[0] is 0.30494755506515503
+2025-08-11 12:33:15,544 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,544 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,547 - INFO - delta_l_infinity: -0.6091740131378174 for w=tensor([[ 1.0391],
+        [-1.4731],
+        [ 0.7819],
+        [-0.2938]], device='cuda:0')
+2025-08-11 12:33:15,547 - INFO - delta_l_infinity: 0.9723169803619385 for w=tensor([[ 0.5542],
+        [-0.5594],
+        [-0.2217],
+        [-0.5162]], device='cuda:3')
+2025-08-11 12:33:15,548 - INFO - Completed experiment: teacher_rank=1, student_dim=460, seed=4, GPU=0
+2025-08-11 12:33:15,548 - INFO - Completed experiment: teacher_rank=1, student_dim=460, seed=3, GPU=3
+2025-08-11 12:33:15,549 - INFO - Starting experiment: teacher_rank=1, student_dim=460, seed=5, GPU=1
+2025-08-11 12:33:15,550 - INFO - A_teacher[0] is 0.5309687256813049
+2025-08-11 12:33:15,551 - INFO - Starting experiment: teacher_rank=1, student_dim=460, seed=6, GPU=2
+2025-08-11 12:33:15,552 - INFO - A_teacher[0] is 0.5432507991790771
+2025-08-11 12:33:15,554 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,557 - INFO - delta_l_infinity: 1.0530073642730713 for w=tensor([[-0.7933],
+        [-0.3380],
+        [-0.1324],
+        [ 1.9899]], device='cuda:2')
+2025-08-11 12:33:15,558 - INFO - Completed experiment: teacher_rank=1, student_dim=460, seed=6, GPU=2
+2025-08-11 12:33:15,558 - INFO - delta_l_infinity: 0.4341754913330078 for w=tensor([[-1.1513],
+        [ 1.4826],
+        [-0.6117],
+        [ 1.2089]], device='cuda:1')
+2025-08-11 12:33:15,559 - INFO - Starting experiment: teacher_rank=1, student_dim=460, seed=7, GPU=3
+2025-08-11 12:33:15,559 - INFO - Completed experiment: teacher_rank=1, student_dim=460, seed=5, GPU=1
+2025-08-11 12:33:15,560 - INFO - A_teacher[0] is 0.46951529383659363
+2025-08-11 12:33:15,561 - INFO - Starting experiment: teacher_rank=1, student_dim=470, seed=0, GPU=0
+2025-08-11 12:33:15,562 - INFO - A_teacher[0] is 0.40753376483917236
+2025-08-11 12:33:15,563 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,566 - INFO - delta_l_infinity: -0.026935815811157227 for w=tensor([[-0.7350],
+        [ 0.9238],
+        [-0.5523],
+        [ 0.1808]], device='cuda:0')
+2025-08-11 12:33:15,567 - INFO - delta_l_infinity: -1.1510425806045532 for w=tensor([[ 0.2573],
+        [ 0.3756],
+        [-0.3958],
+        [-1.2870]], device='cuda:3')
+2025-08-11 12:33:15,567 - INFO - Completed experiment: teacher_rank=1, student_dim=470, seed=0, GPU=0
+2025-08-11 12:33:15,568 - INFO - Completed experiment: teacher_rank=1, student_dim=460, seed=7, GPU=3
+2025-08-11 12:33:15,569 - INFO - Starting experiment: teacher_rank=1, student_dim=470, seed=1, GPU=1
+2025-08-11 12:33:15,570 - INFO - A_teacher[0] is 0.47037220001220703
+2025-08-11 12:33:15,570 - INFO - Starting experiment: teacher_rank=1, student_dim=470, seed=2, GPU=2
+2025-08-11 12:33:15,571 - INFO - A_teacher[0] is 0.5022341012954712
+2025-08-11 12:33:15,573 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,573 - INFO - delta_l_infinity: -1.1510425806045532 for w=tensor([[ 0.2573],
+        [ 0.3756],
+        [-0.3958],
+        [-1.2870]], device='cuda:3')
+2025-08-11 12:33:15,574 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,574 - INFO - Completed experiment: teacher_rank=1, student_dim=420, seed=7, GPU=3
+2025-08-11 12:33:15,576 - INFO - Starting experiment: teacher_rank=1, student_dim=470, seed=3, GPU=3
+2025-08-11 12:33:15,576 - INFO - A_teacher[0] is 0.5426344871520996
+2025-08-11 12:33:15,576 - INFO - delta_l_infinity: 1.1440778970718384 for w=tensor([[-1.4471],
+        [-0.6420],
+        [-0.6431],
+        [-0.6340]], device='cuda:1')
+2025-08-11 12:33:15,577 - INFO - delta_l_infinity: -0.5173013210296631 for w=tensor([[-1.0484],
+        [-1.4438],
+        [ 1.3477],
+        [ 2.2669]], device='cuda:2')
+2025-08-11 12:33:15,577 - INFO - Completed experiment: teacher_rank=1, student_dim=470, seed=1, GPU=1
+2025-08-11 12:33:15,578 - INFO - Completed experiment: teacher_rank=1, student_dim=470, seed=2, GPU=2
+2025-08-11 12:33:15,578 - INFO - Starting experiment: teacher_rank=1, student_dim=470, seed=4, GPU=0
+2025-08-11 12:33:15,578 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,579 - INFO - Starting experiment: teacher_rank=1, student_dim=470, seed=5, GPU=1
+2025-08-11 12:33:15,579 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,579 - INFO - A_teacher[0] is 0.30494755506515503
+2025-08-11 12:33:15,580 - INFO - A_teacher[0] is 0.5309687256813049
+2025-08-11 12:33:15,582 - INFO - delta_l_infinity: 0.9723169803619385 for w=tensor([[ 0.5542],
+        [-0.5594],
+        [-0.2217],
+        [-0.5162]], device='cuda:3')
+2025-08-11 12:33:15,582 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,583 - INFO - Completed experiment: teacher_rank=1, student_dim=470, seed=3, GPU=3
+2025-08-11 12:33:15,583 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,584 - INFO - Starting experiment: teacher_rank=1, student_dim=470, seed=6, GPU=2
+2025-08-11 12:33:15,585 - INFO - A_teacher[0] is 0.5432507991790771
+2025-08-11 12:33:15,585 - INFO - delta_l_infinity: -0.6091740131378174 for w=tensor([[ 1.0391],
+        [-1.4731],
+        [ 0.7819],
+        [-0.2938]], device='cuda:0')
+2025-08-11 12:33:15,586 - INFO - Completed experiment: teacher_rank=1, student_dim=470, seed=4, GPU=0
+2025-08-11 12:33:15,587 - INFO - Starting experiment: teacher_rank=1, student_dim=470, seed=7, GPU=3
+2025-08-11 12:33:15,588 - INFO - A_teacher[0] is 0.46951529383659363
+2025-08-11 12:33:15,590 - INFO - delta_l_infinity: 1.0530073642730713 for w=tensor([[-0.7933],
+        [-0.3380],
+        [-0.1324],
+        [ 1.9899]], device='cuda:2')
+2025-08-11 12:33:15,590 - INFO - delta_l_infinity: 0.4341754913330078 for w=tensor([[-1.1513],
+        [ 1.4826],
+        [-0.6117],
+        [ 1.2089]], device='cuda:1')
+2025-08-11 12:33:15,591 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,591 - INFO - Completed experiment: teacher_rank=1, student_dim=470, seed=6, GPU=2
+2025-08-11 12:33:15,592 - INFO - Completed experiment: teacher_rank=1, student_dim=470, seed=5, GPU=1
+2025-08-11 12:33:15,593 - INFO - Starting experiment: teacher_rank=1, student_dim=480, seed=0, GPU=0
+2025-08-11 12:33:15,593 - INFO - Starting experiment: teacher_rank=1, student_dim=480, seed=1, GPU=1
+2025-08-11 12:33:15,594 - INFO - A_teacher[0] is 0.40753376483917236
+2025-08-11 12:33:15,594 - INFO - delta_l_infinity: -1.1510425806045532 for w=tensor([[ 0.2573],
+        [ 0.3756],
+        [-0.3958],
+        [-1.2870]], device='cuda:3')
+2025-08-11 12:33:15,594 - INFO - A_teacher[0] is 0.47037220001220703
+2025-08-11 12:33:15,595 - INFO - Completed experiment: teacher_rank=1, student_dim=470, seed=7, GPU=3
+2025-08-11 12:33:15,596 - INFO - Starting experiment: teacher_rank=1, student_dim=480, seed=2, GPU=2
+2025-08-11 12:33:15,597 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,597 - INFO - A_teacher[0] is 0.5022341012954712
+2025-08-11 12:33:15,597 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,600 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,600 - INFO - delta_l_infinity: -0.026935815811157227 for w=tensor([[-0.7350],
+        [ 0.9238],
+        [-0.5523],
+        [ 0.1808]], device='cuda:0')
+2025-08-11 12:33:15,601 - INFO - Completed experiment: teacher_rank=1, student_dim=480, seed=0, GPU=0
+2025-08-11 12:33:15,602 - INFO - delta_l_infinity: -0.5173013210296631 for w=tensor([[-1.0484],
+        [-1.4438],
+        [ 1.3477],
+        [ 2.2669]], device='cuda:2')
+2025-08-11 12:33:15,602 - INFO - Starting experiment: teacher_rank=1, student_dim=480, seed=3, GPU=3
+2025-08-11 12:33:15,603 - INFO - Completed experiment: teacher_rank=1, student_dim=480, seed=2, GPU=2
+2025-08-11 12:33:15,603 - INFO - A_teacher[0] is 0.5426344871520996
+2025-08-11 12:33:15,604 - INFO - delta_l_infinity: 1.1440778970718384 for w=tensor([[-1.4471],
+        [-0.6420],
+        [-0.6431],
+        [-0.6340]], device='cuda:1')
+2025-08-11 12:33:15,605 - INFO - Starting experiment: teacher_rank=1, student_dim=480, seed=4, GPU=0
+2025-08-11 12:33:15,605 - INFO - Completed experiment: teacher_rank=1, student_dim=480, seed=1, GPU=1
+2025-08-11 12:33:15,606 - INFO - A_teacher[0] is 0.30494755506515503
+2025-08-11 12:33:15,606 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,607 - INFO - Starting experiment: teacher_rank=1, student_dim=480, seed=5, GPU=1
+2025-08-11 12:33:15,608 - INFO - A_teacher[0] is 0.5309687256813049
+2025-08-11 12:33:15,608 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,609 - INFO - delta_l_infinity: 0.9723169803619385 for w=tensor([[ 0.5542],
+        [-0.5594],
+        [-0.2217],
+        [-0.5162]], device='cuda:3')
+2025-08-11 12:33:15,610 - INFO - Completed experiment: teacher_rank=1, student_dim=480, seed=3, GPU=3
+2025-08-11 12:33:15,610 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,611 - INFO - delta_l_infinity: -0.6091740131378174 for w=tensor([[ 1.0391],
+        [-1.4731],
+        [ 0.7819],
+        [-0.2938]], device='cuda:0')
+2025-08-11 12:33:15,611 - INFO - Starting experiment: teacher_rank=1, student_dim=480, seed=6, GPU=2
+2025-08-11 12:33:15,612 - INFO - Completed experiment: teacher_rank=1, student_dim=480, seed=4, GPU=0
+2025-08-11 12:33:15,612 - INFO - A_teacher[0] is 0.5432507991790771
+2025-08-11 12:33:15,613 - INFO - Starting experiment: teacher_rank=1, student_dim=480, seed=7, GPU=3
+2025-08-11 12:33:15,614 - INFO - delta_l_infinity: 0.4341754913330078 for w=tensor([[-1.1513],
+        [ 1.4826],
+        [-0.6117],
+        [ 1.2089]], device='cuda:1')
+2025-08-11 12:33:15,614 - INFO - A_teacher[0] is 0.46951529383659363
+2025-08-11 12:33:15,615 - INFO - Completed experiment: teacher_rank=1, student_dim=480, seed=5, GPU=1
+2025-08-11 12:33:15,615 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,616 - INFO - Starting experiment: teacher_rank=1, student_dim=490, seed=0, GPU=0
+2025-08-11 12:33:15,617 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,617 - INFO - A_teacher[0] is 0.40753376483917236
+2025-08-11 12:33:15,618 - INFO - delta_l_infinity: 1.0530073642730713 for w=tensor([[-0.7933],
+        [-0.3380],
+        [-0.1324],
+        [ 1.9899]], device='cuda:2')
+2025-08-11 12:33:15,619 - INFO - Completed experiment: teacher_rank=1, student_dim=480, seed=6, GPU=2
+2025-08-11 12:33:15,620 - INFO - delta_l_infinity: -1.1510425806045532 for w=tensor([[ 0.2573],
+        [ 0.3756],
+        [-0.3958],
+        [-1.2870]], device='cuda:3')
+2025-08-11 12:33:15,621 - INFO - Starting experiment: teacher_rank=1, student_dim=490, seed=1, GPU=1
+2025-08-11 12:33:15,621 - INFO - Completed experiment: teacher_rank=1, student_dim=480, seed=7, GPU=3
+2025-08-11 12:33:15,622 - INFO - A_teacher[0] is 0.47037220001220703
+2025-08-11 12:33:15,622 - INFO - delta_l_infinity: -0.026935815811157227 for w=tensor([[-0.7350],
+        [ 0.9238],
+        [-0.5523],
+        [ 0.1808]], device='cuda:0')
+2025-08-11 12:33:15,623 - INFO - Starting experiment: teacher_rank=1, student_dim=490, seed=2, GPU=2
+2025-08-11 12:33:15,623 - INFO - Completed experiment: teacher_rank=1, student_dim=490, seed=0, GPU=0
+2025-08-11 12:33:15,624 - INFO - delta_l_infinity: 1.1440778970718384 for w=tensor([[-1.4471],
+        [-0.6420],
+        [-0.6431],
+        [-0.6340]], device='cuda:1')
+2025-08-11 12:33:15,624 - INFO - A_teacher[0] is 0.5022341012954712
+2025-08-11 12:33:15,625 - INFO - Completed experiment: teacher_rank=1, student_dim=430, seed=1, GPU=1
+2025-08-11 12:33:15,625 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,626 - INFO - Starting experiment: teacher_rank=1, student_dim=490, seed=3, GPU=3
+2025-08-11 12:33:15,626 - INFO - A_teacher[0] is 0.5426344871520996
+2025-08-11 12:33:15,627 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,627 - INFO - Starting experiment: teacher_rank=1, student_dim=490, seed=4, GPU=0
+2025-08-11 12:33:15,628 - INFO - delta_l_infinity: 1.1440778970718384 for w=tensor([[-1.4471],
+        [-0.6420],
+        [-0.6431],
+        [-0.6340]], device='cuda:1')
+2025-08-11 12:33:15,629 - INFO - Completed experiment: teacher_rank=1, student_dim=490, seed=1, GPU=1
+2025-08-11 12:33:15,629 - INFO - A_teacher[0] is 0.30494755506515503
+2025-08-11 12:33:15,629 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,630 - INFO - delta_l_infinity: -0.5173013210296631 for w=tensor([[-1.0484],
+        [-1.4438],
+        [ 1.3477],
+        [ 2.2669]], device='cuda:2')
+2025-08-11 12:33:15,631 - INFO - Starting experiment: teacher_rank=1, student_dim=490, seed=5, GPU=1
+2025-08-11 12:33:15,631 - INFO - Completed experiment: teacher_rank=1, student_dim=490, seed=2, GPU=2
+2025-08-11 12:33:15,631 - INFO - A_teacher[0] is 0.5309687256813049
+2025-08-11 12:33:15,632 - INFO - Starting experiment: teacher_rank=1, student_dim=490, seed=6, GPU=2
+2025-08-11 12:33:15,632 - INFO - delta_l_infinity: 0.9723169803619385 for w=tensor([[ 0.5542],
+        [-0.5594],
+        [-0.2217],
+        [-0.5162]], device='cuda:3')
+2025-08-11 12:33:15,632 - INFO - A_teacher[0] is 0.5432507991790771
+2025-08-11 12:33:15,633 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,633 - INFO - Completed experiment: teacher_rank=1, student_dim=490, seed=3, GPU=3
+2025-08-11 12:33:15,634 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,635 - INFO - Starting experiment: teacher_rank=1, student_dim=490, seed=7, GPU=3
+2025-08-11 12:33:15,635 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,635 - INFO - A_teacher[0] is 0.46951529383659363
+2025-08-11 12:33:15,636 - INFO - delta_l_infinity: 0.4341754913330078 for w=tensor([[-1.1513],
+        [ 1.4826],
+        [-0.6117],
+        [ 1.2089]], device='cuda:1')
+2025-08-11 12:33:15,637 - INFO - delta_l_infinity: -0.6091740131378174 for w=tensor([[ 1.0391],
+        [-1.4731],
+        [ 0.7819],
+        [-0.2938]], device='cuda:0')
+2025-08-11 12:33:15,637 - INFO - Completed experiment: teacher_rank=1, student_dim=490, seed=5, GPU=1
+2025-08-11 12:33:15,638 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,638 - INFO - delta_l_infinity: 1.0530073642730713 for w=tensor([[-0.7933],
+        [-0.3380],
+        [-0.1324],
+        [ 1.9899]], device='cuda:2')
+2025-08-11 12:33:15,638 - INFO - Completed experiment: teacher_rank=1, student_dim=490, seed=6, GPU=2
+2025-08-11 12:33:15,639 - INFO - Completed experiment: teacher_rank=1, student_dim=490, seed=4, GPU=0
+2025-08-11 12:33:15,640 - INFO - Starting experiment: teacher_rank=1, student_dim=500, seed=0, GPU=0
+2025-08-11 12:33:15,641 - INFO - delta_l_infinity: -1.1510425806045532 for w=tensor([[ 0.2573],
+        [ 0.3756],
+        [-0.3958],
+        [-1.2870]], device='cuda:3')
+2025-08-11 12:33:15,641 - INFO - Starting experiment: teacher_rank=1, student_dim=500, seed=1, GPU=1
+2025-08-11 12:33:15,641 - INFO - A_teacher[0] is 0.40753376483917236
+2025-08-11 12:33:15,641 - INFO - Completed experiment: teacher_rank=1, student_dim=490, seed=7, GPU=3
+2025-08-11 12:33:15,641 - INFO - Starting experiment: teacher_rank=1, student_dim=500, seed=2, GPU=2
+2025-08-11 12:33:15,642 - INFO - A_teacher[0] is 0.47037220001220703
+2025-08-11 12:33:15,643 - INFO - Starting experiment: teacher_rank=1, student_dim=500, seed=3, GPU=3
+2025-08-11 12:33:15,643 - INFO - A_teacher[0] is 0.5022341012954712
+2025-08-11 12:33:15,643 - INFO - A_teacher[0] is 0.5426344871520996
+2025-08-11 12:33:15,644 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,644 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,646 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,646 - INFO - delta_l_infinity: -0.026935815811157227 for w=tensor([[-0.7350],
+        [ 0.9238],
+        [-0.5523],
+        [ 0.1808]], device='cuda:0')
+2025-08-11 12:33:15,647 - INFO - delta_l_infinity: 1.1440778970718384 for w=tensor([[-1.4471],
+        [-0.6420],
+        [-0.6431],
+        [-0.6340]], device='cuda:1')
+2025-08-11 12:33:15,647 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,648 - INFO - Completed experiment: teacher_rank=1, student_dim=500, seed=0, GPU=0
+2025-08-11 12:33:15,648 - INFO - Completed experiment: teacher_rank=1, student_dim=500, seed=1, GPU=1
+2025-08-11 12:33:15,649 - INFO - delta_l_infinity: 0.9723169803619385 for w=tensor([[ 0.5542],
+        [-0.5594],
+        [-0.2217],
+        [-0.5162]], device='cuda:3')
+2025-08-11 12:33:15,650 - INFO - Starting experiment: teacher_rank=1, student_dim=500, seed=4, GPU=0
+2025-08-11 12:33:15,650 - INFO - A_teacher[0] is 0.30494755506515503
+2025-08-11 12:33:15,650 - INFO - Starting experiment: teacher_rank=1, student_dim=500, seed=5, GPU=1
+2025-08-11 12:33:15,651 - INFO - A_teacher[0] is 0.5309687256813049
+2025-08-11 12:33:15,651 - INFO - delta_l_infinity: -0.5173013210296631 for w=tensor([[-1.0484],
+        [-1.4438],
+        [ 1.3477],
+        [ 2.2669]], device='cuda:2')
+2025-08-11 12:33:15,651 - INFO - Completed experiment: teacher_rank=1, student_dim=500, seed=3, GPU=3
+2025-08-11 12:33:15,653 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,653 - INFO - Completed experiment: teacher_rank=1, student_dim=500, seed=2, GPU=2
+2025-08-11 12:33:15,654 - INFO - Starting experiment: teacher_rank=1, student_dim=500, seed=6, GPU=2
+2025-08-11 12:33:15,655 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,655 - INFO - A_teacher[0] is 0.5432507991790771
+2025-08-11 12:33:15,656 - INFO - delta_l_infinity: -0.6091740131378174 for w=tensor([[ 1.0391],
+        [-1.4731],
+        [ 0.7819],
+        [-0.2938]], device='cuda:0')
+2025-08-11 12:33:15,656 - INFO - Starting experiment: teacher_rank=1, student_dim=500, seed=7, GPU=3
+2025-08-11 12:33:15,656 - INFO - Completed experiment: teacher_rank=1, student_dim=500, seed=4, GPU=0
+2025-08-11 12:33:15,657 - INFO - A_teacher[0] is 0.46951529383659363
+2025-08-11 12:33:15,658 - INFO - delta_l_infinity: 0.4341754913330078 for w=tensor([[-1.1513],
+        [ 1.4826],
+        [-0.6117],
+        [ 1.2089]], device='cuda:1')
+2025-08-11 12:33:15,658 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,659 - INFO - Completed experiment: teacher_rank=1, student_dim=500, seed=5, GPU=1
+2025-08-11 12:33:15,659 - INFO - Starting experiment: teacher_rank=1, student_dim=510, seed=0, GPU=0
+2025-08-11 12:33:15,659 - INFO - A_teacher[0] is 0.40753376483917236
+2025-08-11 12:33:15,660 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,661 - INFO - Starting experiment: teacher_rank=1, student_dim=510, seed=1, GPU=1
+2025-08-11 12:33:15,662 - INFO - A_teacher[0] is 0.47037220001220703
+2025-08-11 12:33:15,662 - INFO - delta_l_infinity: 1.0530073642730713 for w=tensor([[-0.7933],
+        [-0.3380],
+        [-0.1324],
+        [ 1.9899]], device='cuda:2')
+2025-08-11 12:33:15,662 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,663 - INFO - Completed experiment: teacher_rank=1, student_dim=500, seed=6, GPU=2
+2025-08-11 12:33:15,664 - INFO - Starting experiment: teacher_rank=1, student_dim=510, seed=2, GPU=2
+2025-08-11 12:33:15,664 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,665 - INFO - A_teacher[0] is 0.5022341012954712
+2025-08-11 12:33:15,665 - INFO - delta_l_infinity: -1.1510425806045532 for w=tensor([[ 0.2573],
+        [ 0.3756],
+        [-0.3958],
+        [-1.2870]], device='cuda:3')
+2025-08-11 12:33:15,665 - INFO - delta_l_infinity: -0.026935815811157227 for w=tensor([[-0.7350],
+        [ 0.9238],
+        [-0.5523],
+        [ 0.1808]], device='cuda:0')
+2025-08-11 12:33:15,666 - INFO - Completed experiment: teacher_rank=1, student_dim=500, seed=7, GPU=3
+2025-08-11 12:33:15,666 - INFO - Completed experiment: teacher_rank=1, student_dim=510, seed=0, GPU=0
+2025-08-11 12:33:15,667 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,668 - INFO - delta_l_infinity: 1.1440778970718384 for w=tensor([[-1.4471],
+        [-0.6420],
+        [-0.6431],
+        [-0.6340]], device='cuda:1')
+2025-08-11 12:33:15,668 - INFO - Completed experiment: teacher_rank=1, student_dim=510, seed=1, GPU=1
+2025-08-11 12:33:15,669 - INFO - Starting experiment: teacher_rank=1, student_dim=510, seed=3, GPU=3
+2025-08-11 12:33:15,669 - INFO - Starting experiment: teacher_rank=1, student_dim=510, seed=4, GPU=0
+2025-08-11 12:33:15,670 - INFO - A_teacher[0] is 0.5426344871520996
+2025-08-11 12:33:15,670 - INFO - A_teacher[0] is 0.30494755506515503
+2025-08-11 12:33:15,670 - INFO - delta_l_infinity: -0.5173013210296631 for w=tensor([[-1.0484],
+        [-1.4438],
+        [ 1.3477],
+        [ 2.2669]], device='cuda:2')
+2025-08-11 12:33:15,671 - INFO - Starting experiment: teacher_rank=1, student_dim=510, seed=5, GPU=1
+2025-08-11 12:33:15,671 - INFO - A_teacher[0] is 0.5309687256813049
+2025-08-11 12:33:15,671 - INFO - Completed experiment: teacher_rank=1, student_dim=510, seed=2, GPU=2
+2025-08-11 12:33:15,673 - INFO - Starting experiment: teacher_rank=1, student_dim=510, seed=6, GPU=2
+2025-08-11 12:33:15,674 - INFO - A_teacher[0] is 0.5432507991790771
+2025-08-11 12:33:15,674 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,674 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,675 - INFO - delta_l_infinity: 0.9723169803619385 for w=tensor([[ 0.5542],
+        [-0.5594],
+        [-0.2217],
+        [-0.5162]], device='cuda:3')
+2025-08-11 12:33:15,676 - INFO - Completed experiment: teacher_rank=1, student_dim=510, seed=3, GPU=3
+2025-08-11 12:33:15,677 - INFO - delta_l_infinity: 0.4341754913330078 for w=tensor([[-1.1513],
+        [ 1.4826],
+        [-0.6117],
+        [ 1.2089]], device='cuda:1')
+2025-08-11 12:33:15,677 - INFO - Completed experiment: teacher_rank=1, student_dim=510, seed=5, GPU=1
+2025-08-11 12:33:15,678 - INFO - Starting experiment: teacher_rank=1, student_dim=510, seed=7, GPU=3
+2025-08-11 12:33:15,678 - INFO - delta_l_infinity: -0.6091740131378174 for w=tensor([[ 1.0391],
+        [-1.4731],
+        [ 0.7819],
+        [-0.2938]], device='cuda:0')
+2025-08-11 12:33:15,679 - INFO - A_teacher[0] is 0.46951529383659363
+2025-08-11 12:33:15,679 - INFO - delta_l_infinity: 1.0530073642730713 for w=tensor([[-0.7933],
+        [-0.3380],
+        [-0.1324],
+        [ 1.9899]], device='cuda:2')
+2025-08-11 12:33:15,679 - INFO - Completed experiment: teacher_rank=1, student_dim=510, seed=4, GPU=0
+2025-08-11 12:33:15,680 - INFO - Starting experiment: teacher_rank=1, student_dim=520, seed=0, GPU=0
+2025-08-11 12:33:15,680 - INFO - Completed experiment: teacher_rank=1, student_dim=510, seed=6, GPU=2
+2025-08-11 12:33:15,681 - INFO - A_teacher[0] is 0.40753376483917236
+2025-08-11 12:33:15,682 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,682 - INFO - Starting experiment: teacher_rank=1, student_dim=520, seed=1, GPU=1
+2025-08-11 12:33:15,682 - INFO - Starting experiment: teacher_rank=1, student_dim=520, seed=2, GPU=2
+2025-08-11 12:33:15,683 - INFO - A_teacher[0] is 0.5022341012954712
+2025-08-11 12:33:15,683 - INFO - A_teacher[0] is 0.47037220001220703
+2025-08-11 12:33:15,684 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,684 - INFO - delta_l_infinity: -1.1510425806045532 for w=tensor([[ 0.2573],
+        [ 0.3756],
+        [-0.3958],
+        [-1.2870]], device='cuda:3')
+2025-08-11 12:33:15,685 - INFO - Completed experiment: teacher_rank=1, student_dim=510, seed=7, GPU=3
+2025-08-11 12:33:15,686 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,686 - INFO - delta_l_infinity: -0.026935815811157227 for w=tensor([[-0.7350],
+        [ 0.9238],
+        [-0.5523],
+        [ 0.1808]], device='cuda:0')
+2025-08-11 12:33:15,687 - INFO - Starting experiment: teacher_rank=1, student_dim=520, seed=3, GPU=3
+2025-08-11 12:33:15,687 - INFO - Completed experiment: teacher_rank=1, student_dim=520, seed=0, GPU=0
+2025-08-11 12:33:15,687 - INFO - A_teacher[0] is 0.5426344871520996
+2025-08-11 12:33:15,688 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,689 - INFO - delta_l_infinity: -0.5173013210296631 for w=tensor([[-1.0484],
+        [-1.4438],
+        [ 1.3477],
+        [ 2.2669]], device='cuda:2')
+2025-08-11 12:33:15,689 - INFO - Completed experiment: teacher_rank=1, student_dim=520, seed=2, GPU=2
+2025-08-11 12:33:15,690 - INFO - Starting experiment: teacher_rank=1, student_dim=520, seed=4, GPU=0
+2025-08-11 12:33:15,690 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,691 - INFO - A_teacher[0] is 0.30494755506515503
+2025-08-11 12:33:15,691 - INFO - Starting experiment: teacher_rank=1, student_dim=520, seed=5, GPU=1
+2025-08-11 12:33:15,692 - INFO - A_teacher[0] is 0.5309687256813049
+2025-08-11 12:33:15,693 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,694 - INFO - delta_l_infinity: 1.1440778970718384 for w=tensor([[-1.4471],
+        [-0.6420],
+        [-0.6431],
+        [-0.6340]], device='cuda:1')
+2025-08-11 12:33:15,694 - INFO - delta_l_infinity: 0.9723169803619385 for w=tensor([[ 0.5542],
+        [-0.5594],
+        [-0.2217],
+        [-0.5162]], device='cuda:3')
+2025-08-11 12:33:15,694 - INFO - Completed experiment: teacher_rank=1, student_dim=520, seed=3, GPU=3
+2025-08-11 12:33:15,695 - INFO - Completed experiment: teacher_rank=1, student_dim=520, seed=1, GPU=1
+2025-08-11 12:33:15,695 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,696 - INFO - delta_l_infinity: -0.6091740131378174 for w=tensor([[ 1.0391],
+        [-1.4731],
+        [ 0.7819],
+        [-0.2938]], device='cuda:0')
+2025-08-11 12:33:15,696 - INFO - Starting experiment: teacher_rank=1, student_dim=520, seed=6, GPU=2
+2025-08-11 12:33:15,697 - INFO - Completed experiment: teacher_rank=1, student_dim=520, seed=4, GPU=0
+2025-08-11 12:33:15,697 - INFO - Starting experiment: teacher_rank=1, student_dim=520, seed=7, GPU=3
+2025-08-11 12:33:15,697 - INFO - A_teacher[0] is 0.5432507991790771
+2025-08-11 12:33:15,698 - INFO - delta_l_infinity: 0.4341754913330078 for w=tensor([[-1.1513],
+        [ 1.4826],
+        [-0.6117],
+        [ 1.2089]], device='cuda:1')
+2025-08-11 12:33:15,698 - INFO - A_teacher[0] is 0.46951529383659363
+2025-08-11 12:33:15,698 - INFO - Starting experiment: teacher_rank=1, student_dim=530, seed=0, GPU=0
+2025-08-11 12:33:15,699 - INFO - Completed experiment: teacher_rank=1, student_dim=520, seed=5, GPU=1
+2025-08-11 12:33:15,699 - INFO - A_teacher[0] is 0.40753376483917236
+2025-08-11 12:33:15,700 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,701 - INFO - Starting experiment: teacher_rank=1, student_dim=530, seed=1, GPU=1
+2025-08-11 12:33:15,702 - INFO - A_teacher[0] is 0.47037220001220703
+2025-08-11 12:33:15,702 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,702 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,703 - INFO - delta_l_infinity: 1.0530073642730713 for w=tensor([[-0.7933],
+        [-0.3380],
+        [-0.1324],
+        [ 1.9899]], device='cuda:2')
+2025-08-11 12:33:15,704 - INFO - Completed experiment: teacher_rank=1, student_dim=520, seed=6, GPU=2
+2025-08-11 12:33:15,704 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,705 - INFO - delta_l_infinity: -0.026935815811157227 for w=tensor([[-0.7350],
+        [ 0.9238],
+        [-0.5523],
+        [ 0.1808]], device='cuda:0')
+2025-08-11 12:33:15,706 - INFO - Completed experiment: teacher_rank=1, student_dim=530, seed=0, GPU=0
+2025-08-11 12:33:15,706 - INFO - Starting experiment: teacher_rank=1, student_dim=530, seed=2, GPU=2
+2025-08-11 12:33:15,707 - INFO - A_teacher[0] is 0.5022341012954712
+2025-08-11 12:33:15,707 - INFO - delta_l_infinity: -1.1510425806045532 for w=tensor([[ 0.2573],
+        [ 0.3756],
+        [-0.3958],
+        [-1.2870]], device='cuda:3')
+2025-08-11 12:33:15,707 - INFO - delta_l_infinity: 1.1440778970718384 for w=tensor([[-1.4471],
+        [-0.6420],
+        [-0.6431],
+        [-0.6340]], device='cuda:1')
+2025-08-11 12:33:15,708 - INFO - Completed experiment: teacher_rank=1, student_dim=530, seed=1, GPU=1
+2025-08-11 12:33:15,708 - INFO - Starting experiment: teacher_rank=1, student_dim=530, seed=3, GPU=3
+2025-08-11 12:33:15,709 - INFO - Completed experiment: teacher_rank=1, student_dim=520, seed=7, GPU=3
+2025-08-11 12:33:15,709 - INFO - A_teacher[0] is 0.5426344871520996
+2025-08-11 12:33:15,709 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,710 - INFO - Starting experiment: teacher_rank=1, student_dim=530, seed=4, GPU=0
+2025-08-11 12:33:15,711 - INFO - Starting experiment: teacher_rank=1, student_dim=530, seed=5, GPU=1
+2025-08-11 12:33:15,711 - INFO - A_teacher[0] is 0.30494755506515503
+2025-08-11 12:33:15,712 - INFO - A_teacher[0] is 0.5309687256813049
+2025-08-11 12:33:15,712 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,712 - INFO - delta_l_infinity: -0.5173013210296631 for w=tensor([[-1.0484],
+        [-1.4438],
+        [ 1.3477],
+        [ 2.2669]], device='cuda:2')
+2025-08-11 12:33:15,714 - INFO - Completed experiment: teacher_rank=1, student_dim=530, seed=2, GPU=2
+2025-08-11 12:33:15,714 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,715 - INFO - Starting experiment: teacher_rank=1, student_dim=530, seed=6, GPU=2
+2025-08-11 12:33:15,715 - INFO - delta_l_infinity: 0.9723169803619385 for w=tensor([[ 0.5542],
+        [-0.5594],
+        [-0.2217],
+        [-0.5162]], device='cuda:3')
+2025-08-11 12:33:15,716 - INFO - A_teacher[0] is 0.5432507991790771
+2025-08-11 12:33:15,716 - INFO - Completed experiment: teacher_rank=1, student_dim=530, seed=3, GPU=3
+2025-08-11 12:33:15,716 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,717 - INFO - delta_l_infinity: -0.6091740131378174 for w=tensor([[ 1.0391],
+        [-1.4731],
+        [ 0.7819],
+        [-0.2938]], device='cuda:0')
+2025-08-11 12:33:15,718 - INFO - Completed experiment: teacher_rank=1, student_dim=530, seed=4, GPU=0
+2025-08-11 12:33:15,718 - INFO - Starting experiment: teacher_rank=1, student_dim=530, seed=7, GPU=3
+2025-08-11 12:33:15,718 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,719 - INFO - A_teacher[0] is 0.46951529383659363
+2025-08-11 12:33:15,719 - INFO - Starting experiment: teacher_rank=1, student_dim=540, seed=0, GPU=0
+2025-08-11 12:33:15,720 - INFO - A_teacher[0] is 0.40753376483917236
+2025-08-11 12:33:15,721 - INFO - delta_l_infinity: 1.0530073642730713 for w=tensor([[-0.7933],
+        [-0.3380],
+        [-0.1324],
+        [ 1.9899]], device='cuda:2')
+2025-08-11 12:33:15,721 - INFO - delta_l_infinity: 0.4341754913330078 for w=tensor([[-1.1513],
+        [ 1.4826],
+        [-0.6117],
+        [ 1.2089]], device='cuda:1')
+2025-08-11 12:33:15,722 - INFO - Completed experiment: teacher_rank=1, student_dim=530, seed=6, GPU=2
+2025-08-11 12:33:15,723 - INFO - Completed experiment: teacher_rank=1, student_dim=530, seed=5, GPU=1
+2025-08-11 12:33:15,723 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,723 - INFO - Starting experiment: teacher_rank=1, student_dim=540, seed=1, GPU=1
+2025-08-11 12:33:15,724 - INFO - delta_l_infinity: -1.1510425806045532 for w=tensor([[ 0.2573],
+        [ 0.3756],
+        [-0.3958],
+        [-1.2870]], device='cuda:3')
+2025-08-11 12:33:15,724 - INFO - A_teacher[0] is 0.47037220001220703
+2025-08-11 12:33:15,725 - INFO - Completed experiment: teacher_rank=1, student_dim=530, seed=7, GPU=3
+2025-08-11 12:33:15,725 - INFO - Starting experiment: teacher_rank=1, student_dim=540, seed=2, GPU=2
+2025-08-11 12:33:15,726 - INFO - delta_l_infinity: -0.026935815811157227 for w=tensor([[-0.7350],
+        [ 0.9238],
+        [-0.5523],
+        [ 0.1808]], device='cuda:0')
+2025-08-11 12:33:15,726 - INFO - A_teacher[0] is 0.5022341012954712
+2025-08-11 12:33:15,726 - INFO - Completed experiment: teacher_rank=1, student_dim=540, seed=0, GPU=0
+2025-08-11 12:33:15,727 - INFO - Starting experiment: teacher_rank=1, student_dim=540, seed=3, GPU=3
+2025-08-11 12:33:15,727 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,728 - INFO - A_teacher[0] is 0.5426344871520996
+2025-08-11 12:33:15,729 - INFO - Starting experiment: teacher_rank=1, student_dim=540, seed=4, GPU=0
+2025-08-11 12:33:15,729 - INFO - A_teacher[0] is 0.30494755506515503
+2025-08-11 12:33:15,730 - INFO - delta_l_infinity: 1.1440778970718384 for w=tensor([[-1.4471],
+        [-0.6420],
+        [-0.6431],
+        [-0.6340]], device='cuda:1')
+2025-08-11 12:33:15,730 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,730 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,731 - INFO - Completed experiment: teacher_rank=1, student_dim=540, seed=1, GPU=1
+2025-08-11 12:33:15,732 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,732 - INFO - Starting experiment: teacher_rank=1, student_dim=540, seed=5, GPU=1
+2025-08-11 12:33:15,733 - INFO - A_teacher[0] is 0.5309687256813049
+2025-08-11 12:33:15,734 - INFO - delta_l_infinity: 0.9723169803619385 for w=tensor([[ 0.5542],
+        [-0.5594],
+        [-0.2217],
+        [-0.5162]], device='cuda:3')
+2025-08-11 12:33:15,734 - INFO - Completed experiment: teacher_rank=1, student_dim=540, seed=3, GPU=3
+2025-08-11 12:33:15,734 - INFO - delta_l_infinity: -0.5173013210296631 for w=tensor([[-1.0484],
+        [-1.4438],
+        [ 1.3477],
+        [ 2.2669]], device='cuda:2')
+2025-08-11 12:33:15,735 - INFO - delta_l_infinity: -0.6091740131378174 for w=tensor([[ 1.0391],
+        [-1.4731],
+        [ 0.7819],
+        [-0.2938]], device='cuda:0')
+2025-08-11 12:33:15,735 - INFO - Completed experiment: teacher_rank=1, student_dim=540, seed=4, GPU=0
+2025-08-11 12:33:15,735 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,736 - INFO - Completed experiment: teacher_rank=1, student_dim=540, seed=2, GPU=2
+2025-08-11 12:33:15,736 - INFO - Starting experiment: teacher_rank=1, student_dim=540, seed=6, GPU=2
+2025-08-11 12:33:15,737 - INFO - Starting experiment: teacher_rank=1, student_dim=540, seed=7, GPU=3
+2025-08-11 12:33:15,737 - INFO - A_teacher[0] is 0.5432507991790771
+2025-08-11 12:33:15,738 - INFO - A_teacher[0] is 0.46951529383659363
+2025-08-11 12:33:15,738 - INFO - Starting experiment: teacher_rank=1, student_dim=550, seed=0, GPU=0
+2025-08-11 12:33:15,738 - INFO - delta_l_infinity: 0.4341754913330078 for w=tensor([[-1.1513],
+        [ 1.4826],
+        [-0.6117],
+        [ 1.2089]], device='cuda:1')
+2025-08-11 12:33:15,739 - INFO - A_teacher[0] is 0.40753376483917236
+2025-08-11 12:33:15,739 - INFO - Completed experiment: teacher_rank=1, student_dim=540, seed=5, GPU=1
+2025-08-11 12:33:15,740 - INFO - Starting experiment: teacher_rank=1, student_dim=550, seed=1, GPU=1
+2025-08-11 12:33:15,740 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,740 - INFO - A_teacher[0] is 0.47037220001220703
+2025-08-11 12:33:15,742 - INFO - delta_l_infinity: 1.0530073642730713 for w=tensor([[-0.7933],
+        [-0.3380],
+        [-0.1324],
+        [ 1.9899]], device='cuda:2')
+2025-08-11 12:33:15,742 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,743 - INFO - Completed experiment: teacher_rank=1, student_dim=540, seed=6, GPU=2
+2025-08-11 12:33:15,743 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,743 - INFO - delta_l_infinity: -1.1510425806045532 for w=tensor([[ 0.2573],
+        [ 0.3756],
+        [-0.3958],
+        [-1.2870]], device='cuda:3')
+2025-08-11 12:33:15,744 - INFO - Completed experiment: teacher_rank=1, student_dim=540, seed=7, GPU=3
+2025-08-11 12:33:15,745 - INFO - Starting experiment: teacher_rank=1, student_dim=550, seed=2, GPU=2
+2025-08-11 12:33:15,746 - INFO - A_teacher[0] is 0.5022341012954712
+2025-08-11 12:33:15,747 - INFO - delta_l_infinity: 1.1440778970718384 for w=tensor([[-1.4471],
+        [-0.6420],
+        [-0.6431],
+        [-0.6340]], device='cuda:1')
+2025-08-11 12:33:15,747 - INFO - Starting experiment: teacher_rank=1, student_dim=550, seed=3, GPU=3
+2025-08-11 12:33:15,747 - INFO - delta_l_infinity: -0.026935815811157227 for w=tensor([[-0.7350],
+        [ 0.9238],
+        [-0.5523],
+        [ 0.1808]], device='cuda:0')
+2025-08-11 12:33:15,747 - INFO - A_teacher[0] is 0.5426344871520996
+2025-08-11 12:33:15,747 - INFO - Completed experiment: teacher_rank=1, student_dim=550, seed=1, GPU=1
+2025-08-11 12:33:15,748 - INFO - Completed experiment: teacher_rank=1, student_dim=550, seed=0, GPU=0
+2025-08-11 12:33:15,748 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,749 - INFO - Starting experiment: teacher_rank=1, student_dim=550, seed=4, GPU=0
+2025-08-11 12:33:15,750 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,750 - INFO - Starting experiment: teacher_rank=1, student_dim=550, seed=5, GPU=1
+2025-08-11 12:33:15,750 - INFO - A_teacher[0] is 0.30494755506515503
+2025-08-11 12:33:15,751 - INFO - A_teacher[0] is 0.5309687256813049
+2025-08-11 12:33:15,751 - INFO - delta_l_infinity: -0.5173013210296631 for w=tensor([[-1.0484],
+        [-1.4438],
+        [ 1.3477],
+        [ 2.2669]], device='cuda:2')
+2025-08-11 12:33:15,752 - INFO - Completed experiment: teacher_rank=1, student_dim=550, seed=2, GPU=2
+2025-08-11 12:33:15,753 - INFO - delta_l_infinity: 0.9723169803619385 for w=tensor([[ 0.5542],
+        [-0.5594],
+        [-0.2217],
+        [-0.5162]], device='cuda:3')
+2025-08-11 12:33:15,753 - INFO - Completed experiment: teacher_rank=1, student_dim=550, seed=3, GPU=3
+2025-08-11 12:33:15,754 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,754 - INFO - Starting experiment: teacher_rank=1, student_dim=550, seed=6, GPU=2
+2025-08-11 12:33:15,754 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,755 - INFO - A_teacher[0] is 0.5432507991790771
+2025-08-11 12:33:15,756 - INFO - Starting experiment: teacher_rank=1, student_dim=550, seed=7, GPU=3
+2025-08-11 12:33:15,756 - INFO - A_teacher[0] is 0.46951529383659363
+2025-08-11 12:33:15,757 - INFO - delta_l_infinity: -0.6091740131378174 for w=tensor([[ 1.0391],
+        [-1.4731],
+        [ 0.7819],
+        [-0.2938]], device='cuda:0')
+2025-08-11 12:33:15,758 - INFO - Completed experiment: teacher_rank=1, student_dim=550, seed=4, GPU=0
+2025-08-11 12:33:15,758 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,759 - INFO - delta_l_infinity: 0.4341754913330078 for w=tensor([[-1.1513],
+        [ 1.4826],
+        [-0.6117],
+        [ 1.2089]], device='cuda:1')
+2025-08-11 12:33:15,759 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,759 - INFO - Starting experiment: teacher_rank=1, student_dim=560, seed=0, GPU=0
+2025-08-11 12:33:15,760 - INFO - A_teacher[0] is 0.40753376483917236
+2025-08-11 12:33:15,760 - INFO - Completed experiment: teacher_rank=1, student_dim=550, seed=5, GPU=1
+2025-08-11 12:33:15,761 - INFO - delta_l_infinity: 1.0530073642730713 for w=tensor([[-0.7933],
+        [-0.3380],
+        [-0.1324],
+        [ 1.9899]], device='cuda:2')
+2025-08-11 12:33:15,761 - INFO - Completed experiment: teacher_rank=1, student_dim=550, seed=6, GPU=2
+2025-08-11 12:33:15,762 - INFO - delta_l_infinity: -1.1510425806045532 for w=tensor([[ 0.2573],
+        [ 0.3756],
+        [-0.3958],
+        [-1.2870]], device='cuda:3')
+2025-08-11 12:33:15,762 - INFO - Starting experiment: teacher_rank=1, student_dim=560, seed=1, GPU=1
+2025-08-11 12:33:15,762 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,763 - INFO - Completed experiment: teacher_rank=1, student_dim=550, seed=7, GPU=3
+2025-08-11 12:33:15,763 - INFO - A_teacher[0] is 0.47037220001220703
+2025-08-11 12:33:15,764 - INFO - Starting experiment: teacher_rank=1, student_dim=560, seed=2, GPU=2
+2025-08-11 12:33:15,764 - INFO - A_teacher[0] is 0.5022341012954712
+2025-08-11 12:33:15,765 - INFO - delta_l_infinity: -0.026935815811157227 for w=tensor([[-0.7350],
+        [ 0.9238],
+        [-0.5523],
+        [ 0.1808]], device='cuda:0')
+2025-08-11 12:33:15,765 - INFO - Starting experiment: teacher_rank=1, student_dim=560, seed=3, GPU=3
+2025-08-11 12:33:15,766 - INFO - Completed experiment: teacher_rank=1, student_dim=560, seed=0, GPU=0
+2025-08-11 12:33:15,766 - INFO - A_teacher[0] is 0.5426344871520996
+2025-08-11 12:33:15,767 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,767 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,768 - INFO - Starting experiment: teacher_rank=1, student_dim=560, seed=4, GPU=0
+2025-08-11 12:33:15,769 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,769 - INFO - A_teacher[0] is 0.30494755506515503
+2025-08-11 12:33:15,770 - INFO - delta_l_infinity: -0.5173013210296631 for w=tensor([[-1.0484],
+        [-1.4438],
+        [ 1.3477],
+        [ 2.2669]], device='cuda:2')
+2025-08-11 12:33:15,770 - INFO - Completed experiment: teacher_rank=1, student_dim=560, seed=2, GPU=2
+2025-08-11 12:33:15,771 - INFO - delta_l_infinity: 0.9723169803619385 for w=tensor([[ 0.5542],
+        [-0.5594],
+        [-0.2217],
+        [-0.5162]], device='cuda:3')
+2025-08-11 12:33:15,772 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,772 - INFO - delta_l_infinity: 1.1440778970718384 for w=tensor([[-1.4471],
+        [-0.6420],
+        [-0.6431],
+        [-0.6340]], device='cuda:1')
+2025-08-11 12:33:15,772 - INFO - Completed experiment: teacher_rank=1, student_dim=560, seed=3, GPU=3
+2025-08-11 12:33:15,772 - INFO - Starting experiment: teacher_rank=1, student_dim=560, seed=5, GPU=1
+2025-08-11 12:33:15,773 - INFO - A_teacher[0] is 0.5309687256813049
+2025-08-11 12:33:15,773 - INFO - Completed experiment: teacher_rank=1, student_dim=560, seed=1, GPU=1
+2025-08-11 12:33:15,774 - INFO - Starting experiment: teacher_rank=1, student_dim=560, seed=6, GPU=2
+2025-08-11 12:33:15,775 - INFO - Starting experiment: teacher_rank=1, student_dim=560, seed=7, GPU=3
+2025-08-11 12:33:15,775 - INFO - delta_l_infinity: -0.6091740131378174 for w=tensor([[ 1.0391],
+        [-1.4731],
+        [ 0.7819],
+        [-0.2938]], device='cuda:0')
+2025-08-11 12:33:15,775 - INFO - A_teacher[0] is 0.5432507991790771
+2025-08-11 12:33:15,775 - INFO - Completed experiment: teacher_rank=1, student_dim=560, seed=4, GPU=0
+2025-08-11 12:33:15,776 - INFO - A_teacher[0] is 0.46951529383659363
+2025-08-11 12:33:15,777 - INFO - Starting experiment: teacher_rank=1, student_dim=570, seed=0, GPU=0
+2025-08-11 12:33:15,777 - INFO - A_teacher[0] is 0.40753376483917236
+2025-08-11 12:33:15,778 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,778 - INFO - delta_l_infinity: 0.4341754913330078 for w=tensor([[-1.1513],
+        [ 1.4826],
+        [-0.6117],
+        [ 1.2089]], device='cuda:1')
+2025-08-11 12:33:15,779 - INFO - Completed experiment: teacher_rank=1, student_dim=560, seed=5, GPU=1
+2025-08-11 12:33:15,780 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,780 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,781 - INFO - delta_l_infinity: 1.0530073642730713 for w=tensor([[-0.7933],
+        [-0.3380],
+        [-0.1324],
+        [ 1.9899]], device='cuda:2')
+2025-08-11 12:33:15,781 - INFO - Starting experiment: teacher_rank=1, student_dim=570, seed=1, GPU=1
+2025-08-11 12:33:15,782 - INFO - Completed experiment: teacher_rank=1, student_dim=560, seed=6, GPU=2
+2025-08-11 12:33:15,782 - INFO - A_teacher[0] is 0.47037220001220703
+2025-08-11 12:33:15,783 - INFO - delta_l_infinity: -0.026935815811157227 for w=tensor([[-0.7350],
+        [ 0.9238],
+        [-0.5523],
+        [ 0.1808]], device='cuda:0')
+2025-08-11 12:33:15,784 - INFO - delta_l_infinity: -1.1510425806045532 for w=tensor([[ 0.2573],
+        [ 0.3756],
+        [-0.3958],
+        [-1.2870]], device='cuda:3')
+2025-08-11 12:33:15,784 - INFO - Completed experiment: teacher_rank=1, student_dim=570, seed=0, GPU=0
+2025-08-11 12:33:15,784 - INFO - Starting experiment: teacher_rank=1, student_dim=570, seed=2, GPU=2
+2025-08-11 12:33:15,785 - INFO - A_teacher[0] is 0.5022341012954712
+2025-08-11 12:33:15,785 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,785 - INFO - Completed experiment: teacher_rank=1, student_dim=560, seed=7, GPU=3
+2025-08-11 12:33:15,787 - INFO - Starting experiment: teacher_rank=1, student_dim=570, seed=3, GPU=3
+2025-08-11 12:33:15,787 - INFO - Starting experiment: teacher_rank=1, student_dim=570, seed=4, GPU=0
+2025-08-11 12:33:15,788 - INFO - A_teacher[0] is 0.5426344871520996
+2025-08-11 12:33:15,788 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,788 - INFO - delta_l_infinity: 1.1440778970718384 for w=tensor([[-1.4471],
+        [-0.6420],
+        [-0.6431],
+        [-0.6340]], device='cuda:1')
+2025-08-11 12:33:15,788 - INFO - A_teacher[0] is 0.30494755506515503
+2025-08-11 12:33:15,789 - INFO - Completed experiment: teacher_rank=1, student_dim=570, seed=1, GPU=1
+2025-08-11 12:33:15,790 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,790 - INFO - Starting experiment: teacher_rank=1, student_dim=570, seed=5, GPU=1
+2025-08-11 12:33:15,791 - INFO - A_teacher[0] is 0.5309687256813049
+2025-08-11 12:33:15,791 - INFO - delta_l_infinity: -0.5173013210296631 for w=tensor([[-1.0484],
+        [-1.4438],
+        [ 1.3477],
+        [ 2.2669]], device='cuda:2')
+2025-08-11 12:33:15,792 - INFO - Completed experiment: teacher_rank=1, student_dim=570, seed=2, GPU=2
+2025-08-11 12:33:15,793 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,793 - INFO - delta_l_infinity: 0.9723169803619385 for w=tensor([[ 0.5542],
+        [-0.5594],
+        [-0.2217],
+        [-0.5162]], device='cuda:3')
+2025-08-11 12:33:15,794 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,794 - INFO - Starting experiment: teacher_rank=1, student_dim=570, seed=6, GPU=2
+2025-08-11 12:33:15,794 - INFO - Completed experiment: teacher_rank=1, student_dim=570, seed=3, GPU=3
+2025-08-11 12:33:15,795 - INFO - A_teacher[0] is 0.5432507991790771
+2025-08-11 12:33:15,796 - INFO - Starting experiment: teacher_rank=1, student_dim=570, seed=7, GPU=3
+2025-08-11 12:33:15,796 - INFO - delta_l_infinity: 0.4341754913330078 for w=tensor([[-1.1513],
+        [ 1.4826],
+        [-0.6117],
+        [ 1.2089]], device='cuda:1')
+2025-08-11 12:33:15,797 - INFO - A_teacher[0] is 0.46951529383659363
+2025-08-11 12:33:15,797 - INFO - delta_l_infinity: -0.6091740131378174 for w=tensor([[ 1.0391],
+        [-1.4731],
+        [ 0.7819],
+        [-0.2938]], device='cuda:0')
+2025-08-11 12:33:15,797 - INFO - Completed experiment: teacher_rank=1, student_dim=570, seed=5, GPU=1
+2025-08-11 12:33:15,797 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,799 - INFO - Completed experiment: teacher_rank=1, student_dim=570, seed=4, GPU=0
+2025-08-11 12:33:15,799 - INFO - Starting experiment: teacher_rank=1, student_dim=580, seed=0, GPU=0
+2025-08-11 12:33:15,800 - INFO - A_teacher[0] is 0.40753376483917236
+2025-08-11 12:33:15,800 - INFO - Starting experiment: teacher_rank=1, student_dim=580, seed=1, GPU=1
+2025-08-11 12:33:15,800 - INFO - delta_l_infinity: 1.0530073642730713 for w=tensor([[-0.7933],
+        [-0.3380],
+        [-0.1324],
+        [ 1.9899]], device='cuda:2')
+2025-08-11 12:33:15,801 - INFO - A_teacher[0] is 0.47037220001220703
+2025-08-11 12:33:15,802 - INFO - Completed experiment: teacher_rank=1, student_dim=570, seed=6, GPU=2
+2025-08-11 12:33:15,802 - INFO - delta_l_infinity: -1.1510425806045532 for w=tensor([[ 0.2573],
+        [ 0.3756],
+        [-0.3958],
+        [-1.2870]], device='cuda:3')
+2025-08-11 12:33:15,803 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,803 - INFO - Completed experiment: teacher_rank=1, student_dim=570, seed=7, GPU=3
+2025-08-11 12:33:15,804 - INFO - Starting experiment: teacher_rank=1, student_dim=580, seed=2, GPU=2
+2025-08-11 12:33:15,804 - INFO - A_teacher[0] is 0.5022341012954712
+2025-08-11 12:33:15,805 - INFO - Starting experiment: teacher_rank=1, student_dim=580, seed=3, GPU=3
+2025-08-11 12:33:15,806 - INFO - delta_l_infinity: -0.026935815811157227 for w=tensor([[-0.7350],
+        [ 0.9238],
+        [-0.5523],
+        [ 0.1808]], device='cuda:0')
+2025-08-11 12:33:15,806 - INFO - A_teacher[0] is 0.5426344871520996
+2025-08-11 12:33:15,806 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,807 - INFO - Completed experiment: teacher_rank=1, student_dim=580, seed=0, GPU=0
+2025-08-11 12:33:15,807 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,808 - INFO - Starting experiment: teacher_rank=1, student_dim=580, seed=4, GPU=0
+2025-08-11 12:33:15,809 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,809 - INFO - A_teacher[0] is 0.30494755506515503
+2025-08-11 12:33:15,810 - INFO - delta_l_infinity: -0.5173013210296631 for w=tensor([[-1.0484],
+        [-1.4438],
+        [ 1.3477],
+        [ 2.2669]], device='cuda:2')
+2025-08-11 12:33:15,811 - INFO - delta_l_infinity: 1.1440778970718384 for w=tensor([[-1.4471],
+        [-0.6420],
+        [-0.6431],
+        [-0.6340]], device='cuda:1')
+2025-08-11 12:33:15,811 - INFO - Completed experiment: teacher_rank=1, student_dim=580, seed=2, GPU=2
+2025-08-11 12:33:15,812 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,812 - INFO - delta_l_infinity: 0.9723169803619385 for w=tensor([[ 0.5542],
+        [-0.5594],
+        [-0.2217],
+        [-0.5162]], device='cuda:3')
+2025-08-11 12:33:15,812 - INFO - Completed experiment: teacher_rank=1, student_dim=580, seed=1, GPU=1
+2025-08-11 12:33:15,812 - INFO - Completed experiment: teacher_rank=1, student_dim=580, seed=3, GPU=3
+2025-08-11 12:33:15,813 - INFO - Starting experiment: teacher_rank=1, student_dim=580, seed=5, GPU=1
+2025-08-11 12:33:15,814 - INFO - Starting experiment: teacher_rank=1, student_dim=580, seed=6, GPU=2
+2025-08-11 12:33:15,814 - INFO - A_teacher[0] is 0.5309687256813049
+2025-08-11 12:33:15,814 - INFO - delta_l_infinity: -0.6091740131378174 for w=tensor([[ 1.0391],
+        [-1.4731],
+        [ 0.7819],
+        [-0.2938]], device='cuda:0')
+2025-08-11 12:33:15,815 - INFO - Starting experiment: teacher_rank=1, student_dim=580, seed=7, GPU=3
+2025-08-11 12:33:15,815 - INFO - A_teacher[0] is 0.5432507991790771
+2025-08-11 12:33:15,815 - INFO - Completed experiment: teacher_rank=1, student_dim=580, seed=4, GPU=0
+2025-08-11 12:33:15,816 - INFO - A_teacher[0] is 0.46951529383659363
+2025-08-11 12:33:15,817 - INFO - Starting experiment: teacher_rank=1, student_dim=590, seed=0, GPU=0
+2025-08-11 12:33:15,817 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,818 - INFO - A_teacher[0] is 0.40753376483917236
+2025-08-11 12:33:15,818 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,820 - INFO - delta_l_infinity: 0.4341754913330078 for w=tensor([[-1.1513],
+        [ 1.4826],
+        [-0.6117],
+        [ 1.2089]], device='cuda:1')
+2025-08-11 12:33:15,820 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,820 - INFO - Completed experiment: teacher_rank=1, student_dim=580, seed=5, GPU=1
+2025-08-11 12:33:15,821 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,821 - INFO - delta_l_infinity: 1.0530073642730713 for w=tensor([[-0.7933],
+        [-0.3380],
+        [-0.1324],
+        [ 1.9899]], device='cuda:2')
+2025-08-11 12:33:15,822 - INFO - Completed experiment: teacher_rank=1, student_dim=580, seed=6, GPU=2
+2025-08-11 12:33:15,823 - INFO - Starting experiment: teacher_rank=1, student_dim=590, seed=1, GPU=1
+2025-08-11 12:33:15,823 - INFO - delta_l_infinity: -0.026935815811157227 for w=tensor([[-0.7350],
+        [ 0.9238],
+        [-0.5523],
+        [ 0.1808]], device='cuda:0')
+2025-08-11 12:33:15,823 - INFO - A_teacher[0] is 0.47037220001220703
+2025-08-11 12:33:15,824 - INFO - delta_l_infinity: -1.1510425806045532 for w=tensor([[ 0.2573],
+        [ 0.3756],
+        [-0.3958],
+        [-1.2870]], device='cuda:3')
+2025-08-11 12:33:15,824 - INFO - Completed experiment: teacher_rank=1, student_dim=590, seed=0, GPU=0
+2025-08-11 12:33:15,825 - INFO - Starting experiment: teacher_rank=1, student_dim=590, seed=2, GPU=2
+2025-08-11 12:33:15,825 - INFO - A_teacher[0] is 0.5022341012954712
+2025-08-11 12:33:15,826 - INFO - Completed experiment: teacher_rank=1, student_dim=580, seed=7, GPU=3
+2025-08-11 12:33:15,826 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,826 - INFO - Starting experiment: teacher_rank=1, student_dim=590, seed=3, GPU=3
+2025-08-11 12:33:15,827 - INFO - A_teacher[0] is 0.5426344871520996
+2025-08-11 12:33:15,827 - INFO - Starting experiment: teacher_rank=1, student_dim=590, seed=4, GPU=0
+2025-08-11 12:33:15,828 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,829 - INFO - delta_l_infinity: 1.1440778970718384 for w=tensor([[-1.4471],
+        [-0.6420],
+        [-0.6431],
+        [-0.6340]], device='cuda:1')
+2025-08-11 12:33:15,829 - INFO - A_teacher[0] is 0.30494755506515503
+2025-08-11 12:33:15,830 - INFO - Completed experiment: teacher_rank=1, student_dim=590, seed=1, GPU=1
+2025-08-11 12:33:15,830 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,831 - INFO - delta_l_infinity: -0.5173013210296631 for w=tensor([[-1.0484],
+        [-1.4438],
+        [ 1.3477],
+        [ 2.2669]], device='cuda:2')
+2025-08-11 12:33:15,831 - INFO - Starting experiment: teacher_rank=1, student_dim=590, seed=5, GPU=1
+2025-08-11 12:33:15,832 - INFO - A_teacher[0] is 0.5309687256813049
+2025-08-11 12:33:15,832 - INFO - Completed experiment: teacher_rank=1, student_dim=590, seed=2, GPU=2
+2025-08-11 12:33:15,833 - INFO - delta_l_infinity: 0.9723169803619385 for w=tensor([[ 0.5542],
+        [-0.5594],
+        [-0.2217],
+        [-0.5162]], device='cuda:3')
+2025-08-11 12:33:15,833 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,834 - INFO - Completed experiment: teacher_rank=1, student_dim=590, seed=3, GPU=3
+2025-08-11 12:33:15,835 - INFO - Starting experiment: teacher_rank=1, student_dim=590, seed=6, GPU=2
+2025-08-11 12:33:15,835 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,835 - INFO - A_teacher[0] is 0.5432507991790771
+2025-08-11 12:33:15,837 - INFO - Starting experiment: teacher_rank=1, student_dim=590, seed=7, GPU=3
+2025-08-11 12:33:15,837 - INFO - A_teacher[0] is 0.46951529383659363
+2025-08-11 12:33:15,838 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,838 - INFO - delta_l_infinity: 0.4341754913330078 for w=tensor([[-1.1513],
+        [ 1.4826],
+        [-0.6117],
+        [ 1.2089]], device='cuda:1')
+2025-08-11 12:33:15,839 - INFO - delta_l_infinity: -0.6091740131378174 for w=tensor([[ 1.0391],
+        [-1.4731],
+        [ 0.7819],
+        [-0.2938]], device='cuda:0')
+2025-08-11 12:33:15,840 - INFO - Completed experiment: teacher_rank=1, student_dim=590, seed=5, GPU=1
+2025-08-11 12:33:15,841 - INFO - No GNC sensing losses
+2025-08-11 12:33:15,841 - INFO - delta_l_infinity: 1.0530073642730713 for w=tensor([[-0.7933],
+        [-0.3380],
+        [-0.1324],
+        [ 1.9899]], device='cuda:2')
+2025-08-11 12:33:15,842 - INFO - Completed experiment: teacher_rank=1, student_dim=590, seed=6, GPU=2
+2025-08-11 12:33:15,842 - INFO - Completed experiment: teacher_rank=1, student_dim=590, seed=4, GPU=0
+2025-08-11 12:33:15,844 - INFO - delta_l_infinity: -1.1510425806045532 for w=tensor([[ 0.2573],
+        [ 0.3756],
+        [-0.3958],
+        [-1.2870]], device='cuda:3')
+2025-08-11 12:33:15,844 - INFO - Completed experiment: teacher_rank=1, student_dim=590, seed=7, GPU=3
+2025-08-11 12:33:16,700 - INFO - 
+GPU Usage Statistics:
+2025-08-11 12:33:16,701 - INFO -   GPU 0: 40 jobs, 100.0% success rate, 8.1MB avg memory per job
+2025-08-11 12:33:16,701 - INFO -   GPU 1: 40 jobs, 100.0% success rate, 8.1MB avg memory per job
+2025-08-11 12:33:16,702 - INFO -   GPU 2: 40 jobs, 100.0% success rate, 8.1MB avg memory per job
+2025-08-11 12:33:16,703 - INFO -   GPU 3: 40 jobs, 100.0% success rate, 8.1MB avg memory per job
+2025-08-11 12:33:16,712 - INFO - Checkpoint saved: test_results/results/checkpoints/checkpoint_20250811_123316.csv (100.0% complete)
+2025-08-11 12:33:16,713 - INFO - Final checkpoint saved
+2025-08-11 12:33:16,717 - INFO - G&C theoretical losses: [[[1.85007691 0.70484012 2.31279969 0.85659707 2.46100211 1.36987567
+   0.75897115 2.88523436]
+  [1.85111046 0.70464325 2.31367159 0.85650665 2.46253133 1.37040234
+   0.75928372 2.88781595]
+  [1.85209703 0.70445579 2.31450224 0.85642028 2.46398973 1.37090421
+   0.75958186 2.89027667]
+  [1.85303879 0.70427734 2.3152945  0.85633832 2.46538138 1.37138367
+   0.75986665 2.89262438]
+  [1.85393858 0.70410663 2.31605077 0.85625994 2.46671224 1.37184215
+   0.76013887 2.89486575]
+  [1.85479939 0.70394379 2.31677389 0.8561849  2.46798587 1.37228036
+   0.76039958 2.89700866]
+  [1.85562468 0.70378828 2.31746578 0.85611367 2.46920586 1.37270105
+   0.7606492  2.89906025]
+  [1.85641503 0.70363933 2.31812811 0.85604572 2.47037506 1.37310302
+   0.76088834 2.9010241 ]
+  [1.8571732  0.7034964  2.31876326 0.85598022 2.47149658 1.37348914
+   0.76111817 2.90290761]
+  [1.85790193 0.70335948 2.31937242 0.85591751 2.472574   1.37385964
+   0.76133889 2.90471458]
+  [1.85860097 0.70322818 2.31995749 0.85585713 2.47360897 1.37421596
+   0.76155078 2.90645027]
+  [1.85927439 0.70310205 2.32052016 0.85579997 2.47460508 1.37455869
+   0.76175511 2.90811849]
+  [1.85992205 0.70298076 2.32106066 0.85574442 2.47556257 1.3748883
+   0.76195103 2.90972281]
+  [1.86054659 0.70286435 2.32158089 0.85569113 2.47648668 1.37520576
+   0.76214045 2.911268  ]
+  [1.86114764 0.70275223 2.32208276 0.85563982 2.47737551 1.37551236
+   0.7623229  2.91275549]
+  [1.86172748 0.70264375 2.32256508 0.85559028 2.47823429 1.37580729
+   0.76249856 2.91418934]
+  [1.8622874  0.70253938 2.32303143 0.85554302 2.47906208 1.37609231
+   0.76266825 2.91557264]
+  [1.86282778 0.70243931 2.32348108 0.85549712 2.4798615  1.37636733
+   0.76283216 2.91690803]
+  [1.8633498  0.70234197 2.32391548 0.8554529  2.48063469 1.37663317
+   0.76299071 2.91819763]
+  [1.86385512 0.70224804 2.32433462 0.85541004 2.48138165 1.37689006
+   0.76314384 2.91944337]]]
+2025-08-11 12:33:16,719 - INFO - G&C theoretical asymptotic losses: [[[1.84870708 0.70475268 2.31256318 0.85649562 2.4588728  1.3692081
+   0.75848502 2.8840692 ]
+  [1.84980631 0.70455998 2.31344652 0.85640985 2.46050286 1.36976659
+   0.75882089 2.88670826]
+  [1.85085332 0.7043764  2.3142879  0.85632819 2.46205544 1.3702985
+   0.75914085 2.88922167]
+  [1.85185158 0.7042014  2.31509018 0.85625035 2.46353555 1.37080562
+   0.75944591 2.89161801]
+  [1.85280442 0.70403433 2.31585598 0.85617602 2.46494865 1.37128973
+   0.75973707 2.8939054 ]
+  [1.85371494 0.70387471 2.31658769 0.85610497 2.46629882 1.37175226
+   0.76001531 2.89609122]
+  [1.85458589 0.703722   2.31728745 0.85603702 2.46759033 1.37219477
+   0.76028144 2.89818215]
+  [1.85541975 0.70357579 2.31795764 0.85597199 2.46882677 1.37261844
+   0.76053625 2.90018392]
+  [1.85621893 0.70343566 2.31859994 0.85590965 2.47001171 1.37302446
+   0.76078045 2.90210247]
+  [1.85698545 0.70330131 2.31921577 0.85584986 2.47114849 1.3734138
+   0.7610147  2.90394258]
+  [1.85772133 0.70317227 2.31980729 0.85579246 2.47223973 1.37378764
+   0.76123959 2.90570903]
+  [1.85842836 0.70304835 2.32037544 0.85573727 2.47328806 1.37414682
+   0.7614556  2.90740633]
+  [1.85910809 0.70292914 2.32092166 0.85568428 2.47429609 1.37449217
+   0.76166332 2.90903831]
+  [1.85976231 0.70281446 2.32144737 0.85563326 2.47526622 1.37482452
+   0.76186323 2.91060853]
+  [1.86039221 0.70270401 2.32195354 0.85558408 2.4762001  1.3751446
+   0.76205575 2.91212082]
+  [1.86099923 0.70259756 2.32244134 0.85553676 2.47710037 1.375453
+   0.76224124 2.91357803]
+  [1.86158454 0.70249498 2.32291174 0.8554911  2.47796822 1.3757503
+   0.76242006 2.91498327]
+  [1.86214936 0.70239592 2.32336569 0.85544705 2.47880578 1.37603736
+   0.76259267 2.91633916]
+  [1.86269474 0.70230031 2.3238039  0.8554045  2.4796145  1.3763144
+   0.76275933 2.91764832]
+  [1.86322153 0.70220798 2.32422733 0.85536337 2.48039579 1.37658203
+   0.76292032 2.91891289]]]
+2025-08-11 12:33:20,518 - INFO - Finished experiments, results saved to results_gnc_seq_len=5_num_measurements=1_input_e1=False_time=20250811-123316.csv, figures saved to plot_gnc_seq_len=5_num_measurements=1_input_e1=False_time=20250811-123316

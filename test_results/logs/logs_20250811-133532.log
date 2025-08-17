@@ -1,0 +1,39 @@
+2025-08-11 13:35:32,583 - INFO - Args: Namespace(num_seeds=8, num_measurements=1, input_e1=False, sequence_length=5, teacher_ranks=[1], student_dims=[400, 410, 420, 430, 440, 450, 460, 470, 480, 490, 500, 510, 520, 530, 540, 550, 560, 570, 580, 590, 600, 610, 620, 630, 640, 650, 660, 670, 680, 690, 700, 710, 720, 730, 740, 750, 760, 770, 780, 790], calc_loss_only_on_last_output=True, eps_train=1e-05, gnc=True, gnc_num_samples=100000000000000, gnc_batch_size=1000, gd=False, gd_lr=0.001, gd_epochs=1000000, gd_init_scale=0.01, gd_optimizer='adam', config=None, results_dir=PosixPath('test_results/results'), figures_dir=PosixPath('test_results/figures'), checkpoint_interval=3600, resume_from_checkpoint=False, log_dir=PosixPath('test_results/logs'), log_file=PosixPath('test_results/logs/logs_20250811-133532.log'))
+2025-08-11 13:35:32,584 - INFO - CPU monitoring started (threshold: 85.0%, check interval: 30.0s)
+2025-08-11 13:35:32,585 - INFO - CPU profiling started
+2025-08-11 13:35:33,048 - INFO - Using GPUs: [0, 1, 2, 3]
+2025-08-11 13:35:33,167 - INFO - Created 320 parameter combinations
+2025-08-11 13:35:33,168 - INFO - Teacher ranks: [1], Student dims: 40, Seeds: 8
+2025-08-11 13:35:33,171 - INFO - Using original parameter distribution with 320 tasks
+2025-08-11 13:35:33,171 - INFO - Running 320 total experiments with 4-process pool
+2025-08-11 13:35:33,172 - ERROR - Error occurred: PosixPath('test_results/logs/logs_20250811-133532.log')
+2025-08-11 13:35:34,180 - INFO - CPU Profiling Results:
+2025-08-11 13:35:34,181 - INFO -          5444 function calls (5420 primitive calls) in 2.245 seconds
+
+   Ordered by: cumulative time
+   List reduced from 305 to 20 due to restriction <20>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.660    0.660    1.000    1.000 /home/fodl/noacaspi/miniconda3/envs/ssm_generalize/lib/python3.13/threading.py:1058(join)
+        2    0.000    0.000    0.675    0.337 /home/fodl/noacaspi/miniconda3/envs/ssm_generalize/lib/python3.13/site-packages/torch/__init__.py:2634(registerOp)
+        1    0.659    0.659    0.659    0.659 {built-in method time.sleep}
+        2    0.000    0.000    0.344    0.172 /home/fodl/noacaspi/miniconda3/envs/ssm_generalize/lib/python3.13/site-packages/torch/library.py:293(impl)
+        1    0.340    0.340    0.340    0.340 {method 'join' of '_thread._ThreadHandle' objects}
+        1    0.000    0.000    0.338    0.338 /home/fodl/noacaspi/miniconda3/envs/ssm_generalize/lib/python3.13/site-packages/torch/cuda/__init__.py:1651(_register_triton_kernels)
+        1    0.000    0.000    0.329    0.329 /home/fodl/noacaspi/miniconda3/envs/ssm_generalize/lib/python3.13/site-packages/torch/cuda/__init__.py:235(_check_capability)
+       27    0.000    0.000    0.318    0.012 /home/fodl/noacaspi/miniconda3/envs/ssm_generalize/lib/python3.13/site-packages/torch/cuda/__init__.py:982(device_count)
+        2    0.245    0.122    0.245    0.122 {method 'readline' of '_io.BufferedReader' objects}
+        2    0.001    0.000    0.238    0.119 /home/fodl/noacaspi/miniconda3/envs/ssm_generalize/lib/python3.13/site-packages/GPUtil/GPUtil.py:68(getGPUs)
+        2    0.000    0.000    0.226    0.113 /home/fodl/noacaspi/miniconda3/envs/ssm_generalize/lib/python3.13/subprocess.py:1178(communicate)
+        2    0.225    0.112    0.225    0.112 {method 'read' of '_io.BufferedReader' objects}
+        1    0.000    0.000    0.122    0.122 /home/fodl/noacaspi/ssm_generalize/utils.py:59(get_available_gpus)
+        1    0.000    0.000    0.121    0.121 /home/fodl/noacaspi/miniconda3/envs/ssm_generalize/lib/python3.13/site-packages/GPUtil/GPUtil.py:129(getAvailable)
+        1    0.000    0.000    0.117    0.117 /home/fodl/noacaspi/ssm_generalize/main_multi_gpu.py:278(get_gpu_info)
+       27    0.001    0.000    0.073    0.003 /home/fodl/noacaspi/miniconda3/envs/ssm_generalize/lib/python3.13/site-packages/torch/cuda/__init__.py:926(_device_count_nvml)
+       27    0.068    0.003    0.072    0.003 /home/fodl/noacaspi/miniconda3/envs/ssm_generalize/lib/python3.13/site-packages/torch/cuda/__init__.py:782(_raw_device_count_nvml)
+       24    0.000    0.000    0.017    0.001 /home/fodl/noacaspi/miniconda3/envs/ssm_generalize/lib/python3.13/site-packages/torch/cuda/__init__.py:564(get_device_properties)
+       16    0.000    0.000    0.015    0.001 /home/fodl/noacaspi/miniconda3/envs/ssm_generalize/lib/python3.13/site-packages/torch/cuda/__init__.py:547(get_device_capability)
+        2    0.000    0.000    0.012    0.006 /home/fodl/noacaspi/miniconda3/envs/ssm_generalize/lib/python3.13/subprocess.py:817(__init__)
+
+
+

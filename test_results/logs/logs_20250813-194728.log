@@ -1,0 +1,65 @@
+2025-08-13 19:47:28,889 - INFO - Args: Namespace(num_seeds=8, sequence_length=5, student_dims=[400, 410, 420, 430, 440, 450, 460, 470, 480, 490, 500, 510, 520, 530, 540, 550, 560, 570, 580, 590, 600, 610, 620, 630, 640, 650, 660, 670, 680, 690, 700, 710, 720, 730, 740, 750, 760, 770, 780, 790], eps_train=1e-05, gnc=True, gnc_num_samples=10000000000, gnc_batch_size=1000, gd=False, gd_lr=0.001, gd_epochs=1000000, gd_init_scale=0.01, gd_optimizer='adam', config=None, results_dir=PosixPath('test_results/results'), figures_dir=PosixPath('test_results/figures'), checkpoint_interval=3600, resume_from_checkpoint=False, log_dir=PosixPath('test_results/logs'), max_gpus=4, log_file=PosixPath('test_results/logs/logs_20250813-194728.log'))
+2025-08-13 19:47:29,073 - INFO - Using GPUs: [0, 1, 2, 3]
+2025-08-13 19:47:29,074 - INFO - Starting 4 processes on 4 GPUs
+2025-08-13 19:47:32,806 - INFO - Process 0 started on GPU 0, processing seeds 0-1
+2025-08-13 19:47:32,972 - INFO - Process 0: Starting experiment - student_dim=400, seed=0
+2025-08-13 19:47:33,312 - INFO - Process 2 started on GPU 2, processing seeds 4-5
+2025-08-13 19:47:33,319 - INFO - Process 2: Starting experiment - student_dim=400, seed=4
+2025-08-13 19:47:33,456 - INFO - Process 3 started on GPU 3, processing seeds 6-7
+2025-08-13 19:47:33,483 - INFO - Process 3: Starting experiment - student_dim=400, seed=6
+2025-08-13 19:47:33,553 - INFO - Process 1 started on GPU 1, processing seeds 2-3
+2025-08-13 19:47:33,560 - INFO - Process 1: Starting experiment - student_dim=400, seed=2
+2025-08-13 21:22:37,052 - INFO - delta_l_infinity: tensor([0.9446], device='cuda:1') for w=tensor([ 2.2669,  1.3477, -1.4438, -1.0484], device='cuda:1')
+2025-08-13 21:22:37,053 - INFO - Process 1: Completed experiment - student_dim=400, seed=2
+2025-08-13 21:23:13,537 - INFO - delta_l_infinity: tensor([-5.2844], device='cuda:2') for w=tensor([-0.2938,  0.7819, -1.4731,  1.0391], device='cuda:2')
+2025-08-13 21:23:13,538 - INFO - Process 2: Completed experiment - student_dim=400, seed=4
+2025-08-13 21:25:23,558 - INFO - delta_l_infinity: tensor([1.2949], device='cuda:3') for w=tensor([ 1.9899, -0.1324, -0.3380, -0.7933], device='cuda:3')
+2025-08-13 21:25:23,560 - INFO - Process 3: Completed experiment - student_dim=400, seed=6
+2025-08-13 22:01:17,332 - INFO - delta_l_infinity: tensor([-6.5654], device='cuda:0') for w=tensor([ 0.1808, -0.5523,  0.9238, -0.7350], device='cuda:0')
+2025-08-13 22:01:17,334 - INFO - Process 0: Completed experiment - student_dim=400, seed=0
+2025-08-13 23:05:06,465 - INFO - delta_l_infinity: tensor([-5.2844], device='cuda:2') for w=tensor([-0.2938,  0.7819, -1.4731,  1.0391], device='cuda:2')
+2025-08-13 23:05:06,466 - INFO - Process 2: Completed experiment - student_dim=410, seed=4
+2025-08-13 23:05:13,115 - INFO - delta_l_infinity: tensor([1.2949], device='cuda:3') for w=tensor([ 1.9899, -0.1324, -0.3380, -0.7933], device='cuda:3')
+2025-08-13 23:05:13,117 - INFO - Process 3: Completed experiment - student_dim=410, seed=6
+2025-08-13 23:07:23,398 - INFO - delta_l_infinity: tensor([0.9446], device='cuda:1') for w=tensor([ 2.2669,  1.3477, -1.4438, -1.0484], device='cuda:1')
+2025-08-13 23:07:23,399 - INFO - Process 1: Completed experiment - student_dim=410, seed=2
+2025-08-14 00:14:06,547 - INFO - delta_l_infinity: tensor([-6.5654], device='cuda:0') for w=tensor([ 0.1808, -0.5523,  0.9238, -0.7350], device='cuda:0')
+2025-08-14 00:14:06,549 - INFO - Process 0: Completed experiment - student_dim=410, seed=0
+2025-08-14 00:38:18,889 - INFO - delta_l_infinity: tensor([0.9446], device='cuda:1') for w=tensor([ 2.2669,  1.3477, -1.4438, -1.0484], device='cuda:1')
+2025-08-14 00:38:18,890 - INFO - Process 1: Completed experiment - student_dim=420, seed=2
+2025-08-14 00:40:21,016 - INFO - delta_l_infinity: tensor([1.2949], device='cuda:3') for w=tensor([ 1.9899, -0.1324, -0.3380, -0.7933], device='cuda:3')
+2025-08-14 00:40:21,018 - INFO - Process 3: Completed experiment - student_dim=420, seed=6
+2025-08-14 00:40:36,445 - INFO - delta_l_infinity: tensor([-5.2844], device='cuda:2') for w=tensor([-0.2938,  0.7819, -1.4731,  1.0391], device='cuda:2')
+2025-08-14 00:40:36,445 - INFO - Process 2: Completed experiment - student_dim=420, seed=4
+2025-08-14 02:02:40,015 - INFO - delta_l_infinity: tensor([0.9446], device='cuda:1') for w=tensor([ 2.2669,  1.3477, -1.4438, -1.0484], device='cuda:1')
+2025-08-14 02:02:40,017 - INFO - Process 1: Completed experiment - student_dim=430, seed=2
+2025-08-14 02:03:24,597 - INFO - delta_l_infinity: tensor([-5.2844], device='cuda:2') for w=tensor([-0.2938,  0.7819, -1.4731,  1.0391], device='cuda:2')
+2025-08-14 02:03:24,598 - INFO - Process 2: Completed experiment - student_dim=430, seed=4
+2025-08-14 02:05:31,124 - INFO - delta_l_infinity: tensor([1.2949], device='cuda:3') for w=tensor([ 1.9899, -0.1324, -0.3380, -0.7933], device='cuda:3')
+2025-08-14 02:05:31,126 - INFO - Process 3: Completed experiment - student_dim=430, seed=6
+2025-08-14 02:21:30,055 - INFO - delta_l_infinity: tensor([-6.5654], device='cuda:0') for w=tensor([ 0.1808, -0.5523,  0.9238, -0.7350], device='cuda:0')
+2025-08-14 02:21:30,057 - INFO - Process 0: Completed experiment - student_dim=420, seed=0
+2025-08-14 03:24:51,364 - INFO - delta_l_infinity: tensor([-5.2844], device='cuda:2') for w=tensor([-0.2938,  0.7819, -1.4731,  1.0391], device='cuda:2')
+2025-08-14 03:24:51,365 - INFO - Process 2: Completed experiment - student_dim=440, seed=4
+2025-08-14 03:25:22,239 - INFO - delta_l_infinity: tensor([0.9446], device='cuda:1') for w=tensor([ 2.2669,  1.3477, -1.4438, -1.0484], device='cuda:1')
+2025-08-14 03:25:22,240 - INFO - Process 1: Completed experiment - student_dim=440, seed=2
+2025-08-14 03:27:53,715 - INFO - delta_l_infinity: tensor([1.2949], device='cuda:3') for w=tensor([ 1.9899, -0.1324, -0.3380, -0.7933], device='cuda:3')
+2025-08-14 03:27:53,718 - INFO - Process 3: Completed experiment - student_dim=440, seed=6
+2025-08-14 04:25:37,693 - INFO - delta_l_infinity: tensor([-6.5654], device='cuda:0') for w=tensor([ 0.1808, -0.5523,  0.9238, -0.7350], device='cuda:0')
+2025-08-14 04:25:37,696 - INFO - Process 0: Completed experiment - student_dim=430, seed=0
+2025-08-14 04:46:05,699 - INFO - delta_l_infinity: tensor([-5.2844], device='cuda:2') for w=tensor([-0.2938,  0.7819, -1.4731,  1.0391], device='cuda:2')
+2025-08-14 04:46:05,700 - INFO - Process 2: Completed experiment - student_dim=450, seed=4
+2025-08-14 04:48:00,675 - INFO - delta_l_infinity: tensor([0.9446], device='cuda:1') for w=tensor([ 2.2669,  1.3477, -1.4438, -1.0484], device='cuda:1')
+2025-08-14 04:48:00,676 - INFO - Process 1: Completed experiment - student_dim=450, seed=2
+2025-08-14 04:50:27,248 - INFO - delta_l_infinity: tensor([1.2949], device='cuda:3') for w=tensor([ 1.9899, -0.1324, -0.3380, -0.7933], device='cuda:3')
+2025-08-14 04:50:27,250 - INFO - Process 3: Completed experiment - student_dim=450, seed=6
+2025-08-14 05:54:09,164 - INFO - delta_l_infinity: tensor([-6.5654], device='cuda:0') for w=tensor([ 0.1808, -0.5523,  0.9238, -0.7350], device='cuda:0')
+2025-08-14 05:54:09,187 - INFO - Process 0: Completed experiment - student_dim=440, seed=0
+2025-08-14 06:06:48,743 - INFO - delta_l_infinity: tensor([-5.2844], device='cuda:2') for w=tensor([-0.2938,  0.7819, -1.4731,  1.0391], device='cuda:2')
+2025-08-14 06:06:48,746 - INFO - Process 2: Completed experiment - student_dim=460, seed=4
+2025-08-14 06:08:23,167 - INFO - delta_l_infinity: tensor([1.2949], device='cuda:3') for w=tensor([ 1.9899, -0.1324, -0.3380, -0.7933], device='cuda:3')
+2025-08-14 06:08:23,168 - INFO - Process 3: Completed experiment - student_dim=460, seed=6
+2025-08-14 06:09:59,085 - INFO - delta_l_infinity: tensor([0.9446], device='cuda:1') for w=tensor([ 2.2669,  1.3477, -1.4438, -1.0484], device='cuda:1')
+2025-08-14 06:09:59,086 - INFO - Process 1: Completed experiment - student_dim=460, seed=2
+2025-08-14 07:15:52,796 - INFO - delta_l_infinity: tensor([-6.5654], device='cuda:0') for w=tensor([ 0.1808, -0.5523,  0.9238, -0.7350], device='cuda:0')
+2025-08-14 07:15:52,800 - INFO - Process 0: Completed experiment - student_dim=450, seed=0
