@@ -19,7 +19,12 @@ class CheckpointManager:
             'gnc_theoretical_losses': None,
             'gnc_theoretical_asymptotic_losses': None,
             'completed_experiments': 0,
-            'total_experiments': 0
+            'total_experiments': 0,
+            'student_dims': args.student_dims,
+            'sequence_length': args.sequence_length,
+            'num_seeds': args.num_seeds,
+            'figures_dir': args.figures_dir,
+            'results_dir': args.results_dir,
         }
         self.checkpoint_dir = args.checkpoint_dir
         self.checkpoint_dir.mkdir(parents=True, exist_ok=True)
