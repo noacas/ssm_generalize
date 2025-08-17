@@ -326,37 +326,59 @@ def main():
     args = parse_args()
     args.log_file = setup_logging(args.log_dir)
     logging.info(f'Args: {args}')
-    gnc_gen_losses, gd_gen_losses, gnc_mean_priors, gnc_theoretical_losses, gnc_theoretical_asymptotic_losses = run_experiment(args)
+    
+    # Run experiment and handle potential None return
+    experiment_results = run_experiment(args)
+    
+    if experiment_results is None:
+        logging.error("Experiment failed - no results to save or plot")
+        print("Experiment failed - no results to save or plot")
+        return
+    
+    gnc_gen_losses, gd_gen_losses, gnc_mean_priors, gnc_theoretical_losses, gnc_theoretical_asymptotic_losses = experiment_results
 
     results_filename = 'results' + filename_extensions(args) + '.csv'
     plot_filename = 'plot' + filename_extensions(args)
 
-    save_results_to_csv(
-        gnc_gen_losses,
-        gd_gen_losses,
-        gnc_theoretical_losses,
-        gnc_theoretical_asymptotic_losses,
-        args.student_dims,
-        args.num_seeds,
-        results_filename,
-        args.results_dir,
-        args.gd,
-        args.gnc,
-    )
-
-    plot(args.student_dims,
+    try:
+        save_results_to_csv(
             gnc_gen_losses,
             gd_gen_losses,
-            gnc_mean_priors,
             gnc_theoretical_losses,
             gnc_theoretical_asymptotic_losses,
-            args.sequence_length,
-            plot_filename,
-            args.figures_dir,
+            args.student_dims,
+            args.num_seeds,
+            results_filename,
+            args.results_dir,
+            args.gd,
             args.gnc,
-            args.gd)
+        )
+        logging.info(f"Results saved to {results_filename}")
+        print(f"Results saved to {results_filename}")
+    except Exception as e:
+        logging.error(f"Failed to save results: {e}")
+        print(f"Failed to save results: {e}")
+
+    try:
+        plot(args.student_dims,
+                gnc_gen_losses,
+                gd_gen_losses,
+                gnc_mean_priors,
+                gnc_theoretical_losses,
+                gnc_theoretical_asymptotic_losses,
+                args.sequence_length,
+                plot_filename,
+                args.figures_dir,
+                args.gnc,
+                args.gd)
+        logging.info(f"Figures saved to {plot_filename}")
+        print(f"Figures saved to {plot_filename}")
+    except Exception as e:
+        logging.error(f"Failed to create plots: {e}")
+        print(f"Failed to create plots: {e}")
 
     logging.info(f"Finished experiments, results saved to {results_filename}, figures saved to {plot_filename}")
+    print(f"Finished experiments, results saved to {results_filename}, figures saved to {plot_filename}")
 
 
 if __name__ == "__main__":
