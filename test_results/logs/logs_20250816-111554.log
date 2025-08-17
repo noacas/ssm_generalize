@@ -1,3 +1,19 @@
 2025-08-16 11:15:54,076 - INFO - Args: Namespace(num_seeds=8, sequence_length=5, student_dims=[100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230, 240, 250, 260, 270, 280, 290, 300, 310, 320, 330, 340, 350, 360, 370, 380, 390], eps_train=0.001, gnc=True, gnc_num_samples=1000000000000, gnc_batch_size=1000000, gd=False, gd_lr=0.001, gd_epochs=1000000, gd_init_scale=0.01, gd_optimizer='adam', config=None, results_dir=PosixPath('test_results/results'), figures_dir=PosixPath('test_results/figures'), checkpoint_dir=PosixPath('test_results/checkpoints'), checkpoint_interval=3600, resume_from_checkpoint=False, log_dir=PosixPath('test_results/logs'), max_gpus=4, log_file=PosixPath('test_results/logs/logs_20250816-111554.log'))
 2025-08-16 11:15:54,268 - INFO - Using GPUs: [0, 1, 2, 3]
 2025-08-16 11:15:54,269 - INFO - Starting 4 processes on 4 GPUs
+2025-08-16 11:16:03,282 - INFO - Process 0 started on GPU 0, processing seeds 0-1
+2025-08-16 11:16:03,692 - INFO - Process 1 started on GPU 1, processing seeds 2-3
+2025-08-16 11:16:03,700 - INFO - Process 3 started on GPU 3, processing seeds 6-7
+2025-08-16 11:16:03,709 - INFO - Process 1: Starting experiment - student_dim=100, seed=2
+2025-08-16 11:16:03,723 - INFO - Process 3: Starting experiment - student_dim=100, seed=6
+2025-08-16 11:16:03,731 - INFO - Process 2 started on GPU 2, processing seeds 4-5
+2025-08-16 11:16:03,746 - INFO - Process 2: Starting experiment - student_dim=100, seed=4
+2025-08-16 11:16:03,749 - INFO - Process 0: Starting experiment - student_dim=100, seed=0
+2025-08-16 13:26:34,795 - INFO - delta_l_infinity: tensor([0.9446], device='cuda:1') for w=tensor([ 2.2669,  1.3477, -1.4438, -1.0484], device='cuda:1')
+2025-08-16 13:26:34,803 - INFO - Process 1: Completed experiment - student_dim=100, seed=2
+2025-08-16 13:28:50,227 - INFO - delta_l_infinity: tensor([1.2949], device='cuda:3') for w=tensor([ 1.9899, -0.1324, -0.3380, -0.7933], device='cuda:3')
+2025-08-16 13:28:50,231 - INFO - Process 3: Completed experiment - student_dim=100, seed=6
+2025-08-16 13:32:17,613 - INFO - delta_l_infinity: tensor([-5.2844], device='cuda:2') for w=tensor([-0.2938,  0.7819, -1.4731,  1.0391], device='cuda:2')
+2025-08-16 13:32:17,615 - INFO - Process 2: Completed experiment - student_dim=100, seed=4
+2025-08-16 13:32:41,320 - INFO - delta_l_infinity: tensor([-6.5654], device='cuda:0') for w=tensor([ 0.1808, -0.5523,  0.9238, -0.7350], device='cuda:0')
+2025-08-16 13:32:41,323 - INFO - Process 0: Completed experiment - student_dim=100, seed=0
