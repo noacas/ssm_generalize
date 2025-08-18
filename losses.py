@@ -38,20 +38,20 @@ def get_losses(A_diag: torch.Tensor, w: torch.Tensor, alpha_teacher: float):
     else:
         raise ValueError("w must be 1D or 2D tensor")
 
-    # Prepare sequence statistics: for each m, use the m-th (clamped) diagonal entry
-    # s[:, m-1] = A_{min(m, state_dim)}^m - alpha_teacher^m for m=1..M
-    s = torch.empty((A_diag.size(0), M), device=device, dtype=dtype)
+    # Vectorized computation using cumulative products over the power dimension
+    # X: (batch, state_dim, M) with every slice along M equal to A_diag
+    X = A_diag.unsqueeze(-1).expand(-1, -1, M)
+    # A_pows[:, :, k] = A_diag ** (k+1)
+    A_pows = torch.cumprod(X, dim=2)
+    # Sum over state dimensions → (batch, M)
+    sum_A_pows = A_pows.sum(dim=1)
 
-    state_dim = A_diag.size(1)
-    alpha_current = torch.as_tensor(alpha_teacher, device=device, dtype=dtype)
+    # alpha powers: [alpha, alpha^2, ..., alpha^M]
+    alpha_scalar = torch.as_tensor(alpha_teacher, device=device, dtype=dtype)
+    alpha_pows = torch.cumprod(alpha_scalar.expand(M), dim=0)
 
-    for m in range(1, M + 1):
-        col_index = min(m, state_dim) - 1
-        base = A_diag[:, col_index]
-        s[:, m - 1] = base.pow(m) - alpha_current
-
-        # Update alpha term
-        alpha_current = alpha_current * alpha_teacher
+    # s[:, m-1] = sum_j A_j^m - alpha^m
+    s = sum_A_pows - alpha_pows.unsqueeze(0)
 
     # Compute losses
     # train_loss_i = (<s_i, w>)**2
@@ -69,8 +69,8 @@ def test_get_losses():
     w = torch.tensor([0.5, 0.7, 0.3, 0.4])
     alpha_teacher = 0.5
     train_loss, gen_loss = get_losses(A_diag, w, alpha_teacher)
-    s1 = torch.tensor([0.55-0.5, 0.45**2-0.5**2, 0.4**3-0.5**3, 0.4**4-0.5**4])
-    s2 = torch.tensor([0.3-0.5, 0.4**2-0.5**2, 0.3**3-0.5**3, 0.3**4-0.5**4])
+    s1 = torch.tensor([A_diag[0].sum()-0.5, (A_diag[0]**2).sum()-0.5**2, (A_diag[0]**3).sum()-0.5**3, (A_diag[0]**4).sum()-0.5**4])
+    s2 = torch.tensor([A_diag[1].sum()-0.5, (A_diag[1]**2).sum()-0.5**2, (A_diag[1]**3).sum()-0.5**3, (A_diag[1]**4).sum()-0.5**4])
     assert torch.allclose(train_loss, torch.tensor([torch.dot(s1, w)**2, torch.dot(s2, w)**2]))
     assert torch.allclose(gen_loss, torch.tensor([torch.dot(s1, s1), torch.dot(s2, s2)]))
 
