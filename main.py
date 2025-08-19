@@ -208,7 +208,7 @@ def run_experiment(args):
     }
 
     # Distribute seeds across processes
-    num_processes = min(args.num_processes, args.num_seeds)
+    num_processes = min(num_processes, args.num_seeds)
     seeds_per_process = args.num_seeds // num_processes
     remaining_seeds = args.num_seeds % num_processes
     
