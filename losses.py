@@ -11,7 +11,7 @@ def get_losses(A_diag: torch.Tensor, w: torch.Tensor, alpha_teacher: float):
         alpha_teacher: Scalar (float or 0-dim tensor) teacher parameter.
 
     Returns:
-        train_loss: Tensor of shape (batch_size,) with dot(s_i, w) for each sample.
+        train_loss: Tensor of shape (batch_size,) with (<s_i, w>)^2 for each sample.
         gen_loss:   Tensor of shape (batch_size,) with ||s_i||_2^2 for each sample.
     """
 
@@ -48,7 +48,8 @@ def get_losses(A_diag: torch.Tensor, w: torch.Tensor, alpha_teacher: float):
 
     # alpha powers: [alpha, alpha^2, ..., alpha^M]
     alpha_scalar = torch.as_tensor(alpha_teacher, device=device, dtype=dtype)
-    alpha_pows = torch.cumprod(alpha_scalar.expand(M), dim=0)
+    alpha_base_vec = torch.full((M,), alpha_scalar.item(), device=device, dtype=dtype)
+    alpha_pows = torch.cumprod(alpha_base_vec, dim=0)
 
     # s[:, m-1] = sum_j A_j^m - alpha^m
     s = sum_A_pows - alpha_pows.unsqueeze(0)
