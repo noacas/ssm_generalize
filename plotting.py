@@ -99,6 +99,24 @@ def plot(student_dims: list,
     fig.savefig(outfile_base + ".pdf", dpi=300, bbox_inches="tight")
     plt.close(fig)
 
+    for seed_idx in range(gnc_gen_losses.shape[-1]):
+        fig, ax = plt.subplots(figsize=(width, height), nrows=1, ncols=1, sharey=False)
+        ax.plot(student_dims, gnc_gen_losses[:, seed_idx], 
+                color=colors[seed_idx], marker='o', linewidth=1.5, markersize=4,
+                label=f"Seed {seed_idx} (Actual)")
+        ax.plot(student_dims, gnc_theoretical_losses[:, seed_idx], 
+                color=colors[seed_idx], marker='s', linestyle='--', linewidth=1.5, markersize=4,
+                label=f"Seed {seed_idx} (Theoretical)")
+        ax.set_xlabel("Student Dimension", fontsize="xx-large")
+        ax.set_ylabel("Generalization Loss", fontsize="xx-large")
+        ax.grid(True)
+        ax.legend(fontsize="medium", loc="upper center", bbox_to_anchor=(0.5, -0.15), ncol=4)
+        plt.tight_layout()
+        outfile_base = os.path.join(figures_dir, plot_filename)
+        fig.savefig(outfile_base + f"_seed_{seed_idx}.png", dpi=300, bbox_inches="tight")
+        fig.savefig(outfile_base + f"_seed_{seed_idx}.pdf", dpi=300, bbox_inches="tight")
+        plt.close(fig)
+
 
 if __name__ == "__main__":
     student_dims = [10, 20, 30, 40, 50]
