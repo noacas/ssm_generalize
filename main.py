@@ -96,7 +96,7 @@ def process_worker(process_id, gpu_id, seed_range, args_dict, student_dims,
                             results['gnc_gen_loss'] = gnc_gen_loss
                             results['gnc_mean_prior'] = mean_prior
                             
-                            theoretical_loss, theoretical_asymptotic_loss = gnc_theoretical_loss(alpha_teacher, w, student_dim, device)
+                            theoretical_loss, theoretical_asymptotic_loss, delta_l_infinity = gnc_theoretical_loss(alpha_teacher, w, student_dim, device)
                             results['gnc_theoretical_loss'] = theoretical_loss.item()
                             results['gnc_theoretical_asymptotic_loss'] = theoretical_asymptotic_loss.item()
                         
@@ -208,6 +208,7 @@ def run_experiment(args):
     }
 
     # Distribute seeds across processes
+    num_processes = min(args.num_processes, args.num_seeds)
     seeds_per_process = args.num_seeds // num_processes
     remaining_seeds = args.num_seeds % num_processes
     

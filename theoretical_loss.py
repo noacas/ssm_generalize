@@ -181,7 +181,7 @@ def calc_asymptotic_coefficients(alpha_teacher, w, sequence_length, device):
     delta_l_infinity = 1 - 2 * alpha_teacher * safe_divide(w_transpose_mu_0, w_vec[0].item()) - safe_divide(w_transpose_mu_0**2, w_vec[0].item() **2)
     #logging.info(f"delta_l_infinity: {delta_l_infinity} for w={w}")
     
-    return A, B
+    return A, B, delta_l_infinity
 
 
 def gnc_theoretical_loss(alpha_teacher, w, student_dim, device):
@@ -250,7 +250,7 @@ def gnc_theoretical_loss(alpha_teacher, w, student_dim, device):
         return torch.tensor(float('nan'), device=device), torch.tensor(float('nan'), device=device)
 
     # Calculate asymptotic coefficients
-    A, B = calc_asymptotic_coefficients(alpha_teacher, w, sequence_length, device)
+    A, B, delta_l_infinity = calc_asymptotic_coefficients(alpha_teacher, w, sequence_length, device)
     
     # Check for numerical stability in asymptotic coefficients
     if torch.isnan(A) or torch.isnan(B):
@@ -273,18 +273,20 @@ def gnc_theoretical_loss(alpha_teacher, w, student_dim, device):
         logging.warning(f"Unreasonable asymptotic_conditional_expectation: {asymptotic_conditional_expectation}")
         return torch.tensor(float('nan'), device=device), torch.tensor(float('nan'), device=device)
     
-    return conditional_expectation, asymptotic_conditional_expectation
+    return conditional_expectation, asymptotic_conditional_expectation, delta_l_infinity
 
 
 if __name__ == "__main__":
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     from generator import generate_teacher_alpha, generate_w
-    for seed in range(1):
+    for seed in range(100):
         torch.manual_seed(seed)
         alpha_teacher = generate_teacher_alpha(device)
         dataset = generate_w(5, device)
-        print(f"alpha_teacher={alpha_teacher}")
-        print(f"dataset={dataset}")
-        for d in range(100, 400, 10):
-            exact_loss, asymptotic_loss = gnc_theoretical_loss(alpha_teacher, dataset, d, device)
-            print(f"d={d}: Exact={exact_loss.item():.6f}, Asymptotic={asymptotic_loss.item():.6f}")
+        exact_loss, asymptotic_loss, delta_l_infinity = gnc_theoretical_loss(alpha_teacher, dataset, 400, device)
+        #print(f"seed={seed} alpha_teacher={alpha_teacher.item():.6f} dataset={dataset.squeeze().tolist()} asymptotic_loss={asymptotic_loss.item():.6f}")
+        if delta_l_infinity.item() < -10:
+            print(f"seed={seed} delta_l_infinity={delta_l_infinity.item():.6f}")
+        #for d in range(100, 400, 10):
+        #    exact_loss, asymptotic_loss = gnc_theoretical_loss(alpha_teacher, dataset, d, device)
+        #    print(f"d={d}: Exact={exact_loss.item():.6f}, Asymptotic={asymptotic_loss.item():.6f}")
