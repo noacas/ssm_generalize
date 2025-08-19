@@ -54,7 +54,7 @@ def parse_args() -> argparse.Namespace:  # noqa: C901 – a bit long but flat
     g = parser.add_argument_group("Problem dimensions & data generation")
     g.add_argument("--num_seeds", type=int, default=8, help="Number of random seeds per setting")
     g.add_argument("--sequence_length", type=int, default=5, help="Length of the measurement sequence")
-    g.add_argument("--student_dims", type=int, nargs='+', default=list(range(100, 300, 10)), help="Student dimensions (one or more integers)")
+    g.add_argument("--student_dims", type=int, nargs='+', default=list(range(100, 300, 25)), help="Student dimensions (one or more integers)")
     g.add_argument("--eps_train", type=float, default=float(1e-5), help="Training loss threshold for successful trial")
 
     g = parser.add_argument_group("Guess & Check hyperparameters")
