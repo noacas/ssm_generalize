@@ -8,7 +8,7 @@ import torch
 import GPUtil
 
 
-def setup_logging(log_dir, timestamp):
+def setup_logging(log_dir, timestamp=None):
     # is log dir maybe a log path?
     if os.path.isfile(log_dir):
         log_filename = log_dir
