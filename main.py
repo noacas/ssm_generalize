@@ -325,7 +325,10 @@ def run_experiment(args):
 
 def main():
     args = parse_args()
-    args.log_file = setup_logging(args.log_dir)
+    timestamp = time.strftime("%Y%m%d_%H%M%S")
+    args.log_file = setup_logging(args.log_dir, timestamp)
+    results_filename = 'results_' + filename_extensions(args, timestamp) + '.csv'
+    plot_filename = 'plot_' + filename_extensions(args, timestamp)
     logging.info(f'Args: {args}')
     
     # Run experiment and handle potential None return
@@ -338,8 +341,7 @@ def main():
     
     gnc_gen_losses, gd_gen_losses, gnc_mean_priors, gnc_theoretical_losses, gnc_theoretical_asymptotic_losses = experiment_results
 
-    results_filename = 'results' + filename_extensions(args) + '.csv'
-    plot_filename = 'plot' + filename_extensions(args)
+    
 
     try:
         save_results_to_csv(

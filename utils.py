@@ -8,13 +8,13 @@ import torch
 import GPUtil
 
 
-def setup_logging(log_dir):
+def setup_logging(log_dir, timestamp):
     # is log dir maybe a log path?
     if os.path.isfile(log_dir):
         log_filename = log_dir
     else:
         # Configure logging to both file and console
-        log_filename = log_dir / f'logs_{datetime.now().strftime("%Y%m%d-%H%M%S")}.log'
+        log_filename = log_dir / f'logs_{timestamp}.log'
     
     # Create formatter
     formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
@@ -78,13 +78,13 @@ def get_available_gpus(max_load: float = 0.3,
     return available_gpus
 
 
-def filename_extensions(args) -> str:
+def filename_extensions(args, timestamp) -> str:
     if args.gnc and not args.gd:
-        ext = f'_gnc_seq_len={args.sequence_length}_time={datetime.now().strftime("%Y%m%d-%H%M%S")}'
+        ext = f'_gnc_seq_len={args.sequence_length}_time={timestamp}'
     elif not args.gnc and args.gd:
-        ext = f'_gd_seq_len={args.sequence_length}_time={datetime.now().strftime("%Y%m%d-%H%M%S")}'
+        ext = f'_gd_seq_len={args.sequence_length}_time={timestamp}'
     else:
-        ext = f'_seq_len={args.sequence_length}_time={datetime.now().strftime("%Y%m%d-%H%M%S")}'
+        ext = f'_seq_len={args.sequence_length}_time={timestamp}'
     return ext
 
 
