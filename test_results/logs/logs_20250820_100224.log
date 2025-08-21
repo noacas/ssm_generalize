@@ -1,0 +1,15 @@
+2025-08-20 10:02:24,830 - INFO - Args: Namespace(num_seeds=1, sequence_length=5, student_dims=[150, 175, 200, 225, 250, 275], eps_train=1e-05, gnc=True, gnc_num_samples=1000000000, gnc_batch_size=1000000, gd=False, gd_lr=0.001, gd_epochs=1000000, gd_init_scale=0.01, gd_optimizer='adam', config=None, results_dir=PosixPath('test_results/results'), figures_dir=PosixPath('test_results/figures'), checkpoint_dir=PosixPath('test_results/checkpoints'), checkpoint_interval=3600, resume_from_checkpoint=False, log_dir=PosixPath('test_results/logs'), max_gpus=4, log_file=PosixPath('test_results/logs/logs_20250820_100224.log'))
+2025-08-20 10:02:25,011 - INFO - Using GPUs: [0, 1, 2, 3]
+2025-08-20 10:02:25,011 - INFO - Starting 4 processes on 4 GPUs
+2025-08-20 10:02:28,502 - INFO - Process 0 started on GPU 0, processing seeds 0-0
+2025-08-20 10:02:28,914 - INFO - for seed 0, alpha_teacher=tensor([0.4875], device='cuda:0'), w=tensor([ 0.0478,  0.8006,  0.2300, -1.3207], device='cuda:0')
+2025-08-20 10:02:28,914 - INFO - Process 0: Starting experiment - student_dim=150, seed=0
+2025-08-20 10:54:08,937 - WARNING - No GNC sensing losses for student dimension 150 seed 0
+2025-08-20 10:54:09,015 - INFO - delta_l_infinity: tensor([-188.7541], device='cuda:0') for w=tensor([ 0.0478,  0.8006,  0.2300, -1.3207], device='cuda:0')
+2025-08-20 10:54:09,021 - INFO - Process 0: Completed experiment - student_dim=150, seed=0
+2025-08-20 11:53:48,355 - WARNING - No GNC sensing losses for student dimension 175 seed 0
+2025-08-20 11:53:48,361 - INFO - delta_l_infinity: tensor([-188.7541], device='cuda:0') for w=tensor([ 0.0478,  0.8006,  0.2300, -1.3207], device='cuda:0')
+2025-08-20 11:53:48,363 - INFO - Process 0: Completed experiment - student_dim=175, seed=0
+2025-08-20 13:02:31,779 - WARNING - No GNC sensing losses for student dimension 200 seed 0
+2025-08-20 13:02:31,788 - INFO - delta_l_infinity: tensor([-188.7541], device='cuda:0') for w=tensor([ 0.0478,  0.8006,  0.2300, -1.3207], device='cuda:0')
+2025-08-20 13:02:31,791 - INFO - Process 0: Completed experiment - student_dim=200, seed=0
