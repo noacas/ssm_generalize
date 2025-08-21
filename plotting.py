@@ -66,27 +66,29 @@ def plot(student_dims: list,
     ax.grid(True)
     ax.legend(fontsize="x-large", loc="upper center", bbox_to_anchor=(0.5, -0.15), ncol=2)
 
-    # plot for each seed to compare gnc and the theoretical loss    
+    # plot for each seed to compare gnc and the theoretical loss and gd 
     # Define colors for each seed
     colors = plt.cm.tab10(np.linspace(0, 1, gnc_gen_losses.shape[-1]))
     
-    # Plot actual G&C losses for all seeds
-    for seed_idx in range(gnc_gen_losses.shape[-1]):
-        ax2.plot(student_dims, gnc_gen_losses[:, seed_idx], 
-                color=colors[seed_idx], marker='o', linewidth=1.5, markersize=4,
-                label=f"Seed {seed_idx} (Actual)")
+    if gnc:
+        # Plot actual G&C losses for all seeds
+        for seed_idx in range(gnc_gen_losses.shape[-1]):
+            ax2.plot(student_dims, gnc_gen_losses[:, seed_idx], 
+                    color=colors[seed_idx], marker='o', linewidth=1.5, markersize=4,
+                    label=f"Seed {seed_idx} (Actual)")
+        
+        # Plot theoretical G&C losses for all seeds
+        for seed_idx in range(gnc_theoretical_losses.shape[-1]):
+            ax2.plot(student_dims, gnc_theoretical_losses[:, seed_idx], 
+                    color=colors[seed_idx], marker='s', linestyle='--', linewidth=1.5, markersize=4,
+                    label=f"Seed {seed_idx} (Theoretical)")
+    if gd:
+        # Plot GD losses for all seeds
+        for seed_idx in range(gd_gen_losses.shape[-1]):
+            ax2.plot(student_dims, gd_gen_losses[:, seed_idx], 
+                    color=colors[seed_idx], marker='^', linestyle=':', linewidth=2.0, markersize=6,
+                    label=f"Seed {seed_idx} (GD)")
     
-    # Plot theoretical G&C losses for all seeds
-    for seed_idx in range(gnc_theoretical_losses.shape[-1]):
-        ax2.plot(student_dims, gnc_theoretical_losses[:, seed_idx], 
-                color=colors[seed_idx], marker='s', linestyle='--', linewidth=1.5, markersize=4,
-                label=f"Seed {seed_idx} (Theoretical)")
-    
-    # # Add a text annotation to show which teacher rank is being plotted
-    # ax2.text(0.02, 0.98, f'Teacher Rank = {teacher_rank}', 
-    #          transform=ax2.transAxes, fontsize=12, 
-    #          verticalalignment='top', bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.8))
-
     ax2.set_xlabel("Student Dimension", fontsize="xx-large")
     ax2.set_ylabel("Generalization Loss", fontsize="xx-large")
     ax2.grid(True)
@@ -99,23 +101,24 @@ def plot(student_dims: list,
     fig.savefig(outfile_base + ".pdf", dpi=300, bbox_inches="tight")
     plt.close(fig)
 
-    for seed_idx in range(gnc_gen_losses.shape[-1]):
-        fig, ax = plt.subplots(figsize=(width, height), nrows=1, ncols=1, sharey=False)
-        ax.plot(student_dims, gnc_gen_losses[:, seed_idx], 
-                color=colors[seed_idx], marker='o', linewidth=1.5, markersize=4,
-                label=f"Seed {seed_idx} (Actual)")
-        ax.plot(student_dims, gnc_theoretical_losses[:, seed_idx], 
-                color=colors[seed_idx], marker='s', linestyle='--', linewidth=1.5, markersize=4,
-                label=f"Seed {seed_idx} (Theoretical)")
-        ax.set_xlabel("Student Dimension", fontsize="xx-large")
-        ax.set_ylabel("Generalization Loss", fontsize="xx-large")
-        ax.grid(True)
-        ax.legend(fontsize="medium", loc="upper center", bbox_to_anchor=(0.5, -0.15), ncol=4)
-        plt.tight_layout()
-        outfile_base = os.path.join(figures_dir, plot_filename)
-        fig.savefig(outfile_base + f"_seed_{seed_idx}.png", dpi=300, bbox_inches="tight")
-        fig.savefig(outfile_base + f"_seed_{seed_idx}.pdf", dpi=300, bbox_inches="tight")
-        plt.close(fig)
+    if gnc:
+        for seed_idx in range(gnc_gen_losses.shape[-1]):
+            fig, ax = plt.subplots(figsize=(width, height), nrows=1, ncols=1, sharey=False)
+            ax.plot(student_dims, gnc_gen_losses[:, seed_idx], 
+                    color=colors[seed_idx], marker='o', linewidth=1.5, markersize=4,
+                    label=f"Seed {seed_idx} (Actual)")
+            ax.plot(student_dims, gnc_theoretical_losses[:, seed_idx], 
+                    color=colors[seed_idx], marker='s', linestyle='--', linewidth=1.5, markersize=4,
+                    label=f"Seed {seed_idx} (Theoretical)")
+            ax.set_xlabel("Student Dimension", fontsize="xx-large")
+            ax.set_ylabel("Generalization Loss", fontsize="xx-large")
+            ax.grid(True)
+            ax.legend(fontsize="medium", loc="upper center", bbox_to_anchor=(0.5, -0.15), ncol=4)
+            plt.tight_layout()
+            outfile_base = os.path.join(figures_dir, plot_filename)
+            fig.savefig(outfile_base + f"_seed_{seed_idx}.png", dpi=300, bbox_inches="tight")
+            fig.savefig(outfile_base + f"_seed_{seed_idx}.pdf", dpi=300, bbox_inches="tight")
+            plt.close(fig)
 
 
 if __name__ == "__main__":
