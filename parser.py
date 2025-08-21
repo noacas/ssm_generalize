@@ -75,7 +75,7 @@ def parse_args() -> argparse.Namespace:  # noqa: C901 – a bit long but flat
         "--no-gd", dest="gd", action="store_false", help="Disable Gradient Descent"
     )
     g.add_argument("--gd_lr", type=float, default=1e-3, help="Learning rate for GD")
-    g.add_argument("--gd_epochs", type=int, default=int(1e6), help="Number of epochs for GD")
+    g.add_argument("--gd_epochs", type=int, default=int(1e4), help="Number of epochs for GD")
     g.add_argument("--gd_init_scale", type=float, default=1e-2, help="Initialization scale for GD")
     g.add_argument("--gd_optimizer", type=str, default="adam", help="Optimizer for GD", choices=["adam", "gd"])
 
