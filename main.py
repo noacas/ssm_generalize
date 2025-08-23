@@ -219,6 +219,9 @@ def run_experiment(args):
         'gd_epochs': args.gd_epochs,
         'gd_init_scale': args.gd_init_scale,
         'gd_optimizer': args.gd_optimizer,
+        'gd_init_type': args.gd_init_type,
+        'gd_scheduler': args.gd_scheduler,
+        'gd_scheduler_params': args.gd_scheduler_params,
     }
 
     # Distribute seeds across processes
