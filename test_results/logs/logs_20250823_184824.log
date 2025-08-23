@@ -1,0 +1,124 @@
+2025-08-23 18:48:24,520 - INFO - Args: Namespace(num_seeds=8, sequence_length=5, student_dims=[150, 175, 200, 225, 250, 275], eps_train=1e-05, gnc=False, gnc_num_samples=100000000, gnc_batch_size=1000000, gd=True, gd_lr=7.978889370348645e-05, gd_epochs=500000, gd_init_scale=0.03319941696632987, gd_optimizer='adam', gd_scheduler='exponential', gd_scheduler_params='{gamma:', gd_init_type='double_max_A_j', config=None, results_dir=PosixPath('test_results/results'), figures_dir=PosixPath('test_results/figures'), checkpoint_dir=PosixPath('test_results/checkpoints'), checkpoint_interval=3600, resume_from_checkpoint=False, log_dir=PosixPath('test_results/logs'), max_gpus=4, log_file=PosixPath('test_results/logs/logs_20250823_184824.log'))
+2025-08-23 18:48:24,736 - INFO - Using GPUs: [0, 1, 2, 3]
+2025-08-23 18:48:24,736 - INFO - Starting 4 processes on 4 GPUs
+2025-08-23 18:48:30,025 - INFO - Process 0 started on GPU 0, processing seeds 0-1
+2025-08-23 18:48:30,426 - INFO - Process 1 started on GPU 1, processing seeds 2-3
+2025-08-23 18:48:30,484 - INFO - Process 2 started on GPU 2, processing seeds 4-5
+2025-08-23 18:48:30,493 - INFO - Process 3 started on GPU 3, processing seeds 6-7
+2025-08-23 18:48:30,644 - INFO - for seed 2, alpha_teacher=tensor([0.5022], device='cuda:1'), w=tensor([ 2.2669,  1.3477, -1.4438, -1.0484], device='cuda:1')
+2025-08-23 18:48:30,644 - INFO - Process 1: Starting experiment - student_dim=150, seed=2
+2025-08-23 18:48:30,644 - ERROR - GD failed for student_dim=150, seed=2: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-23 18:48:30,645 - INFO - Process 1: Completed experiment - student_dim=150, seed=2
+2025-08-23 18:48:30,646 - ERROR - GD failed for student_dim=175, seed=2: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-23 18:48:30,646 - INFO - Process 1: Completed experiment - student_dim=175, seed=2
+2025-08-23 18:48:30,646 - ERROR - GD failed for student_dim=200, seed=2: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-23 18:48:30,646 - INFO - Process 1: Completed experiment - student_dim=200, seed=2
+2025-08-23 18:48:30,647 - ERROR - GD failed for student_dim=225, seed=2: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-23 18:48:30,647 - INFO - Process 1: Completed experiment - student_dim=225, seed=2
+2025-08-23 18:48:30,647 - ERROR - GD failed for student_dim=250, seed=2: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-23 18:48:30,647 - INFO - Process 1: Completed experiment - student_dim=250, seed=2
+2025-08-23 18:48:30,647 - ERROR - GD failed for student_dim=275, seed=2: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-23 18:48:30,648 - INFO - Process 1: Completed experiment - student_dim=275, seed=2
+2025-08-23 18:48:30,650 - INFO - for seed 3, alpha_teacher=tensor([0.5426], device='cuda:1'), w=tensor([-0.5162, -0.2217, -0.5594,  0.5542], device='cuda:1')
+2025-08-23 18:48:30,650 - ERROR - GD failed for student_dim=150, seed=3: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-23 18:48:30,650 - INFO - Process 1: Completed experiment - student_dim=150, seed=3
+2025-08-23 18:48:30,651 - ERROR - GD failed for student_dim=175, seed=3: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-23 18:48:30,651 - INFO - Process 1: Completed experiment - student_dim=175, seed=3
+2025-08-23 18:48:30,651 - ERROR - GD failed for student_dim=200, seed=3: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-23 18:48:30,651 - INFO - Process 1: Completed experiment - student_dim=200, seed=3
+2025-08-23 18:48:30,651 - ERROR - GD failed for student_dim=225, seed=3: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-23 18:48:30,652 - INFO - Process 1: Completed experiment - student_dim=225, seed=3
+2025-08-23 18:48:30,652 - INFO - Process 1: Starting experiment - student_dim=250, seed=3
+2025-08-23 18:48:30,653 - ERROR - GD failed for student_dim=250, seed=3: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-23 18:48:30,653 - INFO - Process 1: Completed experiment - student_dim=250, seed=3
+2025-08-23 18:48:30,653 - ERROR - GD failed for student_dim=275, seed=3: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-23 18:48:30,653 - INFO - Process 1: Completed experiment - student_dim=275, seed=3
+2025-08-23 18:48:30,653 - INFO - Process 1 completed on GPU 1
+2025-08-23 18:48:30,675 - INFO - for seed 4, alpha_teacher=tensor([0.3049], device='cuda:2'), w=tensor([-0.2938,  0.7819, -1.4731,  1.0391], device='cuda:2')
+2025-08-23 18:48:30,675 - INFO - Process 2: Starting experiment - student_dim=150, seed=4
+2025-08-23 18:48:30,676 - ERROR - GD failed for student_dim=150, seed=4: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-23 18:48:30,676 - INFO - Process 2: Completed experiment - student_dim=150, seed=4
+2025-08-23 18:48:30,677 - ERROR - GD failed for student_dim=175, seed=4: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-23 18:48:30,677 - INFO - Process 2: Completed experiment - student_dim=175, seed=4
+2025-08-23 18:48:30,677 - ERROR - GD failed for student_dim=200, seed=4: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-23 18:48:30,678 - INFO - Process 2: Completed experiment - student_dim=200, seed=4
+2025-08-23 18:48:30,678 - ERROR - GD failed for student_dim=225, seed=4: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-23 18:48:30,678 - INFO - Process 2: Completed experiment - student_dim=225, seed=4
+2025-08-23 18:48:30,678 - ERROR - GD failed for student_dim=250, seed=4: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-23 18:48:30,679 - INFO - Process 2: Completed experiment - student_dim=250, seed=4
+2025-08-23 18:48:30,679 - ERROR - GD failed for student_dim=275, seed=4: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-23 18:48:30,679 - INFO - Process 2: Completed experiment - student_dim=275, seed=4
+2025-08-23 18:48:30,681 - INFO - for seed 5, alpha_teacher=tensor([0.5310], device='cuda:2'), w=tensor([ 1.2089, -0.6117,  1.4826, -1.1513], device='cuda:2')
+2025-08-23 18:48:30,682 - ERROR - GD failed for student_dim=150, seed=5: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-23 18:48:30,682 - INFO - Process 2: Completed experiment - student_dim=150, seed=5
+2025-08-23 18:48:30,682 - ERROR - GD failed for student_dim=175, seed=5: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-23 18:48:30,682 - INFO - Process 2: Completed experiment - student_dim=175, seed=5
+2025-08-23 18:48:30,683 - ERROR - GD failed for student_dim=200, seed=5: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-23 18:48:30,683 - INFO - Process 2: Completed experiment - student_dim=200, seed=5
+2025-08-23 18:48:30,683 - ERROR - GD failed for student_dim=225, seed=5: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-23 18:48:30,684 - INFO - Process 2: Completed experiment - student_dim=225, seed=5
+2025-08-23 18:48:30,684 - INFO - Process 2: Starting experiment - student_dim=250, seed=5
+2025-08-23 18:48:30,684 - ERROR - GD failed for student_dim=250, seed=5: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-23 18:48:30,684 - INFO - Process 2: Completed experiment - student_dim=250, seed=5
+2025-08-23 18:48:30,685 - ERROR - GD failed for student_dim=275, seed=5: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-23 18:48:30,685 - INFO - Process 2: Completed experiment - student_dim=275, seed=5
+2025-08-23 18:48:30,685 - INFO - Process 2 completed on GPU 2
+2025-08-23 18:48:30,689 - INFO - for seed 0, alpha_teacher=tensor([0.4075], device='cuda:0'), w=tensor([ 0.1808, -0.5523,  0.9238, -0.7350], device='cuda:0')
+2025-08-23 18:48:30,689 - INFO - Process 0: Starting experiment - student_dim=150, seed=0
+2025-08-23 18:48:30,689 - ERROR - GD failed for student_dim=150, seed=0: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-23 18:48:30,690 - INFO - Process 0: Completed experiment - student_dim=150, seed=0
+2025-08-23 18:48:30,691 - ERROR - GD failed for student_dim=175, seed=0: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-23 18:48:30,691 - INFO - Process 0: Completed experiment - student_dim=175, seed=0
+2025-08-23 18:48:30,691 - ERROR - GD failed for student_dim=200, seed=0: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-23 18:48:30,691 - INFO - Process 0: Completed experiment - student_dim=200, seed=0
+2025-08-23 18:48:30,692 - ERROR - GD failed for student_dim=225, seed=0: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-23 18:48:30,692 - INFO - Process 0: Completed experiment - student_dim=225, seed=0
+2025-08-23 18:48:30,692 - ERROR - GD failed for student_dim=250, seed=0: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-23 18:48:30,692 - INFO - Process 0: Completed experiment - student_dim=250, seed=0
+2025-08-23 18:48:30,693 - ERROR - GD failed for student_dim=275, seed=0: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-23 18:48:30,693 - INFO - Process 0: Completed experiment - student_dim=275, seed=0
+2025-08-23 18:48:30,695 - INFO - for seed 1, alpha_teacher=tensor([0.4704], device='cuda:0'), w=tensor([-0.6340, -0.6431, -0.6420, -1.4471], device='cuda:0')
+2025-08-23 18:48:30,696 - ERROR - GD failed for student_dim=150, seed=1: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-23 18:48:30,696 - INFO - Process 0: Completed experiment - student_dim=150, seed=1
+2025-08-23 18:48:30,696 - ERROR - GD failed for student_dim=175, seed=1: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-23 18:48:30,696 - INFO - Process 0: Completed experiment - student_dim=175, seed=1
+2025-08-23 18:48:30,697 - ERROR - GD failed for student_dim=200, seed=1: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-23 18:48:30,697 - INFO - Process 0: Completed experiment - student_dim=200, seed=1
+2025-08-23 18:48:30,697 - ERROR - GD failed for student_dim=225, seed=1: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-23 18:48:30,698 - INFO - Process 0: Completed experiment - student_dim=225, seed=1
+2025-08-23 18:48:30,698 - INFO - Process 0: Starting experiment - student_dim=250, seed=1
+2025-08-23 18:48:30,698 - ERROR - GD failed for student_dim=250, seed=1: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-23 18:48:30,698 - INFO - Process 0: Completed experiment - student_dim=250, seed=1
+2025-08-23 18:48:30,699 - ERROR - GD failed for student_dim=275, seed=1: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-23 18:48:30,699 - INFO - Process 0: Completed experiment - student_dim=275, seed=1
+2025-08-23 18:48:30,699 - INFO - Process 0 completed on GPU 0
+2025-08-23 18:48:30,715 - INFO - for seed 6, alpha_teacher=tensor([0.5433], device='cuda:3'), w=tensor([ 1.9899, -0.1324, -0.3380, -0.7933], device='cuda:3')
+2025-08-23 18:48:30,715 - INFO - Process 3: Starting experiment - student_dim=150, seed=6
+2025-08-23 18:48:30,715 - ERROR - GD failed for student_dim=150, seed=6: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-23 18:48:30,716 - INFO - Process 3: Completed experiment - student_dim=150, seed=6
+2025-08-23 18:48:30,717 - ERROR - GD failed for student_dim=175, seed=6: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-23 18:48:30,717 - INFO - Process 3: Completed experiment - student_dim=175, seed=6
+2025-08-23 18:48:30,717 - ERROR - GD failed for student_dim=200, seed=6: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-23 18:48:30,717 - INFO - Process 3: Completed experiment - student_dim=200, seed=6
+2025-08-23 18:48:30,718 - ERROR - GD failed for student_dim=225, seed=6: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-23 18:48:30,718 - INFO - Process 3: Completed experiment - student_dim=225, seed=6
+2025-08-23 18:48:30,718 - ERROR - GD failed for student_dim=250, seed=6: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-23 18:48:30,718 - INFO - Process 3: Completed experiment - student_dim=250, seed=6
+2025-08-23 18:48:30,718 - ERROR - GD failed for student_dim=275, seed=6: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-23 18:48:30,719 - INFO - Process 3: Completed experiment - student_dim=275, seed=6
+2025-08-23 18:48:30,721 - INFO - for seed 7, alpha_teacher=tensor([0.4695], device='cuda:3'), w=tensor([-1.2870, -0.3958,  0.3756,  0.2573], device='cuda:3')
+2025-08-23 18:48:30,721 - ERROR - GD failed for student_dim=150, seed=7: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-23 18:48:30,721 - INFO - Process 3: Completed experiment - student_dim=150, seed=7
+2025-08-23 18:48:30,722 - ERROR - GD failed for student_dim=175, seed=7: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-23 18:48:30,722 - INFO - Process 3: Completed experiment - student_dim=175, seed=7
+2025-08-23 18:48:30,722 - ERROR - GD failed for student_dim=200, seed=7: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-23 18:48:30,722 - INFO - Process 3: Completed experiment - student_dim=200, seed=7
+2025-08-23 18:48:30,723 - ERROR - GD failed for student_dim=225, seed=7: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-23 18:48:30,723 - INFO - Process 3: Completed experiment - student_dim=225, seed=7
+2025-08-23 18:48:30,724 - INFO - Process 3: Starting experiment - student_dim=250, seed=7
+2025-08-23 18:48:30,724 - ERROR - GD failed for student_dim=250, seed=7: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-23 18:48:30,724 - INFO - Process 3: Completed experiment - student_dim=250, seed=7
+2025-08-23 18:48:30,724 - ERROR - GD failed for student_dim=275, seed=7: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-23 18:48:30,724 - INFO - Process 3: Completed experiment - student_dim=275, seed=7
+2025-08-23 18:48:30,725 - INFO - Process 3 completed on GPU 3
+2025-08-23 18:48:35,774 - INFO - Process 1 completed
