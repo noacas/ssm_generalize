@@ -221,11 +221,11 @@ def run_experiment(args):
 
     # Get available GPUs
     available_gpus = get_available_gpus(max_gpus=args.max_gpus)
-    if available_gpus is not None:
+    if len(available_gpus) > 0:
         logging.info(f"Using GPUs: {available_gpus}")
         print(f"Using GPUs: {available_gpus}")
     else:
-        if get_available_device() == "mps":
+        if get_available_device() == torch.device("mps"):
             available_gpus = ["mps"]
             logging.info(f"Using MPS")
             print(f"Using MPS")
@@ -236,6 +236,10 @@ def run_experiment(args):
 
     # Determine number of processes (1-4 based on available GPUs)
     num_processes = min(len(available_gpus), 4)
+    if num_processes == 0:
+        logging.error("No GPUs available for processing. Exiting program.")
+        print("No GPUs available for processing. Exiting program.")
+        return None, None, None, None, None
     logging.info(f"Starting {num_processes} processes on {len(available_gpus)} GPUs")
     print(f"Starting {num_processes} processes on {len(available_gpus)} GPUs")
 
@@ -258,6 +262,10 @@ def run_experiment(args):
 
     # Distribute seeds across processes
     num_processes = min(num_processes, args.num_seeds)
+    if num_processes == 0:
+        logging.error("No processes available for processing. Exiting program.")
+        print("No processes available for processing. Exiting program.")
+        return None, None, None, None, None
     seeds_per_process = args.num_seeds // num_processes
     remaining_seeds = args.num_seeds % num_processes
     
