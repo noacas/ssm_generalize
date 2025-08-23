@@ -38,17 +38,15 @@ logger = logging.getLogger(__name__)
 class GDHyperoptObjective:
     """Objective function for GD hyperparameter optimization."""
     
-    def __init__(self, base_args: argparse.Namespace, metric: str = "loss"):
+    def __init__(self, base_args: argparse.Namespace):
         """
         Initialize the objective function.
         
         Args:
             base_args: Base arguments from parser
-            metric: Metric to optimize ('loss', 'accuracy', 'convergence_time')
         """
         self.base_args = base_args
-        self.metric = metric
-        self.best_score = float('inf') if metric == "loss" else float('-inf')
+        self.best_score = float('-inf')
         
     def __call__(self, trial: optuna.Trial) -> float:
         """
@@ -236,15 +234,12 @@ def main():
     parser = argparse.ArgumentParser(description="GD Hyperparameter Optimization")
     
     # Hyperopt specific arguments
-    parser.add_argument("--n_trials", type=int, default=100, 
+    parser.add_argument("--n_trials", type=int, default=200, 
                        help="Number of trials for optimization")
     parser.add_argument("--study_name", type=str, default="gd_hyperopt",
                        help="Name of the Optuna study")
     parser.add_argument("--storage", type=str, default=None,
                        help="Database URL for persistent storage (e.g., sqlite:///study.db)")
-    parser.add_argument("--metric", type=str, default="loss",
-                       choices=["loss", "accuracy", "convergence_time"],
-                       help="Metric to optimize")
     parser.add_argument("--output_dir", type=pathlib.Path, 
                        default=pathlib.Path("./hyperopt_results"),
                        help="Directory to save results")
@@ -257,14 +252,13 @@ def main():
     base_args = parse_args()
     
     # Create objective function
-    objective = GDHyperoptObjective(base_args, metric=args.metric)
+    objective = GDHyperoptObjective(base_args)
     
     # Create study
-    direction = "minimize" if args.metric == "loss" else "maximize"
+    direction = "minimize"
     study = create_study(args.study_name, args.storage, direction)
     
     logger.info(f"Starting hyperparameter optimization with {args.n_trials} trials")
-    logger.info(f"Optimizing metric: {args.metric}")
     logger.info(f"Study name: {args.study_name}")
     
     # Run optimization
