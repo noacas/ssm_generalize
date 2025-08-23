@@ -18,8 +18,11 @@ class DiagonalSSM(nn.Module):
         elif init_type == "double_max_A_j":
             initial_A = init_scale * torch.randn(state_dim)
             max_A_j = torch.argmax(initial_A)
-            initial_A[max_A_j] = 2 * initial_A[max_A_j]
-            self.A_diag = nn.Parameter(initial_A)
+            # Create mask for doubling the max value
+            mask = torch.zeros_like(initial_A)
+            mask[max_A_j] = 1
+            final_A = initial_A + mask * initial_A
+            self.A_diag = nn.Parameter(final_A)
         else:
             self.A_diag = nn.Parameter(init_scale * torch.randn(state_dim))
 
