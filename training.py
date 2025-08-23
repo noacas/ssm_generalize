@@ -8,6 +8,7 @@ from model import DiagonalSSM
 import torch
 from torch.optim import Adam
 from torch.optim import SGD
+from torch.optim.lr_scheduler import StepLR, ExponentialLR, CosineAnnealingLR
 
 
 def train_gd(
@@ -19,11 +20,17 @@ def train_gd(
         lr: float,
         epochs: int,
         optimizer: str = "adam",
+        scheduler: str = None,
+        scheduler_params: dict = None,
     ):
     """
     Trains only the diagonal transition matrix A of the student SSM.
     B and C stay fixed to 1s as defined inside DiagonalSSM.
     Optimized to reduce CPU overhead and improve GPU utilization.
+    
+    Args:
+        scheduler: Type of scheduler ('step', 'exponential', 'cosine', None)
+        scheduler_params: Dictionary of scheduler parameters
     """
 
     # --- build student -------------------------------------------------------
@@ -37,6 +44,23 @@ def train_gd(
         optimizer = SGD(model.parameters(), lr=lr)
     else:
         raise ValueError(f"Invalid optimizer: {optimizer}")
+
+    # Initialize scheduler
+    scheduler_obj = None
+    if scheduler:
+        if scheduler == "step":
+            step_size = scheduler_params.get("step_size", epochs // 4)
+            gamma = scheduler_params.get("gamma", 0.1)
+            scheduler_obj = StepLR(optimizer, step_size=step_size, gamma=gamma)
+        elif scheduler == "exponential":
+            gamma = scheduler_params.get("gamma", 0.95)
+            scheduler_obj = ExponentialLR(optimizer, gamma=gamma)
+        elif scheduler == "cosine":
+            T_max = scheduler_params.get("T_max", epochs)
+            eta_min = scheduler_params.get("eta_min", 0)
+            scheduler_obj = CosineAnnealingLR(optimizer, T_max=T_max, eta_min=eta_min)
+        else:
+            raise ValueError(f"Invalid scheduler: {scheduler}")
 
     # Reduced logging to minimize CPU overhead
     max_A_j_idx = torch.argmax(model.A_diag)
@@ -54,6 +78,10 @@ def train_gd(
         
         train_loss.backward()
         optimizer.step()
+        
+        # Step the scheduler
+        if scheduler_obj:
+            scheduler_obj.step()
 
         with torch.no_grad():
             # save losses
