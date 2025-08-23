@@ -112,8 +112,40 @@ def process_worker(process_id, gpu_id, seed_range, args_dict, student_dims,
                     try:
                         # Parse scheduler parameters
                         import json
-                        scheduler_params = json.loads(args_dict.get('gd_scheduler_params', '{}'))
+                        # Handle scheduler parameters - use defaults if not provided or if parsing fails
+                        scheduler_params_str = args_dict.get('gd_scheduler_params', None)
+                        if scheduler_params_str is None or scheduler_params_str == '{}':
+                            # No scheduler params provided, use defaults based on scheduler type
+                            scheduler_type = args_dict.get('gd_scheduler')
+                            if scheduler_type == 'exponential':
+                                scheduler_params = {'gamma': 0.955}  # Default gamma for exponential (close to optimized value)
+                            elif scheduler_type == 'step':
+                                scheduler_params = {'step_size': 1000, 'gamma': 0.1}  # Default for step
+                            elif scheduler_type == 'cosine':
+                                scheduler_params = {'T_max': args_dict['gd_epochs'], 'eta_min': 0}  # Default for cosine
+                            else:
+                                scheduler_params = {}
+                            logging.info(f"No scheduler params provided, using defaults: {scheduler_params}")
+                        else:
+                            try:
+                                logging.info(f"Attempting to parse scheduler params: '{scheduler_params_str}'")
+                                scheduler_params = json.loads(scheduler_params_str)
+                                logging.info(f"Successfully parsed scheduler params: {scheduler_params}")
+                            except json.JSONDecodeError as e:
+                                # If JSON parsing fails, create default scheduler params based on scheduler type
+                                logging.warning(f"JSON decode error: {e}")
+                                scheduler_type = args_dict.get('gd_scheduler')
+                                if scheduler_type == 'exponential':
+                                    scheduler_params = {'gamma': 0.955}  # Default gamma for exponential (close to optimized value)
+                                elif scheduler_type == 'step':
+                                    scheduler_params = {'step_size': 1000, 'gamma': 0.1}  # Default for step
+                                elif scheduler_type == 'cosine':
+                                    scheduler_params = {'T_max': args_dict['gd_epochs'], 'eta_min': 0}  # Default for cosine
+                                else:
+                                    scheduler_params = {}
+                                logging.warning(f"Failed to parse scheduler params, using defaults: {scheduler_params}")
                         
+                        logging.info(f"Calling train_gd with scheduler_params: {scheduler_params}")
                         gd_gen_loss, gd_train_loss = train_gd(student_dim, device, alpha_teacher, w,
                                                                 args_dict['gd_init_scale'], args_dict['gd_lr'],
                                                                 args_dict['gd_epochs'],

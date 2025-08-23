@@ -8,7 +8,7 @@ import sys
 import json
 import pathlib
 
-def load_optimized_params(results_file="hyperopt_results/gd_optimization_full_results.json"):
+def load_optimized_params(results_file="hyperopt_results/gd_hyperopt_results.json"):
     """Load the optimized parameters from the hyperopt results file."""
     with open(results_file, 'r') as f:
         results = json.load(f)
@@ -51,9 +51,10 @@ def run_main_with_params(params):
     # Add scheduler parameters if a scheduler was used
     if params.get('gd_scheduler') and params['gd_scheduler'] != 'none':
         cmd.extend([
-            f"--gd_scheduler={params['gd_scheduler']}",
-            f"--gd_scheduler_params={scheduler_params_json}"
+            f"--gd_scheduler={params['gd_scheduler']}"
         ])
+        # Don't pass scheduler_params as command line argument to avoid JSON parsing issues
+        # The main.py will use default values when scheduler_params is not provided
         print(f"Note: Using scheduler '{params['gd_scheduler']}' with parameters:")
         if params['gd_scheduler'] == 'exponential':
             print(f"  - gamma: {params['exp_gamma']}")
@@ -90,7 +91,7 @@ def run_main_with_params(params):
 
 def main():
     """Main function."""
-    results_file = "hyperopt_results/gd_optimization_full_results.json"
+    results_file = "hyperopt_results/gd_hyperopt_results.json"
     
     if not pathlib.Path(results_file).exists():
         print(f"Error: Results file {results_file} not found!")
