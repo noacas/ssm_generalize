@@ -17,7 +17,7 @@ from plotting import plot
 from generator import generate_teacher_alpha, generate_w
 from parser import parse_args
 from training import train_gnc, train_gd
-from utils import filename_extensions, get_available_gpus
+from utils import filename_extensions, get_available_gpus, get_available_device
 from theoretical_loss import gnc_theoretical_loss
 
 
@@ -40,8 +40,11 @@ def process_worker(process_id, gpu_id, seed_range, args_dict, student_dims,
     setup_logging(log_file)
     
     # Set the GPU for this process
-    device = torch.device(f'cuda:{gpu_id}')
-    torch.cuda.set_device(device)
+    if gpu_id == "mps":
+        device = torch.device("mps")
+    else:
+        device = torch.device(f'cuda:{gpu_id}')
+        torch.cuda.set_device(device)
     
     # Optimize PyTorch for GPU usage
     torch.backends.cudnn.benchmark = True
@@ -186,14 +189,18 @@ def run_experiment(args):
 
     # Get available GPUs
     available_gpus = get_available_gpus(max_gpus=args.max_gpus)
-    
-    if not available_gpus:
-        logging.error("No available GPUs found. Exiting program.")
-        print("No available GPUs found. Exiting program.")
-        return None, None, None, None, None
-    else:
+    if available_gpus is not None:
         logging.info(f"Using GPUs: {available_gpus}")
         print(f"Using GPUs: {available_gpus}")
+    else:
+        if get_available_device() == "mps":
+            available_gpus = ["mps"]
+            logging.info(f"Using MPS")
+            print(f"Using MPS")
+        else:
+            logging.error("No available GPUs found. Exiting program.")
+            print("No available GPUs found. Exiting program.")
+            return None, None, None, None, None
 
     # Determine number of processes (1-4 based on available GPUs)
     num_processes = min(len(available_gpus), 4)

@@ -13,12 +13,15 @@ class DiagonalSSM(nn.Module):
         self.input_dim = input_dim
         self.output_dim = output_dim
 
-        self.A_diag = nn.Parameter(init_scale * torch.randn(state_dim))
         if init_type == "near_one":
-            self.A_diag = self.A_diag + 1
+            self.A_diag = nn.Parameter(init_scale * torch.randn(state_dim) + 1)
         elif init_type == "double_max_A_j":
-            max_A_j = torch.argmax(self.A_diag)
-            self.A_diag[max_A_j] = 2 * self.A_diag[max_A_j]
+            initial_A = init_scale * torch.randn(state_dim)
+            max_A_j = torch.argmax(initial_A)
+            initial_A[max_A_j] = 2 * initial_A[max_A_j]
+            self.A_diag = nn.Parameter(initial_A)
+        else:
+            self.A_diag = nn.Parameter(init_scale * torch.randn(state_dim))
 
     def forward(self,
                 w: torch.Tensor,
