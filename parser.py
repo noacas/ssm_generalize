@@ -78,6 +78,8 @@ def parse_args() -> argparse.Namespace:  # noqa: C901 – a bit long but flat
     g.add_argument("--gd_epochs", type=int, default=int(1e4), help="Number of epochs for GD")
     g.add_argument("--gd_init_scale", type=float, default=1e-2, help="Initialization scale for GD")
     g.add_argument("--gd_optimizer", type=str, default="adam", help="Optimizer for GD", choices=["adam", "gd"])
+    g.add_argument("--gd_scheduler", type=str, default=None, help="Scheduler for GD", choices=["none", "step", "exponential", "cosine"])
+    g.add_argument("--gd_scheduler_params", type=str, default="{}", help="Scheduler parameters as JSON string")
 
     # ------------------------------------------------------------------
     # Meta                                                               |
