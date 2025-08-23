@@ -1,0 +1,276 @@
+2025-08-21 16:47:24,849 - INFO - Args: Namespace(num_seeds=8, sequence_length=5, student_dims=[150, 175, 200, 225, 250, 275], eps_train=1e-05, gnc=False, gnc_num_samples=100000000, gnc_batch_size=1000000, gd=True, gd_lr=0.013826232179369865, gd_epochs=344, gd_init_scale=0.011400863701127324, gd_optimizer='adam', config=PosixPath('/tmp/tmpmbr7xwb1.json'), results_dir=PosixPath('test_results/results/trial_5'), figures_dir=PosixPath('test_results/figures/trial_5'), checkpoint_dir=PosixPath('test_results/checkpoints/trial_5'), checkpoint_interval=3600, resume_from_checkpoint=False, log_dir=PosixPath('test_results/logs/trial_5'), max_gpus=4, log_file=PosixPath('test_results/logs/trial_5/logs_20250821_164724.log'))
+2025-08-21 16:47:25,042 - INFO - Using GPUs: [0, 1, 2, 3]
+2025-08-21 16:47:25,042 - INFO - Starting 4 processes on 4 GPUs
+2025-08-21 16:47:29,288 - INFO - Process 0 started on GPU 0, processing seeds 0-1
+2025-08-21 16:47:29,682 - INFO - Process 2 started on GPU 2, processing seeds 4-5
+2025-08-21 16:47:29,695 - INFO - Process 1 started on GPU 1, processing seeds 2-3
+2025-08-21 16:47:29,776 - INFO - Process 3 started on GPU 3, processing seeds 6-7
+2025-08-21 16:47:29,900 - INFO - for seed 4, alpha_teacher=tensor([0.3049], device='cuda:2'), w=tensor([-0.2938,  0.7819, -1.4731,  1.0391], device='cuda:2')
+2025-08-21 16:47:29,901 - INFO - Process 2: Starting experiment - student_dim=150, seed=4
+2025-08-21 16:47:29,909 - INFO - for seed 2, alpha_teacher=tensor([0.5022], device='cuda:1'), w=tensor([ 2.2669,  1.3477, -1.4438, -1.0484], device='cuda:1')
+2025-08-21 16:47:29,909 - INFO - Process 1: Starting experiment - student_dim=150, seed=2
+2025-08-21 16:47:29,945 - INFO - for seed 0, alpha_teacher=tensor([0.4075], device='cuda:0'), w=tensor([ 0.1808, -0.5523,  0.9238, -0.7350], device='cuda:0')
+2025-08-21 16:47:29,946 - INFO - Process 0: Starting experiment - student_dim=150, seed=0
+2025-08-21 16:47:29,984 - INFO - for seed 6, alpha_teacher=tensor([0.5433], device='cuda:3'), w=tensor([ 1.9899, -0.1324, -0.3380, -0.7933], device='cuda:3')
+2025-08-21 16:47:29,985 - INFO - Process 3: Starting experiment - student_dim=150, seed=6
+2025-08-21 16:47:32,228 - INFO - initial model: max A_j index: 27
+2025-08-21 16:47:32,236 - INFO - initial model: max A_j index: 59
+2025-08-21 16:47:32,282 - INFO - initial model: max A_j index: 98
+2025-08-21 16:47:32,310 - INFO - initial model: max A_j index: 10
+2025-08-21 16:47:33,372 - INFO - final model: max A_j index: 27, max A_j value: 0.035314325243234634, alpha_teacher: tensor([0.5022], device='cuda:1')
+2025-08-21 16:47:33,372 - INFO - train loss is 1.9984014443252818e-15
+2025-08-21 16:47:33,372 - INFO - impulse response loss is 0.07547466456890106
+2025-08-21 16:47:33,373 - INFO - Process 1: Completed experiment - student_dim=150, seed=2
+2025-08-21 16:47:33,378 - INFO - initial model: max A_j index: 27
+2025-08-21 16:47:33,467 - INFO - final model: max A_j index: 10, max A_j value: 0.03329009935259819, alpha_teacher: tensor([0.5433], device='cuda:3')
+2025-08-21 16:47:33,468 - INFO - train loss is 1.3877787807814457e-15
+2025-08-21 16:47:33,468 - INFO - impulse response loss is 0.11541648209095001
+2025-08-21 16:47:33,469 - INFO - Process 3: Completed experiment - student_dim=150, seed=6
+2025-08-21 16:47:33,469 - INFO - final model: max A_j index: 98, max A_j value: 0.0343065969645977, alpha_teacher: tensor([0.3049], device='cuda:2')
+2025-08-21 16:47:33,470 - INFO - train loss is 0.0
+2025-08-21 16:47:33,470 - INFO - impulse response loss is 0.012949979864060879
+2025-08-21 16:47:33,472 - INFO - Process 2: Completed experiment - student_dim=150, seed=4
+2025-08-21 16:47:33,475 - INFO - initial model: max A_j index: 10
+2025-08-21 16:47:33,478 - INFO - initial model: max A_j index: 98
+2025-08-21 16:47:33,547 - INFO - final model: max A_j index: 59, max A_j value: 0.04017017036676407, alpha_teacher: tensor([0.4075], device='cuda:0')
+2025-08-21 16:47:33,548 - INFO - train loss is 5.551115123125783e-17
+2025-08-21 16:47:33,548 - INFO - impulse response loss is 0.07125334441661835
+2025-08-21 16:47:33,549 - INFO - Process 0: Completed experiment - student_dim=150, seed=0
+2025-08-21 16:47:33,554 - INFO - initial model: max A_j index: 59
+2025-08-21 16:47:34,298 - INFO - final model: max A_j index: 27, max A_j value: 0.03459148108959198, alpha_teacher: tensor([0.5022], device='cuda:1')
+2025-08-21 16:47:34,298 - INFO - train loss is 9.792167077193881e-14
+2025-08-21 16:47:34,298 - INFO - impulse response loss is 0.07334376871585846
+2025-08-21 16:47:34,299 - INFO - Process 1: Completed experiment - student_dim=175, seed=2
+2025-08-21 16:47:34,300 - INFO - initial model: max A_j index: 27
+2025-08-21 16:47:34,425 - INFO - final model: max A_j index: 98, max A_j value: 0.034041281789541245, alpha_teacher: tensor([0.3049], device='cuda:2')
+2025-08-21 16:47:34,425 - INFO - train loss is 1.6792123247455493e-15
+2025-08-21 16:47:34,425 - INFO - impulse response loss is 0.010896299034357071
+2025-08-21 16:47:34,426 - INFO - Process 2: Completed experiment - student_dim=175, seed=4
+2025-08-21 16:47:34,428 - INFO - initial model: max A_j index: 98
+2025-08-21 16:47:34,430 - INFO - final model: max A_j index: 10, max A_j value: 0.03302276134490967, alpha_teacher: tensor([0.5433], device='cuda:3')
+2025-08-21 16:47:34,430 - INFO - train loss is 2.220446049250313e-16
+2025-08-21 16:47:34,430 - INFO - impulse response loss is 0.11349812895059586
+2025-08-21 16:47:34,431 - INFO - Process 3: Completed experiment - student_dim=175, seed=6
+2025-08-21 16:47:34,432 - INFO - initial model: max A_j index: 10
+2025-08-21 16:47:34,674 - INFO - final model: max A_j index: 59, max A_j value: 0.04058656468987465, alpha_teacher: tensor([0.4075], device='cuda:0')
+2025-08-21 16:47:34,675 - INFO - train loss is 0.0
+2025-08-21 16:47:34,675 - INFO - impulse response loss is 0.06703972816467285
+2025-08-21 16:47:34,675 - INFO - Process 0: Completed experiment - student_dim=175, seed=0
+2025-08-21 16:47:34,677 - INFO - initial model: max A_j index: 59
+2025-08-21 16:47:35,243 - INFO - final model: max A_j index: 27, max A_j value: 0.03373764827847481, alpha_teacher: tensor([0.5022], device='cuda:1')
+2025-08-21 16:47:35,244 - INFO - train loss is 8.881784197001252e-16
+2025-08-21 16:47:35,244 - INFO - impulse response loss is 0.07264619320631027
+2025-08-21 16:47:35,245 - INFO - Process 1: Completed experiment - student_dim=200, seed=2
+2025-08-21 16:47:35,246 - INFO - initial model: max A_j index: 27
+2025-08-21 16:47:35,387 - INFO - final model: max A_j index: 98, max A_j value: 0.034550003707408905, alpha_teacher: tensor([0.3049], device='cuda:2')
+2025-08-21 16:47:35,388 - INFO - train loss is 1.249000902703301e-16
+2025-08-21 16:47:35,388 - INFO - impulse response loss is 0.009988249279558659
+2025-08-21 16:47:35,388 - INFO - Process 2: Completed experiment - student_dim=200, seed=4
+2025-08-21 16:47:35,392 - INFO - initial model: max A_j index: 98
+2025-08-21 16:47:35,402 - INFO - final model: max A_j index: 10, max A_j value: 0.03203696012496948, alpha_teacher: tensor([0.5433], device='cuda:3')
+2025-08-21 16:47:35,402 - INFO - train loss is 1.7985612998927536e-14
+2025-08-21 16:47:35,402 - INFO - impulse response loss is 0.1119883805513382
+2025-08-21 16:47:35,403 - INFO - Process 3: Completed experiment - student_dim=200, seed=6
+2025-08-21 16:47:35,405 - INFO - initial model: max A_j index: 10
+2025-08-21 16:47:35,832 - INFO - final model: max A_j index: 59, max A_j value: 0.04069007933139801, alpha_teacher: tensor([0.4075], device='cuda:0')
+2025-08-21 16:47:35,832 - INFO - train loss is 1.3877787807814457e-17
+2025-08-21 16:47:35,832 - INFO - impulse response loss is 0.06425043940544128
+2025-08-21 16:47:35,833 - INFO - Process 0: Completed experiment - student_dim=200, seed=0
+2025-08-21 16:47:35,836 - INFO - initial model: max A_j index: 59
+2025-08-21 16:47:36,189 - INFO - final model: max A_j index: 27, max A_j value: 0.033429864794015884, alpha_teacher: tensor([0.5022], device='cuda:1')
+2025-08-21 16:47:36,189 - INFO - train loss is 5.551115123125783e-15
+2025-08-21 16:47:36,189 - INFO - impulse response loss is 0.07056581228971481
+2025-08-21 16:47:36,189 - INFO - Process 1: Completed experiment - student_dim=225, seed=2
+2025-08-21 16:47:36,191 - INFO - initial model: max A_j index: 27
+2025-08-21 16:47:36,331 - INFO - final model: max A_j index: 98, max A_j value: 0.03397974371910095, alpha_teacher: tensor([0.3049], device='cuda:2')
+2025-08-21 16:47:36,332 - INFO - train loss is 6.800116025829084e-16
+2025-08-21 16:47:36,332 - INFO - impulse response loss is 0.008212175220251083
+2025-08-21 16:47:36,332 - INFO - Process 2: Completed experiment - student_dim=225, seed=4
+2025-08-21 16:47:36,334 - INFO - initial model: max A_j index: 98
+2025-08-21 16:47:36,344 - INFO - final model: max A_j index: 10, max A_j value: 0.031503383070230484, alpha_teacher: tensor([0.5433], device='cuda:3')
+2025-08-21 16:47:36,344 - INFO - train loss is 2.220446049250313e-16
+2025-08-21 16:47:36,344 - INFO - impulse response loss is 0.10975982248783112
+2025-08-21 16:47:36,344 - INFO - Process 3: Completed experiment - student_dim=225, seed=6
+2025-08-21 16:47:36,346 - INFO - initial model: max A_j index: 10
+2025-08-21 16:47:36,964 - INFO - final model: max A_j index: 59, max A_j value: 0.04016823321580887, alpha_teacher: tensor([0.4075], device='cuda:0')
+2025-08-21 16:47:36,965 - INFO - train loss is 5.551115123125783e-17
+2025-08-21 16:47:36,965 - INFO - impulse response loss is 0.06128605455160141
+2025-08-21 16:47:36,965 - INFO - Process 0: Completed experiment - student_dim=225, seed=0
+2025-08-21 16:47:36,968 - INFO - initial model: max A_j index: 59
+2025-08-21 16:47:37,135 - INFO - final model: max A_j index: 27, max A_j value: 0.033744096755981445, alpha_teacher: tensor([0.5022], device='cuda:1')
+2025-08-21 16:47:37,136 - INFO - train loss is 1.2789769243681803e-13
+2025-08-21 16:47:37,136 - INFO - impulse response loss is 0.06984658539295197
+2025-08-21 16:47:37,136 - INFO - Process 1: Completed experiment - student_dim=250, seed=2
+2025-08-21 16:47:37,139 - INFO - initial model: max A_j index: 27
+2025-08-21 16:47:37,283 - INFO - final model: max A_j index: 98, max A_j value: 0.03382163494825363, alpha_teacher: tensor([0.3049], device='cuda:2')
+2025-08-21 16:47:37,284 - INFO - train loss is 5.551115123125783e-17
+2025-08-21 16:47:37,284 - INFO - impulse response loss is 0.006973652169108391
+2025-08-21 16:47:37,284 - INFO - Process 2: Completed experiment - student_dim=250, seed=4
+2025-08-21 16:47:37,286 - INFO - initial model: max A_j index: 98
+2025-08-21 16:47:37,303 - INFO - final model: max A_j index: 10, max A_j value: 0.03174033388495445, alpha_teacher: tensor([0.5433], device='cuda:3')
+2025-08-21 16:47:37,304 - INFO - train loss is 2.345346139520643e-13
+2025-08-21 16:47:37,304 - INFO - impulse response loss is 0.10855905711650848
+2025-08-21 16:47:37,304 - INFO - Process 3: Completed experiment - student_dim=250, seed=6
+2025-08-21 16:47:37,307 - INFO - initial model: max A_j index: 10
+2025-08-21 16:47:38,096 - INFO - final model: max A_j index: 27, max A_j value: 0.03301076963543892, alpha_teacher: tensor([0.5022], device='cuda:1')
+2025-08-21 16:47:38,096 - INFO - train loss is 8.01581023779363e-14
+2025-08-21 16:47:38,096 - INFO - impulse response loss is 0.06822804361581802
+2025-08-21 16:47:38,096 - INFO - Process 1: Completed experiment - student_dim=275, seed=2
+2025-08-21 16:47:38,100 - INFO - final model: max A_j index: 59, max A_j value: 0.03980403393507004, alpha_teacher: tensor([0.4075], device='cuda:0')
+2025-08-21 16:47:38,100 - INFO - train loss is 5.551115123125783e-17
+2025-08-21 16:47:38,100 - INFO - impulse response loss is 0.058682359755039215
+2025-08-21 16:47:38,101 - INFO - Process 0: Completed experiment - student_dim=250, seed=0
+2025-08-21 16:47:38,101 - INFO - for seed 3, alpha_teacher=tensor([0.5426], device='cuda:1'), w=tensor([-0.5162, -0.2217, -0.5594,  0.5542], device='cuda:1')
+2025-08-21 16:47:38,103 - INFO - initial model: max A_j index: 59
+2025-08-21 16:47:38,103 - INFO - initial model: max A_j index: 143
+2025-08-21 16:47:38,240 - INFO - final model: max A_j index: 98, max A_j value: 0.033678703010082245, alpha_teacher: tensor([0.3049], device='cuda:2')
+2025-08-21 16:47:38,240 - INFO - train loss is 1.249000902703301e-16
+2025-08-21 16:47:38,240 - INFO - impulse response loss is 0.005402727052569389
+2025-08-21 16:47:38,241 - INFO - Process 2: Completed experiment - student_dim=275, seed=4
+2025-08-21 16:47:38,248 - INFO - for seed 5, alpha_teacher=tensor([0.5310], device='cuda:2'), w=tensor([ 1.2089, -0.6117,  1.4826, -1.1513], device='cuda:2')
+2025-08-21 16:47:38,249 - INFO - initial model: max A_j index: 16
+2025-08-21 16:47:38,268 - INFO - final model: max A_j index: 10, max A_j value: 0.03131208196282387, alpha_teacher: tensor([0.5433], device='cuda:3')
+2025-08-21 16:47:38,268 - INFO - train loss is 3.752553823233029e-14
+2025-08-21 16:47:38,268 - INFO - impulse response loss is 0.10769529640674591
+2025-08-21 16:47:38,268 - INFO - Process 3: Completed experiment - student_dim=275, seed=6
+2025-08-21 16:47:38,274 - INFO - for seed 7, alpha_teacher=tensor([0.4695], device='cuda:3'), w=tensor([-1.2870, -0.3958,  0.3756,  0.2573], device='cuda:3')
+2025-08-21 16:47:38,276 - INFO - initial model: max A_j index: 146
+2025-08-21 16:47:39,041 - INFO - final model: max A_j index: 143, max A_j value: 0.034859973937273026, alpha_teacher: tensor([0.5426], device='cuda:1')
+2025-08-21 16:47:39,041 - INFO - train loss is 1.124100812432971e-15
+2025-08-21 16:47:39,041 - INFO - impulse response loss is 0.14463403820991516
+2025-08-21 16:47:39,041 - INFO - Process 1: Completed experiment - student_dim=150, seed=3
+2025-08-21 16:47:39,043 - INFO - initial model: max A_j index: 130
+2025-08-21 16:47:39,109 - INFO - final model: max A_j index: 59, max A_j value: 0.04021173715591431, alpha_teacher: tensor([0.4075], device='cuda:0')
+2025-08-21 16:47:39,109 - INFO - train loss is 1.3877787807814457e-17
+2025-08-21 16:47:39,109 - INFO - impulse response loss is 0.05441680923104286
+2025-08-21 16:47:39,109 - INFO - Process 0: Completed experiment - student_dim=275, seed=0
+2025-08-21 16:47:39,115 - INFO - for seed 1, alpha_teacher=tensor([0.4704], device='cuda:0'), w=tensor([-0.6340, -0.6431, -0.6420, -1.4471], device='cuda:0')
+2025-08-21 16:47:39,116 - INFO - initial model: max A_j index: 120
+2025-08-21 16:47:39,198 - INFO - final model: max A_j index: 16, max A_j value: 0.034450989216566086, alpha_teacher: tensor([0.5310], device='cuda:2')
+2025-08-21 16:47:39,199 - INFO - train loss is 7.993605777301127e-15
+2025-08-21 16:47:39,199 - INFO - impulse response loss is 0.09727246314287186
+2025-08-21 16:47:39,199 - INFO - Process 2: Completed experiment - student_dim=150, seed=5
+2025-08-21 16:47:39,201 - INFO - initial model: max A_j index: 16
+2025-08-21 16:47:39,221 - INFO - final model: max A_j index: 146, max A_j value: 0.030344171449542046, alpha_teacher: tensor([0.4695], device='cuda:3')
+2025-08-21 16:47:39,221 - INFO - train loss is 0.0
+2025-08-21 16:47:39,221 - INFO - impulse response loss is 0.05420338362455368
+2025-08-21 16:47:39,222 - INFO - Process 3: Completed experiment - student_dim=150, seed=7
+2025-08-21 16:47:39,223 - INFO - initial model: max A_j index: 35
+2025-08-21 16:47:40,007 - INFO - final model: max A_j index: 130, max A_j value: 0.03223545476794243, alpha_teacher: tensor([0.5426], device='cuda:1')
+2025-08-21 16:47:40,007 - INFO - train loss is 1.3877787807814457e-15
+2025-08-21 16:47:40,007 - INFO - impulse response loss is 0.14376983046531677
+2025-08-21 16:47:40,007 - INFO - Process 1: Completed experiment - student_dim=175, seed=3
+2025-08-21 16:47:40,009 - INFO - initial model: max A_j index: 159
+2025-08-21 16:47:40,081 - INFO - final model: max A_j index: 120, max A_j value: 0.0357414148747921, alpha_teacher: tensor([0.4704], device='cuda:0')
+2025-08-21 16:47:40,081 - INFO - train loss is 8.881784197001252e-16
+2025-08-21 16:47:40,081 - INFO - impulse response loss is 0.2254468947649002
+2025-08-21 16:47:40,081 - INFO - Process 0: Completed experiment - student_dim=150, seed=1
+2025-08-21 16:47:40,083 - INFO - initial model: max A_j index: 120
+2025-08-21 16:47:40,152 - INFO - final model: max A_j index: 16, max A_j value: 0.033724620938301086, alpha_teacher: tensor([0.5310], device='cuda:2')
+2025-08-21 16:47:40,152 - INFO - train loss is 2.220446049250313e-16
+2025-08-21 16:47:40,152 - INFO - impulse response loss is 0.09645392745733261
+2025-08-21 16:47:40,153 - INFO - Process 2: Completed experiment - student_dim=175, seed=5
+2025-08-21 16:47:40,154 - INFO - initial model: max A_j index: 16
+2025-08-21 16:47:40,194 - INFO - final model: max A_j index: 35, max A_j value: 0.029986651614308357, alpha_teacher: tensor([0.4695], device='cuda:3')
+2025-08-21 16:47:40,194 - INFO - train loss is 5.551115123125783e-17
+2025-08-21 16:47:40,194 - INFO - impulse response loss is 0.052893295884132385
+2025-08-21 16:47:40,194 - INFO - Process 3: Completed experiment - student_dim=175, seed=7
+2025-08-21 16:47:40,196 - INFO - initial model: max A_j index: 35
+2025-08-21 16:47:40,978 - INFO - final model: max A_j index: 159, max A_j value: 0.033551521599292755, alpha_teacher: tensor([0.5426], device='cuda:1')
+2025-08-21 16:47:40,978 - INFO - train loss is 1.124100812432971e-15
+2025-08-21 16:47:40,978 - INFO - impulse response loss is 0.14088168740272522
+2025-08-21 16:47:40,979 - INFO - Process 1: Completed experiment - student_dim=200, seed=3
+2025-08-21 16:47:40,980 - INFO - initial model: max A_j index: 159
+2025-08-21 16:47:41,054 - INFO - final model: max A_j index: 120, max A_j value: 0.034046806395053864, alpha_teacher: tensor([0.4704], device='cuda:0')
+2025-08-21 16:47:41,054 - INFO - train loss is 2.220446049250313e-16
+2025-08-21 16:47:41,054 - INFO - impulse response loss is 0.21925462782382965
+2025-08-21 16:47:41,054 - INFO - Process 0: Completed experiment - student_dim=175, seed=1
+2025-08-21 16:47:41,056 - INFO - initial model: max A_j index: 120
+2025-08-21 16:47:41,106 - INFO - final model: max A_j index: 16, max A_j value: 0.03321269527077675, alpha_teacher: tensor([0.5310], device='cuda:2')
+2025-08-21 16:47:41,106 - INFO - train loss is 8.881784197001252e-16
+2025-08-21 16:47:41,107 - INFO - impulse response loss is 0.094206303358078
+2025-08-21 16:47:41,107 - INFO - Process 2: Completed experiment - student_dim=200, seed=5
+2025-08-21 16:47:41,110 - INFO - initial model: max A_j index: 213
+2025-08-21 16:47:41,157 - INFO - final model: max A_j index: 35, max A_j value: 0.02949569933116436, alpha_teacher: tensor([0.4695], device='cuda:3')
+2025-08-21 16:47:41,157 - INFO - train loss is 3.332056852656251e-14
+2025-08-21 16:47:41,157 - INFO - impulse response loss is 0.052245549857616425
+2025-08-21 16:47:41,157 - INFO - Process 3: Completed experiment - student_dim=200, seed=7
+2025-08-21 16:47:41,159 - INFO - initial model: max A_j index: 35
+2025-08-21 16:47:41,941 - INFO - final model: max A_j index: 159, max A_j value: 0.03384872153401375, alpha_teacher: tensor([0.5426], device='cuda:1')
+2025-08-21 16:47:41,941 - INFO - train loss is 1.249000902703301e-16
+2025-08-21 16:47:41,941 - INFO - impulse response loss is 0.13878092169761658
+2025-08-21 16:47:41,943 - INFO - Process 1: Completed experiment - student_dim=225, seed=3
+2025-08-21 16:47:41,944 - INFO - Process 1: Starting experiment - student_dim=250, seed=3
+2025-08-21 16:47:41,945 - INFO - initial model: max A_j index: 159
+2025-08-21 16:47:42,044 - INFO - final model: max A_j index: 120, max A_j value: 0.033731963485479355, alpha_teacher: tensor([0.4704], device='cuda:0')
+2025-08-21 16:47:42,045 - INFO - train loss is 2.220446049250313e-16
+2025-08-21 16:47:42,045 - INFO - impulse response loss is 0.2168886512517929
+2025-08-21 16:47:42,045 - INFO - Process 0: Completed experiment - student_dim=200, seed=1
+2025-08-21 16:47:42,047 - INFO - initial model: max A_j index: 216
+2025-08-21 16:47:42,062 - INFO - final model: max A_j index: 213, max A_j value: 0.033893290907144547, alpha_teacher: tensor([0.5310], device='cuda:2')
+2025-08-21 16:47:42,063 - INFO - train loss is 7.993605777301127e-15
+2025-08-21 16:47:42,063 - INFO - impulse response loss is 0.09281644225120544
+2025-08-21 16:47:42,065 - INFO - Process 2: Completed experiment - student_dim=225, seed=5
+2025-08-21 16:47:42,066 - INFO - Process 2: Starting experiment - student_dim=250, seed=5
+2025-08-21 16:47:42,067 - INFO - initial model: max A_j index: 229
+2025-08-21 16:47:42,122 - INFO - final model: max A_j index: 35, max A_j value: 0.029084952548146248, alpha_teacher: tensor([0.4695], device='cuda:3')
+2025-08-21 16:47:42,123 - INFO - train loss is 2.220446049250313e-16
+2025-08-21 16:47:42,123 - INFO - impulse response loss is 0.051236383616924286
+2025-08-21 16:47:42,124 - INFO - Process 3: Completed experiment - student_dim=225, seed=7
+2025-08-21 16:47:42,126 - INFO - Process 3: Starting experiment - student_dim=250, seed=7
+2025-08-21 16:47:42,126 - INFO - initial model: max A_j index: 237
+2025-08-21 16:47:42,890 - INFO - final model: max A_j index: 159, max A_j value: 0.03293105214834213, alpha_teacher: tensor([0.5426], device='cuda:1')
+2025-08-21 16:47:42,890 - INFO - train loss is 3.469446951953614e-16
+2025-08-21 16:47:42,891 - INFO - impulse response loss is 0.13600008189678192
+2025-08-21 16:47:42,891 - INFO - Process 1: Completed experiment - student_dim=250, seed=3
+2025-08-21 16:47:42,892 - INFO - initial model: max A_j index: 159
+2025-08-21 16:47:43,015 - INFO - final model: max A_j index: 216, max A_j value: 0.03364424407482147, alpha_teacher: tensor([0.4704], device='cuda:0')
+2025-08-21 16:47:43,016 - INFO - train loss is 8.881784197001252e-16
+2025-08-21 16:47:43,016 - INFO - impulse response loss is 0.2109130471944809
+2025-08-21 16:47:43,017 - INFO - Process 0: Completed experiment - student_dim=225, seed=1
+2025-08-21 16:47:43,018 - INFO - Process 0: Starting experiment - student_dim=250, seed=1
+2025-08-21 16:47:43,018 - INFO - final model: max A_j index: 229, max A_j value: 0.03372018784284592, alpha_teacher: tensor([0.5310], device='cuda:2')
+2025-08-21 16:47:43,019 - INFO - train loss is 1.9984014443252818e-15
+2025-08-21 16:47:43,019 - INFO - impulse response loss is 0.09133028984069824
+2025-08-21 16:47:43,019 - INFO - initial model: max A_j index: 120
+2025-08-21 16:47:43,019 - INFO - Process 2: Completed experiment - student_dim=250, seed=5
+2025-08-21 16:47:43,021 - INFO - initial model: max A_j index: 229
+2025-08-21 16:47:43,090 - INFO - final model: max A_j index: 237, max A_j value: 0.02977447584271431, alpha_teacher: tensor([0.4695], device='cuda:3')
+2025-08-21 16:47:43,091 - INFO - train loss is 5.551115123125783e-17
+2025-08-21 16:47:43,091 - INFO - impulse response loss is 0.049443524330854416
+2025-08-21 16:47:43,091 - INFO - Process 3: Completed experiment - student_dim=250, seed=7
+2025-08-21 16:47:43,094 - INFO - initial model: max A_j index: 35
+2025-08-21 16:47:43,849 - INFO - final model: max A_j index: 159, max A_j value: 0.03300197795033455, alpha_teacher: tensor([0.5426], device='cuda:1')
+2025-08-21 16:47:43,849 - INFO - train loss is 6.1201044232461754e-15
+2025-08-21 16:47:43,849 - INFO - impulse response loss is 0.13495072722434998
+2025-08-21 16:47:43,850 - INFO - Process 1: Completed experiment - student_dim=275, seed=3
+2025-08-21 16:47:43,851 - INFO - Process 1 completed on GPU 1
+2025-08-21 16:47:43,976 - INFO - final model: max A_j index: 229, max A_j value: 0.033548593521118164, alpha_teacher: tensor([0.5310], device='cuda:2')
+2025-08-21 16:47:43,976 - INFO - train loss is 2.220446049250313e-16
+2025-08-21 16:47:43,977 - INFO - impulse response loss is 0.08966855704784393
+2025-08-21 16:47:43,977 - INFO - Process 2: Completed experiment - student_dim=275, seed=5
+2025-08-21 16:47:43,978 - INFO - final model: max A_j index: 120, max A_j value: 0.03179314360022545, alpha_teacher: tensor([0.4704], device='cuda:0')
+2025-08-21 16:47:43,978 - INFO - Process 2 completed on GPU 2
+2025-08-21 16:47:43,978 - INFO - train loss is 5.551115123125783e-15
+2025-08-21 16:47:43,978 - INFO - impulse response loss is 0.20822352170944214
+2025-08-21 16:47:43,978 - INFO - Process 0: Completed experiment - student_dim=250, seed=1
+2025-08-21 16:47:43,980 - INFO - initial model: max A_j index: 120
+2025-08-21 16:47:44,052 - INFO - final model: max A_j index: 35, max A_j value: 0.028835933655500412, alpha_teacher: tensor([0.4695], device='cuda:3')
+2025-08-21 16:47:44,052 - INFO - train loss is 1.3877787807814457e-17
+2025-08-21 16:47:44,052 - INFO - impulse response loss is 0.048860207200050354
+2025-08-21 16:47:44,053 - INFO - Process 3: Completed experiment - student_dim=275, seed=7
+2025-08-21 16:47:44,054 - INFO - Process 3 completed on GPU 3
+2025-08-21 16:47:44,835 - INFO - final model: max A_j index: 120, max A_j value: 0.03180084750056267, alpha_teacher: tensor([0.4704], device='cuda:0')
+2025-08-21 16:47:44,835 - INFO - train loss is 5.551115123125783e-15
+2025-08-21 16:47:44,836 - INFO - impulse response loss is 0.20603014528751373
+2025-08-21 16:47:44,836 - INFO - Process 0: Completed experiment - student_dim=275, seed=1
+2025-08-21 16:47:44,837 - INFO - Process 0 completed on GPU 0
+2025-08-21 16:47:46,085 - INFO - Process 1 completed
+2025-08-21 16:47:47,087 - INFO - Process 2 completed
+2025-08-21 16:47:48,088 - INFO - Process 3 completed
+2025-08-21 16:47:49,089 - INFO - Process 0 completed
+2025-08-21 16:47:50,094 - ERROR - Failed to save checkpoint: division by zero
+2025-08-21 16:47:50,094 - INFO - Final checkpoint saved
+2025-08-21 16:47:50,108 - INFO - Results saved to results__gd_seq_len=5_time=20250821_164724.csv
+2025-08-21 16:47:52,436 - INFO - Figures saved to plot__gd_seq_len=5_time=20250821_164724
+2025-08-21 16:47:52,436 - INFO - Finished experiments, results saved to results__gd_seq_len=5_time=20250821_164724.csv, figures saved to plot__gd_seq_len=5_time=20250821_164724
