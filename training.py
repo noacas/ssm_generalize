@@ -22,6 +22,7 @@ def train_gd(
         optimizer: str = "adam",
         scheduler: str = None,
         scheduler_params: dict = None,
+        init_type: str = "regular",
     ):
     """
     Trains only the diagonal transition matrix A of the student SSM.
@@ -35,7 +36,8 @@ def train_gd(
 
     # --- build student -------------------------------------------------------
     model = DiagonalSSM(state_dim=student_dim,
-                        init_scale=init_scale
+                        init_scale=init_scale,
+                        init_type=init_type
                         ).to(device)
 
     if optimizer == "adam":

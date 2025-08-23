@@ -65,6 +65,7 @@ class GDHyperoptObjective:
         gd_epochs = trial.suggest_int("gd_epochs", 10000, 50000, log=True)
         gd_init_scale = trial.suggest_float("gd_init_scale", 1e-4, 1e-1, log=True)
         gd_optimizer = trial.suggest_categorical("gd_optimizer", ["adam", "gd"])
+        gd_init_type = trial.suggest_categorical("gd_init_type", ["regular", "near_one", "double_max_A_j"])
         
         # Suggest scheduler parameters
         gd_scheduler = trial.suggest_categorical("gd_scheduler", ["none", "step", "exponential", "cosine"])
@@ -81,7 +82,7 @@ class GDHyperoptObjective:
             scheduler_params["eta_min"] = trial.suggest_float("cosine_eta_min", gd_lr * 1e-3, gd_lr * 0.1, log=True)
         
         # Update base arguments with suggested hyperparameters
-        args = self._update_args(gd_lr, gd_epochs, gd_init_scale, gd_optimizer, gd_scheduler, scheduler_params)
+        args = self._update_args(gd_lr, gd_epochs, gd_init_scale, gd_optimizer, gd_scheduler, scheduler_params, gd_init_type)
         
         # Run the experiment and get results
         score = self._run_experiment(args, trial)
@@ -95,7 +96,7 @@ class GDHyperoptObjective:
         return score
 
     
-    def _update_args(self, gd_lr: float, gd_epochs: int, gd_init_scale: float, gd_optimizer: str, gd_scheduler: str, scheduler_params: dict) -> argparse.Namespace:
+    def _update_args(self, gd_lr: float, gd_epochs: int, gd_init_scale: float, gd_optimizer: str, gd_scheduler: str, scheduler_params: dict, gd_init_type: str) -> argparse.Namespace:
         """Update base arguments with new hyperparameters."""
         # Create a copy of base args
         args = argparse.Namespace(**vars(self.base_args))
@@ -108,6 +109,7 @@ class GDHyperoptObjective:
         args.gd_optimizer = gd_optimizer
         args.gd_scheduler = gd_scheduler if gd_scheduler != "none" else None
         args.scheduler_params = scheduler_params
+        args.gd_init_type = gd_init_type
         return args
     
     def _run_experiment(self, args: argparse.Namespace, trial: optuna.Trial) -> float:
@@ -135,7 +137,8 @@ class GDHyperoptObjective:
                                   args.gd_epochs,
                                   args.gd_optimizer,
                                   args.gd_scheduler,
-                                  args.scheduler_params)
+                                  args.scheduler_params,
+                                  args.gd_init_type)
 
         return gd_gen_loss
 
