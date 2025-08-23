@@ -116,7 +116,8 @@ def process_worker(process_id, gpu_id, seed_range, args_dict, student_dims,
                                                                 args_dict['gd_epochs'],
                                                                 args_dict['gd_optimizer'],
                                                                 args_dict.get('gd_scheduler'),
-                                                                scheduler_params)
+                                                                scheduler_params,
+                                                                args_dict['gd_init_type'])
                         results['gd_gen_loss'] = gd_gen_loss
                         results['gd_train_loss'] = gd_train_loss
                     
