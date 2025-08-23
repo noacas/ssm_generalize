@@ -41,6 +41,7 @@ def run_main_with_params(params):
         f"--gd_epochs={params['gd_epochs']}",
         f"--gd_init_scale={params['gd_init_scale']}",
         f"--gd_optimizer={params['gd_optimizer']}",
+        f"--gd_init_type={params['gd_init_type']}",
         "--num_seeds=8",  # You can adjust this
         "--sequence_length=5",
         "--student_dims", "150", "175", "200", "225", "250", "275",  # You can adjust these
