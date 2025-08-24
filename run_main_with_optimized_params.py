@@ -18,7 +18,7 @@ def load_optimized_params(results_file="hyperopt_results/gd_hyperopt_results.jso
 def run_main_with_params(params):
     """Run main.py with the given parameters."""
     
-    # Build scheduler parameters JSON
+    # Build scheduler parameters JSON (for logging purposes)
     scheduler_params = {}
     if params.get('gd_scheduler') and params['gd_scheduler'] != 'none':
         if params['gd_scheduler'] == 'exponential':
@@ -53,8 +53,17 @@ def run_main_with_params(params):
         cmd.extend([
             f"--gd_scheduler={params['gd_scheduler']}"
         ])
-        # Don't pass scheduler_params as command line argument to avoid JSON parsing issues
-        # The main.py will use default values when scheduler_params is not provided
+        
+        # Add individual scheduler parameters instead of JSON string
+        if params['gd_scheduler'] == 'exponential' and 'exp_gamma' in params:
+            cmd.extend([f"--exp_gamma={params['exp_gamma']}"])
+        elif params['gd_scheduler'] == 'step':
+            if 'step_size' in params:
+                cmd.extend([f"--step_size={params['step_size']}"])
+            if 'step_gamma' in params:
+                cmd.extend([f"--step_gamma={params['step_gamma']}"])
+        elif params['gd_scheduler'] == 'cosine' and 'cosine_eta_min' in params:
+            cmd.extend([f"--cosine_eta_min={params['cosine_eta_min']}"])
         print(f"Note: Using scheduler '{params['gd_scheduler']}' with parameters:")
         if params['gd_scheduler'] == 'exponential':
             print(f"  - gamma: {params['exp_gamma']}")
@@ -81,12 +90,30 @@ def run_main_with_params(params):
         print("Aborted.")
         return
     
-    # Run the command
+    # Create screen session name with timestamp
+    import datetime
+    timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+    screen_name = f"main_optimized_{timestamp}"
+    
+    # Build screen command
+    screen_cmd = [
+        "screen", "-dmS", screen_name, "bash", "-c",
+        f"cd {pathlib.Path.cwd()}; {' '.join(cmd)}; exec bash"
+    ]
+    
+    print(f"Starting screen session: {screen_name}")
+    print("To attach to the session: screen -r " + screen_name)
+    print("To list all sessions: screen -ls")
+    print()
+    
+    # Run the command in screen
     try:
-        result = subprocess.run(cmd, check=True)
-        print("Main script completed successfully!")
+        result = subprocess.run(screen_cmd, check=True)
+        print(f"Screen session '{screen_name}' started successfully!")
+        print("The main script is now running in the background.")
+        print("You can detach from the screen session by pressing Ctrl+A, then D")
     except subprocess.CalledProcessError as e:
-        print(f"Main script failed with error code {e.returncode}")
+        print(f"Failed to start screen session with error code {e.returncode}")
         sys.exit(1)
 
 def main():

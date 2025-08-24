@@ -63,7 +63,7 @@ class GDHyperoptObjective:
         gd_epochs = trial.suggest_int("gd_epochs", 10000, 50000, log=True)
         gd_init_scale = trial.suggest_float("gd_init_scale", 1e-4, 1e-1, log=True)
         gd_optimizer = trial.suggest_categorical("gd_optimizer", ["adam", "gd"])
-        gd_init_type = trial.suggest_categorical("gd_init_type", ["regular", "near_one", "double_max_A_j"])
+        gd_init_type = trial.suggest_categorical("gd_init_type", ["double_max_A_j"]) #["regular", "near_one", "double_max_A_j"])
         
         # Suggest scheduler parameters
         gd_scheduler = trial.suggest_categorical("gd_scheduler", ["none", "step", "exponential", "cosine"])

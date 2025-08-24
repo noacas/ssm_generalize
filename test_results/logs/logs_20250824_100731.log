@@ -1,0 +1,179 @@
+2025-08-24 10:07:31,012 - INFO - Args: Namespace(num_seeds=8, sequence_length=5, student_dims=[150, 175, 200, 225, 250, 275], eps_train=1e-05, gnc=False, gnc_num_samples=100000000, gnc_batch_size=1000000, gd=True, gd_lr=1.365157510472501e-06, gd_epochs=100000, gd_init_scale=0.03737434212958489, gd_optimizer='adam', gd_scheduler='step', gd_scheduler_params='{', gd_init_type='double_max_A_j', config=None, results_dir=PosixPath('test_results/results'), figures_dir=PosixPath('test_results/figures'), checkpoint_dir=PosixPath('test_results/checkpoints'), checkpoint_interval=3600, resume_from_checkpoint=False, log_dir=PosixPath('test_results/logs'), max_gpus=4, log_file=PosixPath('test_results/logs/logs_20250824_100731.log'))
+2025-08-24 10:07:31,218 - INFO - Using GPUs: [0, 1, 2, 3]
+2025-08-24 10:07:31,218 - INFO - Starting 4 processes on 4 GPUs
+2025-08-24 10:07:36,804 - INFO - Process 0 started on GPU 0, processing seeds 0-1
+2025-08-24 10:07:37,336 - INFO - Process 3 started on GPU 3, processing seeds 6-7
+2025-08-24 10:07:37,359 - INFO - Process 2 started on GPU 2, processing seeds 4-5
+2025-08-24 10:07:37,393 - INFO - Process 1 started on GPU 1, processing seeds 2-3
+2025-08-24 10:07:37,549 - INFO - for seed 6, alpha_teacher=tensor([0.5433], device='cuda:3'), w=tensor([ 1.9899, -0.1324, -0.3380, -0.7933], device='cuda:3')
+2025-08-24 10:07:37,549 - INFO - Process 3: Starting experiment - student_dim=150, seed=6
+2025-08-24 10:07:37,551 - INFO - Attempting to parse scheduler params: '{'
+2025-08-24 10:07:37,551 - WARNING - JSON decode error: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-24 10:07:37,551 - WARNING - Failed to parse scheduler params, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 10:07:37,551 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 10:07:37,561 - INFO - for seed 0, alpha_teacher=tensor([0.4075], device='cuda:0'), w=tensor([ 0.1808, -0.5523,  0.9238, -0.7350], device='cuda:0')
+2025-08-24 10:07:37,562 - INFO - Process 0: Starting experiment - student_dim=150, seed=0
+2025-08-24 10:07:37,563 - INFO - Attempting to parse scheduler params: '{'
+2025-08-24 10:07:37,563 - WARNING - JSON decode error: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-24 10:07:37,564 - WARNING - Failed to parse scheduler params, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 10:07:37,564 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 10:07:37,575 - INFO - for seed 4, alpha_teacher=tensor([0.3049], device='cuda:2'), w=tensor([-0.2938,  0.7819, -1.4731,  1.0391], device='cuda:2')
+2025-08-24 10:07:37,576 - INFO - Process 2: Starting experiment - student_dim=150, seed=4
+2025-08-24 10:07:37,576 - INFO - Attempting to parse scheduler params: '{'
+2025-08-24 10:07:37,578 - WARNING - JSON decode error: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-24 10:07:37,579 - WARNING - Failed to parse scheduler params, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 10:07:37,581 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 10:07:37,595 - INFO - for seed 2, alpha_teacher=tensor([0.5022], device='cuda:1'), w=tensor([ 2.2669,  1.3477, -1.4438, -1.0484], device='cuda:1')
+2025-08-24 10:07:37,596 - INFO - Process 1: Starting experiment - student_dim=150, seed=2
+2025-08-24 10:07:37,597 - INFO - Attempting to parse scheduler params: '{'
+2025-08-24 10:07:37,599 - WARNING - JSON decode error: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-24 10:07:37,599 - WARNING - Failed to parse scheduler params, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 10:07:37,600 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 10:07:46,252 - INFO - initial model: max A_j index: 10
+2025-08-24 10:07:46,252 - INFO - initial model: max A_j index: 27
+2025-08-24 10:07:46,252 - INFO - initial model: max A_j index: 59
+2025-08-24 10:07:46,253 - INFO - initial model: max A_j index: 98
+2025-08-24 10:11:02,217 - INFO - final model: max A_j index: 27, max A_j value: 0.20780444145202637, alpha_teacher: tensor([0.5022], device='cuda:1')
+2025-08-24 10:11:02,219 - INFO - train loss is 0.08789689093828201
+2025-08-24 10:11:02,219 - INFO - impulse response loss is 0.06182524561882019
+2025-08-24 10:11:02,226 - INFO - Process 1: Completed experiment - student_dim=150, seed=2
+2025-08-24 10:11:02,270 - INFO - Attempting to parse scheduler params: '{'
+2025-08-24 10:11:02,271 - WARNING - JSON decode error: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-24 10:11:02,273 - WARNING - Failed to parse scheduler params, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 10:11:02,273 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 10:11:02,278 - INFO - initial model: max A_j index: 27
+2025-08-24 10:11:51,364 - INFO - final model: max A_j index: 10, max A_j value: 0.19193817675113678, alpha_teacher: tensor([0.5433], device='cuda:3')
+2025-08-24 10:11:51,365 - INFO - train loss is 1.9571133852005005
+2025-08-24 10:11:51,365 - INFO - impulse response loss is 0.626021146774292
+2025-08-24 10:11:51,375 - INFO - Process 3: Completed experiment - student_dim=150, seed=6
+2025-08-24 10:11:51,383 - INFO - Attempting to parse scheduler params: '{'
+2025-08-24 10:11:51,383 - WARNING - JSON decode error: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-24 10:11:51,383 - WARNING - Failed to parse scheduler params, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 10:11:51,386 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 10:11:51,387 - INFO - initial model: max A_j index: 10
+2025-08-24 10:12:13,165 - INFO - final model: max A_j index: 59, max A_j value: 0.25627410411834717, alpha_teacher: tensor([0.4075], device='cuda:0')
+2025-08-24 10:12:13,166 - INFO - train loss is 0.0024565900675952435
+2025-08-24 10:12:13,166 - INFO - impulse response loss is 0.046109676361083984
+2025-08-24 10:12:13,172 - INFO - Process 0: Completed experiment - student_dim=150, seed=0
+2025-08-24 10:12:13,203 - INFO - Attempting to parse scheduler params: '{'
+2025-08-24 10:12:13,204 - WARNING - JSON decode error: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-24 10:12:13,206 - WARNING - Failed to parse scheduler params, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 10:12:13,206 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 10:12:13,209 - INFO - initial model: max A_j index: 59
+2025-08-24 10:12:15,788 - INFO - final model: max A_j index: 98, max A_j value: 0.2133256196975708, alpha_teacher: tensor([0.3049], device='cuda:2')
+2025-08-24 10:12:15,789 - INFO - train loss is 0.05913158878684044
+2025-08-24 10:12:15,789 - INFO - impulse response loss is 0.13950881361961365
+2025-08-24 10:12:15,795 - INFO - Process 2: Completed experiment - student_dim=150, seed=4
+2025-08-24 10:12:15,802 - INFO - Attempting to parse scheduler params: '{'
+2025-08-24 10:12:15,802 - WARNING - JSON decode error: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-24 10:12:15,804 - WARNING - Failed to parse scheduler params, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 10:12:15,804 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 10:12:15,805 - INFO - initial model: max A_j index: 98
+2025-08-24 10:14:31,095 - INFO - final model: max A_j index: 10, max A_j value: 0.1919410228729248, alpha_teacher: tensor([0.5433], device='cuda:3')
+2025-08-24 10:14:31,097 - INFO - train loss is 2.905404567718506
+2025-08-24 10:14:31,097 - INFO - impulse response loss is 0.8768481016159058
+2025-08-24 10:14:31,100 - INFO - Process 3: Completed experiment - student_dim=175, seed=6
+2025-08-24 10:14:31,137 - INFO - Attempting to parse scheduler params: '{'
+2025-08-24 10:14:31,138 - WARNING - JSON decode error: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-24 10:14:31,140 - WARNING - Failed to parse scheduler params, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 10:14:31,140 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 10:14:31,144 - INFO - initial model: max A_j index: 10
+2025-08-24 10:14:32,278 - INFO - final model: max A_j index: 27, max A_j value: 0.20742399990558624, alpha_teacher: tensor([0.5022], device='cuda:1')
+2025-08-24 10:14:32,278 - INFO - train loss is 0.0006214536260813475
+2025-08-24 10:14:32,278 - INFO - impulse response loss is 0.03009679540991783
+2025-08-24 10:14:32,281 - INFO - Process 1: Completed experiment - student_dim=175, seed=2
+2025-08-24 10:14:32,283 - INFO - Attempting to parse scheduler params: '{'
+2025-08-24 10:14:32,284 - WARNING - JSON decode error: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-24 10:14:32,284 - WARNING - Failed to parse scheduler params, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 10:14:32,284 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 10:14:32,287 - INFO - initial model: max A_j index: 27
+2025-08-24 10:15:35,885 - INFO - final model: max A_j index: 59, max A_j value: 0.2563231587409973, alpha_teacher: tensor([0.4075], device='cuda:0')
+2025-08-24 10:15:35,888 - INFO - train loss is 0.011682415381073952
+2025-08-24 10:15:35,888 - INFO - impulse response loss is 0.021227337419986725
+2025-08-24 10:15:35,893 - INFO - Process 0: Completed experiment - student_dim=175, seed=0
+2025-08-24 10:15:35,917 - INFO - Attempting to parse scheduler params: '{'
+2025-08-24 10:15:35,917 - WARNING - JSON decode error: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-24 10:15:35,919 - WARNING - Failed to parse scheduler params, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 10:15:35,919 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 10:15:35,921 - INFO - initial model: max A_j index: 59
+2025-08-24 10:16:29,038 - INFO - final model: max A_j index: 27, max A_j value: 0.20567865669727325, alpha_teacher: tensor([0.5022], device='cuda:1')
+2025-08-24 10:16:29,038 - INFO - train loss is 0.000522635702509433
+2025-08-24 10:16:29,038 - INFO - impulse response loss is 0.028375206515192986
+2025-08-24 10:16:29,041 - INFO - Process 1: Completed experiment - student_dim=200, seed=2
+2025-08-24 10:16:29,043 - INFO - Attempting to parse scheduler params: '{'
+2025-08-24 10:16:29,043 - WARNING - JSON decode error: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-24 10:16:29,043 - WARNING - Failed to parse scheduler params, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 10:16:29,045 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 10:16:29,045 - INFO - initial model: max A_j index: 27
+2025-08-24 10:16:38,235 - INFO - final model: max A_j index: 98, max A_j value: 0.21332071721553802, alpha_teacher: tensor([0.3049], device='cuda:2')
+2025-08-24 10:16:38,236 - INFO - train loss is 0.06960974633693695
+2025-08-24 10:16:38,236 - INFO - impulse response loss is 0.12976998090744019
+2025-08-24 10:16:38,242 - INFO - Process 2: Completed experiment - student_dim=175, seed=4
+2025-08-24 10:16:38,279 - INFO - Attempting to parse scheduler params: '{'
+2025-08-24 10:16:38,279 - WARNING - JSON decode error: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-24 10:16:38,281 - WARNING - Failed to parse scheduler params, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 10:16:38,281 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 10:16:38,285 - INFO - initial model: max A_j index: 98
+2025-08-24 10:18:49,375 - INFO - final model: max A_j index: 10, max A_j value: 0.19188645482063293, alpha_teacher: tensor([0.5433], device='cuda:3')
+2025-08-24 10:18:49,376 - INFO - train loss is 1.0061266422271729
+2025-08-24 10:18:49,376 - INFO - impulse response loss is 0.3497287631034851
+2025-08-24 10:18:49,382 - INFO - Process 3: Completed experiment - student_dim=200, seed=6
+2025-08-24 10:18:49,418 - INFO - Attempting to parse scheduler params: '{'
+2025-08-24 10:18:49,418 - WARNING - JSON decode error: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-24 10:18:49,420 - WARNING - Failed to parse scheduler params, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 10:18:49,421 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 10:18:49,425 - INFO - initial model: max A_j index: 10
+2025-08-24 10:19:19,924 - INFO - final model: max A_j index: 27, max A_j value: 0.20548641681671143, alpha_teacher: tensor([0.5022], device='cuda:1')
+2025-08-24 10:19:19,925 - INFO - train loss is 0.009511099196970463
+2025-08-24 10:19:19,925 - INFO - impulse response loss is 0.03174756467342377
+2025-08-24 10:19:19,931 - INFO - Process 1: Completed experiment - student_dim=225, seed=2
+2025-08-24 10:19:19,934 - INFO - Attempting to parse scheduler params: '{'
+2025-08-24 10:19:19,934 - WARNING - JSON decode error: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-24 10:19:19,935 - WARNING - Failed to parse scheduler params, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 10:19:19,936 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 10:19:19,937 - INFO - initial model: max A_j index: 27
+2025-08-24 10:20:07,569 - INFO - final model: max A_j index: 59, max A_j value: 0.25633078813552856, alpha_teacher: tensor([0.4075], device='cuda:0')
+2025-08-24 10:20:07,570 - INFO - train loss is 0.01949288882315159
+2025-08-24 10:20:07,570 - INFO - impulse response loss is 0.05079616978764534
+2025-08-24 10:20:07,575 - INFO - Process 0: Completed experiment - student_dim=200, seed=0
+2025-08-24 10:20:07,605 - INFO - Attempting to parse scheduler params: '{'
+2025-08-24 10:20:07,605 - WARNING - JSON decode error: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-24 10:20:07,607 - WARNING - Failed to parse scheduler params, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 10:20:07,609 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 10:20:07,613 - INFO - initial model: max A_j index: 59
+2025-08-24 10:21:08,627 - INFO - final model: max A_j index: 98, max A_j value: 0.21333889663219452, alpha_teacher: tensor([0.3049], device='cuda:2')
+2025-08-24 10:21:08,629 - INFO - train loss is 0.16854609549045563
+2025-08-24 10:21:08,629 - INFO - impulse response loss is 0.5907506346702576
+2025-08-24 10:21:08,633 - INFO - Process 2: Completed experiment - student_dim=200, seed=4
+2025-08-24 10:21:08,664 - INFO - Attempting to parse scheduler params: '{'
+2025-08-24 10:21:08,664 - WARNING - JSON decode error: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-24 10:21:08,666 - WARNING - Failed to parse scheduler params, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 10:21:08,668 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 10:21:08,669 - INFO - initial model: max A_j index: 98
+2025-08-24 10:23:18,094 - INFO - final model: max A_j index: 10, max A_j value: 0.19183234870433807, alpha_teacher: tensor([0.5433], device='cuda:3')
+2025-08-24 10:23:18,095 - INFO - train loss is 0.4277311861515045
+2025-08-24 10:23:18,095 - INFO - impulse response loss is 0.18149703741073608
+2025-08-24 10:23:18,100 - INFO - Process 3: Completed experiment - student_dim=225, seed=6
+2025-08-24 10:23:18,123 - INFO - Attempting to parse scheduler params: '{'
+2025-08-24 10:23:18,123 - WARNING - JSON decode error: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-24 10:23:18,125 - WARNING - Failed to parse scheduler params, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 10:23:18,125 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 10:23:18,129 - INFO - initial model: max A_j index: 10
+2025-08-24 10:23:52,219 - INFO - final model: max A_j index: 27, max A_j value: 0.20696157217025757, alpha_teacher: tensor([0.5022], device='cuda:1')
+2025-08-24 10:23:52,220 - INFO - train loss is 6.106123606741676e-09
+2025-08-24 10:23:52,220 - INFO - impulse response loss is 0.04767096787691116
+2025-08-24 10:23:52,228 - INFO - Process 1: Completed experiment - student_dim=250, seed=2
+2025-08-24 10:23:52,239 - INFO - Attempting to parse scheduler params: '{'
+2025-08-24 10:23:52,239 - WARNING - JSON decode error: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-24 10:23:52,241 - WARNING - Failed to parse scheduler params, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 10:23:52,242 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 10:23:52,246 - INFO - initial model: max A_j index: 27
+2025-08-24 10:24:26,982 - INFO - final model: max A_j index: 59, max A_j value: 0.25629085302352905, alpha_teacher: tensor([0.4075], device='cuda:0')
+2025-08-24 10:24:26,983 - INFO - train loss is 0.008154508657753468
+2025-08-24 10:24:26,983 - INFO - impulse response loss is 0.05906473472714424
+2025-08-24 10:24:26,990 - INFO - Process 0: Completed experiment - student_dim=225, seed=0
+2025-08-24 10:24:27,016 - INFO - Attempting to parse scheduler params: '{'
+2025-08-24 10:24:27,017 - WARNING - JSON decode error: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-08-24 10:24:27,019 - WARNING - Failed to parse scheduler params, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 10:24:27,019 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 10:24:27,023 - INFO - initial model: max A_j index: 59

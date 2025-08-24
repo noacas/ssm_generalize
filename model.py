@@ -20,7 +20,7 @@ class DiagonalSSM(nn.Module):
             max_A_j = torch.argmax(initial_A)
             # Create mask for doubling the max value
             mask = torch.zeros_like(initial_A)
-            mask[max_A_j] = 1
+            mask[max_A_j] = 4
             final_A = initial_A + mask * initial_A
             self.A_diag = nn.Parameter(final_A)
         else:

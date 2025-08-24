@@ -1,0 +1,372 @@
+2025-08-24 00:32:53,391 - INFO - Args: Namespace(num_seeds=8, sequence_length=5, student_dims=[150, 175, 200, 225, 250, 275], eps_train=1e-05, gnc=False, gnc_num_samples=100000000, gnc_batch_size=1000000, gd=True, gd_lr=1.365157510472501e-06, gd_epochs=31173, gd_init_scale=0.03737434212958489, gd_optimizer='adam', gd_scheduler='step', gd_scheduler_params='{}', gd_init_type='double_max_A_j', config=None, results_dir=PosixPath('test_results/results'), figures_dir=PosixPath('test_results/figures'), checkpoint_dir=PosixPath('test_results/checkpoints'), checkpoint_interval=3600, resume_from_checkpoint=False, log_dir=PosixPath('test_results/logs'), max_gpus=4, log_file=PosixPath('test_results/logs/logs_20250824_003253.log'))
+2025-08-24 00:32:53,594 - INFO - Using GPUs: [0, 1, 2, 3]
+2025-08-24 00:32:53,595 - INFO - Starting 4 processes on 4 GPUs
+2025-08-24 00:32:57,728 - INFO - Process 0 started on GPU 0, processing seeds 0-1
+2025-08-24 00:32:58,023 - INFO - Process 1 started on GPU 1, processing seeds 2-3
+2025-08-24 00:32:58,036 - INFO - Process 3 started on GPU 3, processing seeds 6-7
+2025-08-24 00:32:58,042 - INFO - Process 2 started on GPU 2, processing seeds 4-5
+2025-08-24 00:32:58,207 - INFO - for seed 2, alpha_teacher=tensor([0.5022], device='cuda:1'), w=tensor([ 2.2669,  1.3477, -1.4438, -1.0484], device='cuda:1')
+2025-08-24 00:32:58,208 - INFO - Process 1: Starting experiment - student_dim=150, seed=2
+2025-08-24 00:32:58,208 - INFO - No scheduler params provided, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:32:58,208 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:32:58,224 - INFO - for seed 6, alpha_teacher=tensor([0.5433], device='cuda:3'), w=tensor([ 1.9899, -0.1324, -0.3380, -0.7933], device='cuda:3')
+2025-08-24 00:32:58,225 - INFO - Process 3: Starting experiment - student_dim=150, seed=6
+2025-08-24 00:32:58,225 - INFO - No scheduler params provided, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:32:58,225 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:32:58,234 - INFO - for seed 4, alpha_teacher=tensor([0.3049], device='cuda:2'), w=tensor([-0.2938,  0.7819, -1.4731,  1.0391], device='cuda:2')
+2025-08-24 00:32:58,234 - INFO - Process 2: Starting experiment - student_dim=150, seed=4
+2025-08-24 00:32:58,234 - INFO - No scheduler params provided, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:32:58,234 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:32:58,259 - INFO - for seed 0, alpha_teacher=tensor([0.4075], device='cuda:0'), w=tensor([ 0.1808, -0.5523,  0.9238, -0.7350], device='cuda:0')
+2025-08-24 00:32:58,259 - INFO - Process 0: Starting experiment - student_dim=150, seed=0
+2025-08-24 00:32:58,260 - INFO - No scheduler params provided, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:32:58,260 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:33:02,054 - INFO - initial model: max A_j index: 27
+2025-08-24 00:33:02,059 - INFO - initial model: max A_j index: 59
+2025-08-24 00:33:02,060 - INFO - initial model: max A_j index: 10
+2025-08-24 00:33:02,061 - INFO - initial model: max A_j index: 98
+2025-08-24 00:33:48,898 - INFO - final model: max A_j index: 98, max A_j value: 0.2133256196975708, alpha_teacher: tensor([0.3049], device='cuda:2')
+2025-08-24 00:33:48,899 - INFO - train loss is 0.05913158878684044
+2025-08-24 00:33:48,899 - INFO - impulse response loss is 0.13950881361961365
+2025-08-24 00:33:48,901 - INFO - Process 2: Completed experiment - student_dim=150, seed=4
+2025-08-24 00:33:48,908 - INFO - No scheduler params provided, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:33:48,908 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:33:48,909 - INFO - initial model: max A_j index: 98
+2025-08-24 00:34:20,428 - INFO - final model: max A_j index: 27, max A_j value: 0.20780444145202637, alpha_teacher: tensor([0.5022], device='cuda:1')
+2025-08-24 00:34:20,430 - INFO - train loss is 0.08789689093828201
+2025-08-24 00:34:20,430 - INFO - impulse response loss is 0.06182524561882019
+2025-08-24 00:34:20,434 - INFO - Process 1: Completed experiment - student_dim=150, seed=2
+2025-08-24 00:34:20,444 - INFO - No scheduler params provided, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:34:20,445 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:34:20,447 - INFO - initial model: max A_j index: 27
+2025-08-24 00:34:23,671 - INFO - final model: max A_j index: 10, max A_j value: 0.19193817675113678, alpha_teacher: tensor([0.5433], device='cuda:3')
+2025-08-24 00:34:23,672 - INFO - train loss is 1.9571133852005005
+2025-08-24 00:34:23,672 - INFO - impulse response loss is 0.626021146774292
+2025-08-24 00:34:23,676 - INFO - Process 3: Completed experiment - student_dim=150, seed=6
+2025-08-24 00:34:23,681 - INFO - No scheduler params provided, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:34:23,682 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:34:23,683 - INFO - initial model: max A_j index: 10
+2025-08-24 00:34:24,236 - INFO - final model: max A_j index: 59, max A_j value: 0.25627410411834717, alpha_teacher: tensor([0.4075], device='cuda:0')
+2025-08-24 00:34:24,237 - INFO - train loss is 0.0024565900675952435
+2025-08-24 00:34:24,237 - INFO - impulse response loss is 0.046109676361083984
+2025-08-24 00:34:24,240 - INFO - Process 0: Completed experiment - student_dim=150, seed=0
+2025-08-24 00:34:24,246 - INFO - No scheduler params provided, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:34:24,246 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:34:24,247 - INFO - initial model: max A_j index: 59
+2025-08-24 00:34:25,890 - INFO - final model: max A_j index: 98, max A_j value: 0.21332071721553802, alpha_teacher: tensor([0.3049], device='cuda:2')
+2025-08-24 00:34:25,890 - INFO - train loss is 0.06960974633693695
+2025-08-24 00:34:25,890 - INFO - impulse response loss is 0.12976998090744019
+2025-08-24 00:34:25,891 - INFO - Process 2: Completed experiment - student_dim=175, seed=4
+2025-08-24 00:34:25,893 - INFO - No scheduler params provided, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:34:25,893 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:34:25,894 - INFO - initial model: max A_j index: 98
+2025-08-24 00:35:02,888 - INFO - final model: max A_j index: 98, max A_j value: 0.21333889663219452, alpha_teacher: tensor([0.3049], device='cuda:2')
+2025-08-24 00:35:02,889 - INFO - train loss is 0.16854609549045563
+2025-08-24 00:35:02,889 - INFO - impulse response loss is 0.5907506346702576
+2025-08-24 00:35:02,889 - INFO - Process 2: Completed experiment - student_dim=200, seed=4
+2025-08-24 00:35:02,893 - INFO - No scheduler params provided, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:35:02,893 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:35:02,893 - INFO - initial model: max A_j index: 98
+2025-08-24 00:35:39,933 - INFO - final model: max A_j index: 98, max A_j value: 0.2133244276046753, alpha_teacher: tensor([0.3049], device='cuda:2')
+2025-08-24 00:35:39,933 - INFO - train loss is 0.1288701891899109
+2025-08-24 00:35:39,933 - INFO - impulse response loss is 0.27262309193611145
+2025-08-24 00:35:39,934 - INFO - Process 2: Completed experiment - student_dim=225, seed=4
+2025-08-24 00:35:39,942 - INFO - No scheduler params provided, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:35:39,942 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:35:39,943 - INFO - initial model: max A_j index: 98
+2025-08-24 00:35:41,637 - INFO - final model: max A_j index: 10, max A_j value: 0.1919410228729248, alpha_teacher: tensor([0.5433], device='cuda:3')
+2025-08-24 00:35:41,638 - INFO - train loss is 2.905404567718506
+2025-08-24 00:35:41,638 - INFO - impulse response loss is 0.8768481016159058
+2025-08-24 00:35:41,639 - INFO - Process 3: Completed experiment - student_dim=175, seed=6
+2025-08-24 00:35:41,641 - INFO - No scheduler params provided, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:35:41,641 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:35:41,642 - INFO - initial model: max A_j index: 10
+2025-08-24 00:35:42,455 - INFO - final model: max A_j index: 27, max A_j value: 0.20742399990558624, alpha_teacher: tensor([0.5022], device='cuda:1')
+2025-08-24 00:35:42,456 - INFO - train loss is 0.0006214536260813475
+2025-08-24 00:35:42,456 - INFO - impulse response loss is 0.03009679540991783
+2025-08-24 00:35:42,458 - INFO - Process 1: Completed experiment - student_dim=175, seed=2
+2025-08-24 00:35:42,462 - INFO - No scheduler params provided, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:35:42,462 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:35:42,463 - INFO - initial model: max A_j index: 27
+2025-08-24 00:35:46,371 - INFO - final model: max A_j index: 59, max A_j value: 0.2563231587409973, alpha_teacher: tensor([0.4075], device='cuda:0')
+2025-08-24 00:35:46,371 - INFO - train loss is 0.011682415381073952
+2025-08-24 00:35:46,371 - INFO - impulse response loss is 0.021227337419986725
+2025-08-24 00:35:46,372 - INFO - Process 0: Completed experiment - student_dim=175, seed=0
+2025-08-24 00:35:46,374 - INFO - No scheduler params provided, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:35:46,374 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:35:46,375 - INFO - initial model: max A_j index: 59
+2025-08-24 00:36:43,646 - INFO - final model: max A_j index: 98, max A_j value: 0.2133200615644455, alpha_teacher: tensor([0.3049], device='cuda:2')
+2025-08-24 00:36:43,647 - INFO - train loss is 0.13960878551006317
+2025-08-24 00:36:43,647 - INFO - impulse response loss is 0.2600041925907135
+2025-08-24 00:36:43,648 - INFO - Process 2: Completed experiment - student_dim=250, seed=4
+2025-08-24 00:36:43,657 - INFO - No scheduler params provided, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:36:43,657 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:36:43,658 - INFO - initial model: max A_j index: 98
+2025-08-24 00:37:06,370 - INFO - final model: max A_j index: 10, max A_j value: 0.19188645482063293, alpha_teacher: tensor([0.5433], device='cuda:3')
+2025-08-24 00:37:06,371 - INFO - train loss is 1.0061266422271729
+2025-08-24 00:37:06,371 - INFO - impulse response loss is 0.3497287631034851
+2025-08-24 00:37:06,373 - INFO - Process 3: Completed experiment - student_dim=200, seed=6
+2025-08-24 00:37:06,376 - INFO - No scheduler params provided, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:37:06,376 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:37:06,378 - INFO - initial model: max A_j index: 10
+2025-08-24 00:37:09,591 - INFO - final model: max A_j index: 27, max A_j value: 0.20567865669727325, alpha_teacher: tensor([0.5022], device='cuda:1')
+2025-08-24 00:37:09,592 - INFO - train loss is 0.000522635702509433
+2025-08-24 00:37:09,592 - INFO - impulse response loss is 0.028375206515192986
+2025-08-24 00:37:09,593 - INFO - Process 1: Completed experiment - student_dim=200, seed=2
+2025-08-24 00:37:09,596 - INFO - No scheduler params provided, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:37:09,596 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:37:09,598 - INFO - initial model: max A_j index: 27
+2025-08-24 00:37:11,344 - INFO - final model: max A_j index: 59, max A_j value: 0.25633078813552856, alpha_teacher: tensor([0.4075], device='cuda:0')
+2025-08-24 00:37:11,344 - INFO - train loss is 0.01949288882315159
+2025-08-24 00:37:11,344 - INFO - impulse response loss is 0.05079616978764534
+2025-08-24 00:37:11,346 - INFO - Process 0: Completed experiment - student_dim=200, seed=0
+2025-08-24 00:37:11,347 - INFO - No scheduler params provided, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:37:11,347 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:37:11,348 - INFO - initial model: max A_j index: 59
+2025-08-24 00:38:02,379 - INFO - final model: max A_j index: 98, max A_j value: 0.21331734955310822, alpha_teacher: tensor([0.3049], device='cuda:2')
+2025-08-24 00:38:02,380 - INFO - train loss is 0.15510722994804382
+2025-08-24 00:38:02,380 - INFO - impulse response loss is 0.24357838928699493
+2025-08-24 00:38:02,381 - INFO - Process 2: Completed experiment - student_dim=275, seed=4
+2025-08-24 00:38:02,398 - INFO - for seed 5, alpha_teacher=tensor([0.5310], device='cuda:2'), w=tensor([ 1.2089, -0.6117,  1.4826, -1.1513], device='cuda:2')
+2025-08-24 00:38:02,399 - INFO - No scheduler params provided, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:38:02,399 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:38:02,400 - INFO - initial model: max A_j index: 16
+2025-08-24 00:38:32,899 - INFO - final model: max A_j index: 10, max A_j value: 0.19183234870433807, alpha_teacher: tensor([0.5433], device='cuda:3')
+2025-08-24 00:38:32,900 - INFO - train loss is 0.4277311861515045
+2025-08-24 00:38:32,900 - INFO - impulse response loss is 0.18149703741073608
+2025-08-24 00:38:32,903 - INFO - Process 3: Completed experiment - student_dim=225, seed=6
+2025-08-24 00:38:32,906 - INFO - No scheduler params provided, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:38:32,906 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:38:32,907 - INFO - initial model: max A_j index: 10
+2025-08-24 00:38:36,903 - INFO - final model: max A_j index: 59, max A_j value: 0.25629085302352905, alpha_teacher: tensor([0.4075], device='cuda:0')
+2025-08-24 00:38:36,903 - INFO - train loss is 0.008154508657753468
+2025-08-24 00:38:36,903 - INFO - impulse response loss is 0.05906473472714424
+2025-08-24 00:38:36,905 - INFO - Process 0: Completed experiment - student_dim=225, seed=0
+2025-08-24 00:38:36,906 - INFO - No scheduler params provided, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:38:36,906 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:38:36,907 - INFO - initial model: max A_j index: 59
+2025-08-24 00:38:37,362 - INFO - final model: max A_j index: 27, max A_j value: 0.20548641681671143, alpha_teacher: tensor([0.5022], device='cuda:1')
+2025-08-24 00:38:37,363 - INFO - train loss is 0.009511099196970463
+2025-08-24 00:38:37,363 - INFO - impulse response loss is 0.03174756467342377
+2025-08-24 00:38:37,364 - INFO - Process 1: Completed experiment - student_dim=225, seed=2
+2025-08-24 00:38:37,366 - INFO - No scheduler params provided, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:38:37,366 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:38:37,367 - INFO - initial model: max A_j index: 27
+2025-08-24 00:39:26,467 - INFO - final model: max A_j index: 16, max A_j value: 0.20909900963306427, alpha_teacher: tensor([0.5310], device='cuda:2')
+2025-08-24 00:39:26,468 - INFO - train loss is 0.04499945789575577
+2025-08-24 00:39:26,468 - INFO - impulse response loss is 0.03573932498693466
+2025-08-24 00:39:26,470 - INFO - Process 2: Completed experiment - student_dim=150, seed=5
+2025-08-24 00:39:26,481 - INFO - No scheduler params provided, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:39:26,481 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:39:26,483 - INFO - initial model: max A_j index: 16
+2025-08-24 00:40:02,315 - INFO - final model: max A_j index: 59, max A_j value: 0.25621694326400757, alpha_teacher: tensor([0.4075], device='cuda:0')
+2025-08-24 00:40:02,315 - INFO - train loss is 0.0025352113880217075
+2025-08-24 00:40:02,315 - INFO - impulse response loss is 0.23753586411476135
+2025-08-24 00:40:02,316 - INFO - Process 0: Completed experiment - student_dim=250, seed=0
+2025-08-24 00:40:02,318 - INFO - No scheduler params provided, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:40:02,318 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:40:02,319 - INFO - initial model: max A_j index: 59
+2025-08-24 00:40:05,582 - INFO - final model: max A_j index: 27, max A_j value: 0.20696157217025757, alpha_teacher: tensor([0.5022], device='cuda:1')
+2025-08-24 00:40:05,583 - INFO - train loss is 6.106123606741676e-09
+2025-08-24 00:40:05,583 - INFO - impulse response loss is 0.04767096787691116
+2025-08-24 00:40:05,585 - INFO - Process 1: Completed experiment - student_dim=250, seed=2
+2025-08-24 00:40:05,587 - INFO - No scheduler params provided, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:40:05,588 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:40:05,589 - INFO - initial model: max A_j index: 27
+2025-08-24 00:40:10,765 - INFO - final model: max A_j index: 10, max A_j value: 0.1918913573026657, alpha_teacher: tensor([0.5433], device='cuda:3')
+2025-08-24 00:40:10,765 - INFO - train loss is 1.7792716026306152
+2025-08-24 00:40:10,765 - INFO - impulse response loss is 0.5627352595329285
+2025-08-24 00:40:10,768 - INFO - Process 3: Completed experiment - student_dim=250, seed=6
+2025-08-24 00:40:10,771 - INFO - No scheduler params provided, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:40:10,771 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:40:10,772 - INFO - initial model: max A_j index: 10
+2025-08-24 00:40:52,878 - INFO - final model: max A_j index: 16, max A_j value: 0.20886610448360443, alpha_teacher: tensor([0.5310], device='cuda:2')
+2025-08-24 00:40:52,879 - INFO - train loss is 0.0022572155576199293
+2025-08-24 00:40:52,879 - INFO - impulse response loss is 0.027995344251394272
+2025-08-24 00:40:52,880 - INFO - Process 2: Completed experiment - student_dim=175, seed=5
+2025-08-24 00:40:52,889 - INFO - No scheduler params provided, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:40:52,890 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:40:52,891 - INFO - initial model: max A_j index: 16
+2025-08-24 00:41:01,141 - INFO - final model: max A_j index: 59, max A_j value: 0.25630176067352295, alpha_teacher: tensor([0.4075], device='cuda:0')
+2025-08-24 00:41:01,141 - INFO - train loss is 0.016089795157313347
+2025-08-24 00:41:01,141 - INFO - impulse response loss is 0.06576818972826004
+2025-08-24 00:41:01,142 - INFO - Process 0: Completed experiment - student_dim=275, seed=0
+2025-08-24 00:41:01,144 - INFO - for seed 1, alpha_teacher=tensor([0.4704], device='cuda:0'), w=tensor([-0.6340, -0.6431, -0.6420, -1.4471], device='cuda:0')
+2025-08-24 00:41:01,145 - INFO - No scheduler params provided, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:41:01,145 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:41:01,145 - INFO - initial model: max A_j index: 120
+2025-08-24 00:41:30,228 - INFO - final model: max A_j index: 27, max A_j value: 0.20537763833999634, alpha_teacher: tensor([0.5022], device='cuda:1')
+2025-08-24 00:41:30,229 - INFO - train loss is 0.06063787639141083
+2025-08-24 00:41:30,229 - INFO - impulse response loss is 0.03688528388738632
+2025-08-24 00:41:30,231 - INFO - Process 1: Completed experiment - student_dim=275, seed=2
+2025-08-24 00:41:30,238 - INFO - for seed 3, alpha_teacher=tensor([0.5426], device='cuda:1'), w=tensor([-0.5162, -0.2217, -0.5594,  0.5542], device='cuda:1')
+2025-08-24 00:41:30,239 - INFO - No scheduler params provided, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:41:30,239 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:41:30,240 - INFO - initial model: max A_j index: 143
+2025-08-24 00:41:33,611 - INFO - final model: max A_j index: 120, max A_j value: 0.19266203045845032, alpha_teacher: tensor([0.4704], device='cuda:0')
+2025-08-24 00:41:33,612 - INFO - train loss is 0.21510007977485657
+2025-08-24 00:41:33,612 - INFO - impulse response loss is 0.30218201875686646
+2025-08-24 00:41:33,612 - INFO - Process 0: Completed experiment - student_dim=150, seed=1
+2025-08-24 00:41:33,613 - INFO - No scheduler params provided, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:41:33,613 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:41:33,613 - INFO - initial model: max A_j index: 120
+2025-08-24 00:41:47,053 - INFO - final model: max A_j index: 10, max A_j value: 0.1918509304523468, alpha_teacher: tensor([0.5433], device='cuda:3')
+2025-08-24 00:41:47,053 - INFO - train loss is 0.8955096006393433
+2025-08-24 00:41:47,053 - INFO - impulse response loss is 0.3193436861038208
+2025-08-24 00:41:47,056 - INFO - Process 3: Completed experiment - student_dim=275, seed=6
+2025-08-24 00:41:47,061 - INFO - for seed 7, alpha_teacher=tensor([0.4695], device='cuda:3'), w=tensor([-1.2870, -0.3958,  0.3756,  0.2573], device='cuda:3')
+2025-08-24 00:41:47,062 - INFO - No scheduler params provided, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:41:47,062 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:41:47,063 - INFO - initial model: max A_j index: 146
+2025-08-24 00:42:04,960 - INFO - final model: max A_j index: 120, max A_j value: 0.19254669547080994, alpha_teacher: tensor([0.4704], device='cuda:0')
+2025-08-24 00:42:04,960 - INFO - train loss is 0.023735055699944496
+2025-08-24 00:42:04,960 - INFO - impulse response loss is 0.030614905059337616
+2025-08-24 00:42:04,961 - INFO - Process 0: Completed experiment - student_dim=175, seed=1
+2025-08-24 00:42:04,968 - INFO - No scheduler params provided, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:42:04,968 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:42:04,968 - INFO - initial model: max A_j index: 120
+2025-08-24 00:42:16,326 - INFO - final model: max A_j index: 16, max A_j value: 0.208354189991951, alpha_teacher: tensor([0.5310], device='cuda:2')
+2025-08-24 00:42:16,326 - INFO - train loss is 1.6025586546675186e-07
+2025-08-24 00:42:16,327 - INFO - impulse response loss is 0.03915826603770256
+2025-08-24 00:42:16,328 - INFO - Process 2: Completed experiment - student_dim=200, seed=5
+2025-08-24 00:42:16,331 - INFO - No scheduler params provided, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:42:16,331 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:42:16,332 - INFO - initial model: max A_j index: 213
+2025-08-24 00:42:49,182 - INFO - final model: max A_j index: 120, max A_j value: 0.19258294999599457, alpha_teacher: tensor([0.4704], device='cuda:0')
+2025-08-24 00:42:49,182 - INFO - train loss is 0.0597948357462883
+2025-08-24 00:42:49,182 - INFO - impulse response loss is 0.10388709604740143
+2025-08-24 00:42:49,183 - INFO - Process 0: Completed experiment - student_dim=200, seed=1
+2025-08-24 00:42:49,184 - INFO - No scheduler params provided, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:42:49,184 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:42:49,184 - INFO - initial model: max A_j index: 216
+2025-08-24 00:42:53,151 - INFO - final model: max A_j index: 143, max A_j value: 0.20246735215187073, alpha_teacher: tensor([0.5426], device='cuda:1')
+2025-08-24 00:42:53,152 - INFO - train loss is 0.0023456946946680546
+2025-08-24 00:42:53,152 - INFO - impulse response loss is 0.03132104501128197
+2025-08-24 00:42:53,154 - INFO - Process 1: Completed experiment - student_dim=150, seed=3
+2025-08-24 00:42:53,156 - INFO - No scheduler params provided, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:42:53,157 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:42:53,158 - INFO - initial model: max A_j index: 130
+2025-08-24 00:43:05,534 - INFO - final model: max A_j index: 146, max A_j value: 0.177188903093338, alpha_teacher: tensor([0.4695], device='cuda:3')
+2025-08-24 00:43:05,535 - INFO - train loss is 0.07960952818393707
+2025-08-24 00:43:05,535 - INFO - impulse response loss is 0.0762888640165329
+2025-08-24 00:43:05,537 - INFO - Process 3: Completed experiment - student_dim=150, seed=7
+2025-08-24 00:43:05,549 - INFO - No scheduler params provided, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:43:05,549 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:43:05,550 - INFO - initial model: max A_j index: 35
+2025-08-24 00:43:20,935 - INFO - final model: max A_j index: 216, max A_j value: 0.19838538765907288, alpha_teacher: tensor([0.4704], device='cuda:0')
+2025-08-24 00:43:20,935 - INFO - train loss is 0.00017801653302740306
+2025-08-24 00:43:20,935 - INFO - impulse response loss is 0.03833937644958496
+2025-08-24 00:43:20,936 - INFO - Process 0: Completed experiment - student_dim=225, seed=1
+2025-08-24 00:43:20,937 - INFO - Process 0: Starting experiment - student_dim=250, seed=1
+2025-08-24 00:43:20,937 - INFO - No scheduler params provided, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:43:20,937 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:43:20,938 - INFO - initial model: max A_j index: 120
+2025-08-24 00:43:40,399 - INFO - final model: max A_j index: 213, max A_j value: 0.21410302817821503, alpha_teacher: tensor([0.5310], device='cuda:2')
+2025-08-24 00:43:40,400 - INFO - train loss is 8.287103810289409e-06
+2025-08-24 00:43:40,400 - INFO - impulse response loss is 0.04489543288946152
+2025-08-24 00:43:40,403 - INFO - Process 2: Completed experiment - student_dim=225, seed=5
+2025-08-24 00:43:40,404 - INFO - Process 2: Starting experiment - student_dim=250, seed=5
+2025-08-24 00:43:40,404 - INFO - No scheduler params provided, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:43:40,405 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:43:40,406 - INFO - initial model: max A_j index: 229
+2025-08-24 00:43:52,746 - INFO - final model: max A_j index: 120, max A_j value: 0.1903868317604065, alpha_teacher: tensor([0.4704], device='cuda:0')
+2025-08-24 00:43:52,746 - INFO - train loss is 3.78546719730366e-05
+2025-08-24 00:43:52,746 - INFO - impulse response loss is 0.04843007028102875
+2025-08-24 00:43:52,747 - INFO - Process 0: Completed experiment - student_dim=250, seed=1
+2025-08-24 00:43:52,748 - INFO - No scheduler params provided, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:43:52,748 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:43:52,748 - INFO - initial model: max A_j index: 120
+2025-08-24 00:43:59,902 - INFO - final model: max A_j index: 35, max A_j value: 0.17321385443210602, alpha_teacher: tensor([0.4695], device='cuda:3')
+2025-08-24 00:43:59,903 - INFO - train loss is 0.5893459916114807
+2025-08-24 00:43:59,903 - INFO - impulse response loss is 0.4247869551181793
+2025-08-24 00:43:59,904 - INFO - Process 3: Completed experiment - student_dim=175, seed=7
+2025-08-24 00:43:59,906 - INFO - No scheduler params provided, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:43:59,906 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:43:59,906 - INFO - initial model: max A_j index: 35
+2025-08-24 00:44:14,514 - INFO - final model: max A_j index: 130, max A_j value: 0.1857549399137497, alpha_teacher: tensor([0.5426], device='cuda:1')
+2025-08-24 00:44:14,515 - INFO - train loss is 0.035836584866046906
+2025-08-24 00:44:14,515 - INFO - impulse response loss is 0.10971392691135406
+2025-08-24 00:44:14,517 - INFO - Process 1: Completed experiment - student_dim=175, seed=3
+2025-08-24 00:44:14,526 - INFO - No scheduler params provided, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:44:14,527 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:44:14,528 - INFO - initial model: max A_j index: 159
+2025-08-24 00:44:25,048 - INFO - final model: max A_j index: 120, max A_j value: 0.19121012091636658, alpha_teacher: tensor([0.4704], device='cuda:0')
+2025-08-24 00:44:25,049 - INFO - train loss is 0.0
+2025-08-24 00:44:25,049 - INFO - impulse response loss is 0.057638801634311676
+2025-08-24 00:44:25,049 - INFO - Process 0: Completed experiment - student_dim=275, seed=1
+2025-08-24 00:44:25,050 - INFO - Process 0 completed on GPU 0
+2025-08-24 00:44:30,689 - INFO - Process 0 completed
+2025-08-24 00:44:37,021 - INFO - final model: max A_j index: 35, max A_j value: 0.17319272458553314, alpha_teacher: tensor([0.4695], device='cuda:3')
+2025-08-24 00:44:37,021 - INFO - train loss is 0.48100289702415466
+2025-08-24 00:44:37,021 - INFO - impulse response loss is 0.3616803288459778
+2025-08-24 00:44:37,021 - INFO - Process 3: Completed experiment - student_dim=200, seed=7
+2025-08-24 00:44:37,022 - INFO - No scheduler params provided, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:44:37,022 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:44:37,023 - INFO - initial model: max A_j index: 35
+2025-08-24 00:45:03,023 - INFO - final model: max A_j index: 229, max A_j value: 0.21410106122493744, alpha_teacher: tensor([0.5310], device='cuda:2')
+2025-08-24 00:45:03,023 - INFO - train loss is 9.680020411906298e-06
+2025-08-24 00:45:03,024 - INFO - impulse response loss is 0.054401762783527374
+2025-08-24 00:45:03,025 - INFO - Process 2: Completed experiment - student_dim=250, seed=5
+2025-08-24 00:45:03,027 - INFO - No scheduler params provided, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:45:03,028 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:45:03,029 - INFO - initial model: max A_j index: 229
+2025-08-24 00:45:41,883 - INFO - final model: max A_j index: 159, max A_j value: 0.20191843807697296, alpha_teacher: tensor([0.5426], device='cuda:1')
+2025-08-24 00:45:41,883 - INFO - train loss is 5.948676857769897e-07
+2025-08-24 00:45:41,883 - INFO - impulse response loss is 0.032669760286808014
+2025-08-24 00:45:41,885 - INFO - Process 1: Completed experiment - student_dim=200, seed=3
+2025-08-24 00:45:41,894 - INFO - No scheduler params provided, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:45:41,894 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:45:41,896 - INFO - initial model: max A_j index: 159
+2025-08-24 00:46:06,393 - INFO - final model: max A_j index: 35, max A_j value: 0.17316919565200806, alpha_teacher: tensor([0.4695], device='cuda:3')
+2025-08-24 00:46:06,393 - INFO - train loss is 0.3503710627555847
+2025-08-24 00:46:06,393 - INFO - impulse response loss is 0.2871299088001251
+2025-08-24 00:46:06,397 - INFO - Process 3: Completed experiment - student_dim=225, seed=7
+2025-08-24 00:46:06,399 - INFO - Process 3: Starting experiment - student_dim=250, seed=7
+2025-08-24 00:46:06,399 - INFO - No scheduler params provided, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:46:06,399 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:46:06,400 - INFO - initial model: max A_j index: 237
+2025-08-24 00:46:31,332 - INFO - final model: max A_j index: 229, max A_j value: 0.21400980651378632, alpha_teacher: tensor([0.5310], device='cuda:2')
+2025-08-24 00:46:31,333 - INFO - train loss is 1.3164169558876893e-06
+2025-08-24 00:46:31,333 - INFO - impulse response loss is 0.06930949538946152
+2025-08-24 00:46:31,334 - INFO - Process 2: Completed experiment - student_dim=275, seed=5
+2025-08-24 00:46:31,336 - INFO - Process 2 completed on GPU 2
+2025-08-24 00:46:35,697 - INFO - Process 2 completed
+2025-08-24 00:47:10,307 - INFO - final model: max A_j index: 159, max A_j value: 0.20256832242012024, alpha_teacher: tensor([0.5426], device='cuda:1')
+2025-08-24 00:47:10,308 - INFO - train loss is 0.02442760579288006
+2025-08-24 00:47:10,308 - INFO - impulse response loss is 0.09936016798019409
+2025-08-24 00:47:10,310 - INFO - Process 1: Completed experiment - student_dim=225, seed=3
+2025-08-24 00:47:10,320 - INFO - Process 1: Starting experiment - student_dim=250, seed=3
+2025-08-24 00:47:10,320 - INFO - No scheduler params provided, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:47:10,321 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:47:10,322 - INFO - initial model: max A_j index: 159
+2025-08-24 00:47:32,007 - INFO - final model: max A_j index: 237, max A_j value: 0.17742517590522766, alpha_teacher: tensor([0.4695], device='cuda:3')
+2025-08-24 00:47:32,008 - INFO - train loss is 0.7365891933441162
+2025-08-24 00:47:32,008 - INFO - impulse response loss is 0.5779337286949158
+2025-08-24 00:47:32,009 - INFO - Process 3: Completed experiment - student_dim=250, seed=7
+2025-08-24 00:47:32,011 - INFO - No scheduler params provided, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:47:32,011 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:47:32,012 - INFO - initial model: max A_j index: 35
+2025-08-24 00:48:37,999 - INFO - final model: max A_j index: 159, max A_j value: 0.20175319910049438, alpha_teacher: tensor([0.5426], device='cuda:1')
+2025-08-24 00:48:38,001 - INFO - train loss is 9.881482299078925e-09
+2025-08-24 00:48:38,001 - INFO - impulse response loss is 0.041085384786129
+2025-08-24 00:48:38,003 - INFO - Process 1: Completed experiment - student_dim=250, seed=3
+2025-08-24 00:48:38,013 - INFO - No scheduler params provided, using defaults: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:48:38,013 - INFO - Calling train_gd with scheduler_params: {'step_size': 1000, 'gamma': 0.1}
+2025-08-24 00:48:38,014 - INFO - initial model: max A_j index: 159
+2025-08-24 00:48:56,753 - INFO - final model: max A_j index: 35, max A_j value: 0.173176109790802, alpha_teacher: tensor([0.4695], device='cuda:3')
+2025-08-24 00:48:56,754 - INFO - train loss is 0.6025512218475342
+2025-08-24 00:48:56,754 - INFO - impulse response loss is 0.4977755546569824
+2025-08-24 00:48:56,757 - INFO - Process 3: Completed experiment - student_dim=275, seed=7
+2025-08-24 00:48:56,758 - INFO - Process 3 completed on GPU 3
+2025-08-24 00:48:59,706 - INFO - Process 3 completed
+2025-08-24 00:50:01,140 - INFO - final model: max A_j index: 159, max A_j value: 0.2023661583662033, alpha_teacher: tensor([0.5426], device='cuda:1')
+2025-08-24 00:50:01,141 - INFO - train loss is 0.0019688524771481752
+2025-08-24 00:50:01,141 - INFO - impulse response loss is 0.0499693900346756
+2025-08-24 00:50:01,143 - INFO - Process 1: Completed experiment - student_dim=275, seed=3
+2025-08-24 00:50:01,144 - INFO - Process 1 completed on GPU 1
+2025-08-24 00:50:10,710 - INFO - Process 1 completed
+2025-08-24 00:50:11,726 - ERROR - Failed to save checkpoint: division by zero
+2025-08-24 00:50:11,726 - INFO - Final checkpoint saved
+2025-08-24 00:50:11,757 - INFO - Results saved to results__gd_seq_len=5_time=20250824_003253.csv
+2025-08-24 00:52:29,514 - INFO - Figures saved to plot__gd_seq_len=5_time=20250824_003253
+2025-08-24 00:52:29,515 - INFO - Finished experiments, results saved to results__gd_seq_len=5_time=20250824_003253.csv, figures saved to plot__gd_seq_len=5_time=20250824_003253
