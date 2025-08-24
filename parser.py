@@ -80,6 +80,10 @@ def parse_args() -> argparse.Namespace:  # noqa: C901 – a bit long but flat
     g.add_argument("--gd_optimizer", type=str, default="adam", help="Optimizer for GD", choices=["adam", "gd"])
     g.add_argument("--gd_scheduler", type=str, default=None, help="Scheduler for GD", choices=["none", "step", "exponential", "cosine"])
     g.add_argument("--gd_scheduler_params", type=str, default="{}", help="Scheduler parameters as JSON string")
+    g.add_argument("--exp_gamma", type=float, help="Gamma parameter for exponential scheduler")
+    g.add_argument("--step_size", type=int, help="Step size parameter for step scheduler")
+    g.add_argument("--step_gamma", type=float, help="Gamma parameter for step scheduler")
+    g.add_argument("--cosine_eta_min", type=float, help="Eta min parameter for cosine scheduler")
     g.add_argument("--gd_init_type", type=str, default="regular", help="Initialization type for GD", choices=["regular", "near_one", "double_max_A_j"])
 
     # ------------------------------------------------------------------

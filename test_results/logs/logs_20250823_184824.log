@@ -122,3 +122,11 @@
 2025-08-23 18:48:30,724 - INFO - Process 3: Completed experiment - student_dim=275, seed=7
 2025-08-23 18:48:30,725 - INFO - Process 3 completed on GPU 3
 2025-08-23 18:48:35,774 - INFO - Process 1 completed
+2025-08-23 18:48:37,776 - INFO - Process 2 completed
+2025-08-23 18:48:39,778 - INFO - Process 0 completed
+2025-08-23 18:48:41,780 - INFO - Process 3 completed
+2025-08-23 18:48:42,785 - ERROR - Failed to save checkpoint: division by zero
+2025-08-23 18:48:42,785 - INFO - Final checkpoint saved
+2025-08-23 18:48:42,802 - INFO - Results saved to results__gd_seq_len=5_time=20250823_184824.csv
+2025-08-23 18:48:45,035 - INFO - Figures saved to plot__gd_seq_len=5_time=20250823_184824
+2025-08-23 18:48:45,036 - INFO - Finished experiments, results saved to results__gd_seq_len=5_time=20250823_184824.csv, figures saved to plot__gd_seq_len=5_time=20250823_184824

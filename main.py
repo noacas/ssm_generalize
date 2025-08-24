@@ -114,36 +114,51 @@ def process_worker(process_id, gpu_id, seed_range, args_dict, student_dims,
                         import json
                         # Handle scheduler parameters - use defaults if not provided or if parsing fails
                         scheduler_params_str = args_dict.get('gd_scheduler_params', None)
-                        if scheduler_params_str is None or scheduler_params_str == '{}':
-                            # No scheduler params provided, use defaults based on scheduler type
-                            scheduler_type = args_dict.get('gd_scheduler')
-                            if scheduler_type == 'exponential':
-                                scheduler_params = {'gamma': 0.955}  # Default gamma for exponential (close to optimized value)
-                            elif scheduler_type == 'step':
-                                scheduler_params = {'step_size': 1000, 'gamma': 0.1}  # Default for step
-                            elif scheduler_type == 'cosine':
-                                scheduler_params = {'T_max': args_dict['gd_epochs'], 'eta_min': 0}  # Default for cosine
+                        scheduler_type = args_dict.get('gd_scheduler')
+                        
+                        # Try to construct scheduler params from individual parameters first
+                        scheduler_params = {}
+                        if scheduler_type == 'exponential':
+                            # Check if we have exp_gamma parameter
+                            exp_gamma = args_dict.get('exp_gamma')
+                            if exp_gamma is not None:
+                                scheduler_params = {'gamma': exp_gamma}
+                                logging.info(f"Using exponential scheduler with gamma from exp_gamma: {exp_gamma}")
                             else:
-                                scheduler_params = {}
-                            logging.info(f"No scheduler params provided, using defaults: {scheduler_params}")
+                                scheduler_params = {'gamma': 0.955}  # Default gamma for exponential
+                                logging.info(f"Using exponential scheduler with default gamma: {scheduler_params}")
+                        elif scheduler_type == 'step':
+                            # Check if we have step_size and step_gamma parameters
+                            step_size = args_dict.get('step_size')
+                            step_gamma = args_dict.get('step_gamma')
+                            if step_size is not None and step_gamma is not None:
+                                scheduler_params = {'step_size': step_size, 'gamma': step_gamma}
+                                logging.info(f"Using step scheduler with step_size={step_size}, gamma={step_gamma}")
+                            else:
+                                scheduler_params = {'step_size': 1000, 'gamma': 0.1}  # Default for step
+                                logging.info(f"Using step scheduler with defaults: {scheduler_params}")
+                        elif scheduler_type == 'cosine':
+                            # Check if we have cosine_eta_min parameter
+                            cosine_eta_min = args_dict.get('cosine_eta_min')
+                            if cosine_eta_min is not None:
+                                scheduler_params = {'T_max': args_dict['gd_epochs'], 'eta_min': cosine_eta_min}
+                                logging.info(f"Using cosine scheduler with eta_min={cosine_eta_min}")
+                            else:
+                                scheduler_params = {'T_max': args_dict['gd_epochs'], 'eta_min': 0}  # Default for cosine
+                                logging.info(f"Using cosine scheduler with defaults: {scheduler_params}")
                         else:
+                            scheduler_params = {}
+                            logging.info(f"No scheduler or scheduler type '{scheduler_type}', using empty params")
+                        
+                        # If we still don't have params and there's a scheduler_params_str, try to parse it
+                        if not scheduler_params and scheduler_params_str and scheduler_params_str != '{}':
                             try:
                                 logging.info(f"Attempting to parse scheduler params: '{scheduler_params_str}'")
                                 scheduler_params = json.loads(scheduler_params_str)
                                 logging.info(f"Successfully parsed scheduler params: {scheduler_params}")
                             except json.JSONDecodeError as e:
-                                # If JSON parsing fails, create default scheduler params based on scheduler type
                                 logging.warning(f"JSON decode error: {e}")
-                                scheduler_type = args_dict.get('gd_scheduler')
-                                if scheduler_type == 'exponential':
-                                    scheduler_params = {'gamma': 0.955}  # Default gamma for exponential (close to optimized value)
-                                elif scheduler_type == 'step':
-                                    scheduler_params = {'step_size': 1000, 'gamma': 0.1}  # Default for step
-                                elif scheduler_type == 'cosine':
-                                    scheduler_params = {'T_max': args_dict['gd_epochs'], 'eta_min': 0}  # Default for cosine
-                                else:
-                                    scheduler_params = {}
-                                logging.warning(f"Failed to parse scheduler params, using defaults: {scheduler_params}")
+                                logging.warning(f"Failed to parse scheduler params, using constructed params: {scheduler_params}")
                         
                         logging.info(f"Calling train_gd with scheduler_params: {scheduler_params}")
                         gd_gen_loss, gd_train_loss = train_gd(student_dim, device, alpha_teacher, w,
@@ -258,6 +273,10 @@ def run_experiment(args):
         'gd_init_type': args.gd_init_type,
         'gd_scheduler': args.gd_scheduler,
         'gd_scheduler_params': args.gd_scheduler_params,
+        'exp_gamma': args.exp_gamma,
+        'step_size': args.step_size,
+        'step_gamma': args.step_gamma,
+        'cosine_eta_min': args.cosine_eta_min,
     }
 
     # Distribute seeds across processes

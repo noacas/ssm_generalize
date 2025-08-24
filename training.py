@@ -94,6 +94,16 @@ def train_gd(
     max_A_j_idx = torch.argmax(model.A_diag)
     max_A_j = model.A_diag[max_A_j_idx]
     logging.info(f"final model: max A_j index: {max_A_j_idx}, max A_j value: {max_A_j.item()}, alpha_teacher: {alpha_teacher}")
+    logging.info(f"largest 10 A_j values: {model.A_diag.topk(10).values}")
+    # i want to see if there is a group of large value and a group of near zero values or if they are all over the place
+    # number of values below 0.01
+    logging.info(f"number of values below 0.01: {model.A_diag.lt(0.01).sum().item()}")
+    # number of values between 0.01 and 0.1 (inclusive of 0.01, exclusive of 0.1)
+    logging.info(f"number of values between 0.01 and 0.1: {((model.A_diag >= 0.01) & (model.A_diag < 0.1)).sum().item()}")
+    # number of values between 0.1 and 0.3 (inclusive of 0.1, exclusive of 0.3)
+    logging.info(f"number of values between 0.1 and 0.3: {((model.A_diag >= 0.1) & (model.A_diag < 0.3)).sum().item()}")
+    # number of values larger than or equal to 0.3
+    logging.info(f"number of values larger than 0.3: {model.A_diag.ge(0.3).sum().item()}")
     logging.info(f"train loss is {train_hist[-1]}")
     logging.info(f"impulse response loss is {test_hist[-1]}")
     return test_hist[-1] if test_hist else float("nan"), train_hist[-1] if train_hist else float("nan")
