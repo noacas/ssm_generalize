@@ -160,7 +160,7 @@ class GDHyperoptObjective:
 
 
 def hyperopt_worker(process_id: int, gpu_id: str, trial_range: tuple, base_args: argparse.Namespace, 
-                   study_name: str, storage: Optional[str], results_queue: Queue):
+                   study_name: str, storage: Optional[str], results_queue: Queue, log_file: pathlib.Path):
     """
     Worker process that runs hyperopt trials on a dedicated GPU.
     
@@ -174,7 +174,6 @@ def hyperopt_worker(process_id: int, gpu_id: str, trial_range: tuple, base_args:
         results_queue: Queue to send results to main process
     """
     # Set up logging for this process
-    log_file = f"hyperopt_worker_{process_id}.log"
     setup_logging(log_file)
     
     logger.info(f"Hyperopt worker {process_id} started on GPU {gpu_id}, processing trials {trial_range[0]}-{trial_range[1]-1}")
@@ -346,6 +345,8 @@ def main():
     # Get base arguments from your existing parser
     base_args = parse_args()
     
+    log_file = setup_logging(args.output_dir)
+    
     # Get available GPUs
     available_gpus = get_available_gpus(max_gpus=args.max_gpus)
     if len(available_gpus) > 0:
@@ -396,7 +397,7 @@ def main():
         
         process = Process(
             target=hyperopt_worker,
-            args=(i, gpu_id, trial_range, base_args, args.study_name, args.storage, results_queue)
+            args=(i, gpu_id, trial_range, base_args, args.study_name, args.storage, results_queue, log_file)
         )
         processes.append(process)
         process.start()
