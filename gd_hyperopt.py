@@ -160,7 +160,7 @@ class GDHyperoptObjective:
 
 
 def hyperopt_worker(process_id: int, gpu_id: str, trial_range: tuple, base_args: argparse.Namespace, 
-                   study_name: str, storage: Optional[str], results_queue: Queue, log_file: pathlib.Path):
+                   study_name: str, results_queue: Queue, log_file: pathlib.Path):
     """
     Worker process that runs hyperopt trials on a dedicated GPU.
     
@@ -170,7 +170,6 @@ def hyperopt_worker(process_id: int, gpu_id: str, trial_range: tuple, base_args:
         trial_range: Range of trials to process (start, end)
         base_args: Base experiment arguments
         study_name: Name of the Optuna study
-        storage: Database URL for persistent storage
         results_queue: Queue to send results to main process
     """
     # Set up logging for this process
@@ -178,8 +177,8 @@ def hyperopt_worker(process_id: int, gpu_id: str, trial_range: tuple, base_args:
     
     logger.info(f"Hyperopt worker {process_id} started on GPU {gpu_id}, processing trials {trial_range[0]}-{trial_range[1]-1}")
     
-    # Create study for this worker (shared study via storage)
-    study = create_study(study_name, storage, "minimize")
+    # Create study for this worker
+    study = create_study(study_name, "minimize")
     
     # Create objective function for this GPU
     objective = GDHyperoptObjective(base_args, gpu_id)
@@ -233,14 +232,13 @@ def hyperopt_worker(process_id: int, gpu_id: str, trial_range: tuple, base_args:
     logger.info(f"Hyperopt worker {process_id} completed on GPU {gpu_id}")
 
 
-def create_study(study_name: str, storage: Optional[str] = None, 
+def create_study(study_name: str, 
                 direction: str = "minimize") -> optuna.Study:
     """
     Create or load an Optuna study.
     
     Args:
         study_name: Name of the study
-        storage: Database URL for persistent storage (optional)
         direction: Optimization direction ("minimize" or "maximize")
         
     Returns:
@@ -251,7 +249,6 @@ def create_study(study_name: str, storage: Optional[str] = None,
     
     study = optuna.create_study(
         study_name=study_name,
-        storage=storage,
         sampler=sampler,
         pruner=pruner,
         direction=direction,
@@ -330,8 +327,6 @@ def main():
                        help="Number of trials for optimization")
     parser.add_argument("--study_name", type=str, default="gd_hyperopt",
                        help="Name of the Optuna study")
-    parser.add_argument("--storage", type=str, default="sqlite:///hyperopt_study.db",
-                       help="Database URL for persistent storage (e.g., sqlite:///study.db)")
     parser.add_argument("--output_dir", type=pathlib.Path, 
                        default=pathlib.Path("./hyperopt_results"),
                        help="Directory to save results")
@@ -397,7 +392,7 @@ def main():
         
         process = Process(
             target=hyperopt_worker,
-            args=(i, gpu_id, trial_range, base_args, args.study_name, args.storage, results_queue, log_file)
+            args=(i, gpu_id, trial_range, base_args, args.study_name, results_queue, log_file)
         )
         processes.append(process)
         process.start()
@@ -440,7 +435,7 @@ def main():
         process.join()
     
     # Load the final study to get best results
-    study = create_study(args.study_name, args.storage, "minimize")
+    study = create_study(args.study_name, "minimize")
     
     # Save results
     save_results(study, args.output_dir, args.study_name)
