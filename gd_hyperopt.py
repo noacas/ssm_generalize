@@ -25,6 +25,7 @@ from typing import Dict, Any, Optional
 import optuna
 from optuna.samplers import TPESampler
 from optuna.pruners import MedianPruner
+from optuna.storages import RDBStorage
 from training import train_gd
 import torch
 import tqdm
@@ -248,11 +249,18 @@ def create_study(study_name: str,
     sampler = TPESampler(seed=42)
     pruner = MedianPruner(n_startup_trials=5, n_warmup_steps=10)
     
+    # Use SQLite storage to persist study across processes
+    storage = optuna.storages.RDBStorage(
+        url="sqlite:///hyperopt_study.db",
+        engine_kwargs={"connect_args": {"timeout": 30}}
+    )
+    
     study = optuna.create_study(
         study_name=study_name,
         sampler=sampler,
         pruner=pruner,
         direction=direction,
+        storage=storage,
         load_if_exists=True
     )
     
