@@ -29,6 +29,7 @@ from training import train_gd
 import torch
 import tqdm
 from generator import generate_w
+from datetime import datetime
 
 # Import your existing parser to reuse the argument structure
 from parser import parse_args
@@ -323,7 +324,7 @@ def main():
     parser = argparse.ArgumentParser(description="GD Hyperparameter Optimization")
     
     # Hyperopt specific arguments
-    parser.add_argument("--n_trials", type=int, default=200, 
+    parser.add_argument("--n_trials", type=int, default=20, 
                        help="Number of trials for optimization")
     parser.add_argument("--study_name", type=str, default="gd_hyperopt",
                        help="Name of the Optuna study")
@@ -340,7 +341,7 @@ def main():
     # Get base arguments from your existing parser
     base_args = parse_args()
     
-    log_file = setup_logging(args.output_dir)
+    log_file = setup_logging(args.output_dir, timestamp=datetime.now().strftime("%Y%m%d_%H%M%S"))
     
     # Get available GPUs
     available_gpus = get_available_gpus(max_gpus=args.max_gpus)
