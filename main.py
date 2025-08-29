@@ -21,15 +21,15 @@ from utils import filename_extensions, get_available_gpus, get_available_device
 from theoretical_loss import gnc_theoretical_loss
 
 
-def process_worker(process_id, gpu_id, seed_range, args_dict, student_dims, 
+def process_worker(process_id, gpu_id, seed_list, args_dict, student_dims, 
                   results_queue, checkpoint_queue, log_file):
     """
-    Worker process that runs experiments for a specific range of seeds on a dedicated GPU.
+    Worker process that runs experiments for a specific list of seeds on a dedicated GPU.
     
     Args:
         process_id: ID of this process
         gpu_id: GPU device ID to use
-        seed_range: Range of seeds to process (start, end)
+        seed_list: List of seeds to process
         args_dict: Experiment arguments
         student_dims: List of student dimensions
         results_queue: Queue to send results to main process
@@ -52,13 +52,12 @@ def process_worker(process_id, gpu_id, seed_range, args_dict, student_dims,
     torch.backends.cuda.matmul.allow_tf32 = True
     torch.backends.cudnn.allow_tf32 = True
     
-    logging.info(f"Process {process_id} started on GPU {gpu_id}, processing seeds {seed_range[0]}-{seed_range[1]-1}")
+    logging.info(f"Process {process_id} started on GPU {gpu_id}, processing seeds {seed_list}")
     
-    start_seed, end_seed = seed_range
     completed_experiments = 0
-    total_experiments = (end_seed - start_seed) * len(student_dims)
+    total_experiments = len(seed_list) * len(student_dims)
     
-    for seed in range(start_seed, end_seed):
+    for seed in seed_list:
         torch.manual_seed(seed)
         with torch.no_grad():
             alpha_teacher = generate_teacher_alpha(device)
@@ -227,12 +226,22 @@ def run_experiment(args):
     checkpoint_interval = max(args.checkpoint_interval, 7200)  # At least 2 hours
     checkpoint_manager = CheckpointManager(args, checkpoint_interval=checkpoint_interval)
     
+    # Determine which seeds to use
+    if hasattr(args, 'seeds') and args.seeds is not None:
+        seeds_to_use = args.seeds
+        logging.info(f"Using custom seeds: {seeds_to_use}")
+        print(f"Using custom seeds: {seeds_to_use}")
+    else:
+        seeds_to_use = list(range(args.num_seeds))
+        logging.info(f"Using default seeds: {seeds_to_use}")
+        print(f"Using default seeds: {seeds_to_use}")
+    
     # Initialize result arrays
-    gd_gen_losses = np.zeros((len(args.student_dims), args.num_seeds))
-    gnc_gen_losses = np.zeros((len(args.student_dims), args.num_seeds))
-    gnc_mean_priors = np.zeros((len(args.student_dims), args.num_seeds))
-    gnc_theoretical_losses = np.zeros((len(args.student_dims), args.num_seeds))
-    gnc_theoretical_asymptotic_losses = np.zeros((len(args.student_dims), args.num_seeds))
+    gd_gen_losses = np.zeros((len(args.student_dims), len(seeds_to_use)))
+    gnc_gen_losses = np.zeros((len(args.student_dims), len(seeds_to_use)))
+    gnc_mean_priors = np.zeros((len(args.student_dims), len(seeds_to_use)))
+    gnc_theoretical_losses = np.zeros((len(args.student_dims), len(seeds_to_use)))
+    gnc_theoretical_asymptotic_losses = np.zeros((len(args.student_dims), len(seeds_to_use)))
 
     # Get available GPUs
     available_gpus = get_available_gpus(max_gpus=args.max_gpus)
@@ -280,20 +289,22 @@ def run_experiment(args):
     }
 
     # Distribute seeds across processes
-    num_processes = min(num_processes, args.num_seeds)
+    num_processes = min(num_processes, len(seeds_to_use))
     if num_processes == 0:
         logging.error("No processes available for processing. Exiting program.")
         print("No processes available for processing. Exiting program.")
         return None, None, None, None, None
-    seeds_per_process = args.num_seeds // num_processes
-    remaining_seeds = args.num_seeds % num_processes
+    
+    seeds_per_process = len(seeds_to_use) // num_processes
+    remaining_seeds = len(seeds_to_use) % num_processes
     
     seed_ranges = []
-    start_seed = 0
+    start_idx = 0
     for i in range(num_processes):
-        end_seed = start_seed + seeds_per_process + (1 if i < remaining_seeds else 0)
-        seed_ranges.append((start_seed, end_seed))
-        start_seed = end_seed
+        end_idx = start_idx + seeds_per_process + (1 if i < remaining_seeds else 0)
+        process_seeds = seeds_to_use[start_idx:end_idx]
+        seed_ranges.append(process_seeds)
+        start_idx = end_idx
 
     # Set up multiprocessing
     mp.set_start_method('spawn', force=True)
@@ -306,11 +317,11 @@ def run_experiment(args):
     processes = []
     for i in range(num_processes):
         gpu_id = available_gpus[i % len(available_gpus)]
-        seed_range = seed_ranges[i]
+        seed_list = seed_ranges[i]
         
         process = Process(
             target=process_worker,
-            args=(i, gpu_id, seed_range, args_dict, args.student_dims,
+            args=(i, gpu_id, seed_list, args_dict, args.student_dims,
                   results_queue, checkpoint_queue, args.log_file)
         )
         processes.append(process)
@@ -318,7 +329,7 @@ def run_experiment(args):
     
     # Monitor progress and collect results
     completed_experiments = 0
-    total_experiments = args.num_seeds * len(args.student_dims)
+    total_experiments = len(seeds_to_use) * len(args.student_dims)
     completed_processes = 0
     
     # Track process completion
@@ -357,17 +368,18 @@ def run_experiment(args):
                 
                 seed = result['seed']
                 student_dim_idx = result['student_dim_idx']
+                seed_idx = seeds_to_use.index(seed)  # Find the index of this seed in our list
                 
                 if result['gnc_gen_loss'] is not None:
-                    gnc_gen_losses[student_dim_idx, seed] = result['gnc_gen_loss']
+                    gnc_gen_losses[student_dim_idx, seed_idx] = result['gnc_gen_loss']
                 if result['gnc_mean_prior'] is not None:
-                    gnc_mean_priors[student_dim_idx, seed] = result['gnc_mean_prior']
+                    gnc_mean_priors[student_dim_idx, seed_idx] = result['gnc_mean_prior']
                 if result['gnc_theoretical_loss'] is not None:
-                    gnc_theoretical_losses[student_dim_idx, seed] = result['gnc_theoretical_loss']
+                    gnc_theoretical_losses[student_dim_idx, seed_idx] = result['gnc_theoretical_loss']
                 if result['gnc_theoretical_asymptotic_loss'] is not None:
-                    gnc_theoretical_asymptotic_losses[student_dim_idx, seed] = result['gnc_theoretical_asymptotic_loss']
+                    gnc_theoretical_asymptotic_losses[student_dim_idx, seed_idx] = result['gnc_theoretical_asymptotic_loss']
                 if result['gd_gen_loss'] is not None:
-                    gd_gen_losses[student_dim_idx, seed] = result['gd_gen_loss']
+                    gd_gen_losses[student_dim_idx, seed_idx] = result['gd_gen_loss']
                 
                 # Update checkpoint every 50 experiments
                 if completed_experiments % 50 == 0:
@@ -417,7 +429,11 @@ def main():
     
     gnc_gen_losses, gd_gen_losses, gnc_mean_priors, gnc_theoretical_losses, gnc_theoretical_asymptotic_losses = experiment_results
 
-    
+    # Determine which seeds were used (same logic as in run_experiment)
+    if hasattr(args, 'seeds') and args.seeds is not None:
+        seeds_to_use = args.seeds
+    else:
+        seeds_to_use = list(range(args.num_seeds))
 
     try:
         save_results_to_csv(
@@ -426,7 +442,7 @@ def main():
             gnc_theoretical_losses,
             gnc_theoretical_asymptotic_losses,
             args.student_dims,
-            args.num_seeds,
+            seeds_to_use,
             results_filename,
             args.results_dir,
             args.gd,
@@ -449,7 +465,8 @@ def main():
                 plot_filename,
                 args.figures_dir,
                 args.gnc,
-                args.gd)
+                args.gd,
+                seeds_to_use)
         logging.info(f"Figures saved to {plot_filename}")
         print(f"Figures saved to {plot_filename}")
     except Exception as e:

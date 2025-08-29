@@ -79,12 +79,17 @@ def get_available_gpus(max_load: float = 0.3,
 
 
 def filename_extensions(args, timestamp) -> str:
+    # Add seed information to filename if custom seeds are used
+    seed_info = ""
+    if hasattr(args, 'seeds') and args.seeds is not None:
+        seed_info = f"_seeds={'-'.join(map(str, args.seeds))}"
+    
     if args.gnc and not args.gd:
-        ext = f'_gnc_seq_len={args.sequence_length}_time={timestamp}'
+        ext = f'_gnc_seq_len={args.sequence_length}{seed_info}_time={timestamp}'
     elif not args.gnc and args.gd:
-        ext = f'_gd_seq_len={args.sequence_length}_time={timestamp}'
+        ext = f'_gd_seq_len={args.sequence_length}{seed_info}_time={timestamp}'
     else:
-        ext = f'_seq_len={args.sequence_length}_time={timestamp}'
+        ext = f'_seq_len={args.sequence_length}{seed_info}_time={timestamp}'
     return ext
 
 

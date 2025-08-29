@@ -165,12 +165,31 @@ def gnc_theoretical_loss(alpha_teacher, w, student_dim, device):
 if __name__ == "__main__":
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     from generator import generate_teacher_alpha, generate_w
-    for seed in range(1):
+    
+    # Store all losses with their seeds
+    all_losses = []
+    
+    print("Testing seeds to find the 5 with smallest exact loss...")
+    for seed in range(100000):
+        if seed % 10000 == 0:
+            print(f"Progress: {seed}/100000")
+            
         torch.manual_seed(seed)
         alpha_teacher = generate_teacher_alpha(device)
         dataset = generate_w(5, device)
-        print(f"alpha_teacher={alpha_teacher}")
-        print(f"dataset={dataset}")
-        for d in range(100, 400, 10):
-            exact_loss, asymptotic_loss, delta_l_infinity = gnc_theoretical_loss(alpha_teacher, dataset, d, device)
-            print(f"d={d}: Exact={exact_loss.item():.6f}, Asymptotic={asymptotic_loss.item():.6f}")
+        d = 300
+        exact_loss, asymptotic_loss, delta_l_infinity = gnc_theoretical_loss(alpha_teacher, dataset, d, device)
+        
+        # Store all valid losses (positive and finite)
+        if exact_loss > 0 and torch.isfinite(exact_loss):
+            all_losses.append((exact_loss.item(), seed))
+    
+    # Sort by loss value and get the 5 smallest
+    all_losses.sort(key=lambda x: x[0])
+    top_5_seeds = all_losses[:5]
+    
+    print(f"\nTop 5 seeds with smallest exact loss:")
+    for i, (loss, seed) in enumerate(top_5_seeds, 1):
+        print(f"{i}. Seed {seed}: Loss = {loss:.8f}")
+    
+    print(f"\nTotal valid seeds found: {len(all_losses)}")
