@@ -16,7 +16,8 @@ def plot(student_dims: list,
          plot_filename: str,
          figures_dir: str = './figures',
          gnc: bool = True,
-         gd: bool = True):
+         gd: bool = True,
+         seeds: list = None):
 
     plt.rc('xtick', labelsize=14)
     plt.rc('ytick', labelsize=14)
@@ -70,24 +71,28 @@ def plot(student_dims: list,
     # Define colors for each seed
     colors = plt.cm.tab10(np.linspace(0, 1, gnc_gen_losses.shape[-1]))
     
+    # Use actual seed values if provided, otherwise use indices
+    if seeds is None:
+        seeds = list(range(gnc_gen_losses.shape[-1]))
+    
     if gnc:
         # Plot actual G&C losses for all seeds
-        for seed_idx in range(gnc_gen_losses.shape[-1]):
+        for seed_idx, seed in enumerate(seeds):
             ax2.plot(student_dims, gnc_gen_losses[:, seed_idx], 
                     color=colors[seed_idx], marker='o', linewidth=1.5, markersize=4,
-                    label=f"Seed {seed_idx} (Actual)")
+                    label=f"Seed {seed} (Actual)")
         
         # Plot theoretical G&C losses for all seeds
-        for seed_idx in range(gnc_theoretical_losses.shape[-1]):
+        for seed_idx, seed in enumerate(seeds):
             ax2.plot(student_dims, gnc_theoretical_losses[:, seed_idx], 
                     color=colors[seed_idx], marker='s', linestyle='--', linewidth=1.5, markersize=4,
-                    label=f"Seed {seed_idx} (Theoretical)")
+                    label=f"Seed {seed} (Theoretical)")
     if gd:
         # Plot GD losses for all seeds
-        for seed_idx in range(gd_gen_losses.shape[-1]):
+        for seed_idx, seed in enumerate(seeds):
             ax2.plot(student_dims, gd_gen_losses[:, seed_idx], 
                     color=colors[seed_idx], marker='^', linestyle=':', linewidth=2.0, markersize=6,
-                    label=f"Seed {seed_idx} (GD)")
+                    label=f"Seed {seed} (GD)")
     
     ax2.set_xlabel("Student Dimension", fontsize="xx-large")
     ax2.set_ylabel("Generalization Loss", fontsize="xx-large")
