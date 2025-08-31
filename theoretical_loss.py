@@ -162,7 +162,8 @@ def gnc_theoretical_loss(alpha_teacher, w, student_dim, device):
     return conditional_expectation, asymptotic_conditional_expectation, delta_l_infinity
 
 
-if __name__ == "__main__":
+
+def first_best_seeds():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     from generator import generate_teacher_alpha, generate_w
     
@@ -193,3 +194,23 @@ if __name__ == "__main__":
         print(f"{i}. Seed {seed}: Loss = {loss:.8f}")
     
     print(f"\nTotal valid seeds found: {len(all_losses)}")
+
+
+def w_that_minimizes_loss():
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    from generator import generate_teacher_alpha, generate_w
+    for seed in range(10):
+        torch.manual_seed(seed)
+        alpha_teacher = generate_teacher_alpha(device)
+        w = generate_w(5, device)
+        w[1] = (alpha_teacher**3 * w[2] +  alpha_teacher**4 * w[3]) / (1-alpha_teacher**2)
+        d = 300
+        exact_loss, asymptotic_loss, delta_l_infinity = gnc_theoretical_loss(alpha_teacher, w, d, device)
+        print(f"w: {w}")
+        print(f"exact_loss: {exact_loss.item():.8f}, asymptotic_loss: {asymptotic_loss.item():.8f}, delta_l_infinity: {delta_l_infinity.item():.8f}")
+        expected_minimum_loss = (1 - alpha_teacher**2)**2 + alpha_teacher**6 + alpha_teacher**8
+        print(f"expected minimum loss: {expected_minimum_loss.item():.8f}")
+
+
+if __name__ == "__main__":
+    w_that_minimizes_loss()
