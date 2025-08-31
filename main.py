@@ -62,6 +62,8 @@ def process_worker(process_id, gpu_id, seed_list, args_dict, student_dims,
         with torch.no_grad():
             alpha_teacher = generate_teacher_alpha(device)
             w = generate_w(args_dict['sequence_length'], device)
+            if args_dict['w_that_minimizes_loss']:
+                w[1] = (alpha_teacher**3 * w[2] +  alpha_teacher**4 * w[3]) / (1-alpha_teacher**2)
             logging.info(f"for seed {seed}, alpha_teacher={alpha_teacher}, w={w}")
 
         for student_dim_idx, student_dim in enumerate(student_dims):
@@ -271,6 +273,7 @@ def run_experiment(args):
     args_dict = {
         'sequence_length': args.sequence_length,
         'eps_train': args.eps_train,
+        'w_that_minimizes_loss': args.w_that_minimizes_loss,
         'gnc': args.gnc,
         'gnc_num_samples': args.gnc_num_samples,
         'gnc_batch_size': args.gnc_batch_size,

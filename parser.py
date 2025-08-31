@@ -57,6 +57,7 @@ def parse_args() -> argparse.Namespace:  # noqa: C901 – a bit long but flat
     g.add_argument("--sequence_length", type=int, default=5, help="Length of the measurement sequence")
     g.add_argument("--student_dims", type=int, nargs='+', default=list(range(150, 300, 25)), help="Student dimensions (one or more integers)")
     g.add_argument("--eps_train", type=float, default=float(1e-5), help="Training loss threshold for successful trial")
+    g.add_argument("--w_that_minimizes_loss", type=bool, default=False, help="Whether to use the w that minimizes the loss")
 
     g = parser.add_argument_group("Guess & Check hyperparameters")
     g.add_argument(
