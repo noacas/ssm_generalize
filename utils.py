@@ -84,12 +84,17 @@ def filename_extensions(args, timestamp) -> str:
     if hasattr(args, 'seeds') and args.seeds is not None:
         seed_info = f"_seeds={'-'.join(map(str, args.seeds))}"
     
+    # Add num_sequences information to filename
+    num_seq_info = ""
+    if hasattr(args, 'num_sequences') and args.num_sequences > 1:
+        num_seq_info = f"_num_seq={args.num_sequences}"
+    
     if args.gnc and not args.gd:
-        ext = f'_gnc_seq_len={args.sequence_length}{seed_info}_time={timestamp}'
+        ext = f'_gnc_seq_len={args.sequence_length}{num_seq_info}{seed_info}_time={timestamp}'
     elif not args.gnc and args.gd:
-        ext = f'_gd_seq_len={args.sequence_length}{seed_info}_time={timestamp}'
+        ext = f'_gd_seq_len={args.sequence_length}{num_seq_info}{seed_info}_time={timestamp}'
     else:
-        ext = f'_seq_len={args.sequence_length}{seed_info}_time={timestamp}'
+        ext = f'_seq_len={args.sequence_length}{num_seq_info}{seed_info}_time={timestamp}'
     return ext
 
 

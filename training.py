@@ -15,7 +15,7 @@ def train_gd(
         student_dim: int,
         device: torch.device,
         alpha_teacher: float,
-        w: torch.Tensor,
+        w_sequences: list,
         init_scale: float,
         lr: float,
         epochs: int,
@@ -70,15 +70,27 @@ def train_gd(
 
     # --- keep track of losses ------------------------------------------------
     train_hist, test_hist = [], []
-    w = w.to(device)
+    
+    # Convert w_sequences to tensor if it's a list
+    if isinstance(w_sequences, list):
+        w_sequences = [w.to(device) for w in w_sequences]
 
     for epoch in range(epochs):
         optimizer.zero_grad()
 
-        # forward pass on the full sequence
-        train_loss, gen_loss = model(w, alpha_teacher)
+        # forward pass on all sequences
+        total_train_loss = 0
+        total_gen_loss = 0
+        for w in w_sequences:
+            train_loss, gen_loss = model(w, alpha_teacher)
+            total_train_loss += train_loss
+            total_gen_loss += gen_loss
         
-        train_loss.backward()
+        # Average the losses across sequences
+        avg_train_loss = total_train_loss / len(w_sequences)
+        avg_gen_loss = total_gen_loss / len(w_sequences)
+        
+        avg_train_loss.backward()
         optimizer.step()
         
         # Step the scheduler
@@ -87,9 +99,9 @@ def train_gd(
 
         with torch.no_grad():
             # save losses
-            train_hist.append(train_loss.item())
+            train_hist.append(avg_train_loss.item())
             if epoch % 10 == 0:  # test every 10 epochs
-                test_hist.append(gen_loss.item())
+                test_hist.append(avg_gen_loss.item())
 
     max_A_j_idx = torch.argmax(model.A_diag)
     max_A_j = model.A_diag[max_A_j_idx]
@@ -114,7 +126,7 @@ def train_gnc(
              student_dim: int,
              device: torch.device,
              alpha_teacher: float,
-             w: torch.Tensor,
+             w_sequences: list,
              eps_train: float,
              num_samples: int,
              batch_size: int,
@@ -128,19 +140,36 @@ def train_gnc(
     succ_gen_sum = torch.tensor(0.0, device=device)
     succ_count = 0
 
+    # Convert w_sequences to tensor if it's a list
+    if isinstance(w_sequences, list):
+        w_sequences = [w.to(device) for w in w_sequences]
+    
     for batch in range(math.ceil(num_samples / batch_size)):
         bs = min(batch_size, num_samples - batch * batch_size)
         students = generate_students(student_dim, bs, device)
-        train_losses, gen_losses = get_losses(students, w, alpha_teacher)
-        succ_mask = train_losses < eps_train
+        
+        # Calculate losses for all sequences
+        total_train_losses = torch.zeros(bs, device=device)
+        total_gen_losses = torch.zeros(bs, device=device)
+        
+        for w in w_sequences:
+            train_losses, gen_losses = get_losses(students, w, alpha_teacher)
+            total_train_losses += train_losses
+            total_gen_losses += gen_losses
+        
+        # Average the losses across sequences
+        avg_train_losses = total_train_losses / len(w_sequences)
+        avg_gen_losses = total_gen_losses / len(w_sequences)
+        
+        succ_mask = avg_train_losses < eps_train
 
         # Update accumulators on device
-        prior_gen_sum = prior_gen_sum + gen_losses.sum()
-        prior_count += gen_losses.numel()
+        prior_gen_sum = prior_gen_sum + avg_gen_losses.sum()
+        prior_count += avg_gen_losses.numel()
 
         succ_mask = succ_mask.squeeze(-1)
         if succ_mask.any():
-            succ_gen_sum = succ_gen_sum + gen_losses[succ_mask].sum()
+            succ_gen_sum = succ_gen_sum + avg_gen_losses[succ_mask].sum()
             succ_count += succ_mask.sum().item()
 
         torch.cuda.empty_cache()
