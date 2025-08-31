@@ -61,10 +61,15 @@ def process_worker(process_id, gpu_id, seed_list, args_dict, student_dims,
         torch.manual_seed(seed)
         with torch.no_grad():
             alpha_teacher = generate_teacher_alpha(device)
-            w = generate_w(args_dict['sequence_length'], device)
-            if args_dict['w_that_minimizes_loss']:
-                w[1] = (alpha_teacher**3 * w[2] +  alpha_teacher**4 * w[3]) / (1-alpha_teacher**2)
-            logging.info(f"for seed {seed}, alpha_teacher={alpha_teacher}, w={w}")
+            # Generate multiple sequences
+            num_sequences = args_dict.get('num_sequences', 1)
+            w_sequences = []
+            for seq_idx in range(num_sequences):
+                w = generate_w(args_dict['sequence_length'], device)
+                if args_dict['w_that_minimizes_loss']:
+                    w[1] = (alpha_teacher**3 * w[2] +  alpha_teacher**4 * w[3]) / (1-alpha_teacher**2)
+                w_sequences.append(w)
+            logging.info(f"for seed {seed}, alpha_teacher={alpha_teacher}, generated {num_sequences} sequences")
 
         for student_dim_idx, student_dim in enumerate(student_dims):
             # Set seed for reproducibility
@@ -93,14 +98,15 @@ def process_worker(process_id, gpu_id, seed_list, args_dict, student_dims,
                     if args_dict['gnc']:
                         try:
                             batch_size = args_dict['gnc_batch_size']
-                            mean_prior, gnc_gen_loss = train_gnc(seed, student_dim, device, alpha_teacher, w,
+                            mean_prior, gnc_gen_loss = train_gnc(seed, student_dim, device, alpha_teacher, w_sequences,
                                                                 args_dict['eps_train'], args_dict['gnc_num_samples'],
                                                                 batch_size
                                                                 )
                             results['gnc_gen_loss'] = gnc_gen_loss
                             results['gnc_mean_prior'] = mean_prior
                             
-                            theoretical_loss, theoretical_asymptotic_loss, delta_l_infinity = gnc_theoretical_loss(alpha_teacher, w, student_dim, device)
+                            # Use first sequence for theoretical loss calculation (for backward compatibility)
+                            theoretical_loss, theoretical_asymptotic_loss, delta_l_infinity = gnc_theoretical_loss(alpha_teacher, w_sequences, student_dim, device)
                             results['gnc_theoretical_loss'] = theoretical_loss.item()
                             results['gnc_theoretical_asymptotic_loss'] = theoretical_asymptotic_loss.item()
                         
@@ -162,7 +168,7 @@ def process_worker(process_id, gpu_id, seed_list, args_dict, student_dims,
                                 logging.warning(f"Failed to parse scheduler params, using constructed params: {scheduler_params}")
                         
                         logging.info(f"Calling train_gd with scheduler_params: {scheduler_params}")
-                        gd_gen_loss, gd_train_loss = train_gd(student_dim, device, alpha_teacher, w,
+                        gd_gen_loss, gd_train_loss = train_gd(student_dim, device, alpha_teacher, w_sequences,
                                                                 args_dict['gd_init_scale'], args_dict['gd_lr'],
                                                                 args_dict['gd_epochs'],
                                                                 args_dict['gd_optimizer'],
@@ -272,6 +278,7 @@ def run_experiment(args):
     # Convert args to dict for serialization
     args_dict = {
         'sequence_length': args.sequence_length,
+        'num_sequences': args.num_sequences,
         'eps_train': args.eps_train,
         'w_that_minimizes_loss': args.w_that_minimizes_loss,
         'gnc': args.gnc,

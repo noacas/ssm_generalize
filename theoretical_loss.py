@@ -120,7 +120,7 @@ def calc_asymptotic_coefficients(alpha_teacher, w, sequence_length, device):
     return A, B, delta_l_infinity
 
 
-def gnc_theoretical_loss(alpha_teacher, w, student_dim, device):
+def gnc_theoretical_loss_for_one_w(alpha_teacher, w, student_dim, device):
     # Get sequence length from dataset
     sequence_length = w.shape[0] + 1
 
@@ -161,6 +161,78 @@ def gnc_theoretical_loss(alpha_teacher, w, student_dim, device):
     
     return conditional_expectation, asymptotic_conditional_expectation, delta_l_infinity
 
+
+
+def gnc_theoretical_loss_for_multiple_w(alpha_teacher, w_sequences, student_dim, device):
+    """
+    Calculate theoretical loss for multiple sequences by averaging the losses.
+    This implements the approach where we condition on multiple constraints simultaneously.
+    """
+    if len(w_sequences) == 1:
+        return gnc_theoretical_loss_for_one_w(alpha_teacher, w_sequences[0], student_dim, device)
+    
+    # Get sequence length from the first sequence
+    sequence_length = w_sequences[0].shape[0] + 1
+    
+    # Convert w_sequences to tensor if it's a list
+    if isinstance(w_sequences, list):
+        w_sequences = [w.to(device) for w in w_sequences]
+    
+    mu = calc_mu(student_dim, alpha_teacher, sequence_length, device)
+    sigma = calc_sigma(student_dim, sequence_length, device)
+    
+    # For multiple sequences, we need to condition on all constraints simultaneously
+    # This is equivalent to conditioning on the average constraint
+    # We'll use the average of the w vectors as an approximation
+    
+    # Average the w sequences
+    w_avg = torch.stack(w_sequences).mean(dim=0)
+    
+    # Calculate the conditional expectation using the average w
+    # Prior Loss: μ_S^T μ_S + Tr(Σ_S)
+    prior_loss = torch.dot(mu, mu) + torch.trace(sigma)
+    
+    # Mean Shift Term 1: -2 * (w_avg^T μ_S) * (μ_S^T Σ_S w_avg) / (w_avg^T Σ_S w_avg)
+    w_transpose_mu = torch.dot(w_avg.squeeze(), mu)  # w_avg^T μ_S
+    mu_transpose_sigma_w = torch.dot(mu, sigma @ w_avg.squeeze())  # μ_S^T Σ_S w_avg
+    w_transpose_sigma_w = torch.dot(w_avg.squeeze(), sigma @ w_avg.squeeze())  # w_avg^T Σ_S w_avg
+    mean_shift_term1 = -2 * w_transpose_mu * mu_transpose_sigma_w / w_transpose_sigma_w
+    
+    # Mean Shift Term 2: (w_avg^T μ_S)^2 * (w_avg^T Σ_S^2 w_avg) / (w_avg^T Σ_S w_avg)^2
+    w_transpose_sigma_squared_w = torch.dot(w_avg.squeeze(), sigma @ sigma @ w_avg.squeeze())  # w_avg^T Σ_S^2 w_avg
+    mean_shift_term2 = (w_transpose_mu**2) * w_transpose_sigma_squared_w / (w_transpose_sigma_w**2)
+    
+    # Variance Reduction: -w_avg^T Σ_S^2 w_avg / (w_avg^T Σ_S w_avg)
+    variance_reduction = -w_transpose_sigma_squared_w / w_transpose_sigma_w
+    
+    # Total conditional expectation
+    conditional_expectation = prior_loss + mean_shift_term1 + mean_shift_term2 + variance_reduction
+
+    # Calculate asymptotic coefficients using the average w
+    A, B, delta_l_infinity = calc_asymptotic_coefficients(alpha_teacher, w_avg, sequence_length, device)
+    
+    # Asymptotic conditional expectation: A + B/d
+    asymptotic_conditional_expectation = A + B / student_dim
+
+    # if the conditional expectation is out of bounds, use the asymptotic conditional expectation
+    if conditional_expectation < 0 or conditional_expectation > 10:
+        conditional_expectation = asymptotic_conditional_expectation
+    
+    return conditional_expectation, asymptotic_conditional_expectation, delta_l_infinity
+
+
+def gnc_theoretical_loss(alpha_teacher, w_sequences, student_dim, device):
+    """
+    Main function to calculate theoretical loss for either single or multiple sequences.
+    """
+    if isinstance(w_sequences, torch.Tensor):
+        # Single sequence case
+        return gnc_theoretical_loss_for_one_w(alpha_teacher, w_sequences, student_dim, device)
+    elif isinstance(w_sequences, list):
+        # Multiple sequences case
+        return gnc_theoretical_loss_for_multiple_w(alpha_teacher, w_sequences, student_dim, device)
+    else:
+        raise ValueError("w_sequences must be either a torch.Tensor (single sequence) or list of tensors (multiple sequences)")
 
 
 def first_best_seeds():
