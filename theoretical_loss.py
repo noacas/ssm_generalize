@@ -165,14 +165,15 @@ def gnc_theoretical_loss_for_one_w(alpha_teacher, w, student_dim, device):
 
 def gnc_theoretical_loss_for_multiple_w(alpha_teacher, w_sequences, student_dim, device):
     """
-    Calculate theoretical loss for multiple sequences by averaging the losses.
-    This implements the approach where we condition on multiple constraints simultaneously.
+    Calculate theoretical loss for multiple sequences by properly conditioning on multiple constraints.
+    This implements the mathematical formulation from the LaTeX document for N > 1 constraints.
     """
     if len(w_sequences) == 1:
         return gnc_theoretical_loss_for_one_w(alpha_teacher, w_sequences[0], student_dim, device)
     
     # Get sequence length from the first sequence
     sequence_length = w_sequences[0].shape[0] + 1
+    N = len(w_sequences)  # Number of constraints
     
     # Convert w_sequences to tensor if it's a list
     if isinstance(w_sequences, list):
@@ -181,40 +182,71 @@ def gnc_theoretical_loss_for_multiple_w(alpha_teacher, w_sequences, student_dim,
     mu = calc_mu(student_dim, alpha_teacher, sequence_length, device)
     sigma = calc_sigma(student_dim, sequence_length, device)
     
-    # For multiple sequences, we need to condition on all constraints simultaneously
-    # This is equivalent to conditioning on the average constraint
-    # We'll use the average of the w vectors as an approximation
+    # Construct the constraint matrix W = [w^(1) w^(2) ... w^(N)]
+    # W has shape (k-1) x N
+    W = torch.stack(w_sequences, dim=1)  # Shape: (k-1, N)
     
-    # Average the w sequences
-    w_avg = torch.stack(w_sequences).mean(dim=0)
+    # Calculate W^T * Σ_S * W (shape: N x N)
+    W_transpose_sigma_W = W.T @ sigma @ W
     
-    # Calculate the conditional expectation using the average w
-    # Prior Loss: μ_S^T μ_S + Tr(Σ_S)
-    prior_loss = torch.dot(mu, mu) + torch.trace(sigma)
+    # Calculate W^T * μ_S (shape: N)
+    W_transpose_mu = W.T @ mu
     
-    # Mean Shift Term 1: -2 * (w_avg^T μ_S) * (μ_S^T Σ_S w_avg) / (w_avg^T Σ_S w_avg)
-    w_transpose_mu = torch.dot(w_avg.squeeze(), mu)  # w_avg^T μ_S
-    mu_transpose_sigma_w = torch.dot(mu, sigma @ w_avg.squeeze())  # μ_S^T Σ_S w_avg
-    w_transpose_sigma_w = torch.dot(w_avg.squeeze(), sigma @ w_avg.squeeze())  # w_avg^T Σ_S w_avg
-    mean_shift_term1 = -2 * w_transpose_mu * mu_transpose_sigma_w / w_transpose_sigma_w
+    # Calculate the conditional mean: μ_c = μ_S - Σ_S * W * (W^T * Σ_S * W)^(-1) * W^T * μ_S
+    try:
+        # Use pseudo-inverse for numerical stability
+        W_transpose_sigma_W_inv = torch.linalg.pinv(W_transpose_sigma_W)
+        conditional_mean = mu - sigma @ W @ W_transpose_sigma_W_inv @ W_transpose_mu
+    except:
+        # Fallback to single constraint if matrix is singular
+        w_avg = torch.stack(w_sequences).mean(dim=0)
+        return gnc_theoretical_loss_for_one_w(alpha_teacher, w_avg, student_dim, device)
     
-    # Mean Shift Term 2: (w_avg^T μ_S)^2 * (w_avg^T Σ_S^2 w_avg) / (w_avg^T Σ_S w_avg)^2
-    w_transpose_sigma_squared_w = torch.dot(w_avg.squeeze(), sigma @ sigma @ w_avg.squeeze())  # w_avg^T Σ_S^2 w_avg
-    mean_shift_term2 = (w_transpose_mu**2) * w_transpose_sigma_squared_w / (w_transpose_sigma_w**2)
+    # Calculate the conditional covariance: Σ_c = Σ_S - Σ_S * W * (W^T * Σ_S * W)^(-1) * W^T * Σ_S
+    conditional_covariance = sigma - sigma @ W @ W_transpose_sigma_W_inv @ W.T @ sigma
     
-    # Variance Reduction: -w_avg^T Σ_S^2 w_avg / (w_avg^T Σ_S w_avg)
-    variance_reduction = -w_transpose_sigma_squared_w / w_transpose_sigma_w
+    # Calculate the conditional expectation: E[||S||^2 | W^T * S = 0] = ||μ_c||^2 + Tr(Σ_c)
+    conditional_expectation = torch.dot(conditional_mean, conditional_mean) + torch.trace(conditional_covariance)
     
-    # Total conditional expectation
-    conditional_expectation = prior_loss + mean_shift_term1 + mean_shift_term2 + variance_reduction
-
-    # Calculate asymptotic coefficients using the average w
-    A, B, delta_l_infinity = calc_asymptotic_coefficients(alpha_teacher, w_avg, sequence_length, device)
+    # For asymptotic analysis, we need to calculate the effective ratio r_eff
+    # Following the mathematical formulation from the LaTeX document
     
-    # Asymptotic conditional expectation: A + B/d
-    asymptotic_conditional_expectation = A + B / student_dim
-
-    # if the conditional expectation is out of bounds, use the asymptotic conditional expectation
+    # Calculate first-coordinate weights v = W^T * e_1
+    e_1 = torch.zeros(sequence_length - 1, device=device)
+    e_1[0] = 1.0
+    v = W.T @ e_1  # Shape: (N,)
+    
+    # Calculate q = ||v||^2
+    q = torch.dot(v, v)
+    
+    # Calculate s = v^T * W^T * μ_0 (using asymptotic μ_0)
+    mu_0 = torch.zeros(sequence_length - 1, device=device)
+    for m in range(1, sequence_length):
+        if m % 2 == 1:  # odd m
+            mu_0[m-1] = -alpha_teacher**m
+        elif m == 2:  # m = 2
+            mu_0[m-1] = 1 - alpha_teacher**2
+        else:  # m >= 4, even
+            mu_0[m-1] = -alpha_teacher**m
+    
+    s = torch.dot(v, W.T @ mu_0)
+    
+    # Calculate effective ratio r_eff = s/q
+    if q > 1e-10:  # Avoid division by zero
+        r_eff = s / q
+    else:
+        # Fallback to single constraint if q is too small
+        w_avg = torch.stack(w_sequences).mean(dim=0)
+        return gnc_theoretical_loss_for_one_w(alpha_teacher, w_avg, student_dim, device)
+    
+    # Calculate asymptotic conditional expectation: μ_0^T * μ_0 + 2α * r_eff + r_eff^2
+    mu_0_squared = torch.dot(mu_0, mu_0)
+    asymptotic_conditional_expectation = mu_0_squared + 2 * alpha_teacher * r_eff + r_eff**2
+    
+    # Calculate delta_l_infinity (for backward compatibility)
+    delta_l_infinity = 1 - 2 * alpha_teacher * r_eff - r_eff**2
+    
+    # If the conditional expectation is out of bounds, use the asymptotic conditional expectation
     if conditional_expectation < 0 or conditional_expectation > 10:
         conditional_expectation = asymptotic_conditional_expectation
     
