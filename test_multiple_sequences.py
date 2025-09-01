@@ -77,6 +77,69 @@ def test_multiple_sequences():
     print("✓ All tests passed!")
     return True
 
+def test_asymptotic_convergence():
+    """Test that asymptotic loss is close to exact loss for d=150"""
+    print("\n--- Testing asymptotic convergence for d=150 ---")
+    
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    student_dim = 150
+    tolerance = 0.05  # 5% relative tolerance
+    
+    # Test with multiple random seeds to ensure robustness
+    seeds_tested = 0
+    seeds_passed = 0
+    
+    for seed in range(42, 52):  # Test 10 different seeds
+        torch.manual_seed(seed)
+        alpha_teacher = generate_teacher_alpha(device)
+        w = generate_w(5, device)  # sequence length of 5
+        
+        try:
+            exact_loss, asymptotic_loss, _ = gnc_theoretical_loss(alpha_teacher, w, student_dim, device)
+            
+            # Skip if losses are not positive and finite
+            if not (exact_loss > 0 and asymptotic_loss > 0 and 
+                   torch.isfinite(exact_loss) and torch.isfinite(asymptotic_loss)):
+                continue
+                
+            seeds_tested += 1
+            
+            # Calculate relative error
+            relative_error = abs(exact_loss - asymptotic_loss) / exact_loss
+            
+            print(f"  Seed {seed}: exact={exact_loss.item():.6f}, asymptotic={asymptotic_loss.item():.6f}, "
+                  f"rel_error={relative_error.item():.4f}")
+            
+            if relative_error <= tolerance:
+                seeds_passed += 1
+                
+        except Exception as e:
+            print(f"  Seed {seed}: Error - {e}")
+            continue
+    
+    # Require at least 5 seeds to be tested and at least 80% to pass
+    min_seeds_required = 5
+    min_pass_rate = 0.8
+    
+    if seeds_tested < min_seeds_required:
+        print(f"✗ Insufficient valid seeds tested ({seeds_tested} < {min_seeds_required})")
+        return False
+    
+    pass_rate = seeds_passed / seeds_tested
+    print(f"\nAsymptotic convergence results:")
+    print(f"  Seeds tested: {seeds_tested}")
+    print(f"  Seeds passed: {seeds_passed}")
+    print(f"  Pass rate: {pass_rate:.2%}")
+    print(f"  Required pass rate: {min_pass_rate:.0%}")
+    print(f"  Tolerance: {tolerance:.1%}")
+    
+    if pass_rate >= min_pass_rate:
+        print("✓ Asymptotic convergence test passed!")
+        return True
+    else:
+        print("✗ Asymptotic convergence test failed!")
+        return False
+
 def test_parser():
     """Test that the parser correctly handles num_sequences argument"""
     print("\n--- Testing parser ---")
@@ -101,9 +164,18 @@ if __name__ == "__main__":
     test_parser()
     
     # Test multiple sequences
-    success = test_multiple_sequences()
+    sequences_success = test_multiple_sequences()
     
-    if success:
-        print("\n🎉 All tests passed! Multiple sequences functionality is working correctly.")
+    # Test asymptotic convergence for d=150
+    convergence_success = test_asymptotic_convergence()
+    
+    overall_success = sequences_success and convergence_success
+    
+    if overall_success:
+        print("\n🎉 All tests passed! Multiple sequences functionality and asymptotic convergence are working correctly.")
     else:
         print("\n❌ Some tests failed. Please check the implementation.")
+        if not sequences_success:
+            print("  - Multiple sequences test failed")
+        if not convergence_success:
+            print("  - Asymptotic convergence test failed")

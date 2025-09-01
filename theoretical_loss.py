@@ -282,12 +282,14 @@ def first_best_seeds():
         torch.manual_seed(seed)
         alpha_teacher = generate_teacher_alpha(device)
         dataset = generate_w(5, device)
-        d = 150
-        exact_loss, asymptotic_loss, delta_l_infinity = gnc_theoretical_loss(alpha_teacher, dataset, d, device)
+        loss = 0
+        for d in range(150, 300, 25):
+            exact_loss, asymptotic_loss, delta_l_infinity = gnc_theoretical_loss(alpha_teacher, dataset, d, device)
+            loss += exact_loss
         
         # Store all valid losses (positive and finite)
-        if exact_loss > 0 and torch.isfinite(exact_loss):
-            all_losses.append((exact_loss.item(), seed, alpha_teacher.item(), dataset))
+        if loss > 0 and torch.isfinite(loss):
+            all_losses.append((loss.item(), seed, alpha_teacher.item(), dataset))
     
     # Sort by loss value and get the 5 smallest
     all_losses.sort(key=lambda x: x[0])
