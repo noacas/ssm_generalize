@@ -1,0 +1,16 @@
+2025-09-01 11:04:55,237 - INFO - Args: Namespace(num_seeds=5, seeds=[39324, 33186, 85955, 18678, 37362], sequence_length=5, num_sequences=1, student_dims=[150, 175, 200, 225, 250, 275], eps_train=1e-05, w_that_minimizes_loss=False, gnc=True, gnc_num_samples=100000000, gnc_batch_size=1000000, gd=True, gd_lr=0.001, gd_epochs=10000, gd_init_scale=0.01, gd_optimizer='adam', gd_scheduler=None, gd_scheduler_params='{}', exp_gamma=None, step_size=None, step_gamma=None, cosine_eta_min=None, gd_init_type='regular', config=None, results_dir=PosixPath('test_results/results'), figures_dir=PosixPath('test_results/figures'), checkpoint_dir=PosixPath('test_results/checkpoints'), checkpoint_interval=3600, resume_from_checkpoint=False, log_dir=PosixPath('test_results/logs'), max_gpus=4, log_file=PosixPath('test_results/logs/logs_20250901_110455.log'))
+2025-09-01 11:04:55,238 - INFO - Using custom seeds: [39324, 33186, 85955, 18678, 37362]
+2025-09-01 11:04:55,442 - INFO - Using GPUs: [0, 1, 2, 3]
+2025-09-01 11:04:55,442 - INFO - Starting 4 processes on 4 GPUs
+2025-09-01 11:04:59,405 - INFO - Process 0 started on GPU 0, processing seeds [39324, 33186]
+2025-09-01 11:04:59,872 - INFO - Process 3 started on GPU 3, processing seeds [37362]
+2025-09-01 11:04:59,906 - INFO - Process 2 started on GPU 2, processing seeds [18678]
+2025-09-01 11:04:59,943 - INFO - Process 1 started on GPU 1, processing seeds [85955]
+2025-09-01 11:05:00,071 - INFO - for seed 37362, alpha_teacher=tensor([0.5143], device='cuda:3'), generated 1 sequences
+2025-09-01 11:05:00,071 - INFO - Process 3: Starting experiment - student_dim=150, seed=37362
+2025-09-01 11:05:00,095 - INFO - for seed 18678, alpha_teacher=tensor([0.4602], device='cuda:2'), generated 1 sequences
+2025-09-01 11:05:00,095 - INFO - Process 2: Starting experiment - student_dim=150, seed=18678
+2025-09-01 11:05:00,104 - INFO - for seed 39324, alpha_teacher=tensor([0.5566], device='cuda:0'), generated 1 sequences
+2025-09-01 11:05:00,105 - INFO - Process 0: Starting experiment - student_dim=150, seed=39324
+2025-09-01 11:05:00,127 - INFO - for seed 85955, alpha_teacher=tensor([0.6314], device='cuda:1'), generated 1 sequences
+2025-09-01 11:05:00,128 - INFO - Process 1: Starting experiment - student_dim=150, seed=85955
