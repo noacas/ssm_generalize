@@ -317,4 +317,5 @@ def w_that_minimizes_loss():
 
 
 if __name__ == "__main__":
-    w_that_minimizes_loss()
+    #w_that_minimizes_loss()
+    first_best_seeds()
