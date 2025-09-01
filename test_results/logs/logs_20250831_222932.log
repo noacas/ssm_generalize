@@ -1,0 +1,100 @@
+2025-08-31 22:29:32,914 - INFO - Args: Namespace(num_seeds=5, seeds=[21997, 9920, 74050, 54077, 81434], sequence_length=5, num_sequences=2, student_dims=[150, 175, 200, 225, 250, 275], eps_train=1e-05, w_that_minimizes_loss=False, gnc=True, gnc_num_samples=1000000000, gnc_batch_size=10000000, gd=True, gd_lr=0.001, gd_epochs=10000, gd_init_scale=0.01, gd_optimizer='adam', gd_scheduler=None, gd_scheduler_params='{}', exp_gamma=None, step_size=None, step_gamma=None, cosine_eta_min=None, gd_init_type='regular', config=None, results_dir=PosixPath('test_results/results'), figures_dir=PosixPath('test_results/figures'), checkpoint_dir=PosixPath('test_results/checkpoints'), checkpoint_interval=3600, resume_from_checkpoint=False, log_dir=PosixPath('test_results/logs'), max_gpus=4, log_file=PosixPath('test_results/logs/logs_20250831_222932.log'))
+2025-08-31 22:29:32,915 - INFO - Using custom seeds: [21997, 9920, 74050, 54077, 81434]
+2025-08-31 22:29:33,118 - INFO - Using GPUs: [0, 1, 2, 3]
+2025-08-31 22:29:33,119 - INFO - Starting 4 processes on 4 GPUs
+2025-08-31 22:29:37,090 - INFO - Process 0 started on GPU 0, processing seeds [21997, 9920]
+2025-08-31 22:29:37,484 - INFO - Process 1 started on GPU 1, processing seeds [74050]
+2025-08-31 22:29:37,585 - INFO - Process 3 started on GPU 3, processing seeds [81434]
+2025-08-31 22:29:37,601 - INFO - Process 2 started on GPU 2, processing seeds [54077]
+2025-08-31 22:29:37,731 - INFO - for seed 74050, alpha_teacher=tensor([0.5385], device='cuda:1'), generated 2 sequences
+2025-08-31 22:29:37,732 - INFO - Process 1: Starting experiment - student_dim=150, seed=74050
+2025-08-31 22:29:37,751 - ERROR - G&C failed for student_dim=150, seed=74050: CUDA out of memory. Tried to allocate 22.35 GiB. GPU 1 has a total capacity of 10.75 GiB of which 4.91 GiB is free. Including non-PyTorch memory, this process has 5.84 GiB memory in use. Of the allocated memory 5.66 GiB is allocated by PyTorch, and 7.66 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2025-08-31 22:29:37,754 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 101, in process_worker
+    mean_prior, gnc_gen_loss = train_gnc(seed, student_dim, device, alpha_teacher, w_sequences,
+                               ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        args_dict['eps_train'], args_dict['gnc_num_samples'],
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        batch_size
+                                        ^^^^^^^^^^
+                                        )
+                                        ^
+  File "/home/fodl/noacaspi/ssm_generalize/training.py", line 156, in train_gnc
+    train_losses, gen_losses = get_losses(students, w, alpha_teacher)
+                               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fodl/noacaspi/ssm_generalize/losses.py", line 45, in get_losses
+    A_pows = torch.cumprod(X, dim=2)
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 22.35 GiB. GPU 1 has a total capacity of 10.75 GiB of which 4.91 GiB is free. Including non-PyTorch memory, this process has 5.84 GiB memory in use. Of the allocated memory 5.66 GiB is allocated by PyTorch, and 7.66 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+
+2025-08-31 22:29:37,754 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-08-31 22:29:37,754 - INFO - Calling train_gd with scheduler_params: {}
+2025-08-31 22:29:37,771 - INFO - for seed 21997, alpha_teacher=tensor([0.4810], device='cuda:0'), generated 2 sequences
+2025-08-31 22:29:37,772 - INFO - Process 0: Starting experiment - student_dim=150, seed=21997
+2025-08-31 22:29:37,778 - INFO - for seed 81434, alpha_teacher=tensor([0.3650], device='cuda:3'), generated 2 sequences
+2025-08-31 22:29:37,778 - INFO - Process 3: Starting experiment - student_dim=150, seed=81434
+2025-08-31 22:29:37,780 - INFO - for seed 54077, alpha_teacher=tensor([0.4614], device='cuda:2'), generated 2 sequences
+2025-08-31 22:29:37,781 - INFO - Process 2: Starting experiment - student_dim=150, seed=54077
+2025-08-31 22:29:37,791 - ERROR - G&C failed for student_dim=150, seed=21997: CUDA out of memory. Tried to allocate 22.35 GiB. GPU 0 has a total capacity of 10.75 GiB of which 4.91 GiB is free. Including non-PyTorch memory, this process has 5.84 GiB memory in use. Of the allocated memory 5.66 GiB is allocated by PyTorch, and 7.66 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2025-08-31 22:29:37,793 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 101, in process_worker
+    mean_prior, gnc_gen_loss = train_gnc(seed, student_dim, device, alpha_teacher, w_sequences,
+                               ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        args_dict['eps_train'], args_dict['gnc_num_samples'],
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        batch_size
+                                        ^^^^^^^^^^
+                                        )
+                                        ^
+  File "/home/fodl/noacaspi/ssm_generalize/training.py", line 156, in train_gnc
+    train_losses, gen_losses = get_losses(students, w, alpha_teacher)
+                               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fodl/noacaspi/ssm_generalize/losses.py", line 45, in get_losses
+    A_pows = torch.cumprod(X, dim=2)
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 22.35 GiB. GPU 0 has a total capacity of 10.75 GiB of which 4.91 GiB is free. Including non-PyTorch memory, this process has 5.84 GiB memory in use. Of the allocated memory 5.66 GiB is allocated by PyTorch, and 7.66 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+
+2025-08-31 22:29:37,793 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-08-31 22:29:37,793 - INFO - Calling train_gd with scheduler_params: {}
+2025-08-31 22:29:37,797 - ERROR - G&C failed for student_dim=150, seed=81434: CUDA out of memory. Tried to allocate 22.35 GiB. GPU 3 has a total capacity of 10.75 GiB of which 4.91 GiB is free. Including non-PyTorch memory, this process has 5.84 GiB memory in use. Of the allocated memory 5.66 GiB is allocated by PyTorch, and 7.66 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2025-08-31 22:29:37,799 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 101, in process_worker
+    mean_prior, gnc_gen_loss = train_gnc(seed, student_dim, device, alpha_teacher, w_sequences,
+                               ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        args_dict['eps_train'], args_dict['gnc_num_samples'],
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        batch_size
+                                        ^^^^^^^^^^
+                                        )
+                                        ^
+  File "/home/fodl/noacaspi/ssm_generalize/training.py", line 156, in train_gnc
+    train_losses, gen_losses = get_losses(students, w, alpha_teacher)
+                               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fodl/noacaspi/ssm_generalize/losses.py", line 45, in get_losses
+    A_pows = torch.cumprod(X, dim=2)
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 22.35 GiB. GPU 3 has a total capacity of 10.75 GiB of which 4.91 GiB is free. Including non-PyTorch memory, this process has 5.84 GiB memory in use. Of the allocated memory 5.66 GiB is allocated by PyTorch, and 7.66 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+
+2025-08-31 22:29:37,799 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-08-31 22:29:37,799 - INFO - Calling train_gd with scheduler_params: {}
+2025-08-31 22:29:37,800 - ERROR - G&C failed for student_dim=150, seed=54077: CUDA out of memory. Tried to allocate 22.35 GiB. GPU 2 has a total capacity of 10.75 GiB of which 4.91 GiB is free. Including non-PyTorch memory, this process has 5.84 GiB memory in use. Of the allocated memory 5.66 GiB is allocated by PyTorch, and 7.66 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2025-08-31 22:29:37,802 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 101, in process_worker
+    mean_prior, gnc_gen_loss = train_gnc(seed, student_dim, device, alpha_teacher, w_sequences,
+                               ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        args_dict['eps_train'], args_dict['gnc_num_samples'],
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        batch_size
+                                        ^^^^^^^^^^
+                                        )
+                                        ^
+  File "/home/fodl/noacaspi/ssm_generalize/training.py", line 156, in train_gnc
+    train_losses, gen_losses = get_losses(students, w, alpha_teacher)
+                               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fodl/noacaspi/ssm_generalize/losses.py", line 45, in get_losses
+    A_pows = torch.cumprod(X, dim=2)
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 22.35 GiB. GPU 2 has a total capacity of 10.75 GiB of which 4.91 GiB is free. Including non-PyTorch memory, this process has 5.84 GiB memory in use. Of the allocated memory 5.66 GiB is allocated by PyTorch, and 7.66 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+
+2025-08-31 22:29:37,802 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-08-31 22:29:37,802 - INFO - Calling train_gd with scheduler_params: {}
+2025-08-31 22:29:41,912 - INFO - initial model: max A_j index: 37
+2025-08-31 22:29:41,915 - INFO - initial model: max A_j index: 140
+2025-08-31 22:29:41,916 - INFO - initial model: max A_j index: 30
+2025-08-31 22:29:41,917 - INFO - initial model: max A_j index: 82
