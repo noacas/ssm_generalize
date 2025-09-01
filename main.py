@@ -69,7 +69,7 @@ def process_worker(process_id, gpu_id, seed_list, args_dict, student_dims,
                 if args_dict['w_that_minimizes_loss']:
                     w[1] = (alpha_teacher**3 * w[2] +  alpha_teacher**4 * w[3]) / (1-alpha_teacher**2)
                 w_sequences.append(w)
-            logging.info(f"for seed {seed}, alpha_teacher={alpha_teacher}, generated {num_sequences} sequences")
+            logging.info(f"for seed {seed}, alpha_teacher={alpha_teacher}, generated {num_sequences} sequences: {w_sequences}")
 
         for student_dim_idx, student_dim in enumerate(student_dims):
             # Set seed for reproducibility
