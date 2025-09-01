@@ -53,7 +53,7 @@ def parse_args() -> argparse.Namespace:  # noqa: C901 – a bit long but flat
     # ------------------------------------------------------------------
     g = parser.add_argument_group("Problem dimensions & data generation")
     g.add_argument("--num_seeds", type=int, default=5, help="Number of random seeds per setting")
-    g.add_argument("--seeds", type=int, nargs='+', default=[21997, 9920, 74050, 54077, 81434], help="Specific seeds to use (overrides num_seeds)")
+    g.add_argument("--seeds", type=int, nargs='+', default=[39324, 33186, 85955, 18678, 37362], help="Specific seeds to use (overrides num_seeds)")
     g.add_argument("--sequence_length", type=int, default=5, help="Length of the measurement sequence")
     g.add_argument("--num_sequences", type=int, default=1, help="Number of sequences to train on")
     g.add_argument("--student_dims", type=int, nargs='+', default=list(range(150, 300, 25)), help="Student dimensions (one or more integers)")
