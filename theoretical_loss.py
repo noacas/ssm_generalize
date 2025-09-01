@@ -1,6 +1,7 @@
 import math
 import torch
 import logging
+import numpy as np
 
 
 def double_factorial(n):
@@ -275,20 +276,24 @@ def first_best_seeds():
     all_losses = []
     
     print("Testing seeds to find the 5 with smallest exact loss...")
-    for seed in range(100000):
-        if seed % 10000 == 0:
-            print(f"Progress: {seed}/100000")
+    for seed in range(10000):
+        if seed % 1000 == 0:
+            print(f"Progress: {seed}/10000")
             
         torch.manual_seed(seed)
+        failed = False
         alpha_teacher = generate_teacher_alpha(device)
         dataset = generate_w(5, device)
         loss = 0
         for d in range(150, 300, 25):
             exact_loss, asymptotic_loss, delta_l_infinity = gnc_theoretical_loss(alpha_teacher, dataset, d, device)
+            if exact_loss < 0 or asymptotic_loss < 0 or not torch.isfinite(exact_loss) or not torch.isfinite(asymptotic_loss):
+                failed = True
+                break
             loss += exact_loss
         
         # Store all valid losses (positive and finite)
-        if loss > 0 and torch.isfinite(loss):
+        if not failed:
             all_losses.append((loss.item(), seed, alpha_teacher.item(), dataset))
     
     # Sort by loss value and get the 5 smallest
@@ -316,6 +321,142 @@ def w_that_minimizes_loss():
         print(f"exact_loss: {exact_loss.item():.8f}, asymptotic_loss: {asymptotic_loss.item():.8f}, delta_l_infinity: {delta_l_infinity.item():.8f}")
         expected_minimum_loss = (1 - alpha_teacher**2)**2 + alpha_teacher**6 + alpha_teacher**8
         print(f"expected minimum loss: {expected_minimum_loss.item():.8f}")
+
+
+def w_that_minimizes_loss(w, alpha_teacher, sequence_length):
+    # change w to have a new value at w_2 that minimizes the loss (w[1] when indices start from 0)
+    new_w_2 = 0
+    for i in range(3, sequence_length):
+        new_w_2 += alpha_teacher**i * w[i-1]
+    new_w_2 /= (1-alpha_teacher**2)
+    w[1] = new_w_2
+    return w
+
+
+def mu0_vector(alpha: float, k: int) -> np.ndarray:
+    """
+    Build μ0 = (-α, 1-α^2, -α^3, -α^4, ..., -α^{k-1}) in R^{k-1}.
+    """
+    mu0 = np.empty(k-1, dtype=float)
+    mu0[0] = -alpha
+    mu0[1] = 1 - alpha**2
+    for m in range(3, k):
+        mu0[m-1] = -alpha**m
+    return mu0
+
+
+def r_of_w(w: np.ndarray, mu0: np.ndarray) -> float:
+    """
+    r(w) = (w^T μ0) / w_1  (requires w[0] != 0)
+    """
+    if w[0] == 0:
+        raise ValueError("r(w) is undefined when w[0] == 0.")
+    return float(np.dot(w, mu0) / w[0])
+
+
+def r_eff(w1: np.ndarray, w2: np.ndarray, mu0: np.ndarray) -> float:
+    """
+    r_eff = [ w1_1 * (w1^T μ0) + w2_1 * (w2^T μ0) ] / [ w1_1^2 + w2_1^2 ]
+    Requires not both first entries are zero.
+    """
+    q = w1[0]**2 + w2[0]**2
+    if q == 0:
+        raise ValueError("r_eff undefined when w1[0] == w2[0] == 0.")
+    s = w1[0]*np.dot(w1, mu0) + w2[0]*np.dot(w2, mu0)
+    return float(s / q)
+
+
+def asymptotic_loss_two(w1: np.ndarray, w2: np.ndarray, alpha: float, k: int) -> float:
+    """
+    L = μ0^T μ0 + 2α r_eff + r_eff^2  (leading-order, as d→∞)
+    """
+    mu0 = mu0_vector(alpha, k)
+    re = r_eff(w1, w2, mu0)
+    return float(np.dot(mu0, mu0) + 2*alpha*re + re**2)
+
+
+def minimize_loss_by_adjusting_w2(w1: np.ndarray, w2: np.ndarray, alpha: float) -> np.ndarray:
+    """
+    Return a new w2' that achieves the asymptotic optimum by making r_eff = -α,
+    using the minimum-norm update that keeps the first entry of w2 fixed (when possible).
+
+    If w2[0] == 0 and w1[0] == 0, raises an error (no leading-order leverage in either sample).
+    If w2[0] == 0 but w1[0] != 0, we set w2[0] to a tiny epsilon and proceed.
+    """
+    k_minus_1 = w1.shape[0]
+    k = k_minus_1 + 1
+    mu0 = mu0_vector(alpha, k)
+
+    w1 = w1.astype(float).copy()
+    w2_new = w2.astype(float).copy()
+
+    if w1.shape != w2.shape:
+        raise ValueError("w1 and w2 must have the same shape (length k-1).")
+    if w1.ndim != 1:
+        raise ValueError("w1 and w2 must be 1-D vectors.")
+
+    # Ensure we have some leverage in the first coordinates
+    if w1[0] == 0 and w2_new[0] == 0:
+        raise ValueError("Both w1[0] and w2[0] are zero: cannot influence the leading-order loss.")
+
+    # If w2[0] == 0, gently nudge it so we can control r_eff
+    if w2_new[0] == 0:
+        w2_new[0] = 1e-3  # small nudge
+
+    # Target condition for optimal r_eff = -α:
+    #   w1_1*(w1^T μ0) + w2_1*(w2'^T μ0) = -α * (w1_1^2 + w2_1^2)
+    # Solve for the required dot: w2'^T μ0 = t
+    numerator = -alpha * (w1[0]**2 + w2_new[0]**2) - w1[0] * np.dot(w1, mu0)
+    t = numerator / w2_new[0]
+
+    # We want to change w2 so that <w2', μ0> = t while keeping w2'[0] fixed.
+    # Construct the minimum-norm adjustment with first coordinate fixed:
+    # Work in the subspace with index >= 1 (i.e., zero first entry). In that subspace,
+    # the minimum-norm vector achieving a given dot with μ0 is proportional to μ0_tail.
+    mu0_tail = mu0[1:]
+    denom = float(np.dot(mu0_tail, mu0_tail))
+    if denom == 0:
+        # Extremely degenerate (should not happen for k>=3 and 0<α<1)
+        raise RuntimeError("Degenerate μ0_tail; cannot construct update.")
+
+    # Current dot and desired change:
+    current_dot = float(np.dot(w2_new, mu0))
+    delta_needed = t - current_dot
+
+    # Build the update vector v with v[0]=0 and <v, μ0> = 1 (minimum-norm in that subspace)
+    v = np.zeros_like(w2_new)
+    v[1:] = mu0_tail / denom
+
+    # Apply the update
+    w2_new = w2_new + delta_needed * v
+
+    # Sanity check: r_eff should now be -α (up to numerical precision)
+    re = r_eff(w1, w2_new, mu0)
+    # You can assert closeness if desired:
+    # assert np.isclose(re, -alpha, atol=1e-9), f"r_eff={re} not -alpha"
+
+    return w2_new
+
+
+def w2_that_minimizes_loss(w_sequences, w, alpha_teacher, sequence_length):
+    """
+    Find the optimal w2 that minimizes the loss given w1 (from w_sequences) and current w2 (w).
+    Uses the mathematical framework to set r_eff = -alpha_teacher for optimal asymptotic loss.
+    """
+    assert len(w_sequences) == 1, "w2_that_minimizes_loss only works for one sequence"
+    
+    # Convert PyTorch tensors to numpy arrays for the optimization
+    w1_np = w_sequences[0].detach().cpu().numpy()
+    w2_np = w.detach().cpu().numpy()
+    alpha_np = float(alpha_teacher)
+    
+    # Use the existing optimization function
+    w2_optimized_np = minimize_loss_by_adjusting_w2(w1_np, w2_np, alpha_np)
+    
+    # Convert back to PyTorch tensor with the same device and dtype as original w
+    w2_optimized = torch.from_numpy(w2_optimized_np).to(w.device, dtype=w.dtype)
+    
+    return w2_optimized
 
 
 if __name__ == "__main__":
