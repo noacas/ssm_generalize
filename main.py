@@ -18,7 +18,7 @@ from generator import generate_teacher_alpha, generate_w
 from parser import parse_args
 from training import train_gnc, train_gd
 from utils import filename_extensions, get_available_gpus, get_available_device
-from theoretical_loss import gnc_theoretical_loss
+from theoretical_loss import gnc_theoretical_loss, w_that_minimizes_loss, w2_that_minimizes_loss
 
 
 def process_worker(process_id, gpu_id, seed_list, args_dict, student_dims, 
@@ -67,7 +67,9 @@ def process_worker(process_id, gpu_id, seed_list, args_dict, student_dims,
             for seq_idx in range(num_sequences):
                 w = generate_w(args_dict['sequence_length'], device)
                 if args_dict['w_that_minimizes_loss']:
-                    w[1] = (alpha_teacher**3 * w[2] +  alpha_teacher**4 * w[3]) / (1-alpha_teacher**2)
+                    w = w_that_minimizes_loss(w, alpha_teacher, args_dict['sequence_length'])
+                if args_dict['w2_that_minimizes_loss']:
+                    w = w2_that_minimizes_loss(w_sequences, w, alpha_teacher, args_dict['sequence_length'])
                 w_sequences.append(w)
             logging.info(f"for seed {seed}, alpha_teacher={alpha_teacher}, generated {num_sequences} sequences: {w_sequences}")
 
@@ -281,6 +283,7 @@ def run_experiment(args):
         'num_sequences': args.num_sequences,
         'eps_train': args.eps_train,
         'w_that_minimizes_loss': args.w_that_minimizes_loss,
+        'w2_that_minimizes_loss': args.w2_that_minimizes_loss,
         'gnc': args.gnc,
         'gnc_num_samples': args.gnc_num_samples,
         'gnc_batch_size': args.gnc_batch_size,
