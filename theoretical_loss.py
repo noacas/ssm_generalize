@@ -282,20 +282,20 @@ def first_best_seeds():
         torch.manual_seed(seed)
         alpha_teacher = generate_teacher_alpha(device)
         dataset = generate_w(5, device)
-        d = 300
+        d = 150
         exact_loss, asymptotic_loss, delta_l_infinity = gnc_theoretical_loss(alpha_teacher, dataset, d, device)
         
         # Store all valid losses (positive and finite)
         if exact_loss > 0 and torch.isfinite(exact_loss):
-            all_losses.append((exact_loss.item(), seed))
+            all_losses.append((exact_loss.item(), seed, alpha_teacher.item(), dataset))
     
     # Sort by loss value and get the 5 smallest
     all_losses.sort(key=lambda x: x[0])
     top_5_seeds = all_losses[:5]
     
     print(f"\nTop 5 seeds with smallest exact loss:")
-    for i, (loss, seed) in enumerate(top_5_seeds, 1):
-        print(f"{i}. Seed {seed}: Loss = {loss:.8f}")
+    for i, (loss, seed, alpha_teacher, dataset) in enumerate(top_5_seeds, 1):
+        print(f"{i}. Seed {seed}: Loss = {loss:.8f}, Alpha Teacher = {alpha_teacher:.8f}, Dataset = {dataset}")
     
     print(f"\nTotal valid seeds found: {len(all_losses)}")
 
