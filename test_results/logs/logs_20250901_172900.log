@@ -1,0 +1,621 @@
+2025-09-01 17:29:00,188 - INFO - Args: Namespace(num_seeds=5, seeds=[8891, 9069, 6445, 5286, 8109], sequence_length=5, num_sequences=1, student_dims=[150, 175, 200, 225, 250, 275], eps_train=1e-05, w_that_minimizes_loss=False, w2_that_minimizes_loss=False, gnc=True, gnc_num_samples=100000000, gnc_batch_size=1000000, gd=True, gd_lr=0.001, gd_epochs=10000, gd_init_scale=0.01, gd_optimizer='adam', gd_scheduler=None, gd_scheduler_params='{}', exp_gamma=None, step_size=None, step_gamma=None, cosine_eta_min=None, gd_init_type='regular', config=None, results_dir=PosixPath('test_results/results'), figures_dir=PosixPath('test_results/figures'), checkpoint_dir=PosixPath('test_results/checkpoints'), checkpoint_interval=3600, resume_from_checkpoint=False, log_dir=PosixPath('test_results/logs'), max_gpus=4, log_file=PosixPath('test_results/logs/logs_20250901_172900.log'))
+2025-09-01 17:29:00,189 - INFO - Using custom seeds: [8891, 9069, 6445, 5286, 8109]
+2025-09-01 17:29:00,387 - INFO - Using GPUs: [0, 1, 2, 3]
+2025-09-01 17:29:00,387 - INFO - Starting 4 processes on 4 GPUs
+2025-09-01 17:29:04,339 - INFO - Process 0 started on GPU 0, processing seeds [8891, 9069]
+2025-09-01 17:29:04,818 - INFO - Process 1 started on GPU 1, processing seeds [6445]
+2025-09-01 17:29:04,820 - INFO - Process 2 started on GPU 2, processing seeds [5286]
+2025-09-01 17:29:04,860 - INFO - Process 3 started on GPU 3, processing seeds [8109]
+2025-09-01 17:29:05,027 - INFO - for seed 5286, alpha_teacher=tensor([0.5585], device='cuda:2'), generated 1 sequences: [tensor([ 0.9220, -0.1977, -0.5640, -0.7297], device='cuda:2')]
+2025-09-01 17:29:05,027 - INFO - for seed 6445, alpha_teacher=tensor([0.6663], device='cuda:1'), generated 1 sequences: [tensor([ 0.5352, -0.8111, -2.0641,  0.5798], device='cuda:1')]
+2025-09-01 17:29:05,027 - INFO - Process 2: Starting experiment - student_dim=150, seed=5286
+2025-09-01 17:29:05,027 - INFO - Process 1: Starting experiment - student_dim=150, seed=6445
+2025-09-01 17:29:05,033 - INFO - for seed 8891, alpha_teacher=tensor([0.5109], device='cuda:0'), generated 1 sequences: [tensor([ 1.0883, -0.9322, -0.7745,  0.6058], device='cuda:0')]
+2025-09-01 17:29:05,034 - INFO - Process 0: Starting experiment - student_dim=150, seed=8891
+2025-09-01 17:29:05,077 - INFO - for seed 8109, alpha_teacher=tensor([0.6004], device='cuda:3'), generated 1 sequences: [tensor([ 0.6679, -0.1628, -0.0712, -0.9972], device='cuda:3')]
+2025-09-01 17:29:05,077 - INFO - Process 3: Starting experiment - student_dim=150, seed=8109
+2025-09-01 17:33:50,743 - INFO - delta_l_infinity: tensor([0.9292], device='cuda:0') for w=tensor([ 1.0883, -0.9322, -0.7745,  0.6058], device='cuda:0')
+2025-09-01 17:33:50,744 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-01 17:33:50,744 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-01 17:33:55,161 - INFO - initial model: max A_j index: 49
+2025-09-01 17:34:12,796 - INFO - delta_l_infinity: tensor([1.3106], device='cuda:2') for w=tensor([ 0.9220, -0.1977, -0.5640, -0.7297], device='cuda:2')
+2025-09-01 17:34:12,797 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-01 17:34:12,797 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-01 17:34:14,618 - INFO - initial model: max A_j index: 101
+2025-09-01 17:34:21,845 - INFO - delta_l_infinity: tensor([1.3567], device='cuda:3') for w=tensor([ 0.6679, -0.1628, -0.0712, -0.9972], device='cuda:3')
+2025-09-01 17:34:21,845 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-01 17:34:21,845 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-01 17:34:23,344 - INFO - final model: max A_j index: 49, max A_j value: 0.025051819160580635, alpha_teacher: tensor([0.5109], device='cuda:0')
+2025-09-01 17:34:23,407 - INFO - largest 10 A_j values: tensor([0.0251, 0.0245, 0.0212, 0.0198, 0.0192, 0.0191, 0.0188, 0.0181, 0.0171,
+        0.0163], device='cuda:0', grad_fn=<TopkBackward0>)
+2025-09-01 17:34:23,407 - INFO - number of values below 0.01: 120
+2025-09-01 17:34:23,408 - INFO - number of values between 0.01 and 0.1: 30
+2025-09-01 17:34:23,408 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-01 17:34:23,408 - INFO - number of values larger than 0.3: 0
+2025-09-01 17:34:23,408 - INFO - train loss is 1.3244039198667679e-09
+2025-09-01 17:34:23,408 - INFO - impulse response loss is 0.15581291913986206
+2025-09-01 17:34:23,415 - INFO - Process 0: Completed experiment - student_dim=150, seed=8891
+2025-09-01 17:34:23,737 - INFO - initial model: max A_j index: 144
+2025-09-01 17:34:43,556 - INFO - final model: max A_j index: 101, max A_j value: 0.02807099185883999, alpha_teacher: tensor([0.5585], device='cuda:2')
+2025-09-01 17:34:43,616 - INFO - largest 10 A_j values: tensor([0.0281, 0.0257, 0.0241, 0.0229, 0.0202, 0.0195, 0.0194, 0.0193, 0.0192,
+        0.0191], device='cuda:2', grad_fn=<TopkBackward0>)
+2025-09-01 17:34:43,616 - INFO - number of values below 0.01: 114
+2025-09-01 17:34:43,617 - INFO - number of values between 0.01 and 0.1: 36
+2025-09-01 17:34:43,617 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-01 17:34:43,617 - INFO - number of values larger than 0.3: 0
+2025-09-01 17:34:43,617 - INFO - train loss is 0.0
+2025-09-01 17:34:43,617 - INFO - impulse response loss is 0.18730337917804718
+2025-09-01 17:34:43,624 - INFO - Process 2: Completed experiment - student_dim=150, seed=5286
+2025-09-01 17:34:51,503 - INFO - final model: max A_j index: 144, max A_j value: 0.029781727120280266, alpha_teacher: tensor([0.6004], device='cuda:3')
+2025-09-01 17:34:51,566 - INFO - largest 10 A_j values: tensor([0.0298, 0.0245, 0.0201, 0.0197, 0.0191, 0.0175, 0.0172, 0.0172, 0.0168,
+        0.0168], device='cuda:3', grad_fn=<TopkBackward0>)
+2025-09-01 17:34:51,567 - INFO - number of values below 0.01: 114
+2025-09-01 17:34:51,567 - INFO - number of values between 0.01 and 0.1: 36
+2025-09-01 17:34:51,567 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-01 17:34:51,567 - INFO - number of values larger than 0.3: 0
+2025-09-01 17:34:51,567 - INFO - train loss is 0.0
+2025-09-01 17:34:51,567 - INFO - impulse response loss is 0.2741050124168396
+2025-09-01 17:34:51,575 - INFO - Process 3: Completed experiment - student_dim=150, seed=8109
+2025-09-01 17:35:50,319 - INFO - delta_l_infinity: tensor([1.4368], device='cuda:1') for w=tensor([ 0.5352, -0.8111, -2.0641,  0.5798], device='cuda:1')
+2025-09-01 17:35:50,321 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-01 17:35:50,321 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-01 17:35:53,511 - INFO - initial model: max A_j index: 3
+2025-09-01 17:36:23,363 - INFO - final model: max A_j index: 3, max A_j value: 0.02025430276989937, alpha_teacher: tensor([0.6663], device='cuda:1')
+2025-09-01 17:36:23,425 - INFO - largest 10 A_j values: tensor([0.0203, 0.0162, 0.0138, 0.0126, 0.0114, 0.0113, 0.0103, 0.0100, 0.0094,
+        0.0093], device='cuda:1', grad_fn=<TopkBackward0>)
+2025-09-01 17:36:23,425 - INFO - number of values below 0.01: 143
+2025-09-01 17:36:23,425 - INFO - number of values between 0.01 and 0.1: 7
+2025-09-01 17:36:23,425 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-01 17:36:23,425 - INFO - number of values larger than 0.3: 0
+2025-09-01 17:36:23,426 - INFO - train loss is 6.417089082333405e-12
+2025-09-01 17:36:23,426 - INFO - impulse response loss is 2.7744808197021484
+2025-09-01 17:36:23,433 - INFO - Process 1: Completed experiment - student_dim=150, seed=6445
+2025-09-01 17:39:58,060 - INFO - delta_l_infinity: tensor([0.9292], device='cuda:0') for w=tensor([ 1.0883, -0.9322, -0.7745,  0.6058], device='cuda:0')
+2025-09-01 17:39:58,061 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-01 17:39:58,061 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-01 17:39:58,062 - INFO - initial model: max A_j index: 49
+2025-09-01 17:40:26,249 - INFO - final model: max A_j index: 49, max A_j value: 0.02416539564728737, alpha_teacher: tensor([0.5109], device='cuda:0')
+2025-09-01 17:40:26,251 - INFO - largest 10 A_j values: tensor([0.0242, 0.0236, 0.0209, 0.0204, 0.0195, 0.0193, 0.0189, 0.0186, 0.0183,
+        0.0182], device='cuda:0', grad_fn=<TopkBackward0>)
+2025-09-01 17:40:26,251 - INFO - number of values below 0.01: 139
+2025-09-01 17:40:26,252 - INFO - number of values between 0.01 and 0.1: 36
+2025-09-01 17:40:26,252 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-01 17:40:26,252 - INFO - number of values larger than 0.3: 0
+2025-09-01 17:40:26,253 - INFO - train loss is 3.2912561565012766e-13
+2025-09-01 17:40:26,253 - INFO - impulse response loss is 0.15292231738567352
+2025-09-01 17:40:26,265 - INFO - Process 0: Completed experiment - student_dim=175, seed=8891
+2025-09-01 17:40:47,460 - INFO - delta_l_infinity: tensor([1.3106], device='cuda:2') for w=tensor([ 0.9220, -0.1977, -0.5640, -0.7297], device='cuda:2')
+2025-09-01 17:40:47,461 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-01 17:40:47,461 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-01 17:40:47,462 - INFO - initial model: max A_j index: 101
+2025-09-01 17:41:16,285 - INFO - final model: max A_j index: 101, max A_j value: 0.027534466236829758, alpha_teacher: tensor([0.5585], device='cuda:2')
+2025-09-01 17:41:16,287 - INFO - largest 10 A_j values: tensor([0.0275, 0.0252, 0.0244, 0.0236, 0.0196, 0.0190, 0.0189, 0.0187, 0.0186,
+        0.0180], device='cuda:2', grad_fn=<TopkBackward0>)
+2025-09-01 17:41:16,288 - INFO - number of values below 0.01: 130
+2025-09-01 17:41:16,288 - INFO - number of values between 0.01 and 0.1: 45
+2025-09-01 17:41:16,289 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-01 17:41:16,289 - INFO - number of values larger than 0.3: 0
+2025-09-01 17:41:16,289 - INFO - train loss is 0.0
+2025-09-01 17:41:16,289 - INFO - impulse response loss is 0.1852879524230957
+2025-09-01 17:41:16,301 - INFO - Process 2: Completed experiment - student_dim=175, seed=5286
+2025-09-01 17:41:19,144 - INFO - delta_l_infinity: tensor([1.3567], device='cuda:3') for w=tensor([ 0.6679, -0.1628, -0.0712, -0.9972], device='cuda:3')
+2025-09-01 17:41:19,145 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-01 17:41:19,145 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-01 17:41:19,146 - INFO - initial model: max A_j index: 50
+2025-09-01 17:41:42,144 - INFO - final model: max A_j index: 50, max A_j value: 0.023951342329382896, alpha_teacher: tensor([0.6004], device='cuda:3')
+2025-09-01 17:41:42,145 - INFO - largest 10 A_j values: tensor([0.0240, 0.0219, 0.0211, 0.0195, 0.0191, 0.0187, 0.0186, 0.0169, 0.0166,
+        0.0166], device='cuda:3', grad_fn=<TopkBackward0>)
+2025-09-01 17:41:42,145 - INFO - number of values below 0.01: 138
+2025-09-01 17:41:42,145 - INFO - number of values between 0.01 and 0.1: 37
+2025-09-01 17:41:42,145 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-01 17:41:42,145 - INFO - number of values larger than 0.3: 0
+2025-09-01 17:41:42,146 - INFO - train loss is 0.0
+2025-09-01 17:41:42,146 - INFO - impulse response loss is 0.27343523502349854
+2025-09-01 17:41:42,153 - INFO - Process 3: Completed experiment - student_dim=175, seed=8109
+2025-09-01 17:44:53,529 - INFO - delta_l_infinity: tensor([1.4368], device='cuda:1') for w=tensor([ 0.5352, -0.8111, -2.0641,  0.5798], device='cuda:1')
+2025-09-01 17:44:53,530 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-01 17:44:53,530 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-01 17:44:53,531 - INFO - initial model: max A_j index: 3
+2025-09-01 17:45:25,301 - INFO - final model: max A_j index: 3, max A_j value: 0.02038223296403885, alpha_teacher: tensor([0.6663], device='cuda:1')
+2025-09-01 17:45:25,304 - INFO - largest 10 A_j values: tensor([0.0204, 0.0164, 0.0164, 0.0139, 0.0139, 0.0127, 0.0115, 0.0115, 0.0104,
+        0.0101], device='cuda:1', grad_fn=<TopkBackward0>)
+2025-09-01 17:45:25,304 - INFO - number of values below 0.01: 165
+2025-09-01 17:45:25,304 - INFO - number of values between 0.01 and 0.1: 10
+2025-09-01 17:45:25,305 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-01 17:45:25,305 - INFO - number of values larger than 0.3: 0
+2025-09-01 17:45:25,305 - INFO - train loss is 2.566835632933362e-13
+2025-09-01 17:45:25,305 - INFO - impulse response loss is 2.7665364742279053
+2025-09-01 17:45:25,455 - INFO - Process 1: Completed experiment - student_dim=175, seed=6445
+2025-09-01 17:46:51,337 - INFO - delta_l_infinity: tensor([0.9292], device='cuda:0') for w=tensor([ 1.0883, -0.9322, -0.7745,  0.6058], device='cuda:0')
+2025-09-01 17:46:51,338 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-01 17:46:51,338 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-01 17:46:51,339 - INFO - initial model: max A_j index: 199
+2025-09-01 17:47:12,538 - INFO - final model: max A_j index: 199, max A_j value: 0.025326645001769066, alpha_teacher: tensor([0.5109], device='cuda:0')
+2025-09-01 17:47:12,540 - INFO - largest 10 A_j values: tensor([0.0253, 0.0239, 0.0233, 0.0201, 0.0195, 0.0192, 0.0190, 0.0186, 0.0183,
+        0.0180], device='cuda:0', grad_fn=<TopkBackward0>)
+2025-09-01 17:47:12,540 - INFO - number of values below 0.01: 159
+2025-09-01 17:47:12,540 - INFO - number of values between 0.01 and 0.1: 41
+2025-09-01 17:47:12,541 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-01 17:47:12,541 - INFO - number of values larger than 0.3: 0
+2025-09-01 17:47:12,541 - INFO - train loss is 4.698463840213662e-13
+2025-09-01 17:47:12,541 - INFO - impulse response loss is 0.14939291775226593
+2025-09-01 17:47:12,555 - INFO - Process 0: Completed experiment - student_dim=200, seed=8891
+2025-09-01 17:48:13,812 - INFO - delta_l_infinity: tensor([1.3106], device='cuda:2') for w=tensor([ 0.9220, -0.1977, -0.5640, -0.7297], device='cuda:2')
+2025-09-01 17:48:13,812 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-01 17:48:13,812 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-01 17:48:13,813 - INFO - initial model: max A_j index: 101
+2025-09-01 17:48:43,096 - INFO - final model: max A_j index: 101, max A_j value: 0.02791036106646061, alpha_teacher: tensor([0.5585], device='cuda:2')
+2025-09-01 17:48:43,099 - INFO - largest 10 A_j values: tensor([0.0279, 0.0255, 0.0248, 0.0240, 0.0200, 0.0199, 0.0193, 0.0192, 0.0192,
+        0.0191], device='cuda:2', grad_fn=<TopkBackward0>)
+2025-09-01 17:48:43,099 - INFO - number of values below 0.01: 152
+2025-09-01 17:48:43,100 - INFO - number of values between 0.01 and 0.1: 48
+2025-09-01 17:48:43,100 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-01 17:48:43,101 - INFO - number of values larger than 0.3: 0
+2025-09-01 17:48:43,101 - INFO - train loss is 0.0
+2025-09-01 17:48:43,101 - INFO - impulse response loss is 0.18337871134281158
+2025-09-01 17:48:43,115 - INFO - Process 2: Completed experiment - student_dim=200, seed=5286
+2025-09-01 17:49:11,756 - INFO - delta_l_infinity: tensor([1.3567], device='cuda:3') for w=tensor([ 0.6679, -0.1628, -0.0712, -0.9972], device='cuda:3')
+2025-09-01 17:49:11,756 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-01 17:49:11,756 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-01 17:49:11,757 - INFO - initial model: max A_j index: 185
+2025-09-01 17:49:40,123 - INFO - final model: max A_j index: 185, max A_j value: 0.028302205726504326, alpha_teacher: tensor([0.6004], device='cuda:3')
+2025-09-01 17:49:40,125 - INFO - largest 10 A_j values: tensor([0.0283, 0.0243, 0.0222, 0.0215, 0.0198, 0.0195, 0.0191, 0.0189, 0.0172,
+        0.0170], device='cuda:3', grad_fn=<TopkBackward0>)
+2025-09-01 17:49:40,126 - INFO - number of values below 0.01: 159
+2025-09-01 17:49:40,126 - INFO - number of values between 0.01 and 0.1: 41
+2025-09-01 17:49:40,127 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-01 17:49:40,127 - INFO - number of values larger than 0.3: 0
+2025-09-01 17:49:40,127 - INFO - train loss is 0.0
+2025-09-01 17:49:40,127 - INFO - impulse response loss is 0.27014702558517456
+2025-09-01 17:49:40,141 - INFO - Process 3: Completed experiment - student_dim=200, seed=8109
+2025-09-01 17:54:30,421 - INFO - delta_l_infinity: tensor([0.9292], device='cuda:0') for w=tensor([ 1.0883, -0.9322, -0.7745,  0.6058], device='cuda:0')
+2025-09-01 17:54:30,422 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-01 17:54:30,422 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-01 17:54:30,423 - INFO - initial model: max A_j index: 49
+2025-09-01 17:54:58,478 - INFO - final model: max A_j index: 49, max A_j value: 0.02413870021700859, alpha_teacher: tensor([0.5109], device='cuda:0')
+2025-09-01 17:54:58,480 - INFO - largest 10 A_j values: tensor([0.0241, 0.0235, 0.0209, 0.0203, 0.0198, 0.0195, 0.0193, 0.0189, 0.0186,
+        0.0183], device='cuda:0', grad_fn=<TopkBackward0>)
+2025-09-01 17:54:58,481 - INFO - number of values below 0.01: 181
+2025-09-01 17:54:58,481 - INFO - number of values between 0.01 and 0.1: 44
+2025-09-01 17:54:58,481 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-01 17:54:58,482 - INFO - number of values larger than 0.3: 0
+2025-09-01 17:54:58,482 - INFO - train loss is 0.00014336944150272757
+2025-09-01 17:54:58,482 - INFO - impulse response loss is 0.14131084084510803
+2025-09-01 17:54:58,493 - INFO - Process 0: Completed experiment - student_dim=225, seed=8891
+2025-09-01 17:55:03,231 - ERROR - G&C failed for student_dim=250, seed=8891: CUDA out of memory. Tried to allocate 3.73 GiB. GPU 0 has a total capacity of 10.75 GiB of which 3.09 GiB is free. Including non-PyTorch memory, this process has 7.66 GiB memory in use. Of the allocated memory 4.69 GiB is allocated by PyTorch, and 2.79 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2025-09-01 17:55:03,240 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 103, in process_worker
+    mean_prior, gnc_gen_loss = train_gnc(seed, student_dim, device, alpha_teacher, w_sequences,
+                               ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        args_dict['eps_train'], args_dict['gnc_num_samples'],
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        batch_size
+                                        ^^^^^^^^^^
+                                        )
+                                        ^
+  File "/home/fodl/noacaspi/ssm_generalize/training.py", line 156, in train_gnc
+    train_losses, gen_losses = get_losses(students, w, alpha_teacher)
+                               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fodl/noacaspi/ssm_generalize/losses.py", line 45, in get_losses
+    A_pows = torch.cumprod(X, dim=2)
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 3.73 GiB. GPU 0 has a total capacity of 10.75 GiB of which 3.09 GiB is free. Including non-PyTorch memory, this process has 7.66 GiB memory in use. Of the allocated memory 4.69 GiB is allocated by PyTorch, and 2.79 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+
+2025-09-01 17:55:03,240 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-01 17:55:03,240 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-01 17:55:03,241 - INFO - initial model: max A_j index: 49
+2025-09-01 17:55:31,521 - INFO - final model: max A_j index: 49, max A_j value: 0.02428225800395012, alpha_teacher: tensor([0.5109], device='cuda:0')
+2025-09-01 17:55:31,523 - INFO - largest 10 A_j values: tensor([0.0243, 0.0237, 0.0210, 0.0205, 0.0199, 0.0196, 0.0194, 0.0190, 0.0188,
+        0.0184], device='cuda:0', grad_fn=<TopkBackward0>)
+2025-09-01 17:55:31,523 - INFO - number of values below 0.01: 200
+2025-09-01 17:55:31,524 - INFO - number of values between 0.01 and 0.1: 50
+2025-09-01 17:55:31,524 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-01 17:55:31,524 - INFO - number of values larger than 0.3: 0
+2025-09-01 17:55:31,524 - INFO - train loss is 1.3472943464876153e-05
+2025-09-01 17:55:31,525 - INFO - impulse response loss is 0.14450059831142426
+2025-09-01 17:55:31,537 - INFO - Process 0: Completed experiment - student_dim=250, seed=8891
+2025-09-01 17:55:35,930 - INFO - delta_l_infinity: tensor([1.4368], device='cuda:1') for w=tensor([ 0.5352, -0.8111, -2.0641,  0.5798], device='cuda:1')
+2025-09-01 17:55:35,931 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-01 17:55:35,931 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-01 17:55:35,932 - INFO - initial model: max A_j index: 3
+2025-09-01 17:55:36,829 - ERROR - G&C failed for student_dim=275, seed=8891: CUDA out of memory. Tried to allocate 4.10 GiB. GPU 0 has a total capacity of 10.75 GiB of which 2.35 GiB is free. Including non-PyTorch memory, this process has 8.40 GiB memory in use. Of the allocated memory 5.15 GiB is allocated by PyTorch, and 3.07 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2025-09-01 17:55:36,833 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 103, in process_worker
+    mean_prior, gnc_gen_loss = train_gnc(seed, student_dim, device, alpha_teacher, w_sequences,
+                               ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        args_dict['eps_train'], args_dict['gnc_num_samples'],
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        batch_size
+                                        ^^^^^^^^^^
+                                        )
+                                        ^
+  File "/home/fodl/noacaspi/ssm_generalize/training.py", line 156, in train_gnc
+    train_losses, gen_losses = get_losses(students, w, alpha_teacher)
+                               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fodl/noacaspi/ssm_generalize/losses.py", line 45, in get_losses
+    A_pows = torch.cumprod(X, dim=2)
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 4.10 GiB. GPU 0 has a total capacity of 10.75 GiB of which 2.35 GiB is free. Including non-PyTorch memory, this process has 8.40 GiB memory in use. Of the allocated memory 5.15 GiB is allocated by PyTorch, and 3.07 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+
+2025-09-01 17:55:36,833 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-01 17:55:36,833 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-01 17:55:36,835 - INFO - initial model: max A_j index: 270
+2025-09-01 17:56:05,286 - INFO - final model: max A_j index: 270, max A_j value: 0.024203605949878693, alpha_teacher: tensor([0.5109], device='cuda:0')
+2025-09-01 17:56:05,288 - INFO - largest 10 A_j values: tensor([0.0242, 0.0242, 0.0236, 0.0209, 0.0203, 0.0198, 0.0197, 0.0195, 0.0193,
+        0.0193], device='cuda:0', grad_fn=<TopkBackward0>)
+2025-09-01 17:56:05,288 - INFO - number of values below 0.01: 221
+2025-09-01 17:56:05,288 - INFO - number of values between 0.01 and 0.1: 54
+2025-09-01 17:56:05,289 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-01 17:56:05,289 - INFO - number of values larger than 0.3: 0
+2025-09-01 17:56:05,289 - INFO - train loss is 8.039030552353665e-10
+2025-09-01 17:56:05,289 - INFO - impulse response loss is 0.14272204041481018
+2025-09-01 17:56:05,303 - INFO - Process 0: Completed experiment - student_dim=275, seed=8891
+2025-09-01 17:56:05,314 - INFO - for seed 9069, alpha_teacher=tensor([0.4500], device='cuda:0'), generated 1 sequences: [tensor([ 1.2393, -0.1649, -0.5015, -0.6680], device='cuda:0')]
+2025-09-01 17:56:07,089 - INFO - final model: max A_j index: 3, max A_j value: 0.021614130586385727, alpha_teacher: tensor([0.6663], device='cuda:1')
+2025-09-01 17:56:07,091 - INFO - largest 10 A_j values: tensor([0.0216, 0.0176, 0.0152, 0.0151, 0.0140, 0.0128, 0.0127, 0.0117, 0.0114,
+        0.0108], device='cuda:1', grad_fn=<TopkBackward0>)
+2025-09-01 17:56:07,092 - INFO - number of values below 0.01: 189
+2025-09-01 17:56:07,092 - INFO - number of values between 0.01 and 0.1: 11
+2025-09-01 17:56:07,092 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-01 17:56:07,093 - INFO - number of values larger than 0.3: 0
+2025-09-01 17:56:07,093 - INFO - train loss is 0.0
+2025-09-01 17:56:07,093 - INFO - impulse response loss is 2.7646305561065674
+2025-09-01 17:56:07,106 - INFO - Process 1: Completed experiment - student_dim=200, seed=6445
+2025-09-01 17:56:35,203 - INFO - delta_l_infinity: tensor([1.3106], device='cuda:2') for w=tensor([ 0.9220, -0.1977, -0.5640, -0.7297], device='cuda:2')
+2025-09-01 17:56:35,203 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-01 17:56:35,204 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-01 17:56:35,204 - INFO - initial model: max A_j index: 101
+2025-09-01 17:57:04,909 - INFO - final model: max A_j index: 101, max A_j value: 0.026977473869919777, alpha_teacher: tensor([0.5585], device='cuda:2')
+2025-09-01 17:57:04,911 - INFO - largest 10 A_j values: tensor([0.0270, 0.0254, 0.0246, 0.0243, 0.0239, 0.0230, 0.0191, 0.0190, 0.0184,
+        0.0183], device='cuda:2', grad_fn=<TopkBackward0>)
+2025-09-01 17:57:04,911 - INFO - number of values below 0.01: 175
+2025-09-01 17:57:04,912 - INFO - number of values between 0.01 and 0.1: 50
+2025-09-01 17:57:04,912 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-01 17:57:04,912 - INFO - number of values larger than 0.3: 0
+2025-09-01 17:57:04,912 - INFO - train loss is 0.0
+2025-09-01 17:57:04,912 - INFO - impulse response loss is 0.18164819478988647
+2025-09-01 17:57:04,920 - INFO - Process 2: Completed experiment - student_dim=225, seed=5286
+2025-09-01 17:57:09,818 - ERROR - G&C failed for student_dim=250, seed=5286: CUDA out of memory. Tried to allocate 3.73 GiB. GPU 2 has a total capacity of 10.75 GiB of which 3.09 GiB is free. Including non-PyTorch memory, this process has 7.66 GiB memory in use. Of the allocated memory 4.69 GiB is allocated by PyTorch, and 2.79 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2025-09-01 17:57:09,826 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 103, in process_worker
+    mean_prior, gnc_gen_loss = train_gnc(seed, student_dim, device, alpha_teacher, w_sequences,
+                               ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        args_dict['eps_train'], args_dict['gnc_num_samples'],
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        batch_size
+                                        ^^^^^^^^^^
+                                        )
+                                        ^
+  File "/home/fodl/noacaspi/ssm_generalize/training.py", line 156, in train_gnc
+    train_losses, gen_losses = get_losses(students, w, alpha_teacher)
+                               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fodl/noacaspi/ssm_generalize/losses.py", line 45, in get_losses
+    A_pows = torch.cumprod(X, dim=2)
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 3.73 GiB. GPU 2 has a total capacity of 10.75 GiB of which 3.09 GiB is free. Including non-PyTorch memory, this process has 7.66 GiB memory in use. Of the allocated memory 4.69 GiB is allocated by PyTorch, and 2.79 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+
+2025-09-01 17:57:09,826 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-01 17:57:09,826 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-01 17:57:09,828 - INFO - initial model: max A_j index: 101
+2025-09-01 17:57:41,512 - INFO - final model: max A_j index: 101, max A_j value: 0.026733366772532463, alpha_teacher: tensor([0.5585], device='cuda:2')
+2025-09-01 17:57:41,514 - INFO - largest 10 A_j values: tensor([0.0267, 0.0251, 0.0248, 0.0244, 0.0240, 0.0236, 0.0228, 0.0188, 0.0187,
+        0.0182], device='cuda:2', grad_fn=<TopkBackward0>)
+2025-09-01 17:57:41,514 - INFO - number of values below 0.01: 194
+2025-09-01 17:57:41,515 - INFO - number of values between 0.01 and 0.1: 56
+2025-09-01 17:57:41,515 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-01 17:57:41,516 - INFO - number of values larger than 0.3: 0
+2025-09-01 17:57:41,516 - INFO - train loss is 0.0
+2025-09-01 17:57:41,516 - INFO - impulse response loss is 0.17955797910690308
+2025-09-01 17:57:41,530 - INFO - Process 2: Completed experiment - student_dim=250, seed=5286
+2025-09-01 17:57:46,953 - ERROR - G&C failed for student_dim=275, seed=5286: CUDA out of memory. Tried to allocate 4.10 GiB. GPU 2 has a total capacity of 10.75 GiB of which 2.35 GiB is free. Including non-PyTorch memory, this process has 8.40 GiB memory in use. Of the allocated memory 5.15 GiB is allocated by PyTorch, and 3.07 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2025-09-01 17:57:46,956 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 103, in process_worker
+    mean_prior, gnc_gen_loss = train_gnc(seed, student_dim, device, alpha_teacher, w_sequences,
+                               ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        args_dict['eps_train'], args_dict['gnc_num_samples'],
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        batch_size
+                                        ^^^^^^^^^^
+                                        )
+                                        ^
+  File "/home/fodl/noacaspi/ssm_generalize/training.py", line 156, in train_gnc
+    train_losses, gen_losses = get_losses(students, w, alpha_teacher)
+                               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fodl/noacaspi/ssm_generalize/losses.py", line 45, in get_losses
+    A_pows = torch.cumprod(X, dim=2)
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 4.10 GiB. GPU 2 has a total capacity of 10.75 GiB of which 2.35 GiB is free. Including non-PyTorch memory, this process has 8.40 GiB memory in use. Of the allocated memory 5.15 GiB is allocated by PyTorch, and 3.07 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+
+2025-09-01 17:57:46,956 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-01 17:57:46,956 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-01 17:57:46,957 - INFO - initial model: max A_j index: 101
+2025-09-01 17:58:17,855 - INFO - final model: max A_j index: 101, max A_j value: 0.026663707569241524, alpha_teacher: tensor([0.5585], device='cuda:2')
+2025-09-01 17:58:17,857 - INFO - largest 10 A_j values: tensor([0.0267, 0.0251, 0.0243, 0.0240, 0.0239, 0.0235, 0.0227, 0.0215, 0.0205,
+        0.0188], device='cuda:2', grad_fn=<TopkBackward0>)
+2025-09-01 17:58:17,858 - INFO - number of values below 0.01: 213
+2025-09-01 17:58:17,858 - INFO - number of values between 0.01 and 0.1: 62
+2025-09-01 17:58:17,858 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-01 17:58:17,859 - INFO - number of values larger than 0.3: 0
+2025-09-01 17:58:17,859 - INFO - train loss is 0.0
+2025-09-01 17:58:17,859 - INFO - impulse response loss is 0.17721253633499146
+2025-09-01 17:58:17,872 - INFO - Process 2: Completed experiment - student_dim=275, seed=5286
+2025-09-01 17:58:17,874 - INFO - Process 2 completed on GPU 2
+2025-09-01 17:58:20,660 - INFO - delta_l_infinity: tensor([1.3567], device='cuda:3') for w=tensor([ 0.6679, -0.1628, -0.0712, -0.9972], device='cuda:3')
+2025-09-01 17:58:20,660 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-01 17:58:20,660 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-01 17:58:20,661 - INFO - initial model: max A_j index: 50
+2025-09-01 17:58:27,480 - INFO - Process 2 completed
+2025-09-01 17:58:47,826 - INFO - final model: max A_j index: 50, max A_j value: 0.02405494637787342, alpha_teacher: tensor([0.6004], device='cuda:3')
+2025-09-01 17:58:47,829 - INFO - largest 10 A_j values: tensor([0.0241, 0.0220, 0.0212, 0.0196, 0.0192, 0.0188, 0.0187, 0.0183, 0.0170,
+        0.0167], device='cuda:3', grad_fn=<TopkBackward0>)
+2025-09-01 17:58:47,829 - INFO - number of values below 0.01: 181
+2025-09-01 17:58:47,829 - INFO - number of values between 0.01 and 0.1: 44
+2025-09-01 17:58:47,830 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-01 17:58:47,830 - INFO - number of values larger than 0.3: 0
+2025-09-01 17:58:47,830 - INFO - train loss is 0.0
+2025-09-01 17:58:47,830 - INFO - impulse response loss is 0.2697733938694
+2025-09-01 17:58:47,842 - INFO - Process 3: Completed experiment - student_dim=225, seed=8109
+2025-09-01 17:58:52,631 - ERROR - G&C failed for student_dim=250, seed=8109: CUDA out of memory. Tried to allocate 3.73 GiB. GPU 3 has a total capacity of 10.75 GiB of which 3.09 GiB is free. Including non-PyTorch memory, this process has 7.66 GiB memory in use. Of the allocated memory 4.69 GiB is allocated by PyTorch, and 2.79 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2025-09-01 17:58:52,639 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 103, in process_worker
+    mean_prior, gnc_gen_loss = train_gnc(seed, student_dim, device, alpha_teacher, w_sequences,
+                               ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        args_dict['eps_train'], args_dict['gnc_num_samples'],
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        batch_size
+                                        ^^^^^^^^^^
+                                        )
+                                        ^
+  File "/home/fodl/noacaspi/ssm_generalize/training.py", line 156, in train_gnc
+    train_losses, gen_losses = get_losses(students, w, alpha_teacher)
+                               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fodl/noacaspi/ssm_generalize/losses.py", line 45, in get_losses
+    A_pows = torch.cumprod(X, dim=2)
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 3.73 GiB. GPU 3 has a total capacity of 10.75 GiB of which 3.09 GiB is free. Including non-PyTorch memory, this process has 7.66 GiB memory in use. Of the allocated memory 4.69 GiB is allocated by PyTorch, and 2.79 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+
+2025-09-01 17:58:52,639 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-01 17:58:52,639 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-01 17:58:52,640 - INFO - initial model: max A_j index: 50
+2025-09-01 17:59:18,649 - INFO - final model: max A_j index: 50, max A_j value: 0.023963557556271553, alpha_teacher: tensor([0.6004], device='cuda:3')
+2025-09-01 17:59:18,651 - INFO - largest 10 A_j values: tensor([0.0240, 0.0219, 0.0211, 0.0197, 0.0195, 0.0191, 0.0187, 0.0187, 0.0186,
+        0.0182], device='cuda:3', grad_fn=<TopkBackward0>)
+2025-09-01 17:59:18,651 - INFO - number of values below 0.01: 203
+2025-09-01 17:59:18,651 - INFO - number of values between 0.01 and 0.1: 47
+2025-09-01 17:59:18,651 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-01 17:59:18,652 - INFO - number of values larger than 0.3: 0
+2025-09-01 17:59:18,652 - INFO - train loss is 0.0
+2025-09-01 17:59:18,652 - INFO - impulse response loss is 0.2677493691444397
+2025-09-01 17:59:18,663 - INFO - Process 3: Completed experiment - student_dim=250, seed=8109
+2025-09-01 17:59:24,099 - ERROR - G&C failed for student_dim=275, seed=8109: CUDA out of memory. Tried to allocate 4.10 GiB. GPU 3 has a total capacity of 10.75 GiB of which 2.35 GiB is free. Including non-PyTorch memory, this process has 8.40 GiB memory in use. Of the allocated memory 5.15 GiB is allocated by PyTorch, and 3.07 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2025-09-01 17:59:24,102 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 103, in process_worker
+    mean_prior, gnc_gen_loss = train_gnc(seed, student_dim, device, alpha_teacher, w_sequences,
+                               ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        args_dict['eps_train'], args_dict['gnc_num_samples'],
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        batch_size
+                                        ^^^^^^^^^^
+                                        )
+                                        ^
+  File "/home/fodl/noacaspi/ssm_generalize/training.py", line 156, in train_gnc
+    train_losses, gen_losses = get_losses(students, w, alpha_teacher)
+                               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fodl/noacaspi/ssm_generalize/losses.py", line 45, in get_losses
+    A_pows = torch.cumprod(X, dim=2)
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 4.10 GiB. GPU 3 has a total capacity of 10.75 GiB of which 2.35 GiB is free. Including non-PyTorch memory, this process has 8.40 GiB memory in use. Of the allocated memory 5.15 GiB is allocated by PyTorch, and 3.07 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+
+2025-09-01 17:59:24,103 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-01 17:59:24,103 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-01 17:59:24,104 - INFO - initial model: max A_j index: 255
+2025-09-01 17:59:49,900 - INFO - final model: max A_j index: 255, max A_j value: 0.024772340431809425, alpha_teacher: tensor([0.6004], device='cuda:3')
+2025-09-01 17:59:49,902 - INFO - largest 10 A_j values: tensor([0.0248, 0.0239, 0.0219, 0.0211, 0.0195, 0.0191, 0.0191, 0.0187, 0.0185,
+        0.0182], device='cuda:3', grad_fn=<TopkBackward0>)
+2025-09-01 17:59:49,903 - INFO - number of values below 0.01: 223
+2025-09-01 17:59:49,903 - INFO - number of values between 0.01 and 0.1: 52
+2025-09-01 17:59:49,903 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-01 17:59:49,904 - INFO - number of values larger than 0.3: 0
+2025-09-01 17:59:49,904 - INFO - train loss is 0.0
+2025-09-01 17:59:49,904 - INFO - impulse response loss is 0.26575836539268494
+2025-09-01 17:59:49,918 - INFO - Process 3: Completed experiment - student_dim=275, seed=8109
+2025-09-01 17:59:49,919 - INFO - Process 3 completed on GPU 3
+2025-09-01 17:59:50,486 - INFO - Process 3 completed
+2025-09-01 18:00:54,832 - INFO - delta_l_infinity: tensor([1.2002], device='cuda:0') for w=tensor([ 1.2393, -0.1649, -0.5015, -0.6680], device='cuda:0')
+2025-09-01 18:00:54,833 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-01 18:00:54,833 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-01 18:00:54,834 - INFO - initial model: max A_j index: 145
+2025-09-01 18:01:23,633 - INFO - final model: max A_j index: 145, max A_j value: 0.026407714933156967, alpha_teacher: tensor([0.4500], device='cuda:0')
+2025-09-01 18:01:23,635 - INFO - largest 10 A_j values: tensor([0.0264, 0.0254, 0.0247, 0.0241, 0.0236, 0.0228, 0.0228, 0.0188, 0.0185,
+        0.0182], device='cuda:0', grad_fn=<TopkBackward0>)
+2025-09-01 18:01:23,636 - INFO - number of values below 0.01: 118
+2025-09-01 18:01:23,636 - INFO - number of values between 0.01 and 0.1: 32
+2025-09-01 18:01:23,636 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-01 18:01:23,637 - INFO - number of values larger than 0.3: 0
+2025-09-01 18:01:23,637 - INFO - train loss is 2.418065747633591e-13
+2025-09-01 18:01:23,637 - INFO - impulse response loss is 0.05182357504963875
+2025-09-01 18:01:23,648 - INFO - Process 0: Completed experiment - student_dim=150, seed=9069
+2025-09-01 18:07:04,714 - INFO - delta_l_infinity: tensor([1.2002], device='cuda:0') for w=tensor([ 1.2393, -0.1649, -0.5015, -0.6680], device='cuda:0')
+2025-09-01 18:07:04,715 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-01 18:07:04,715 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-01 18:07:04,716 - INFO - initial model: max A_j index: 145
+2025-09-01 18:07:32,067 - INFO - final model: max A_j index: 145, max A_j value: 0.027660436928272247, alpha_teacher: tensor([0.4500], device='cuda:0')
+2025-09-01 18:07:32,069 - INFO - largest 10 A_j values: tensor([0.0277, 0.0247, 0.0240, 0.0234, 0.0229, 0.0221, 0.0221, 0.0189, 0.0187,
+        0.0181], device='cuda:0', grad_fn=<TopkBackward0>)
+2025-09-01 18:07:32,070 - INFO - number of values below 0.01: 140
+2025-09-01 18:07:32,070 - INFO - number of values between 0.01 and 0.1: 35
+2025-09-01 18:07:32,070 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-01 18:07:32,071 - INFO - number of values larger than 0.3: 0
+2025-09-01 18:07:32,071 - INFO - train loss is 3.731877950485796e-05
+2025-09-01 18:07:32,071 - INFO - impulse response loss is 0.048209864646196365
+2025-09-01 18:07:32,083 - INFO - Process 0: Completed experiment - student_dim=175, seed=9069
+2025-09-01 18:07:59,339 - INFO - delta_l_infinity: tensor([1.4368], device='cuda:1') for w=tensor([ 0.5352, -0.8111, -2.0641,  0.5798], device='cuda:1')
+2025-09-01 18:07:59,340 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-01 18:07:59,340 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-01 18:07:59,341 - INFO - initial model: max A_j index: 3
+2025-09-01 18:08:10,008 - INFO - final model: max A_j index: 3, max A_j value: 0.02201138623058796, alpha_teacher: tensor([0.6663], device='cuda:1')
+2025-09-01 18:08:10,009 - INFO - largest 10 A_j values: tensor([0.0220, 0.0180, 0.0180, 0.0155, 0.0155, 0.0143, 0.0132, 0.0131, 0.0131,
+        0.0127], device='cuda:1', grad_fn=<TopkBackward0>)
+2025-09-01 18:08:10,009 - INFO - number of values below 0.01: 210
+2025-09-01 18:08:10,009 - INFO - number of values between 0.01 and 0.1: 15
+2025-09-01 18:08:10,009 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-01 18:08:10,009 - INFO - number of values larger than 0.3: 0
+2025-09-01 18:08:10,009 - INFO - train loss is 1.2581722330651246e-07
+2025-09-01 18:08:10,009 - INFO - impulse response loss is 2.7552971839904785
+2025-09-01 18:08:10,015 - INFO - Process 1: Completed experiment - student_dim=225, seed=6445
+2025-09-01 18:08:14,902 - ERROR - G&C failed for student_dim=250, seed=6445: CUDA out of memory. Tried to allocate 3.73 GiB. GPU 1 has a total capacity of 10.75 GiB of which 3.09 GiB is free. Including non-PyTorch memory, this process has 7.66 GiB memory in use. Of the allocated memory 4.69 GiB is allocated by PyTorch, and 2.79 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2025-09-01 18:08:14,910 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 103, in process_worker
+    mean_prior, gnc_gen_loss = train_gnc(seed, student_dim, device, alpha_teacher, w_sequences,
+                               ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        args_dict['eps_train'], args_dict['gnc_num_samples'],
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        batch_size
+                                        ^^^^^^^^^^
+                                        )
+                                        ^
+  File "/home/fodl/noacaspi/ssm_generalize/training.py", line 156, in train_gnc
+    train_losses, gen_losses = get_losses(students, w, alpha_teacher)
+                               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fodl/noacaspi/ssm_generalize/losses.py", line 45, in get_losses
+    A_pows = torch.cumprod(X, dim=2)
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 3.73 GiB. GPU 1 has a total capacity of 10.75 GiB of which 3.09 GiB is free. Including non-PyTorch memory, this process has 7.66 GiB memory in use. Of the allocated memory 4.69 GiB is allocated by PyTorch, and 2.79 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+
+2025-09-01 18:08:14,911 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-01 18:08:14,911 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-01 18:08:14,912 - INFO - initial model: max A_j index: 213
+2025-09-01 18:08:48,534 - INFO - final model: max A_j index: 213, max A_j value: 0.02849380113184452, alpha_teacher: tensor([0.6663], device='cuda:1')
+2025-09-01 18:08:48,536 - INFO - largest 10 A_j values: tensor([0.0285, 0.0228, 0.0188, 0.0188, 0.0172, 0.0164, 0.0164, 0.0152, 0.0141,
+        0.0140], device='cuda:1', grad_fn=<TopkBackward0>)
+2025-09-01 18:08:48,537 - INFO - number of values below 0.01: 230
+2025-09-01 18:08:48,537 - INFO - number of values between 0.01 and 0.1: 20
+2025-09-01 18:08:48,538 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-01 18:08:48,538 - INFO - number of values larger than 0.3: 0
+2025-09-01 18:08:48,538 - INFO - train loss is 0.0
+2025-09-01 18:08:48,538 - INFO - impulse response loss is 2.729248523712158
+2025-09-01 18:08:48,559 - INFO - Process 1: Completed experiment - student_dim=250, seed=6445
+2025-09-01 18:08:53,931 - ERROR - G&C failed for student_dim=275, seed=6445: CUDA out of memory. Tried to allocate 4.10 GiB. GPU 1 has a total capacity of 10.75 GiB of which 2.35 GiB is free. Including non-PyTorch memory, this process has 8.40 GiB memory in use. Of the allocated memory 5.15 GiB is allocated by PyTorch, and 3.07 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2025-09-01 18:08:53,934 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 103, in process_worker
+    mean_prior, gnc_gen_loss = train_gnc(seed, student_dim, device, alpha_teacher, w_sequences,
+                               ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        args_dict['eps_train'], args_dict['gnc_num_samples'],
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        batch_size
+                                        ^^^^^^^^^^
+                                        )
+                                        ^
+  File "/home/fodl/noacaspi/ssm_generalize/training.py", line 156, in train_gnc
+    train_losses, gen_losses = get_losses(students, w, alpha_teacher)
+                               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fodl/noacaspi/ssm_generalize/losses.py", line 45, in get_losses
+    A_pows = torch.cumprod(X, dim=2)
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 4.10 GiB. GPU 1 has a total capacity of 10.75 GiB of which 2.35 GiB is free. Including non-PyTorch memory, this process has 8.40 GiB memory in use. Of the allocated memory 5.15 GiB is allocated by PyTorch, and 3.07 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+
+2025-09-01 18:08:53,934 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-01 18:08:53,935 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-01 18:08:53,936 - INFO - initial model: max A_j index: 213
+2025-09-01 18:09:09,414 - INFO - final model: max A_j index: 213, max A_j value: 0.028781341388821602, alpha_teacher: tensor([0.6663], device='cuda:1')
+2025-09-01 18:09:09,414 - INFO - largest 10 A_j values: tensor([0.0288, 0.0266, 0.0231, 0.0191, 0.0191, 0.0166, 0.0166, 0.0156, 0.0154,
+        0.0142], device='cuda:1', grad_fn=<TopkBackward0>)
+2025-09-01 18:09:09,415 - INFO - number of values below 0.01: 252
+2025-09-01 18:09:09,415 - INFO - number of values between 0.01 and 0.1: 23
+2025-09-01 18:09:09,415 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-01 18:09:09,415 - INFO - number of values larger than 0.3: 0
+2025-09-01 18:09:09,415 - INFO - train loss is 1.0746958878371515e-13
+2025-09-01 18:09:09,415 - INFO - impulse response loss is 2.721066474914551
+2025-09-01 18:09:09,434 - INFO - Process 1: Completed experiment - student_dim=275, seed=6445
+2025-09-01 18:09:09,435 - INFO - Process 1 completed on GPU 1
+2025-09-01 18:09:15,509 - INFO - Process 1 completed
+2025-09-01 18:14:01,064 - INFO - delta_l_infinity: tensor([1.2002], device='cuda:0') for w=tensor([ 1.2393, -0.1649, -0.5015, -0.6680], device='cuda:0')
+2025-09-01 18:14:01,066 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-01 18:14:01,066 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-01 18:14:01,067 - INFO - initial model: max A_j index: 198
+2025-09-01 18:14:25,311 - INFO - final model: max A_j index: 198, max A_j value: 0.029321806505322456, alpha_teacher: tensor([0.4500], device='cuda:0')
+2025-09-01 18:14:25,313 - INFO - largest 10 A_j values: tensor([0.0293, 0.0274, 0.0244, 0.0237, 0.0231, 0.0226, 0.0218, 0.0218, 0.0186,
+        0.0184], device='cuda:0', grad_fn=<TopkBackward0>)
+2025-09-01 18:14:25,314 - INFO - number of values below 0.01: 160
+2025-09-01 18:14:25,314 - INFO - number of values between 0.01 and 0.1: 40
+2025-09-01 18:14:25,314 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-01 18:14:25,315 - INFO - number of values larger than 0.3: 0
+2025-09-01 18:14:25,315 - INFO - train loss is 9.883719030767679e-05
+2025-09-01 18:14:25,315 - INFO - impulse response loss is 0.05021950602531433
+2025-09-01 18:14:25,328 - INFO - Process 0: Completed experiment - student_dim=200, seed=9069
+2025-09-01 18:21:40,711 - INFO - delta_l_infinity: tensor([1.2002], device='cuda:0') for w=tensor([ 1.2393, -0.1649, -0.5015, -0.6680], device='cuda:0')
+2025-09-01 18:21:40,713 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-01 18:21:40,713 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-01 18:21:40,714 - INFO - initial model: max A_j index: 199
+2025-09-01 18:22:10,295 - INFO - final model: max A_j index: 199, max A_j value: 0.03739425912499428, alpha_teacher: tensor([0.4500], device='cuda:0')
+2025-09-01 18:22:10,297 - INFO - largest 10 A_j values: tensor([0.0374, 0.0266, 0.0257, 0.0236, 0.0229, 0.0224, 0.0222, 0.0219, 0.0213,
+        0.0211], device='cuda:0', grad_fn=<TopkBackward0>)
+2025-09-01 18:22:10,298 - INFO - number of values below 0.01: 177
+2025-09-01 18:22:10,298 - INFO - number of values between 0.01 and 0.1: 48
+2025-09-01 18:22:10,298 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-01 18:22:10,299 - INFO - number of values larger than 0.3: 0
+2025-09-01 18:22:10,299 - INFO - train loss is 3.377298440909726e-13
+2025-09-01 18:22:10,299 - INFO - impulse response loss is 0.04823889210820198
+2025-09-01 18:22:10,311 - INFO - Process 0: Completed experiment - student_dim=225, seed=9069
+2025-09-01 18:22:10,319 - INFO - Process 0: Starting experiment - student_dim=250, seed=9069
+2025-09-01 18:22:15,076 - ERROR - G&C failed for student_dim=250, seed=9069: CUDA out of memory. Tried to allocate 3.73 GiB. GPU 0 has a total capacity of 10.75 GiB of which 3.09 GiB is free. Including non-PyTorch memory, this process has 7.66 GiB memory in use. Of the allocated memory 4.69 GiB is allocated by PyTorch, and 2.79 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2025-09-01 18:22:15,081 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 103, in process_worker
+    mean_prior, gnc_gen_loss = train_gnc(seed, student_dim, device, alpha_teacher, w_sequences,
+                               ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        args_dict['eps_train'], args_dict['gnc_num_samples'],
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        batch_size
+                                        ^^^^^^^^^^
+                                        )
+                                        ^
+  File "/home/fodl/noacaspi/ssm_generalize/training.py", line 156, in train_gnc
+    train_losses, gen_losses = get_losses(students, w, alpha_teacher)
+                               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fodl/noacaspi/ssm_generalize/losses.py", line 45, in get_losses
+    A_pows = torch.cumprod(X, dim=2)
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 3.73 GiB. GPU 0 has a total capacity of 10.75 GiB of which 3.09 GiB is free. Including non-PyTorch memory, this process has 7.66 GiB memory in use. Of the allocated memory 4.69 GiB is allocated by PyTorch, and 2.79 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+
+2025-09-01 18:22:15,081 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-01 18:22:15,082 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-01 18:22:15,083 - INFO - initial model: max A_j index: 199
+2025-09-01 18:22:44,476 - INFO - final model: max A_j index: 199, max A_j value: 0.037383630871772766, alpha_teacher: tensor([0.4500], device='cuda:0')
+2025-09-01 18:22:44,478 - INFO - largest 10 A_j values: tensor([0.0374, 0.0266, 0.0256, 0.0236, 0.0229, 0.0223, 0.0219, 0.0211, 0.0211,
+        0.0197], device='cuda:0', grad_fn=<TopkBackward0>)
+2025-09-01 18:22:44,479 - INFO - number of values below 0.01: 200
+2025-09-01 18:22:44,479 - INFO - number of values between 0.01 and 0.1: 50
+2025-09-01 18:22:44,480 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-01 18:22:44,480 - INFO - number of values larger than 0.3: 0
+2025-09-01 18:22:44,480 - INFO - train loss is 2.4829038380858037e-08
+2025-09-01 18:22:44,480 - INFO - impulse response loss is 0.047677915543317795
+2025-09-01 18:22:44,492 - INFO - Process 0: Completed experiment - student_dim=250, seed=9069
+2025-09-01 18:22:49,807 - ERROR - G&C failed for student_dim=275, seed=9069: CUDA out of memory. Tried to allocate 4.10 GiB. GPU 0 has a total capacity of 10.75 GiB of which 2.35 GiB is free. Including non-PyTorch memory, this process has 8.40 GiB memory in use. Of the allocated memory 5.15 GiB is allocated by PyTorch, and 3.07 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2025-09-01 18:22:49,811 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 103, in process_worker
+    mean_prior, gnc_gen_loss = train_gnc(seed, student_dim, device, alpha_teacher, w_sequences,
+                               ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        args_dict['eps_train'], args_dict['gnc_num_samples'],
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        batch_size
+                                        ^^^^^^^^^^
+                                        )
+                                        ^
+  File "/home/fodl/noacaspi/ssm_generalize/training.py", line 156, in train_gnc
+    train_losses, gen_losses = get_losses(students, w, alpha_teacher)
+                               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fodl/noacaspi/ssm_generalize/losses.py", line 45, in get_losses
+    A_pows = torch.cumprod(X, dim=2)
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 4.10 GiB. GPU 0 has a total capacity of 10.75 GiB of which 2.35 GiB is free. Including non-PyTorch memory, this process has 8.40 GiB memory in use. Of the allocated memory 5.15 GiB is allocated by PyTorch, and 3.07 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+
+2025-09-01 18:22:49,811 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-01 18:22:49,811 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-01 18:22:49,813 - INFO - initial model: max A_j index: 199
+2025-09-01 18:23:19,341 - INFO - final model: max A_j index: 199, max A_j value: 0.03698902949690819, alpha_teacher: tensor([0.4500], device='cuda:0')
+2025-09-01 18:23:19,343 - INFO - largest 10 A_j values: tensor([0.0370, 0.0262, 0.0253, 0.0232, 0.0225, 0.0220, 0.0218, 0.0215, 0.0209,
+        0.0207], device='cuda:0', grad_fn=<TopkBackward0>)
+2025-09-01 18:23:19,343 - INFO - number of values below 0.01: 221
+2025-09-01 18:23:19,344 - INFO - number of values between 0.01 and 0.1: 54
+2025-09-01 18:23:19,344 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-01 18:23:19,345 - INFO - number of values larger than 0.3: 0
+2025-09-01 18:23:19,345 - INFO - train loss is 0.0
+2025-09-01 18:23:19,345 - INFO - impulse response loss is 0.04672902449965477
+2025-09-01 18:23:19,359 - INFO - Process 0: Completed experiment - student_dim=275, seed=9069
+2025-09-01 18:23:19,360 - INFO - Process 0 completed on GPU 0
+2025-09-01 18:23:19,544 - INFO - Process 0 completed
+2025-09-01 18:23:20,551 - ERROR - Failed to save checkpoint: division by zero
+2025-09-01 18:23:20,551 - INFO - Final checkpoint saved
+2025-09-01 18:23:20,572 - INFO - Results saved to results__seq_len=5_seeds=8891-9069-6445-5286-8109_time=20250901_172900.csv
+2025-09-01 18:25:48,015 - INFO - Figures saved to plot__seq_len=5_seeds=8891-9069-6445-5286-8109_time=20250901_172900
+2025-09-01 18:25:48,018 - INFO - Finished experiments, results saved to results__seq_len=5_seeds=8891-9069-6445-5286-8109_time=20250901_172900.csv, figures saved to plot__seq_len=5_seeds=8891-9069-6445-5286-8109_time=20250901_172900
