@@ -64,13 +64,22 @@ def process_worker(process_id, gpu_id, seed_list, args_dict, student_dims,
             # Generate multiple sequences
             num_sequences = args_dict.get('num_sequences', 1)
             w_sequences = []
-            for seq_idx in range(num_sequences):
+            if num_sequences == 1:
                 w = generate_w(args_dict['sequence_length'], device)
                 if args_dict['w_that_minimizes_loss']:
                     w = w_that_minimizes_loss(w, alpha_teacher, args_dict['sequence_length'])
-                if args_dict['w2_that_minimizes_loss']:
-                    w = w2_that_minimizes_loss(w_sequences, w, alpha_teacher, args_dict['sequence_length'])
                 w_sequences.append(w)
+            elif num_sequences == 2:
+                w1 = generate_w(args_dict['sequence_length'], device)
+                w_sequences.append(w1)
+                w2 = generate_w(args_dict['sequence_length'], device)
+                if args_dict['w2_that_minimizes_loss']:
+                    w2 = w2_that_minimizes_loss(w_sequences, w2, alpha_teacher, args_dict['sequence_length'])
+                w_sequences.append(w2)
+            else:
+                for seq_idx in range(num_sequences):
+                    w = generate_w(args_dict['sequence_length'], device)
+                    w_sequences.append(w)
             logging.info(f"for seed {seed}, alpha_teacher={alpha_teacher}, generated {num_sequences} sequences: {w_sequences}")
 
         for student_dim_idx, student_dim in enumerate(student_dims):
