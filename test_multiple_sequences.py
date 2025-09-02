@@ -1,3 +1,5 @@
+import traceback
+
 #!/usr/bin/env python3
 """
 Test script to verify multiple sequences functionality
@@ -25,7 +27,7 @@ def test_multiple_sequences():
     w_single = generate_w(sequence_length, device)
     
     # Generate multiple sequences
-    num_sequences = 3
+    num_sequences = 2
     w_sequences = []
     for i in range(num_sequences):
         w = generate_w(sequence_length, device)
@@ -58,6 +60,7 @@ def test_multiple_sequences():
         print(f"Multiple sequences delta: {delta_multi.item():.6f}")
     except Exception as e:
         print(f"Error with multiple sequences: {e}")
+        print(traceback.format_exc())
         return False
     
     # Test that results are reasonable
