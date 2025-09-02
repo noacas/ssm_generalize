@@ -249,8 +249,10 @@ def _gnc_theoretical_loss_for_two_w(alpha_teacher, w_sequences, student_dim, dev
 
 
     #  delta_l_infinity = - 2 \;-\;\alpha^{2} \;+\;\alpha^{4} + \sum_{m=3}^{k-1}\alpha^{2m}} - asymptotic_conditional_expectation
-    delta_l_infinity = - 2 + alpha_teacher**2 - alpha_teacher**4 + torch.sum(alpha_teacher**(2 * torch.arange(3, sequence_length - 1))) - asymptotic_conditional_expectation
-    
+    idx = torch.arange(3, sequence_length - 1, device=alpha_teacher.device, dtype=torch.long)
+    sum_term = torch.sum(alpha_teacher ** (2 * idx)) if idx.numel() > 0 else torch.zeros((), device=alpha_teacher.device, dtype=alpha_teacher.dtype)
+    delta_l_infinity = -2 + alpha_teacher**2 - alpha_teacher**4 + sum_term - asymptotic_conditional_expectation
+
     return conditional_expectation, asymptotic_conditional_expectation, delta_l_infinity
 
 
