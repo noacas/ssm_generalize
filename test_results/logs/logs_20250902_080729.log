@@ -1,0 +1,451 @@
+2025-09-02 08:07:29,182 - INFO - Args: Namespace(num_seeds=5, seeds=[8891, 9069, 6445, 5286, 8109], sequence_length=5, num_sequences=1, student_dims=[150, 175, 200, 225, 250, 275], eps_train=1e-05, w_that_minimizes_loss=False, w2_that_minimizes_loss=False, gnc=True, gnc_num_samples=100000000, gnc_batch_size=100000, gd=True, gd_lr=0.001, gd_epochs=10000, gd_init_scale=0.01, gd_optimizer='adam', gd_scheduler=None, gd_scheduler_params='{}', exp_gamma=None, step_size=None, step_gamma=None, cosine_eta_min=None, gd_init_type='regular', config=None, results_dir=PosixPath('test_results/results'), figures_dir=PosixPath('test_results/figures'), checkpoint_dir=PosixPath('test_results/checkpoints'), checkpoint_interval=3600, resume_from_checkpoint=False, log_dir=PosixPath('test_results/logs'), max_gpus=4, log_file=PosixPath('test_results/logs/logs_20250902_080729.log'))
+2025-09-02 08:07:29,183 - INFO - Using custom seeds: [8891, 9069, 6445, 5286, 8109]
+2025-09-02 08:07:29,380 - INFO - Using GPUs: [0, 1, 2, 3]
+2025-09-02 08:07:29,380 - INFO - Starting 4 processes on 4 GPUs
+2025-09-02 08:07:33,704 - INFO - Process 0 started on GPU 0, processing seeds [8891, 9069]
+2025-09-02 08:07:34,049 - INFO - Process 1 started on GPU 1, processing seeds [6445]
+2025-09-02 08:07:34,095 - INFO - Process 3 started on GPU 3, processing seeds [8109]
+2025-09-02 08:07:34,146 - INFO - Process 2 started on GPU 2, processing seeds [5286]
+2025-09-02 08:07:34,274 - INFO - for seed 6445, alpha_teacher=tensor([0.6663], device='cuda:1'), generated 1 sequences: [tensor([ 0.5352, -0.8111, -2.0641,  0.5798], device='cuda:1')]
+2025-09-02 08:07:34,275 - INFO - Process 1: Starting experiment - student_dim=150, seed=6445
+2025-09-02 08:07:34,301 - INFO - for seed 8109, alpha_teacher=tensor([0.6004], device='cuda:3'), generated 1 sequences: [tensor([ 0.6679, -0.1628, -0.0712, -0.9972], device='cuda:3')]
+2025-09-02 08:07:34,301 - INFO - Process 3: Starting experiment - student_dim=150, seed=8109
+2025-09-02 08:07:34,304 - INFO - for seed 8891, alpha_teacher=tensor([0.5109], device='cuda:0'), generated 1 sequences: [tensor([ 1.0883, -0.9322, -0.7745,  0.6058], device='cuda:0')]
+2025-09-02 08:07:34,304 - INFO - Process 0: Starting experiment - student_dim=150, seed=8891
+2025-09-02 08:07:34,353 - INFO - for seed 5286, alpha_teacher=tensor([0.5585], device='cuda:2'), generated 1 sequences: [tensor([ 0.9220, -0.1977, -0.5640, -0.7297], device='cuda:2')]
+2025-09-02 08:07:34,354 - INFO - Process 2: Starting experiment - student_dim=150, seed=5286
+2025-09-02 08:12:26,671 - INFO - delta_l_infinity: tensor([0.9292], device='cuda:0') for w=tensor([ 1.0883, -0.9322, -0.7745,  0.6058], device='cuda:0')
+2025-09-02 08:12:26,672 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-02 08:12:26,672 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-02 08:12:31,006 - INFO - initial model: max A_j index: 49
+2025-09-02 08:12:48,440 - INFO - delta_l_infinity: tensor([1.3106], device='cuda:2') for w=tensor([ 0.9220, -0.1977, -0.5640, -0.7297], device='cuda:2')
+2025-09-02 08:12:48,441 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-02 08:12:48,441 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-02 08:12:50,375 - INFO - initial model: max A_j index: 101
+2025-09-02 08:12:58,813 - INFO - final model: max A_j index: 49, max A_j value: 0.025051819160580635, alpha_teacher: tensor([0.5109], device='cuda:0')
+2025-09-02 08:12:58,879 - INFO - largest 10 A_j values: tensor([0.0251, 0.0245, 0.0212, 0.0198, 0.0192, 0.0191, 0.0188, 0.0181, 0.0171,
+        0.0163], device='cuda:0', grad_fn=<TopkBackward0>)
+2025-09-02 08:12:58,879 - INFO - number of values below 0.01: 120
+2025-09-02 08:12:58,879 - INFO - number of values between 0.01 and 0.1: 30
+2025-09-02 08:12:58,879 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-02 08:12:58,879 - INFO - number of values larger than 0.3: 0
+2025-09-02 08:12:58,879 - INFO - train loss is 1.3244039198667679e-09
+2025-09-02 08:12:58,879 - INFO - impulse response loss is 0.15581291913986206
+2025-09-02 08:12:58,881 - INFO - Process 0: Completed experiment - student_dim=150, seed=8891
+2025-09-02 08:13:13,164 - INFO - delta_l_infinity: tensor([1.3567], device='cuda:3') for w=tensor([ 0.6679, -0.1628, -0.0712, -0.9972], device='cuda:3')
+2025-09-02 08:13:13,165 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-02 08:13:13,165 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-02 08:13:13,187 - INFO - final model: max A_j index: 101, max A_j value: 0.02807099185883999, alpha_teacher: tensor([0.5585], device='cuda:2')
+2025-09-02 08:13:13,239 - INFO - largest 10 A_j values: tensor([0.0281, 0.0257, 0.0241, 0.0229, 0.0202, 0.0195, 0.0194, 0.0193, 0.0192,
+        0.0191], device='cuda:2', grad_fn=<TopkBackward0>)
+2025-09-02 08:13:13,240 - INFO - number of values below 0.01: 114
+2025-09-02 08:13:13,240 - INFO - number of values between 0.01 and 0.1: 36
+2025-09-02 08:13:13,240 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-02 08:13:13,240 - INFO - number of values larger than 0.3: 0
+2025-09-02 08:13:13,240 - INFO - train loss is 0.0
+2025-09-02 08:13:13,240 - INFO - impulse response loss is 0.18730337917804718
+2025-09-02 08:13:13,241 - INFO - Process 2: Completed experiment - student_dim=150, seed=5286
+2025-09-02 08:13:15,032 - INFO - initial model: max A_j index: 144
+2025-09-02 08:13:44,030 - INFO - final model: max A_j index: 144, max A_j value: 0.029781727120280266, alpha_teacher: tensor([0.6004], device='cuda:3')
+2025-09-02 08:13:44,076 - INFO - largest 10 A_j values: tensor([0.0298, 0.0245, 0.0201, 0.0197, 0.0191, 0.0175, 0.0172, 0.0172, 0.0168,
+        0.0168], device='cuda:3', grad_fn=<TopkBackward0>)
+2025-09-02 08:13:44,076 - INFO - number of values below 0.01: 114
+2025-09-02 08:13:44,077 - INFO - number of values between 0.01 and 0.1: 36
+2025-09-02 08:13:44,077 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-02 08:13:44,077 - INFO - number of values larger than 0.3: 0
+2025-09-02 08:13:44,077 - INFO - train loss is 0.0
+2025-09-02 08:13:44,077 - INFO - impulse response loss is 0.2741050124168396
+2025-09-02 08:13:44,078 - INFO - Process 3: Completed experiment - student_dim=150, seed=8109
+2025-09-02 08:14:29,646 - INFO - delta_l_infinity: tensor([1.4368], device='cuda:1') for w=tensor([ 0.5352, -0.8111, -2.0641,  0.5798], device='cuda:1')
+2025-09-02 08:14:29,647 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-02 08:14:29,647 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-02 08:14:31,592 - INFO - initial model: max A_j index: 3
+2025-09-02 08:14:59,374 - INFO - final model: max A_j index: 3, max A_j value: 0.02025430276989937, alpha_teacher: tensor([0.6663], device='cuda:1')
+2025-09-02 08:14:59,438 - INFO - largest 10 A_j values: tensor([0.0203, 0.0162, 0.0138, 0.0126, 0.0114, 0.0113, 0.0103, 0.0100, 0.0094,
+        0.0093], device='cuda:1', grad_fn=<TopkBackward0>)
+2025-09-02 08:14:59,439 - INFO - number of values below 0.01: 143
+2025-09-02 08:14:59,439 - INFO - number of values between 0.01 and 0.1: 7
+2025-09-02 08:14:59,439 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-02 08:14:59,439 - INFO - number of values larger than 0.3: 0
+2025-09-02 08:14:59,439 - INFO - train loss is 6.417089082333405e-12
+2025-09-02 08:14:59,439 - INFO - impulse response loss is 2.7744808197021484
+2025-09-02 08:14:59,441 - INFO - Process 1: Completed experiment - student_dim=150, seed=6445
+2025-09-02 08:18:59,145 - INFO - delta_l_infinity: tensor([0.9292], device='cuda:0') for w=tensor([ 1.0883, -0.9322, -0.7745,  0.6058], device='cuda:0')
+2025-09-02 08:18:59,146 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-02 08:18:59,146 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-02 08:18:59,147 - INFO - initial model: max A_j index: 49
+2025-09-02 08:19:30,308 - INFO - final model: max A_j index: 49, max A_j value: 0.02416539564728737, alpha_teacher: tensor([0.5109], device='cuda:0')
+2025-09-02 08:19:30,311 - INFO - largest 10 A_j values: tensor([0.0242, 0.0236, 0.0209, 0.0204, 0.0195, 0.0193, 0.0189, 0.0186, 0.0183,
+        0.0182], device='cuda:0', grad_fn=<TopkBackward0>)
+2025-09-02 08:19:30,311 - INFO - number of values below 0.01: 139
+2025-09-02 08:19:30,311 - INFO - number of values between 0.01 and 0.1: 36
+2025-09-02 08:19:30,312 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-02 08:19:30,312 - INFO - number of values larger than 0.3: 0
+2025-09-02 08:19:30,312 - INFO - train loss is 3.2912561565012766e-13
+2025-09-02 08:19:30,312 - INFO - impulse response loss is 0.15292231738567352
+2025-09-02 08:19:30,317 - INFO - Process 0: Completed experiment - student_dim=175, seed=8891
+2025-09-02 08:19:31,247 - INFO - delta_l_infinity: tensor([1.3106], device='cuda:2') for w=tensor([ 0.9220, -0.1977, -0.5640, -0.7297], device='cuda:2')
+2025-09-02 08:19:31,247 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-02 08:19:31,248 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-02 08:19:31,248 - INFO - initial model: max A_j index: 101
+2025-09-02 08:20:03,697 - INFO - final model: max A_j index: 101, max A_j value: 0.027534466236829758, alpha_teacher: tensor([0.5585], device='cuda:2')
+2025-09-02 08:20:03,699 - INFO - largest 10 A_j values: tensor([0.0275, 0.0252, 0.0244, 0.0236, 0.0196, 0.0190, 0.0189, 0.0187, 0.0186,
+        0.0180], device='cuda:2', grad_fn=<TopkBackward0>)
+2025-09-02 08:20:03,700 - INFO - number of values below 0.01: 130
+2025-09-02 08:20:03,700 - INFO - number of values between 0.01 and 0.1: 45
+2025-09-02 08:20:03,701 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-02 08:20:03,701 - INFO - number of values larger than 0.3: 0
+2025-09-02 08:20:03,701 - INFO - train loss is 0.0
+2025-09-02 08:20:03,702 - INFO - impulse response loss is 0.1852879524230957
+2025-09-02 08:20:03,706 - INFO - Process 2: Completed experiment - student_dim=175, seed=5286
+2025-09-02 08:20:32,022 - INFO - delta_l_infinity: tensor([1.3567], device='cuda:3') for w=tensor([ 0.6679, -0.1628, -0.0712, -0.9972], device='cuda:3')
+2025-09-02 08:20:32,022 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-02 08:20:32,022 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-02 08:20:32,023 - INFO - initial model: max A_j index: 50
+2025-09-02 08:20:59,602 - INFO - final model: max A_j index: 50, max A_j value: 0.023951342329382896, alpha_teacher: tensor([0.6004], device='cuda:3')
+2025-09-02 08:20:59,604 - INFO - largest 10 A_j values: tensor([0.0240, 0.0219, 0.0211, 0.0195, 0.0191, 0.0187, 0.0186, 0.0169, 0.0166,
+        0.0166], device='cuda:3', grad_fn=<TopkBackward0>)
+2025-09-02 08:20:59,604 - INFO - number of values below 0.01: 138
+2025-09-02 08:20:59,604 - INFO - number of values between 0.01 and 0.1: 37
+2025-09-02 08:20:59,605 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-02 08:20:59,605 - INFO - number of values larger than 0.3: 0
+2025-09-02 08:20:59,605 - INFO - train loss is 0.0
+2025-09-02 08:20:59,605 - INFO - impulse response loss is 0.27343523502349854
+2025-09-02 08:20:59,609 - INFO - Process 3: Completed experiment - student_dim=175, seed=8109
+2025-09-02 08:22:44,503 - INFO - delta_l_infinity: tensor([1.4368], device='cuda:1') for w=tensor([ 0.5352, -0.8111, -2.0641,  0.5798], device='cuda:1')
+2025-09-02 08:22:44,504 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-02 08:22:44,504 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-02 08:22:44,504 - INFO - initial model: max A_j index: 3
+2025-09-02 08:23:12,736 - INFO - final model: max A_j index: 3, max A_j value: 0.02038223296403885, alpha_teacher: tensor([0.6663], device='cuda:1')
+2025-09-02 08:23:12,738 - INFO - largest 10 A_j values: tensor([0.0204, 0.0164, 0.0164, 0.0139, 0.0139, 0.0127, 0.0115, 0.0115, 0.0104,
+        0.0101], device='cuda:1', grad_fn=<TopkBackward0>)
+2025-09-02 08:23:12,739 - INFO - number of values below 0.01: 165
+2025-09-02 08:23:12,739 - INFO - number of values between 0.01 and 0.1: 10
+2025-09-02 08:23:12,739 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-02 08:23:12,740 - INFO - number of values larger than 0.3: 0
+2025-09-02 08:23:12,740 - INFO - train loss is 2.566835632933362e-13
+2025-09-02 08:23:12,740 - INFO - impulse response loss is 2.7665364742279053
+2025-09-02 08:23:12,744 - INFO - Process 1: Completed experiment - student_dim=175, seed=6445
+2025-09-02 08:26:23,631 - INFO - delta_l_infinity: tensor([0.9292], device='cuda:0') for w=tensor([ 1.0883, -0.9322, -0.7745,  0.6058], device='cuda:0')
+2025-09-02 08:26:23,632 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-02 08:26:23,632 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-02 08:26:23,633 - INFO - initial model: max A_j index: 199
+2025-09-02 08:26:37,870 - INFO - final model: max A_j index: 199, max A_j value: 0.025326645001769066, alpha_teacher: tensor([0.5109], device='cuda:0')
+2025-09-02 08:26:37,872 - INFO - largest 10 A_j values: tensor([0.0253, 0.0239, 0.0233, 0.0201, 0.0195, 0.0192, 0.0190, 0.0186, 0.0183,
+        0.0180], device='cuda:0', grad_fn=<TopkBackward0>)
+2025-09-02 08:26:37,873 - INFO - number of values below 0.01: 159
+2025-09-02 08:26:37,873 - INFO - number of values between 0.01 and 0.1: 41
+2025-09-02 08:26:37,873 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-02 08:26:37,874 - INFO - number of values larger than 0.3: 0
+2025-09-02 08:26:37,874 - INFO - train loss is 4.698463840213662e-13
+2025-09-02 08:26:37,874 - INFO - impulse response loss is 0.14939291775226593
+2025-09-02 08:26:37,878 - INFO - Process 0: Completed experiment - student_dim=200, seed=8891
+2025-09-02 08:27:16,357 - INFO - delta_l_infinity: tensor([1.3106], device='cuda:2') for w=tensor([ 0.9220, -0.1977, -0.5640, -0.7297], device='cuda:2')
+2025-09-02 08:27:16,357 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-02 08:27:16,357 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-02 08:27:16,358 - INFO - initial model: max A_j index: 101
+2025-09-02 08:27:48,996 - INFO - final model: max A_j index: 101, max A_j value: 0.02791036106646061, alpha_teacher: tensor([0.5585], device='cuda:2')
+2025-09-02 08:27:48,998 - INFO - largest 10 A_j values: tensor([0.0279, 0.0255, 0.0248, 0.0240, 0.0200, 0.0199, 0.0193, 0.0192, 0.0192,
+        0.0191], device='cuda:2', grad_fn=<TopkBackward0>)
+2025-09-02 08:27:48,999 - INFO - number of values below 0.01: 152
+2025-09-02 08:27:48,999 - INFO - number of values between 0.01 and 0.1: 48
+2025-09-02 08:27:49,000 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-02 08:27:49,000 - INFO - number of values larger than 0.3: 0
+2025-09-02 08:27:49,000 - INFO - train loss is 0.0
+2025-09-02 08:27:49,000 - INFO - impulse response loss is 0.18337871134281158
+2025-09-02 08:27:49,005 - INFO - Process 2: Completed experiment - student_dim=200, seed=5286
+2025-09-02 08:28:46,933 - INFO - delta_l_infinity: tensor([1.3567], device='cuda:3') for w=tensor([ 0.6679, -0.1628, -0.0712, -0.9972], device='cuda:3')
+2025-09-02 08:28:46,934 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-02 08:28:46,934 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-02 08:28:46,935 - INFO - initial model: max A_j index: 185
+2025-09-02 08:28:58,548 - INFO - final model: max A_j index: 185, max A_j value: 0.028302205726504326, alpha_teacher: tensor([0.6004], device='cuda:3')
+2025-09-02 08:28:58,549 - INFO - largest 10 A_j values: tensor([0.0283, 0.0243, 0.0222, 0.0215, 0.0198, 0.0195, 0.0191, 0.0189, 0.0172,
+        0.0170], device='cuda:3', grad_fn=<TopkBackward0>)
+2025-09-02 08:28:58,549 - INFO - number of values below 0.01: 159
+2025-09-02 08:28:58,549 - INFO - number of values between 0.01 and 0.1: 41
+2025-09-02 08:28:58,549 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-02 08:28:58,549 - INFO - number of values larger than 0.3: 0
+2025-09-02 08:28:58,549 - INFO - train loss is 0.0
+2025-09-02 08:28:58,550 - INFO - impulse response loss is 0.27014702558517456
+2025-09-02 08:28:58,553 - INFO - Process 3: Completed experiment - student_dim=200, seed=8109
+2025-09-02 08:32:56,155 - INFO - delta_l_infinity: tensor([1.4368], device='cuda:1') for w=tensor([ 0.5352, -0.8111, -2.0641,  0.5798], device='cuda:1')
+2025-09-02 08:32:56,156 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-02 08:32:56,156 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-02 08:32:56,157 - INFO - initial model: max A_j index: 3
+2025-09-02 08:33:28,006 - INFO - final model: max A_j index: 3, max A_j value: 0.021614130586385727, alpha_teacher: tensor([0.6663], device='cuda:1')
+2025-09-02 08:33:28,008 - INFO - largest 10 A_j values: tensor([0.0216, 0.0176, 0.0152, 0.0151, 0.0140, 0.0128, 0.0127, 0.0117, 0.0114,
+        0.0108], device='cuda:1', grad_fn=<TopkBackward0>)
+2025-09-02 08:33:28,009 - INFO - number of values below 0.01: 189
+2025-09-02 08:33:28,009 - INFO - number of values between 0.01 and 0.1: 11
+2025-09-02 08:33:28,010 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-02 08:33:28,010 - INFO - number of values larger than 0.3: 0
+2025-09-02 08:33:28,010 - INFO - train loss is 0.0
+2025-09-02 08:33:28,010 - INFO - impulse response loss is 2.7646305561065674
+2025-09-02 08:33:28,015 - INFO - Process 1: Completed experiment - student_dim=200, seed=6445
+2025-09-02 08:34:25,890 - INFO - delta_l_infinity: tensor([0.9292], device='cuda:0') for w=tensor([ 1.0883, -0.9322, -0.7745,  0.6058], device='cuda:0')
+2025-09-02 08:34:25,890 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-02 08:34:25,890 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-02 08:34:25,891 - INFO - initial model: max A_j index: 49
+2025-09-02 08:34:54,716 - INFO - final model: max A_j index: 49, max A_j value: 0.02413870021700859, alpha_teacher: tensor([0.5109], device='cuda:0')
+2025-09-02 08:34:54,718 - INFO - largest 10 A_j values: tensor([0.0241, 0.0235, 0.0209, 0.0203, 0.0198, 0.0195, 0.0193, 0.0189, 0.0186,
+        0.0183], device='cuda:0', grad_fn=<TopkBackward0>)
+2025-09-02 08:34:54,718 - INFO - number of values below 0.01: 181
+2025-09-02 08:34:54,719 - INFO - number of values between 0.01 and 0.1: 44
+2025-09-02 08:34:54,719 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-02 08:34:54,719 - INFO - number of values larger than 0.3: 0
+2025-09-02 08:34:54,719 - INFO - train loss is 0.00014336944150272757
+2025-09-02 08:34:54,720 - INFO - impulse response loss is 0.14131084084510803
+2025-09-02 08:34:54,724 - INFO - Process 0: Completed experiment - student_dim=225, seed=8891
+2025-09-02 08:35:56,331 - INFO - delta_l_infinity: tensor([1.3106], device='cuda:2') for w=tensor([ 0.9220, -0.1977, -0.5640, -0.7297], device='cuda:2')
+2025-09-02 08:35:56,331 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-02 08:35:56,331 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-02 08:35:56,332 - INFO - initial model: max A_j index: 101
+2025-09-02 08:36:26,377 - INFO - final model: max A_j index: 101, max A_j value: 0.026977473869919777, alpha_teacher: tensor([0.5585], device='cuda:2')
+2025-09-02 08:36:26,379 - INFO - largest 10 A_j values: tensor([0.0270, 0.0254, 0.0246, 0.0243, 0.0239, 0.0230, 0.0191, 0.0190, 0.0184,
+        0.0183], device='cuda:2', grad_fn=<TopkBackward0>)
+2025-09-02 08:36:26,379 - INFO - number of values below 0.01: 175
+2025-09-02 08:36:26,380 - INFO - number of values between 0.01 and 0.1: 50
+2025-09-02 08:36:26,380 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-02 08:36:26,380 - INFO - number of values larger than 0.3: 0
+2025-09-02 08:36:26,381 - INFO - train loss is 0.0
+2025-09-02 08:36:26,381 - INFO - impulse response loss is 0.18164819478988647
+2025-09-02 08:36:26,385 - INFO - Process 2: Completed experiment - student_dim=225, seed=5286
+2025-09-02 08:37:51,120 - INFO - delta_l_infinity: tensor([1.3567], device='cuda:3') for w=tensor([ 0.6679, -0.1628, -0.0712, -0.9972], device='cuda:3')
+2025-09-02 08:37:51,121 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-02 08:37:51,121 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-02 08:37:51,122 - INFO - initial model: max A_j index: 50
+2025-09-02 08:38:02,115 - INFO - final model: max A_j index: 50, max A_j value: 0.02405494637787342, alpha_teacher: tensor([0.6004], device='cuda:3')
+2025-09-02 08:38:02,116 - INFO - largest 10 A_j values: tensor([0.0241, 0.0220, 0.0212, 0.0196, 0.0192, 0.0188, 0.0187, 0.0183, 0.0170,
+        0.0167], device='cuda:3', grad_fn=<TopkBackward0>)
+2025-09-02 08:38:02,116 - INFO - number of values below 0.01: 181
+2025-09-02 08:38:02,116 - INFO - number of values between 0.01 and 0.1: 44
+2025-09-02 08:38:02,116 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-02 08:38:02,117 - INFO - number of values larger than 0.3: 0
+2025-09-02 08:38:02,117 - INFO - train loss is 0.0
+2025-09-02 08:38:02,117 - INFO - impulse response loss is 0.2697733938694
+2025-09-02 08:38:02,120 - INFO - Process 3: Completed experiment - student_dim=225, seed=8109
+2025-09-02 08:43:34,308 - INFO - delta_l_infinity: tensor([0.9292], device='cuda:0') for w=tensor([ 1.0883, -0.9322, -0.7745,  0.6058], device='cuda:0')
+2025-09-02 08:43:34,309 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-02 08:43:34,309 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-02 08:43:34,310 - INFO - initial model: max A_j index: 49
+2025-09-02 08:44:01,858 - INFO - final model: max A_j index: 49, max A_j value: 0.02428225800395012, alpha_teacher: tensor([0.5109], device='cuda:0')
+2025-09-02 08:44:01,860 - INFO - largest 10 A_j values: tensor([0.0243, 0.0237, 0.0210, 0.0205, 0.0199, 0.0196, 0.0194, 0.0190, 0.0188,
+        0.0184], device='cuda:0', grad_fn=<TopkBackward0>)
+2025-09-02 08:44:01,861 - INFO - number of values below 0.01: 200
+2025-09-02 08:44:01,861 - INFO - number of values between 0.01 and 0.1: 50
+2025-09-02 08:44:01,861 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-02 08:44:01,861 - INFO - number of values larger than 0.3: 0
+2025-09-02 08:44:01,862 - INFO - train loss is 1.3472943464876153e-05
+2025-09-02 08:44:01,862 - INFO - impulse response loss is 0.14450059831142426
+2025-09-02 08:44:01,866 - INFO - Process 0: Completed experiment - student_dim=250, seed=8891
+2025-09-02 08:44:47,411 - INFO - delta_l_infinity: tensor([1.4368], device='cuda:1') for w=tensor([ 0.5352, -0.8111, -2.0641,  0.5798], device='cuda:1')
+2025-09-02 08:44:47,412 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-02 08:44:47,412 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-02 08:44:47,413 - INFO - initial model: max A_j index: 3
+2025-09-02 08:45:20,258 - INFO - final model: max A_j index: 3, max A_j value: 0.02201138623058796, alpha_teacher: tensor([0.6663], device='cuda:1')
+2025-09-02 08:45:20,260 - INFO - largest 10 A_j values: tensor([0.0220, 0.0180, 0.0180, 0.0155, 0.0155, 0.0143, 0.0132, 0.0131, 0.0131,
+        0.0127], device='cuda:1', grad_fn=<TopkBackward0>)
+2025-09-02 08:45:20,261 - INFO - number of values below 0.01: 210
+2025-09-02 08:45:20,261 - INFO - number of values between 0.01 and 0.1: 15
+2025-09-02 08:45:20,261 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-02 08:45:20,262 - INFO - number of values larger than 0.3: 0
+2025-09-02 08:45:20,262 - INFO - train loss is 1.2581722330651246e-07
+2025-09-02 08:45:20,262 - INFO - impulse response loss is 2.7552971839904785
+2025-09-02 08:45:20,266 - INFO - Process 1: Completed experiment - student_dim=225, seed=6445
+2025-09-02 08:45:28,031 - INFO - delta_l_infinity: tensor([1.3106], device='cuda:2') for w=tensor([ 0.9220, -0.1977, -0.5640, -0.7297], device='cuda:2')
+2025-09-02 08:45:28,032 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-02 08:45:28,032 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-02 08:45:28,033 - INFO - initial model: max A_j index: 101
+2025-09-02 08:46:00,532 - INFO - final model: max A_j index: 101, max A_j value: 0.026733366772532463, alpha_teacher: tensor([0.5585], device='cuda:2')
+2025-09-02 08:46:00,534 - INFO - largest 10 A_j values: tensor([0.0267, 0.0251, 0.0248, 0.0244, 0.0240, 0.0236, 0.0228, 0.0188, 0.0187,
+        0.0182], device='cuda:2', grad_fn=<TopkBackward0>)
+2025-09-02 08:46:00,535 - INFO - number of values below 0.01: 194
+2025-09-02 08:46:00,535 - INFO - number of values between 0.01 and 0.1: 56
+2025-09-02 08:46:00,536 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-02 08:46:00,536 - INFO - number of values larger than 0.3: 0
+2025-09-02 08:46:00,536 - INFO - train loss is 0.0
+2025-09-02 08:46:00,536 - INFO - impulse response loss is 0.17955797910690308
+2025-09-02 08:46:00,541 - INFO - Process 2: Completed experiment - student_dim=250, seed=5286
+2025-09-02 08:47:53,816 - INFO - delta_l_infinity: tensor([1.3567], device='cuda:3') for w=tensor([ 0.6679, -0.1628, -0.0712, -0.9972], device='cuda:3')
+2025-09-02 08:47:53,817 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-02 08:47:53,817 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-02 08:47:53,818 - INFO - initial model: max A_j index: 50
+2025-09-02 08:48:07,109 - INFO - final model: max A_j index: 50, max A_j value: 0.023963557556271553, alpha_teacher: tensor([0.6004], device='cuda:3')
+2025-09-02 08:48:07,110 - INFO - largest 10 A_j values: tensor([0.0240, 0.0219, 0.0211, 0.0197, 0.0195, 0.0191, 0.0187, 0.0187, 0.0186,
+        0.0182], device='cuda:3', grad_fn=<TopkBackward0>)
+2025-09-02 08:48:07,110 - INFO - number of values below 0.01: 203
+2025-09-02 08:48:07,110 - INFO - number of values between 0.01 and 0.1: 47
+2025-09-02 08:48:07,110 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-02 08:48:07,111 - INFO - number of values larger than 0.3: 0
+2025-09-02 08:48:07,111 - INFO - train loss is 0.0
+2025-09-02 08:48:07,111 - INFO - impulse response loss is 0.2677493691444397
+2025-09-02 08:48:07,114 - INFO - Process 3: Completed experiment - student_dim=250, seed=8109
+2025-09-02 08:53:29,538 - INFO - delta_l_infinity: tensor([0.9292], device='cuda:0') for w=tensor([ 1.0883, -0.9322, -0.7745,  0.6058], device='cuda:0')
+2025-09-02 08:53:29,540 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-02 08:53:29,540 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-02 08:53:29,542 - INFO - initial model: max A_j index: 270
+2025-09-02 08:53:57,171 - INFO - final model: max A_j index: 270, max A_j value: 0.024203605949878693, alpha_teacher: tensor([0.5109], device='cuda:0')
+2025-09-02 08:53:57,174 - INFO - largest 10 A_j values: tensor([0.0242, 0.0242, 0.0236, 0.0209, 0.0203, 0.0198, 0.0197, 0.0195, 0.0193,
+        0.0193], device='cuda:0', grad_fn=<TopkBackward0>)
+2025-09-02 08:53:57,174 - INFO - number of values below 0.01: 221
+2025-09-02 08:53:57,174 - INFO - number of values between 0.01 and 0.1: 54
+2025-09-02 08:53:57,175 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-02 08:53:57,175 - INFO - number of values larger than 0.3: 0
+2025-09-02 08:53:57,175 - INFO - train loss is 8.039030552353665e-10
+2025-09-02 08:53:57,175 - INFO - impulse response loss is 0.14272204041481018
+2025-09-02 08:53:57,182 - INFO - Process 0: Completed experiment - student_dim=275, seed=8891
+2025-09-02 08:53:57,187 - INFO - for seed 9069, alpha_teacher=tensor([0.4500], device='cuda:0'), generated 1 sequences: [tensor([ 1.2393, -0.1649, -0.5015, -0.6680], device='cuda:0')]
+2025-09-02 08:55:52,260 - INFO - delta_l_infinity: tensor([1.3106], device='cuda:2') for w=tensor([ 0.9220, -0.1977, -0.5640, -0.7297], device='cuda:2')
+2025-09-02 08:55:52,261 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-02 08:55:52,261 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-02 08:55:52,262 - INFO - initial model: max A_j index: 101
+2025-09-02 08:56:22,456 - INFO - final model: max A_j index: 101, max A_j value: 0.026663707569241524, alpha_teacher: tensor([0.5585], device='cuda:2')
+2025-09-02 08:56:22,458 - INFO - largest 10 A_j values: tensor([0.0267, 0.0251, 0.0243, 0.0240, 0.0239, 0.0235, 0.0227, 0.0215, 0.0205,
+        0.0188], device='cuda:2', grad_fn=<TopkBackward0>)
+2025-09-02 08:56:22,459 - INFO - number of values below 0.01: 213
+2025-09-02 08:56:22,459 - INFO - number of values between 0.01 and 0.1: 62
+2025-09-02 08:56:22,459 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-02 08:56:22,460 - INFO - number of values larger than 0.3: 0
+2025-09-02 08:56:22,460 - INFO - train loss is 0.0
+2025-09-02 08:56:22,460 - INFO - impulse response loss is 0.17721253633499146
+2025-09-02 08:56:22,465 - INFO - Process 2: Completed experiment - student_dim=275, seed=5286
+2025-09-02 08:56:22,466 - INFO - Process 2 completed on GPU 2
+2025-09-02 08:56:29,517 - INFO - Process 2 completed
+2025-09-02 08:57:59,786 - INFO - delta_l_infinity: tensor([1.4368], device='cuda:1') for w=tensor([ 0.5352, -0.8111, -2.0641,  0.5798], device='cuda:1')
+2025-09-02 08:57:59,787 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-02 08:57:59,787 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-02 08:57:59,788 - INFO - initial model: max A_j index: 213
+2025-09-02 08:58:29,098 - INFO - final model: max A_j index: 213, max A_j value: 0.02849380113184452, alpha_teacher: tensor([0.6663], device='cuda:1')
+2025-09-02 08:58:29,099 - INFO - largest 10 A_j values: tensor([0.0285, 0.0228, 0.0188, 0.0188, 0.0172, 0.0164, 0.0164, 0.0152, 0.0141,
+        0.0140], device='cuda:1', grad_fn=<TopkBackward0>)
+2025-09-02 08:58:29,099 - INFO - number of values below 0.01: 230
+2025-09-02 08:58:29,100 - INFO - number of values between 0.01 and 0.1: 20
+2025-09-02 08:58:29,100 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-02 08:58:29,100 - INFO - number of values larger than 0.3: 0
+2025-09-02 08:58:29,100 - INFO - train loss is 0.0
+2025-09-02 08:58:29,100 - INFO - impulse response loss is 2.729248523712158
+2025-09-02 08:58:29,104 - INFO - Process 1: Completed experiment - student_dim=250, seed=6445
+2025-09-02 08:58:57,027 - INFO - delta_l_infinity: tensor([1.2002], device='cuda:0') for w=tensor([ 1.2393, -0.1649, -0.5015, -0.6680], device='cuda:0')
+2025-09-02 08:58:57,027 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-02 08:58:57,028 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-02 08:58:57,029 - INFO - initial model: max A_j index: 145
+2025-09-02 08:59:25,511 - INFO - final model: max A_j index: 145, max A_j value: 0.026407714933156967, alpha_teacher: tensor([0.4500], device='cuda:0')
+2025-09-02 08:59:25,514 - INFO - largest 10 A_j values: tensor([0.0264, 0.0254, 0.0247, 0.0241, 0.0236, 0.0228, 0.0228, 0.0188, 0.0185,
+        0.0182], device='cuda:0', grad_fn=<TopkBackward0>)
+2025-09-02 08:59:25,514 - INFO - number of values below 0.01: 118
+2025-09-02 08:59:25,515 - INFO - number of values between 0.01 and 0.1: 32
+2025-09-02 08:59:25,515 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-02 08:59:25,515 - INFO - number of values larger than 0.3: 0
+2025-09-02 08:59:25,515 - INFO - train loss is 2.418065747633591e-13
+2025-09-02 08:59:25,515 - INFO - impulse response loss is 0.05182357504963875
+2025-09-02 08:59:25,519 - INFO - Process 0: Completed experiment - student_dim=150, seed=9069
+2025-09-02 08:59:27,549 - INFO - delta_l_infinity: tensor([1.3567], device='cuda:3') for w=tensor([ 0.6679, -0.1628, -0.0712, -0.9972], device='cuda:3')
+2025-09-02 08:59:27,549 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-02 08:59:27,549 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-02 08:59:27,550 - INFO - initial model: max A_j index: 255
+2025-09-02 08:59:56,374 - INFO - final model: max A_j index: 255, max A_j value: 0.024772340431809425, alpha_teacher: tensor([0.6004], device='cuda:3')
+2025-09-02 08:59:56,377 - INFO - largest 10 A_j values: tensor([0.0248, 0.0239, 0.0219, 0.0211, 0.0195, 0.0191, 0.0191, 0.0187, 0.0185,
+        0.0182], device='cuda:3', grad_fn=<TopkBackward0>)
+2025-09-02 08:59:56,378 - INFO - number of values below 0.01: 223
+2025-09-02 08:59:56,378 - INFO - number of values between 0.01 and 0.1: 52
+2025-09-02 08:59:56,379 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-02 08:59:56,379 - INFO - number of values larger than 0.3: 0
+2025-09-02 08:59:56,379 - INFO - train loss is 0.0
+2025-09-02 08:59:56,379 - INFO - impulse response loss is 0.26575836539268494
+2025-09-02 08:59:56,384 - INFO - Process 3: Completed experiment - student_dim=275, seed=8109
+2025-09-02 08:59:56,386 - INFO - Process 3 completed on GPU 3
+2025-09-02 09:00:02,526 - INFO - Process 3 completed
+2025-09-02 09:05:14,716 - INFO - delta_l_infinity: tensor([1.2002], device='cuda:0') for w=tensor([ 1.2393, -0.1649, -0.5015, -0.6680], device='cuda:0')
+2025-09-02 09:05:14,718 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-02 09:05:14,718 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-02 09:05:14,719 - INFO - initial model: max A_j index: 145
+2025-09-02 09:05:42,347 - INFO - final model: max A_j index: 145, max A_j value: 0.027660436928272247, alpha_teacher: tensor([0.4500], device='cuda:0')
+2025-09-02 09:05:42,349 - INFO - largest 10 A_j values: tensor([0.0277, 0.0247, 0.0240, 0.0234, 0.0229, 0.0221, 0.0221, 0.0189, 0.0187,
+        0.0181], device='cuda:0', grad_fn=<TopkBackward0>)
+2025-09-02 09:05:42,350 - INFO - number of values below 0.01: 140
+2025-09-02 09:05:42,350 - INFO - number of values between 0.01 and 0.1: 35
+2025-09-02 09:05:42,351 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-02 09:05:42,351 - INFO - number of values larger than 0.3: 0
+2025-09-02 09:05:42,351 - INFO - train loss is 3.731877950485796e-05
+2025-09-02 09:05:42,351 - INFO - impulse response loss is 0.048209864646196365
+2025-09-02 09:05:42,355 - INFO - Process 0: Completed experiment - student_dim=175, seed=9069
+2025-09-02 09:12:20,221 - INFO - delta_l_infinity: tensor([1.2002], device='cuda:0') for w=tensor([ 1.2393, -0.1649, -0.5015, -0.6680], device='cuda:0')
+2025-09-02 09:12:20,222 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-02 09:12:20,222 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-02 09:12:20,223 - INFO - initial model: max A_j index: 198
+2025-09-02 09:12:41,909 - INFO - final model: max A_j index: 198, max A_j value: 0.029321806505322456, alpha_teacher: tensor([0.4500], device='cuda:0')
+2025-09-02 09:12:41,910 - INFO - largest 10 A_j values: tensor([0.0293, 0.0274, 0.0244, 0.0237, 0.0231, 0.0226, 0.0218, 0.0218, 0.0186,
+        0.0184], device='cuda:0', grad_fn=<TopkBackward0>)
+2025-09-02 09:12:41,911 - INFO - number of values below 0.01: 160
+2025-09-02 09:12:41,911 - INFO - number of values between 0.01 and 0.1: 40
+2025-09-02 09:12:41,911 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-02 09:12:41,912 - INFO - number of values larger than 0.3: 0
+2025-09-02 09:12:41,912 - INFO - train loss is 9.883719030767679e-05
+2025-09-02 09:12:41,912 - INFO - impulse response loss is 0.05021950602531433
+2025-09-02 09:12:41,916 - INFO - Process 0: Completed experiment - student_dim=200, seed=9069
+2025-09-02 09:14:23,396 - INFO - delta_l_infinity: tensor([1.4368], device='cuda:1') for w=tensor([ 0.5352, -0.8111, -2.0641,  0.5798], device='cuda:1')
+2025-09-02 09:14:23,398 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-02 09:14:23,398 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-02 09:14:23,398 - INFO - initial model: max A_j index: 213
+2025-09-02 09:14:54,596 - INFO - final model: max A_j index: 213, max A_j value: 0.028781341388821602, alpha_teacher: tensor([0.6663], device='cuda:1')
+2025-09-02 09:14:54,599 - INFO - largest 10 A_j values: tensor([0.0288, 0.0266, 0.0231, 0.0191, 0.0191, 0.0166, 0.0166, 0.0156, 0.0154,
+        0.0142], device='cuda:1', grad_fn=<TopkBackward0>)
+2025-09-02 09:14:54,599 - INFO - number of values below 0.01: 252
+2025-09-02 09:14:54,600 - INFO - number of values between 0.01 and 0.1: 23
+2025-09-02 09:14:54,600 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-02 09:14:54,600 - INFO - number of values larger than 0.3: 0
+2025-09-02 09:14:54,600 - INFO - train loss is 1.0746958878371515e-13
+2025-09-02 09:14:54,601 - INFO - impulse response loss is 2.721066474914551
+2025-09-02 09:14:54,606 - INFO - Process 1: Completed experiment - student_dim=275, seed=6445
+2025-09-02 09:14:54,607 - INFO - Process 1 completed on GPU 1
+2025-09-02 09:14:55,559 - INFO - Process 1 completed
+2025-09-02 09:20:08,297 - INFO - delta_l_infinity: tensor([1.2002], device='cuda:0') for w=tensor([ 1.2393, -0.1649, -0.5015, -0.6680], device='cuda:0')
+2025-09-02 09:20:08,298 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-02 09:20:08,298 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-02 09:20:08,299 - INFO - initial model: max A_j index: 199
+2025-09-02 09:20:24,108 - INFO - final model: max A_j index: 199, max A_j value: 0.03739425912499428, alpha_teacher: tensor([0.4500], device='cuda:0')
+2025-09-02 09:20:24,109 - INFO - largest 10 A_j values: tensor([0.0374, 0.0266, 0.0257, 0.0236, 0.0229, 0.0224, 0.0222, 0.0219, 0.0213,
+        0.0211], device='cuda:0', grad_fn=<TopkBackward0>)
+2025-09-02 09:20:24,109 - INFO - number of values below 0.01: 177
+2025-09-02 09:20:24,110 - INFO - number of values between 0.01 and 0.1: 48
+2025-09-02 09:20:24,110 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-02 09:20:24,110 - INFO - number of values larger than 0.3: 0
+2025-09-02 09:20:24,110 - INFO - train loss is 3.377298440909726e-13
+2025-09-02 09:20:24,110 - INFO - impulse response loss is 0.04823889210820198
+2025-09-02 09:20:24,115 - INFO - Process 0: Completed experiment - student_dim=225, seed=9069
+2025-09-02 09:20:24,119 - INFO - Process 0: Starting experiment - student_dim=250, seed=9069
+2025-09-02 09:29:00,453 - INFO - delta_l_infinity: tensor([1.2002], device='cuda:0') for w=tensor([ 1.2393, -0.1649, -0.5015, -0.6680], device='cuda:0')
+2025-09-02 09:29:00,454 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-02 09:29:00,454 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-02 09:29:00,455 - INFO - initial model: max A_j index: 199
+2025-09-02 09:29:28,305 - INFO - final model: max A_j index: 199, max A_j value: 0.037383630871772766, alpha_teacher: tensor([0.4500], device='cuda:0')
+2025-09-02 09:29:28,307 - INFO - largest 10 A_j values: tensor([0.0374, 0.0266, 0.0256, 0.0236, 0.0229, 0.0223, 0.0219, 0.0211, 0.0211,
+        0.0197], device='cuda:0', grad_fn=<TopkBackward0>)
+2025-09-02 09:29:28,307 - INFO - number of values below 0.01: 200
+2025-09-02 09:29:28,308 - INFO - number of values between 0.01 and 0.1: 50
+2025-09-02 09:29:28,308 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-02 09:29:28,308 - INFO - number of values larger than 0.3: 0
+2025-09-02 09:29:28,308 - INFO - train loss is 2.4829038380858037e-08
+2025-09-02 09:29:28,308 - INFO - impulse response loss is 0.047677915543317795
+2025-09-02 09:29:28,313 - INFO - Process 0: Completed experiment - student_dim=250, seed=9069
+2025-09-02 09:38:57,545 - INFO - delta_l_infinity: tensor([1.2002], device='cuda:0') for w=tensor([ 1.2393, -0.1649, -0.5015, -0.6680], device='cuda:0')
+2025-09-02 09:38:57,546 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-02 09:38:57,546 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-02 09:38:57,547 - INFO - initial model: max A_j index: 199
+2025-09-02 09:39:25,122 - INFO - final model: max A_j index: 199, max A_j value: 0.03698902949690819, alpha_teacher: tensor([0.4500], device='cuda:0')
+2025-09-02 09:39:25,125 - INFO - largest 10 A_j values: tensor([0.0370, 0.0262, 0.0253, 0.0232, 0.0225, 0.0220, 0.0218, 0.0215, 0.0209,
+        0.0207], device='cuda:0', grad_fn=<TopkBackward0>)
+2025-09-02 09:39:25,125 - INFO - number of values below 0.01: 221
+2025-09-02 09:39:25,125 - INFO - number of values between 0.01 and 0.1: 54
+2025-09-02 09:39:25,126 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-02 09:39:25,126 - INFO - number of values larger than 0.3: 0
+2025-09-02 09:39:25,126 - INFO - train loss is 0.0
+2025-09-02 09:39:25,126 - INFO - impulse response loss is 0.04672902449965477
+2025-09-02 09:39:25,131 - INFO - Process 0: Completed experiment - student_dim=275, seed=9069
+2025-09-02 09:39:25,132 - INFO - Process 0 completed on GPU 0
+2025-09-02 09:39:28,611 - INFO - Process 0 completed
+2025-09-02 09:39:29,617 - ERROR - Failed to save checkpoint: division by zero
+2025-09-02 09:39:29,617 - INFO - Final checkpoint saved
+2025-09-02 09:39:29,633 - INFO - Results saved to results__seq_len=5_seeds=8891-9069-6445-5286-8109_time=20250902_080729.csv
+2025-09-02 09:39:41,990 - INFO - Figures saved to plot__seq_len=5_seeds=8891-9069-6445-5286-8109_time=20250902_080729
+2025-09-02 09:39:41,991 - INFO - Finished experiments, results saved to results__seq_len=5_seeds=8891-9069-6445-5286-8109_time=20250902_080729.csv, figures saved to plot__seq_len=5_seeds=8891-9069-6445-5286-8109_time=20250902_080729
