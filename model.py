@@ -27,7 +27,7 @@ class DiagonalSSM(nn.Module):
             self.A_diag = nn.Parameter(init_scale * torch.randn(state_dim))
 
     def forward(self,
-                w: torch.Tensor,
+                w: list[torch.Tensor],
                 alpha_teacher: float
                 ) -> Tuple[torch.Tensor]:
         train_loss, gen_loss = get_losses(self.A_diag, w, alpha_teacher)

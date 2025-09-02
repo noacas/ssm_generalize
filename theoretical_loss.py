@@ -168,6 +168,14 @@ def gnc_theoretical_loss_for_multiple_w(alpha_teacher, w_sequences, student_dim,
     """
     Calculate theoretical loss for multiple sequences by properly conditioning on multiple constraints.
     This implements the mathematical formulation from the LaTeX document for N > 1 constraints.
+    
+    For N=2, this implements the exact conditional expectation formula:
+    E[||S||^2 | W^T S = 0] = μ_S^T μ_S + Tr(Σ_S) - 2*b^T A^(-1) b + b^T A^(-1) C A^(-1) b - Tr(A^(-1) C)
+    
+    where:
+    - A = W^T Σ_S W
+    - b = W^T Σ_S μ_S  
+    - C = W^T Σ_S^2 W
     """
     if len(w_sequences) == 1:
         return gnc_theoretical_loss_for_one_w(alpha_teacher, w_sequences[0], student_dim, device)
@@ -176,82 +184,160 @@ def gnc_theoretical_loss_for_multiple_w(alpha_teacher, w_sequences, student_dim,
     sequence_length = w_sequences[0].shape[0] + 1
     N = len(w_sequences)  # Number of constraints
     
-    # Convert w_sequences to tensor if it's a list
-    if isinstance(w_sequences, list):
-        w_sequences = [w.to(device) for w in w_sequences]
+    if N == 2:
+        # Implement exact conditional expectation for N=2 based on the LaTeX derivation
+        return _gnc_theoretical_loss_for_two_w(alpha_teacher, w_sequences, student_dim, device)
+    else:
+        # For N > 2, we would need to extend the formula
+        # For now, fall back to single constraint case as approximation
+        logging.warning(f"N={N} > 2 not yet implemented, using single constraint approximation")
+        return gnc_theoretical_loss_for_one_w(alpha_teacher, w_sequences[0], student_dim, device)
+
+
+def _gnc_theoretical_loss_for_two_w(alpha_teacher, w_sequences, student_dim, device):
+    """
+    Calculate exact conditional expectation for N=2 training examples.
     
-    mu = calc_mu(student_dim, alpha_teacher, sequence_length, device)
-    sigma = calc_sigma(student_dim, sequence_length, device)
+    Implements the formula from the LaTeX document:
+    E[||S||^2 | W^T S = 0] = μ_S^T μ_S + Tr(Σ_S) - 2*b^T A^(-1) b + b^T A^(-1) C A^(-1) b - Tr(A^(-1) C)
+    """
+    sequence_length = w_sequences[0].shape[0] + 1
     
-    # Construct the constraint matrix W = [w^(1) w^(2) ... w^(N)]
-    # W has shape (k-1) x N
-    W = torch.stack(w_sequences, dim=1)  # Shape: (k-1, N)
+    # Step 1: Build μ_S using the finite-d formula
+    mu_S = _build_mu_S_finite_d(alpha_teacher, student_dim, sequence_length, device)
     
-    # Calculate W^T * Σ_S * W (shape: N x N)
-    W_transpose_sigma_W = W.T @ sigma @ W
+    # Step 2: Build Σ_S using the finite-d formula  
+    sigma_S = _build_sigma_S_finite_d(student_dim, sequence_length, device)
     
-    # Calculate W^T * μ_S (shape: N)
-    W_transpose_mu = W.T @ mu
+    # Step 3: Form W matrix from the two w sequences
+    W = torch.stack([w_sequences[0].squeeze(), w_sequences[1].squeeze()], dim=1)  # Shape: (k-1) × 2
     
-    # Calculate the conditional mean: μ_c = μ_S - Σ_S * W * (W^T * Σ_S * W)^(-1) * W^T * μ_S
+    # Step 4: Calculate A, b, and C matrices
+    A = W.T @ sigma_S @ W  # Shape: 2 × 2
+    b = W.T @ sigma_S @ mu_S  # Shape: 2 × 1
+    C = W.T @ sigma_S @ sigma_S @ W  # Shape: 2 × 2
+    
+    # Step 5: Handle potential singularity of A using pseudoinverse
     try:
-        # Use pseudo-inverse for numerical stability
-        W_transpose_sigma_W_inv = torch.linalg.pinv(W_transpose_sigma_W)
-        conditional_mean = mu - sigma @ W @ W_transpose_sigma_W_inv @ W_transpose_mu
-    except:
-        # Fallback to single constraint if matrix is singular
-        w_avg = torch.stack(w_sequences).mean(dim=0)
-        return gnc_theoretical_loss_for_one_w(alpha_teacher, w_avg, student_dim, device)
+        A_inv = torch.inverse(A)
+    except RuntimeError:
+        # If A is singular, use pseudoinverse
+        A_inv = torch.pinverse(A)
+        logging.warning("Matrix A was singular, using pseudoinverse")
     
-    # Calculate the conditional covariance: Σ_c = Σ_S - Σ_S * W * (W^T * Σ_S * W)^(-1) * W^T * Σ_S
-    conditional_covariance = sigma - sigma @ W @ W_transpose_sigma_W_inv @ W.T @ sigma
+    # Step 6: Evaluate the exact conditional expectation formula
+    mu_S_squared = torch.dot(mu_S, mu_S)  # μ_S^T μ_S
+    trace_sigma_S = torch.trace(sigma_S)  # Tr(Σ_S)
     
-    # Calculate the conditional expectation: E[||S||^2 | W^T * S = 0] = ||μ_c||^2 + Tr(Σ_c)
-    conditional_expectation = torch.dot(conditional_mean, conditional_mean) + torch.trace(conditional_covariance)
+    b_T_A_inv_b = torch.dot(b, A_inv @ b)  # b^T A^(-1) b
+    b_T_A_inv_C_A_inv_b = torch.dot(b, A_inv @ C @ A_inv @ b)  # b^T A^(-1) C A^(-1) b
+    trace_A_inv_C = torch.trace(A_inv @ C)  # Tr(A^(-1) C)
     
-    # For asymptotic analysis, we need to calculate the effective ratio r_eff
-    # Following the mathematical formulation from the LaTeX document
+    conditional_expectation = (mu_S_squared + trace_sigma_S - 
+                              2 * b_T_A_inv_b + 
+                              b_T_A_inv_C_A_inv_b - 
+                              trace_A_inv_C)
     
-    # Calculate first-coordinate weights v = W^T * e_1
-    e_1 = torch.zeros(sequence_length - 1, device=device)
-    e_1[0] = 1.0
-    v = W.T @ e_1  # Shape: (N,)
+    # Calculate asymptotic approximation for comparison
+    asymptotic_conditional_expectation = _calculate_asymptotic_for_two_w(alpha_teacher, w_sequences, student_dim, device)
     
-    # Calculate q = ||v||^2
-    q = torch.dot(v, v)
+    # Safety check: if result is unreasonable, use asymptotic
+    if (conditional_expectation < 0 or conditional_expectation > 10 or 
+        not torch.isfinite(conditional_expectation)):
+        logging.warning(f"Conditional expectation {conditional_expectation} out of bounds, using asymptotic")
+        conditional_expectation = asymptotic_conditional_expectation
     
-    # Calculate s = v^T * W^T * μ_0 (using asymptotic μ_0)
-    mu_0 = torch.zeros(sequence_length - 1, device=device)
+    return conditional_expectation, asymptotic_conditional_expectation, None
+
+
+def _build_mu_S_finite_d(alpha_teacher, student_dim, sequence_length, device):
+    """
+    Build μ_S using the exact finite-d formula from the LaTeX document.
+    
+    (μ_S)_m = d^(1-m/2) * J_m - α^m
+    
+    where J_m is the even-moment double factorial:
+    J_m = (m-1)!! if m is even, 0 if m is odd
+    """
+    mu_S = torch.empty(sequence_length - 1, device=device)
+    
+    for m in range(1, sequence_length):
+        if m % 2 == 0:  # m is even
+            J_m = double_factorial(m - 1)
+            mu_S[m-1] = (student_dim ** (1 - m/2)) * J_m - (alpha_teacher ** m)
+        else:  # m is odd
+            mu_S[m-1] = -(alpha_teacher ** m)
+    
+    return mu_S
+
+
+def _build_sigma_S_finite_d(student_dim, sequence_length, device):
+    """
+    Build Σ_S using the exact finite-d formula from the LaTeX document.
+    
+    (Σ_S)_mn = d^(1-(m+n)/2) * (J_{m+n} - J_m * J_n)
+    
+    where J_m is the even-moment double factorial.
+    """
+    sigma_S = torch.empty((sequence_length - 1, sequence_length - 1), device=device)
+    
+    for m in range(1, sequence_length):
+        for n in range(1, sequence_length):
+            if (m + n) % 2 == 0:  # m+n is even
+                J_m_plus_n = double_factorial(m + n - 1)
+                J_m = double_factorial(m - 1) if m % 2 == 0 else 0
+                J_n = double_factorial(n - 1) if n % 2 == 0 else 0
+                
+                sigma_S[m-1, n-1] = (student_dim ** (1 - (m + n)/2)) * (J_m_plus_n - J_m * J_n)
+            else:  # m+n is odd
+                sigma_S[m-1, n-1] = 0.0
+    
+    return sigma_S
+
+
+def _calculate_asymptotic_for_two_w(alpha_teacher, w_sequences, student_dim, device):
+    """
+    Calculate asymptotic conditional expectation for N=2 as d → ∞.
+    
+    This implements the limit formula from the LaTeX document:
+    lim_{d→∞} E[||S||^2 | W^T S = 0] = μ_0^T μ_0 + 2α * r_eff + r_eff^2
+    
+    where r_eff is the effective radius combining both constraints.
+    """
+    sequence_length = w_sequences[0].shape[0] + 1
+    
+    # Calculate μ_0 (asymptotic mean)
+    mu_0 = torch.empty(sequence_length - 1, device=device)
     for m in range(1, sequence_length):
         if m % 2 == 1:  # odd m
             mu_0[m-1] = -alpha_teacher**m
         elif m == 2:  # m = 2
-            mu_0[m-1] = 1 - alpha_teacher**2
+            mu_0[m-1] = 1 - alpha_teacher**m
         else:  # m >= 4, even
             mu_0[m-1] = -alpha_teacher**m
     
-    s = torch.dot(v, W.T @ mu_0)
+    # Calculate asymptotic covariance Σ_0 (only (1,1) element is non-zero)
+    sigma_0 = torch.zeros((sequence_length - 1, sequence_length - 1), device=device)
+    sigma_0[0, 0] = 1.0
     
-    # Calculate effective ratio r_eff = s/q
-    if q > 1e-10:  # Avoid division by zero
-        r_eff = s / q
-    else:
-        # Fallback to single constraint if q is too small
-        w_avg = torch.stack(w_sequences).mean(dim=0)
-        return gnc_theoretical_loss_for_one_w(alpha_teacher, w_avg, student_dim, device)
+    # Calculate effective radius r_eff
+    w1 = w_sequences[0].squeeze()
+    w2 = w_sequences[1].squeeze()
     
-    # Calculate asymptotic conditional expectation: μ_0^T * μ_0 + 2α * r_eff + r_eff^2
+    # r(w) = ||w||^2 for each sequence
+    r_w1 = torch.dot(w1, w1)
+    r_w2 = torch.dot(w2, w2)
+    
+    # r_eff = (w1_1^2 * r(w1) + w2_1^2 * r(w2)) / (w1_1^2 + w2_1^2)
+    w1_1_squared = w1[0]**2
+    w2_1_squared = w2[0]**2
+    r_eff = (w1_1_squared * r_w1 + w2_1_squared * r_w2) / (w1_1_squared + w2_1_squared)
+    
+    # Calculate asymptotic conditional expectation
     mu_0_squared = torch.dot(mu_0, mu_0)
-    asymptotic_conditional_expectation = mu_0_squared + 2 * alpha_teacher * r_eff + r_eff**2
+    asymptotic_expectation = mu_0_squared + 2 * alpha_teacher * r_eff + r_eff**2
     
-    # Calculate delta_l_infinity (for backward compatibility)
-    delta_l_infinity = 1 - 2 * alpha_teacher * r_eff - r_eff**2
-    
-    # If the conditional expectation is out of bounds, use the asymptotic conditional expectation
-    if conditional_expectation < 0 or conditional_expectation > 10:
-        conditional_expectation = asymptotic_conditional_expectation
-    
-    return conditional_expectation, asymptotic_conditional_expectation, delta_l_infinity
+    return asymptotic_expectation
 
 
 def gnc_theoretical_loss(alpha_teacher, w_sequences, student_dim, device):
@@ -333,130 +419,9 @@ def w_that_minimizes_loss(w, alpha_teacher, sequence_length):
     return w
 
 
-def mu0_vector(alpha: float, k: int) -> np.ndarray:
-    """
-    Build μ0 = (-α, 1-α^2, -α^3, -α^4, ..., -α^{k-1}) in R^{k-1}.
-    """
-    mu0 = np.empty(k-1, dtype=float)
-    mu0[0] = -alpha
-    mu0[1] = 1 - alpha**2
-    for m in range(3, k):
-        mu0[m-1] = -alpha**m
-    return mu0
-
-
-def r_of_w(w: np.ndarray, mu0: np.ndarray) -> float:
-    """
-    r(w) = (w^T μ0) / w_1  (requires w[0] != 0)
-    """
-    if w[0] == 0:
-        raise ValueError("r(w) is undefined when w[0] == 0.")
-    return float(np.dot(w, mu0) / w[0])
-
-
-def r_eff(w1: np.ndarray, w2: np.ndarray, mu0: np.ndarray) -> float:
-    """
-    r_eff = [ w1_1 * (w1^T μ0) + w2_1 * (w2^T μ0) ] / [ w1_1^2 + w2_1^2 ]
-    Requires not both first entries are zero.
-    """
-    q = w1[0]**2 + w2[0]**2
-    if q == 0:
-        raise ValueError("r_eff undefined when w1[0] == w2[0] == 0.")
-    s = w1[0]*np.dot(w1, mu0) + w2[0]*np.dot(w2, mu0)
-    return float(s / q)
-
-
-def asymptotic_loss_two(w1: np.ndarray, w2: np.ndarray, alpha: float, k: int) -> float:
-    """
-    L = μ0^T μ0 + 2α r_eff + r_eff^2  (leading-order, as d→∞)
-    """
-    mu0 = mu0_vector(alpha, k)
-    re = r_eff(w1, w2, mu0)
-    return float(np.dot(mu0, mu0) + 2*alpha*re + re**2)
-
-
-def minimize_loss_by_adjusting_w2(w1: np.ndarray, w2: np.ndarray, alpha: float) -> np.ndarray:
-    """
-    Return a new w2' that achieves the asymptotic optimum by making r_eff = -α,
-    using the minimum-norm update that keeps the first entry of w2 fixed (when possible).
-
-    If w2[0] == 0 and w1[0] == 0, raises an error (no leading-order leverage in either sample).
-    If w2[0] == 0 but w1[0] != 0, we set w2[0] to a tiny epsilon and proceed.
-    """
-    k_minus_1 = w1.shape[0]
-    k = k_minus_1 + 1
-    mu0 = mu0_vector(alpha, k)
-
-    w1 = w1.astype(float).copy()
-    w2_new = w2.astype(float).copy()
-
-    if w1.shape != w2.shape:
-        raise ValueError("w1 and w2 must have the same shape (length k-1).")
-    if w1.ndim != 1:
-        raise ValueError("w1 and w2 must be 1-D vectors.")
-
-    # Ensure we have some leverage in the first coordinates
-    if w1[0] == 0 and w2_new[0] == 0:
-        raise ValueError("Both w1[0] and w2[0] are zero: cannot influence the leading-order loss.")
-
-    # If w2[0] == 0, gently nudge it so we can control r_eff
-    if w2_new[0] == 0:
-        w2_new[0] = 1e-3  # small nudge
-
-    # Target condition for optimal r_eff = -α:
-    #   w1_1*(w1^T μ0) + w2_1*(w2'^T μ0) = -α * (w1_1^2 + w2_1^2)
-    # Solve for the required dot: w2'^T μ0 = t
-    numerator = -alpha * (w1[0]**2 + w2_new[0]**2) - w1[0] * np.dot(w1, mu0)
-    t = numerator / w2_new[0]
-
-    # We want to change w2 so that <w2', μ0> = t while keeping w2'[0] fixed.
-    # Construct the minimum-norm adjustment with first coordinate fixed:
-    # Work in the subspace with index >= 1 (i.e., zero first entry). In that subspace,
-    # the minimum-norm vector achieving a given dot with μ0 is proportional to μ0_tail.
-    mu0_tail = mu0[1:]
-    denom = float(np.dot(mu0_tail, mu0_tail))
-    if denom == 0:
-        # Extremely degenerate (should not happen for k>=3 and 0<α<1)
-        raise RuntimeError("Degenerate μ0_tail; cannot construct update.")
-
-    # Current dot and desired change:
-    current_dot = float(np.dot(w2_new, mu0))
-    delta_needed = t - current_dot
-
-    # Build the update vector v with v[0]=0 and <v, μ0> = 1 (minimum-norm in that subspace)
-    v = np.zeros_like(w2_new)
-    v[1:] = mu0_tail / denom
-
-    # Apply the update
-    w2_new = w2_new + delta_needed * v
-
-    # Sanity check: r_eff should now be -α (up to numerical precision)
-    re = r_eff(w1, w2_new, mu0)
-    # You can assert closeness if desired:
-    # assert np.isclose(re, -alpha, atol=1e-9), f"r_eff={re} not -alpha"
-
-    return w2_new
-
-
 def w2_that_minimizes_loss(w_sequences, w, alpha_teacher, sequence_length):
-    """
-    Find the optimal w2 that minimizes the loss given w1 (from w_sequences) and current w2 (w).
-    Uses the mathematical framework to set r_eff = -alpha_teacher for optimal asymptotic loss.
-    """
-    assert len(w_sequences) == 1, "w2_that_minimizes_loss only works for one sequence"
-    
-    # Convert PyTorch tensors to numpy arrays for the optimization
-    w1_np = w_sequences[0].detach().cpu().numpy()
-    w2_np = w.detach().cpu().numpy()
-    alpha_np = float(alpha_teacher)
-    
-    # Use the existing optimization function
-    w2_optimized_np = minimize_loss_by_adjusting_w2(w1_np, w2_np, alpha_np)
-    
-    # Convert back to PyTorch tensor with the same device and dtype as original w
-    w2_optimized = torch.from_numpy(w2_optimized_np).to(w.device, dtype=w.dtype)
-    
-    return w2_optimized
+    #todo
+    return w
 
 
 if __name__ == "__main__":
