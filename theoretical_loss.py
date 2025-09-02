@@ -246,8 +246,12 @@ def _gnc_theoretical_loss_for_two_w(alpha_teacher, w_sequences, student_dim, dev
         not torch.isfinite(conditional_expectation)):
         logging.warning(f"Conditional expectation {conditional_expectation} out of bounds, using asymptotic")
         conditional_expectation = asymptotic_conditional_expectation
+
+
+    #  delta_l_infinity = - 2 \;-\;\alpha^{2} \;+\;\alpha^{4} + \sum_{m=3}^{k-1}\alpha^{2m}} - asymptotic_conditional_expectation
+    delta_l_infinity = - 2 + alpha_teacher**2 - alpha_teacher**4 + torch.sum(alpha_teacher**(2 * torch.arange(3, sequence_length - 1))) - asymptotic_conditional_expectation
     
-    return conditional_expectation, asymptotic_conditional_expectation, None
+    return conditional_expectation, asymptotic_conditional_expectation, delta_l_infinity
 
 
 def _build_mu_S_finite_d(alpha_teacher, student_dim, sequence_length, device):
