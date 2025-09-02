@@ -1,0 +1,8 @@
+2025-09-02 11:14:34,887 - INFO - Args: Namespace(num_seeds=5, seeds=[8891, 9069, 6445, 5286, 8109], sequence_length=2, num_sequences=1, student_dims=[150, 175, 200, 225, 250, 275], eps_train=1e-05, w_that_minimizes_loss=False, w2_that_minimizes_loss=True, gnc=True, gnc_num_samples=100000000, gnc_batch_size=100000, gd=True, gd_lr=0.001, gd_epochs=10000, gd_init_scale=0.01, gd_optimizer='adam', gd_scheduler=None, gd_scheduler_params='{}', exp_gamma=None, step_size=None, step_gamma=None, cosine_eta_min=None, gd_init_type='regular', config=None, results_dir=PosixPath('test_results/results'), figures_dir=PosixPath('test_results/figures'), checkpoint_dir=PosixPath('test_results/checkpoints'), checkpoint_interval=3600, resume_from_checkpoint=False, log_dir=PosixPath('test_results/logs'), max_gpus=4, log_file=PosixPath('test_results/logs/logs_20250902_111434.log'))
+2025-09-02 11:14:34,888 - INFO - Using custom seeds: [8891, 9069, 6445, 5286, 8109]
+2025-09-02 11:14:35,080 - INFO - Using GPUs: [0, 2, 3, 4]
+2025-09-02 11:14:35,081 - INFO - Starting 4 processes on 4 GPUs
+2025-09-02 11:14:38,691 - INFO - Process 0 started on GPU 0, processing seeds [8891, 9069]
+2025-09-02 11:14:38,954 - INFO - Process 3 started on GPU 4, processing seeds [8109]
+2025-09-02 11:14:39,176 - INFO - Process 1 started on GPU 2, processing seeds [6445]
+2025-09-02 11:14:39,288 - INFO - Process 2 started on GPU 3, processing seeds [5286]

@@ -750,3 +750,62 @@ RuntimeError: 1D tensors expected, but got 0D and 1D tensors
 2025-09-02 11:05:37,318 - INFO - impulse response loss is 0.0
 2025-09-02 11:05:37,322 - INFO - Process 0: Completed experiment - student_dim=225, seed=9069
 2025-09-02 11:05:37,329 - INFO - Process 0: Starting experiment - student_dim=250, seed=9069
+2025-09-02 11:19:09,340 - ERROR - G&C failed for student_dim=250, seed=9069: 1D tensors expected, but got 0D and 1D tensors
+2025-09-02 11:19:09,344 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 111, in process_worker
+    theoretical_loss, theoretical_asymptotic_loss, delta_l_infinity = gnc_theoretical_loss(alpha_teacher, w_sequences, student_dim, device)
+                                                                      ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fodl/noacaspi/ssm_generalize/theoretical_loss.py", line 266, in gnc_theoretical_loss
+    return gnc_theoretical_loss_for_multiple_w(alpha_teacher, w_sequences, student_dim, device)
+  File "/home/fodl/noacaspi/ssm_generalize/theoretical_loss.py", line 173, in gnc_theoretical_loss_for_multiple_w
+    return gnc_theoretical_loss_for_one_w(alpha_teacher, w_sequences[0], student_dim, device)
+  File "/home/fodl/noacaspi/ssm_generalize/theoretical_loss.py", line 138, in gnc_theoretical_loss_for_one_w
+    w_transpose_mu = torch.dot(w.squeeze(), mu)  # w^T μ_S
+RuntimeError: 1D tensors expected, but got 0D and 1D tensors
+
+2025-09-02 11:19:09,344 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-02 11:19:09,344 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-02 11:19:09,345 - INFO - initial model: max A_j index: 199
+2025-09-02 11:19:21,996 - INFO - final model: max A_j index: 199, max A_j value: 0.03769170492887497, alpha_teacher: tensor([0.4500], device='cuda:1')
+2025-09-02 11:19:21,997 - INFO - largest 10 A_j values: tensor([0.0377, 0.0269, 0.0260, 0.0239, 0.0232, 0.0227, 0.0222, 0.0214, 0.0214,
+        0.0200], device='cuda:1', grad_fn=<TopkBackward0>)
+2025-09-02 11:19:21,997 - INFO - number of values below 0.01: 198
+2025-09-02 11:19:21,997 - INFO - number of values between 0.01 and 0.1: 52
+2025-09-02 11:19:21,997 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-02 11:19:21,997 - INFO - number of values larger than 0.3: 0
+2025-09-02 11:19:21,998 - INFO - train loss is 0.0
+2025-09-02 11:19:21,998 - INFO - impulse response loss is 0.0
+2025-09-02 11:19:22,000 - INFO - Process 0: Completed experiment - student_dim=250, seed=9069
+2025-09-02 11:34:35,249 - ERROR - G&C failed for student_dim=275, seed=9069: 1D tensors expected, but got 0D and 1D tensors
+2025-09-02 11:34:35,344 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 111, in process_worker
+    theoretical_loss, theoretical_asymptotic_loss, delta_l_infinity = gnc_theoretical_loss(alpha_teacher, w_sequences, student_dim, device)
+                                                                      ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fodl/noacaspi/ssm_generalize/theoretical_loss.py", line 266, in gnc_theoretical_loss
+    return gnc_theoretical_loss_for_multiple_w(alpha_teacher, w_sequences, student_dim, device)
+  File "/home/fodl/noacaspi/ssm_generalize/theoretical_loss.py", line 173, in gnc_theoretical_loss_for_multiple_w
+    return gnc_theoretical_loss_for_one_w(alpha_teacher, w_sequences[0], student_dim, device)
+  File "/home/fodl/noacaspi/ssm_generalize/theoretical_loss.py", line 138, in gnc_theoretical_loss_for_one_w
+    w_transpose_mu = torch.dot(w.squeeze(), mu)  # w^T μ_S
+RuntimeError: 1D tensors expected, but got 0D and 1D tensors
+
+2025-09-02 11:34:35,345 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-02 11:34:35,345 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-02 11:34:35,348 - INFO - initial model: max A_j index: 199
+2025-09-02 11:34:57,440 - INFO - final model: max A_j index: 199, max A_j value: 0.037285301834344864, alpha_teacher: tensor([0.4500], device='cuda:1')
+2025-09-02 11:34:57,442 - INFO - largest 10 A_j values: tensor([0.0373, 0.0265, 0.0256, 0.0235, 0.0228, 0.0223, 0.0221, 0.0218, 0.0212,
+        0.0210], device='cuda:1', grad_fn=<TopkBackward0>)
+2025-09-02 11:34:57,442 - INFO - number of values below 0.01: 217
+2025-09-02 11:34:57,442 - INFO - number of values between 0.01 and 0.1: 58
+2025-09-02 11:34:57,443 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-02 11:34:57,443 - INFO - number of values larger than 0.3: 0
+2025-09-02 11:34:57,443 - INFO - train loss is 0.0
+2025-09-02 11:34:57,443 - INFO - impulse response loss is 0.0
+2025-09-02 11:34:57,447 - INFO - Process 0: Completed experiment - student_dim=275, seed=9069
+2025-09-02 11:34:57,448 - INFO - Process 0 completed on GPU 1
+2025-09-02 11:35:04,122 - INFO - Process 0 completed
+2025-09-02 11:35:05,129 - ERROR - Failed to save checkpoint: division by zero
+2025-09-02 11:35:05,129 - INFO - Final checkpoint saved
+2025-09-02 11:35:05,148 - INFO - Results saved to results__seq_len=2_seeds=8891-9069-6445-5286-8109_time=20250902_092004.csv
+2025-09-02 11:37:29,009 - INFO - Figures saved to plot__seq_len=2_seeds=8891-9069-6445-5286-8109_time=20250902_092004
+2025-09-02 11:37:29,010 - INFO - Finished experiments, results saved to results__seq_len=2_seeds=8891-9069-6445-5286-8109_time=20250902_092004.csv, figures saved to plot__seq_len=2_seeds=8891-9069-6445-5286-8109_time=20250902_092004
