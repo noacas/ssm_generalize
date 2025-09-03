@@ -80,9 +80,9 @@ def test_multiple_sequences():
     print("✓ All tests passed!")
     return True
 
-def test_asymptotic_convergence():
+def test_asymptotic_convergence(num_seq):
     """Test that asymptotic loss is close to exact loss for d=150"""
-    print("\n--- Testing asymptotic convergence for d=150 ---")
+    print(f"\n--- Testing asymptotic convergence for d=150 for number sequences {num_seq} ---")
     
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     student_dim = 150
@@ -95,7 +95,7 @@ def test_asymptotic_convergence():
     for seed in range(42, 52):  # Test 10 different seeds
         torch.manual_seed(seed)
         alpha_teacher = generate_teacher_alpha(device)
-        w = generate_w(5, device)  # sequence length of 5
+        w = [generate_w(5, device) for _ in range(num_seq)]
         
         try:
             exact_loss, asymptotic_loss, _ = gnc_theoretical_loss(alpha_teacher, w, student_dim, device)
@@ -170,9 +170,10 @@ if __name__ == "__main__":
     sequences_success = test_multiple_sequences()
     
     # Test asymptotic convergence for d=150
-    convergence_success = test_asymptotic_convergence()
+    convergence_success = test_asymptotic_convergence(num_seq=1)
+    convergence_success_multi_seq = test_asymptotic_convergence(num_seq=2)
     
-    overall_success = sequences_success and convergence_success
+    overall_success = sequences_success and convergence_success and convergence_success_multi_seq
     
     if overall_success:
         print("\n🎉 All tests passed! Multiple sequences functionality and asymptotic convergence are working correctly.")
@@ -182,3 +183,5 @@ if __name__ == "__main__":
             print("  - Multiple sequences test failed")
         if not convergence_success:
             print("  - Asymptotic convergence test failed")
+        if not convergence_success_multi_seq:
+            print(" - Asymptotic convergence for multi seqs test failed")
