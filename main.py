@@ -226,7 +226,7 @@ def process_worker(process_id, gpu_id, seed_list, args_dict, student_dims,
                 results_queue.put(error_result)
                 completed_experiments += 1
 
-        del w, alpha_teacher
+        del w_sequences, alpha_teacher
         torch.cuda.empty_cache()
     
     # Send completion signal
