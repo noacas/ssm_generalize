@@ -1,0 +1,468 @@
+2025-09-03 13:41:41,430 - INFO - Args: Namespace(num_seeds=8, seeds=[0, 1, 2, 3, 4, 5, 6, 7], sequence_length=5, num_sequences=2, student_dims=[150, 175, 200, 225, 250, 275], eps_train=0.001, w_that_minimizes_loss=False, w2_that_minimizes_loss=False, gnc=True, gnc_num_samples=5000000000, gnc_batch_size=500000, gd=True, gd_lr=0.001, gd_epochs=10000, gd_init_scale=0.01, gd_optimizer='adam', gd_scheduler=None, gd_scheduler_params='{}', exp_gamma=None, step_size=None, step_gamma=None, cosine_eta_min=None, gd_init_type='regular', config=None, results_dir=PosixPath('test_results/results'), figures_dir=PosixPath('test_results/figures'), checkpoint_dir=PosixPath('test_results/checkpoints'), checkpoint_interval=3600, resume_from_checkpoint=False, log_dir=PosixPath('test_results/logs'), max_gpus=8, log_file=PosixPath('test_results/logs/logs_20250903_134141.log'))
+2025-09-03 13:41:41,431 - INFO - Using custom seeds: [0, 1, 2, 3, 4, 5, 6, 7]
+2025-09-03 13:41:41,623 - INFO - Using GPUs: [0, 1, 2, 3, 4, 5, 6, 7]
+2025-09-03 13:41:41,623 - INFO - Starting 4 processes on 8 GPUs
+2025-09-03 13:41:45,737 - INFO - Process 0 started on GPU 0, processing seeds [0, 1]
+2025-09-03 13:41:46,198 - INFO - Process 2 started on GPU 2, processing seeds [4, 5]
+2025-09-03 13:41:46,239 - INFO - Process 1 started on GPU 1, processing seeds [2, 3]
+2025-09-03 13:41:46,276 - INFO - Process 3 started on GPU 3, processing seeds [6, 7]
+2025-09-03 13:41:46,436 - INFO - for seed 4, alpha_teacher=tensor([0.3049], device='cuda:2'), generated 2 sequences: [tensor([-0.2938,  0.7819, -1.4731,  1.0391], device='cuda:2'), tensor([-0.4015,  0.8411, -1.4424, -0.1211], device='cuda:2')]
+2025-09-03 13:41:46,437 - INFO - Process 2: Starting experiment - student_dim=150, seed=4
+2025-09-03 13:41:46,438 - INFO - for seed 0, alpha_teacher=tensor([0.4075], device='cuda:0'), generated 2 sequences: [tensor([ 0.1808, -0.5523,  0.9238, -0.7350], device='cuda:0'), tensor([ 2.5441, -0.7163, -0.4934,  0.1267], device='cuda:0')]
+2025-09-03 13:41:46,438 - INFO - Process 0: Starting experiment - student_dim=150, seed=0
+2025-09-03 13:41:46,443 - INFO - for seed 2, alpha_teacher=tensor([0.5022], device='cuda:1'), generated 2 sequences: [tensor([ 2.2669,  1.3477, -1.4438, -1.0484], device='cuda:1'), tensor([-0.1825,  1.7087,  0.1843, -0.6569], device='cuda:1')]
+2025-09-03 13:41:46,443 - INFO - Process 1: Starting experiment - student_dim=150, seed=2
+2025-09-03 13:41:46,457 - INFO - for seed 6, alpha_teacher=tensor([0.5433], device='cuda:3'), generated 2 sequences: [tensor([ 1.9899, -0.1324, -0.3380, -0.7933], device='cuda:3'), tensor([ 0.4373,  0.6238, -2.2041, -0.1950], device='cuda:3')]
+2025-09-03 13:41:46,458 - INFO - Process 3: Starting experiment - student_dim=150, seed=6
+2025-09-03 17:38:16,620 - WARNING - No GNC sensing losses for student dimension 150 seed 0
+2025-09-03 17:38:16,812 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-03 17:38:16,812 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-03 17:38:21,864 - INFO - initial model: max A_j index: 59
+2025-09-03 17:38:46,007 - INFO - final model: max A_j index: 59, max A_j value: 0.0720858946442604, alpha_teacher: tensor([0.4075], device='cuda:0')
+2025-09-03 17:38:46,060 - INFO - largest 10 A_j values: tensor([0.0721, 0.0560, 0.0507, 0.0507, 0.0431, 0.0417, 0.0411, 0.0375, 0.0371,
+        0.0363], device='cuda:0', grad_fn=<TopkBackward0>)
+2025-09-03 17:38:46,061 - INFO - number of values below 0.01: 94
+2025-09-03 17:38:46,061 - INFO - number of values between 0.01 and 0.1: 56
+2025-09-03 17:38:46,061 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-03 17:38:46,061 - INFO - number of values larger than 0.3: 0
+2025-09-03 17:38:46,061 - INFO - train loss is 2.037117674547062e-08
+2025-09-03 17:38:46,061 - INFO - impulse response loss is 0.014339515939354897
+2025-09-03 17:38:46,062 - INFO - Process 0: Completed experiment - student_dim=150, seed=0
+2025-09-03 17:56:06,413 - WARNING - No GNC sensing losses for student dimension 150 seed 4
+2025-09-03 17:56:06,566 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-03 17:56:06,566 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-03 17:56:09,890 - INFO - initial model: max A_j index: 98
+2025-09-03 17:56:43,581 - INFO - final model: max A_j index: 98, max A_j value: 0.06795264035463333, alpha_teacher: tensor([0.3049], device='cuda:2')
+2025-09-03 17:56:43,646 - INFO - largest 10 A_j values: tensor([0.0680, 0.0654, 0.0608, 0.0575, 0.0506, 0.0450, 0.0431, 0.0423, 0.0395,
+        0.0388], device='cuda:2', grad_fn=<TopkBackward0>)
+2025-09-03 17:56:43,646 - INFO - number of values below 0.01: 100
+2025-09-03 17:56:43,646 - INFO - number of values between 0.01 and 0.1: 50
+2025-09-03 17:56:43,647 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-03 17:56:43,647 - INFO - number of values larger than 0.3: 0
+2025-09-03 17:56:43,647 - INFO - train loss is 1.2763401446846956e-13
+2025-09-03 17:56:43,647 - INFO - impulse response loss is 0.00701425364241004
+2025-09-03 17:56:43,648 - INFO - Process 2: Completed experiment - student_dim=150, seed=4
+2025-09-03 18:21:42,472 - WARNING - No GNC sensing losses for student dimension 150 seed 6
+2025-09-03 18:21:42,650 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-03 18:21:42,650 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-03 18:21:49,589 - INFO - initial model: max A_j index: 10
+2025-09-03 18:22:24,253 - INFO - final model: max A_j index: 10, max A_j value: 0.002965496387332678, alpha_teacher: tensor([0.5433], device='cuda:3')
+2025-09-03 18:22:24,315 - INFO - largest 10 A_j values: tensor([0.0030, 0.0030, 0.0030, 0.0030, 0.0030, 0.0030, 0.0030, 0.0030, 0.0030,
+        0.0030], device='cuda:3', grad_fn=<TopkBackward0>)
+2025-09-03 18:22:24,315 - INFO - number of values below 0.01: 150
+2025-09-03 18:22:24,316 - INFO - number of values between 0.01 and 0.1: 0
+2025-09-03 18:22:24,316 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-03 18:22:24,316 - INFO - number of values larger than 0.3: 0
+2025-09-03 18:22:24,316 - INFO - train loss is 0.010936738923192024
+2025-09-03 18:22:24,316 - INFO - impulse response loss is 0.129276305437088
+2025-09-03 18:22:24,317 - INFO - Process 3: Completed experiment - student_dim=150, seed=6
+2025-09-03 19:48:03,134 - WARNING - No GNC sensing losses for student dimension 150 seed 2
+2025-09-03 19:48:03,352 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-03 19:48:03,352 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-03 19:48:07,182 - INFO - initial model: max A_j index: 27
+2025-09-03 19:48:24,088 - INFO - final model: max A_j index: 27, max A_j value: 0.11560199409723282, alpha_teacher: tensor([0.5022], device='cuda:1')
+2025-09-03 19:48:24,138 - INFO - largest 10 A_j values: tensor([0.1156, 0.0919, 0.0908, 0.0907, 0.0813, 0.0803, 0.0796, 0.0765, 0.0710,
+        0.0698], device='cuda:1', grad_fn=<TopkBackward0>)
+2025-09-03 19:48:24,139 - INFO - number of values below 0.01: 89
+2025-09-03 19:48:24,139 - INFO - number of values between 0.01 and 0.1: 60
+2025-09-03 19:48:24,140 - INFO - number of values between 0.1 and 0.3: 1
+2025-09-03 19:48:24,140 - INFO - number of values larger than 0.3: 0
+2025-09-03 19:48:24,140 - INFO - train loss is 6.541463551390514e-12
+2025-09-03 19:48:24,140 - INFO - impulse response loss is 0.028000205755233765
+2025-09-03 19:48:24,141 - INFO - Process 1: Completed experiment - student_dim=150, seed=2
+2025-09-03 22:13:41,545 - WARNING - No GNC sensing losses for student dimension 175 seed 0
+2025-09-03 22:13:41,576 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-03 22:13:41,576 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-03 22:13:41,577 - INFO - initial model: max A_j index: 59
+2025-09-03 22:14:14,088 - INFO - final model: max A_j index: 59, max A_j value: 0.06921449303627014, alpha_teacher: tensor([0.4075], device='cuda:0')
+2025-09-03 22:14:14,090 - INFO - largest 10 A_j values: tensor([0.0692, 0.0538, 0.0488, 0.0488, 0.0421, 0.0416, 0.0402, 0.0396, 0.0362,
+        0.0351], device='cuda:0', grad_fn=<TopkBackward0>)
+2025-09-03 22:14:14,091 - INFO - number of values below 0.01: 115
+2025-09-03 22:14:14,091 - INFO - number of values between 0.01 and 0.1: 60
+2025-09-03 22:14:14,092 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-03 22:14:14,092 - INFO - number of values larger than 0.3: 0
+2025-09-03 22:14:14,092 - INFO - train loss is 1.363748447502644e-09
+2025-09-03 22:14:14,092 - INFO - impulse response loss is 0.014272325672209263
+2025-09-03 22:14:14,093 - INFO - Process 0: Completed experiment - student_dim=175, seed=0
+2025-09-03 22:52:37,484 - WARNING - No GNC sensing losses for student dimension 175 seed 4
+2025-09-03 22:52:37,494 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-03 22:52:37,494 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-03 22:52:37,495 - INFO - initial model: max A_j index: 98
+2025-09-03 22:53:10,980 - INFO - final model: max A_j index: 98, max A_j value: 0.06223883852362633, alpha_teacher: tensor([0.3049], device='cuda:2')
+2025-09-03 22:53:10,983 - INFO - largest 10 A_j values: tensor([0.0622, 0.0599, 0.0556, 0.0526, 0.0411, 0.0392, 0.0391, 0.0385, 0.0359,
+        0.0356], device='cuda:2', grad_fn=<TopkBackward0>)
+2025-09-03 22:53:10,984 - INFO - number of values below 0.01: 120
+2025-09-03 22:53:10,984 - INFO - number of values between 0.01 and 0.1: 55
+2025-09-03 22:53:10,984 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-03 22:53:10,985 - INFO - number of values larger than 0.3: 0
+2025-09-03 22:53:10,985 - INFO - train loss is 8.848477506262498e-14
+2025-09-03 22:53:10,985 - INFO - impulse response loss is 0.0070501817390322685
+2025-09-03 22:53:10,986 - INFO - Process 2: Completed experiment - student_dim=175, seed=4
+2025-09-03 23:45:21,375 - WARNING - No GNC sensing losses for student dimension 175 seed 6
+2025-09-03 23:45:21,407 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-03 23:45:21,408 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-03 23:45:21,410 - INFO - initial model: max A_j index: 10
+2025-09-03 23:45:57,128 - INFO - final model: max A_j index: 23, max A_j value: 0.0026565450243651867, alpha_teacher: tensor([0.5433], device='cuda:3')
+2025-09-03 23:45:57,130 - INFO - largest 10 A_j values: tensor([0.0027, 0.0027, 0.0027, 0.0027, 0.0027, 0.0027, 0.0027, 0.0027, 0.0027,
+        0.0027], device='cuda:3', grad_fn=<TopkBackward0>)
+2025-09-03 23:45:57,131 - INFO - number of values below 0.01: 175
+2025-09-03 23:45:57,131 - INFO - number of values between 0.01 and 0.1: 0
+2025-09-03 23:45:57,132 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-03 23:45:57,132 - INFO - number of values larger than 0.3: 0
+2025-09-03 23:45:57,132 - INFO - train loss is 0.011410791426897049
+2025-09-03 23:45:57,132 - INFO - impulse response loss is 0.12892109155654907
+2025-09-03 23:45:57,133 - INFO - Process 3: Completed experiment - student_dim=175, seed=6
+2025-09-04 02:55:05,347 - WARNING - No GNC sensing losses for student dimension 175 seed 2
+2025-09-04 02:55:05,378 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-04 02:55:05,378 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-04 02:55:05,380 - INFO - initial model: max A_j index: 27
+2025-09-04 02:55:39,470 - INFO - final model: max A_j index: 27, max A_j value: 0.10241540521383286, alpha_teacher: tensor([0.5022], device='cuda:1')
+2025-09-04 02:55:39,472 - INFO - largest 10 A_j values: tensor([0.1024, 0.0942, 0.0832, 0.0811, 0.0800, 0.0799, 0.0715, 0.0707, 0.0700,
+        0.0694], device='cuda:1', grad_fn=<TopkBackward0>)
+2025-09-04 02:55:39,473 - INFO - number of values below 0.01: 109
+2025-09-04 02:55:39,473 - INFO - number of values between 0.01 and 0.1: 65
+2025-09-04 02:55:39,474 - INFO - number of values between 0.1 and 0.3: 1
+2025-09-04 02:55:39,474 - INFO - number of values larger than 0.3: 0
+2025-09-04 02:55:39,474 - INFO - train loss is 2.3045442958391504e-06
+2025-09-04 02:55:39,474 - INFO - impulse response loss is 0.028300192207098007
+2025-09-04 02:55:39,475 - INFO - Process 1: Completed experiment - student_dim=175, seed=2
+2025-09-04 03:27:24,321 - WARNING - No GNC sensing losses for student dimension 200 seed 0
+2025-09-04 03:27:24,328 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-04 03:27:24,328 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-04 03:27:24,329 - INFO - initial model: max A_j index: 59
+2025-09-04 03:27:58,121 - INFO - final model: max A_j index: 59, max A_j value: 0.06699836254119873, alpha_teacher: tensor([0.4075], device='cuda:0')
+2025-09-04 03:27:58,123 - INFO - largest 10 A_j values: tensor([0.0670, 0.0520, 0.0472, 0.0472, 0.0407, 0.0402, 0.0389, 0.0383, 0.0350,
+        0.0339], device='cuda:0', grad_fn=<TopkBackward0>)
+2025-09-04 03:27:58,123 - INFO - number of values below 0.01: 137
+2025-09-04 03:27:58,124 - INFO - number of values between 0.01 and 0.1: 63
+2025-09-04 03:27:58,124 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-04 03:27:58,124 - INFO - number of values larger than 0.3: 0
+2025-09-04 03:27:58,124 - INFO - train loss is 1.297293827917656e-09
+2025-09-04 03:27:58,125 - INFO - impulse response loss is 0.014336736872792244
+2025-09-04 03:27:58,125 - INFO - Process 0: Completed experiment - student_dim=200, seed=0
+2025-09-04 04:31:00,086 - WARNING - No GNC sensing losses for student dimension 200 seed 4
+2025-09-04 04:31:00,117 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-04 04:31:00,117 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-04 04:31:00,119 - INFO - initial model: max A_j index: 98
+2025-09-04 04:31:33,685 - INFO - final model: max A_j index: 98, max A_j value: 0.06106797233223915, alpha_teacher: tensor([0.3049], device='cuda:2')
+2025-09-04 04:31:33,687 - INFO - largest 10 A_j values: tensor([0.0611, 0.0588, 0.0547, 0.0517, 0.0406, 0.0388, 0.0387, 0.0381, 0.0356,
+        0.0353], device='cuda:2', grad_fn=<TopkBackward0>)
+2025-09-04 04:31:33,687 - INFO - number of values below 0.01: 136
+2025-09-04 04:31:33,687 - INFO - number of values between 0.01 and 0.1: 64
+2025-09-04 04:31:33,688 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-04 04:31:33,688 - INFO - number of values larger than 0.3: 0
+2025-09-04 04:31:33,688 - INFO - train loss is 6.499523141911823e-13
+2025-09-04 04:31:33,688 - INFO - impulse response loss is 0.007062169723212719
+2025-09-04 04:31:33,689 - INFO - Process 2: Completed experiment - student_dim=200, seed=4
+2025-09-04 05:51:02,735 - WARNING - No GNC sensing losses for student dimension 200 seed 6
+2025-09-04 05:51:02,766 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-04 05:51:02,766 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-04 05:51:02,768 - INFO - initial model: max A_j index: 10
+2025-09-04 05:51:37,642 - INFO - final model: max A_j index: 0, max A_j value: 0.0022276542149484158, alpha_teacher: tensor([0.5433], device='cuda:3')
+2025-09-04 05:51:37,644 - INFO - largest 10 A_j values: tensor([0.0022, 0.0022, 0.0022, 0.0022, 0.0022, 0.0022, 0.0022, 0.0022, 0.0022,
+        0.0022], device='cuda:3', grad_fn=<TopkBackward0>)
+2025-09-04 05:51:37,644 - INFO - number of values below 0.01: 200
+2025-09-04 05:51:37,645 - INFO - number of values between 0.01 and 0.1: 0
+2025-09-04 05:51:37,645 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-04 05:51:37,645 - INFO - number of values larger than 0.3: 0
+2025-09-04 05:51:37,646 - INFO - train loss is 0.010905248112976551
+2025-09-04 05:51:37,646 - INFO - impulse response loss is 0.1292591542005539
+2025-09-04 05:51:37,646 - INFO - Process 3: Completed experiment - student_dim=200, seed=6
+2025-09-04 09:19:46,982 - WARNING - No GNC sensing losses for student dimension 225 seed 0
+2025-09-04 09:19:47,013 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-04 09:19:47,013 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-04 09:19:47,015 - INFO - initial model: max A_j index: 59
+2025-09-04 09:20:20,852 - INFO - final model: max A_j index: 59, max A_j value: 0.06392762064933777, alpha_teacher: tensor([0.4075], device='cuda:0')
+2025-09-04 09:20:20,854 - INFO - largest 10 A_j values: tensor([0.0639, 0.0493, 0.0447, 0.0447, 0.0384, 0.0379, 0.0366, 0.0360, 0.0329,
+        0.0318], device='cuda:0', grad_fn=<TopkBackward0>)
+2025-09-04 09:20:20,855 - INFO - number of values below 0.01: 153
+2025-09-04 09:20:20,855 - INFO - number of values between 0.01 and 0.1: 72
+2025-09-04 09:20:20,856 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-04 09:20:20,856 - INFO - number of values larger than 0.3: 0
+2025-09-04 09:20:20,856 - INFO - train loss is 3.527075159714954e-11
+2025-09-04 09:20:20,856 - INFO - impulse response loss is 0.01437882799655199
+2025-09-04 09:20:20,857 - INFO - Process 0: Completed experiment - student_dim=225, seed=0
+2025-09-04 10:51:34,557 - WARNING - No GNC sensing losses for student dimension 225 seed 4
+2025-09-04 10:51:34,588 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-04 10:51:34,588 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-04 10:51:34,590 - INFO - initial model: max A_j index: 98
+2025-09-04 10:52:07,357 - INFO - final model: max A_j index: 98, max A_j value: 0.0560605451464653, alpha_teacher: tensor([0.3049], device='cuda:2')
+2025-09-04 10:52:07,359 - INFO - largest 10 A_j values: tensor([0.0561, 0.0539, 0.0501, 0.0473, 0.0370, 0.0369, 0.0353, 0.0352, 0.0346,
+        0.0339], device='cuda:2', grad_fn=<TopkBackward0>)
+2025-09-04 10:52:07,360 - INFO - number of values below 0.01: 154
+2025-09-04 10:52:07,360 - INFO - number of values between 0.01 and 0.1: 71
+2025-09-04 10:52:07,360 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-04 10:52:07,361 - INFO - number of values larger than 0.3: 0
+2025-09-04 10:52:07,361 - INFO - train loss is 1.7869066226694486e-08
+2025-09-04 10:52:07,361 - INFO - impulse response loss is 0.006814626976847649
+2025-09-04 10:52:07,361 - INFO - Process 2: Completed experiment - student_dim=225, seed=4
+2025-09-04 10:57:34,800 - WARNING - No GNC sensing losses for student dimension 200 seed 2
+2025-09-04 10:57:34,805 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-04 10:57:34,805 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-04 10:57:34,806 - INFO - initial model: max A_j index: 27
+2025-09-04 10:58:08,910 - INFO - final model: max A_j index: 27, max A_j value: 0.0969134122133255, alpha_teacher: tensor([0.5022], device='cuda:1')
+2025-09-04 10:58:08,912 - INFO - largest 10 A_j values: tensor([0.0969, 0.0890, 0.0784, 0.0764, 0.0754, 0.0753, 0.0672, 0.0664, 0.0657,
+        0.0656], device='cuda:1', grad_fn=<TopkBackward0>)
+2025-09-04 10:58:08,912 - INFO - number of values below 0.01: 124
+2025-09-04 10:58:08,913 - INFO - number of values between 0.01 and 0.1: 76
+2025-09-04 10:58:08,913 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-04 10:58:08,914 - INFO - number of values larger than 0.3: 0
+2025-09-04 10:58:08,914 - INFO - train loss is 4.199136583338259e-06
+2025-09-04 10:58:08,914 - INFO - impulse response loss is 0.029063846915960312
+2025-09-04 10:58:08,915 - INFO - Process 1: Completed experiment - student_dim=200, seed=2
+2025-09-04 12:43:02,880 - WARNING - No GNC sensing losses for student dimension 225 seed 6
+2025-09-04 12:43:02,908 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-04 12:43:02,908 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-04 12:43:02,910 - INFO - initial model: max A_j index: 10
+2025-09-04 12:43:37,337 - INFO - final model: max A_j index: 9, max A_j value: 0.001980697736144066, alpha_teacher: tensor([0.5433], device='cuda:3')
+2025-09-04 12:43:37,339 - INFO - largest 10 A_j values: tensor([0.0020, 0.0020, 0.0020, 0.0020, 0.0020, 0.0020, 0.0020, 0.0020, 0.0020,
+        0.0020], device='cuda:3', grad_fn=<TopkBackward0>)
+2025-09-04 12:43:37,340 - INFO - number of values below 0.01: 225
+2025-09-04 12:43:37,340 - INFO - number of values between 0.01 and 0.1: 0
+2025-09-04 12:43:37,341 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-04 12:43:37,341 - INFO - number of values larger than 0.3: 0
+2025-09-04 12:43:37,341 - INFO - train loss is 0.010894905775785446
+2025-09-04 12:43:37,341 - INFO - impulse response loss is 0.12938562035560608
+2025-09-04 12:43:37,342 - INFO - Process 3: Completed experiment - student_dim=225, seed=6
+2025-09-04 15:51:27,302 - WARNING - No GNC sensing losses for student dimension 250 seed 0
+2025-09-04 15:51:27,332 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-04 15:51:27,332 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-04 15:51:27,333 - INFO - initial model: max A_j index: 59
+2025-09-04 15:52:01,050 - INFO - final model: max A_j index: 59, max A_j value: 0.061612505465745926, alpha_teacher: tensor([0.4075], device='cuda:0')
+2025-09-04 15:52:01,053 - INFO - largest 10 A_j values: tensor([0.0616, 0.0474, 0.0428, 0.0428, 0.0401, 0.0367, 0.0361, 0.0349, 0.0343,
+        0.0313], device='cuda:0', grad_fn=<TopkBackward0>)
+2025-09-04 15:52:01,053 - INFO - number of values below 0.01: 173
+2025-09-04 15:52:01,053 - INFO - number of values between 0.01 and 0.1: 77
+2025-09-04 15:52:01,054 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-04 15:52:01,054 - INFO - number of values larger than 0.3: 0
+2025-09-04 15:52:01,054 - INFO - train loss is 1.1310419267829275e-06
+2025-09-04 15:52:01,054 - INFO - impulse response loss is 0.014302382245659828
+2025-09-04 15:52:01,055 - INFO - Process 0: Completed experiment - student_dim=250, seed=0
+2025-09-04 17:54:21,215 - WARNING - No GNC sensing losses for student dimension 250 seed 4
+2025-09-04 17:54:21,244 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-04 17:54:21,244 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-04 17:54:21,246 - INFO - initial model: max A_j index: 98
+2025-09-04 17:54:52,943 - INFO - final model: max A_j index: 98, max A_j value: 0.05324045196175575, alpha_teacher: tensor([0.3049], device='cuda:2')
+2025-09-04 17:54:52,944 - INFO - largest 10 A_j values: tensor([0.0532, 0.0512, 0.0475, 0.0449, 0.0415, 0.0350, 0.0350, 0.0334, 0.0333,
+        0.0328], device='cuda:2', grad_fn=<TopkBackward0>)
+2025-09-04 17:54:52,944 - INFO - number of values below 0.01: 174
+2025-09-04 17:54:52,944 - INFO - number of values between 0.01 and 0.1: 76
+2025-09-04 17:54:52,944 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-04 17:54:52,945 - INFO - number of values larger than 0.3: 0
+2025-09-04 17:54:52,945 - INFO - train loss is 2.993042471644003e-06
+2025-09-04 17:54:52,945 - INFO - impulse response loss is 0.004414351657032967
+2025-09-04 17:54:52,945 - INFO - Process 2: Completed experiment - student_dim=250, seed=4
+2025-09-04 19:56:34,924 - WARNING - No GNC sensing losses for student dimension 225 seed 2
+2025-09-04 19:56:34,998 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-04 19:56:34,999 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-04 19:56:35,000 - INFO - initial model: max A_j index: 27
+2025-09-04 19:57:09,108 - INFO - final model: max A_j index: 27, max A_j value: 0.08882877230644226, alpha_teacher: tensor([0.5022], device='cuda:1')
+2025-09-04 19:57:09,110 - INFO - largest 10 A_j values: tensor([0.0888, 0.0815, 0.0717, 0.0699, 0.0689, 0.0688, 0.0614, 0.0606, 0.0600,
+        0.0595], device='cuda:1', grad_fn=<TopkBackward0>)
+2025-09-04 19:57:09,110 - INFO - number of values below 0.01: 138
+2025-09-04 19:57:09,111 - INFO - number of values between 0.01 and 0.1: 87
+2025-09-04 19:57:09,111 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-04 19:57:09,111 - INFO - number of values larger than 0.3: 0
+2025-09-04 19:57:09,111 - INFO - train loss is 1.3421045608197346e-08
+2025-09-04 19:57:09,112 - INFO - impulse response loss is 0.02908950299024582
+2025-09-04 19:57:09,112 - INFO - Process 1: Completed experiment - student_dim=225, seed=2
+2025-09-04 20:19:27,473 - WARNING - No GNC sensing losses for student dimension 250 seed 6
+2025-09-04 20:19:27,484 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-04 20:19:27,484 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-04 20:19:27,485 - INFO - initial model: max A_j index: 10
+2025-09-04 20:20:02,085 - INFO - final model: max A_j index: 0, max A_j value: 0.0017828791169449687, alpha_teacher: tensor([0.5433], device='cuda:3')
+2025-09-04 20:20:02,088 - INFO - largest 10 A_j values: tensor([0.0018, 0.0018, 0.0018, 0.0018, 0.0018, 0.0018, 0.0018, 0.0018, 0.0018,
+        0.0018], device='cuda:3', grad_fn=<TopkBackward0>)
+2025-09-04 20:20:02,088 - INFO - number of values below 0.01: 250
+2025-09-04 20:20:02,089 - INFO - number of values between 0.01 and 0.1: 0
+2025-09-04 20:20:02,089 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-04 20:20:02,089 - INFO - number of values larger than 0.3: 0
+2025-09-04 20:20:02,089 - INFO - train loss is 0.010886693373322487
+2025-09-04 20:20:02,089 - INFO - impulse response loss is 0.12942999601364136
+2025-09-04 20:20:02,090 - INFO - Process 3: Completed experiment - student_dim=250, seed=6
+2025-09-04 23:04:38,780 - WARNING - No GNC sensing losses for student dimension 275 seed 0
+2025-09-04 23:04:38,820 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-04 23:04:38,820 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-04 23:04:38,822 - INFO - initial model: max A_j index: 59
+2025-09-04 23:05:06,969 - INFO - final model: max A_j index: 59, max A_j value: 0.059468548744916916, alpha_teacher: tensor([0.4075], device='cuda:0')
+2025-09-04 23:05:06,972 - INFO - largest 10 A_j values: tensor([0.0595, 0.0458, 0.0414, 0.0414, 0.0355, 0.0350, 0.0347, 0.0339, 0.0333,
+        0.0304], device='cuda:0', grad_fn=<TopkBackward0>)
+2025-09-04 23:05:06,972 - INFO - number of values below 0.01: 194
+2025-09-04 23:05:06,973 - INFO - number of values between 0.01 and 0.1: 81
+2025-09-04 23:05:06,973 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-04 23:05:06,973 - INFO - number of values larger than 0.3: 0
+2025-09-04 23:05:06,973 - INFO - train loss is 2.7209075270651084e-11
+2025-09-04 23:05:06,974 - INFO - impulse response loss is 0.01439997460693121
+2025-09-04 23:05:06,974 - INFO - Process 0: Completed experiment - student_dim=275, seed=0
+2025-09-04 23:05:07,008 - INFO - for seed 1, alpha_teacher=tensor([0.4704], device='cuda:0'), generated 2 sequences: [tensor([-0.6340, -0.6431, -0.6420, -1.4471], device='cuda:0'), tensor([-0.5810, -1.0216,  0.8331,  0.3239], device='cuda:0')]
+2025-09-05 01:44:11,292 - WARNING - No GNC sensing losses for student dimension 275 seed 4
+2025-09-05 01:44:11,324 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-05 01:44:11,324 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-05 01:44:11,326 - INFO - initial model: max A_j index: 98
+2025-09-05 01:44:44,869 - INFO - final model: max A_j index: 98, max A_j value: 0.0498349592089653, alpha_teacher: tensor([0.3049], device='cuda:2')
+2025-09-05 01:44:44,872 - INFO - largest 10 A_j values: tensor([0.0498, 0.0479, 0.0445, 0.0420, 0.0415, 0.0388, 0.0327, 0.0327, 0.0312,
+        0.0311], device='cuda:2', grad_fn=<TopkBackward0>)
+2025-09-05 01:44:44,872 - INFO - number of values below 0.01: 190
+2025-09-05 01:44:44,873 - INFO - number of values between 0.01 and 0.1: 85
+2025-09-05 01:44:44,873 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-05 01:44:44,873 - INFO - number of values larger than 0.3: 0
+2025-09-05 01:44:44,874 - INFO - train loss is 9.649623461394086e-11
+2025-09-05 01:44:44,874 - INFO - impulse response loss is 0.007073098793625832
+2025-09-05 01:44:44,874 - INFO - Process 2: Completed experiment - student_dim=275, seed=4
+2025-09-05 01:44:44,897 - INFO - for seed 5, alpha_teacher=tensor([0.5310], device='cuda:2'), generated 2 sequences: [tensor([ 1.2089, -0.6117,  1.4826, -1.1513], device='cuda:2'), tensor([-0.2521,  0.8274, -0.6326,  1.0704], device='cuda:2')]
+2025-09-05 02:59:25,500 - WARNING - No GNC sensing losses for student dimension 150 seed 1
+2025-09-05 02:59:25,530 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-05 02:59:25,530 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-05 02:59:25,531 - INFO - initial model: max A_j index: 120
+2025-09-05 02:59:59,206 - INFO - final model: max A_j index: 95, max A_j value: 0.00534362206235528, alpha_teacher: tensor([0.4704], device='cuda:0')
+2025-09-05 02:59:59,208 - INFO - largest 10 A_j values: tensor([0.0053, 0.0053, 0.0053, 0.0053, 0.0053, 0.0053, 0.0053, 0.0053, 0.0053,
+        0.0053], device='cuda:0', grad_fn=<TopkBackward0>)
+2025-09-05 02:59:59,208 - INFO - number of values below 0.01: 150
+2025-09-05 02:59:59,209 - INFO - number of values between 0.01 and 0.1: 0
+2025-09-05 02:59:59,209 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-05 02:59:59,210 - INFO - number of values larger than 0.3: 0
+2025-09-05 02:59:59,210 - INFO - train loss is 0.004944460466504097
+2025-09-05 02:59:59,210 - INFO - impulse response loss is 0.17293618619441986
+2025-09-05 02:59:59,210 - INFO - Process 0: Completed experiment - student_dim=150, seed=1
+2025-09-05 04:33:51,990 - WARNING - No GNC sensing losses for student dimension 275 seed 6
+2025-09-05 04:33:52,020 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-05 04:33:52,020 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-05 04:33:52,022 - INFO - initial model: max A_j index: 10
+2025-09-05 04:34:26,177 - INFO - final model: max A_j index: 0, max A_j value: 0.0016213576309382915, alpha_teacher: tensor([0.5433], device='cuda:3')
+2025-09-05 04:34:26,179 - INFO - largest 10 A_j values: tensor([0.0016, 0.0016, 0.0016, 0.0016, 0.0016, 0.0016, 0.0016, 0.0016, 0.0016,
+        0.0016], device='cuda:3', grad_fn=<TopkBackward0>)
+2025-09-05 04:34:26,180 - INFO - number of values below 0.01: 275
+2025-09-05 04:34:26,180 - INFO - number of values between 0.01 and 0.1: 0
+2025-09-05 04:34:26,181 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-05 04:34:26,181 - INFO - number of values larger than 0.3: 0
+2025-09-05 04:34:26,181 - INFO - train loss is 0.010879992507398129
+2025-09-05 04:34:26,181 - INFO - impulse response loss is 0.12946845591068268
+2025-09-05 04:34:26,182 - INFO - Process 3: Completed experiment - student_dim=275, seed=6
+2025-09-05 04:34:26,202 - INFO - for seed 7, alpha_teacher=tensor([0.4695], device='cuda:3'), generated 2 sequences: [tensor([-1.2870, -0.3958,  0.3756,  0.2573], device='cuda:3'), tensor([ 0.1696, -1.3383, -0.9691, -0.6924], device='cuda:3')]
+2025-09-05 05:43:10,902 - WARNING - No GNC sensing losses for student dimension 250 seed 2
+2025-09-05 05:43:10,932 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-05 05:43:10,932 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-05 05:43:10,934 - INFO - initial model: max A_j index: 27
+2025-09-05 05:43:42,994 - INFO - final model: max A_j index: 27, max A_j value: 0.08792950958013535, alpha_teacher: tensor([0.5022], device='cuda:1')
+2025-09-05 05:43:42,996 - INFO - largest 10 A_j values: tensor([0.0879, 0.0807, 0.0712, 0.0693, 0.0684, 0.0683, 0.0611, 0.0603, 0.0597,
+        0.0592], device='cuda:1', grad_fn=<TopkBackward0>)
+2025-09-05 05:43:42,996 - INFO - number of values below 0.01: 156
+2025-09-05 05:43:42,997 - INFO - number of values between 0.01 and 0.1: 94
+2025-09-05 05:43:42,997 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-05 05:43:42,997 - INFO - number of values larger than 0.3: 0
+2025-09-05 05:43:42,998 - INFO - train loss is 2.2677622002476028e-09
+2025-09-05 05:43:42,998 - INFO - impulse response loss is 0.02898896113038063
+2025-09-05 05:43:42,998 - INFO - Process 1: Completed experiment - student_dim=250, seed=2
+2025-09-05 05:56:32,016 - WARNING - No GNC sensing losses for student dimension 150 seed 5
+2025-09-05 05:56:32,023 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-05 05:56:32,024 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-05 05:56:32,025 - INFO - initial model: max A_j index: 16
+2025-09-05 05:57:03,935 - INFO - final model: max A_j index: 16, max A_j value: 0.125321164727211, alpha_teacher: tensor([0.5310], device='cuda:2')
+2025-09-05 05:57:03,937 - INFO - largest 10 A_j values: tensor([0.1253, 0.0989, 0.0926, 0.0885, 0.0885, 0.0862, 0.0849, 0.0835, 0.0808,
+        0.0794], device='cuda:2', grad_fn=<TopkBackward0>)
+2025-09-05 05:57:03,937 - INFO - number of values below 0.01: 85
+2025-09-05 05:57:03,938 - INFO - number of values between 0.01 and 0.1: 64
+2025-09-05 05:57:03,938 - INFO - number of values between 0.1 and 0.3: 1
+2025-09-05 05:57:03,939 - INFO - number of values larger than 0.3: 0
+2025-09-05 05:57:03,939 - INFO - train loss is 0.0
+2025-09-05 05:57:03,939 - INFO - impulse response loss is 0.04142395034432411
+2025-09-05 05:57:03,939 - INFO - Process 2: Completed experiment - student_dim=150, seed=5
+2025-09-05 07:31:03,177 - WARNING - No GNC sensing losses for student dimension 175 seed 1
+2025-09-05 07:31:03,207 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-05 07:31:03,208 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-05 07:31:03,209 - INFO - initial model: max A_j index: 120
+2025-09-05 07:31:36,934 - INFO - final model: max A_j index: 44, max A_j value: 0.004583106376230717, alpha_teacher: tensor([0.4704], device='cuda:0')
+2025-09-05 07:31:36,937 - INFO - largest 10 A_j values: tensor([0.0046, 0.0046, 0.0046, 0.0046, 0.0046, 0.0046, 0.0046, 0.0046, 0.0046,
+        0.0046], device='cuda:0', grad_fn=<TopkBackward0>)
+2025-09-05 07:31:36,937 - INFO - number of values below 0.01: 175
+2025-09-05 07:31:36,937 - INFO - number of values between 0.01 and 0.1: 0
+2025-09-05 07:31:36,938 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-05 07:31:36,938 - INFO - number of values larger than 0.3: 0
+2025-09-05 07:31:36,938 - INFO - train loss is 0.00492539256811142
+2025-09-05 07:31:36,938 - INFO - impulse response loss is 0.17057223618030548
+2025-09-05 07:31:36,939 - INFO - Process 0: Completed experiment - student_dim=175, seed=1
+2025-09-05 09:01:19,818 - WARNING - No GNC sensing losses for student dimension 150 seed 7
+2025-09-05 09:01:19,847 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-05 09:01:19,847 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-05 09:01:19,848 - INFO - initial model: max A_j index: 146
+2025-09-05 09:01:54,650 - INFO - final model: max A_j index: 146, max A_j value: 0.11881641298532486, alpha_teacher: tensor([0.4695], device='cuda:3')
+2025-09-05 09:01:54,653 - INFO - largest 10 A_j values: tensor([0.1188, 0.1163, 0.0990, 0.0983, 0.0915, 0.0906, 0.0852, 0.0843, 0.0743,
+        0.0681], device='cuda:3', grad_fn=<TopkBackward0>)
+2025-09-05 09:01:54,653 - INFO - number of values below 0.01: 85
+2025-09-05 09:01:54,654 - INFO - number of values between 0.01 and 0.1: 63
+2025-09-05 09:01:54,654 - INFO - number of values between 0.1 and 0.3: 2
+2025-09-05 09:01:54,655 - INFO - number of values larger than 0.3: 0
+2025-09-05 09:01:54,655 - INFO - train loss is 1.0981297236867249e-05
+2025-09-05 09:01:54,655 - INFO - impulse response loss is 0.024201417341828346
+2025-09-05 09:01:54,655 - INFO - Process 3: Completed experiment - student_dim=150, seed=7
+2025-09-05 10:51:41,140 - WARNING - No GNC sensing losses for student dimension 175 seed 5
+2025-09-05 10:51:41,146 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-05 10:51:41,146 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-05 10:51:41,147 - INFO - initial model: max A_j index: 16
+2025-09-05 10:52:14,562 - INFO - final model: max A_j index: 16, max A_j value: 0.118922159075737, alpha_teacher: tensor([0.5310], device='cuda:2')
+2025-09-05 10:52:14,565 - INFO - largest 10 A_j values: tensor([0.1189, 0.1083, 0.0936, 0.0876, 0.0836, 0.0835, 0.0813, 0.0802, 0.0788,
+        0.0762], device='cuda:2', grad_fn=<TopkBackward0>)
+2025-09-05 10:52:14,565 - INFO - number of values below 0.01: 104
+2025-09-05 10:52:14,566 - INFO - number of values between 0.01 and 0.1: 69
+2025-09-05 10:52:14,566 - INFO - number of values between 0.1 and 0.3: 2
+2025-09-05 10:52:14,566 - INFO - number of values larger than 0.3: 0
+2025-09-05 10:52:14,566 - INFO - train loss is 9.194410857671365e-12
+2025-09-05 10:52:14,566 - INFO - impulse response loss is 0.04151935875415802
+2025-09-05 10:52:14,567 - INFO - Process 2: Completed experiment - student_dim=175, seed=5
+2025-09-05 12:42:27,623 - WARNING - No GNC sensing losses for student dimension 200 seed 1
+2025-09-05 12:42:27,651 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-05 12:42:27,651 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-05 12:42:27,653 - INFO - initial model: max A_j index: 120
+2025-09-05 12:43:01,429 - INFO - final model: max A_j index: 10, max A_j value: 0.004014365375041962, alpha_teacher: tensor([0.4704], device='cuda:0')
+2025-09-05 12:43:01,431 - INFO - largest 10 A_j values: tensor([0.0040, 0.0040, 0.0040, 0.0040, 0.0040, 0.0040, 0.0040, 0.0040, 0.0040,
+        0.0040], device='cuda:0', grad_fn=<TopkBackward0>)
+2025-09-05 12:43:01,431 - INFO - number of values below 0.01: 200
+2025-09-05 12:43:01,432 - INFO - number of values between 0.01 and 0.1: 0
+2025-09-05 12:43:01,432 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-05 12:43:01,433 - INFO - number of values larger than 0.3: 0
+2025-09-05 12:43:01,433 - INFO - train loss is 0.004911439493298531
+2025-09-05 12:43:01,433 - INFO - impulse response loss is 0.1712440848350525
+2025-09-05 12:43:01,434 - INFO - Process 0: Completed experiment - student_dim=200, seed=1
+2025-09-05 14:18:55,968 - WARNING - No GNC sensing losses for student dimension 175 seed 7
+2025-09-05 14:18:55,973 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-05 14:18:55,973 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-05 14:18:55,974 - INFO - initial model: max A_j index: 35
+2025-09-05 14:19:30,115 - INFO - final model: max A_j index: 35, max A_j value: 0.10995283722877502, alpha_teacher: tensor([0.4695], device='cuda:3')
+2025-09-05 14:19:30,117 - INFO - largest 10 A_j values: tensor([0.1100, 0.1006, 0.0934, 0.0928, 0.0864, 0.0855, 0.0804, 0.0797, 0.0755,
+        0.0718], device='cuda:3', grad_fn=<TopkBackward0>)
+2025-09-05 14:19:30,118 - INFO - number of values below 0.01: 99
+2025-09-05 14:19:30,118 - INFO - number of values between 0.01 and 0.1: 74
+2025-09-05 14:19:30,119 - INFO - number of values between 0.1 and 0.3: 2
+2025-09-05 14:19:30,119 - INFO - number of values larger than 0.3: 0
+2025-09-05 14:19:30,119 - INFO - train loss is 1.3815684707374487e-12
+2025-09-05 14:19:30,119 - INFO - impulse response loss is 0.02457205019891262
+2025-09-05 14:19:30,120 - INFO - Process 3: Completed experiment - student_dim=175, seed=7
+2025-09-05 16:28:48,126 - WARNING - No GNC sensing losses for student dimension 200 seed 5
+2025-09-05 16:28:48,154 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-05 16:28:48,154 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-05 16:28:48,155 - INFO - initial model: max A_j index: 16
+2025-09-05 16:29:21,615 - INFO - final model: max A_j index: 16, max A_j value: 0.10802436619997025, alpha_teacher: tensor([0.5310], device='cuda:2')
+2025-09-05 16:29:21,617 - INFO - largest 10 A_j values: tensor([0.1080, 0.0983, 0.0848, 0.0793, 0.0757, 0.0756, 0.0746, 0.0736, 0.0725,
+        0.0722], device='cuda:2', grad_fn=<TopkBackward0>)
+2025-09-05 16:29:21,617 - INFO - number of values below 0.01: 118
+2025-09-05 16:29:21,618 - INFO - number of values between 0.01 and 0.1: 81
+2025-09-05 16:29:21,618 - INFO - number of values between 0.1 and 0.3: 1
+2025-09-05 16:29:21,618 - INFO - number of values larger than 0.3: 0
+2025-09-05 16:29:21,618 - INFO - train loss is 7.827799890947063e-06
+2025-09-05 16:29:21,618 - INFO - impulse response loss is 0.04280702397227287
+2025-09-05 16:29:21,619 - INFO - Process 2: Completed experiment - student_dim=200, seed=5
+2025-09-05 16:29:53,373 - WARNING - No GNC sensing losses for student dimension 275 seed 2
+2025-09-05 16:29:53,377 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-09-05 16:29:53,378 - INFO - Calling train_gd with scheduler_params: {}
+2025-09-05 16:29:53,379 - INFO - initial model: max A_j index: 27
+2025-09-05 16:30:05,180 - INFO - final model: max A_j index: 27, max A_j value: 0.08144372701644897, alpha_teacher: tensor([0.5022], device='cuda:1')
+2025-09-05 16:30:05,182 - INFO - largest 10 A_j values: tensor([0.0814, 0.0747, 0.0656, 0.0639, 0.0630, 0.0630, 0.0561, 0.0554, 0.0549,
+        0.0544], device='cuda:1', grad_fn=<TopkBackward0>)
+2025-09-05 16:30:05,182 - INFO - number of values below 0.01: 168
+2025-09-05 16:30:05,182 - INFO - number of values between 0.01 and 0.1: 107
+2025-09-05 16:30:05,182 - INFO - number of values between 0.1 and 0.3: 0
+2025-09-05 16:30:05,182 - INFO - number of values larger than 0.3: 0
+2025-09-05 16:30:05,182 - INFO - train loss is 7.182479611067549e-11
+2025-09-05 16:30:05,182 - INFO - impulse response loss is 0.029398851096630096
+2025-09-05 16:30:05,183 - INFO - Process 1: Completed experiment - student_dim=275, seed=2
+2025-09-05 16:30:05,185 - INFO - for seed 3, alpha_teacher=tensor([0.5426], device='cuda:1'), generated 2 sequences: [tensor([-0.5162, -0.2217, -0.5594,  0.5542], device='cuda:1'), tensor([-0.7082, -2.1120,  0.3220, -0.9507], device='cuda:1')]
