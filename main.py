@@ -277,8 +277,8 @@ def run_experiment(args):
             print("No available GPUs found. Exiting program.")
             return None, None, None, None, None
 
-    # Determine number of processes (1-4 based on available GPUs)
-    num_processes = min(len(available_gpus), 4)
+    # Determine number of processes (1-max-gpus based on available GPUs)
+    num_processes = min(len(available_gpus), args.max_gpus)
     if num_processes == 0:
         logging.error("No GPUs available for processing. Exiting program.")
         print("No GPUs available for processing. Exiting program.")
