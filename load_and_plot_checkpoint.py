@@ -15,8 +15,11 @@ def print_checkpoint_summary(results):
     print(f"Total experiments: {results.get('total_experiments', 'N/A')}")
     
     if 'completed_experiments' in results and 'total_experiments' in results:
-        progress = (results['completed_experiments'] / results['total_experiments']) * 100
-        print(f"Progress: {progress:.1f}%")
+        if results['total_experiments'] > 0:
+            progress = (results['completed_experiments'] / results['total_experiments']) * 100
+            print(f"Progress: {progress:.1f}%")
+        else:
+            print("Progress: 0% (no experiments started)")
     
     print("\n=== Data Arrays ===")
     for key, value in results.items():

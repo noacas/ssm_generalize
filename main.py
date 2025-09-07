@@ -354,6 +354,9 @@ def run_experiment(args):
     total_experiments = len(seeds_to_use) * len(args.student_dims)
     completed_processes = 0
     
+    # Initialize checkpoint manager with total experiments count
+    checkpoint_manager.update_results({}, 0, total_experiments)
+    
     # Track process completion
     process_completion = {i: False for i in range(num_processes)}
     
