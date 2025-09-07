@@ -497,6 +497,10 @@ def w2_that_minimizes_loss(w_sequences, w, alpha_teacher, sequence_length):
     #todo
     return w
 
+def w2_that_maximizes_loss(w_sequences, w, alpha_teacher, sequence_length):
+    #todo
+    return w
+
 
 if __name__ == "__main__":
     #w_that_minimizes_loss()
