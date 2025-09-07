@@ -52,10 +52,16 @@ class CheckpointManager:
             with open(checkpoint_path, 'wb') as f:
                 pickle.dump(self.current_results, f)
                 
-            progress = (self.current_results['completed_experiments'] / 
-                        self.current_results['total_experiments'] * 100)
-            logging.info(f"Checkpoint saved: {checkpoint_path} ({progress:.1f}% complete)")
-            print(f"Checkpoint saved: {checkpoint_path} ({progress:.1f}% complete)")
+            # Calculate progress percentage, handling division by zero
+            if self.current_results['total_experiments'] > 0:
+                progress = (self.current_results['completed_experiments'] / 
+                            self.current_results['total_experiments'] * 100)
+                progress_str = f"({progress:.1f}% complete)"
+            else:
+                progress_str = "(0% complete - no experiments started)"
+            
+            logging.info(f"Checkpoint saved: {checkpoint_path} {progress_str}")
+            print(f"Checkpoint saved: {checkpoint_path} {progress_str}")
                 
         except Exception as e:
             logging.error(f"Failed to save checkpoint: {e}")
