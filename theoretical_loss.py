@@ -568,14 +568,21 @@ def w2_that_minimizes_loss(w1, alpha_teacher, sequence_length, device):
     # Scale w2 to achieve the optimal weight ratio
     # We want (w2[0])^2 / (w1[0])^2 = weight_ratio
     # So w2[0] = w1[0] * sqrt(weight_ratio)
-    scale_factor = torch.sqrt(torch.abs(weight_ratio))
-    w2 = w2_tilde * scale_factor
-    
-    # Ensure w2[0] has the correct sign to match the weight ratio
-    if weight_ratio < 0:
-        w2[0] = -torch.abs(w2[0])
+    if weight_ratio > 0:
+        scale_factor = torch.sqrt(weight_ratio)
+        w2 = w2_tilde * scale_factor
+        # Ensure w2[0] has the same sign as w1[0]
+        w2[0] = torch.sign(w1[0]) * torch.abs(w2[0])
     else:
-        w2[0] = torch.abs(w2[0])
+        # If weight_ratio is negative, we need to handle this case
+        # This shouldn't happen if r1 and r2 are on opposite sides of -α
+        logging.warning(f"Negative weight ratio: {weight_ratio}, r1={r1}, r2={r2}, alpha={alpha_teacher}")
+        # Fall back to a simple scaling
+        w2 = w2_tilde * torch.abs(w1[0]) / torch.abs(w2_tilde[0])
+    
+    # Verify the effective ratio is close to -α
+    r_eff_actual = (w1[0]**2 * r1 + w2[0]**2 * r2) / (w1[0]**2 + w2[0]**2)
+    logging.info(f"Target r_eff: {-alpha_teacher.item():.4f}, Actual r_eff: {r_eff_actual.item():.4f}")
     
     return w2
 
@@ -628,18 +635,31 @@ def w2_that_maximizes_loss(w1, alpha_teacher, sequence_length, device):
     
     # For adversarial case, make the weight ratio large so r_eff ≈ r2
     # Choose a large weight ratio to dominate the effective ratio
-    large_weight_ratio = 10.0  # Make w2_1 much larger than w1_1
+    large_weight_ratio = 100.0  # Make w2_1 much larger than w1_1
     
     # Scale w2 to achieve the large weight ratio
     # We want (w2[0])^2 / (w1[0])^2 = large_weight_ratio
     # So w2[0] = w1[0] * sqrt(large_weight_ratio)
-    scale_factor = torch.sqrt(large_weight_ratio)
+    scale_factor = torch.sqrt(torch.tensor(large_weight_ratio, device=device))
     w2 = w2_tilde * scale_factor
     
     # Ensure w2[0] has the same sign as w1[0] to maintain the weight ratio
     w2[0] = torch.sign(w1[0]) * torch.abs(w2[0])
     
+    # Verify the effective ratio is close to r2
+    r_eff_actual = (w1[0]**2 * r1 + w2[0]**2 * r2) / (w1[0]**2 + w2[0]**2)
+    logging.info(f"Adversarial r_eff: {r_eff_actual.item():.4f} (should be close to r2 = {r2.item():.4f})")
+    
     return w2
+
+
+def calculate_asymptotic_loss(r_eff, alpha_teacher, sequence_length, device):
+    """
+    Calculate the asymptotic loss using the formula: f(r) = μ_0^T μ_0 - α^2 + (r + α)^2
+    """
+    mu_0 = _build_mu_0_asymptotic(alpha_teacher, sequence_length, device)
+    mu_0_squared = torch.dot(mu_0, mu_0)
+    return mu_0_squared - alpha_teacher**2 + (r_eff + alpha_teacher)**2
 
 
 def test_w2_optimization():
@@ -705,6 +725,32 @@ def test_w2_optimization():
     
     print(f"r_eff_min: {r_eff_min.item():.4f} (should be close to -α = {-alpha_teacher.item():.4f})")
     print(f"r_eff_max: {r_eff_max.item():.4f}")
+    
+    # Calculate theoretical asymptotic losses
+    L1_theoretical = calculate_asymptotic_loss(r1, alpha_teacher, sequence_length, device)
+    L2_min_theoretical = calculate_asymptotic_loss(r_eff_min, alpha_teacher, sequence_length, device)
+    L2_max_theoretical = calculate_asymptotic_loss(r_eff_max, alpha_teacher, sequence_length, device)
+    
+    print(f"\nTheoretical asymptotic losses:")
+    print(f"L1_theoretical: {L1_theoretical.item():.6f}")
+    print(f"L2_min_theoretical: {L2_min_theoretical.item():.6f}")
+    print(f"L2_max_theoretical: {L2_max_theoretical.item():.6f}")
+    
+    # Additional debugging information
+    print(f"\nDebugging info:")
+    print(f"w1[0]: {w1[0].item():.4f}")
+    print(f"w2_min[0]: {w2_min[0].item():.4f}")
+    print(f"w2_max[0]: {w2_max[0].item():.4f}")
+    print(f"Weight ratio for min: {(w2_min[0]/w1[0])**2:.4f}")
+    print(f"Weight ratio for max: {(w2_max[0]/w1[0])**2:.4f}")
+    
+    # Check if the conditions are met
+    print(f"\nCondition checks:")
+    print(f"r1 + α = {r1.item() + alpha_teacher.item():.4f}")
+    print(f"r2_min + α = {r2_min.item() + alpha_teacher.item():.4f}")
+    print(f"r2_max + α = {r2_max.item() + alpha_teacher.item():.4f}")
+    print(f"Opposite signs for min: {(r1 + alpha_teacher) * (r2_min + alpha_teacher) < 0}")
+    print(f"Same side for max: {(r1 + alpha_teacher) * (r2_max + alpha_teacher) > 0}")
 
 
 if __name__ == "__main__":
