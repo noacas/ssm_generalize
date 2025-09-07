@@ -11,25 +11,26 @@ def generate_w(sequence_length: int,
 
 def generate_w_sequences(sequence_length: int, num_sequences: int, device: torch.device, args_dict, alpha_teacher):
     # Generate multiple sequences
-    w_sequences = []
     if num_sequences == 1:
         w = generate_w(sequence_length, device)
         if args_dict['w_that_minimizes_loss']:
             w = w_that_minimizes_loss(w, alpha_teacher, sequence_length)
-        w_sequences.append(w)
+        return [w]
+
     elif num_sequences == 2:
         w1 = generate_w(sequence_length, device)
-        w_sequences.append(w1)
-        w2 = generate_w(sequence_length, device)
         if args_dict['w2_that_minimizes_loss']:
-            w2 = w2_that_minimizes_loss(w_sequences, w2, alpha_teacher, sequence_length)
+            w2 = w2_that_minimizes_loss(w1, alpha_teacher, sequence_length, device)
         elif args_dict['w2_that_maximizes_loss']:
-            w2 = w2_that_maximizes_loss(w_sequences, w2, alpha_teacher, sequence_length)
-        w_sequences.append(w2)
-    else:
-        for seq_idx in range(num_sequences):
-            w = generate_w(sequence_length, device)
-            w_sequences.append(w)
+            w2 = w2_that_maximizes_loss(w1, alpha_teacher, sequence_length, device)
+        else:
+            w2 = generate_w(sequence_length, device)
+        return [w1, w2]
+
+    w_sequences = []
+    for seq_idx in range(num_sequences):
+        w = generate_w(sequence_length, device)
+        w_sequences.append(w)
     return w_sequences
 
 
