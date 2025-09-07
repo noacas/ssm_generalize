@@ -301,6 +301,23 @@ def _build_sigma_S_finite_d(student_dim, sequence_length, device):
     return sigma_S
 
 
+def _build_mu_0_asymptotic(alpha_teacher, sequence_length, device):
+    """
+    Build μ_0 (asymptotic mean) as d → ∞.
+    
+    μ_0 = (-α, 1-α^2, -α^3, -α^4, ..., -α^{k-1})^T
+    """
+    mu_0 = torch.empty(sequence_length - 1, device=device)
+    for m in range(1, sequence_length):
+        if m % 2 == 1:  # odd m
+            mu_0[m-1] = -alpha_teacher**m
+        elif m == 2:  # m = 2
+            mu_0[m-1] = 1 - alpha_teacher**m
+        else:  # m >= 4, even
+            mu_0[m-1] = -alpha_teacher**m
+    return mu_0
+
+
 def _calculate_asymptotic_for_two_w(alpha_teacher, w_sequences, student_dim, device):
     """
     Calculate asymptotic conditional expectation for N=2 as d → ∞.
@@ -493,15 +510,204 @@ def w_that_minimizes_loss(w, alpha_teacher, sequence_length):
     return w
 
 
-def w2_that_minimizes_loss(w_sequences, w, alpha_teacher, sequence_length):
-    #todo
-    return w
+def w2_that_minimizes_loss(w1, alpha_teacher, sequence_length, device):
+    """
+    Find w2 that minimizes the N=2 loss for a given w1.
+    
+    Based on Proposition 4 from the LaTeX document:
+    - Choose r2 with sign(r2 + α) = -sign(r1 + α) 
+    - Set weight ratio by equation (eq:ratio-hit-min) to achieve r_eff = -α
+    - This gives L2 = μ_0^T μ_0 - α^2 (the global minimum)
+    
+    Args:
+        w1: First constraint vector of shape (sequence_length-1,)
+        alpha_teacher: Teacher parameter
+        sequence_length: Length of the sequence
+        device: PyTorch device
+        
+    Returns:
+        w2: Optimal second constraint vector that minimizes loss
+    """
+    # Calculate r1 = r(w1) = w1^T μ_0 / w1[0]
+    mu_0 = _build_mu_0_asymptotic(alpha_teacher, sequence_length, device)
+    r1 = torch.dot(w1, mu_0) / w1[0]
+    
+    # Choose r2 on the opposite side of -α from r1
+    if r1 + alpha_teacher > 0:
+        # r1 > -α, so choose r2 < -α
+        r2 = -alpha_teacher - 1.0  # Choose r2 well below -α
+    else:
+        # r1 < -α, so choose r2 > -α  
+        r2 = -alpha_teacher + 1.0  # Choose r2 well above -α
+    
+    # Construct w2 using the method from Proposition 4
+    # w2 = e1 + β * v_tail where v_tail = (0, μ_0,2, ..., μ_0,k-1)^T
+    v_tail = torch.zeros_like(mu_0)
+    v_tail[1:] = mu_0[1:]  # v_tail[0] = 0, v_tail[m] = μ_0,m for m ≥ 2
+    
+    # Calculate β = (r2 + α) / ||v_tail||^2
+    v_tail_norm_squared = torch.dot(v_tail, v_tail)
+    if v_tail_norm_squared > 1e-10:  # Avoid division by zero
+        beta = (r2 + alpha_teacher) / v_tail_norm_squared
+    else:
+        # If v_tail is nearly zero, just use a simple construction
+        beta = 0.0
+    
+    # Construct w2_tilde = e1 + β * v_tail
+    w2_tilde = torch.zeros_like(w1)
+    w2_tilde[0] = 1.0  # e1 component
+    w2_tilde += beta * v_tail
+    
+    # Verify that r(w2_tilde) = r2
+    r2_actual = torch.dot(w2_tilde, mu_0) / w2_tilde[0]
+    
+    # Calculate the optimal weight ratio from equation (eq:ratio-hit-min)
+    # (w2_1)^2 / (w1_1)^2 = -(r1 + α) / (r2 + α)
+    weight_ratio = -(r1 + alpha_teacher) / (r2 + alpha_teacher)
+    
+    # Scale w2 to achieve the optimal weight ratio
+    # We want (w2[0])^2 / (w1[0])^2 = weight_ratio
+    # So w2[0] = w1[0] * sqrt(weight_ratio)
+    scale_factor = torch.sqrt(torch.abs(weight_ratio))
+    w2 = w2_tilde * scale_factor
+    
+    # Ensure w2[0] has the correct sign to match the weight ratio
+    if weight_ratio < 0:
+        w2[0] = -torch.abs(w2[0])
+    else:
+        w2[0] = torch.abs(w2[0])
+    
+    return w2
 
-def w2_that_maximizes_loss(w_sequences, w, alpha_teacher, sequence_length):
-    #todo
-    return w
+def w2_that_maximizes_loss(w1, alpha_teacher, sequence_length, device):
+    """
+    Find w2 that maximizes the N=2 loss for a given w1 (adversarial/poisoning case).
+    
+    Based on Proposition 5 from the LaTeX document:
+    - Pick r2 on the same side of -α as r1 with |r2 + α| > |r1 + α|
+    - Choose |w2_1|/|w1_1| large so r_eff ≈ r2
+    - This gives L2 > L1(w1) and the gap can be made arbitrarily large
+    
+    Args:
+        w1: First constraint vector of shape (sequence_length-1,)
+        alpha_teacher: Teacher parameter
+        sequence_length: Length of the sequence
+        device: PyTorch device
+        
+    Returns:
+        w2: Adversarial second constraint vector that maximizes loss
+    """
+    # Calculate r1 = r(w1) = w1^T μ_0 / w1[0]
+    mu_0 = _build_mu_0_asymptotic(alpha_teacher, sequence_length, device)
+    r1 = torch.dot(w1, mu_0) / w1[0]
+    
+    # Choose r2 on the same side of -α as r1 with |r2 + α| > |r1 + α|
+    if r1 + alpha_teacher > 0:
+        # r1 > -α, so choose r2 > -α with r2 > r1
+        r2 = r1 + 2.0  # Choose r2 well above r1
+    else:
+        # r1 < -α, so choose r2 < -α with r2 < r1
+        r2 = r1 - 2.0  # Choose r2 well below r1
+    
+    # Construct w2 using the same method as in the minimizing case
+    v_tail = torch.zeros_like(mu_0)
+    v_tail[1:] = mu_0[1:]  # v_tail[0] = 0, v_tail[m] = μ_0,m for m ≥ 2
+    
+    # Calculate β = (r2 + α) / ||v_tail||^2
+    v_tail_norm_squared = torch.dot(v_tail, v_tail)
+    if v_tail_norm_squared > 1e-10:  # Avoid division by zero
+        beta = (r2 + alpha_teacher) / v_tail_norm_squared
+    else:
+        # If v_tail is nearly zero, just use a simple construction
+        beta = 0.0
+    
+    # Construct w2_tilde = e1 + β * v_tail
+    w2_tilde = torch.zeros_like(w1)
+    w2_tilde[0] = 1.0  # e1 component
+    w2_tilde += beta * v_tail
+    
+    # For adversarial case, make the weight ratio large so r_eff ≈ r2
+    # Choose a large weight ratio to dominate the effective ratio
+    large_weight_ratio = 10.0  # Make w2_1 much larger than w1_1
+    
+    # Scale w2 to achieve the large weight ratio
+    # We want (w2[0])^2 / (w1[0])^2 = large_weight_ratio
+    # So w2[0] = w1[0] * sqrt(large_weight_ratio)
+    scale_factor = torch.sqrt(large_weight_ratio)
+    w2 = w2_tilde * scale_factor
+    
+    # Ensure w2[0] has the same sign as w1[0] to maintain the weight ratio
+    w2[0] = torch.sign(w1[0]) * torch.abs(w2[0])
+    
+    return w2
+
+
+def test_w2_optimization():
+    """
+    Test function to demonstrate w2 optimization for minimizing and maximizing loss.
+    """
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    from generator import generate_teacher_alpha, generate_w
+    
+    print("Testing w2 optimization functions...")
+    
+    # Generate test parameters
+    torch.manual_seed(42)
+    alpha_teacher = generate_teacher_alpha(device)
+    w1 = generate_w(5, device)  # sequence_length = 5
+    sequence_length = 5
+    student_dim = 200
+    
+    print(f"Alpha teacher: {alpha_teacher.item():.4f}")
+    print(f"w1: {w1}")
+    
+    # Calculate L1(w1) - the single constraint loss
+    L1_w1, _, _ = gnc_theoretical_loss_for_one_w(alpha_teacher, w1, student_dim, device)
+    print(f"L1(w1): {L1_w1.item():.6f}")
+    
+    # Find w2 that minimizes loss
+    w2_min = w2_that_minimizes_loss(w1, alpha_teacher, sequence_length, device)
+    print(f"w2_min: {w2_min}")
+    
+    # Calculate L2(w1, w2_min)
+    L2_min, _, _ = gnc_theoretical_loss_for_multiple_w(alpha_teacher, [w1, w2_min], student_dim, device)
+    print(f"L2(w1, w2_min): {L2_min.item():.6f}")
+    print(f"Improvement: {L1_w1.item() - L2_min.item():.6f}")
+    
+    # Find w2 that maximizes loss (adversarial)
+    w2_max = w2_that_maximizes_loss(w1, alpha_teacher, sequence_length, device)
+    print(f"w2_max: {w2_max}")
+    
+    # Calculate L2(w1, w2_max)
+    L2_max, _, _ = gnc_theoretical_loss_for_multiple_w(alpha_teacher, [w1, w2_max], student_dim, device)
+    print(f"L2(w1, w2_max): {L2_max.item():.6f}")
+    print(f"Deterioration: {L2_max.item() - L1_w1.item():.6f}")
+    
+    # Verify the theoretical predictions
+    mu_0 = _build_mu_0_asymptotic(alpha_teacher, sequence_length, device)
+    r1 = torch.dot(w1, mu_0) / w1[0]
+    r2_min = torch.dot(w2_min, mu_0) / w2_min[0]
+    r2_max = torch.dot(w2_max, mu_0) / w2_max[0]
+    
+    print(f"\nRatio analysis:")
+    print(f"r1: {r1.item():.4f}")
+    print(f"r2_min: {r2_min.item():.4f}")
+    print(f"r2_max: {r2_max.item():.4f}")
+    print(f"-α: {-alpha_teacher.item():.4f}")
+    
+    # Calculate effective ratios
+    w1_1_sq = w1[0]**2
+    w2_min_1_sq = w2_min[0]**2
+    w2_max_1_sq = w2_max[0]**2
+    
+    r_eff_min = (w1_1_sq * r1 + w2_min_1_sq * r2_min) / (w1_1_sq + w2_min_1_sq)
+    r_eff_max = (w1_1_sq * r1 + w2_max_1_sq * r2_max) / (w1_1_sq + w2_max_1_sq)
+    
+    print(f"r_eff_min: {r_eff_min.item():.4f} (should be close to -α = {-alpha_teacher.item():.4f})")
+    print(f"r_eff_max: {r_eff_max.item():.4f}")
 
 
 if __name__ == "__main__":
     #w_that_minimizes_loss()
-    first_best_seeds()
+    #first_best_seeds()
+    test_w2_optimization()
