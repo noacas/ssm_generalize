@@ -14,11 +14,11 @@ from checkpoint import CheckpointManager
 
 from plotting import plot
 
-from generator import generate_teacher_alpha, generate_w
+from generator import generate_teacher_alpha, generate_w_sequences
 from parser import parse_args
 from training import train_gnc, train_gd
 from utils import filename_extensions, get_available_gpus, get_available_device
-from theoretical_loss import gnc_theoretical_loss, w_that_minimizes_loss, w2_that_minimizes_loss
+from theoretical_loss import gnc_theoretical_loss
 
 
 def process_worker(process_id, gpu_id, seed_list, args_dict, student_dims, 
@@ -61,26 +61,8 @@ def process_worker(process_id, gpu_id, seed_list, args_dict, student_dims,
         torch.manual_seed(seed)
         with torch.no_grad():
             alpha_teacher = generate_teacher_alpha(device)
-            # Generate multiple sequences
-            num_sequences = args_dict.get('num_sequences', 1)
-            w_sequences = []
-            if num_sequences == 1:
-                w = generate_w(args_dict['sequence_length'], device)
-                if args_dict['w_that_minimizes_loss']:
-                    w = w_that_minimizes_loss(w, alpha_teacher, args_dict['sequence_length'])
-                w_sequences.append(w)
-            elif num_sequences == 2:
-                w1 = generate_w(args_dict['sequence_length'], device)
-                w_sequences.append(w1)
-                w2 = generate_w(args_dict['sequence_length'], device)
-                if args_dict['w2_that_minimizes_loss']:
-                    w2 = w2_that_minimizes_loss(w_sequences, w2, alpha_teacher, args_dict['sequence_length'])
-                w_sequences.append(w2)
-            else:
-                for seq_idx in range(num_sequences):
-                    w = generate_w(args_dict['sequence_length'], device)
-                    w_sequences.append(w)
-            logging.info(f"for seed {seed}, alpha_teacher={alpha_teacher}, generated {num_sequences} sequences: {w_sequences}")
+            w_sequences = generate_w_sequences(args_dict['sequence_length'], args_dict['num_sequences'], device, args_dict, alpha_teacher)
+            logging.info(f"for seed {seed}, alpha_teacher={alpha_teacher}, generated {len(w_sequences)} sequences: {w_sequences}")
 
         for student_dim_idx, student_dim in enumerate(student_dims):
             # Set seed for reproducibility
