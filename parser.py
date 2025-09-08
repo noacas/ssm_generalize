@@ -57,7 +57,7 @@ def parse_args() -> argparse.Namespace:  # noqa: C901 – a bit long but flat
     g.add_argument("--sequence_length", type=int, default=5, help="Length of the measurement sequence")
     g.add_argument("--num_sequences", type=int, default=1, help="Number of sequences to train on")
     g.add_argument("--student_dims", type=int, nargs='+', default=list(range(150, 300, 25)), help="Student dimensions (one or more integers)")
-    g.add_argument("--eps_train", type=float, default=float(1e-5), help="Training loss threshold for successful trial")
+    g.add_argument("--eps_train", type=float, default=float(1e-3), help="Training loss threshold for successful trial")
     g.add_argument("--w_that_minimizes_loss", dest="w_that_minimizes_loss", action="store_true", default=False, help="Whether to use the w that minimizes the loss")
     g.add_argument("--w2_that_minimizes_loss", dest="w2_that_minimizes_loss", action="store_true", default=False, help="Whether to use the w2 that minimizes the loss")
     g.add_argument("--w2_that_maximizes_loss", dest="w2_that_maximizes_loss", action="store_true", default=False, help="Whether to use the w2 that maximizes the loss")
@@ -71,7 +71,7 @@ def parse_args() -> argparse.Namespace:  # noqa: C901 – a bit long but flat
     )
     g.add_argument("--gnc_num_samples", type=int, default=int(1e8), help="Number of G&C samples")
     g.add_argument("--gnc_batch_size", type=int, default=int(5 * 1e5), help="Batch sizes for G&C")
-    g.add_argument("--gnc_use_prediction", dest="gnc_use_prediction", action="store_true", default=True, help="Enable fast prediction to skip expensive loss calculations (default: True)")
+    g.add_argument("--gnc_use_prediction", dest="gnc_use_prediction", action="store_true", help="Enable fast prediction to skip expensive loss calculations (default: True)")
     g.add_argument("--no-gnc_use_prediction", dest="gnc_use_prediction", action="store_false", help="Disable fast prediction optimization")
 
     g = parser.add_argument_group("Gradient Descent hyper‑parameters")
@@ -109,7 +109,7 @@ def parse_args() -> argparse.Namespace:  # noqa: C901 – a bit long but flat
     parser.add_argument("--log_dir", type=pathlib.Path, default=pathlib.Path("./test_results/logs"), help="Logs directory")
 
     g = parser.add_argument_group("GPU settings")
-    g.add_argument("--max_gpus", type=int, default=4, help="Maximum number of GPUs to use")
+    g.add_argument("--max_gpus", type=int, default=8, help="Maximum number of GPUs to use")
 
     # ---- first round parse (just to grab --config) --------------------
     if "--config" in parser.parse_known_args()[0]._get_args():  # type: ignore
