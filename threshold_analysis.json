@@ -1,0 +1,67 @@
+{
+  "success_count": 106,
+  "failure_count": 49894,
+  "success_rate": 0.00212,
+  "success_mean_stats": {
+    "mean": 0.026057953014969826,
+    "std": 0.003345558885484934,
+    "min": 0.018118031322956085,
+    "max": 0.036306705325841904,
+    "percentile_5": 0.021291673183441162,
+    "percentile_95": 0.032579999417066574
+  },
+  "success_var_stats": {
+    "mean": 0.00849967636168003,
+    "std": 0.001168909715488553,
+    "min": 0.006183916702866554,
+    "max": 0.01125937607139349,
+    "percentile_5": 0.006633374374359846,
+    "percentile_95": 0.01049239281564951
+  },
+  "failure_mean_stats": {
+    "mean": -3.0847921152599156e-05,
+    "std": 0.009897386655211449,
+    "min": -0.041790448129177094,
+    "max": 0.04880256578326225,
+    "percentile_5": -0.016409339383244514,
+    "percentile_95": 0.01612255908548832
+  },
+  "failure_var_stats": {
+    "mean": 0.010010753758251667,
+    "std": 0.0014216086128726602,
+    "min": 0.005293932743370533,
+    "max": 0.016367917880415916,
+    "percentile_5": 0.007788059301674366,
+    "percentile_95": 0.01244847197085619
+  },
+  "param_stats": {
+    "all_mean_mean": 2.4460336135234684e-05,
+    "all_mean_std": 0.00996062159538269,
+    "all_var_mean": 0.01000755000859499,
+    "all_var_std": 0.0014228093205019832,
+    "all_norm_mean": 0.9978346824645996,
+    "all_norm_std": 0.07067335397005081,
+    "all_max_abs_mean": 0.2749616205692291,
+    "all_max_abs_std": 0.040031079202890396
+  },
+  "recommended_mean_min": -0.11640933938324452,
+  "recommended_mean_max": 0.13257999941706658,
+  "recommended_var_min": 0.01,
+  "recommended_var_max": 0.06244847197085619,
+  "mean_separation": 0.026088800936122425,
+  "var_separation": 0.0015110773965716362,
+  "norm_separation": 0.04620999097824097,
+  "max_abs_separation": 0.013437926769256592,
+  "separations": {
+    "mean": 0.026088800936122425,
+    "variance": 0.0015110773965716362,
+    "norm": 0.04620999097824097,
+    "max_abs": 0.013437926769256592
+  },
+  "best_separation_metric": "norm",
+  "best_separation_value": 0.04620999097824097,
+  "separation_quality": "poor",
+  "analysis_metadata": {
+    "seed": 0,
+    "student_dim": 100,
+    "alpha_teacher": 
