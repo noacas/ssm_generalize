@@ -102,7 +102,7 @@ def process_worker(process_id, gpu_id, seed_list, args_dict, student_dims,
                             theoretical_loss, theoretical_asymptotic_loss, delta_l_infinity = gnc_theoretical_loss(alpha_teacher, w_sequences, student_dim, device)
                             results['gnc_theoretical_loss'] = theoretical_loss.item()
                             results['gnc_theoretical_asymptotic_loss'] = theoretical_asymptotic_loss.item()
-                            logging.info(f"For seed {seed}, student_dim {student_dim}, G&C theoretical loss: {theoretical_loss.item()}, asymptotic loss: {theoretical_asymptotic_loss.item()}, G&C empirical loss: {gnc_gen_loss.item()}")
+                            logging.info(f"For seed {seed}, student_dim {student_dim}, G&C theoretical loss: {theoretical_loss.item()}, asymptotic loss: {theoretical_asymptotic_loss.item()}, G&C empirical loss: {gnc_gen_loss}")
                         
                         except Exception as e:
                             logging.error(f"G&C failed for student_dim={student_dim}, seed={seed}: {e}")
