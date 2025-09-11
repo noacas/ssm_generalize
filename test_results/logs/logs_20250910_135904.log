@@ -1,0 +1,254 @@
+2025-09-10 13:59:04,208 - INFO - Args: Namespace(num_seeds=8, seeds=[0, 1, 2, 3, 4, 5, 6, 7], sequence_length=5, num_sequences=2, student_dims=[100, 120, 140, 150], eps_train=0.01, w_that_minimizes_loss=False, w2_that_minimizes_loss=False, w2_that_maximizes_loss=False, gnc=True, gnc_num_samples=300000000000, gnc_batch_size=500000, gnc_use_prediction=False, gd=False, gd_lr=0.001, gd_epochs=10000, gd_init_scale=0.01, gd_optimizer='adam', gd_scheduler=None, gd_scheduler_params='{}', exp_gamma=None, step_size=None, step_gamma=None, cosine_eta_min=None, gd_init_type='regular', config=None, results_dir=PosixPath('test_results/results'), figures_dir=PosixPath('test_results/figures'), checkpoint_dir=PosixPath('test_results/checkpoints'), checkpoint_interval=3600, resume_from_checkpoint=False, log_dir=PosixPath('test_results/logs'), max_gpus=8, log_file=PosixPath('test_results/logs/logs_20250910_135904.log'))
+2025-09-10 13:59:04,209 - INFO - Using custom seeds: [0, 1, 2, 3, 4, 5, 6, 7]
+2025-09-10 13:59:04,413 - INFO - Using GPUs: [0, 1, 2, 3, 4, 5, 6, 7]
+2025-09-10 13:59:04,413 - INFO - Starting 8 processes on 8 GPUs
+2025-09-10 13:59:08,957 - INFO - Process 0 started on GPU 0, processing seeds [0]
+2025-09-10 13:59:09,686 - INFO - Process 4 started on GPU 4, processing seeds [4]
+2025-09-10 13:59:09,714 - INFO - Process 1 started on GPU 1, processing seeds [1]
+2025-09-10 13:59:09,816 - INFO - Process 6 started on GPU 6, processing seeds [6]
+2025-09-10 13:59:09,964 - INFO - Process 2 started on GPU 2, processing seeds [2]
+2025-09-10 13:59:09,992 - INFO - for seed 4, alpha_teacher=tensor([0.3049], device='cuda:4'), generated 2 sequences: [tensor([-0.2938,  0.7819, -1.4731,  1.0391], device='cuda:4'), tensor([-0.4015,  0.8411, -1.4424, -0.1211], device='cuda:4')]
+2025-09-10 13:59:09,994 - INFO - Process 4: Starting experiment - student_dim=100, seed=4
+2025-09-10 13:59:10,001 - INFO - Process 3 started on GPU 3, processing seeds [3]
+2025-09-10 13:59:10,008 - INFO - for seed 1, alpha_teacher=tensor([0.4704], device='cuda:1'), generated 2 sequences: [tensor([-0.6340, -0.6431, -0.6420, -1.4471], device='cuda:1'), tensor([-0.5810, -1.0216,  0.8331,  0.3239], device='cuda:1')]
+2025-09-10 13:59:10,009 - INFO - Process 1: Starting experiment - student_dim=100, seed=1
+2025-09-10 13:59:10,015 - INFO - Process 7 started on GPU 7, processing seeds [7]
+2025-09-10 13:59:10,049 - INFO - for seed 6, alpha_teacher=tensor([0.5433], device='cuda:6'), generated 2 sequences: [tensor([ 1.9899, -0.1324, -0.3380, -0.7933], device='cuda:6'), tensor([ 0.4373,  0.6238, -2.2041, -0.1950], device='cuda:6')]
+2025-09-10 13:59:10,049 - INFO - Process 6: Starting experiment - student_dim=100, seed=6
+2025-09-10 13:59:10,067 - INFO - Process 5 started on GPU 5, processing seeds [5]
+2025-09-10 13:59:10,213 - INFO - for seed 2, alpha_teacher=tensor([0.5022], device='cuda:2'), generated 2 sequences: [tensor([ 2.2669,  1.3477, -1.4438, -1.0484], device='cuda:2'), tensor([-0.1825,  1.7087,  0.1843, -0.6569], device='cuda:2')]
+2025-09-10 13:59:10,214 - INFO - Process 2: Starting experiment - student_dim=100, seed=2
+2025-09-10 13:59:10,227 - INFO - for seed 7, alpha_teacher=tensor([0.4695], device='cuda:7'), generated 2 sequences: [tensor([-1.2870, -0.3958,  0.3756,  0.2573], device='cuda:7'), tensor([ 0.1696, -1.3383, -0.9691, -0.6924], device='cuda:7')]
+2025-09-10 13:59:10,227 - INFO - Process 7: Starting experiment - student_dim=100, seed=7
+2025-09-10 13:59:10,270 - INFO - for seed 0, alpha_teacher=tensor([0.4075], device='cuda:0'), generated 2 sequences: [tensor([ 0.1808, -0.5523,  0.9238, -0.7350], device='cuda:0'), tensor([ 2.5441, -0.7163, -0.4934,  0.1267], device='cuda:0')]
+2025-09-10 13:59:10,271 - INFO - Process 0: Starting experiment - student_dim=100, seed=0
+2025-09-10 13:59:10,290 - INFO - for seed 3, alpha_teacher=tensor([0.5426], device='cuda:3'), generated 2 sequences: [tensor([-0.5162, -0.2217, -0.5594,  0.5542], device='cuda:3'), tensor([-0.7082, -2.1120,  0.3220, -0.9507], device='cuda:3')]
+2025-09-10 13:59:10,290 - INFO - Process 3: Starting experiment - student_dim=100, seed=3
+2025-09-10 13:59:10,306 - INFO - for seed 5, alpha_teacher=tensor([0.5310], device='cuda:5'), generated 2 sequences: [tensor([ 1.2089, -0.6117,  1.4826, -1.1513], device='cuda:5'), tensor([-0.2521,  0.8274, -0.6326,  1.0704], device='cuda:5')]
+2025-09-10 13:59:10,307 - INFO - Process 5: Starting experiment - student_dim=100, seed=5
+2025-09-10 18:54:38,553 - INFO - GNC Prediction stats - Total: 300000000000, Predicted above epsilon: 0 (0.0%), Skipped calculations: 0 (0.0%)
+2025-09-10 18:54:38,771 - ERROR - G&C failed for student_dim=100, seed=0: 'float' object has no attribute 'item'
+2025-09-10 18:54:38,775 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 105, in process_worker
+    logging.info(f"For seed {seed}, student_dim {student_dim}, G&C theoretical loss: {theoretical_loss.item()}, asymptotic loss: {theoretical_asymptotic_loss.item()}, G&C empirical loss: {gnc_gen_loss.item()}")
+                                                                                                                                                                                            ^^^^^^^^^^^^^^^^^
+AttributeError: 'float' object has no attribute 'item'
+
+2025-09-10 18:54:38,783 - INFO - Process 0: Completed experiment - student_dim=100, seed=0
+2025-09-10 18:54:42,039 - WARNING - No GNC sensing losses for student dimension 100 seed 6
+2025-09-10 18:54:42,039 - INFO - GNC Prediction stats - Total: 300000000000, Predicted above epsilon: 0 (0.0%), Skipped calculations: 0 (0.0%)
+2025-09-10 18:54:42,195 - ERROR - G&C failed for student_dim=100, seed=6: 'float' object has no attribute 'item'
+2025-09-10 18:54:42,198 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 105, in process_worker
+    logging.info(f"For seed {seed}, student_dim {student_dim}, G&C theoretical loss: {theoretical_loss.item()}, asymptotic loss: {theoretical_asymptotic_loss.item()}, G&C empirical loss: {gnc_gen_loss.item()}")
+                                                                                                                                                                                            ^^^^^^^^^^^^^^^^^
+AttributeError: 'float' object has no attribute 'item'
+
+2025-09-10 18:54:42,206 - INFO - Process 6: Completed experiment - student_dim=100, seed=6
+2025-09-10 18:54:44,360 - INFO - GNC Prediction stats - Total: 300000000000, Predicted above epsilon: 0 (0.0%), Skipped calculations: 0 (0.0%)
+2025-09-10 18:54:44,531 - ERROR - G&C failed for student_dim=100, seed=5: 'float' object has no attribute 'item'
+2025-09-10 18:54:44,533 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 105, in process_worker
+    logging.info(f"For seed {seed}, student_dim {student_dim}, G&C theoretical loss: {theoretical_loss.item()}, asymptotic loss: {theoretical_asymptotic_loss.item()}, G&C empirical loss: {gnc_gen_loss.item()}")
+                                                                                                                                                                                            ^^^^^^^^^^^^^^^^^
+AttributeError: 'float' object has no attribute 'item'
+
+2025-09-10 18:54:44,555 - INFO - Process 5: Completed experiment - student_dim=100, seed=5
+2025-09-10 18:54:57,856 - INFO - GNC Prediction stats - Total: 300000000000, Predicted above epsilon: 0 (0.0%), Skipped calculations: 0 (0.0%)
+2025-09-10 18:54:58,008 - ERROR - G&C failed for student_dim=100, seed=7: 'float' object has no attribute 'item'
+2025-09-10 18:54:58,012 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 105, in process_worker
+    logging.info(f"For seed {seed}, student_dim {student_dim}, G&C theoretical loss: {theoretical_loss.item()}, asymptotic loss: {theoretical_asymptotic_loss.item()}, G&C empirical loss: {gnc_gen_loss.item()}")
+                                                                                                                                                                                            ^^^^^^^^^^^^^^^^^
+AttributeError: 'float' object has no attribute 'item'
+
+2025-09-10 18:54:58,019 - INFO - Process 7: Completed experiment - student_dim=100, seed=7
+2025-09-10 18:55:40,078 - WARNING - No GNC sensing losses for student dimension 100 seed 2
+2025-09-10 18:55:40,079 - INFO - GNC Prediction stats - Total: 300000000000, Predicted above epsilon: 0 (0.0%), Skipped calculations: 0 (0.0%)
+2025-09-10 18:55:40,246 - ERROR - G&C failed for student_dim=100, seed=2: 'float' object has no attribute 'item'
+2025-09-10 18:55:40,251 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 105, in process_worker
+    logging.info(f"For seed {seed}, student_dim {student_dim}, G&C theoretical loss: {theoretical_loss.item()}, asymptotic loss: {theoretical_asymptotic_loss.item()}, G&C empirical loss: {gnc_gen_loss.item()}")
+                                                                                                                                                                                            ^^^^^^^^^^^^^^^^^
+AttributeError: 'float' object has no attribute 'item'
+
+2025-09-10 18:55:40,257 - INFO - Process 2: Completed experiment - student_dim=100, seed=2
+2025-09-10 18:55:50,962 - INFO - GNC Prediction stats - Total: 300000000000, Predicted above epsilon: 0 (0.0%), Skipped calculations: 0 (0.0%)
+2025-09-10 18:55:51,137 - ERROR - G&C failed for student_dim=100, seed=4: 'float' object has no attribute 'item'
+2025-09-10 18:55:51,140 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 105, in process_worker
+    logging.info(f"For seed {seed}, student_dim {student_dim}, G&C theoretical loss: {theoretical_loss.item()}, asymptotic loss: {theoretical_asymptotic_loss.item()}, G&C empirical loss: {gnc_gen_loss.item()}")
+                                                                                                                                                                                            ^^^^^^^^^^^^^^^^^
+AttributeError: 'float' object has no attribute 'item'
+
+2025-09-10 18:55:51,147 - INFO - Process 4: Completed experiment - student_dim=100, seed=4
+2025-09-10 18:55:55,020 - INFO - GNC Prediction stats - Total: 300000000000, Predicted above epsilon: 0 (0.0%), Skipped calculations: 0 (0.0%)
+2025-09-10 18:55:55,172 - ERROR - G&C failed for student_dim=100, seed=3: 'float' object has no attribute 'item'
+2025-09-10 18:55:55,175 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 105, in process_worker
+    logging.info(f"For seed {seed}, student_dim {student_dim}, G&C theoretical loss: {theoretical_loss.item()}, asymptotic loss: {theoretical_asymptotic_loss.item()}, G&C empirical loss: {gnc_gen_loss.item()}")
+                                                                                                                                                                                            ^^^^^^^^^^^^^^^^^
+AttributeError: 'float' object has no attribute 'item'
+
+2025-09-10 18:55:55,181 - INFO - Process 3: Completed experiment - student_dim=100, seed=3
+2025-09-10 19:26:01,476 - INFO - GNC Prediction stats - Total: 300000000000, Predicted above epsilon: 0 (0.0%), Skipped calculations: 0 (0.0%)
+2025-09-10 19:26:01,675 - ERROR - G&C failed for student_dim=100, seed=1: 'float' object has no attribute 'item'
+2025-09-10 19:26:01,683 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 105, in process_worker
+    logging.info(f"For seed {seed}, student_dim {student_dim}, G&C theoretical loss: {theoretical_loss.item()}, asymptotic loss: {theoretical_asymptotic_loss.item()}, G&C empirical loss: {gnc_gen_loss.item()}")
+                                                                                                                                                                                            ^^^^^^^^^^^^^^^^^
+AttributeError: 'float' object has no attribute 'item'
+
+2025-09-10 19:26:01,691 - INFO - Process 1: Completed experiment - student_dim=100, seed=1
+2025-09-11 00:46:46,302 - WARNING - No GNC sensing losses for student dimension 120 seed 0
+2025-09-11 00:46:46,327 - INFO - GNC Prediction stats - Total: 300000000000, Predicted above epsilon: 0 (0.0%), Skipped calculations: 0 (0.0%)
+2025-09-11 00:46:46,333 - ERROR - G&C failed for student_dim=120, seed=0: 'float' object has no attribute 'item'
+2025-09-11 00:46:46,339 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 105, in process_worker
+    logging.info(f"For seed {seed}, student_dim {student_dim}, G&C theoretical loss: {theoretical_loss.item()}, asymptotic loss: {theoretical_asymptotic_loss.item()}, G&C empirical loss: {gnc_gen_loss.item()}")
+                                                                                                                                                                                            ^^^^^^^^^^^^^^^^^
+AttributeError: 'float' object has no attribute 'item'
+
+2025-09-11 00:46:46,349 - INFO - Process 0: Completed experiment - student_dim=120, seed=0
+2025-09-11 00:46:49,190 - WARNING - No GNC sensing losses for student dimension 120 seed 6
+2025-09-11 00:46:49,191 - INFO - GNC Prediction stats - Total: 300000000000, Predicted above epsilon: 0 (0.0%), Skipped calculations: 0 (0.0%)
+2025-09-11 00:46:49,195 - ERROR - G&C failed for student_dim=120, seed=6: 'float' object has no attribute 'item'
+2025-09-11 00:46:49,196 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 105, in process_worker
+    logging.info(f"For seed {seed}, student_dim {student_dim}, G&C theoretical loss: {theoretical_loss.item()}, asymptotic loss: {theoretical_asymptotic_loss.item()}, G&C empirical loss: {gnc_gen_loss.item()}")
+                                                                                                                                                                                            ^^^^^^^^^^^^^^^^^
+AttributeError: 'float' object has no attribute 'item'
+
+2025-09-11 00:46:49,205 - INFO - Process 6: Completed experiment - student_dim=120, seed=6
+2025-09-11 00:46:54,088 - INFO - GNC Prediction stats - Total: 300000000000, Predicted above epsilon: 0 (0.0%), Skipped calculations: 0 (0.0%)
+2025-09-11 00:46:54,093 - ERROR - G&C failed for student_dim=120, seed=7: 'float' object has no attribute 'item'
+2025-09-11 00:46:54,094 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 105, in process_worker
+    logging.info(f"For seed {seed}, student_dim {student_dim}, G&C theoretical loss: {theoretical_loss.item()}, asymptotic loss: {theoretical_asymptotic_loss.item()}, G&C empirical loss: {gnc_gen_loss.item()}")
+                                                                                                                                                                                            ^^^^^^^^^^^^^^^^^
+AttributeError: 'float' object has no attribute 'item'
+
+2025-09-11 00:46:54,103 - INFO - Process 7: Completed experiment - student_dim=120, seed=7
+2025-09-11 00:46:58,154 - INFO - GNC Prediction stats - Total: 300000000000, Predicted above epsilon: 0 (0.0%), Skipped calculations: 0 (0.0%)
+2025-09-11 00:46:58,159 - ERROR - G&C failed for student_dim=120, seed=5: 'float' object has no attribute 'item'
+2025-09-11 00:46:58,160 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 105, in process_worker
+    logging.info(f"For seed {seed}, student_dim {student_dim}, G&C theoretical loss: {theoretical_loss.item()}, asymptotic loss: {theoretical_asymptotic_loss.item()}, G&C empirical loss: {gnc_gen_loss.item()}")
+                                                                                                                                                                                            ^^^^^^^^^^^^^^^^^
+AttributeError: 'float' object has no attribute 'item'
+
+2025-09-11 00:46:58,169 - INFO - Process 5: Completed experiment - student_dim=120, seed=5
+2025-09-11 00:49:03,197 - WARNING - No GNC sensing losses for student dimension 120 seed 2
+2025-09-11 00:49:03,198 - INFO - GNC Prediction stats - Total: 300000000000, Predicted above epsilon: 0 (0.0%), Skipped calculations: 0 (0.0%)
+2025-09-11 00:49:03,202 - ERROR - G&C failed for student_dim=120, seed=2: 'float' object has no attribute 'item'
+2025-09-11 00:49:03,206 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 105, in process_worker
+    logging.info(f"For seed {seed}, student_dim {student_dim}, G&C theoretical loss: {theoretical_loss.item()}, asymptotic loss: {theoretical_asymptotic_loss.item()}, G&C empirical loss: {gnc_gen_loss.item()}")
+                                                                                                                                                                                            ^^^^^^^^^^^^^^^^^
+AttributeError: 'float' object has no attribute 'item'
+
+2025-09-11 00:49:03,215 - INFO - Process 2: Completed experiment - student_dim=120, seed=2
+2025-09-11 00:49:22,196 - INFO - GNC Prediction stats - Total: 300000000000, Predicted above epsilon: 0 (0.0%), Skipped calculations: 0 (0.0%)
+2025-09-11 00:49:22,201 - ERROR - G&C failed for student_dim=120, seed=4: 'float' object has no attribute 'item'
+2025-09-11 00:49:22,202 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 105, in process_worker
+    logging.info(f"For seed {seed}, student_dim {student_dim}, G&C theoretical loss: {theoretical_loss.item()}, asymptotic loss: {theoretical_asymptotic_loss.item()}, G&C empirical loss: {gnc_gen_loss.item()}")
+                                                                                                                                                                                            ^^^^^^^^^^^^^^^^^
+AttributeError: 'float' object has no attribute 'item'
+
+2025-09-11 00:49:22,211 - INFO - Process 4: Completed experiment - student_dim=120, seed=4
+2025-09-11 00:49:29,750 - INFO - GNC Prediction stats - Total: 300000000000, Predicted above epsilon: 0 (0.0%), Skipped calculations: 0 (0.0%)
+2025-09-11 00:49:29,754 - ERROR - G&C failed for student_dim=120, seed=3: 'float' object has no attribute 'item'
+2025-09-11 00:49:29,756 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 105, in process_worker
+    logging.info(f"For seed {seed}, student_dim {student_dim}, G&C theoretical loss: {theoretical_loss.item()}, asymptotic loss: {theoretical_asymptotic_loss.item()}, G&C empirical loss: {gnc_gen_loss.item()}")
+                                                                                                                                                                                            ^^^^^^^^^^^^^^^^^
+AttributeError: 'float' object has no attribute 'item'
+
+2025-09-11 00:49:29,765 - INFO - Process 3: Completed experiment - student_dim=120, seed=3
+2025-09-11 01:53:24,314 - INFO - GNC Prediction stats - Total: 300000000000, Predicted above epsilon: 0 (0.0%), Skipped calculations: 0 (0.0%)
+2025-09-11 01:53:24,345 - ERROR - G&C failed for student_dim=120, seed=1: 'float' object has no attribute 'item'
+2025-09-11 01:53:24,350 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 105, in process_worker
+    logging.info(f"For seed {seed}, student_dim {student_dim}, G&C theoretical loss: {theoretical_loss.item()}, asymptotic loss: {theoretical_asymptotic_loss.item()}, G&C empirical loss: {gnc_gen_loss.item()}")
+                                                                                                                                                                                            ^^^^^^^^^^^^^^^^^
+AttributeError: 'float' object has no attribute 'item'
+
+2025-09-11 01:53:24,360 - INFO - Process 1: Completed experiment - student_dim=120, seed=1
+2025-09-11 07:39:29,551 - WARNING - No GNC sensing losses for student dimension 140 seed 7
+2025-09-11 07:39:29,575 - INFO - GNC Prediction stats - Total: 300000000000, Predicted above epsilon: 0 (0.0%), Skipped calculations: 0 (0.0%)
+2025-09-11 07:39:29,580 - ERROR - G&C failed for student_dim=140, seed=7: 'float' object has no attribute 'item'
+2025-09-11 07:39:29,603 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 105, in process_worker
+    logging.info(f"For seed {seed}, student_dim {student_dim}, G&C theoretical loss: {theoretical_loss.item()}, asymptotic loss: {theoretical_asymptotic_loss.item()}, G&C empirical loss: {gnc_gen_loss.item()}")
+                                                                                                                                                                                            ^^^^^^^^^^^^^^^^^
+AttributeError: 'float' object has no attribute 'item'
+
+2025-09-11 07:39:29,615 - INFO - Process 7: Completed experiment - student_dim=140, seed=7
+2025-09-11 07:39:47,591 - WARNING - No GNC sensing losses for student dimension 140 seed 6
+2025-09-11 07:39:47,592 - INFO - GNC Prediction stats - Total: 300000000000, Predicted above epsilon: 0 (0.0%), Skipped calculations: 0 (0.0%)
+2025-09-11 07:39:47,596 - ERROR - G&C failed for student_dim=140, seed=6: 'float' object has no attribute 'item'
+2025-09-11 07:39:47,597 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 105, in process_worker
+    logging.info(f"For seed {seed}, student_dim {student_dim}, G&C theoretical loss: {theoretical_loss.item()}, asymptotic loss: {theoretical_asymptotic_loss.item()}, G&C empirical loss: {gnc_gen_loss.item()}")
+                                                                                                                                                                                            ^^^^^^^^^^^^^^^^^
+AttributeError: 'float' object has no attribute 'item'
+
+2025-09-11 07:39:47,606 - INFO - Process 6: Completed experiment - student_dim=140, seed=6
+2025-09-11 07:39:48,172 - WARNING - No GNC sensing losses for student dimension 140 seed 0
+2025-09-11 07:39:48,172 - INFO - GNC Prediction stats - Total: 300000000000, Predicted above epsilon: 0 (0.0%), Skipped calculations: 0 (0.0%)
+2025-09-11 07:39:48,176 - ERROR - G&C failed for student_dim=140, seed=0: 'float' object has no attribute 'item'
+2025-09-11 07:39:48,177 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 105, in process_worker
+    logging.info(f"For seed {seed}, student_dim {student_dim}, G&C theoretical loss: {theoretical_loss.item()}, asymptotic loss: {theoretical_asymptotic_loss.item()}, G&C empirical loss: {gnc_gen_loss.item()}")
+                                                                                                                                                                                            ^^^^^^^^^^^^^^^^^
+AttributeError: 'float' object has no attribute 'item'
+
+2025-09-11 07:39:48,186 - INFO - Process 0: Completed experiment - student_dim=140, seed=0
+2025-09-11 07:40:02,739 - INFO - GNC Prediction stats - Total: 300000000000, Predicted above epsilon: 0 (0.0%), Skipped calculations: 0 (0.0%)
+2025-09-11 07:40:02,743 - ERROR - G&C failed for student_dim=140, seed=5: 'float' object has no attribute 'item'
+2025-09-11 07:40:02,744 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 105, in process_worker
+    logging.info(f"For seed {seed}, student_dim {student_dim}, G&C theoretical loss: {theoretical_loss.item()}, asymptotic loss: {theoretical_asymptotic_loss.item()}, G&C empirical loss: {gnc_gen_loss.item()}")
+                                                                                                                                                                                            ^^^^^^^^^^^^^^^^^
+AttributeError: 'float' object has no attribute 'item'
+
+2025-09-11 07:40:02,753 - INFO - Process 5: Completed experiment - student_dim=140, seed=5
+2025-09-11 07:42:44,057 - WARNING - No GNC sensing losses for student dimension 140 seed 2
+2025-09-11 07:42:44,058 - INFO - GNC Prediction stats - Total: 300000000000, Predicted above epsilon: 0 (0.0%), Skipped calculations: 0 (0.0%)
+2025-09-11 07:42:44,062 - ERROR - G&C failed for student_dim=140, seed=2: 'float' object has no attribute 'item'
+2025-09-11 07:42:44,065 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 105, in process_worker
+    logging.info(f"For seed {seed}, student_dim {student_dim}, G&C theoretical loss: {theoretical_loss.item()}, asymptotic loss: {theoretical_asymptotic_loss.item()}, G&C empirical loss: {gnc_gen_loss.item()}")
+                                                                                                                                                                                            ^^^^^^^^^^^^^^^^^
+AttributeError: 'float' object has no attribute 'item'
+
+2025-09-11 07:42:44,074 - INFO - Process 2: Completed experiment - student_dim=140, seed=2
+2025-09-11 07:43:21,548 - INFO - GNC Prediction stats - Total: 300000000000, Predicted above epsilon: 0 (0.0%), Skipped calculations: 0 (0.0%)
+2025-09-11 07:43:21,552 - ERROR - G&C failed for student_dim=140, seed=3: 'float' object has no attribute 'item'
+2025-09-11 07:43:21,554 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 105, in process_worker
+    logging.info(f"For seed {seed}, student_dim {student_dim}, G&C theoretical loss: {theoretical_loss.item()}, asymptotic loss: {theoretical_asymptotic_loss.item()}, G&C empirical loss: {gnc_gen_loss.item()}")
+                                                                                                                                                                                            ^^^^^^^^^^^^^^^^^
+AttributeError: 'float' object has no attribute 'item'
+
+2025-09-11 07:43:21,563 - INFO - Process 3: Completed experiment - student_dim=140, seed=3
+2025-09-11 07:43:46,610 - INFO - GNC Prediction stats - Total: 300000000000, Predicted above epsilon: 0 (0.0%), Skipped calculations: 0 (0.0%)
+2025-09-11 07:43:46,615 - ERROR - G&C failed for student_dim=140, seed=4: 'float' object has no attribute 'item'
+2025-09-11 07:43:46,618 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 105, in process_worker
+    logging.info(f"For seed {seed}, student_dim {student_dim}, G&C theoretical loss: {theoretical_loss.item()}, asymptotic loss: {theoretical_asymptotic_loss.item()}, G&C empirical loss: {gnc_gen_loss.item()}")
+                                                                                                                                                                                            ^^^^^^^^^^^^^^^^^
+AttributeError: 'float' object has no attribute 'item'
+
+2025-09-11 07:43:46,628 - INFO - Process 4: Completed experiment - student_dim=140, seed=4
+2025-09-11 09:21:43,815 - WARNING - No GNC sensing losses for student dimension 140 seed 1
+2025-09-11 09:21:43,845 - INFO - GNC Prediction stats - Total: 300000000000, Predicted above epsilon: 0 (0.0%), Skipped calculations: 0 (0.0%)
+2025-09-11 09:21:43,851 - ERROR - G&C failed for student_dim=140, seed=1: 'float' object has no attribute 'item'
+2025-09-11 09:21:43,858 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 105, in process_worker
+    logging.info(f"For seed {seed}, student_dim {student_dim}, G&C theoretical loss: {theoretical_loss.item()}, asymptotic loss: {theoretical_asymptotic_loss.item()}, G&C empirical loss: {gnc_gen_loss.item()}")
+                                                                                                                                                                                            ^^^^^^^^^^^^^^^^^
+AttributeError: 'float' object has no attribute 'item'
+
+2025-09-11 09:21:43,869 - INFO - Process 1: Completed experiment - student_dim=140, seed=1
