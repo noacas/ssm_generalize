@@ -1,0 +1,86 @@
+2025-09-12 09:32:09,528 - INFO - Args: Namespace(num_seeds=8, seeds=[0, 1, 2, 3, 4, 5, 6, 7], sequence_length=5, num_sequences=2, student_dims=[150, 200, 250, 300], eps_train=0.01, w_that_minimizes_loss=False, w2_that_minimizes_loss=False, w2_that_maximizes_loss=False, gnc=True, gnc_num_samples=3000000000000, gnc_batch_size=500000, gnc_use_prediction=False, gd=False, gd_lr=0.001, gd_epochs=10000, gd_init_scale=0.01, gd_optimizer='adam', gd_scheduler=None, gd_scheduler_params='{}', exp_gamma=None, step_size=None, step_gamma=None, cosine_eta_min=None, gd_init_type='regular', config=None, results_dir=PosixPath('test_results/results'), figures_dir=PosixPath('test_results/figures'), checkpoint_dir=PosixPath('test_results/checkpoints'), checkpoint_interval=3600, resume_from_checkpoint=False, log_dir=PosixPath('test_results/logs'), max_gpus=8, log_file=PosixPath('test_results/logs/logs_20250912_093209.log'))
+2025-09-12 09:32:09,529 - INFO - Using custom seeds: [0, 1, 2, 3, 4, 5, 6, 7]
+2025-09-12 09:32:09,731 - INFO - Using GPUs: [0, 1, 2, 3, 4, 5, 6, 7]
+2025-09-12 09:32:09,732 - INFO - Starting 8 processes on 8 GPUs
+2025-09-12 09:32:15,064 - INFO - Process 0 started on GPU 0, processing seeds [0]
+2025-09-12 09:32:15,881 - INFO - Process 2 started on GPU 2, processing seeds [2]
+2025-09-12 09:32:15,889 - INFO - Process 6 started on GPU 6, processing seeds [6]
+2025-09-12 09:32:15,975 - INFO - Process 1 started on GPU 1, processing seeds [1]
+2025-09-12 09:32:15,996 - INFO - Process 3 started on GPU 3, processing seeds [3]
+2025-09-12 09:32:16,006 - INFO - Process 5 started on GPU 5, processing seeds [5]
+2025-09-12 09:32:16,042 - INFO - Process 4 started on GPU 4, processing seeds [4]
+2025-09-12 09:32:16,047 - INFO - Process 7 started on GPU 7, processing seeds [7]
+2025-09-12 09:32:16,123 - INFO - for seed 6, alpha_teacher=tensor([0.5433], device='cuda:6'), generated 2 sequences: [tensor([ 1.9899, -0.1324, -0.3380, -0.7933], device='cuda:6'), tensor([ 0.4373,  0.6238, -2.2041, -0.1950], device='cuda:6')]
+2025-09-12 09:32:16,123 - INFO - Process 6: Starting experiment - student_dim=150, seed=6
+2025-09-12 09:32:16,126 - INFO - for seed 2, alpha_teacher=tensor([0.5022], device='cuda:2'), generated 2 sequences: [tensor([ 2.2669,  1.3477, -1.4438, -1.0484], device='cuda:2'), tensor([-0.1825,  1.7087,  0.1843, -0.6569], device='cuda:2')]
+2025-09-12 09:32:16,126 - INFO - Process 2: Starting experiment - student_dim=150, seed=2
+2025-09-12 09:32:16,200 - INFO - for seed 3, alpha_teacher=tensor([0.5426], device='cuda:3'), generated 2 sequences: [tensor([-0.5162, -0.2217, -0.5594,  0.5542], device='cuda:3'), tensor([-0.7082, -2.1120,  0.3220, -0.9507], device='cuda:3')]
+2025-09-12 09:32:16,201 - INFO - Process 3: Starting experiment - student_dim=150, seed=3
+2025-09-12 09:32:16,231 - INFO - for seed 1, alpha_teacher=tensor([0.4704], device='cuda:1'), generated 2 sequences: [tensor([-0.6340, -0.6431, -0.6420, -1.4471], device='cuda:1'), tensor([-0.5810, -1.0216,  0.8331,  0.3239], device='cuda:1')]
+2025-09-12 09:32:16,231 - INFO - for seed 5, alpha_teacher=tensor([0.5310], device='cuda:5'), generated 2 sequences: [tensor([ 1.2089, -0.6117,  1.4826, -1.1513], device='cuda:5'), tensor([-0.2521,  0.8274, -0.6326,  1.0704], device='cuda:5')]
+2025-09-12 09:32:16,232 - INFO - Process 5: Starting experiment - student_dim=150, seed=5
+2025-09-12 09:32:16,232 - INFO - Process 1: Starting experiment - student_dim=150, seed=1
+2025-09-12 09:32:16,249 - INFO - for seed 0, alpha_teacher=tensor([0.4075], device='cuda:0'), generated 2 sequences: [tensor([ 0.1808, -0.5523,  0.9238, -0.7350], device='cuda:0'), tensor([ 2.5441, -0.7163, -0.4934,  0.1267], device='cuda:0')]
+2025-09-12 09:32:16,250 - INFO - Process 0: Starting experiment - student_dim=150, seed=0
+2025-09-12 09:32:16,259 - INFO - for seed 7, alpha_teacher=tensor([0.4695], device='cuda:7'), generated 2 sequences: [tensor([-1.2870, -0.3958,  0.3756,  0.2573], device='cuda:7'), tensor([ 0.1696, -1.3383, -0.9691, -0.6924], device='cuda:7')]
+2025-09-12 09:32:16,260 - INFO - Process 7: Starting experiment - student_dim=150, seed=7
+2025-09-12 09:32:16,261 - INFO - for seed 4, alpha_teacher=tensor([0.3049], device='cuda:4'), generated 2 sequences: [tensor([-0.2938,  0.7819, -1.4731,  1.0391], device='cuda:4'), tensor([-0.4015,  0.8411, -1.4424, -0.1211], device='cuda:4')]
+2025-09-12 09:32:16,261 - INFO - Process 4: Starting experiment - student_dim=150, seed=4
+2025-09-15 11:35:57,959 - WARNING - No GNC sensing losses for student dimension 150 seed 7
+2025-09-15 11:35:57,985 - INFO - GNC Prediction stats - Total: 3000000000000, Predicted above epsilon: 0 (0.0%), Skipped calculations: 0 (0.0%)
+2025-09-15 11:35:58,320 - INFO - For seed 7, student_dim 150, G&C theoretical loss: 0.6020487546920776, asymptotic loss: 0.6177982091903687, G&C empirical loss: nan
+2025-09-15 11:35:58,328 - INFO - Process 7: Completed experiment - student_dim=150, seed=7
+2025-09-15 11:38:22,901 - WARNING - No GNC sensing losses for student dimension 150 seed 6
+2025-09-15 11:38:22,902 - INFO - GNC Prediction stats - Total: 3000000000000, Predicted above epsilon: 0 (0.0%), Skipped calculations: 0 (0.0%)
+2025-09-15 11:38:23,066 - INFO - For seed 6, student_dim 150, G&C theoretical loss: 0.5150566101074219, asymptotic loss: 0.5272661447525024, G&C empirical loss: nan
+2025-09-15 11:38:23,073 - INFO - Process 6: Completed experiment - student_dim=150, seed=6
+2025-09-15 11:39:51,115 - INFO - GNC Prediction stats - Total: 3000000000000, Predicted above epsilon: 0 (0.0%), Skipped calculations: 0 (0.0%)
+2025-09-15 11:39:51,283 - INFO - For seed 5, student_dim 150, G&C theoretical loss: 0.525562047958374, asymptotic loss: 0.5413761138916016, G&C empirical loss: 0.12353617697954178
+2025-09-15 11:39:51,291 - INFO - Process 5: Completed experiment - student_dim=150, seed=5
+2025-09-15 11:41:04,975 - WARNING - No GNC sensing losses for student dimension 150 seed 0
+2025-09-15 11:41:04,984 - INFO - GNC Prediction stats - Total: 3000000000000, Predicted above epsilon: 0 (0.0%), Skipped calculations: 0 (0.0%)
+2025-09-15 11:41:05,179 - INFO - For seed 0, student_dim 150, G&C theoretical loss: 0.6827107667922974, asymptotic loss: 0.6977059841156006, G&C empirical loss: nan
+2025-09-15 11:41:05,187 - INFO - Process 0: Completed experiment - student_dim=150, seed=0
+2025-09-15 11:48:49,984 - INFO - GNC Prediction stats - Total: 3000000000000, Predicted above epsilon: 0 (0.0%), Skipped calculations: 0 (0.0%)
+2025-09-15 11:48:50,153 - INFO - For seed 3, student_dim 150, G&C theoretical loss: 0.5122439861297607, asymptotic loss: 0.5278472900390625, G&C empirical loss: 0.0767812728881836
+2025-09-15 11:48:50,162 - INFO - Process 3: Completed experiment - student_dim=150, seed=3
+2025-09-15 11:49:03,601 - WARNING - No GNC sensing losses for student dimension 150 seed 2
+2025-09-15 11:49:03,602 - INFO - GNC Prediction stats - Total: 3000000000000, Predicted above epsilon: 0 (0.0%), Skipped calculations: 0 (0.0%)
+2025-09-15 11:49:03,765 - INFO - For seed 2, student_dim 150, G&C theoretical loss: 0.560339093208313, asymptotic loss: 0.5762674808502197, G&C empirical loss: nan
+2025-09-15 11:49:03,774 - INFO - Process 2: Completed experiment - student_dim=150, seed=2
+2025-09-15 11:52:40,972 - INFO - GNC Prediction stats - Total: 3000000000000, Predicted above epsilon: 0 (0.0%), Skipped calculations: 0 (0.0%)
+2025-09-15 11:52:41,155 - INFO - For seed 4, student_dim 150, G&C theoretical loss: 0.805366039276123, asymptotic loss: 0.8202202320098877, G&C empirical loss: 4.233196258544922
+2025-09-15 11:52:41,163 - INFO - Process 4: Completed experiment - student_dim=150, seed=4
+2025-09-15 17:37:31,063 - INFO - GNC Prediction stats - Total: 3000000000000, Predicted above epsilon: 0 (0.0%), Skipped calculations: 0 (0.0%)
+2025-09-15 17:37:31,235 - INFO - For seed 1, student_dim 150, G&C theoretical loss: 0.6138259172439575, asymptotic loss: 0.6168924570083618, G&C empirical loss: 2.013209819793701
+2025-09-15 17:37:31,242 - INFO - Process 1: Completed experiment - student_dim=150, seed=1
+2025-09-19 11:08:23,265 - WARNING - No GNC sensing losses for student dimension 200 seed 7
+2025-09-19 11:08:23,289 - INFO - GNC Prediction stats - Total: 3000000000000, Predicted above epsilon: 0 (0.0%), Skipped calculations: 0 (0.0%)
+2025-09-19 11:08:23,295 - INFO - For seed 7, student_dim 200, G&C theoretical loss: 0.6064813137054443, asymptotic loss: 0.6177982091903687, G&C empirical loss: nan
+2025-09-19 11:08:23,308 - INFO - Process 7: Completed experiment - student_dim=200, seed=7
+2025-09-19 11:12:51,665 - WARNING - No GNC sensing losses for student dimension 200 seed 6
+2025-09-19 11:12:51,666 - INFO - GNC Prediction stats - Total: 3000000000000, Predicted above epsilon: 0 (0.0%), Skipped calculations: 0 (0.0%)
+2025-09-19 11:12:51,670 - INFO - For seed 6, student_dim 200, G&C theoretical loss: 0.5179811716079712, asymptotic loss: 0.5272661447525024, G&C empirical loss: nan
+2025-09-19 11:12:51,681 - INFO - Process 6: Completed experiment - student_dim=200, seed=6
+2025-09-19 11:16:11,993 - INFO - GNC Prediction stats - Total: 3000000000000, Predicted above epsilon: 0 (0.0%), Skipped calculations: 0 (0.0%)
+2025-09-19 11:16:11,999 - INFO - For seed 5, student_dim 200, G&C theoretical loss: 0.5300214290618896, asymptotic loss: 0.5413761138916016, G&C empirical loss: 0.13146008551120758
+2025-09-19 11:16:12,010 - INFO - Process 5: Completed experiment - student_dim=200, seed=5
+2025-09-19 11:17:46,703 - WARNING - No GNC sensing losses for student dimension 200 seed 0
+2025-09-19 11:17:46,704 - INFO - GNC Prediction stats - Total: 3000000000000, Predicted above epsilon: 0 (0.0%), Skipped calculations: 0 (0.0%)
+2025-09-19 11:17:46,709 - INFO - For seed 0, student_dim 200, G&C theoretical loss: 0.6867581605911255, asymptotic loss: 0.6977059841156006, G&C empirical loss: nan
+2025-09-19 11:17:46,721 - INFO - Process 0: Completed experiment - student_dim=200, seed=0
+2025-09-19 11:31:53,623 - WARNING - No GNC sensing losses for student dimension 200 seed 2
+2025-09-19 11:31:53,628 - INFO - GNC Prediction stats - Total: 3000000000000, Predicted above epsilon: 0 (0.0%), Skipped calculations: 0 (0.0%)
+2025-09-19 11:31:53,632 - INFO - For seed 2, student_dim 200, G&C theoretical loss: 0.5648612976074219, asymptotic loss: 0.5762674808502197, G&C empirical loss: nan
+2025-09-19 11:31:53,643 - INFO - Process 2: Completed experiment - student_dim=200, seed=2
+2025-09-19 11:32:52,276 - WARNING - No GNC sensing losses for student dimension 200 seed 3
+2025-09-19 11:32:52,276 - INFO - GNC Prediction stats - Total: 3000000000000, Predicted above epsilon: 0 (0.0%), Skipped calculations: 0 (0.0%)
+2025-09-19 11:32:52,280 - INFO - For seed 3, student_dim 200, G&C theoretical loss: 0.5166037082672119, asymptotic loss: 0.5278472900390625, G&C empirical loss: nan
+2025-09-19 11:32:52,291 - INFO - Process 3: Completed experiment - student_dim=200, seed=3
+2025-09-19 11:40:13,164 - INFO - GNC Prediction stats - Total: 3000000000000, Predicted above epsilon: 0 (0.0%), Skipped calculations: 0 (0.0%)
+2025-09-19 11:40:13,170 - INFO - For seed 4, student_dim 200, G&C theoretical loss: 0.809072732925415, asymptotic loss: 0.8202202320098877, G&C empirical loss: 4.4829325675964355
+2025-09-19 11:40:13,182 - INFO - Process 4: Completed experiment - student_dim=200, seed=4
+2025-09-19 23:10:21,353 - WARNING - No GNC sensing losses for student dimension 200 seed 1
+2025-09-19 23:10:21,377 - INFO - GNC Prediction stats - Total: 3000000000000, Predicted above epsilon: 0 (0.0%), Skipped calculations: 0 (0.0%)
+2025-09-19 23:10:21,382 - INFO - For seed 1, student_dim 200, G&C theoretical loss: 0.6127358675003052, asymptotic loss: 0.6168924570083618, G&C empirical loss: nan
+2025-09-19 23:10:21,394 - INFO - Process 1: Completed experiment - student_dim=200, seed=1
