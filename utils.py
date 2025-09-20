@@ -13,8 +13,13 @@ def setup_logging(log_dir, timestamp=None):
     if os.path.isfile(log_dir):
         log_filename = log_dir
     else:
+        # Create log directory if it doesn't exist
+        os.makedirs(log_dir, exist_ok=True)
         # Configure logging to both file and console
-        log_filename = log_dir / f'logs_{timestamp}.log'
+        try:
+            log_filename = log_dir / f'logs_{timestamp}.log'
+        except:
+            log_filename = os.path.join(log_dir, f'logs_{timestamp}.log')
     
     # Create formatter
     formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')

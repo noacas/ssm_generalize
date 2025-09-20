@@ -1,0 +1,12 @@
+2025-09-11 12:35:42,613 - INFO - Args: Namespace(student_dim=100, alpha_teacher=0.5, sequence_length=5, num_sequences=1, eps_train=0.01, num_samples=100000, batch_size=10000, use_prediction=True, seed=0, device='auto', figures_dir='./figures', log_dir='./logs')
+2025-09-11 12:35:42,626 - INFO - Using device: mps
+2025-09-11 12:35:42,796 - INFO - Random seed set to: 0
+2025-09-11 12:35:42,796 - INFO - Generating 1 w sequences of length 5
+2025-09-11 12:35:42,865 - INFO - Running G&C training with 100000 samples...
+2025-09-11 12:35:42,865 - INFO - Parameters: student_dim=100, eps_train=0.01, alpha_teacher=0.5
+2025-09-11 12:35:43,861 - INFO - GNC Prediction stats - Total: 100000, Predicted above epsilon: 0 (0.0%), Skipped calculations: 0 (0.0%)
+2025-09-11 12:35:43,862 - INFO - G&C training completed in 1.00 seconds
+2025-09-11 12:35:43,862 - INFO - Results: mean_prior=1.850842, mean_gnc=7.846485
+2025-09-11 12:35:43,862 - INFO - Collected 100000 training loss values
+2025-09-11 12:35:43,862 - INFO - Generating training loss histogram...
+2025-09-11 12:35:44,868 - INFO - Histogram saved to ./figures/gnc_training_loss_histogram_dim=100_seq_len=5_eps=0.01_samples=100000_seed=0_time=20250911_123542.png
