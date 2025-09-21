@@ -1,0 +1,3 @@
+2025-09-11 12:35:26,402 - INFO - Args: Namespace(student_dim=100, alpha_teacher=0.5, sequence_length=5, num_sequences=1, eps_train=0.01, num_samples=100000, batch_size=10000, use_prediction=True, seed=0, device='auto', figures_dir='./figures', log_dir='./logs')
+2025-09-11 12:35:26,418 - INFO - Using device: mps
+2025-09-11 12:35:26,418 - ERROR - GPU not available but required. Exiting.
