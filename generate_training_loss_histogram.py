@@ -29,7 +29,6 @@ def parse_args():
     parser.add_argument('--eps_train', type=float, default=0.01, help='Training epsilon threshold')
     parser.add_argument('--num_samples', type=int, default=10000000, help='Number of student samples')
     parser.add_argument('--batch_size', type=int, default=100000, help='Batch size for processing')
-    parser.add_argument('--use_prediction', action='store_true', default=True, help='Use prediction to skip calculations')
     
     # Experiment parameters
     parser.add_argument('--seeds', type=int, nargs='+', default=[0, 1, 2, 3, 4, 5, 6, 7], help='Random seed')
@@ -85,7 +84,6 @@ def main():
             eps_train=args.eps_train,
             num_samples=args.num_samples,
             batch_size=args.batch_size,
-            use_prediction=args.use_prediction,
             collect_training_losses=True
         )
         
