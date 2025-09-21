@@ -1,0 +1,68 @@
+2025-09-11 14:54:35,466 - INFO - Args: Namespace(student_dim=100, alpha_teacher=0.5, sequence_length=5, num_sequences=1, eps_train=0.01, num_samples=10000000, batch_size=100000, use_prediction=True, seeds=[0, 1, 2, 3, 4, 5, 6, 7], device='auto', figures_dir='./figures', log_dir='./logs')
+2025-09-11 14:54:35,479 - INFO - Using device: mps
+2025-09-11 14:54:35,495 - INFO - Random seeds set to: 0
+2025-09-11 14:54:35,495 - INFO - Generating 1 w sequences of length 5
+2025-09-11 14:54:35,541 - INFO - Running G&C training with 10000000 samples...
+2025-09-11 14:54:35,542 - INFO - Parameters: student_dim=100, eps_train=0.01, alpha_teacher=0.5
+2025-09-11 14:54:43,798 - INFO - GNC Prediction stats - Total: 10000000, Predicted above epsilon: 0 (0.0%), Skipped calculations: 0 (0.0%)
+2025-09-11 14:54:43,798 - INFO - G&C training completed in 8.26 seconds
+2025-09-11 14:54:43,798 - INFO - Results: mean_prior=1.849882, mean_gnc=7.664508
+2025-09-11 14:54:43,798 - INFO - Collected 10000000 training loss values
+2025-09-11 14:54:43,799 - INFO - Random seeds set to: 1
+2025-09-11 14:54:43,799 - INFO - Generating 1 w sequences of length 5
+2025-09-11 14:54:43,799 - INFO - Running G&C training with 10000000 samples...
+2025-09-11 14:54:43,799 - INFO - Parameters: student_dim=100, eps_train=0.01, alpha_teacher=0.5
+2025-09-11 14:54:52,069 - INFO - GNC Prediction stats - Total: 10000000, Predicted above epsilon: 0 (0.0%), Skipped calculations: 0 (0.0%)
+2025-09-11 14:54:52,069 - INFO - G&C training completed in 8.27 seconds
+2025-09-11 14:54:52,070 - INFO - Results: mean_prior=1.850577, mean_gnc=0.904546
+2025-09-11 14:54:52,070 - INFO - Collected 10000000 training loss values
+2025-09-11 14:54:52,070 - INFO - Random seeds set to: 2
+2025-09-11 14:54:52,070 - INFO - Generating 1 w sequences of length 5
+2025-09-11 14:54:52,070 - INFO - Running G&C training with 10000000 samples...
+2025-09-11 14:54:52,070 - INFO - Parameters: student_dim=100, eps_train=0.01, alpha_teacher=0.5
+2025-09-11 14:55:00,175 - INFO - GNC Prediction stats - Total: 10000000, Predicted above epsilon: 0 (0.0%), Skipped calculations: 0 (0.0%)
+2025-09-11 14:55:00,175 - INFO - G&C training completed in 8.10 seconds
+2025-09-11 14:55:00,175 - INFO - Results: mean_prior=1.851028, mean_gnc=0.909274
+2025-09-11 14:55:00,175 - INFO - Collected 10000000 training loss values
+2025-09-11 14:55:00,175 - INFO - Random seeds set to: 3
+2025-09-11 14:55:00,175 - INFO - Generating 1 w sequences of length 5
+2025-09-11 14:55:00,176 - INFO - Running G&C training with 10000000 samples...
+2025-09-11 14:55:00,176 - INFO - Parameters: student_dim=100, eps_train=0.01, alpha_teacher=0.5
+2025-09-11 14:55:08,162 - INFO - GNC Prediction stats - Total: 10000000, Predicted above epsilon: 0 (0.0%), Skipped calculations: 0 (0.0%)
+2025-09-11 14:55:08,162 - INFO - G&C training completed in 7.99 seconds
+2025-09-11 14:55:08,162 - INFO - Results: mean_prior=1.851975, mean_gnc=5.620842
+2025-09-11 14:55:08,162 - INFO - Collected 10000000 training loss values
+2025-09-11 14:55:08,163 - INFO - Random seeds set to: 4
+2025-09-11 14:55:08,163 - INFO - Generating 1 w sequences of length 5
+2025-09-11 14:55:08,163 - INFO - Running G&C training with 10000000 samples...
+2025-09-11 14:55:08,163 - INFO - Parameters: student_dim=100, eps_train=0.01, alpha_teacher=0.5
+2025-09-11 14:55:16,564 - INFO - GNC Prediction stats - Total: 10000000, Predicted above epsilon: 0 (0.0%), Skipped calculations: 0 (0.0%)
+2025-09-11 14:55:16,564 - INFO - G&C training completed in 8.40 seconds
+2025-09-11 14:55:16,564 - INFO - Results: mean_prior=1.851415, mean_gnc=0.601443
+2025-09-11 14:55:16,564 - INFO - Collected 10000000 training loss values
+2025-09-11 14:55:16,565 - INFO - Random seeds set to: 5
+2025-09-11 14:55:16,565 - INFO - Generating 1 w sequences of length 5
+2025-09-11 14:55:16,565 - INFO - Running G&C training with 10000000 samples...
+2025-09-11 14:55:16,565 - INFO - Parameters: student_dim=100, eps_train=0.01, alpha_teacher=0.5
+2025-09-11 14:55:24,567 - INFO - GNC Prediction stats - Total: 10000000, Predicted above epsilon: 0 (0.0%), Skipped calculations: 0 (0.0%)
+2025-09-11 14:55:24,567 - INFO - G&C training completed in 8.00 seconds
+2025-09-11 14:55:24,567 - INFO - Results: mean_prior=1.851875, mean_gnc=6.174760
+2025-09-11 14:55:24,567 - INFO - Collected 10000000 training loss values
+2025-09-11 14:55:24,567 - INFO - Random seeds set to: 6
+2025-09-11 14:55:24,568 - INFO - Generating 1 w sequences of length 5
+2025-09-11 14:55:24,568 - INFO - Running G&C training with 10000000 samples...
+2025-09-11 14:55:24,568 - INFO - Parameters: student_dim=100, eps_train=0.01, alpha_teacher=0.5
+2025-09-11 14:55:32,786 - INFO - GNC Prediction stats - Total: 10000000, Predicted above epsilon: 0 (0.0%), Skipped calculations: 0 (0.0%)
+2025-09-11 14:55:32,786 - INFO - G&C training completed in 8.22 seconds
+2025-09-11 14:55:32,787 - INFO - Results: mean_prior=1.851169, mean_gnc=6.086329
+2025-09-11 14:55:32,787 - INFO - Collected 10000000 training loss values
+2025-09-11 14:55:32,787 - INFO - Random seeds set to: 7
+2025-09-11 14:55:32,787 - INFO - Generating 1 w sequences of length 5
+2025-09-11 14:55:32,787 - INFO - Running G&C training with 10000000 samples...
+2025-09-11 14:55:32,787 - INFO - Parameters: student_dim=100, eps_train=0.01, alpha_teacher=0.5
+2025-09-11 14:55:41,102 - INFO - GNC Prediction stats - Total: 10000000, Predicted above epsilon: 0 (0.0%), Skipped calculations: 0 (0.0%)
+2025-09-11 14:55:41,102 - INFO - G&C training completed in 8.31 seconds
+2025-09-11 14:55:41,102 - INFO - Results: mean_prior=1.850905, mean_gnc=0.858069
+2025-09-11 14:55:41,102 - INFO - Collected 10000000 training loss values
+2025-09-11 14:55:41,102 - INFO - Generating training loss histogram...
+2025-09-11 15:00:34,231 - INFO - Histogram saved to ./figures/gnc_training_loss_histogram_dim=100_seq_len=5_eps=0.01_samples=10000000_seeds=0-1-2-3-4-5-6-7_time=20250911_145435.png
