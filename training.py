@@ -139,6 +139,9 @@ def train_gnc(
     
     # Collect training losses for histogram if requested
     training_losses = [] if collect_training_losses else None
+    # save losses of the successful students
+    succ_training_losses = []
+    succ_gen_losses = []
 
     # Convert w_sequences to tensor if it's a list
     if isinstance(w_sequences, list):
@@ -171,7 +174,9 @@ def train_gnc(
             if succ_finite_mask.any():
                 succ_gen_sum += gen_loss[succ_finite_mask].sum()
                 succ_count += succ_finite_mask.sum().item()
-        
+                succ_training_losses.extend(train_loss[succ_finite_mask].cpu().tolist())
+                succ_gen_losses.extend(gen_loss[succ_finite_mask].cpu().tolist())
+
         # Update statistics
         total_students += bs
 
@@ -186,6 +191,9 @@ def train_gnc(
     
     # Log success count
     logging.info(f"GNC Total success count: {succ_count}")
+    if succ_count > 0:
+        logging.info(f"GNC Success training losses: {succ_training_losses}")
+        logging.info(f"GNC Success gen losses: {succ_gen_losses}")
     
     if collect_training_losses:
         return mean_prior, mean_gnc, training_losses
