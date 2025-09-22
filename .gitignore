@@ -44,9 +44,6 @@ venv.bak/
 .DS_Store
 Thumbs.db
 
-# Logs
-*.log
-
 # Checkpoints and large model files
 *.pkl
 *.pth
@@ -57,7 +54,7 @@ Thumbs.db
 # Results and outputs
 results/
 test_results/
-good_results/
+test_results/checkpoints/
 hyperopt_results/
 logs/
 figures/*.json
