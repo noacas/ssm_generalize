@@ -563,13 +563,21 @@ if __name__ == "__main__":
     #first_best_seeds()
     #test_w2_optimization()
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    alpha = 0.5426
     k = 5
     d = 70
+    # seed 3
+    alpha_teacher = 0.5426
     w1 = torch.tensor([-0.5162, -0.2217, -0.5594,  0.5542], dtype=torch.float64, device=device)
     w2 = torch.tensor([-0.7082, -2.1120,  0.3220, -0.9507], dtype=torch.float64, device=device)
-
-    L2, _, _ = gnc_theoretical_loss(alpha, [w1, w2], d, device)
+    L2, _, _ = gnc_theoretical_loss(alpha_teacher, [w1, w2], d, device)
     print("N=2 predicted loss:", L2.item())
     # quick sanity assertion (tight tolerance)
     assert abs(L2.item() - 0.029238092698878674) < 1e-10
+    # seed 2
+    alpha_teacher = 0.5022
+    w1 = torch.tensor([ 2.2669,  1.3477, -1.4438, -1.0484], dtype=torch.float64, device=device)
+    w2 = torch.tensor([-0.1825,  1.7087,  0.1843, -0.6569], dtype=torch.float64, device=device)
+    L2, _, _ = gnc_theoretical_loss(alpha_teacher, [w1, w2], d, device)
+    print("N=2 predicted loss:", L2.item())
+    # quick sanity assertion (tight tolerance)
+    assert abs(L2.item() - 0.031193192607613208) < 1e-10
