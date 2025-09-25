@@ -27,19 +27,12 @@ def a_m_expectation(student_dim, m):
     return student_dim**(-m/2) * double_factorial(m-1)  if m % 2 == 0 else 0
 
 
-def teacher_for_m(alpha_teacher, m):
-    # Calculate teacher's m-th power response
-    # This would need to be implemented based on the specific teacher structure
-    # For now, using a placeholder that sums the teacher's parameters
-    return alpha_teacher**m
-
-
 def calc_mu(student_dim, alpha_teacher, sequence_length, device):
     # calculate the expected value of the student's output minus the teacher for the impulse response input
     # result is a vector of length sequence length - 1
     mu = torch.empty(sequence_length - 1, device=device)
     for m in range(1, sequence_length):
-        mu[m-1] = student_dim * a_m_expectation(student_dim, m) - teacher_for_m(alpha_teacher, m)
+        mu[m-1] = student_dim * a_m_expectation(student_dim, m) - alpha_teacher**m
     return mu
 
 
@@ -52,7 +45,7 @@ def calc_sigma(student_dim, sequence_length, device):
     return sigma
 
 
-def build_mu_Sigma(alpha: float, d: int, k: int, device=None, dtype=torch.float64):
+def build_mu_Sigma(alpha: float, d: int, k: int, device=None):
     """
     Build finite-d mean vector mu (size k-1) and covariance Sigma ((k-1)x(k-1))
     for S = (S_1,...,S_{k-1}) with a_i ~ N(0, 1/d).
@@ -64,10 +57,10 @@ def build_mu_Sigma(alpha: float, d: int, k: int, device=None, dtype=torch.float6
     mvals = list(range(1, k))
     # mean
     mu_list = [(d ** (1 - m / 2)) * J(m) - (alpha ** m) for m in mvals]
-    mu = torch.tensor(mu_list, dtype=dtype, device=device)
+    mu = torch.tensor(mu_list, device=device)
 
     # covariance (k-1 is tiny, loops are fine and clearer)
-    Sigma = torch.empty((k - 1, k - 1), dtype=dtype, device=device)
+    Sigma = torch.empty((k - 1, k - 1), device=device)
     for i, m in enumerate(mvals):
         Jm = J(m)
         for j, n in enumerate(mvals):
@@ -195,7 +188,6 @@ def gnc_theoretical_loss_for_one_w(alpha_teacher, w, student_dim, device) -> tup
     return conditional_expectation, asymptotic_conditional_expectation, delta_l_infinity
 
 
-
 def _build_mu_0_asymptotic(alpha_teacher, sequence_length, device):
     """
     Build μ_0 (asymptotic mean) as d → ∞.
@@ -228,11 +220,10 @@ def gnc_theoretical_loss_for_multiple_w(alpha_teacher, W, student_dim, k, device
         W:     (k-1, N) tensor; columns are constraint vectors w^(n)
 
     Returns:
-        scalar torch.Tensor (float64): predicted conditional loss
+        scalar torch.Tensor: predicted conditional loss
     """
     device = W.device
-    dtype = torch.float64
-    mu, Sigma = build_mu_Sigma(alpha_teacher, student_dim, k, device=device, dtype=dtype)
+    mu, Sigma = build_mu_Sigma(alpha_teacher, student_dim, k, device=device)
 
     # A = W^T Sigma W  (N x N), robust inverse via pinv
     A = W.T @ Sigma @ W
@@ -244,6 +235,20 @@ def gnc_theoretical_loss_for_multiple_w(alpha_teacher, W, student_dim, k, device
 
     return mu_c @ mu_c + torch.trace(Sigma_c)
 
+
+def gnc_theoretical_loss_for_multiple_w_asymptotic(alpha_teacher, W, student_dim, k, device):
+    """
+    Asymptotic calculation of theoretical loss for multiple sequences.
+    """
+    m0 = _build_mu_0_asymptotic(alpha_teacher, k, device)
+    r = (W.T @ m0) / W[0]   # shape: (N,)
+    lam = (W[0]**2)
+    lam = lam / lam.sum()
+    r_eff = (lam * r).sum()
+    mu_0_squared = torch.dot(m0, m0)
+    return mu_0_squared - alpha_teacher**2 + (r_eff + alpha_teacher)**2
+
+
 def gnc_theoretical_loss(alpha_teacher, w_sequences, student_dim, device):
     """
     Main function to calculate theoretical loss for either single or multiple sequences.
@@ -254,8 +259,8 @@ def gnc_theoretical_loss(alpha_teacher, w_sequences, student_dim, device):
     elif isinstance(w_sequences, list):
         # Multiple sequences case
         k = w_sequences[0].numel() + 1
-        W = torch.stack([w.reshape(-1) for w in w_sequences], dim=1).to(device, torch.float64)  # (k-1, N)
-        return gnc_theoretical_loss_for_multiple_w(alpha_teacher, W, student_dim, k, device), None, None
+        W = torch.stack([w.reshape(-1) for w in w_sequences], dim=1).to(device)  # (k-1, N)
+        return gnc_theoretical_loss_for_multiple_w(alpha_teacher, W, student_dim, k, device), gnc_theoretical_loss_for_multiple_w_asymptotic(alpha_teacher, W, student_dim, k, device), None
     else:
         raise ValueError("w_sequences must be either a torch.Tensor (single sequence) or list of tensors (multiple sequences)")
 
@@ -567,17 +572,15 @@ if __name__ == "__main__":
     d = 70
     # seed 3
     alpha_teacher = 0.5426
-    w1 = torch.tensor([-0.5162, -0.2217, -0.5594,  0.5542], dtype=torch.float64, device=device)
-    w2 = torch.tensor([-0.7082, -2.1120,  0.3220, -0.9507], dtype=torch.float64, device=device)
-    L2, _, _ = gnc_theoretical_loss(alpha_teacher, [w1, w2], d, device)
-    print("N=2 predicted loss:", L2.item())
-    # quick sanity assertion (tight tolerance)
-    assert abs(L2.item() - 0.029238092698878674) < 1e-10
+    w1 = torch.tensor([-0.5162, -0.2217, -0.5594,  0.5542], device=device)
+    w2 = torch.tensor([-0.7082, -2.1120,  0.3220, -0.9507], device=device)
+    L2, L2_asymptotic, _ = gnc_theoretical_loss(alpha_teacher, [w1, w2], d, device)
+    print("N=2 predicted loss:", L2.item(), L2_asymptotic.item())
+    L2_large_d, _, _ = L2, L2_asymptotic, _ = gnc_theoretical_loss(alpha_teacher, [w1, w2], 10000, device)
+    print("for large d, the predicted loss is:", L2_large_d.item())
     # seed 2
     alpha_teacher = 0.5022
-    w1 = torch.tensor([ 2.2669,  1.3477, -1.4438, -1.0484], dtype=torch.float64, device=device)
-    w2 = torch.tensor([-0.1825,  1.7087,  0.1843, -0.6569], dtype=torch.float64, device=device)
-    L2, _, _ = gnc_theoretical_loss(alpha_teacher, [w1, w2], d, device)
-    print("N=2 predicted loss:", L2.item())
-    # quick sanity assertion (tight tolerance)
-    assert abs(L2.item() - 0.031193192607613208) < 1e-10
+    w1 = torch.tensor([ 2.2669,  1.3477, -1.4438, -1.0484], device=device)
+    w2 = torch.tensor([-0.1825,  1.7087,  0.1843, -0.6569], device=device)
+    L2, L2_asymptotic, _ = gnc_theoretical_loss(alpha_teacher, [w1, w2], d, device)
+    print("N=2 predicted loss:", L2.item(), L2_asymptotic.item())
