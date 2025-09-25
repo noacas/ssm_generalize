@@ -576,7 +576,7 @@ if __name__ == "__main__":
     w2 = torch.tensor([-0.7082, -2.1120,  0.3220, -0.9507], device=device)
     L2, L2_asymptotic, _ = gnc_theoretical_loss(alpha_teacher, [w1, w2], d, device)
     print("N=2 predicted loss:", L2.item(), L2_asymptotic.item())
-    L2_large_d, _, _ = L2, L2_asymptotic, _ = gnc_theoretical_loss(alpha_teacher, [w1, w2], 10000, device)
+    L2_large_d, _, _ = gnc_theoretical_loss(alpha_teacher, [w1, w2], 10000, device)
     print("for large d, the predicted loss is:", L2_large_d.item())
     # seed 2
     alpha_teacher = 0.5022
