@@ -583,6 +583,8 @@ def compare_empirical_and_theoretical_results():
     w2 = torch.tensor([-0.5810, -1.0216,  0.8331,  0.3239], device=device)
     L2, L2_asymptotic, _ = gnc_theoretical_loss(alpha_teacher, [w1, w2], d, device)
     print("N=2 predicted loss:", L2.item(), "asymptotic:", L2_asymptotic.item(), "the empirical loss is: 2.9105162620544434")
+    L2, _, _ = gnc_theoretical_loss(alpha_teacher, [w1, w2], 100, device)
+    print("for d=100, the theoretical loss is:", L2, "the empirical loss is: 3.073193311691284")
     L2, _, _ = gnc_theoretical_loss(alpha_teacher, [w1, w2], 150, device)
     print("for d=150, the theoretical loss is:", L2, "the empirical loss is: 2.013209819793701")
     #L2_large_d, _, _ = gnc_theoretical_loss(alpha_teacher, [w1, w2], 10000, device)
@@ -601,6 +603,8 @@ def compare_empirical_and_theoretical_results():
     w2 = torch.tensor([-0.7082, -2.1120,  0.3220, -0.9507], device=device)
     L2, L2_asymptotic, _ = gnc_theoretical_loss(alpha_teacher, [w1, w2], d, device)
     print("N=2 predicted loss:", L2.item(), "asymptotic:", L2_asymptotic.item(),  "the empirical loss is: 0.03187030553817749")
+    L2, _, _ = gnc_theoretical_loss(alpha_teacher, [w1, w2], 100, device)
+    print("for d=100, the theoretical loss is:", L2, "the empirical loss is: 0.03073032945394516")
     L2, _, _ = gnc_theoretical_loss(alpha_teacher, [w1, w2], 150, device)
     print("for d=150, the theoretical loss is:", L2, "the empirical loss is: 0.0767812728881836")
     #L2_large_d, _, _ = gnc_theoretical_loss(alpha_teacher, [w1, w2], 10000, device)
@@ -612,6 +616,8 @@ def compare_empirical_and_theoretical_results():
     w2 = torch.tensor([-0.4015,  0.8411, -1.4424, -0.1211], device=device)
     L2, L2_asymptotic, _ = gnc_theoretical_loss(alpha_teacher, [w1, w2], d, device)
     print("N=2 predicted loss:", L2.item(), "asymptotic:", L2_asymptotic.item(), "the empirical loss is: 0.6081595420837402")
+    L2, _, _ = gnc_theoretical_loss(alpha_teacher, [w1, w2], 100, device)
+    print("for d=100, the theoretical loss is:", L2, "the empirical loss is: 0.6644793152809143")
     L2, _, _ = gnc_theoretical_loss(alpha_teacher, [w1, w2], 150, device)
     print("for d=150, the theoretical loss is:", L2, "the empirical loss is: 4.233196258544922")
     L2, _, _ = gnc_theoretical_loss(alpha_teacher, [w1, w2], 200, device)
@@ -625,6 +631,8 @@ def compare_empirical_and_theoretical_results():
     w2 = torch.tensor([-0.2521,  0.8274, -0.6326,  1.0704], device=device)
     L2, L2_asymptotic, _ = gnc_theoretical_loss(alpha_teacher, [w1, w2], d, device)
     print("N=2 predicted loss:", L2.item(), "asymptotic:", L2_asymptotic.item(), "the empirical loss is: 0.04901355504989624")
+    L2, _, _ = gnc_theoretical_loss(alpha_teacher, [w1, w2], 100, device)
+    print("for d=100, the theoretical loss is:", L2, "the empirical loss is: 0.051502831280231476")
     L2, _, _ = gnc_theoretical_loss(alpha_teacher, [w1, w2], 150, device)
     print("for d=150, the theoretical loss is:", L2, "the empirical loss is: 0.12353617697954178")
     L2, _, _ = gnc_theoretical_loss(alpha_teacher, [w1, w2], 200, device)
@@ -647,13 +655,43 @@ def compare_empirical_and_theoretical_results():
     w2 = torch.tensor([ 0.1696, -1.3383, -0.9691, -0.6924], device=device)
     L2, L2_asymptotic, _ = gnc_theoretical_loss(alpha_teacher, [w1, w2], d, device)
     print("N=2 predicted loss:", L2.item(), "asymptotic:", L2_asymptotic.item(), "the empirical loss is: 0.02751038409769535")
+    L2, _, _ = gnc_theoretical_loss(alpha_teacher, [w1, w2], 100, device)
+    print("for d=100, the theoretical loss is:", L2, "the empirical loss is: 0.027462473139166832")
     #L2_large_d, _, _ = gnc_theoretical_loss(alpha_teacher, [w1, w2], 10000, device)
     #print("for large d, the predicted loss is:", L2_large_d.item())
+
+
+def manually_chosen_w():
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    dtype = torch.float32
+    d = 100
+    alpha_teacher = 0.5
+    w1 = torch.tensor([0, 0, 0, 1], device=device, dtype=dtype)
+    w2 = torch.tensor([0, 0, 0, 2], device=device, dtype=dtype)
+    L2, L2_asymptotic, _ = gnc_theoretical_loss(alpha_teacher, [w1, w2], d, device)
+    print("predicted loss:", L2.item())
+    w1 = torch.tensor([0, 0, 0, 1], device=device, dtype=dtype)
+    w2 = torch.tensor([1, 0, 0, 0], device=device, dtype=dtype)
+    L2, L2_asymptotic, _ = gnc_theoretical_loss(alpha_teacher, [w1, w2], d, device)
+    print("predicted loss:", L2.item())
+    w1 = torch.tensor([0, 0, 0, 1], device=device, dtype=dtype)
+    w2 = torch.tensor([0, 1, 0, 0], device=device, dtype=dtype)
+    L2, L2_asymptotic, _ = gnc_theoretical_loss(alpha_teacher, [w1, w2], d, device)
+    print("predicted loss:", L2.item())
+    w1 = torch.tensor([0, 0, 0, 1], device=device, dtype=dtype)
+    w2 = torch.tensor([0, 0, 1, 0], device=device, dtype=dtype)
+    L2, L2_asymptotic, _ = gnc_theoretical_loss(alpha_teacher, [w1, w2], d, device)
+    print("predicted loss:", L2.item())
+    w1 = torch.tensor([1, 1, 1, 1], device=device, dtype=dtype)
+    w2 = torch.tensor([0, 0, 0, 1], device=device, dtype=dtype)
+    L2, L2_asymptotic, _ = gnc_theoretical_loss(alpha_teacher, [w1, w2], d, device)
+    print("predicted loss:", L2.item())
+    
 
 
 if __name__ == "__main__":
     #w_that_minimizes_loss()
     #first_best_seeds()
     #test_w2_optimization()
-    compare_empirical_and_theoretical_results()
+    manually_chosen_w()
     

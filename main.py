@@ -14,7 +14,7 @@ from checkpoint import CheckpointManager
 
 from plotting import plot
 
-from generator import generate_teacher_alpha, generate_w_sequences
+from generator import generate_teacher_alpha, generate_w_sequences, get_alpha_w_pair
 from parser import parse_args
 from training import train_gnc, train_gd
 from utils import filename_extensions, get_available_gpus, get_available_device
@@ -60,9 +60,14 @@ def process_worker(process_id, gpu_id, seed_list, args_dict, student_dims,
     for seed in seed_list:
         torch.manual_seed(seed)
         with torch.no_grad():
-            alpha_teacher = generate_teacher_alpha(device)
-            w_sequences = generate_w_sequences(args_dict['sequence_length'], args_dict['num_sequences'], device, args_dict, alpha_teacher)
-            logging.info(f"for seed {seed}, alpha_teacher={alpha_teacher}, generated {len(w_sequences)} sequences: {w_sequences}")
+            # Use file loading if data file is provided, otherwise use seed-based generation
+            if args_dict.get('data_file') is not None:
+                alpha_teacher, w_sequences = get_alpha_w_pair(args_dict.get('data_file'), device, seed)
+                logging.info(f"for seed {seed}, loaded alpha_teacher={alpha_teacher}, loaded {len(w_sequences)} sequences: {w_sequences}")
+            else:
+                alpha_teacher = generate_teacher_alpha(device)
+                w_sequences = generate_w_sequences(args_dict['sequence_length'], args_dict['num_sequences'], device, args_dict, alpha_teacher)
+                logging.info(f"for seed {seed}, alpha_teacher={alpha_teacher}, generated {len(w_sequences)} sequences: {w_sequences}")
 
         for student_dim_idx, student_dim in enumerate(student_dims):
             # Set seed for reproducibility
@@ -275,6 +280,7 @@ def run_experiment(args):
         'eps_train': args.eps_train,
         'w_that_minimizes_loss': args.w_that_minimizes_loss,
         'w2_that_minimizes_loss': args.w2_that_minimizes_loss,
+        'data_file': args.data_file,
         'gnc': args.gnc,
         'gnc_num_samples': args.gnc_num_samples,
         'gnc_batch_size': args.gnc_batch_size,
