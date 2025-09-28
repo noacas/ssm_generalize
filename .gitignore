@@ -56,6 +56,7 @@ results/
 test_results/checkpoints/
 hyperopt_results/
 logs/
+!/test_results/logs/
 figures/*.json
 figures/*.csv
 __pycache__/
