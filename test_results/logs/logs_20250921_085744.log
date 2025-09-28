@@ -1,0 +1,183 @@
+2025-09-21 08:57:44,404 - INFO - Args: Namespace(num_seeds=8, seeds=[0, 1, 2, 3, 4, 5, 6, 7], sequence_length=5, num_sequences=2, student_dims=[100], eps_train=0.001, w_that_minimizes_loss=False, w2_that_minimizes_loss=False, w2_that_maximizes_loss=False, gnc=True, gnc_num_samples=100000000, gnc_batch_size=500000, gnc_use_prediction=False, gd=False, gd_lr=0.001, gd_epochs=10000, gd_init_scale=0.01, gd_optimizer='adam', gd_scheduler=None, gd_scheduler_params='{}', exp_gamma=None, step_size=None, step_gamma=None, cosine_eta_min=None, gd_init_type='regular', config=None, results_dir=PosixPath('test_results/results'), figures_dir=PosixPath('test_results/figures'), checkpoint_dir=PosixPath('test_results/checkpoints'), checkpoint_interval=3600, resume_from_checkpoint=False, log_dir=PosixPath('test_results/logs'), max_gpus=8, log_file=PosixPath('test_results/logs/logs_20250921_085744.log'))
+2025-09-21 08:57:44,405 - INFO - Using custom seeds: [0, 1, 2, 3, 4, 5, 6, 7]
+2025-09-21 08:57:44,602 - INFO - Using GPUs: [0, 1, 2, 3, 4, 5, 6, 7]
+2025-09-21 08:57:44,602 - INFO - Starting 8 processes on 8 GPUs
+2025-09-21 08:57:48,798 - INFO - Process 0 started on GPU 0, processing seeds [0]
+2025-09-21 08:57:49,768 - INFO - Process 2 started on GPU 2, processing seeds [2]
+2025-09-21 08:57:49,782 - INFO - Process 4 started on GPU 4, processing seeds [4]
+2025-09-21 08:57:49,825 - INFO - Process 6 started on GPU 6, processing seeds [6]
+2025-09-21 08:57:49,880 - INFO - Process 7 started on GPU 7, processing seeds [7]
+2025-09-21 08:57:49,891 - INFO - Process 5 started on GPU 5, processing seeds [5]
+2025-09-21 08:57:49,956 - INFO - Process 1 started on GPU 1, processing seeds [1]
+2025-09-21 08:57:49,973 - INFO - Process 3 started on GPU 3, processing seeds [3]
+2025-09-21 08:57:50,006 - INFO - for seed 2, alpha_teacher=tensor([0.5022], device='cuda:2'), generated 2 sequences: [tensor([ 2.2669,  1.3477, -1.4438, -1.0484], device='cuda:2'), tensor([-0.1825,  1.7087,  0.1843, -0.6569], device='cuda:2')]
+2025-09-21 08:57:50,006 - INFO - Process 2: Starting experiment - student_dim=100, seed=2
+2025-09-21 08:57:50,007 - ERROR - G&C failed for student_dim=100, seed=2: name 'predict_train_loss_above_epsilon' is not defined
+2025-09-21 08:57:50,009 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 94, in process_worker
+    mean_prior, gnc_gen_loss = train_gnc(seed, student_dim, device, alpha_teacher, w_sequences,
+                               ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        args_dict['eps_train'], args_dict['gnc_num_samples'],
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        batch_size, args_dict.get('gnc_use_prediction', True)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        )
+                                        ^
+  File "/home/fodl/noacaspi/ssm_generalize/training.py", line 470, in train_gnc
+    predicted_above_mask = predict_train_loss_above_epsilon(
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'predict_train_loss_above_epsilon' is not defined
+
+2025-09-21 08:57:50,010 - INFO - Process 2: Completed experiment - student_dim=100, seed=2
+2025-09-21 08:57:50,011 - INFO - Process 2 completed on GPU 2
+2025-09-21 08:57:50,040 - INFO - for seed 4, alpha_teacher=tensor([0.3049], device='cuda:4'), generated 2 sequences: [tensor([-0.2938,  0.7819, -1.4731,  1.0391], device='cuda:4'), tensor([-0.4015,  0.8411, -1.4424, -0.1211], device='cuda:4')]
+2025-09-21 08:57:50,041 - INFO - Process 4: Starting experiment - student_dim=100, seed=4
+2025-09-21 08:57:50,042 - ERROR - G&C failed for student_dim=100, seed=4: name 'predict_train_loss_above_epsilon' is not defined
+2025-09-21 08:57:50,044 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 94, in process_worker
+    mean_prior, gnc_gen_loss = train_gnc(seed, student_dim, device, alpha_teacher, w_sequences,
+                               ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        args_dict['eps_train'], args_dict['gnc_num_samples'],
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        batch_size, args_dict.get('gnc_use_prediction', True)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        )
+                                        ^
+  File "/home/fodl/noacaspi/ssm_generalize/training.py", line 470, in train_gnc
+    predicted_above_mask = predict_train_loss_above_epsilon(
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'predict_train_loss_above_epsilon' is not defined
+
+2025-09-21 08:57:50,045 - INFO - Process 4: Completed experiment - student_dim=100, seed=4
+2025-09-21 08:57:50,047 - INFO - Process 4 completed on GPU 4
+2025-09-21 08:57:50,074 - INFO - for seed 6, alpha_teacher=tensor([0.5433], device='cuda:6'), generated 2 sequences: [tensor([ 1.9899, -0.1324, -0.3380, -0.7933], device='cuda:6'), tensor([ 0.4373,  0.6238, -2.2041, -0.1950], device='cuda:6')]
+2025-09-21 08:57:50,074 - INFO - Process 6: Starting experiment - student_dim=100, seed=6
+2025-09-21 08:57:50,075 - ERROR - G&C failed for student_dim=100, seed=6: name 'predict_train_loss_above_epsilon' is not defined
+2025-09-21 08:57:50,077 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 94, in process_worker
+    mean_prior, gnc_gen_loss = train_gnc(seed, student_dim, device, alpha_teacher, w_sequences,
+                               ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        args_dict['eps_train'], args_dict['gnc_num_samples'],
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        batch_size, args_dict.get('gnc_use_prediction', True)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        )
+                                        ^
+  File "/home/fodl/noacaspi/ssm_generalize/training.py", line 470, in train_gnc
+    predicted_above_mask = predict_train_loss_above_epsilon(
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'predict_train_loss_above_epsilon' is not defined
+
+2025-09-21 08:57:50,078 - INFO - Process 6: Completed experiment - student_dim=100, seed=6
+2025-09-21 08:57:50,079 - INFO - Process 6 completed on GPU 6
+2025-09-21 08:57:50,127 - INFO - for seed 0, alpha_teacher=tensor([0.4075], device='cuda:0'), generated 2 sequences: [tensor([ 0.1808, -0.5523,  0.9238, -0.7350], device='cuda:0'), tensor([ 2.5441, -0.7163, -0.4934,  0.1267], device='cuda:0')]
+2025-09-21 08:57:50,128 - INFO - for seed 5, alpha_teacher=tensor([0.5310], device='cuda:5'), generated 2 sequences: [tensor([ 1.2089, -0.6117,  1.4826, -1.1513], device='cuda:5'), tensor([-0.2521,  0.8274, -0.6326,  1.0704], device='cuda:5')]
+2025-09-21 08:57:50,128 - INFO - Process 0: Starting experiment - student_dim=100, seed=0
+2025-09-21 08:57:50,128 - INFO - for seed 7, alpha_teacher=tensor([0.4695], device='cuda:7'), generated 2 sequences: [tensor([-1.2870, -0.3958,  0.3756,  0.2573], device='cuda:7'), tensor([ 0.1696, -1.3383, -0.9691, -0.6924], device='cuda:7')]
+2025-09-21 08:57:50,128 - INFO - Process 5: Starting experiment - student_dim=100, seed=5
+2025-09-21 08:57:50,129 - INFO - Process 7: Starting experiment - student_dim=100, seed=7
+2025-09-21 08:57:50,129 - ERROR - G&C failed for student_dim=100, seed=0: name 'predict_train_loss_above_epsilon' is not defined
+2025-09-21 08:57:50,129 - ERROR - G&C failed for student_dim=100, seed=5: name 'predict_train_loss_above_epsilon' is not defined
+2025-09-21 08:57:50,129 - ERROR - G&C failed for student_dim=100, seed=7: name 'predict_train_loss_above_epsilon' is not defined
+2025-09-21 08:57:50,131 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 94, in process_worker
+    mean_prior, gnc_gen_loss = train_gnc(seed, student_dim, device, alpha_teacher, w_sequences,
+                               ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        args_dict['eps_train'], args_dict['gnc_num_samples'],
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        batch_size, args_dict.get('gnc_use_prediction', True)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        )
+                                        ^
+  File "/home/fodl/noacaspi/ssm_generalize/training.py", line 470, in train_gnc
+    predicted_above_mask = predict_train_loss_above_epsilon(
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'predict_train_loss_above_epsilon' is not defined
+
+2025-09-21 08:57:50,131 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 94, in process_worker
+    mean_prior, gnc_gen_loss = train_gnc(seed, student_dim, device, alpha_teacher, w_sequences,
+                               ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        args_dict['eps_train'], args_dict['gnc_num_samples'],
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        batch_size, args_dict.get('gnc_use_prediction', True)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        )
+                                        ^
+  File "/home/fodl/noacaspi/ssm_generalize/training.py", line 470, in train_gnc
+    predicted_above_mask = predict_train_loss_above_epsilon(
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'predict_train_loss_above_epsilon' is not defined
+
+2025-09-21 08:57:50,131 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 94, in process_worker
+    mean_prior, gnc_gen_loss = train_gnc(seed, student_dim, device, alpha_teacher, w_sequences,
+                               ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        args_dict['eps_train'], args_dict['gnc_num_samples'],
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        batch_size, args_dict.get('gnc_use_prediction', True)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        )
+                                        ^
+  File "/home/fodl/noacaspi/ssm_generalize/training.py", line 470, in train_gnc
+    predicted_above_mask = predict_train_loss_above_epsilon(
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'predict_train_loss_above_epsilon' is not defined
+
+2025-09-21 08:57:50,132 - INFO - Process 5: Completed experiment - student_dim=100, seed=5
+2025-09-21 08:57:50,132 - INFO - Process 0: Completed experiment - student_dim=100, seed=0
+2025-09-21 08:57:50,132 - INFO - Process 7: Completed experiment - student_dim=100, seed=7
+2025-09-21 08:57:50,133 - INFO - Process 5 completed on GPU 5
+2025-09-21 08:57:50,134 - INFO - Process 7 completed on GPU 7
+2025-09-21 08:57:50,134 - INFO - Process 0 completed on GPU 0
+2025-09-21 08:57:50,169 - INFO - for seed 1, alpha_teacher=tensor([0.4704], device='cuda:1'), generated 2 sequences: [tensor([-0.6340, -0.6431, -0.6420, -1.4471], device='cuda:1'), tensor([-0.5810, -1.0216,  0.8331,  0.3239], device='cuda:1')]
+2025-09-21 08:57:50,170 - INFO - Process 1: Starting experiment - student_dim=100, seed=1
+2025-09-21 08:57:50,171 - ERROR - G&C failed for student_dim=100, seed=1: name 'predict_train_loss_above_epsilon' is not defined
+2025-09-21 08:57:50,173 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 94, in process_worker
+    mean_prior, gnc_gen_loss = train_gnc(seed, student_dim, device, alpha_teacher, w_sequences,
+                               ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        args_dict['eps_train'], args_dict['gnc_num_samples'],
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        batch_size, args_dict.get('gnc_use_prediction', True)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        )
+                                        ^
+  File "/home/fodl/noacaspi/ssm_generalize/training.py", line 470, in train_gnc
+    predicted_above_mask = predict_train_loss_above_epsilon(
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'predict_train_loss_above_epsilon' is not defined
+
+2025-09-21 08:57:50,174 - INFO - Process 1: Completed experiment - student_dim=100, seed=1
+2025-09-21 08:57:50,176 - INFO - Process 1 completed on GPU 1
+2025-09-21 08:57:50,192 - INFO - for seed 3, alpha_teacher=tensor([0.5426], device='cuda:3'), generated 2 sequences: [tensor([-0.5162, -0.2217, -0.5594,  0.5542], device='cuda:3'), tensor([-0.7082, -2.1120,  0.3220, -0.9507], device='cuda:3')]
+2025-09-21 08:57:50,192 - INFO - Process 3: Starting experiment - student_dim=100, seed=3
+2025-09-21 08:57:50,193 - ERROR - G&C failed for student_dim=100, seed=3: name 'predict_train_loss_above_epsilon' is not defined
+2025-09-21 08:57:50,197 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 94, in process_worker
+    mean_prior, gnc_gen_loss = train_gnc(seed, student_dim, device, alpha_teacher, w_sequences,
+                               ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        args_dict['eps_train'], args_dict['gnc_num_samples'],
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        batch_size, args_dict.get('gnc_use_prediction', True)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        )
+                                        ^
+  File "/home/fodl/noacaspi/ssm_generalize/training.py", line 470, in train_gnc
+    predicted_above_mask = predict_train_loss_above_epsilon(
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'predict_train_loss_above_epsilon' is not defined
+
+2025-09-21 08:57:50,198 - INFO - Process 3: Completed experiment - student_dim=100, seed=3
+2025-09-21 08:57:50,200 - INFO - Process 3 completed on GPU 3
+2025-09-21 08:57:54,675 - INFO - Process 2 completed
+2025-09-21 08:57:55,676 - INFO - Process 4 completed
+2025-09-21 08:57:56,677 - INFO - Process 6 completed
+2025-09-21 08:57:57,678 - INFO - Process 7 completed
+2025-09-21 08:57:58,680 - INFO - Process 0 completed
+2025-09-21 08:57:59,681 - INFO - Process 5 completed
+2025-09-21 08:58:00,682 - INFO - Process 1 completed
+2025-09-21 08:58:01,683 - INFO - Process 3 completed
+2025-09-21 08:58:02,689 - INFO - Checkpoint saved: test_results/checkpoints/checkpoint_20250921_085802.pkl (0.0% complete)
+2025-09-21 08:58:02,689 - INFO - Final checkpoint saved
+2025-09-21 08:58:02,735 - INFO - Results saved to results__gnc_seq_len=5_num_seq=2_seeds=0-1-2-3-4-5-6-7_time=20250921_085744.csv
