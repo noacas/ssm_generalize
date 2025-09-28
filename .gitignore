@@ -53,7 +53,6 @@ Thumbs.db
 
 # Results and outputs
 results/
-test_results/
 test_results/checkpoints/
 hyperopt_results/
 logs/
