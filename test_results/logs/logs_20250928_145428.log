@@ -1,0 +1,12 @@
+2025-09-28 14:54:28,194 - INFO - Args: Namespace(num_seeds=8, seeds=[0, 1, 2, 3, 4, 5, 6, 7], sequence_length=5, num_sequences=2, student_dims=[70, 100], eps_train=0.0001, w_that_minimizes_loss=False, w2_that_minimizes_loss=False, w2_that_maximizes_loss=False, data_file=PosixPath('alpha_w_pairs.json'), gnc=True, gnc_num_samples=5000000000000, gnc_batch_size=500000, gd=False, gd_lr=0.001, gd_epochs=10000, gd_init_scale=0.01, gd_optimizer='adam', gd_scheduler=None, gd_scheduler_params='{}', exp_gamma=None, step_size=None, step_gamma=None, cosine_eta_min=None, gd_init_type='regular', config=None, results_dir=PosixPath('test_results/results'), figures_dir=PosixPath('test_results/figures'), checkpoint_dir=PosixPath('test_results/checkpoints'), checkpoint_interval=3600, resume_from_checkpoint=False, log_dir=PosixPath('test_results/logs'), max_gpus=8, log_file=PosixPath('test_results/logs/logs_20250928_145428.log'))
+2025-09-28 14:54:28,195 - INFO - Using custom seeds: [0, 1, 2, 3, 4, 5, 6, 7]
+2025-09-28 14:54:28,402 - INFO - Using GPUs: [0, 1, 2, 3, 4, 5, 6, 7]
+2025-09-28 14:54:28,403 - INFO - Starting 8 processes on 8 GPUs
+2025-09-28 14:54:32,773 - INFO - Process 0 started on GPU 0, processing seeds [0]
+2025-09-28 14:54:33,309 - INFO - Process 1 started on GPU 1, processing seeds [1]
+2025-09-28 14:54:33,354 - INFO - Process 5 started on GPU 5, processing seeds [5]
+2025-09-28 14:54:33,376 - INFO - Process 3 started on GPU 3, processing seeds [3]
+2025-09-28 14:54:33,387 - INFO - Process 4 started on GPU 4, processing seeds [4]
+2025-09-28 14:54:33,467 - INFO - Process 2 started on GPU 2, processing seeds [2]
+2025-09-28 14:54:33,501 - INFO - Process 6 started on GPU 6, processing seeds [6]
+2025-09-28 14:54:33,508 - INFO - Process 7 started on GPU 7, processing seeds [7]
