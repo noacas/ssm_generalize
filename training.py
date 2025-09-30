@@ -149,10 +149,16 @@ def train_gnc(
     
     for batch in range(math.ceil(num_samples / batch_size)):
         bs = min(batch_size, num_samples - batch * batch_size)
+        time_start = time.time()
         students = generate_students(student_dim, bs, device)
+        time_end = time.time()
+        logging.info(f"time taken to generate students: {time_end - time_start}")
+        time_start = time.time()
         train_loss, gen_loss = get_losses(students, w_sequences, alpha_teacher)
         succ_mask = train_loss < eps_train
-        
+        time_end = time.time()
+        logging.info(f"time taken to get losses: {time_end - time_start}")
+        time_start = time.time()
         # Collect training losses for histogram if requested
         if collect_training_losses and training_losses is not None:
             # Only collect finite training losses
@@ -183,6 +189,9 @@ def train_gnc(
         # Only clear cache every few batches to reduce overhead
         if batch % 10 == 0:
             torch.cuda.empty_cache()
+
+        time_end = time.time()
+        logging.info(f"time taken to update statistics: {time_end - time_start}")
 
     mean_prior = (prior_gen_sum / max(1, prior_count)).item()
     mean_gnc = (succ_gen_sum / succ_count).item() if succ_count > 0 else float("nan")
