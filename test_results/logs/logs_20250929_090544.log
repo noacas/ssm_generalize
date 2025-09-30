@@ -1,0 +1,28 @@
+2025-09-29 09:05:44,404 - INFO - Args: Namespace(num_seeds=8, seeds=[0, 1, 2, 3, 4, 5, 6, 7], sequence_length=5, num_sequences=2, student_dims=[70, 100], eps_train=0.0001, w_that_minimizes_loss=False, w2_that_minimizes_loss=False, w2_that_maximizes_loss=False, data_file=PosixPath('alpha_w_pairs.json'), gnc=True, gnc_num_samples=5000000000000, gnc_batch_size=500000, gd=False, gd_lr=0.001, gd_epochs=10000, gd_init_scale=0.01, gd_optimizer='adam', gd_scheduler=None, gd_scheduler_params='{}', exp_gamma=None, step_size=None, step_gamma=None, cosine_eta_min=None, gd_init_type='regular', config=None, results_dir=PosixPath('test_results/results'), figures_dir=PosixPath('test_results/figures'), checkpoint_dir=PosixPath('test_results/checkpoints'), checkpoint_interval=3600, resume_from_checkpoint=False, log_dir=PosixPath('test_results/logs'), max_gpus=8, log_file=PosixPath('test_results/logs/logs_20250929_090544.log'))
+2025-09-29 09:05:44,405 - INFO - Using custom seeds: [0, 1, 2, 3, 4, 5, 6, 7]
+2025-09-29 09:05:44,601 - INFO - Using GPUs: [0, 1, 2, 3, 4, 5, 6, 7]
+2025-09-29 09:05:44,601 - INFO - Starting 8 processes on 8 GPUs
+2025-09-29 09:05:49,476 - INFO - Process 0 started on GPU 0, processing seeds [0]
+2025-09-29 09:05:50,789 - INFO - Process 5 started on GPU 5, processing seeds [5]
+2025-09-29 09:05:50,795 - INFO - Process 7 started on GPU 7, processing seeds [7]
+2025-09-29 09:05:50,796 - INFO - Process 1 started on GPU 1, processing seeds [1]
+2025-09-29 09:05:50,801 - INFO - Process 4 started on GPU 4, processing seeds [4]
+2025-09-29 09:05:50,805 - INFO - Process 2 started on GPU 2, processing seeds [2]
+2025-09-29 09:05:50,811 - INFO - Process 6 started on GPU 6, processing seeds [6]
+2025-09-29 09:05:50,814 - INFO - Process 3 started on GPU 3, processing seeds [3]
+2025-09-29 09:05:54,176 - INFO - for seed 2, loaded alpha_teacher=tensor([0.5000], device='cuda:2'), loaded 2 sequences: [tensor([1., 0., 0., 0.], device='cuda:2'), tensor([0., 0., 1., 0.], device='cuda:2')]
+2025-09-29 09:05:54,177 - INFO - for seed 3, loaded alpha_teacher=tensor([0.5000], device='cuda:3'), loaded 2 sequences: [tensor([0., 0., 0., 1.], device='cuda:3'), tensor([0., 0., 1., 0.], device='cuda:3')]
+2025-09-29 09:05:54,177 - INFO - for seed 6, loaded alpha_teacher=tensor([0.5000], device='cuda:6'), loaded 2 sequences: [tensor([1., 0., 0., 0.], device='cuda:6'), tensor([0., 1., 6., 0.], device='cuda:6')]
+2025-09-29 09:05:54,178 - INFO - Process 2: Starting experiment - student_dim=70, seed=2
+2025-09-29 09:05:54,178 - INFO - Process 3: Starting experiment - student_dim=70, seed=3
+2025-09-29 09:05:54,178 - INFO - Process 6: Starting experiment - student_dim=70, seed=6
+2025-09-29 09:05:54,178 - INFO - for seed 5, loaded alpha_teacher=tensor([0.5000], device='cuda:5'), loaded 2 sequences: [tensor([1., 0., 0., 0.], device='cuda:5'), tensor([ 0.0000,  1.0000,  0.0000, 38.1840], device='cuda:5')]
+2025-09-29 09:05:54,179 - INFO - for seed 1, loaded alpha_teacher=tensor([0.5000], device='cuda:1'), loaded 2 sequences: [tensor([0., 1., 0., 0.], device='cuda:1'), tensor([0., 0., 1., 0.], device='cuda:1')]
+2025-09-29 09:05:54,179 - INFO - for seed 7, loaded alpha_teacher=tensor([0.5000], device='cuda:7'), loaded 2 sequences: [tensor([1., 0., 0., 0.], device='cuda:7'), tensor([ 0.0000,  1.0000,  0.0000, 23.0769], device='cuda:7')]
+2025-09-29 09:05:54,179 - INFO - for seed 4, loaded alpha_teacher=tensor([0.5000], device='cuda:4'), loaded 2 sequences: [tensor([1., 0., 0., 0.], device='cuda:4'), tensor([0., 1., 6., 0.], device='cuda:4')]
+2025-09-29 09:05:54,179 - INFO - Process 1: Starting experiment - student_dim=70, seed=1
+2025-09-29 09:05:54,179 - INFO - Process 5: Starting experiment - student_dim=70, seed=5
+2025-09-29 09:05:54,180 - INFO - Process 7: Starting experiment - student_dim=70, seed=7
+2025-09-29 09:05:54,179 - INFO - for seed 0, loaded alpha_teacher=tensor([0.5000], device='cuda:0'), loaded 2 sequences: [tensor([1., 0., 0., 0.], device='cuda:0'), tensor([0., 0., 0., 1.], device='cuda:0')]
+2025-09-29 09:05:54,180 - INFO - Process 4: Starting experiment - student_dim=70, seed=4
+2025-09-29 09:05:54,181 - INFO - Process 0: Starting experiment - student_dim=70, seed=0
