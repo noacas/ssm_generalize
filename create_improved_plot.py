@@ -141,7 +141,13 @@ def create_improved_plot(json_file_path, output_dir):
 
 if __name__ == "__main__":
     # Use the latest results from the seed analysis
-    json_files = glob.glob("test_results/seed_analysis_*.json")
+    json_files = glob.glob("seed_analysis_results/seed_analysis_*.json")
+    
+    if not json_files:
+        print("❌ No seed analysis JSON files found in test_results directory")
+        print("   Looking for files matching pattern: test_results/seed_analysis_*_*.json")
+        exit(1)
+    
     json_file = sorted(json_files, key=lambda x: os.path.getmtime(x))[-1]
     output_dir = "test_results"
     
