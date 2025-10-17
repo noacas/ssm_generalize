@@ -7,6 +7,7 @@ import json
 import matplotlib.pyplot as plt
 import numpy as np
 import os
+import glob
 
 def create_improved_plot(json_file_path, output_dir):
     """Create an improved plot with clear seed labels"""
@@ -139,8 +140,9 @@ def create_improved_plot(json_file_path, output_dir):
     return plot_path
 
 if __name__ == "__main__":
-    # Use the existing results
-    json_file = "test_results/seed_analysis_final_20251006_121010.json"
+    # Use the latest results from the seed analysis
+    json_files = glob.glob("test_results/seed_analysis_*.json")
+    json_file = json_files.sort(key=lambda x: os.path.getmtime(x))[-1]
     output_dir = "test_results"
     
     if os.path.exists(json_file):
