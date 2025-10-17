@@ -49,27 +49,7 @@ def generate_students(student_dim: int, bs: int, device: torch.device):
     # Optimized version for GPU performance
     # Pre-calculate the standard deviation
     std = 1.0 / (student_dim ** 0.5)
-    
-    # For GPU: torch.randn + scaling is typically faster than torch.normal
-    # because it avoids the overhead of the normal distribution generator
-    # and leverages optimized element-wise operations
-    
-    # For very large batch sizes, use chunked generation to reduce memory pressure
-    if bs > 100000:  # Threshold for chunked generation
-        chunk_size = 50000  # Process in chunks of 50k
-        chunks = []
-        for i in range(0, bs, chunk_size):
-            current_chunk_size = min(chunk_size, bs - i)
-            # Use torch.randn + scaling (faster on GPU than torch.normal)
-            chunk = torch.randn(current_chunk_size, student_dim, device=device)
-            chunk.mul_(std)  # In-place multiplication
-            chunks.append(chunk)
-        return torch.cat(chunks, dim=0)
-    else:
-        # Use torch.randn + scaling (faster on GPU than torch.normal)
-        result = torch.randn(bs, student_dim, device=device)
-        result.mul_(std)  # In-place multiplication
-        return result
+    return torch.normal(mean=0, std=std, size=(bs, student_dim), device=device)
 
 
 def load_alpha_w_pairs_from_file(data_file: Path, device: torch.device) -> List[tuple[torch.Tensor, List[torch.Tensor]]]:
