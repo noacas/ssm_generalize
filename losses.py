@@ -90,19 +90,19 @@ def get_losses(A_diag: torch.Tensor, w: list[torch.Tensor], alpha_teacher: float
     
     # Compute A powers more efficiently
     # A_pows[:, :, k] = A_diag ** (k+1) for k in [0, M-1]
-    time_start = time.time()
+    #time_start = time.time()
     A_pows = torch.empty(batch_size, state_dim, M, device=device, dtype=dtype)
     A_pows[:, :, 0] = A_diag  # A^1
     for k in range(1, M):
         A_pows[:, :, k] = A_pows[:, :, k-1] * A_diag  # A^(k+1)
-    time_end = time.time()
-    logging.info(f"time taken to compute A powers: {time_end - time_start}")
-    time_start = time.time()
+    #time_end = time.time()
+    #logging.info(f"time taken to compute A powers: {time_end - time_start}")
+    #time_start = time.time()
     # Sum over state dimensions → (batch, M)
     sum_A_pows = A_pows.sum(dim=1)
-    time_end = time.time()
-    logging.info(f"time taken to compute sum of A powers: {time_end - time_start}")
-    time_start = time.time()
+    #time_end = time.time()
+    #logging.info(f"time taken to compute sum of A powers: {time_end - time_start}")
+    #time_start = time.time()
 
     # Pre-compute alpha powers more efficiently
     alpha_pows = torch.empty(M, device=device, dtype=dtype)
