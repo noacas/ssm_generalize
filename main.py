@@ -65,7 +65,8 @@ def process_worker(process_id, gpu_id, seed_list, args_dict, student_dims,
                 alpha_teacher, w_sequences = get_alpha_w_pair(args_dict.get('data_file'), device, seed)
                 logging.info(f"for seed {seed}, loaded alpha_teacher={alpha_teacher}, loaded {len(w_sequences)} sequences: {w_sequences}")
             else:
-                alpha_teacher = generate_teacher_alpha(device)
+                #alpha_teacher = generate_teacher_alpha(device)
+                alpha_teacher = 0.5
                 w_sequences = generate_w_sequences(args_dict['sequence_length'], args_dict['num_sequences'], device, args_dict, alpha_teacher)
                 logging.info(f"for seed {seed}, alpha_teacher={alpha_teacher}, generated {len(w_sequences)} sequences: {w_sequences}")
 
