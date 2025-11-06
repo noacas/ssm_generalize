@@ -57,12 +57,12 @@ def process_worker(process_id, gpu_id, seed_list, args_dict, student_dims,
     completed_experiments = 0
     total_experiments = len(seed_list) * len(student_dims)
     
-    for seed_idx, seed in enumerate(seed_list):
+    for seed in enumerate(seed_list):
         torch.manual_seed(seed)
         with torch.no_grad():
             # Use file loading if data file is provided, otherwise use seed-based generation
             if args_dict.get('data_file') is not None:
-                alpha_teacher, w_sequences = get_alpha_w_pair(args_dict.get('data_file'), device, seed_idx)
+                alpha_teacher, w_sequences = get_alpha_w_pair(args_dict.get('data_file'), device, seed)
                 logging.info(f"for seed {seed}, loaded alpha_teacher={alpha_teacher}, loaded {len(w_sequences)} sequences: {w_sequences}")
             else:
                 alpha_teacher = generate_teacher_alpha(device)
