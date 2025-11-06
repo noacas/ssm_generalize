@@ -1,0 +1,458 @@
+2025-10-21 14:35:58,396 - INFO - Args: Namespace(num_seeds=8, seeds=[774, 242, 744, 551], sequence_length=5, num_sequences=2, student_dims=[150, 200, 250], eps_train=0.0001, w_that_minimizes_loss=False, w2_that_minimizes_loss=False, w2_that_maximizes_loss=False, data_file=None, gnc=True, gnc_num_samples=1000000000000, gnc_batch_size=1000000, gd=False, gd_lr=0.001, gd_epochs=10000, gd_init_scale=0.01, gd_optimizer='adam', gd_scheduler=None, gd_scheduler_params='{}', exp_gamma=None, step_size=None, step_gamma=None, cosine_eta_min=None, gd_init_type='regular', config=None, results_dir=PosixPath('test_results/results'), figures_dir=PosixPath('test_results/figures'), checkpoint_dir=PosixPath('test_results/checkpoints'), checkpoint_interval=3600, resume_from_checkpoint=False, log_dir=PosixPath('test_results/logs'), max_gpus=8, log_file=PosixPath('test_results/logs/logs_20251021_143558.log'))
+2025-10-21 14:35:58,397 - INFO - Using custom seeds: [774, 242, 744, 551]
+2025-10-21 14:35:58,600 - INFO - Using GPUs: [0, 1, 2, 3, 4, 5, 6, 7]
+2025-10-21 14:35:58,600 - INFO - Starting 8 processes on 8 GPUs
+2025-10-21 14:36:03,163 - INFO - Process 3 started on GPU 3, processing seeds [551]
+2025-10-21 14:36:03,201 - INFO - Process 1 started on GPU 1, processing seeds [242]
+2025-10-21 14:36:03,278 - INFO - Process 0 started on GPU 0, processing seeds [774]
+2025-10-21 14:36:03,402 - INFO - for seed 242, alpha_teacher=0.5, generated 2 sequences: [tensor([-0.2325,  1.6611, -2.0365, -0.1672], device='cuda:1'), tensor([ 1.2663,  1.6274, -1.7354, -0.5913], device='cuda:1')]
+2025-10-21 14:36:03,402 - INFO - for seed 551, alpha_teacher=0.5, generated 2 sequences: [tensor([ 0.7512, -0.7394,  1.7773,  0.4086], device='cuda:3'), tensor([-0.5732, -0.1409,  0.6480,  1.3442], device='cuda:3')]
+2025-10-21 14:36:03,402 - INFO - Process 1: Starting experiment - student_dim=150, seed=242
+2025-10-21 14:36:03,402 - INFO - Process 3: Starting experiment - student_dim=150, seed=551
+2025-10-21 14:36:03,405 - INFO - time taken to compute A powers: 0.0018153190612792969
+2025-10-21 14:36:03,406 - INFO - time taken to compute A powers: 0.001954317092895508
+2025-10-21 14:36:03,474 - INFO - time taken to compute sum of A powers: 0.06823182106018066
+2025-10-21 14:36:03,474 - INFO - time taken to compute sum of A powers: 0.06802940368652344
+2025-10-21 14:36:03,503 - INFO - Process 2 started on GPU 2, processing seeds [744]
+2025-10-21 14:36:03,583 - INFO - time taken to compute A powers: 0.0012772083282470703
+2025-10-21 14:36:03,583 - INFO - time taken to compute sum of A powers: 4.38690185546875e-05
+2025-10-21 14:36:03,583 - INFO - time taken to compute A powers: 0.0013108253479003906
+2025-10-21 14:36:03,583 - INFO - time taken to compute sum of A powers: 4.1961669921875e-05
+2025-10-21 14:36:03,666 - INFO - time taken to compute A powers: 0.00017142295837402344
+2025-10-21 14:36:03,666 - INFO - time taken to compute A powers: 0.0001742839813232422
+2025-10-21 14:36:03,666 - INFO - time taken to compute sum of A powers: 3.528594970703125e-05
+2025-10-21 14:36:03,666 - INFO - time taken to compute sum of A powers: 3.457069396972656e-05
+2025-10-21 14:36:03,711 - INFO - for seed 774, alpha_teacher=0.5, generated 2 sequences: [tensor([-1.4639, -2.1893,  1.1826, -0.1660], device='cuda:0'), tensor([-0.4547,  1.9272, -0.2274,  0.0180], device='cuda:0')]
+2025-10-21 14:36:03,712 - INFO - Process 0: Starting experiment - student_dim=150, seed=774
+2025-10-21 14:36:03,714 - INFO - time taken to compute A powers: 0.0010945796966552734
+2025-10-21 14:36:03,746 - INFO - time taken to compute A powers: 0.00016546249389648438
+2025-10-21 14:36:03,746 - INFO - time taken to compute sum of A powers: 4.649162292480469e-05
+2025-10-21 14:36:03,746 - INFO - time taken to compute A powers: 0.0001773834228515625
+2025-10-21 14:36:03,746 - INFO - time taken to compute sum of A powers: 3.218650817871094e-05
+2025-10-21 14:36:03,783 - INFO - time taken to compute sum of A powers: 0.06891822814941406
+2025-10-21 14:36:03,826 - INFO - time taken to compute A powers: 0.00019025802612304688
+2025-10-21 14:36:03,826 - INFO - time taken to compute A powers: 0.0001747608184814453
+2025-10-21 14:36:03,826 - INFO - time taken to compute sum of A powers: 3.218650817871094e-05
+2025-10-21 14:36:03,826 - INFO - time taken to compute sum of A powers: 5.745887756347656e-05
+2025-10-21 14:36:03,890 - INFO - time taken to compute A powers: 0.0013146400451660156
+2025-10-21 14:36:03,891 - INFO - time taken to compute sum of A powers: 4.8160552978515625e-05
+2025-10-21 14:36:03,905 - INFO - time taken to compute A powers: 0.00015807151794433594
+2025-10-21 14:36:03,905 - INFO - time taken to compute A powers: 0.00016069412231445312
+2025-10-21 14:36:03,905 - INFO - time taken to compute sum of A powers: 4.649162292480469e-05
+2025-10-21 14:36:03,905 - INFO - time taken to compute sum of A powers: 4.8160552978515625e-05
+2025-10-21 14:36:03,965 - INFO - for seed 744, alpha_teacher=0.5, generated 2 sequences: [tensor([-0.0780,  0.0762, -0.8898,  1.5826], device='cuda:2'), tensor([-1.9488,  1.1827, -1.1090,  0.0646], device='cuda:2')]
+2025-10-21 14:36:03,966 - INFO - Process 2: Starting experiment - student_dim=150, seed=744
+2025-10-21 14:36:03,972 - INFO - time taken to compute A powers: 0.002009868621826172
+2025-10-21 14:36:03,973 - INFO - time taken to compute A powers: 0.0001785755157470703
+2025-10-21 14:36:03,973 - INFO - time taken to compute sum of A powers: 3.814697265625e-05
+2025-10-21 14:36:03,984 - INFO - time taken to compute A powers: 0.00015783309936523438
+2025-10-21 14:36:03,985 - INFO - time taken to compute A powers: 0.0001766681671142578
+2025-10-21 14:36:03,985 - INFO - time taken to compute sum of A powers: 3.1948089599609375e-05
+2025-10-21 14:36:03,985 - INFO - time taken to compute sum of A powers: 3.075599670410156e-05
+2025-10-21 14:36:04,041 - INFO - time taken to compute sum of A powers: 0.0678856372833252
+2025-10-21 14:36:04,052 - INFO - time taken to compute A powers: 0.00016427040100097656
+2025-10-21 14:36:04,052 - INFO - time taken to compute sum of A powers: 5.054473876953125e-05
+2025-10-21 14:36:04,064 - INFO - time taken to compute A powers: 0.00016570091247558594
+2025-10-21 14:36:04,064 - INFO - time taken to compute A powers: 0.0001671314239501953
+2025-10-21 14:36:04,064 - INFO - time taken to compute sum of A powers: 3.170967102050781e-05
+2025-10-21 14:36:04,064 - INFO - time taken to compute sum of A powers: 3.4332275390625e-05
+2025-10-21 14:36:04,132 - INFO - time taken to compute A powers: 0.00016236305236816406
+2025-10-21 14:36:04,132 - INFO - time taken to compute sum of A powers: 5.269050598144531e-05
+2025-10-21 14:36:04,143 - INFO - time taken to compute A powers: 0.00015735626220703125
+2025-10-21 14:36:04,143 - INFO - time taken to compute A powers: 0.00015974044799804688
+2025-10-21 14:36:04,143 - INFO - time taken to compute sum of A powers: 4.601478576660156e-05
+2025-10-21 14:36:04,143 - INFO - time taken to compute sum of A powers: 4.744529724121094e-05
+2025-10-21 14:36:04,145 - INFO - time taken to compute A powers: 0.0012583732604980469
+2025-10-21 14:36:04,146 - INFO - time taken to compute sum of A powers: 5.650520324707031e-05
+2025-10-21 14:36:04,211 - INFO - time taken to compute A powers: 0.00017070770263671875
+2025-10-21 14:36:04,211 - INFO - time taken to compute sum of A powers: 5.125999450683594e-05
+2025-10-21 14:36:04,223 - INFO - time taken to compute A powers: 0.00018167495727539062
+2025-10-21 14:36:04,223 - INFO - time taken to compute A powers: 0.00018024444580078125
+2025-10-21 14:36:04,223 - INFO - time taken to compute sum of A powers: 3.695487976074219e-05
+2025-10-21 14:36:04,223 - INFO - time taken to compute sum of A powers: 3.552436828613281e-05
+2025-10-21 14:36:04,234 - INFO - time taken to compute A powers: 0.0002105236053466797
+2025-10-21 14:36:04,235 - INFO - time taken to compute sum of A powers: 4.029273986816406e-05
+2025-10-21 14:36:04,290 - INFO - time taken to compute A powers: 0.00015997886657714844
+2025-10-21 14:36:04,291 - INFO - time taken to compute sum of A powers: 4.7206878662109375e-05
+2025-10-21 14:36:04,302 - INFO - time taken to compute A powers: 0.00017762184143066406
+2025-10-21 14:36:04,302 - INFO - time taken to compute sum of A powers: 5.030632019042969e-05
+2025-10-21 14:36:04,302 - INFO - time taken to compute A powers: 0.00019121170043945312
+2025-10-21 14:36:04,302 - INFO - time taken to compute sum of A powers: 3.3855438232421875e-05
+2025-10-21 14:36:04,315 - INFO - time taken to compute A powers: 0.00017189979553222656
+2025-10-21 14:36:04,315 - INFO - time taken to compute sum of A powers: 5.817413330078125e-05
+2025-10-21 14:36:04,370 - INFO - time taken to compute A powers: 0.00015807151794433594
+2025-10-21 14:36:04,370 - INFO - time taken to compute sum of A powers: 4.982948303222656e-05
+2025-10-21 14:36:04,390 - INFO - time taken to compute A powers: 0.0012836456298828125
+2025-10-21 14:36:04,390 - INFO - time taken to compute sum of A powers: 3.504753112792969e-05
+2025-10-21 14:36:04,390 - INFO - time taken to compute A powers: 0.001275777816772461
+2025-10-21 14:36:04,390 - INFO - time taken to compute sum of A powers: 3.4809112548828125e-05
+2025-10-21 14:36:04,395 - INFO - time taken to compute A powers: 0.00017595291137695312
+2025-10-21 14:36:04,395 - INFO - time taken to compute sum of A powers: 3.170967102050781e-05
+2025-10-21 14:36:04,449 - INFO - time taken to compute A powers: 0.00015687942504882812
+2025-10-21 14:36:04,449 - INFO - time taken to compute sum of A powers: 4.76837158203125e-05
+2025-10-21 14:36:04,473 - INFO - time taken to compute A powers: 0.00015997886657714844
+2025-10-21 14:36:04,473 - INFO - time taken to compute A powers: 0.00015735626220703125
+2025-10-21 14:36:04,474 - INFO - time taken to compute sum of A powers: 4.744529724121094e-05
+2025-10-21 14:36:04,474 - INFO - time taken to compute sum of A powers: 3.147125244140625e-05
+2025-10-21 14:36:04,474 - INFO - time taken to compute A powers: 0.00017714500427246094
+2025-10-21 14:36:04,474 - INFO - time taken to compute sum of A powers: 3.1948089599609375e-05
+2025-10-21 14:36:04,529 - INFO - time taken to compute A powers: 0.0001583099365234375
+2025-10-21 14:36:04,529 - INFO - time taken to compute sum of A powers: 4.673004150390625e-05
+2025-10-21 14:36:04,553 - INFO - time taken to compute A powers: 0.0001575946807861328
+2025-10-21 14:36:04,553 - INFO - time taken to compute A powers: 0.0001556873321533203
+2025-10-21 14:36:04,553 - INFO - time taken to compute sum of A powers: 4.887580871582031e-05
+2025-10-21 14:36:04,553 - INFO - time taken to compute sum of A powers: 3.0040740966796875e-05
+2025-10-21 14:36:04,554 - INFO - time taken to compute A powers: 0.0001742839813232422
+2025-10-21 14:36:04,554 - INFO - time taken to compute sum of A powers: 3.7670135498046875e-05
+2025-10-21 14:36:04,608 - INFO - time taken to compute A powers: 0.0001652240753173828
+2025-10-21 14:36:04,608 - INFO - time taken to compute sum of A powers: 4.696846008300781e-05
+2025-10-21 14:36:04,632 - INFO - time taken to compute A powers: 0.0001583099365234375
+2025-10-21 14:36:04,632 - INFO - time taken to compute A powers: 0.00015807151794433594
+2025-10-21 14:36:04,632 - INFO - time taken to compute sum of A powers: 4.601478576660156e-05
+2025-10-21 14:36:04,632 - INFO - time taken to compute sum of A powers: 3.147125244140625e-05
+2025-10-21 14:36:04,633 - INFO - time taken to compute A powers: 0.0001735687255859375
+2025-10-21 14:36:04,633 - INFO - time taken to compute sum of A powers: 3.123283386230469e-05
+2025-10-21 14:36:04,694 - INFO - time taken to compute A powers: 0.0012655258178710938
+2025-10-21 14:36:04,695 - INFO - time taken to compute sum of A powers: 5.125999450683594e-05
+2025-10-21 14:36:04,711 - INFO - time taken to compute A powers: 0.00015687942504882812
+2025-10-21 14:36:04,711 - INFO - time taken to compute A powers: 0.00015807151794433594
+2025-10-21 14:36:04,712 - INFO - time taken to compute sum of A powers: 4.601478576660156e-05
+2025-10-21 14:36:04,712 - INFO - time taken to compute sum of A powers: 3.123283386230469e-05
+2025-10-21 14:36:04,713 - INFO - time taken to compute A powers: 0.0001735687255859375
+2025-10-21 14:36:04,713 - INFO - time taken to compute sum of A powers: 3.266334533691406e-05
+2025-10-21 14:36:04,777 - INFO - time taken to compute A powers: 0.00015974044799804688
+2025-10-21 14:36:04,777 - INFO - time taken to compute sum of A powers: 5.054473876953125e-05
+2025-10-21 14:36:04,791 - INFO - time taken to compute A powers: 0.00016641616821289062
+2025-10-21 14:36:04,791 - INFO - time taken to compute sum of A powers: 3.0279159545898438e-05
+2025-10-21 14:36:04,791 - INFO - time taken to compute A powers: 0.00018644332885742188
+2025-10-21 14:36:04,791 - INFO - time taken to compute sum of A powers: 3.170967102050781e-05
+2025-10-21 14:36:04,792 - INFO - time taken to compute A powers: 0.00018167495727539062
+2025-10-21 14:36:04,792 - INFO - time taken to compute sum of A powers: 4.649162292480469e-05
+2025-10-21 14:36:04,857 - INFO - time taken to compute A powers: 0.00015783309936523438
+2025-10-21 14:36:04,857 - INFO - time taken to compute sum of A powers: 4.76837158203125e-05
+2025-10-21 14:36:04,870 - INFO - time taken to compute A powers: 0.00015783309936523438
+2025-10-21 14:36:04,870 - INFO - time taken to compute sum of A powers: 4.673004150390625e-05
+2025-10-21 14:36:04,870 - INFO - time taken to compute A powers: 0.0001785755157470703
+2025-10-21 14:36:04,870 - INFO - time taken to compute sum of A powers: 3.218650817871094e-05
+2025-10-21 14:36:04,872 - INFO - time taken to compute A powers: 0.0001590251922607422
+2025-10-21 14:36:04,872 - INFO - time taken to compute sum of A powers: 5.245208740234375e-05
+2025-10-21 14:36:04,936 - INFO - time taken to compute A powers: 0.00015735626220703125
+2025-10-21 14:36:04,936 - INFO - time taken to compute sum of A powers: 4.792213439941406e-05
+2025-10-21 14:36:04,949 - INFO - time taken to compute A powers: 0.00015854835510253906
+2025-10-21 14:36:04,949 - INFO - time taken to compute sum of A powers: 4.6253204345703125e-05
+2025-10-21 14:36:04,950 - INFO - time taken to compute A powers: 0.00017023086547851562
+2025-10-21 14:36:04,950 - INFO - time taken to compute sum of A powers: 3.147125244140625e-05
+2025-10-21 14:36:04,959 - INFO - time taken to compute A powers: 0.0012736320495605469
+2025-10-21 14:36:04,959 - INFO - time taken to compute sum of A powers: 3.457069396972656e-05
+2025-10-21 14:36:05,015 - INFO - time taken to compute A powers: 0.00015735626220703125
+2025-10-21 14:36:05,015 - INFO - time taken to compute sum of A powers: 4.7206878662109375e-05
+2025-10-21 14:36:05,029 - INFO - time taken to compute A powers: 0.00017333030700683594
+2025-10-21 14:36:05,029 - INFO - time taken to compute sum of A powers: 3.0517578125e-05
+2025-10-21 14:36:05,029 - INFO - time taken to compute A powers: 0.00019311904907226562
+2025-10-21 14:36:05,029 - INFO - time taken to compute sum of A powers: 3.5762786865234375e-05
+2025-10-21 14:36:05,042 - INFO - time taken to compute A powers: 0.00016021728515625
+2025-10-21 14:36:05,042 - INFO - time taken to compute sum of A powers: 4.9114227294921875e-05
+2025-10-21 14:36:05,095 - INFO - time taken to compute A powers: 0.0001571178436279297
+2025-10-21 14:36:05,095 - INFO - time taken to compute sum of A powers: 4.792213439941406e-05
+2025-10-21 14:36:05,108 - INFO - time taken to compute A powers: 0.0001595020294189453
+2025-10-21 14:36:05,108 - INFO - time taken to compute sum of A powers: 4.601478576660156e-05
+2025-10-21 14:36:05,108 - INFO - time taken to compute A powers: 0.00016999244689941406
+2025-10-21 14:36:05,109 - INFO - time taken to compute sum of A powers: 3.147125244140625e-05
+2025-10-21 14:36:05,121 - INFO - time taken to compute A powers: 0.00016045570373535156
+2025-10-21 14:36:05,121 - INFO - time taken to compute sum of A powers: 4.673004150390625e-05
+2025-10-21 14:36:05,175 - INFO - time taken to compute A powers: 0.0001800060272216797
+2025-10-21 14:36:05,175 - INFO - time taken to compute sum of A powers: 6.151199340820312e-05
+2025-10-21 14:36:05,195 - INFO - time taken to compute A powers: 0.0012633800506591797
+2025-10-21 14:36:05,196 - INFO - time taken to compute sum of A powers: 4.839897155761719e-05
+2025-10-21 14:36:05,196 - INFO - time taken to compute A powers: 0.0013003349304199219
+2025-10-21 14:36:05,196 - INFO - time taken to compute sum of A powers: 3.528594970703125e-05
+2025-10-21 14:36:05,201 - INFO - time taken to compute A powers: 0.0001690387725830078
+2025-10-21 14:36:05,201 - INFO - time taken to compute sum of A powers: 3.0994415283203125e-05
+2025-10-21 14:36:05,254 - INFO - time taken to compute A powers: 0.00016951560974121094
+2025-10-21 14:36:05,254 - INFO - time taken to compute sum of A powers: 4.9114227294921875e-05
+2025-10-21 14:36:05,280 - INFO - time taken to compute A powers: 0.00016164779663085938
+2025-10-21 14:36:05,280 - INFO - time taken to compute A powers: 0.0001621246337890625
+2025-10-21 14:36:05,280 - INFO - time taken to compute sum of A powers: 4.9114227294921875e-05
+2025-10-21 14:36:05,280 - INFO - time taken to compute sum of A powers: 3.361701965332031e-05
+2025-10-21 14:36:05,280 - INFO - time taken to compute A powers: 0.00017690658569335938
+2025-10-21 14:36:05,280 - INFO - time taken to compute sum of A powers: 3.24249267578125e-05
+2025-10-21 14:36:05,333 - INFO - time taken to compute A powers: 0.00015974044799804688
+2025-10-21 14:36:05,333 - INFO - time taken to compute sum of A powers: 5.1021575927734375e-05
+2025-10-21 14:36:05,359 - INFO - time taken to compute A powers: 0.0001838207244873047
+2025-10-21 14:36:05,359 - INFO - time taken to compute A powers: 0.00016808509826660156
+2025-10-21 14:36:05,359 - INFO - time taken to compute sum of A powers: 4.9114227294921875e-05
+2025-10-21 14:36:05,359 - INFO - time taken to compute sum of A powers: 3.457069396972656e-05
+2025-10-21 14:36:05,360 - INFO - time taken to compute A powers: 0.00016736984252929688
+2025-10-21 14:36:05,360 - INFO - time taken to compute sum of A powers: 3.123283386230469e-05
+2025-10-21 14:36:05,412 - INFO - time taken to compute A powers: 0.00015854835510253906
+2025-10-21 14:36:05,413 - INFO - time taken to compute sum of A powers: 4.792213439941406e-05
+2025-10-21 14:36:05,438 - INFO - time taken to compute A powers: 0.00015926361083984375
+2025-10-21 14:36:05,438 - INFO - time taken to compute A powers: 0.000156402587890625
+2025-10-21 14:36:05,438 - INFO - time taken to compute sum of A powers: 4.76837158203125e-05
+2025-10-21 14:36:05,438 - INFO - time taken to compute sum of A powers: 3.0279159545898438e-05
+2025-10-21 14:36:05,439 - INFO - time taken to compute A powers: 0.0001685619354248047
+2025-10-21 14:36:05,439 - INFO - time taken to compute sum of A powers: 3.147125244140625e-05
+2025-10-21 14:36:05,499 - INFO - time taken to compute A powers: 0.0012979507446289062
+2025-10-21 14:36:05,499 - INFO - time taken to compute sum of A powers: 4.982948303222656e-05
+2025-10-21 14:36:05,518 - INFO - time taken to compute A powers: 0.0001678466796875
+2025-10-21 14:36:05,518 - INFO - time taken to compute sum of A powers: 3.075599670410156e-05
+2025-10-21 14:36:05,518 - INFO - time taken to compute A powers: 0.00016880035400390625
+2025-10-21 14:36:05,518 - INFO - time taken to compute sum of A powers: 5.364418029785156e-05
+2025-10-21 14:36:05,519 - INFO - time taken to compute A powers: 0.0001780986785888672
+2025-10-21 14:36:05,519 - INFO - time taken to compute sum of A powers: 3.147125244140625e-05
+2025-10-21 14:36:05,582 - INFO - time taken to compute A powers: 0.00018167495727539062
+2025-10-21 14:36:05,582 - INFO - time taken to compute sum of A powers: 4.982948303222656e-05
+2025-10-21 14:36:05,597 - INFO - time taken to compute A powers: 0.0001590251922607422
+2025-10-21 14:36:05,597 - INFO - time taken to compute A powers: 0.00016117095947265625
+2025-10-21 14:36:05,597 - INFO - time taken to compute sum of A powers: 4.649162292480469e-05
+2025-10-21 14:36:05,597 - INFO - time taken to compute sum of A powers: 3.218650817871094e-05
+2025-10-21 14:36:05,599 - INFO - time taken to compute A powers: 0.0001690387725830078
+2025-10-21 14:36:05,599 - INFO - time taken to compute sum of A powers: 4.696846008300781e-05
+2025-10-21 14:36:05,661 - INFO - time taken to compute A powers: 0.00015854835510253906
+2025-10-21 14:36:05,661 - INFO - time taken to compute sum of A powers: 4.76837158203125e-05
+2025-10-21 14:36:05,676 - INFO - time taken to compute A powers: 0.00016689300537109375
+2025-10-21 14:36:05,677 - INFO - time taken to compute sum of A powers: 4.9114227294921875e-05
+2025-10-21 14:36:05,677 - INFO - time taken to compute A powers: 0.000186920166015625
+2025-10-21 14:36:05,677 - INFO - time taken to compute sum of A powers: 3.24249267578125e-05
+2025-10-21 14:36:05,678 - INFO - time taken to compute A powers: 0.0001704692840576172
+2025-10-21 14:36:05,678 - INFO - time taken to compute sum of A powers: 4.673004150390625e-05
+2025-10-21 14:36:05,741 - INFO - time taken to compute A powers: 0.00015854835510253906
+2025-10-21 14:36:05,741 - INFO - time taken to compute sum of A powers: 5.5789947509765625e-05
+2025-10-21 14:36:05,756 - INFO - time taken to compute A powers: 0.0001575946807861328
+2025-10-21 14:36:05,756 - INFO - time taken to compute sum of A powers: 5.435943603515625e-05
+2025-10-21 14:36:05,756 - INFO - time taken to compute A powers: 0.0001862049102783203
+2025-10-21 14:36:05,756 - INFO - time taken to compute sum of A powers: 3.266334533691406e-05
+2025-10-21 14:36:05,765 - INFO - time taken to compute A powers: 0.0012774467468261719
+2025-10-21 14:36:05,765 - INFO - time taken to compute sum of A powers: 3.2901763916015625e-05
+2025-10-21 14:36:05,820 - INFO - time taken to compute A powers: 0.00016117095947265625
+2025-10-21 14:36:05,820 - INFO - time taken to compute sum of A powers: 4.792213439941406e-05
+2025-10-21 14:36:05,835 - INFO - time taken to compute A powers: 0.00015878677368164062
+2025-10-21 14:36:05,835 - INFO - time taken to compute sum of A powers: 4.553794860839844e-05
+2025-10-21 14:36:05,835 - INFO - time taken to compute A powers: 0.00017976760864257812
+2025-10-21 14:36:05,835 - INFO - time taken to compute sum of A powers: 3.1948089599609375e-05
+2025-10-21 14:36:05,848 - INFO - time taken to compute A powers: 0.0001583099365234375
+2025-10-21 14:36:05,848 - INFO - time taken to compute sum of A powers: 4.863739013671875e-05
+2025-10-21 14:36:05,899 - INFO - time taken to compute A powers: 0.00015926361083984375
+2025-10-21 14:36:05,900 - INFO - time taken to compute sum of A powers: 4.792213439941406e-05
+2025-10-21 14:36:05,915 - INFO - time taken to compute A powers: 0.0001583099365234375
+2025-10-21 14:36:05,915 - INFO - time taken to compute A powers: 0.00016188621520996094
+2025-10-21 14:36:05,915 - INFO - time taken to compute sum of A powers: 4.601478576660156e-05
+2025-10-21 14:36:05,915 - INFO - time taken to compute sum of A powers: 3.24249267578125e-05
+2025-10-21 14:36:05,927 - INFO - time taken to compute A powers: 0.00016760826110839844
+2025-10-21 14:36:05,927 - INFO - time taken to compute sum of A powers: 4.7206878662109375e-05
+2025-10-21 14:36:05,979 - INFO - time taken to compute A powers: 0.00015735626220703125
+2025-10-21 14:36:05,979 - INFO - time taken to compute sum of A powers: 4.9114227294921875e-05
+2025-10-21 14:36:06,002 - INFO - time taken to compute A powers: 0.0012650489807128906
+2025-10-21 14:36:06,002 - INFO - time taken to compute sum of A powers: 4.863739013671875e-05
+2025-10-21 14:36:06,002 - INFO - time taken to compute A powers: 0.001285552978515625
+2025-10-21 14:36:06,003 - INFO - time taken to compute sum of A powers: 3.504753112792969e-05
+2025-10-21 14:36:06,007 - INFO - time taken to compute A powers: 0.00015807151794433594
+2025-10-21 14:36:06,007 - INFO - time taken to compute sum of A powers: 5.602836608886719e-05
+2025-10-21 14:36:06,058 - INFO - time taken to compute A powers: 0.00015878677368164062
+2025-10-21 14:36:06,058 - INFO - time taken to compute sum of A powers: 4.696846008300781e-05
+2025-10-21 14:36:06,086 - INFO - time taken to compute A powers: 0.00016880035400390625
+2025-10-21 14:36:06,086 - INFO - time taken to compute A powers: 0.00017595291137695312
+2025-10-21 14:36:06,086 - INFO - time taken to compute sum of A powers: 4.696846008300781e-05
+2025-10-21 14:36:06,086 - INFO - time taken to compute sum of A powers: 3.266334533691406e-05
+2025-10-21 14:36:06,086 - INFO - time taken to compute A powers: 0.00016736984252929688
+2025-10-21 14:36:06,087 - INFO - time taken to compute sum of A powers: 3.218650817871094e-05
+2025-10-21 14:36:06,138 - INFO - time taken to compute A powers: 0.00015878677368164062
+2025-10-21 14:36:06,138 - INFO - time taken to compute sum of A powers: 4.792213439941406e-05
+2025-10-21 14:36:06,165 - INFO - time taken to compute A powers: 0.00015878677368164062
+2025-10-21 14:36:06,165 - INFO - time taken to compute A powers: 0.00015974044799804688
+2025-10-21 14:36:06,166 - INFO - time taken to compute sum of A powers: 4.649162292480469e-05
+2025-10-21 14:36:06,166 - INFO - time taken to compute sum of A powers: 3.170967102050781e-05
+2025-10-21 14:36:06,166 - INFO - time taken to compute A powers: 0.00017833709716796875
+2025-10-21 14:36:06,166 - INFO - time taken to compute sum of A powers: 3.147125244140625e-05
+2025-10-21 14:36:06,217 - INFO - time taken to compute A powers: 0.0001595020294189453
+2025-10-21 14:36:06,217 - INFO - time taken to compute sum of A powers: 4.744529724121094e-05
+2025-10-21 14:36:06,245 - INFO - time taken to compute A powers: 0.0001583099365234375
+2025-10-21 14:36:06,245 - INFO - time taken to compute A powers: 0.00015854835510253906
+2025-10-21 14:36:06,245 - INFO - time taken to compute sum of A powers: 5.435943603515625e-05
+2025-10-21 14:36:06,245 - INFO - time taken to compute sum of A powers: 4.267692565917969e-05
+2025-10-21 14:36:06,246 - INFO - time taken to compute A powers: 0.00017499923706054688
+2025-10-21 14:36:06,246 - INFO - time taken to compute sum of A powers: 3.170967102050781e-05
+2025-10-21 14:36:06,304 - INFO - time taken to compute A powers: 0.001271963119506836
+2025-10-21 14:36:06,304 - INFO - time taken to compute sum of A powers: 5.054473876953125e-05
+2025-10-21 14:36:06,324 - INFO - time taken to compute A powers: 0.00015997886657714844
+2025-10-21 14:36:06,324 - INFO - time taken to compute A powers: 0.00015878677368164062
+2025-10-21 14:36:06,324 - INFO - time taken to compute sum of A powers: 4.696846008300781e-05
+2025-10-21 14:36:06,324 - INFO - time taken to compute sum of A powers: 3.0279159545898438e-05
+2025-10-21 14:36:06,325 - INFO - time taken to compute A powers: 0.0001690387725830078
+2025-10-21 14:36:06,325 - INFO - time taken to compute sum of A powers: 3.123283386230469e-05
+2025-10-21 14:36:06,387 - INFO - time taken to compute A powers: 0.00016164779663085938
+2025-10-21 14:36:06,387 - INFO - time taken to compute sum of A powers: 4.887580871582031e-05
+2025-10-21 14:36:06,403 - INFO - time taken to compute A powers: 0.00016045570373535156
+2025-10-21 14:36:06,404 - INFO - time taken to compute sum of A powers: 4.744529724121094e-05
+2025-10-21 14:36:06,405 - INFO - time taken to compute A powers: 0.00016880035400390625
+2025-10-21 14:36:06,405 - INFO - time taken to compute A powers: 0.00019288063049316406
+2025-10-21 14:36:06,405 - INFO - time taken to compute sum of A powers: 5.53131103515625e-05
+2025-10-21 14:36:06,405 - INFO - time taken to compute sum of A powers: 5.078315734863281e-05
+2025-10-21 14:36:06,466 - INFO - time taken to compute A powers: 0.00016832351684570312
+2025-10-21 14:36:06,466 - INFO - time taken to compute sum of A powers: 4.839897155761719e-05
+2025-10-21 14:36:06,483 - INFO - time taken to compute A powers: 0.00015687942504882812
+2025-10-21 14:36:06,483 - INFO - time taken to compute sum of A powers: 5.0067901611328125e-05
+2025-10-21 14:36:06,484 - INFO - time taken to compute A powers: 0.00019478797912597656
+2025-10-21 14:36:06,484 - INFO - time taken to compute sum of A powers: 3.170967102050781e-05
+2025-10-21 14:36:06,484 - INFO - time taken to compute A powers: 0.0001671314239501953
+2025-10-21 14:36:06,484 - INFO - time taken to compute sum of A powers: 3.170967102050781e-05
+2025-10-21 14:36:06,545 - INFO - time taken to compute A powers: 0.00015878677368164062
+2025-10-21 14:36:06,546 - INFO - time taken to compute sum of A powers: 4.76837158203125e-05
+2025-10-21 14:36:06,562 - INFO - time taken to compute A powers: 0.0001571178436279297
+2025-10-21 14:36:06,562 - INFO - time taken to compute sum of A powers: 4.744529724121094e-05
+2025-10-21 14:36:06,563 - INFO - time taken to compute A powers: 0.0001709461212158203
+2025-10-21 14:36:06,563 - INFO - time taken to compute sum of A powers: 3.2901763916015625e-05
+2025-10-21 14:36:06,585 - INFO - time taken to compute A powers: 0.015653371810913086
+2025-10-21 14:36:06,586 - INFO - time taken to compute sum of A powers: 4.029273986816406e-05
+2025-10-21 14:36:06,625 - INFO - time taken to compute A powers: 0.00016021728515625
+2025-10-21 14:36:06,625 - INFO - time taken to compute sum of A powers: 4.76837158203125e-05
+2025-10-21 14:36:06,642 - INFO - time taken to compute A powers: 0.00015687942504882812
+2025-10-21 14:36:06,642 - INFO - time taken to compute sum of A powers: 4.696846008300781e-05
+2025-10-21 14:36:06,643 - INFO - time taken to compute A powers: 0.00016951560974121094
+2025-10-21 14:36:06,643 - INFO - time taken to compute sum of A powers: 3.170967102050781e-05
+2025-10-21 14:36:06,667 - INFO - time taken to compute A powers: 0.00016117095947265625
+2025-10-21 14:36:06,667 - INFO - time taken to compute sum of A powers: 4.839897155761719e-05
+2025-10-21 14:36:06,704 - INFO - time taken to compute A powers: 0.00016188621520996094
+2025-10-21 14:36:06,704 - INFO - time taken to compute sum of A powers: 4.7206878662109375e-05
+2025-10-21 14:36:06,721 - INFO - time taken to compute A powers: 0.00016999244689941406
+2025-10-21 14:36:06,721 - INFO - time taken to compute sum of A powers: 4.696846008300781e-05
+2025-10-21 14:36:06,722 - INFO - time taken to compute A powers: 0.0001709461212158203
+2025-10-21 14:36:06,722 - INFO - time taken to compute sum of A powers: 3.0517578125e-05
+2025-10-21 14:36:06,747 - INFO - time taken to compute A powers: 0.0001595020294189453
+2025-10-21 14:36:06,747 - INFO - time taken to compute sum of A powers: 4.8160552978515625e-05
+2025-10-21 14:36:06,784 - INFO - time taken to compute A powers: 0.0001685619354248047
+2025-10-21 14:36:06,784 - INFO - time taken to compute sum of A powers: 3.147125244140625e-05
+2025-10-21 14:36:06,808 - INFO - time taken to compute A powers: 0.0012736320495605469
+2025-10-21 14:36:06,809 - INFO - time taken to compute sum of A powers: 4.982948303222656e-05
+2025-10-21 14:36:06,809 - INFO - time taken to compute A powers: 0.001283884048461914
+2025-10-21 14:36:06,809 - INFO - time taken to compute sum of A powers: 3.266334533691406e-05
+2025-10-21 14:36:06,826 - INFO - time taken to compute A powers: 0.0001583099365234375
+2025-10-21 14:36:06,826 - INFO - time taken to compute sum of A powers: 4.7206878662109375e-05
+2025-10-21 14:36:06,863 - INFO - time taken to compute A powers: 0.00015735626220703125
+2025-10-21 14:36:06,863 - INFO - time taken to compute sum of A powers: 4.792213439941406e-05
+2025-10-21 14:36:06,893 - INFO - time taken to compute A powers: 0.00016045570373535156
+2025-10-21 14:36:06,893 - INFO - time taken to compute A powers: 0.0001571178436279297
+2025-10-21 14:36:06,893 - INFO - time taken to compute sum of A powers: 4.863739013671875e-05
+2025-10-21 14:36:06,893 - INFO - time taken to compute sum of A powers: 3.0517578125e-05
+2025-10-21 14:36:06,906 - INFO - time taken to compute A powers: 0.0001666545867919922
+2025-10-21 14:36:06,906 - INFO - time taken to compute sum of A powers: 4.673004150390625e-05
+2025-10-21 14:36:06,942 - INFO - time taken to compute A powers: 0.000156402587890625
+2025-10-21 14:36:06,943 - INFO - time taken to compute sum of A powers: 4.7206878662109375e-05
+2025-10-21 14:36:06,972 - INFO - time taken to compute A powers: 0.00015664100646972656
+2025-10-21 14:36:06,972 - INFO - time taken to compute sum of A powers: 4.982948303222656e-05
+2025-10-21 14:36:06,972 - INFO - time taken to compute A powers: 0.00018095970153808594
+2025-10-21 14:36:06,972 - INFO - time taken to compute sum of A powers: 2.9325485229492188e-05
+2025-10-21 14:36:06,985 - INFO - time taken to compute A powers: 0.00015926361083984375
+2025-10-21 14:36:06,986 - INFO - time taken to compute sum of A powers: 4.649162292480469e-05
+2025-10-21 14:36:07,022 - INFO - time taken to compute A powers: 0.00015616416931152344
+2025-10-21 14:36:07,022 - INFO - time taken to compute sum of A powers: 4.9114227294921875e-05
+2025-10-21 14:36:07,051 - INFO - time taken to compute A powers: 0.00015783309936523438
+2025-10-21 14:36:07,051 - INFO - time taken to compute sum of A powers: 4.792213439941406e-05
+2025-10-21 14:36:07,051 - INFO - time taken to compute A powers: 0.00017952919006347656
+2025-10-21 14:36:07,052 - INFO - time taken to compute sum of A powers: 3.075599670410156e-05
+2025-10-21 14:36:07,065 - INFO - time taken to compute A powers: 0.0001666545867919922
+2025-10-21 14:36:07,065 - INFO - time taken to compute sum of A powers: 4.696846008300781e-05
+2025-10-21 14:36:07,108 - INFO - time taken to compute A powers: 0.0012857913970947266
+2025-10-21 14:36:07,108 - INFO - time taken to compute sum of A powers: 4.982948303222656e-05
+2025-10-21 14:36:07,131 - INFO - time taken to compute A powers: 0.00015687942504882812
+2025-10-21 14:36:07,131 - INFO - time taken to compute sum of A powers: 4.7206878662109375e-05
+2025-10-21 14:36:07,131 - INFO - time taken to compute A powers: 0.00017595291137695312
+2025-10-21 14:36:07,131 - INFO - time taken to compute sum of A powers: 3.814697265625e-05
+2025-10-21 14:36:07,145 - INFO - time taken to compute A powers: 0.0001583099365234375
+2025-10-21 14:36:07,145 - INFO - time taken to compute sum of A powers: 4.6253204345703125e-05
+2025-10-21 14:36:07,192 - INFO - time taken to compute A powers: 0.00018548965454101562
+2025-10-21 14:36:07,192 - INFO - time taken to compute sum of A powers: 4.3392181396484375e-05
+2025-10-21 14:36:07,210 - INFO - time taken to compute A powers: 0.000156402587890625
+2025-10-21 14:36:07,210 - INFO - time taken to compute sum of A powers: 4.887580871582031e-05
+2025-10-21 14:36:07,210 - INFO - time taken to compute A powers: 0.00016498565673828125
+2025-10-21 14:36:07,210 - INFO - time taken to compute sum of A powers: 3.266334533691406e-05
+2025-10-21 14:36:07,224 - INFO - time taken to compute A powers: 0.0001571178436279297
+2025-10-21 14:36:07,224 - INFO - time taken to compute sum of A powers: 4.649162292480469e-05
+2025-10-21 14:36:07,272 - INFO - time taken to compute A powers: 0.00015807151794433594
+2025-10-21 14:36:07,272 - INFO - time taken to compute sum of A powers: 4.792213439941406e-05
+2025-10-21 14:36:07,289 - INFO - time taken to compute A powers: 0.0001583099365234375
+2025-10-21 14:36:07,289 - INFO - time taken to compute sum of A powers: 4.7206878662109375e-05
+2025-10-21 14:36:07,290 - INFO - time taken to compute A powers: 0.00016546249389648438
+2025-10-21 14:36:07,290 - INFO - time taken to compute sum of A powers: 4.38690185546875e-05
+2025-10-21 14:36:07,304 - INFO - time taken to compute A powers: 0.00015783309936523438
+2025-10-21 14:36:07,304 - INFO - time taken to compute sum of A powers: 4.673004150390625e-05
+2025-10-21 14:36:07,351 - INFO - time taken to compute A powers: 0.00016617774963378906
+2025-10-21 14:36:07,351 - INFO - time taken to compute sum of A powers: 4.696846008300781e-05
+2025-10-21 14:36:07,369 - INFO - time taken to compute A powers: 0.000156402587890625
+2025-10-21 14:36:07,369 - INFO - time taken to compute sum of A powers: 4.744529724121094e-05
+2025-10-21 14:36:07,369 - INFO - time taken to compute A powers: 0.00016570091247558594
+2025-10-21 14:36:07,369 - INFO - time taken to compute sum of A powers: 4.673004150390625e-05
+2025-10-21 14:36:07,390 - INFO - time taken to compute A powers: 0.0012657642364501953
+2025-10-21 14:36:07,390 - INFO - time taken to compute sum of A powers: 4.863739013671875e-05
+2025-10-21 14:36:07,430 - INFO - time taken to compute A powers: 0.00016236305236816406
+2025-10-21 14:36:07,430 - INFO - time taken to compute sum of A powers: 4.76837158203125e-05
+2025-10-21 14:36:07,448 - INFO - time taken to compute A powers: 0.0001583099365234375
+2025-10-21 14:36:07,448 - INFO - time taken to compute sum of A powers: 4.696846008300781e-05
+2025-10-21 14:36:07,449 - INFO - time taken to compute A powers: 0.0001659393310546875
+2025-10-21 14:36:07,449 - INFO - time taken to compute sum of A powers: 2.956390380859375e-05
+2025-10-21 14:36:07,473 - INFO - time taken to compute A powers: 0.0001590251922607422
+2025-10-21 14:36:07,474 - INFO - time taken to compute sum of A powers: 4.887580871582031e-05
+2025-10-21 14:36:07,510 - INFO - time taken to compute A powers: 0.0001556873321533203
+2025-10-21 14:36:07,510 - INFO - time taken to compute sum of A powers: 4.673004150390625e-05
+2025-10-21 14:36:07,527 - INFO - time taken to compute A powers: 0.00015687942504882812
+2025-10-21 14:36:07,528 - INFO - time taken to compute sum of A powers: 4.76837158203125e-05
+2025-10-21 14:36:07,528 - INFO - time taken to compute A powers: 0.00017333030700683594
+2025-10-21 14:36:07,528 - INFO - time taken to compute sum of A powers: 4.673004150390625e-05
+2025-10-21 14:36:07,553 - INFO - time taken to compute A powers: 0.00016498565673828125
+2025-10-21 14:36:07,554 - INFO - time taken to compute sum of A powers: 5.14984130859375e-05
+2025-10-21 14:36:07,589 - INFO - time taken to compute A powers: 0.00015664100646972656
+2025-10-21 14:36:07,589 - INFO - time taken to compute sum of A powers: 4.744529724121094e-05
+2025-10-21 14:36:07,615 - INFO - time taken to compute A powers: 0.0012683868408203125
+2025-10-21 14:36:07,615 - INFO - time taken to compute sum of A powers: 5.054473876953125e-05
+2025-10-21 14:36:07,615 - INFO - time taken to compute A powers: 0.001280069351196289
+2025-10-21 14:36:07,616 - INFO - time taken to compute sum of A powers: 3.4332275390625e-05
+2025-10-21 14:36:07,633 - INFO - time taken to compute A powers: 0.00015592575073242188
+2025-10-21 14:36:07,633 - INFO - time taken to compute sum of A powers: 5.459785461425781e-05
+2025-10-21 14:36:07,668 - INFO - time taken to compute A powers: 0.0001575946807861328
+2025-10-21 14:36:07,669 - INFO - time taken to compute sum of A powers: 4.673004150390625e-05
+2025-10-21 14:36:07,699 - INFO - time taken to compute A powers: 0.0001914501190185547
+2025-10-21 14:36:07,699 - INFO - time taken to compute A powers: 0.0001671314239501953
+2025-10-21 14:36:07,699 - INFO - time taken to compute sum of A powers: 4.863739013671875e-05
+2025-10-21 14:36:07,699 - INFO - time taken to compute sum of A powers: 4.744529724121094e-05
+2025-10-21 14:36:07,712 - INFO - time taken to compute A powers: 0.00015616416931152344
+2025-10-21 14:36:07,713 - INFO - time taken to compute sum of A powers: 4.601478576660156e-05
+2025-10-21 14:36:07,748 - INFO - time taken to compute A powers: 0.0001659393310546875
+2025-10-21 14:36:07,748 - INFO - time taken to compute sum of A powers: 3.24249267578125e-05
+2025-10-21 14:36:07,778 - INFO - time taken to compute A powers: 0.00015592575073242188
+2025-10-21 14:36:07,778 - INFO - time taken to compute A powers: 0.0001571178436279297
+2025-10-21 14:36:07,778 - INFO - time taken to compute sum of A powers: 4.601478576660156e-05
+2025-10-21 14:36:07,779 - INFO - time taken to compute sum of A powers: 3.123283386230469e-05
+2025-10-21 14:36:07,792 - INFO - time taken to compute A powers: 0.0001659393310546875
+2025-10-21 14:36:07,792 - INFO - time taken to compute sum of A powers: 4.649162292480469e-05
+2025-10-21 14:36:07,827 - INFO - time taken to compute A powers: 0.00016379356384277344
+2025-10-21 14:36:07,827 - INFO - time taken to compute sum of A powers: 4.673004150390625e-05
+2025-10-21 14:36:07,858 - INFO - time taken to compute A powers: 0.00015592575073242188
+2025-10-21 14:36:07,858 - INFO - time taken to compute A powers: 0.0001571178436279297
+2025-10-21 14:36:07,858 - INFO - time taken to compute sum of A powers: 4.601478576660156e-05
+2025-10-21 14:36:07,858 - INFO - time taken to compute sum of A powers: 3.075599670410156e-05
+2025-10-21 14:36:07,872 - INFO - time taken to compute A powers: 0.00015664100646972656
+2025-10-21 14:36:07,872 - INFO - time taken to compute sum of A powers: 4.696846008300781e-05
+2025-10-21 14:36:07,914 - INFO - time taken to compute A powers: 0.0012860298156738281
+2025-10-21 14:36:07,914 - INFO - time taken to compute sum of A powers: 3.361701965332031e-05
+2025-10-21 14:36:07,937 - INFO - time taken to compute A powers: 0.00015664100646972656
+2025-10-21 14:36:07,937 - INFO - time taken to compute A powers: 0.0001590251922607422
+2025-10-21 14:36:07,937 - INFO - time taken to compute sum of A powers: 4.601478576660156e-05
+2025-10-21 14:36:07,937 - INFO - time taken to compute sum of A powers: 3.170967102050781e-05
+2025-10-21 14:36:07,951 - INFO - time taken to compute A powers: 0.0001571178436279297
+2025-10-21 14:36:07,951 - INFO - time taken to compute sum of A powers: 4.6253204345703125e-05
+2025-10-21 14:36:07,996 - INFO - time taken to compute A powers: 0.00015854835510253906
+2025-10-21 14:36:07,997 - INFO - time taken to compute sum of A powers: 4.863739013671875e-05
+2025-10-21 14:36:08,017 - INFO - time taken to compute A powers: 0.00015687942504882812
+2025-10-21 14:36:08,017 - INFO - time taken to compute A powers: 0.00015616416931152344
+2025-10-21 14:36:08,017 - INFO - time taken to compute sum of A powers: 4.553794860839844e-05
+2025-10-21 14:36:08,017 - INFO - time taken to compute sum of A powers: 4.792213439941406e-05
+2025-10-21 14:36:08,031 - INFO - time taken to compute A powers: 0.00015664100646972656
+2025-10-21 14:36:08,031 - INFO - time taken to compute sum of A powers: 4.6253204345703125e-05
+2025-10-21 14:36:08,076 - INFO - time taken to compute A powers: 0.00016570091247558594
+2025-10-21 14:36:08,076 - INFO - time taken to compute sum of A powers: 4.76837158203125e-05
+2025-10-21 14:36:08,096 - INFO - time taken to compute A powers: 0.00016641616821289062
+2025-10-21 14:36:08,096 - INFO - time taken to compute A powers: 0.00017213821411132812
+2025-10-21 14:36:08,096 - INFO - time taken to compute sum of A powers: 4.57763671875e-05
+2025-10-21 14:36:08,096 - INFO - time taken to compute sum of A powers: 3.170967102050781e-05
+2025-10-21 14:36:08,110 - INFO - time taken to compute A powers: 0.00015807151794433594
+2025-10-21 14:36:08,110 - INFO - time taken to compute sum of A powers: 4.649162292480469e-05
