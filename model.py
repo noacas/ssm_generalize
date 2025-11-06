@@ -3,7 +3,7 @@ from typing import Optional, Tuple
 import torch
 import torch.nn as nn
 
-from losses import get_losses
+from losses import get_losses_gd
 
 
 class DiagonalSSM(nn.Module):
@@ -30,5 +30,5 @@ class DiagonalSSM(nn.Module):
                 w: list[torch.Tensor],
                 alpha_teacher: float
                 ) -> Tuple[torch.Tensor]:
-        train_loss, gen_loss = get_losses(self.A_diag, w, alpha_teacher)
+        train_loss, gen_loss = get_losses_gd(self.A_diag, w, alpha_teacher)
         return train_loss, gen_loss
