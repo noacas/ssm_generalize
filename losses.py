@@ -3,7 +3,7 @@ import time
 import logging
 
 
-def get_losses_original(A_diag: torch.Tensor, w: list[torch.Tensor], alpha_teacher: float):
+def get_losses_gd(A_diag: torch.Tensor, w: list[torch.Tensor], alpha_teacher: float):
     """
     Original implementation for comparison.
     """

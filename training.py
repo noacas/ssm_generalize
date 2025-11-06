@@ -3,7 +3,7 @@ import logging
 import time
 
 from generator import generate_students
-from losses import get_losses, get_losses_original
+from losses import get_losses, get_losses_gd
 from model import DiagonalSSM
 
 import torch
@@ -238,7 +238,7 @@ def train_gnc_original(
     for batch in range(math.ceil(num_samples / batch_size)):
         bs = min(batch_size, num_samples - batch * batch_size)
         students = generate_students(student_dim, bs, device)
-        train_loss, gen_loss = get_losses_original(students, w_sequences, alpha_teacher)
+        train_loss, gen_loss = get_losses_gd(students, w_sequences, alpha_teacher)
         
         succ_mask = train_loss < eps_train
 
