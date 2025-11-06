@@ -1,0 +1,55 @@
+2025-10-27 10:54:54,847 - INFO - Args: Namespace(num_seeds=4, seeds=[0, 1, 2, 3], sequence_length=5, num_sequences=2, student_dims=[70, 100], eps_train=0.01, w_that_minimizes_loss=False, w2_that_minimizes_loss=False, w2_that_maximizes_loss=False, data_file=None, gnc=True, gnc_num_samples=5000000000, gnc_batch_size=500000, gd=False, gd_lr=0.001, gd_epochs=10000, gd_init_scale=0.01, gd_optimizer='adam', gd_scheduler=None, gd_scheduler_params='{}', exp_gamma=None, step_size=None, step_gamma=None, cosine_eta_min=None, gd_init_type='regular', config=None, results_dir=PosixPath('test_results/results'), figures_dir=PosixPath('test_results/figures'), checkpoint_dir=PosixPath('test_results/checkpoints'), checkpoint_interval=3600, resume_from_checkpoint=False, log_dir=PosixPath('test_results/logs'), max_gpus=8, log_file=PosixPath('test_results/logs/logs_20251027_105454.log'))
+2025-10-27 10:54:54,848 - INFO - Using custom seeds: [0, 1, 2, 3]
+2025-10-27 10:54:55,029 - INFO - Using GPUs: [4, 5, 6, 7]
+2025-10-27 10:54:55,029 - INFO - Starting 4 processes on 4 GPUs
+2025-10-27 10:54:58,739 - INFO - Process 0 started on GPU 4, processing seeds [0]
+2025-10-27 10:54:58,740 - INFO - Process 3 started on GPU 7, processing seeds [3]
+2025-10-27 10:54:58,981 - INFO - for seed 3, alpha_teacher=0.5, generated 2 sequences: [tensor([ 0.4263, -0.7516, -1.1873,  1.4030], device='cuda:7'), tensor([-0.5162, -0.2217, -0.5594,  0.5542], device='cuda:7')]
+2025-10-27 10:54:58,982 - INFO - Process 3: Starting experiment - student_dim=70, seed=3
+2025-10-27 10:54:58,983 - INFO - for seed 0, alpha_teacher=0.5, generated 2 sequences: [tensor([-0.9247, -0.4253, -2.6438,  0.1452], device='cuda:4'), tensor([ 0.1808, -0.5523,  0.9238, -0.7350], device='cuda:4')]
+2025-10-27 10:54:58,984 - INFO - Process 0: Starting experiment - student_dim=70, seed=0
+2025-10-27 10:54:59,039 - INFO - Process 1 started on GPU 5, processing seeds [1]
+2025-10-27 10:54:59,042 - INFO - Process 2 started on GPU 6, processing seeds [2]
+2025-10-27 10:54:59,236 - INFO - for seed 2, alpha_teacher=0.5, generated 2 sequences: [tensor([ 0.0223, -0.5777,  0.7053, -0.0340], device='cuda:6'), tensor([ 2.2669,  1.3477, -1.4438, -1.0484], device='cuda:6')]
+2025-10-27 10:54:59,236 - INFO - Process 2: Starting experiment - student_dim=70, seed=2
+2025-10-27 10:54:59,276 - INFO - for seed 1, alpha_teacher=0.5, generated 2 sequences: [tensor([-0.2963,  2.6764, -0.1408, -0.8441], device='cuda:5'), tensor([-0.6340, -0.6431, -0.6420, -1.4471], device='cuda:5')]
+2025-10-27 10:54:59,276 - INFO - Process 1: Starting experiment - student_dim=70, seed=1
+2025-10-27 10:58:06,938 - INFO - GNC Total success count: 5
+2025-10-27 10:58:07,114 - INFO - For seed 2, student_dim 70, G&C theoretical loss: 0.021707523614168167, asymptotic loss: 0.8868657350540161, G&C empirical loss: 0.046827465295791626
+2025-10-27 10:58:07,120 - INFO - Process 2: Completed experiment - student_dim=70, seed=2
+2025-10-27 10:58:07,786 - INFO - GNC Total success count: 1
+2025-10-27 10:58:07,958 - INFO - For seed 1, student_dim 70, G&C theoretical loss: 0.09879713505506516, asymptotic loss: 1.3105645179748535, G&C empirical loss: 0.07621380686759949
+2025-10-27 10:58:07,965 - INFO - Process 1: Completed experiment - student_dim=70, seed=1
+2025-10-27 10:58:09,051 - INFO - GNC Total success count: 7133
+2025-10-27 10:58:09,227 - INFO - For seed 0, student_dim 70, G&C theoretical loss: 0.06086418032646179, asymptotic loss: 0.5922396779060364, G&C empirical loss: 0.11012255400419235
+2025-10-27 10:58:09,235 - INFO - Process 0: Completed experiment - student_dim=70, seed=0
+2025-10-27 10:58:09,905 - INFO - GNC Total success count: 355168
+2025-10-27 10:58:10,068 - INFO - For seed 3, student_dim 70, G&C theoretical loss: 0.05618102103471756, asymptotic loss: 0.6893853545188904, G&C empirical loss: 0.12350143492221832
+2025-10-27 10:58:10,076 - INFO - Process 3: Completed experiment - student_dim=70, seed=3
+2025-10-27 11:02:34,596 - WARNING - No GNC sensing losses for student dimension 100 seed 2
+2025-10-27 11:02:34,596 - INFO - GNC Total success count: 0
+2025-10-27 11:02:34,599 - INFO - For seed 2, student_dim 100, G&C theoretical loss: 0.02484646812081337, asymptotic loss: 0.8868657350540161, G&C empirical loss: nan
+2025-10-27 11:02:34,606 - INFO - Process 2: Completed experiment - student_dim=100, seed=2
+2025-10-27 11:02:34,608 - INFO - Process 2 completed on GPU 6
+2025-10-27 11:02:35,374 - INFO - GNC Total success count: 158
+2025-10-27 11:02:35,376 - INFO - For seed 0, student_dim 100, G&C theoretical loss: 0.0742245465517044, asymptotic loss: 0.5922396779060364, G&C empirical loss: 0.11668179929256439
+2025-10-27 11:02:35,384 - INFO - Process 0: Completed experiment - student_dim=100, seed=0
+2025-10-27 11:02:35,385 - INFO - Process 0 completed on GPU 4
+2025-10-27 11:02:35,584 - WARNING - No GNC sensing losses for student dimension 100 seed 1
+2025-10-27 11:02:35,584 - INFO - GNC Total success count: 0
+2025-10-27 11:02:35,587 - INFO - For seed 1, student_dim 100, G&C theoretical loss: 0.09556520730257034, asymptotic loss: 1.3105645179748535, G&C empirical loss: nan
+2025-10-27 11:02:35,593 - INFO - Process 1: Completed experiment - student_dim=100, seed=1
+2025-10-27 11:02:35,595 - INFO - Process 1 completed on GPU 5
+2025-10-27 11:02:37,787 - INFO - GNC Total success count: 24303
+2025-10-27 11:02:37,790 - INFO - For seed 3, student_dim 100, G&C theoretical loss: 0.04482501000165939, asymptotic loss: 0.6893853545188904, G&C empirical loss: 0.11162768304347992
+2025-10-27 11:02:37,797 - INFO - Process 3: Completed experiment - student_dim=100, seed=3
+2025-10-27 11:02:37,799 - INFO - Process 3 completed on GPU 7
+2025-10-27 11:02:39,072 - INFO - Process 2 completed
+2025-10-27 11:02:40,074 - INFO - Process 0 completed
+2025-10-27 11:02:41,075 - INFO - Process 1 completed
+2025-10-27 11:02:42,076 - INFO - Process 3 completed
+2025-10-27 11:02:43,083 - INFO - Checkpoint saved: test_results/checkpoints/checkpoint_20251027_110243.pkl (0.0% complete)
+2025-10-27 11:02:43,083 - INFO - Final checkpoint saved
+2025-10-27 11:02:43,106 - INFO - Results saved to results__gnc_seq_len=5_num_seq=2_seeds=0-1-2-3_time=20251027_105454.csv
+2025-10-27 11:02:52,930 - INFO - Figures saved to plot__gnc_seq_len=5_num_seq=2_seeds=0-1-2-3_time=20251027_105454
+2025-10-27 11:02:52,931 - INFO - Finished experiments, results saved to results__gnc_seq_len=5_num_seq=2_seeds=0-1-2-3_time=20251027_105454.csv, figures saved to plot__gnc_seq_len=5_num_seq=2_seeds=0-1-2-3_time=20251027_105454

@@ -1,0 +1,156 @@
+2025-11-06 13:23:33,080 - INFO - Args: Namespace(num_seeds=4, seeds=[0, 1, 2, 3, 4, 5, 6, 7], sequence_length=5, num_sequences=1, student_dims=[150, 175, 200, 225, 250, 275, 300], eps_train=1e-05, w_that_minimizes_loss=False, w2_that_minimizes_loss=False, w2_that_maximizes_loss=False, data_file=PosixPath('alpha_w_pairs.json'), gnc=True, gnc_num_samples=100000000, gnc_batch_size=1000000, gd=True, gd_lr=0.001, gd_epochs=10000, gd_init_scale=0.01, gd_optimizer='adam', gd_scheduler=None, gd_scheduler_params='{}', exp_gamma=None, step_size=None, step_gamma=None, cosine_eta_min=None, gd_init_type='regular', config=None, results_dir=PosixPath('test_results/results'), figures_dir=PosixPath('test_results/figures'), checkpoint_dir=PosixPath('test_results/checkpoints'), checkpoint_interval=3600, resume_from_checkpoint=False, log_dir=PosixPath('test_results/logs'), max_gpus=8, log_file=PosixPath('test_results/logs/logs_20251106_132333.log'))
+2025-11-06 13:23:33,082 - INFO - Using custom seeds: [0, 1, 2, 3, 4, 5, 6, 7]
+2025-11-06 13:23:33,276 - INFO - Using GPUs: [0, 1, 2, 3]
+2025-11-06 13:23:33,277 - INFO - Starting 4 processes on 4 GPUs
+2025-11-06 13:23:43,209 - INFO - Process 0 started on GPU 0, processing seeds [0, 1]
+2025-11-06 13:23:44,024 - INFO - Process 3 started on GPU 3, processing seeds [6, 7]
+2025-11-06 13:23:44,051 - INFO - Process 2 started on GPU 2, processing seeds [4, 5]
+2025-11-06 13:23:44,075 - INFO - Process 1 started on GPU 1, processing seeds [2, 3]
+2025-11-06 13:23:44,235 - INFO - for seed 0, loaded alpha_teacher=tensor([0.5000], device='cuda:0'), loaded 1 sequences: [tensor([1., 0., 0., 0.], device='cuda:0')]
+2025-11-06 13:23:44,236 - INFO - Process 0: Starting experiment - student_dim=150, seed=0
+2025-11-06 13:23:44,269 - INFO - for seed 6, loaded alpha_teacher=tensor([0.5000], device='cuda:3'), loaded 1 sequences: [tensor([1., 0., 0., 0.], device='cuda:3')]
+2025-11-06 13:23:44,270 - INFO - Process 3: Starting experiment - student_dim=150, seed=6
+2025-11-06 13:23:44,282 - INFO - for seed 4, loaded alpha_teacher=tensor([0.5000], device='cuda:2'), loaded 1 sequences: [tensor([1., 0., 0., 0.], device='cuda:2')]
+2025-11-06 13:23:44,283 - INFO - Process 2: Starting experiment - student_dim=150, seed=4
+2025-11-06 13:23:44,295 - INFO - for seed 2, loaded alpha_teacher=tensor([0.5000], device='cuda:1'), loaded 1 sequences: [tensor([1., 0., 0., 0.], device='cuda:1')]
+2025-11-06 13:23:44,295 - INFO - Process 1: Starting experiment - student_dim=150, seed=2
+2025-11-06 13:23:52,722 - INFO - GNC Total success count: 223482
+2025-11-06 13:23:52,722 - INFO - GNC Total success count: 222210
+2025-11-06 13:23:52,723 - INFO - GNC Total success count: 221702
+2025-11-06 13:23:52,725 - INFO - GNC Total success count: 222628
+2025-11-06 13:23:53,264 - INFO - For seed 0, student_dim 150, G&C theoretical loss: 0.5911597013473511, asymptotic loss: 0.58203125, G&C empirical loss: 0.5839026570320129
+2025-11-06 13:23:53,264 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-11-06 13:23:53,264 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-06 13:23:53,272 - INFO - For seed 2, student_dim 150, G&C theoretical loss: 0.5911597013473511, asymptotic loss: 0.58203125, G&C empirical loss: 0.5834252834320068
+2025-11-06 13:23:53,272 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-11-06 13:23:53,272 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-06 13:23:53,279 - INFO - For seed 4, student_dim 150, G&C theoretical loss: 0.5911597013473511, asymptotic loss: 0.58203125, G&C empirical loss: 0.5843127965927124
+2025-11-06 13:23:53,279 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-11-06 13:23:53,279 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-06 13:23:53,286 - INFO - For seed 6, student_dim 150, G&C theoretical loss: 0.5911597013473511, asymptotic loss: 0.58203125, G&C empirical loss: 0.5834456086158752
+2025-11-06 13:23:53,286 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-11-06 13:23:53,286 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-06 13:24:03,122 - INFO - initial model: max A_j index: 10
+2025-11-06 13:24:03,122 - INFO - initial model: max A_j index: 98
+2025-11-06 13:24:03,123 - INFO - initial model: max A_j index: 59
+2025-11-06 13:24:03,123 - INFO - initial model: max A_j index: 27
+2025-11-06 13:24:03,129 - ERROR - GD failed for student_dim=150, seed=2: one of the variables needed for gradient computation has been modified by an inplace operation: [torch.cuda.FloatTensor [1, 150]], which is output 0 of AsStridedBackward0, is at version 4; expected version 3 instead. Hint: enable anomaly detection to find the operation that failed to compute its gradient, with torch.autograd.set_detect_anomaly(True).
+2025-11-06 13:24:03,129 - ERROR - GD failed for student_dim=150, seed=4: one of the variables needed for gradient computation has been modified by an inplace operation: [torch.cuda.FloatTensor [1, 150]], which is output 0 of AsStridedBackward0, is at version 4; expected version 3 instead. Hint: enable anomaly detection to find the operation that failed to compute its gradient, with torch.autograd.set_detect_anomaly(True).
+2025-11-06 13:24:03,129 - ERROR - GD failed for student_dim=150, seed=0: one of the variables needed for gradient computation has been modified by an inplace operation: [torch.cuda.FloatTensor [1, 150]], which is output 0 of AsStridedBackward0, is at version 4; expected version 3 instead. Hint: enable anomaly detection to find the operation that failed to compute its gradient, with torch.autograd.set_detect_anomaly(True).
+2025-11-06 13:24:03,130 - ERROR - GD failed for student_dim=150, seed=6: one of the variables needed for gradient computation has been modified by an inplace operation: [torch.cuda.FloatTensor [1, 150]], which is output 0 of AsStridedBackward0, is at version 4; expected version 3 instead. Hint: enable anomaly detection to find the operation that failed to compute its gradient, with torch.autograd.set_detect_anomaly(True).
+2025-11-06 13:24:03,151 - INFO - Process 2: Completed experiment - student_dim=150, seed=4
+2025-11-06 13:24:03,151 - INFO - Process 1: Completed experiment - student_dim=150, seed=2
+2025-11-06 13:24:03,152 - INFO - Process 0: Completed experiment - student_dim=150, seed=0
+2025-11-06 13:24:03,152 - INFO - Process 3: Completed experiment - student_dim=150, seed=6
+2025-11-06 13:24:12,844 - INFO - GNC Total success count: 221945
+2025-11-06 13:24:12,847 - INFO - For seed 4, student_dim 175, G&C theoretical loss: 0.5897552967071533, asymptotic loss: 0.58203125, G&C empirical loss: 0.5833756327629089
+2025-11-06 13:24:12,847 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-11-06 13:24:12,847 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-06 13:24:12,848 - INFO - initial model: max A_j index: 98
+2025-11-06 13:24:12,851 - ERROR - GD failed for student_dim=175, seed=4: one of the variables needed for gradient computation has been modified by an inplace operation: [torch.cuda.FloatTensor [1, 175]], which is output 0 of AsStridedBackward0, is at version 4; expected version 3 instead. Hint: enable anomaly detection to find the operation that failed to compute its gradient, with torch.autograd.set_detect_anomaly(True).
+2025-11-06 13:24:12,863 - INFO - Process 2: Completed experiment - student_dim=175, seed=4
+2025-11-06 13:24:12,928 - INFO - GNC Total success count: 222400
+2025-11-06 13:24:12,929 - INFO - GNC Total success count: 222994
+2025-11-06 13:24:12,929 - INFO - GNC Total success count: 222459
+2025-11-06 13:24:12,930 - INFO - For seed 0, student_dim 175, G&C theoretical loss: 0.5897552967071533, asymptotic loss: 0.58203125, G&C empirical loss: 0.5828961730003357
+2025-11-06 13:24:12,930 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-11-06 13:24:12,930 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-06 13:24:12,930 - INFO - initial model: max A_j index: 59
+2025-11-06 13:24:12,931 - INFO - For seed 2, student_dim 175, G&C theoretical loss: 0.5897552967071533, asymptotic loss: 0.58203125, G&C empirical loss: 0.5833575129508972
+2025-11-06 13:24:12,932 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-11-06 13:24:12,932 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-06 13:24:12,933 - INFO - For seed 6, student_dim 175, G&C theoretical loss: 0.5897552967071533, asymptotic loss: 0.58203125, G&C empirical loss: 0.5830069780349731
+2025-11-06 13:24:12,933 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-11-06 13:24:12,933 - INFO - initial model: max A_j index: 27
+2025-11-06 13:24:12,933 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-06 13:24:12,933 - ERROR - GD failed for student_dim=175, seed=0: one of the variables needed for gradient computation has been modified by an inplace operation: [torch.cuda.FloatTensor [1, 175]], which is output 0 of AsStridedBackward0, is at version 4; expected version 3 instead. Hint: enable anomaly detection to find the operation that failed to compute its gradient, with torch.autograd.set_detect_anomaly(True).
+2025-11-06 13:24:12,934 - INFO - initial model: max A_j index: 10
+2025-11-06 13:24:12,936 - ERROR - GD failed for student_dim=175, seed=2: one of the variables needed for gradient computation has been modified by an inplace operation: [torch.cuda.FloatTensor [1, 175]], which is output 0 of AsStridedBackward0, is at version 4; expected version 3 instead. Hint: enable anomaly detection to find the operation that failed to compute its gradient, with torch.autograd.set_detect_anomaly(True).
+2025-11-06 13:24:12,937 - ERROR - GD failed for student_dim=175, seed=6: one of the variables needed for gradient computation has been modified by an inplace operation: [torch.cuda.FloatTensor [1, 175]], which is output 0 of AsStridedBackward0, is at version 4; expected version 3 instead. Hint: enable anomaly detection to find the operation that failed to compute its gradient, with torch.autograd.set_detect_anomaly(True).
+2025-11-06 13:24:12,948 - INFO - Process 0: Completed experiment - student_dim=175, seed=0
+2025-11-06 13:24:12,950 - INFO - Process 1: Completed experiment - student_dim=175, seed=2
+2025-11-06 13:24:13,030 - INFO - Process 3: Completed experiment - student_dim=175, seed=6
+2025-11-06 13:24:23,918 - INFO - GNC Total success count: 222461
+2025-11-06 13:24:23,918 - INFO - GNC Total success count: 222643
+2025-11-06 13:24:23,918 - INFO - GNC Total success count: 222070
+2025-11-06 13:24:23,920 - INFO - For seed 0, student_dim 200, G&C theoretical loss: 0.5887244939804077, asymptotic loss: 0.58203125, G&C empirical loss: 0.5829886198043823
+2025-11-06 13:24:23,920 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-11-06 13:24:23,920 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-06 13:24:23,920 - INFO - initial model: max A_j index: 59
+2025-11-06 13:24:23,921 - INFO - For seed 4, student_dim 200, G&C theoretical loss: 0.5887244939804077, asymptotic loss: 0.58203125, G&C empirical loss: 0.583346426486969
+2025-11-06 13:24:23,921 - INFO - For seed 6, student_dim 200, G&C theoretical loss: 0.5887244939804077, asymptotic loss: 0.58203125, G&C empirical loss: 0.5830678343772888
+2025-11-06 13:24:23,921 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-11-06 13:24:23,921 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-06 13:24:23,921 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-11-06 13:24:23,921 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-06 13:24:23,922 - INFO - initial model: max A_j index: 98
+2025-11-06 13:24:23,922 - ERROR - GD failed for student_dim=200, seed=0: one of the variables needed for gradient computation has been modified by an inplace operation: [torch.cuda.FloatTensor [1, 200]], which is output 0 of AsStridedBackward0, is at version 4; expected version 3 instead. Hint: enable anomaly detection to find the operation that failed to compute its gradient, with torch.autograd.set_detect_anomaly(True).
+2025-11-06 13:24:23,922 - INFO - initial model: max A_j index: 10
+2025-11-06 13:24:23,925 - ERROR - GD failed for student_dim=200, seed=4: one of the variables needed for gradient computation has been modified by an inplace operation: [torch.cuda.FloatTensor [1, 200]], which is output 0 of AsStridedBackward0, is at version 4; expected version 3 instead. Hint: enable anomaly detection to find the operation that failed to compute its gradient, with torch.autograd.set_detect_anomaly(True).
+2025-11-06 13:24:23,925 - ERROR - GD failed for student_dim=200, seed=6: one of the variables needed for gradient computation has been modified by an inplace operation: [torch.cuda.FloatTensor [1, 200]], which is output 0 of AsStridedBackward0, is at version 4; expected version 3 instead. Hint: enable anomaly detection to find the operation that failed to compute its gradient, with torch.autograd.set_detect_anomaly(True).
+2025-11-06 13:24:23,934 - INFO - GNC Total success count: 222999
+2025-11-06 13:24:23,936 - INFO - Process 0: Completed experiment - student_dim=200, seed=0
+2025-11-06 13:24:23,937 - INFO - For seed 2, student_dim 200, G&C theoretical loss: 0.5887244939804077, asymptotic loss: 0.58203125, G&C empirical loss: 0.5829944610595703
+2025-11-06 13:24:23,937 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-11-06 13:24:23,937 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-06 13:24:23,938 - INFO - initial model: max A_j index: 27
+2025-11-06 13:24:23,938 - INFO - Process 2: Completed experiment - student_dim=200, seed=4
+2025-11-06 13:24:23,940 - ERROR - GD failed for student_dim=200, seed=2: one of the variables needed for gradient computation has been modified by an inplace operation: [torch.cuda.FloatTensor [1, 200]], which is output 0 of AsStridedBackward0, is at version 4; expected version 3 instead. Hint: enable anomaly detection to find the operation that failed to compute its gradient, with torch.autograd.set_detect_anomaly(True).
+2025-11-06 13:24:23,940 - INFO - Process 3: Completed experiment - student_dim=200, seed=6
+2025-11-06 13:24:24,044 - INFO - Process 1: Completed experiment - student_dim=200, seed=2
+2025-11-06 13:24:37,092 - INFO - GNC Total success count: 223039
+2025-11-06 13:24:37,094 - INFO - For seed 0, student_dim 225, G&C theoretical loss: 0.5879359841346741, asymptotic loss: 0.58203125, G&C empirical loss: 0.5831466913223267
+2025-11-06 13:24:37,094 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-11-06 13:24:37,094 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-06 13:24:37,095 - INFO - initial model: max A_j index: 59
+2025-11-06 13:24:37,096 - ERROR - GD failed for student_dim=225, seed=0: one of the variables needed for gradient computation has been modified by an inplace operation: [torch.cuda.FloatTensor [1, 225]], which is output 0 of AsStridedBackward0, is at version 4; expected version 3 instead. Hint: enable anomaly detection to find the operation that failed to compute its gradient, with torch.autograd.set_detect_anomaly(True).
+2025-11-06 13:24:37,110 - INFO - Process 0: Completed experiment - student_dim=225, seed=0
+2025-11-06 13:24:37,393 - INFO - GNC Total success count: 222943
+2025-11-06 13:24:37,395 - INFO - For seed 4, student_dim 225, G&C theoretical loss: 0.5879359841346741, asymptotic loss: 0.58203125, G&C empirical loss: 0.5825169682502747
+2025-11-06 13:24:37,395 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-11-06 13:24:37,395 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-06 13:24:37,396 - INFO - initial model: max A_j index: 98
+2025-11-06 13:24:37,399 - ERROR - GD failed for student_dim=225, seed=4: one of the variables needed for gradient computation has been modified by an inplace operation: [torch.cuda.FloatTensor [1, 225]], which is output 0 of AsStridedBackward0, is at version 4; expected version 3 instead. Hint: enable anomaly detection to find the operation that failed to compute its gradient, with torch.autograd.set_detect_anomaly(True).
+2025-11-06 13:24:37,446 - INFO - Process 2: Completed experiment - student_dim=225, seed=4
+2025-11-06 13:24:37,468 - INFO - GNC Total success count: 222669
+2025-11-06 13:24:37,471 - INFO - For seed 2, student_dim 225, G&C theoretical loss: 0.5879359841346741, asymptotic loss: 0.58203125, G&C empirical loss: 0.5827645063400269
+2025-11-06 13:24:37,471 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-11-06 13:24:37,471 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-06 13:24:37,472 - INFO - initial model: max A_j index: 27
+2025-11-06 13:24:37,474 - ERROR - GD failed for student_dim=225, seed=2: one of the variables needed for gradient computation has been modified by an inplace operation: [torch.cuda.FloatTensor [1, 225]], which is output 0 of AsStridedBackward0, is at version 4; expected version 3 instead. Hint: enable anomaly detection to find the operation that failed to compute its gradient, with torch.autograd.set_detect_anomaly(True).
+2025-11-06 13:24:37,570 - INFO - Process 1: Completed experiment - student_dim=225, seed=2
+2025-11-06 13:24:37,626 - INFO - GNC Total success count: 222516
+2025-11-06 13:24:37,629 - INFO - For seed 6, student_dim 225, G&C theoretical loss: 0.5879359841346741, asymptotic loss: 0.58203125, G&C empirical loss: 0.5831261277198792
+2025-11-06 13:24:37,629 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-11-06 13:24:37,629 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-06 13:24:37,630 - INFO - initial model: max A_j index: 10
+2025-11-06 13:24:37,633 - ERROR - GD failed for student_dim=225, seed=6: one of the variables needed for gradient computation has been modified by an inplace operation: [torch.cuda.FloatTensor [1, 225]], which is output 0 of AsStridedBackward0, is at version 4; expected version 3 instead. Hint: enable anomaly detection to find the operation that failed to compute its gradient, with torch.autograd.set_detect_anomaly(True).
+2025-11-06 13:24:37,679 - INFO - Process 3: Completed experiment - student_dim=225, seed=6
+2025-11-06 13:24:51,581 - INFO - GNC Total success count: 222495
+2025-11-06 13:24:51,583 - INFO - For seed 0, student_dim 250, G&C theoretical loss: 0.5873133540153503, asymptotic loss: 0.58203125, G&C empirical loss: 0.5826445817947388
+2025-11-06 13:24:51,583 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-11-06 13:24:51,583 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-06 13:24:51,584 - INFO - initial model: max A_j index: 59
+2025-11-06 13:24:51,586 - ERROR - GD failed for student_dim=250, seed=0: one of the variables needed for gradient computation has been modified by an inplace operation: [torch.cuda.FloatTensor [1, 250]], which is output 0 of AsStridedBackward0, is at version 4; expected version 3 instead. Hint: enable anomaly detection to find the operation that failed to compute its gradient, with torch.autograd.set_detect_anomaly(True).
+2025-11-06 13:24:51,598 - INFO - Process 0: Completed experiment - student_dim=250, seed=0
+2025-11-06 13:24:52,189 - INFO - GNC Total success count: 222725
+2025-11-06 13:24:52,191 - INFO - For seed 4, student_dim 250, G&C theoretical loss: 0.5873133540153503, asymptotic loss: 0.58203125, G&C empirical loss: 0.5829452872276306
+2025-11-06 13:24:52,191 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-11-06 13:24:52,192 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-06 13:24:52,192 - INFO - initial model: max A_j index: 98
+2025-11-06 13:24:52,194 - ERROR - GD failed for student_dim=250, seed=4: one of the variables needed for gradient computation has been modified by an inplace operation: [torch.cuda.FloatTensor [1, 250]], which is output 0 of AsStridedBackward0, is at version 4; expected version 3 instead. Hint: enable anomaly detection to find the operation that failed to compute its gradient, with torch.autograd.set_detect_anomaly(True).
+2025-11-06 13:24:52,206 - INFO - Process 2: Completed experiment - student_dim=250, seed=4
+2025-11-06 13:24:52,296 - INFO - GNC Total success count: 222427
+2025-11-06 13:24:52,299 - INFO - For seed 2, student_dim 250, G&C theoretical loss: 0.5873133540153503, asymptotic loss: 0.58203125, G&C empirical loss: 0.5826724171638489
+2025-11-06 13:24:52,299 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-11-06 13:24:52,299 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-06 13:24:52,300 - INFO - initial model: max A_j index: 27
+2025-11-06 13:24:52,303 - ERROR - GD failed for student_dim=250, seed=2: one of the variables needed for gradient computation has been modified by an inplace operation: [torch.cuda.FloatTensor [1, 250]], which is output 0 of AsStridedBackward0, is at version 4; expected version 3 instead. Hint: enable anomaly detection to find the operation that failed to compute its gradient, with torch.autograd.set_detect_anomaly(True).
+2025-11-06 13:24:52,336 - INFO - Process 1: Completed experiment - student_dim=250, seed=2
+2025-11-06 13:24:52,400 - INFO - GNC Total success count: 223144
+2025-11-06 13:24:52,403 - INFO - For seed 6, student_dim 250, G&C theoretical loss: 0.5873133540153503, asymptotic loss: 0.58203125, G&C empirical loss: 0.5829576849937439
+2025-11-06 13:24:52,404 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-11-06 13:24:52,404 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-06 13:24:52,405 - INFO - initial model: max A_j index: 10
+2025-11-06 13:24:52,408 - ERROR - GD failed for student_dim=250, seed=6: one of the variables needed for gradient computation has been modified by an inplace operation: [torch.cuda.FloatTensor [1, 250]], which is output 0 of AsStridedBackward0, is at version 4; expected version 3 instead. Hint: enable anomaly detection to find the operation that failed to compute its gradient, with torch.autograd.set_detect_anomaly(True).
+2025-11-06 13:24:52,462 - INFO - Process 3: Completed experiment - student_dim=250, seed=6
