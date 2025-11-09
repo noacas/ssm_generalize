@@ -1,0 +1,10 @@
+2025-11-09 12:42:07,083 - INFO - Args: Namespace(num_seeds=4, seeds=[0, 1, 2, 3], sequence_length=5, num_sequences=1, student_dims=[150, 175, 200, 225, 250, 275], eps_train=0.001, w_that_minimizes_loss=False, w2_that_minimizes_loss=False, w2_that_maximizes_loss=False, data_file=PosixPath('alpha_w_pairs.json'), gnc=False, gnc_num_samples=100000000, gnc_batch_size=500000, gd=True, gd_lr=0.001, gd_epochs=10000, gd_init_scale=0.01, gd_optimizer='adam', gd_scheduler=None, gd_scheduler_params='{}', exp_gamma=None, step_size=None, step_gamma=None, cosine_eta_min=None, gd_init_type='positive_diagonal', config=None, results_dir=PosixPath('test_results/results'), figures_dir=PosixPath('test_results/figures'), checkpoint_dir=PosixPath('test_results/checkpoints'), checkpoint_interval=3600, resume_from_checkpoint=False, log_dir=PosixPath('test_results/logs'), max_gpus=8, log_file=PosixPath('test_results/logs/logs_20251109_124207.log'))
+2025-11-09 12:42:07,083 - INFO - Using custom seeds: [0, 1, 2, 3]
+2025-11-09 12:42:07,120 - INFO - Using MPS
+2025-11-09 12:42:07,121 - INFO - Starting 1 processes on 1 GPUs
+2025-11-09 12:42:08,813 - INFO - Process 0 started on GPU mps, processing seeds [0, 1, 2, 3]
+2025-11-09 12:42:09,095 - INFO - for seed 0, loaded alpha_teacher=tensor([0.5000], device='mps:0'), loaded 1 sequences: [tensor([1., 0., 0., 0.], device='mps:0')]
+2025-11-09 12:42:09,096 - INFO - Process 0: Starting experiment - student_dim=150, seed=0
+2025-11-09 12:42:09,096 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-11-09 12:42:09,096 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-09 12:42:10,747 - INFO - initial model: max A_j index: 59

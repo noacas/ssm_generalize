@@ -56,7 +56,7 @@ def parse_args() -> argparse.Namespace:  # noqa: C901 – a bit long but flat
     g.add_argument("--seeds", type=int, nargs='+', default=[], help="Specific seeds to use (overrides num_seeds)")
     g.add_argument("--sequence_length", type=int, default=5, help="Length of the measurement sequence")
     g.add_argument("--num_sequences", type=int, default=1, help="Number of sequences to train on")
-    g.add_argument("--student_dims", type=int, nargs='+', default=list(range(150, 300, 25)), help="Student dimensions (one or more integers)")
+    g.add_argument("--student_dims", type=int, nargs='+', default=list(range(150, 301, 25)), help="Student dimensions (one or more integers)")
     g.add_argument("--eps_train", type=float, default=float(1e-3), help="Training loss threshold for successful trial")
     g.add_argument("--w_that_minimizes_loss", dest="w_that_minimizes_loss", action="store_true", default=False, help="Whether to use the w that minimizes the loss")
     g.add_argument("--w2_that_minimizes_loss", dest="w2_that_minimizes_loss", action="store_true", default=False, help="Whether to use the w2 that minimizes the loss")
@@ -90,7 +90,7 @@ def parse_args() -> argparse.Namespace:  # noqa: C901 – a bit long but flat
     g.add_argument("--step_size", type=int, help="Step size parameter for step scheduler")
     g.add_argument("--step_gamma", type=float, help="Gamma parameter for step scheduler")
     g.add_argument("--cosine_eta_min", type=float, help="Eta min parameter for cosine scheduler")
-    g.add_argument("--gd_init_type", type=str, default="regular", help="Initialization type for GD", choices=["regular", "near_one", "double_max_A_j"])
+    g.add_argument("--gd_init_type", type=str, default="regular", help="Initialization type for GD", choices=["regular", "near_one", "double_max_A_j", "positive_diagonal"])
 
     # ------------------------------------------------------------------
     # Meta                                                               |

@@ -23,6 +23,8 @@ class DiagonalSSM(nn.Module):
             mask[max_A_j] = 4
             final_A = initial_A + mask * initial_A
             self.A_diag = nn.Parameter(final_A)
+        elif init_type == "positive_diagonal":
+            self.A_diag = nn.Parameter(torch.abs(init_scale * torch.randn(state_dim)))
         else:
             self.A_diag = nn.Parameter(init_scale * torch.randn(state_dim))
 

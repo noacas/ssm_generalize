@@ -173,6 +173,7 @@ def process_worker(process_id, gpu_id, seed_list, args_dict, student_dims,
                                                                 args_dict.get('gd_scheduler'),
                                                                 scheduler_params,
                                                                 args_dict['gd_init_type'])
+                        logging.info(f"For seed {seed}, student_dim {student_dim}, GD gen loss: {gd_gen_loss}, GD train loss: {gd_train_loss}")
                         results['gd_gen_loss'] = gd_gen_loss
                         results['gd_train_loss'] = gd_train_loss
                     

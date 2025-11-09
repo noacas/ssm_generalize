@@ -1,0 +1,115 @@
+2025-11-09 12:34:59,467 - INFO - Args: Namespace(num_seeds=4, seeds=[0, 1, 2, 3], sequence_length=5, num_sequences=1, student_dims=[150, 175, 200, 225, 250, 275], eps_train=0.001, w_that_minimizes_loss=False, w2_that_minimizes_loss=False, w2_that_maximizes_loss=False, data_file=PosixPath('alpha_w_pairs.json'), gnc=False, gnc_num_samples=100000000, gnc_batch_size=500000, gd=True, gd_lr=0.001, gd_epochs=10000, gd_init_scale=0.01, gd_optimizer='adam', gd_scheduler=None, gd_scheduler_params='{}', exp_gamma=None, step_size=None, step_gamma=None, cosine_eta_min=None, gd_init_type='positive_diagonal', config=None, results_dir=PosixPath('test_results/results'), figures_dir=PosixPath('test_results/figures'), checkpoint_dir=PosixPath('test_results/checkpoints'), checkpoint_interval=3600, resume_from_checkpoint=False, log_dir=PosixPath('test_results/logs'), max_gpus=8, log_file=PosixPath('test_results/logs/logs_20251109_123459.log'))
+2025-11-09 12:34:59,468 - INFO - Using custom seeds: [0, 1, 2, 3]
+2025-11-09 12:34:59,508 - INFO - Using MPS
+2025-11-09 12:34:59,508 - INFO - Starting 1 processes on 1 GPUs
+2025-11-09 12:35:01,738 - INFO - Process 0 started on GPU mps, processing seeds [0, 1, 2, 3]
+2025-11-09 12:35:02,115 - INFO - for seed 0, loaded alpha_teacher=tensor([0.5000], device='mps:0'), loaded 1 sequences: [tensor([1., 0., 0., 0.], device='mps:0')]
+2025-11-09 12:35:02,115 - INFO - Process 0: Starting experiment - student_dim=150, seed=0
+2025-11-09 12:35:02,115 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-11-09 12:35:02,115 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-09 12:35:02,119 - ERROR - GD failed for student_dim=150, seed=0: cannot assign 'torch.FloatTensor' as parameter 'A_diag' (torch.nn.Parameter or None expected)
+2025-11-09 12:35:02,120 - INFO - Process 0: Completed experiment - student_dim=150, seed=0
+2025-11-09 12:35:02,120 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-11-09 12:35:02,121 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-09 12:35:02,121 - ERROR - GD failed for student_dim=175, seed=0: cannot assign 'torch.FloatTensor' as parameter 'A_diag' (torch.nn.Parameter or None expected)
+2025-11-09 12:35:02,121 - INFO - Process 0: Completed experiment - student_dim=175, seed=0
+2025-11-09 12:35:02,121 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-11-09 12:35:02,121 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-09 12:35:02,121 - ERROR - GD failed for student_dim=200, seed=0: cannot assign 'torch.FloatTensor' as parameter 'A_diag' (torch.nn.Parameter or None expected)
+2025-11-09 12:35:02,121 - INFO - Process 0: Completed experiment - student_dim=200, seed=0
+2025-11-09 12:35:02,122 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-11-09 12:35:02,122 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-09 12:35:02,122 - ERROR - GD failed for student_dim=225, seed=0: cannot assign 'torch.FloatTensor' as parameter 'A_diag' (torch.nn.Parameter or None expected)
+2025-11-09 12:35:02,122 - INFO - Process 0: Completed experiment - student_dim=225, seed=0
+2025-11-09 12:35:02,122 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-11-09 12:35:02,122 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-09 12:35:02,122 - ERROR - GD failed for student_dim=250, seed=0: cannot assign 'torch.FloatTensor' as parameter 'A_diag' (torch.nn.Parameter or None expected)
+2025-11-09 12:35:02,122 - INFO - Process 0: Completed experiment - student_dim=250, seed=0
+2025-11-09 12:35:02,122 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-11-09 12:35:02,122 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-09 12:35:02,123 - ERROR - GD failed for student_dim=275, seed=0: cannot assign 'torch.FloatTensor' as parameter 'A_diag' (torch.nn.Parameter or None expected)
+2025-11-09 12:35:02,123 - INFO - Process 0: Completed experiment - student_dim=275, seed=0
+2025-11-09 12:35:02,149 - INFO - for seed 1, loaded alpha_teacher=tensor([0.5000], device='mps:0'), loaded 1 sequences: [tensor([0.0100, 0.0100, 0.0100, 1.0000], device='mps:0')]
+2025-11-09 12:35:02,150 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-11-09 12:35:02,150 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-09 12:35:02,150 - ERROR - GD failed for student_dim=150, seed=1: cannot assign 'torch.FloatTensor' as parameter 'A_diag' (torch.nn.Parameter or None expected)
+2025-11-09 12:35:02,150 - INFO - Process 0: Completed experiment - student_dim=150, seed=1
+2025-11-09 12:35:02,150 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-11-09 12:35:02,150 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-09 12:35:02,151 - ERROR - GD failed for student_dim=175, seed=1: cannot assign 'torch.FloatTensor' as parameter 'A_diag' (torch.nn.Parameter or None expected)
+2025-11-09 12:35:02,151 - INFO - Process 0: Completed experiment - student_dim=175, seed=1
+2025-11-09 12:35:02,151 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-11-09 12:35:02,151 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-09 12:35:02,151 - ERROR - GD failed for student_dim=200, seed=1: cannot assign 'torch.FloatTensor' as parameter 'A_diag' (torch.nn.Parameter or None expected)
+2025-11-09 12:35:02,151 - INFO - Process 0: Completed experiment - student_dim=200, seed=1
+2025-11-09 12:35:02,151 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-11-09 12:35:02,151 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-09 12:35:02,151 - ERROR - GD failed for student_dim=225, seed=1: cannot assign 'torch.FloatTensor' as parameter 'A_diag' (torch.nn.Parameter or None expected)
+2025-11-09 12:35:02,152 - INFO - Process 0: Completed experiment - student_dim=225, seed=1
+2025-11-09 12:35:02,152 - INFO - Process 0: Starting experiment - student_dim=250, seed=1
+2025-11-09 12:35:02,152 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-11-09 12:35:02,152 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-09 12:35:02,152 - ERROR - GD failed for student_dim=250, seed=1: cannot assign 'torch.FloatTensor' as parameter 'A_diag' (torch.nn.Parameter or None expected)
+2025-11-09 12:35:02,152 - INFO - Process 0: Completed experiment - student_dim=250, seed=1
+2025-11-09 12:35:02,152 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-11-09 12:35:02,152 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-09 12:35:02,152 - ERROR - GD failed for student_dim=275, seed=1: cannot assign 'torch.FloatTensor' as parameter 'A_diag' (torch.nn.Parameter or None expected)
+2025-11-09 12:35:02,152 - INFO - Process 0: Completed experiment - student_dim=275, seed=1
+2025-11-09 12:35:02,162 - INFO - for seed 2, loaded alpha_teacher=tensor([0.5000], device='mps:0'), loaded 1 sequences: [tensor([0., 0., 0., 1.], device='mps:0')]
+2025-11-09 12:35:02,163 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-11-09 12:35:02,163 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-09 12:35:02,163 - ERROR - GD failed for student_dim=150, seed=2: cannot assign 'torch.FloatTensor' as parameter 'A_diag' (torch.nn.Parameter or None expected)
+2025-11-09 12:35:02,163 - INFO - Process 0: Completed experiment - student_dim=150, seed=2
+2025-11-09 12:35:02,163 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-11-09 12:35:02,163 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-09 12:35:02,163 - ERROR - GD failed for student_dim=175, seed=2: cannot assign 'torch.FloatTensor' as parameter 'A_diag' (torch.nn.Parameter or None expected)
+2025-11-09 12:35:02,163 - INFO - Process 0: Completed experiment - student_dim=175, seed=2
+2025-11-09 12:35:02,164 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-11-09 12:35:02,164 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-09 12:35:02,164 - ERROR - GD failed for student_dim=200, seed=2: cannot assign 'torch.FloatTensor' as parameter 'A_diag' (torch.nn.Parameter or None expected)
+2025-11-09 12:35:02,164 - INFO - Process 0: Completed experiment - student_dim=200, seed=2
+2025-11-09 12:35:02,164 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-11-09 12:35:02,164 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-09 12:35:02,164 - ERROR - GD failed for student_dim=225, seed=2: cannot assign 'torch.FloatTensor' as parameter 'A_diag' (torch.nn.Parameter or None expected)
+2025-11-09 12:35:02,164 - INFO - Process 0: Completed experiment - student_dim=225, seed=2
+2025-11-09 12:35:02,164 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-11-09 12:35:02,164 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-09 12:35:02,164 - ERROR - GD failed for student_dim=250, seed=2: cannot assign 'torch.FloatTensor' as parameter 'A_diag' (torch.nn.Parameter or None expected)
+2025-11-09 12:35:02,165 - INFO - Process 0: Completed experiment - student_dim=250, seed=2
+2025-11-09 12:35:02,165 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-11-09 12:35:02,165 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-09 12:35:02,165 - ERROR - GD failed for student_dim=275, seed=2: cannot assign 'torch.FloatTensor' as parameter 'A_diag' (torch.nn.Parameter or None expected)
+2025-11-09 12:35:02,165 - INFO - Process 0: Completed experiment - student_dim=275, seed=2
+2025-11-09 12:35:02,177 - INFO - for seed 3, loaded alpha_teacher=tensor([0.5000], device='mps:0'), loaded 1 sequences: [tensor([1., 1., 1., 1.], device='mps:0')]
+2025-11-09 12:35:02,177 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-11-09 12:35:02,177 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-09 12:35:02,178 - ERROR - GD failed for student_dim=150, seed=3: cannot assign 'torch.FloatTensor' as parameter 'A_diag' (torch.nn.Parameter or None expected)
+2025-11-09 12:35:02,178 - INFO - Process 0: Completed experiment - student_dim=150, seed=3
+2025-11-09 12:35:02,178 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-11-09 12:35:02,178 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-09 12:35:02,178 - ERROR - GD failed for student_dim=175, seed=3: cannot assign 'torch.FloatTensor' as parameter 'A_diag' (torch.nn.Parameter or None expected)
+2025-11-09 12:35:02,178 - INFO - Process 0: Completed experiment - student_dim=175, seed=3
+2025-11-09 12:35:02,178 - INFO - Process 0: Starting experiment - student_dim=200, seed=3
+2025-11-09 12:35:02,178 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-11-09 12:35:02,178 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-09 12:35:02,179 - ERROR - GD failed for student_dim=200, seed=3: cannot assign 'torch.FloatTensor' as parameter 'A_diag' (torch.nn.Parameter or None expected)
+2025-11-09 12:35:02,179 - INFO - Process 0: Completed experiment - student_dim=200, seed=3
+2025-11-09 12:35:02,179 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-11-09 12:35:02,179 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-09 12:35:02,179 - ERROR - GD failed for student_dim=225, seed=3: cannot assign 'torch.FloatTensor' as parameter 'A_diag' (torch.nn.Parameter or None expected)
+2025-11-09 12:35:02,179 - INFO - Process 0: Completed experiment - student_dim=225, seed=3
+2025-11-09 12:35:02,179 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-11-09 12:35:02,179 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-09 12:35:02,179 - ERROR - GD failed for student_dim=250, seed=3: cannot assign 'torch.FloatTensor' as parameter 'A_diag' (torch.nn.Parameter or None expected)
+2025-11-09 12:35:02,179 - INFO - Process 0: Completed experiment - student_dim=250, seed=3
+2025-11-09 12:35:02,180 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-11-09 12:35:02,180 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-09 12:35:02,180 - ERROR - GD failed for student_dim=275, seed=3: cannot assign 'torch.FloatTensor' as parameter 'A_diag' (torch.nn.Parameter or None expected)
+2025-11-09 12:35:02,180 - INFO - Process 0: Completed experiment - student_dim=275, seed=3
+2025-11-09 12:35:02,180 - INFO - Process 0 completed on GPU mps
+2025-11-09 12:35:12,077 - INFO - Process 0 completed
+2025-11-09 12:35:13,085 - INFO - Checkpoint saved: test_results/checkpoints/checkpoint_20251109_123513.pkl (0.0% complete)
+2025-11-09 12:35:13,085 - INFO - Final checkpoint saved
+2025-11-09 12:35:13,097 - INFO - Results saved to results__gd_seq_len=5_seeds=0-1-2-3_time=20251109_123459.csv
+2025-11-09 12:35:15,864 - INFO - Figures saved to plot__gd_seq_len=5_seeds=0-1-2-3_time=20251109_123459
+2025-11-09 12:35:15,864 - INFO - Finished experiments, results saved to results__gd_seq_len=5_seeds=0-1-2-3_time=20251109_123459.csv, figures saved to plot__gd_seq_len=5_seeds=0-1-2-3_time=20251109_123459
