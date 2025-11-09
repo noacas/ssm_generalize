@@ -57,7 +57,7 @@ def process_worker(process_id, gpu_id, seed_list, args_dict, student_dims,
     completed_experiments = 0
     total_experiments = len(seed_list) * len(student_dims)
     
-    for seed in enumerate(seed_list):
+    for seed in seed_list:
         torch.manual_seed(seed)
         with torch.no_grad():
             # Use file loading if data file is provided, otherwise use seed-based generation
