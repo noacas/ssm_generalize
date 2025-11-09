@@ -21,7 +21,7 @@ def main():
     exper_type = 'poison'
     adaptive = True
 
-    seeds = [200+i for i in [0, 1, 4, 5]]
+    seeds = [0, 1, 2, 3]
     teacher_state_dim = 1
     student_state_dim = 10
     sd_A = 0.001
@@ -57,6 +57,7 @@ def main():
     for seed in seeds:
         train_inputs = generate_inputs(1, sd_baseline, sd_special, seed=seed, baseline_input=baseline_input)
         train_outputs = teacher(train_inputs)
+        print(train_inputs)
         ext_inputs = create_one_hot_array(ext_length, 1)
         ext_outputs = ext_teacher(ext_inputs)
         train_loss, ext_loss = train(train_inputs, train_outputs, ext_inputs, ext_outputs, student_state_dim, seed, sd_A, 
@@ -86,6 +87,7 @@ def main():
         train_inputs = generate_inputs(1, sd_baseline, sd_special, seed=seed, baseline_input=baseline_input, 
                                     special_input=special_input)
         train_outputs = teacher(train_inputs)
+        print(train_inputs)
         ext_inputs = create_one_hot_array(ext_length, 1)
         ext_outputs = ext_teacher(ext_inputs)
         train_loss, ext_loss = train(train_inputs, train_outputs, ext_inputs, ext_outputs, student_state_dim, seed, sd_A, 

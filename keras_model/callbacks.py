@@ -5,11 +5,11 @@ from model import create_ssm, get_ssm_weights, set_ssm_weights
 class StoppingCallback(keras.callbacks.Callback):
     def __init__(self, model, inputs, outputs, eps):
         super(StoppingCallback, self).__init__()
-        self.model = model
         self.inputs = inputs
         self.outputs = outputs
         self.eps = eps
         self.opt_index = -1
+        # Note: self.model will be set automatically by Keras when the callback is used
 
     def on_epoch_end(self, epoch, logs=None):
         preds = self.model(self.inputs)
@@ -30,9 +30,9 @@ class LoggingCallback(keras.callbacks.Callback):
     def __init__(self, model, train_inputs, train_outputs, ext_inputs, ext_outputs, log_period=100, print_period=10000,
                  n_evals=7, mlp_dim=0, depth=0, exper_type='dynamics', fix_B_C=False):
         super(LoggingCallback, self).__init__()
-        self.model = model
+        # Note: self.model will be set automatically by Keras when the callback is used
         self.length = train_inputs.shape[1]
-        self.state_dim = get_ssm_weights(self.model)[0].shape[0]
+        self.state_dim = get_ssm_weights(model)[0].shape[0]
         self.ext_model, _ = create_ssm(self.state_dim, ext_inputs.shape[1], 0, 1, 1, 0,
                                        mlp_dim=mlp_dim, depth=depth)
         self.train_inputs = train_inputs
@@ -112,7 +112,7 @@ class GradientNormCallback(keras.callbacks.Callback):
     '''
     def __init__(self, model, inputs, outputs, period):
         super(GradientNormCallback, self).__init__()
-        self.model = model
+        # Note: self.model will be set automatically by Keras when the callback is used
         self.inputs = inputs
         self.outputs = outputs
         self.period = period
