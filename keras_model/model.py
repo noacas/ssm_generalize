@@ -1,6 +1,6 @@
 from tensorflow import keras
-from .constraint import DiagonalConstraint
-from .scheduler import AdaptiveLearningRateScheduler
+from constraint import DiagonalConstraint
+from scheduler import AdaptiveLearningRateScheduler
 
 def create_ssm(state_dim, length, seed, sd_A, sd_B_C, base_lr, beta=0.8, soft_const=1e-6, adaptive=False, mlp_dim=0,
                depth=0, sd_D=0):

@@ -1,6 +1,6 @@
 import numpy as np
-from .model import create_ssm, get_ssm_weights, set_ssm_weights
-from .callbacks import StoppingCallback, LoggingCallback, GradientNormCallback
+from model import create_ssm, get_ssm_weights, set_ssm_weights
+from callbacks import StoppingCallback, LoggingCallback, GradientNormCallback
 
 def train_helper(train_inputs, train_outputs, ext_inputs, ext_outputs, state_dim, seed, sd_A, sd_B_C, base_lr, epochs,
                  eps, diff=0, warm_init=0, beta=0.8, soft_const=1e-6, adaptive=False, mlp_dim=0, depth=0, sd_D=0,

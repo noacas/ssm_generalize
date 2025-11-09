@@ -1,6 +1,6 @@
 import numpy as np
 from tensorflow import keras, GradientTape
-from .model import create_ssm, get_ssm_weights, set_ssm_weights
+from model import create_ssm, get_ssm_weights, set_ssm_weights
 
 class StoppingCallback(keras.callbacks.Callback):
     def __init__(self, model, inputs, outputs, eps):

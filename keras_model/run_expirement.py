@@ -1,8 +1,8 @@
 import numpy as np
 import tensorflow as tf
-from .model import create_ssm, get_ssm_weights, set_ssm_weights
-from .data import generate_inputs, create_one_hot_array
-from .train import train
+from model import create_ssm, get_ssm_weights, set_ssm_weights
+from data import generate_inputs, create_one_hot_array
+from train import train
 
 np.set_printoptions(linewidth=200)
 physical_devices = tf.config.list_physical_devices('GPU')
