@@ -77,7 +77,6 @@ def train(train_inputs, train_outputs, ext_inputs, ext_outputs, state_dim, seed,
           diff=0, warm_init=0, beta=0.8, soft_const=1e-6, adaptive=False, mlp_dim=0, depth=0, sd_D=0, log_period=100,
           print_period=10000, n_evals=7, epochs_after_opt=0, track_gradients=False, exper_type='dynamics',
           fix_B_C=False, dim3=False, dim4=False, title=""):
-    print(f"Base learning rate: {base_lr}")
     train_losses, ext_losses, evals, gammas, stamps, opt_index = train_helper(train_inputs, train_outputs, ext_inputs,
                                                                               ext_outputs, state_dim, seed, sd_A, sd_B_C,
                                                                               base_lr, epochs, eps, diff, warm_init, beta,

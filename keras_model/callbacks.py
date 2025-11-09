@@ -33,7 +33,7 @@ class LoggingCallback(keras.callbacks.Callback):
         # Note: self.model will be set automatically by Keras when the callback is used
         self.length = train_inputs.shape[1]
         self.state_dim = get_ssm_weights(model)[0].shape[0]
-        self.ext_model, _ = create_ssm(self.state_dim, ext_inputs.shape[1], 0, 1, 1, 0,
+        self.ext_model, _ = create_ssm(self.state_dim, ext_inputs.shape[1], 0, 1, 1, 0.1,
                                        mlp_dim=mlp_dim, depth=depth)
         self.train_inputs = train_inputs
         self.train_outputs = train_outputs
