@@ -33,7 +33,7 @@ def main():
     eps = 0.01
     diff = 0.05 / np.exp(5 * np.log10(1 / sd_A))
 
-    teacher, _ = create_ssm(teacher_state_dim, length, 0, 1, 1, 0)
+    teacher, _ = create_ssm(teacher_state_dim, length, 0, 1, 1, 0.1)
     A = np.zeros((teacher_state_dim, teacher_state_dim))
     B = np.zeros((1, teacher_state_dim))
     C = np.zeros((teacher_state_dim, 1))
@@ -41,7 +41,7 @@ def main():
     B[0, 0] = 1
     C[0, 0] = 1
     set_ssm_weights(teacher, [A, B, C])
-    ext_teacher, _ = create_ssm(teacher_state_dim, ext_length, 0, 1, 1, 0)
+    ext_teacher, _ = create_ssm(teacher_state_dim, ext_length, 0, 1, 1, 0.1)
     set_ssm_weights(ext_teacher, get_ssm_weights(teacher))
 
     # experiment
