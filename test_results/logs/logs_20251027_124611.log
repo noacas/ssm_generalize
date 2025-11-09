@@ -14,3 +14,18 @@
 2025-10-27 12:46:16,257 - INFO - Process 3: Starting experiment - student_dim=300, seed=551
 2025-10-27 12:46:16,729 - INFO - for seed 774, alpha_teacher=0.5, generated 2 sequences: [tensor([-1.4639, -2.1893,  1.1826, -0.1660], device='cuda:4'), tensor([-0.4547,  1.9272, -0.2274,  0.0180], device='cuda:4')]
 2025-10-27 12:46:16,729 - INFO - Process 0: Starting experiment - student_dim=300, seed=774
+2025-11-07 05:51:20,542 - INFO - GNC Total success count: 2170919
+2025-11-07 05:51:21,051 - INFO - For seed 744, student_dim 300, G&C theoretical loss: 0.4786572754383087, asymptotic loss: 0.8574380874633789, G&C empirical loss: 0.6848608255386353
+2025-11-07 05:51:21,062 - INFO - Process 2: Completed experiment - student_dim=300, seed=744
+2025-11-07 07:16:38,982 - WARNING - No GNC sensing losses for student dimension 300 seed 774
+2025-11-07 07:16:39,003 - INFO - GNC Total success count: 0
+2025-11-07 07:16:39,176 - INFO - For seed 774, student_dim 300, G&C theoretical loss: 0.021991457790136337, asymptotic loss: 1.260310411453247, G&C empirical loss: nan
+2025-11-07 07:16:39,187 - INFO - Process 0: Completed experiment - student_dim=300, seed=774
+2025-11-07 07:17:18,663 - WARNING - No GNC sensing losses for student dimension 300 seed 551
+2025-11-07 07:17:18,664 - INFO - GNC Total success count: 0
+2025-11-07 07:17:18,834 - INFO - For seed 551, student_dim 300, G&C theoretical loss: 0.2223992943763733, asymptotic loss: 0.8332306146621704, G&C empirical loss: nan
+2025-11-07 07:17:18,845 - INFO - Process 3: Completed experiment - student_dim=300, seed=551
+2025-11-07 07:28:54,087 - WARNING - No GNC sensing losses for student dimension 300 seed 242
+2025-11-07 07:28:54,088 - INFO - GNC Total success count: 0
+2025-11-07 07:28:54,257 - INFO - For seed 242, student_dim 300, G&C theoretical loss: 0.03699202463030815, asymptotic loss: 1.4184069633483887, G&C empirical loss: nan
+2025-11-07 07:28:54,341 - INFO - Process 1: Completed experiment - student_dim=300, seed=242
