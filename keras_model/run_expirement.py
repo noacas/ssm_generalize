@@ -102,5 +102,11 @@ def main():
     print(f'Average ext. loss: {np.mean(ext_losses)}')
 
 
+    # todo - step by step:
+    # fix_B_C = True
+    # set_teacher_weights(teacher, [A, B, C]) A=np.eye(0.5)
+    # train_inputs e_1 and e_{k-1}
+
+
 if __name__ == "__main__":
     main()
