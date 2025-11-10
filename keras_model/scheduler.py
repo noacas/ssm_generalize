@@ -22,7 +22,13 @@ class AdaptiveLearningRateScheduler(keras.optimizers.schedules.LearningRateSched
     def __call__(self, step):
         gamma = self.beta * self.gamma + (1 - self.beta) * self.compute_gradient_norm()
         self.gamma.assign(gamma)
-        return self.base_lr / ((gamma / (1 - self.beta ** (step + 1))) ** 0.5 + self.soft_const)
+        # Cast step to float for exponentiation with float base
+        print(f"Step: {step}", f"Beta: {self.beta}", f"Gamma: {gamma}")
+        # Add epsilon to prevent division by zero when beta is close to 1
+        beta_power = self.beta ** (step + 1.0)
+        denominator = 1.0 - beta_power
+        sqrt_arg = gamma / denominator
+        return self.base_lr / (tf.sqrt(sqrt_arg) + self.soft_const)
 
     def compute_gradient_norm(self):
         with tf.GradientTape() as tape:
