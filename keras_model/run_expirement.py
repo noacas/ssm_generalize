@@ -19,7 +19,7 @@ def main():
     epochs_after_opt = 1500
     warm_init = 0.1
     exper_type = 'poison'
-    adaptive = True
+    adaptive = False
 
     seeds = [0, 1, 2, 3]
     teacher_state_dim = 1
