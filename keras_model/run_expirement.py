@@ -42,9 +42,7 @@ def beyond_theory_one():
     C = np.zeros((teacher_state_dim, 1))
     A[0, 0] = 0.5
     B[0, 0] = 1
-    B[0, 1] = np.sqrt(student_state_dim - 1)
     C[0, 0] = 1
-    C[0, 1] = np.sqrt(student_state_dim - 1)
     set_ssm_weights(teacher, [A, B, C])
     ext_teacher, _ = create_ssm(teacher_state_dim, ext_length, 0, 1, 1, 0.1)
     set_ssm_weights(ext_teacher, get_ssm_weights(teacher))
