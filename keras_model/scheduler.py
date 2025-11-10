@@ -22,7 +22,6 @@ class AdaptiveLearningRateScheduler(keras.optimizers.schedules.LearningRateSched
     def __call__(self, step):
         gamma = self.beta * self.gamma + (1 - self.beta) * self.compute_gradient_norm()
         self.gamma.assign(gamma)
-        assert step.dtype == tf.int32
         beta_power = self.beta ** (step + 1.0)
         denominator = 1.0 - beta_power
         sqrt_arg = gamma / denominator
