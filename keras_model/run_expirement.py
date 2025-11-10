@@ -21,7 +21,7 @@ def beyond_theory_one():
     epochs_after_opt = 1500
     warm_init = 0.1
     exper_type = 'poison'
-    adaptive = True
+    adaptive = False
 
     #seeds = [0, 1, 2, 3]
     seeds = [200+i for i in [0, 1, 4, 5]]
@@ -42,7 +42,9 @@ def beyond_theory_one():
     C = np.zeros((teacher_state_dim, 1))
     A[0, 0] = 0.5
     B[0, 0] = 1
+    B[0, 1] = np.sqrt(student_state_dim - 1)
     C[0, 0] = 1
+    C[0, 1] = np.sqrt(student_state_dim - 1)
     set_ssm_weights(teacher, [A, B, C])
     ext_teacher, _ = create_ssm(teacher_state_dim, ext_length, 0, 1, 1, 0.1)
     set_ssm_weights(ext_teacher, get_ssm_weights(teacher))
@@ -65,7 +67,7 @@ def beyond_theory_one():
         train_loss, ext_loss = train(train_inputs, train_outputs, ext_inputs, ext_outputs, student_state_dim, seed, sd_A, 
                                     sd_B_C, base_lr, epochs, eps, diff, warm_init=warm_init, adaptive=adaptive, 
                                     log_period=log_period, print_period=print_period, epochs_after_opt=epochs_after_opt, 
-                                    exper_type=exper_type, fix_B_C=True)
+                                    exper_type=exper_type, fix_B_C=False)
         train_losses_baseline.append(train_loss)
         ext_losses_baseline.append(ext_loss)
     print("-------------------------------------------------------------------------")
@@ -94,7 +96,7 @@ def beyond_theory_one():
         train_loss, ext_loss = train(train_inputs, train_outputs, ext_inputs, ext_outputs, student_state_dim, seed, sd_A, 
                                     sd_B_C, base_lr, epochs, eps, diff, warm_init=warm_init, adaptive=adaptive, 
                                     log_period=log_period, print_period=print_period, epochs_after_opt=epochs_after_opt, 
-                                    exper_type=exper_type, fix_B_C=True)
+                                    exper_type=exper_type, fix_B_C=False)
         train_losses_poison.append(train_loss)
         ext_losses_poison.append(ext_loss)
     print("-------------------------------------------------------------------------")
