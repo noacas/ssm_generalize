@@ -56,23 +56,22 @@ def beyond_theory_one():
     base_lr = 0.01
     baseline_input = np.zeros((n_baseline, length, 1))
     baseline_input[:, 0:2, :] = 1
-    train_losses, ext_losses = [], []
+    train_losses_baseline, ext_losses_baseline = [], []
     for seed in seeds:
         train_inputs = generate_inputs(1, sd_baseline, sd_special, seed=seed, baseline_input=baseline_input)
         train_outputs = teacher(train_inputs)
-        print(train_inputs)
         ext_inputs = create_one_hot_array(ext_length, 1)
         ext_outputs = ext_teacher(ext_inputs)
         train_loss, ext_loss = train(train_inputs, train_outputs, ext_inputs, ext_outputs, student_state_dim, seed, sd_A, 
                                     sd_B_C, base_lr, epochs, eps, diff, warm_init=warm_init, adaptive=adaptive, 
                                     log_period=log_period, print_period=print_period, epochs_after_opt=epochs_after_opt, 
                                     exper_type=exper_type, fix_B_C=True)
-        train_losses.append(train_loss)
-        ext_losses.append(ext_loss)
+        train_losses_baseline.append(train_loss)
+        ext_losses_baseline.append(ext_loss)
     print("-------------------------------------------------------------------------")
     print("-------------------------------------------------------------------------")
-    print(f'Average train loss: {np.mean(train_losses)}')
-    print(f'Average ext. loss: {np.mean(ext_losses)}')
+    print(f'Average train loss: {np.mean(train_losses_baseline)}')
+    print(f'Average ext. loss: {np.mean(ext_losses_baseline)}')
 
     print("-------------------------------------------------------------------------")
     print("-------------------------------------------------------------------------")
@@ -84,25 +83,34 @@ def beyond_theory_one():
     baseline_input[:, 0:2, :] = 1
     special_input = np.zeros((n_special, length, 1))
     special_input[:, length-2:length-1, :] = 1
-    train_losses, ext_losses = [], []
+    train_losses_poison, ext_losses_poison = [], []
 
     for seed in seeds:
         train_inputs = generate_inputs(1, sd_baseline, sd_special, seed=seed, baseline_input=baseline_input, 
                                     special_input=special_input)
         train_outputs = teacher(train_inputs)
-        print(train_inputs)
         ext_inputs = create_one_hot_array(ext_length, 1)
         ext_outputs = ext_teacher(ext_inputs)
         train_loss, ext_loss = train(train_inputs, train_outputs, ext_inputs, ext_outputs, student_state_dim, seed, sd_A, 
                                     sd_B_C, base_lr, epochs, eps, diff, warm_init=warm_init, adaptive=adaptive, 
                                     log_period=log_period, print_period=print_period, epochs_after_opt=epochs_after_opt, 
                                     exper_type=exper_type, fix_B_C=True)
-        train_losses.append(train_loss)
-        ext_losses.append(ext_loss)
+        train_losses_poison.append(train_loss)
+        ext_losses_poison.append(ext_loss)
     print("-------------------------------------------------------------------------")
     print("-------------------------------------------------------------------------")
-    print(f'Average train loss: {np.mean(train_losses)}')
-    print(f'Average ext. loss: {np.mean(ext_losses)}')
+    print(f'Average train loss: {np.mean(train_losses_poison)}')
+    print(f'Average ext. loss: {np.mean(ext_losses_poison)}')
+
+    print("-------------------------------------------------------------------------")
+    print("-------------------------------------------------------------------------")
+    print("Summary:")
+    print(f'Average train loss (baseline): {np.mean(train_losses_baseline)}')
+    print(f'Average extrapolation loss (baseline): {np.mean(ext_losses_baseline)}')
+    print(f'Average train loss (poison): {np.mean(train_losses_poison)}')
+    print(f'Average extrapolation loss (poison): {np.mean(ext_losses_poison)}')
+    print("-------------------------------------------------------------------------")
+    print("-------------------------------------------------------------------------")
 
 
     # todo:
@@ -277,4 +285,4 @@ def theory_one():
 
 
 if __name__ == "__main__":
-    theory_one()
+    beyond_theory_one()
