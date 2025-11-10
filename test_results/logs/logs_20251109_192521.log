@@ -1,0 +1,129 @@
+2025-11-09 19:25:21,963 - INFO - Args: Namespace(num_seeds=4, seeds=[0, 1, 2, 3], sequence_length=7, num_sequences=1, student_dims=[10, 20], eps_train=0.001, w_that_minimizes_loss=False, w2_that_minimizes_loss=False, w2_that_maximizes_loss=False, data_file=PosixPath('alpha_w_pairs_long.json'), gnc=False, gnc_num_samples=100000000, gnc_batch_size=500000, gd=True, gd_lr=0.001, gd_epochs=10000, gd_init_scale=0.01, gd_optimizer='adam', gd_scheduler=None, gd_scheduler_params='{}', exp_gamma=None, step_size=None, step_gamma=None, cosine_eta_min=None, gd_init_type='positive_diagonal', config=None, results_dir=PosixPath('test_results/results'), figures_dir=PosixPath('test_results/figures'), checkpoint_dir=PosixPath('test_results/checkpoints'), checkpoint_interval=3600, resume_from_checkpoint=False, log_dir=PosixPath('test_results/logs'), max_gpus=8, log_file=PosixPath('test_results/logs/logs_20251109_192521.log'))
+2025-11-09 19:25:21,963 - INFO - Using custom seeds: [0, 1, 2, 3]
+2025-11-09 19:25:21,997 - INFO - Using MPS
+2025-11-09 19:25:21,997 - INFO - Starting 1 processes on 1 GPUs
+2025-11-09 19:25:23,058 - INFO - Process 0 started on GPU mps, processing seeds [0, 1, 2, 3]
+2025-11-09 19:25:23,279 - INFO - for seed 0, loaded alpha_teacher=tensor([0.5000], device='mps:0'), loaded 1 sequences: [tensor([1., 0., 0., 0., 0., 0.], device='mps:0')]
+2025-11-09 19:25:23,279 - INFO - Process 0: Starting experiment - student_dim=10, seed=0
+2025-11-09 19:25:23,280 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-11-09 19:25:23,280 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-09 19:25:24,472 - INFO - initial model: max A_j index: 2
+2025-11-09 19:25:49,687 - INFO - final model: max A_j index: 2, max A_j value: 0.06235915422439575, alpha_teacher: tensor([0.5000], device='mps:0')
+2025-11-09 19:25:49,747 - INFO - largest 10 A_j values: tensor([0.0624, 0.0560, 0.0546, 0.0514, 0.0490, 0.0478, 0.0463, 0.0446, 0.0446,
+        0.0435], device='mps:0', grad_fn=<TopkBackward0>)
+2025-11-09 19:25:49,755 - INFO - number of values below 0.01: 0
+2025-11-09 19:25:49,761 - INFO - number of values between 0.01 and 0.1: 10
+2025-11-09 19:25:49,762 - INFO - number of values between 0.1 and 0.3: 0
+2025-11-09 19:25:49,762 - INFO - number of values larger than 0.3: 0
+2025-11-09 19:25:49,762 - INFO - train loss is 0.0
+2025-11-09 19:25:49,762 - INFO - impulse response loss is 0.07089541107416153
+2025-11-09 19:25:49,762 - INFO - For seed 0, student_dim 10, GD gen loss: 0.07089541107416153, GD train loss: 0.0
+2025-11-09 19:25:49,763 - INFO - Process 0: Completed experiment - student_dim=10, seed=0
+2025-11-09 19:25:49,764 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-11-09 19:25:49,764 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-09 19:25:49,768 - INFO - initial model: max A_j index: 18
+2025-11-09 19:26:15,615 - INFO - final model: max A_j index: 18, max A_j value: 0.03571893647313118, alpha_teacher: tensor([0.5000], device='mps:0')
+2025-11-09 19:26:15,624 - INFO - largest 10 A_j values: tensor([0.0357, 0.0342, 0.0315, 0.0312, 0.0301, 0.0296, 0.0283, 0.0272, 0.0269,
+        0.0251], device='mps:0', grad_fn=<TopkBackward0>)
+2025-11-09 19:26:15,631 - INFO - number of values below 0.01: 0
+2025-11-09 19:26:15,635 - INFO - number of values between 0.01 and 0.1: 20
+2025-11-09 19:26:15,635 - INFO - number of values between 0.1 and 0.3: 0
+2025-11-09 19:26:15,636 - INFO - number of values larger than 0.3: 0
+2025-11-09 19:26:15,636 - INFO - train loss is 0.0
+2025-11-09 19:26:15,636 - INFO - impulse response loss is 0.07674887776374817
+2025-11-09 19:26:15,636 - INFO - For seed 0, student_dim 20, GD gen loss: 0.07674887776374817, GD train loss: 0.0
+2025-11-09 19:26:15,636 - INFO - Process 0: Completed experiment - student_dim=20, seed=0
+2025-11-09 19:26:15,656 - INFO - for seed 1, loaded alpha_teacher=tensor([0.5000], device='mps:0'), loaded 1 sequences: [tensor([0.0100, 0.0100, 0.0100, 0.0100, 0.0100, 1.0000], device='mps:0')]
+2025-11-09 19:26:15,656 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-11-09 19:26:15,656 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-09 19:26:15,657 - INFO - initial model: max A_j index: 6
+2025-11-09 19:26:41,286 - INFO - final model: max A_j index: 6, max A_j value: 0.2088177353143692, alpha_teacher: tensor([0.5000], device='mps:0')
+2025-11-09 19:26:41,293 - INFO - largest 10 A_j values: tensor([0.2088, 0.2032, 0.1991, 0.1986, 0.1980, 0.1968, 0.1960, 0.1947, 0.1936,
+        0.1924], device='mps:0', grad_fn=<TopkBackward0>)
+2025-11-09 19:26:41,294 - INFO - number of values below 0.01: 0
+2025-11-09 19:26:41,294 - INFO - number of values between 0.01 and 0.1: 0
+2025-11-09 19:26:41,295 - INFO - number of values between 0.1 and 0.3: 10
+2025-11-09 19:26:41,295 - INFO - number of values larger than 0.3: 0
+2025-11-09 19:26:41,295 - INFO - train loss is 0.0
+2025-11-09 19:26:41,295 - INFO - impulse response loss is 2.2196335792541504
+2025-11-09 19:26:41,295 - INFO - For seed 1, student_dim 10, GD gen loss: 2.2196335792541504, GD train loss: 0.0
+2025-11-09 19:26:41,295 - INFO - Process 0: Completed experiment - student_dim=10, seed=1
+2025-11-09 19:26:41,296 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-11-09 19:26:41,296 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-09 19:26:41,297 - INFO - initial model: max A_j index: 10
+2025-11-09 19:27:06,773 - INFO - final model: max A_j index: 10, max A_j value: 0.12229229509830475, alpha_teacher: tensor([0.5000], device='mps:0')
+2025-11-09 19:27:06,780 - INFO - largest 10 A_j values: tensor([0.1223, 0.1218, 0.1207, 0.1198, 0.1162, 0.1132, 0.1126, 0.1125, 0.1125,
+        0.1120], device='mps:0', grad_fn=<TopkBackward0>)
+2025-11-09 19:27:06,780 - INFO - number of values below 0.01: 0
+2025-11-09 19:27:06,781 - INFO - number of values between 0.01 and 0.1: 0
+2025-11-09 19:27:06,781 - INFO - number of values between 0.1 and 0.3: 20
+2025-11-09 19:27:06,782 - INFO - number of values larger than 0.3: 0
+2025-11-09 19:27:06,782 - INFO - train loss is 0.0
+2025-11-09 19:27:06,782 - INFO - impulse response loss is 3.052175998687744
+2025-11-09 19:27:06,782 - INFO - For seed 1, student_dim 20, GD gen loss: 3.052175998687744, GD train loss: 0.0
+2025-11-09 19:27:06,782 - INFO - Process 0: Completed experiment - student_dim=20, seed=1
+2025-11-09 19:27:06,790 - INFO - for seed 2, loaded alpha_teacher=tensor([0.5000], device='mps:0'), loaded 1 sequences: [tensor([0., 0., 0., 0., 0., 1.], device='mps:0')]
+2025-11-09 19:27:06,791 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-11-09 19:27:06,791 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-09 19:27:06,791 - INFO - initial model: max A_j index: 3
+2025-11-09 19:27:32,417 - INFO - final model: max A_j index: 3, max A_j value: 0.5, alpha_teacher: tensor([0.5000], device='mps:0')
+2025-11-09 19:27:32,424 - INFO - largest 10 A_j values: tensor([0.5000, 0.0139, 0.0138, 0.0065, 0.0058, 0.0055, 0.0039, 0.0039, 0.0032,
+        0.0022], device='mps:0', grad_fn=<TopkBackward0>)
+2025-11-09 19:27:32,424 - INFO - number of values below 0.01: 7
+2025-11-09 19:27:32,424 - INFO - number of values between 0.01 and 0.1: 2
+2025-11-09 19:27:32,425 - INFO - number of values between 0.1 and 0.3: 0
+2025-11-09 19:27:32,425 - INFO - number of values larger than 0.3: 1
+2025-11-09 19:27:32,425 - INFO - train loss is 0.0
+2025-11-09 19:27:32,425 - INFO - impulse response loss is 0.0034527068492025137
+2025-11-09 19:27:32,425 - INFO - For seed 2, student_dim 10, GD gen loss: 0.0034527068492025137, GD train loss: 0.0
+2025-11-09 19:27:32,425 - INFO - Process 0: Completed experiment - student_dim=10, seed=2
+2025-11-09 19:27:32,426 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-11-09 19:27:32,426 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-09 19:27:32,427 - INFO - initial model: max A_j index: 15
+2025-11-09 19:27:57,367 - INFO - final model: max A_j index: 15, max A_j value: 0.5, alpha_teacher: tensor([0.5000], device='mps:0')
+2025-11-09 19:27:57,374 - INFO - largest 10 A_j values: tensor([0.5000, 0.0169, 0.0151, 0.0126, 0.0125, 0.0123, 0.0116, 0.0113, 0.0096,
+        0.0092], device='mps:0', grad_fn=<TopkBackward0>)
+2025-11-09 19:27:57,374 - INFO - number of values below 0.01: 12
+2025-11-09 19:27:57,374 - INFO - number of values between 0.01 and 0.1: 7
+2025-11-09 19:27:57,375 - INFO - number of values between 0.1 and 0.3: 0
+2025-11-09 19:27:57,375 - INFO - number of values larger than 0.3: 1
+2025-11-09 19:27:57,375 - INFO - train loss is 0.0
+2025-11-09 19:27:57,375 - INFO - impulse response loss is 0.022165091708302498
+2025-11-09 19:27:57,375 - INFO - For seed 2, student_dim 20, GD gen loss: 0.022165091708302498, GD train loss: 0.0
+2025-11-09 19:27:57,375 - INFO - Process 0: Completed experiment - student_dim=20, seed=2
+2025-11-09 19:27:57,386 - INFO - for seed 3, loaded alpha_teacher=tensor([0.5000], device='mps:0'), loaded 1 sequences: [tensor([1., 1., 1., 1., 1., 1.], device='mps:0')]
+2025-11-09 19:27:57,386 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-11-09 19:27:57,386 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-09 19:27:57,387 - INFO - initial model: max A_j index: 8
+2025-11-09 19:28:23,193 - INFO - final model: max A_j index: 8, max A_j value: 0.0971113070845604, alpha_teacher: tensor([0.5000], device='mps:0')
+2025-11-09 19:28:23,198 - INFO - largest 10 A_j values: tensor([0.0971, 0.0964, 0.0929, 0.0925, 0.0908, 0.0889, 0.0861, 0.0845, 0.0836,
+        0.0832], device='mps:0', grad_fn=<TopkBackward0>)
+2025-11-09 19:28:23,199 - INFO - number of values below 0.01: 0
+2025-11-09 19:28:23,199 - INFO - number of values between 0.01 and 0.1: 10
+2025-11-09 19:28:23,200 - INFO - number of values between 0.1 and 0.3: 0
+2025-11-09 19:28:23,200 - INFO - number of values larger than 0.3: 0
+2025-11-09 19:28:23,200 - INFO - train loss is 0.0
+2025-11-09 19:28:23,200 - INFO - impulse response loss is 0.2043679803609848
+2025-11-09 19:28:23,200 - INFO - For seed 3, student_dim 10, GD gen loss: 0.2043679803609848, GD train loss: 0.0
+2025-11-09 19:28:23,200 - INFO - Process 0: Completed experiment - student_dim=10, seed=3
+2025-11-09 19:28:23,201 - INFO - No scheduler or scheduler type 'None', using empty params
+2025-11-09 19:28:23,201 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-09 19:28:23,201 - INFO - initial model: max A_j index: 14
+2025-11-09 19:28:48,458 - INFO - final model: max A_j index: 14, max A_j value: 0.06559593975543976, alpha_teacher: tensor([0.5000], device='mps:0')
+2025-11-09 19:28:48,464 - INFO - largest 10 A_j values: tensor([0.0656, 0.0548, 0.0517, 0.0512, 0.0490, 0.0488, 0.0473, 0.0464, 0.0461,
+        0.0458], device='mps:0', grad_fn=<TopkBackward0>)
+2025-11-09 19:28:48,464 - INFO - number of values below 0.01: 0
+2025-11-09 19:28:48,464 - INFO - number of values between 0.01 and 0.1: 20
+2025-11-09 19:28:48,465 - INFO - number of values between 0.1 and 0.3: 0
+2025-11-09 19:28:48,465 - INFO - number of values larger than 0.3: 0
+2025-11-09 19:28:48,465 - INFO - train loss is 8.881783138210068e-16
+2025-11-09 19:28:48,465 - INFO - impulse response loss is 0.25383949279785156
+2025-11-09 19:28:48,465 - INFO - For seed 3, student_dim 20, GD gen loss: 0.25383949279785156, GD train loss: 8.881783138210068e-16
+2025-11-09 19:28:48,466 - INFO - Process 0: Completed experiment - student_dim=20, seed=3
+2025-11-09 19:28:48,466 - INFO - Process 0 completed on GPU mps
+2025-11-09 19:28:49,144 - INFO - Process 0 completed
+2025-11-09 19:28:50,150 - INFO - Checkpoint saved: test_results/checkpoints/checkpoint_20251109_192850.pkl (0.0% complete)
+2025-11-09 19:28:50,150 - INFO - Final checkpoint saved
+2025-11-09 19:28:50,160 - INFO - Results saved to results__gd_seq_len=7_seeds=0-1-2-3_time=20251109_192521.csv
+2025-11-09 19:28:51,931 - INFO - Figures saved to plot__gd_seq_len=7_seeds=0-1-2-3_time=20251109_192521
+2025-11-09 19:28:51,931 - INFO - Finished experiments, results saved to results__gd_seq_len=7_seeds=0-1-2-3_time=20251109_192521.csv, figures saved to plot__gd_seq_len=7_seeds=0-1-2-3_time=20251109_192521
