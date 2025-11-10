@@ -21,7 +21,8 @@ def main():
     exper_type = 'poison'
     adaptive = False
 
-    seeds = [0, 1, 2, 3]
+    #seeds = [0, 1, 2, 3]
+    seeds = [200+i for i in [0, 1, 4, 5]]
     teacher_state_dim = 1
     student_state_dim = 10
     sd_A = 0.001
@@ -73,7 +74,7 @@ def main():
 
     print("-------------------------------------------------------------------------")
     print("-------------------------------------------------------------------------")
-    print("Starting experiment - Posion")
+    print("Starting experiment - Poison")
     print("-------------------------------------------------------------------------")
     print("-------------------------------------------------------------------------")
     base_lr = 0.01
