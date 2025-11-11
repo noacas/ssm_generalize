@@ -39,7 +39,7 @@ def beyond_theory_one():
     A = np.zeros((teacher_state_dim, teacher_state_dim))
     B = np.zeros((1, teacher_state_dim))
     C = np.zeros((teacher_state_dim, 1))
-    A[0, 0] = 0.5
+    A[0, 0] = 1
     B[0, 0] = 1
     C[0, 0] = 1
     set_ssm_weights(teacher, [A, B, C])
