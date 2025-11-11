@@ -9,7 +9,89 @@ from model import DiagonalSSM
 import torch
 from torch.optim import Adam
 from torch.optim import SGD
-from torch.optim.lr_scheduler import StepLR, ExponentialLR, CosineAnnealingLR
+from torch.optim.lr_scheduler import StepLR, ExponentialLR, CosineAnnealingLR, LRScheduler
+
+
+class AdaptiveLearningRateScheduler(LRScheduler):
+    '''
+    Adaptive learning rate scheduler
+    '''
+    def __init__(self, optimizer, base_lr, beta, soft_const, model, last_epoch=-1):
+        self.base_lr = base_lr
+        self.beta = beta
+        self.soft_const = soft_const
+        self.model = model
+        self.gamma = torch.tensor(0.0, device=next(model.parameters()).device)
+        self.inputs = None
+        self.outputs = None
+        super(AdaptiveLearningRateScheduler, self).__init__(optimizer, last_epoch)
+
+    def set_examples(self, inputs, outputs):
+        """
+        Set the example inputs and outputs for computing gradient norms.
+        For this model, inputs should be w (list of tensors) and outputs should be alpha_teacher (float).
+        """
+        self.inputs = inputs
+        self.outputs = outputs
+
+    def compute_gradient_norm(self):
+        """
+        Compute the sum of gradient norms for all trainable parameters.
+        """
+        if self.inputs is None or self.outputs is None:
+            raise ValueError("Inputs and outputs must be set using set_examples() before computing gradient norm")
+        
+        # Set model to training mode to enable gradients
+        was_training = self.model.training
+        self.model.train()
+        
+        # Forward pass
+        predictions = self.model(self.inputs, self.outputs)
+        # For this model, predictions is (train_loss, gen_loss), we use train_loss
+        loss = predictions[0]
+        
+        # Compute gradients using autograd.grad to avoid side effects
+        gradients = torch.autograd.grad(
+            loss,
+            self.model.parameters(),
+            create_graph=False,
+            retain_graph=False
+        )
+        
+        # Compute gradient norm sum
+        gradient_norm_sum = torch.tensor(0.0, device=loss.device)
+        for grad in gradients:
+            if grad is not None:
+                gradient_norm_sum += grad.norm()
+        
+        # Restore model state
+        if not was_training:
+            self.model.eval()
+        
+        return gradient_norm_sum
+
+    def get_lr(self):
+        """
+        Compute the learning rate for the current step.
+        """
+        # Return base_lr if this is the initial call or if inputs/outputs aren't set yet
+        if self.last_epoch == -1 or self.inputs is None or self.outputs is None:
+            return [self.base_lr for _ in self.optimizer.param_groups]
+        
+        # Compute gradient norm and update gamma
+        grad_norm = self.compute_gradient_norm()
+        self.gamma = self.beta * self.gamma + (1 - self.beta) * grad_norm
+        
+        # Compute learning rate
+        # In TensorFlow, step is 0-indexed, so step=0 uses beta^(0+1)=beta^1
+        # In PyTorch, last_epoch=0 means we've completed 0 steps, so we use step=0+1=1
+        step = self.last_epoch + 1
+        beta_power = self.beta ** step
+        denominator = 1.0 - beta_power
+        sqrt_arg = self.gamma / denominator
+        lr = self.base_lr / (torch.sqrt(sqrt_arg) + self.soft_const)
+        
+        return [lr.item() for _ in self.optimizer.param_groups]
 
 
 def train_gd(
@@ -62,6 +144,11 @@ def train_gd(
             T_max = scheduler_params.get("T_max", epochs)
             eta_min = scheduler_params.get("eta_min", 0)
             scheduler_obj = CosineAnnealingLR(optimizer, T_max=T_max, eta_min=eta_min)
+        elif scheduler == "adaptive":
+            base_lr = scheduler_params.get("base_lr", lr)
+            beta = scheduler_params.get("beta", 0.8)
+            soft_const = scheduler_params.get("soft_const", 1e-6)
+            scheduler_obj = AdaptiveLearningRateScheduler(optimizer, base_lr=base_lr, beta=beta, soft_const=soft_const, model=model)
         else:
             raise ValueError(f"Invalid scheduler: {scheduler}")
 
@@ -75,6 +162,10 @@ def train_gd(
     # Convert w_sequences to tensor if it's a list
     if isinstance(w_sequences, list):
         w_sequences = [w.to(device) for w in w_sequences]
+    
+    # Set examples for adaptive scheduler if needed
+    if scheduler == "adaptive" and scheduler_obj is not None:
+        scheduler_obj.set_examples(w_sequences, alpha_teacher)
 
     for epoch in range(epochs):
         optimizer.zero_grad()
