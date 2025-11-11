@@ -23,7 +23,6 @@ def beyond_theory_one():
     exper_type = 'poison'
     adaptive = True
 
-    #seeds = [0, 1, 2, 3]
     seeds = [200+i for i in [0, 1, 4, 5]]
     teacher_state_dim = 1
     student_state_dim = 10
@@ -40,7 +39,7 @@ def beyond_theory_one():
     A = np.zeros((teacher_state_dim, teacher_state_dim))
     B = np.zeros((1, teacher_state_dim))
     C = np.zeros((teacher_state_dim, 1))
-    A[0, 0] = 0.5
+    A[0, 0] = 1
     B[0, 0] = 1
     C[0, 0] = 1
     set_ssm_weights(teacher, [A, B, C])
