@@ -124,4 +124,4 @@ if __name__ == "__main__":
     student_state_dim = args.student_state_dim
     length = args.length
     fixed_inputs = args.fixed_inputs
-    beyond_theory_one()
+    beyond_theory_one(alpha_teacher, adaptive, student_state_dim, length, fixed_inputs)
