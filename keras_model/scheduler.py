@@ -20,9 +20,10 @@ class AdaptiveLearningRateScheduler(keras.optimizers.schedules.LearningRateSched
         self.outputs = outputs
 
     def __call__(self, step):
+        step_float = tf.cast(step, dtype=tf.float32)
         gamma = self.beta * self.gamma + (1 - self.beta) * self.compute_gradient_norm()
         self.gamma.assign(gamma)
-        return self.base_lr / ((gamma / (1 - self.beta ** (step + 1))) ** 0.5 + self.soft_const)
+        return self.base_lr / ((gamma / (1 - self.beta ** (step_float + 1))) ** 0.5 + self.soft_const)
 
     def compute_gradient_norm(self):
         with tf.GradientTape() as tape:
