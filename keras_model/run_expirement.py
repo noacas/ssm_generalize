@@ -104,7 +104,20 @@ def beyond_theory_one(alpha_teacher, adaptive, student_state_dim, length, fixed_
         print("-------------------------------------------------------------------------")
         print("-------------------------------------------------------------------------")
     else:
-        train_inputs_baseline = [[[0, 0, 0, 1, 0]], [[1, 0.01, 0.01, 0.01, 0.01]], [[1, 0, 0, 0, 0]], [[1, 1, 1, 1, 1]]]
+        train_inputs = np.zeros((4, 5, 1))
+        train_inputs[0, :, :] = [[0, 0, 0, 1, 0]]
+        train_inputs[1, :, :] = [[1, 0.01, 0.01, 0.01, 0.01]]
+        train_inputs[2, :, :] = [[1, 0, 0, 0, 0]]
+        train_inputs[3, :, :] = [[1, 1, 1, 1, 1]]
+        train_outputs = [teacher(ipt) for ipt in train_inputs]
+        train_losses, ext_losses = run_experiment(train_inputs, train_outputs, ext_inputs, ext_outputs, adaptive, student_state_dim, seeds)
+        print("-------------------------------------------------------------------------")
+        print("-------------------------------------------------------------------------")
+        print("Summary:")
+        print(f'Average train loss: {np.mean(train_losses)}')
+        print(f'Average ext. loss: {np.mean(ext_losses)}')
+        print("-------------------------------------------------------------------------")
+        print("-------------------------------------------------------------------------")
 
 
 def parse_args():
