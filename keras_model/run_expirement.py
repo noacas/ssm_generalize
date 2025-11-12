@@ -114,8 +114,10 @@ def beyond_theory_one(alpha_teacher, adaptive, student_state_dim, length, fixed_
         print("-------------------------------------------------------------------------")
         print("-------------------------------------------------------------------------")
         print("Summary:")
-        print(f'Average train loss: {np.mean(train_losses)}')
-        print(f'Average ext. loss: {np.mean(ext_losses)}')
+        print(f"For {train_inputs[0,:,0]} input, the train loss is {train_losses[0]} and the ext. loss is {ext_losses[0]}")
+        print(f"For {train_inputs[1,:,0]} input, the train loss is {train_losses[1]} and the ext. loss is {ext_losses[1]}")
+        print(f"For {train_inputs[2,:,0]} input, the train loss is {train_losses[2]} and the ext. loss is {ext_losses[2]}")
+        print(f"For {train_inputs[3,:,0]} input, the train loss is {train_losses[3]} and the ext. loss is {ext_losses[3]}")
         print("-------------------------------------------------------------------------")
         print("-------------------------------------------------------------------------")
 
