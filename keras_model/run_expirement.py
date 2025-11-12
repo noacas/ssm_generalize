@@ -27,10 +27,9 @@ sd_A = 0.001
 sd_B_C = 0.001
 eps = 0.00001
 diff = 0.05 / np.exp(5 * np.log10(1 / sd_A))
-base_lr = 0.01
 
 
-def run_experiment(train_inputs, train_outputs, ext_inputs, ext_outputs, adaptive, student_state_dim, seeds):
+def run_experiment(train_inputs, train_outputs, ext_inputs, ext_outputs, adaptive, student_state_dim, seeds, base_lr):
     train_losses, ext_losses = [], []
     for train_inputs, train_outputs, seed in zip(train_inputs, train_outputs, seeds):
         train_loss, ext_loss = train(train_inputs, train_outputs, ext_inputs, ext_outputs, student_state_dim, seed, sd_A, 
@@ -46,7 +45,7 @@ def run_experiment(train_inputs, train_outputs, ext_inputs, ext_outputs, adaptiv
     return train_losses, ext_losses
 
 
-def beyond_theory_one(alpha_teacher, adaptive, student_state_dim, length, fixed_inputs):
+def beyond_theory_one(alpha_teacher, adaptive, student_state_dim, length, fixed_inputs, base_lr):
     seeds = [200+i for i in [0, 1, 4, 5]]
 
     ext_length = length
@@ -78,7 +77,7 @@ def beyond_theory_one(alpha_teacher, adaptive, student_state_dim, length, fixed_
         baseline_input[:, 0:2, :] = 1
         train_inputs_baseline = [generate_inputs(1, sd_baseline, sd_special, seed=seed, baseline_input=baseline_input) for seed in seeds]
         train_outputs_baseline = [teacher(train_inputs) for train_inputs in train_inputs_baseline]
-        train_losses_baseline, ext_losses_baseline = run_experiment(train_inputs_baseline, train_outputs_baseline, ext_inputs, ext_outputs, adaptive, student_state_dim, seeds)
+        train_losses_baseline, ext_losses_baseline = run_experiment(train_inputs_baseline, train_outputs_baseline, ext_inputs, ext_outputs, adaptive, student_state_dim, seeds, base_lr)
 
         print("-------------------------------------------------------------------------")
         print("-------------------------------------------------------------------------")
@@ -92,7 +91,7 @@ def beyond_theory_one(alpha_teacher, adaptive, student_state_dim, length, fixed_
         train_inputs_poison = [generate_inputs(1, sd_baseline, sd_special, seed=seed, baseline_input=baseline_input, 
                                         special_input=special_input) for seed in seeds]
         train_outputs_poison = [teacher(train_inputs) for train_inputs in train_inputs_poison]
-        train_losses_poison, ext_losses_poison = run_experiment(train_inputs_poison, train_outputs_poison, ext_inputs, ext_outputs, adaptive, student_state_dim, seeds)
+        train_losses_poison, ext_losses_poison = run_experiment(train_inputs_poison, train_outputs_poison, ext_inputs, ext_outputs, adaptive, student_state_dim, seeds, base_lr)
 
         print("-------------------------------------------------------------------------")
         print("-------------------------------------------------------------------------")
@@ -110,7 +109,7 @@ def beyond_theory_one(alpha_teacher, adaptive, student_state_dim, length, fixed_
         train_inputs[2, :, :] = [[1], [0], [0], [0], [0]]
         train_inputs[3, :, :] = [[1], [1], [1], [1], [1]]
         train_outputs = [teacher(ipt) for ipt in train_inputs]
-        train_losses, ext_losses = run_experiment(train_inputs, train_outputs, ext_inputs, ext_outputs, adaptive, student_state_dim, seeds)
+        train_losses, ext_losses = run_experiment(train_inputs, train_outputs, ext_inputs, ext_outputs, adaptive, student_state_dim, seeds, base_lr)
         print("-------------------------------------------------------------------------")
         print("-------------------------------------------------------------------------")
         print("Summary:")
@@ -126,6 +125,7 @@ def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('--alpha_teacher', type=float, default=0.5)
     parser.add_argument('--adaptive', type=bool, default=True)
+    parser.add_argument('--base_lr', type=float, default=0.0001)
     parser.add_argument('--student_state_dim', type=int, default=10)
     parser.add_argument('--length', type=int, default=5)
     parser.add_argument('--fixed_inputs', type=bool, default=False)
@@ -139,4 +139,5 @@ if __name__ == "__main__":
     student_state_dim = args.student_state_dim
     length = args.length
     fixed_inputs = args.fixed_inputs
-    beyond_theory_one(alpha_teacher, adaptive, student_state_dim, length, fixed_inputs)
+    base_lr = args.base_lr
+    beyond_theory_one(alpha_teacher, adaptive, student_state_dim, length, fixed_inputs, base_lr)
