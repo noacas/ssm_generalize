@@ -253,6 +253,7 @@ def run_experiment(args):
     # Initialize result arrays
     gd_gen_losses = np.zeros((len(args.student_dims), len(seeds_to_use)))
     gnc_gen_losses = np.zeros((len(args.student_dims), len(seeds_to_use)))
+    gnc_variances = np.zeros((len(args.student_dims), len(seeds_to_use)))
     gnc_mean_priors = np.zeros((len(args.student_dims), len(seeds_to_use)))
     gnc_theoretical_losses = np.zeros((len(args.student_dims), len(seeds_to_use)))
     gnc_theoretical_asymptotic_losses = np.zeros((len(args.student_dims), len(seeds_to_use)))
@@ -301,6 +302,9 @@ def run_experiment(args):
         'gd_scheduler': args.gd_scheduler,
         'gd_scheduler_params': args.gd_scheduler_params,
         'exp_gamma': args.exp_gamma,
+        'gd_base_lr': args.gd_base_lr,
+        'gd_beta': args.gd_beta,
+        'gd_soft_const': args.gd_soft_const,
         'step_size': args.step_size,
         'step_gamma': args.step_gamma,
         'cosine_eta_min': args.cosine_eta_min,
@@ -395,6 +399,8 @@ def run_experiment(args):
                     gnc_gen_losses[student_dim_idx, seed_idx] = result['gnc_gen_loss']
                 if result['gnc_mean_prior'] is not None:
                     gnc_mean_priors[student_dim_idx, seed_idx] = result['gnc_mean_prior']
+                if result['gnc_variance'] is not None:
+                    gnc_variances[student_dim_idx, seed_idx] = result['gnc_variance']
                 if result['gnc_theoretical_loss'] is not None:
                     gnc_theoretical_losses[student_dim_idx, seed_idx] = result['gnc_theoretical_loss']
                 if result['gnc_theoretical_asymptotic_loss'] is not None:
@@ -406,6 +412,7 @@ def run_experiment(args):
                 if completed_experiments % 50 == 0:
                     checkpoint_manager.update_results({
                         'gnc_gen_losses': gnc_gen_losses,
+                        'gnc_variances': gnc_variances,
                         'gd_gen_losses': gd_gen_losses,
                         'gnc_mean_priors': gnc_mean_priors,
                         'gnc_theoretical_losses': gnc_theoretical_losses,
@@ -448,7 +455,7 @@ def main():
         print("Experiment failed - no results to save or plot")
         return
     
-    gnc_gen_losses, gd_gen_losses, gnc_mean_priors, gnc_theoretical_losses, gnc_theoretical_asymptotic_losses = experiment_results
+    gnc_gen_losses, gnc_variances, gd_gen_losses, gnc_mean_priors, gnc_theoretical_losses, gnc_theoretical_asymptotic_losses = experiment_results
 
     # Determine which seeds were used (same logic as in run_experiment)
     if hasattr(args, 'seeds') and args.seeds is not None:
@@ -459,6 +466,7 @@ def main():
     try:
         save_results_to_csv(
             gnc_gen_losses,
+            gnc_variances,
             gd_gen_losses,
             gnc_theoretical_losses,
             gnc_theoretical_asymptotic_losses,
@@ -478,6 +486,7 @@ def main():
     try:
         plot(args.student_dims,
                 gnc_gen_losses,
+                gnc_variances,
                 gd_gen_losses,
                 gnc_mean_priors,
                 gnc_theoretical_losses,

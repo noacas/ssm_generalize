@@ -91,7 +91,7 @@ def parse_args() -> argparse.Namespace:  # noqa: C901 – a bit long but flat
     g.add_argument("--step_gamma", type=float, help="Gamma parameter for step scheduler")
     g.add_argument("--cosine_eta_min", type=float, help="Eta min parameter for cosine scheduler")
     g.add_argument("--gd_init_type", type=str, default="regular", help="Initialization type for GD", choices=["regular", "near_one", "double_max_A_j", "positive_diagonal"])
-    g.add_argument("--gd_base_lr", type=float, default=1e-3, help="Base learning rate for adaptive scheduler")
+    g.add_argument("--gd_base_lr", type=float, default=1e-5, help="Base learning rate for adaptive scheduler")
     g.add_argument("--gd_beta", type=float, default=0.8, help="Beta parameter for adaptive scheduler")
     g.add_argument("--gd_soft_const", type=float, default=1e-6, help="Soft constant parameter for adaptive scheduler")
 

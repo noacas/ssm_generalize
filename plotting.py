@@ -8,6 +8,7 @@ from utils import median_iqr
 
 def plot(student_dims: list,
          gnc_gen_losses: np.ndarray,
+         gnc_variances: np.ndarray,
          gd_gen_losses: np.ndarray,
          gnc_mean_priors: np.ndarray,
          gnc_theoretical_losses: np.ndarray,
@@ -24,10 +25,9 @@ def plot(student_dims: list,
     height = 10  # Height for side-by-side plots
     width = 30  # Increased width for side-by-side plots
 
-    fig, (ax, ax2) = plt.subplots(figsize=(width, height), nrows=1, ncols=2, sharey=False)
+    fig, (ax, ax2) = plt.subplots(figsize=(width, height), nrows=1, ncols=1, sharey=False)
 
     fig.suptitle(f'Sequence Length = {sequence_length}', fontsize=14)
-
     if gnc:
         gnc_med, gnc_iqr = median_iqr(gnc_gen_losses)
         gnc_mean_prior_med, gnc_mean_prior_iqr = median_iqr(gnc_mean_priors)
