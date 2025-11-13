@@ -151,6 +151,13 @@ def process_worker(process_id, gpu_id, seed_list, args_dict, student_dims,
                             else:
                                 scheduler_params = {'T_max': args_dict['gd_epochs'], 'eta_min': 0}  # Default for cosine
                                 logging.info(f"Using cosine scheduler with defaults: {scheduler_params}")
+                        elif scheduler_type == 'adaptive':
+                            # Check if we have adaptive_lr parameter
+                            base_lr = args_dict.get('gd_base_lr')
+                            beta = args_dict.get('gd_beta')
+                            soft_const = args_dict.get('gd_soft_const')
+                            scheduler_params = {'base_lr': base_lr, 'beta': beta, 'soft_const': soft_const}
+                            logging.info(f"Using adaptive scheduler with base_lr={base_lr}, beta={beta}, soft_const={soft_const}")
                         else:
                             scheduler_params = {}
                             logging.info(f"No scheduler or scheduler type '{scheduler_type}', using empty params")
