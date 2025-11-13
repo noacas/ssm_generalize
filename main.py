@@ -436,7 +436,7 @@ def run_experiment(args):
     checkpoint_manager.save_final_checkpoint()
     logging.info("Final checkpoint saved")
 
-    return gnc_gen_losses, gd_gen_losses, gnc_mean_priors, gnc_theoretical_losses, gnc_theoretical_asymptotic_losses
+    return gnc_gen_losses, gnc_variances, gd_gen_losses, gnc_mean_priors, gnc_theoretical_losses, gnc_theoretical_asymptotic_losses
 
 
 def main():
