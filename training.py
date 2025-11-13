@@ -256,7 +256,6 @@ def train_gnc(
         if finite_mask.any():
             prior_gen_sum += gen_loss[finite_mask].sum()
             prior_count += finite_mask.sum().item()
-            gnc_loss_variance += torch.var(gen_loss[finite_mask])
 
         succ_mask = succ_mask.squeeze(-1)
         if succ_mask.any():
@@ -294,4 +293,3 @@ def train_gnc(
         return mean_prior, mean_gnc, variance_gnc, training_losses
     else:
         return mean_prior, mean_gnc, variance_gnc
-        

@@ -72,10 +72,10 @@ def process_seed_worker(process_id, seed_list, args_dict, results_queue, progres
                 collect_training_losses=True
             )
             
-            if len(result) == 3:
-                mean_prior, mean_gnc, training_losses = result
+            if len(result) == 4:
+                mean_prior, mean_gnc, variance_gnc, training_losses = result
             else:
-                mean_prior, mean_gnc = result
+                mean_prior, mean_gnc, variance_gnc = result
                 training_losses = None
             
             if training_losses is None:
