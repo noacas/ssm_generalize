@@ -3,6 +3,7 @@
 !requirements*.json
 !package*.json
 !alpha_w_pairs.json
+!w.json
 
 # Python
 __pycache__/
