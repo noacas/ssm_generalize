@@ -87,10 +87,10 @@ def main():
             collect_training_losses=True
         )
         
-        if len(result) == 3:
-            mean_prior, mean_gnc, training_losses = result
+        if len(result) == 4:
+            mean_prior, mean_gnc, variance_gnc, training_losses = result
         else:
-            mean_prior, mean_gnc = result
+            mean_prior, mean_gnc, variance_gnc = result
             training_losses = None
         
         end_time = time.time()

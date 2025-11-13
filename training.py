@@ -230,9 +230,11 @@ def train_gnc(
     
     # Collect training losses for histogram if requested
     training_losses = [] if collect_training_losses else None
-    # # save losses of the successful students
-    # succ_training_losses = []
-    # succ_gen_losses = []
+    
+    # variance of g&c loss using Welford's Method
+    welford_mean = torch.tensor(0.0, device=device) # the running mean
+    welford_M2 = torch.tensor(0.0, device=device) # the running sum of squared differences from the mean
+    welford_count = 0 # the running count of samples
 
     # Convert w_sequences to tensor if it's a list
     if isinstance(w_sequences, list):
@@ -240,16 +242,9 @@ def train_gnc(
     
     for batch in range(math.ceil(num_samples / batch_size)):
         bs = min(batch_size, num_samples - batch * batch_size)
-        #time_start = time.time()
         students = generate_students(student_dim, bs, device)
-        #time_end = time.time()
-        #logging.info(f"time taken to generate students: {time_end - time_start}")
-        #time_start = time.time()
         train_loss, gen_loss = get_losses(students, w_sequences, alpha_teacher)
         succ_mask = train_loss < eps_train
-        #time_end = time.time()
-        #logging.info(f"time taken to get losses: {time_end - time_start}")
-        #time_start = time.time()
         # Collect training losses for histogram if requested
         if collect_training_losses and training_losses is not None:
             # Only collect finite training losses
@@ -257,22 +252,27 @@ def train_gnc(
             if finite_train_mask.any():
                 training_losses.extend(train_loss[finite_train_mask].cpu().tolist())
 
-        # Update accumulators on device - optimized version
-        # Only count finite values to avoid inf/nan issues
         finite_mask = torch.isfinite(gen_loss)
         if finite_mask.any():
             prior_gen_sum += gen_loss[finite_mask].sum()
             prior_count += finite_mask.sum().item()
+            gnc_loss_variance += torch.var(gen_loss[finite_mask])
 
         succ_mask = succ_mask.squeeze(-1)
         if succ_mask.any():
-            # Only count finite values for successful students
             succ_finite_mask = succ_mask & finite_mask
             if succ_finite_mask.any():
-                succ_gen_sum += gen_loss[succ_finite_mask].sum()
-                succ_count += succ_finite_mask.sum().item()
-                # succ_training_losses.extend(train_loss[succ_finite_mask].cpu().tolist())
-                # succ_gen_losses.extend(gen_loss[succ_finite_mask].cpu().tolist())
+                batch_size_succ = succ_finite_mask.sum().item()
+                batch_sum_succ = gen_loss[succ_finite_mask].sum()
+                succ_gen_sum += batch_sum_succ
+                succ_count += batch_size_succ       
+                # Update Welford's Method for variance
+                batch_mean_succ = batch_sum_succ / batch_size_succ
+                M2_B = torch.sum((gen_loss[succ_finite_mask] - batch_mean_succ)**2)
+                delta = batch_mean_succ - welford_mean
+                welford_mean += delta * batch_size_succ / (welford_count + batch_size_succ)
+                welford_M2 += M2_B + (delta**2) * welford_count * batch_size_succ / (welford_count + batch_size_succ)
+                welford_count += batch_size_succ
 
         # Update statistics
         total_students += bs
@@ -281,83 +281,17 @@ def train_gnc(
         if batch % 10 == 0:
             torch.cuda.empty_cache()
 
-        #time_end = time.time()
-        #logging.info(f"time taken to update statistics: {time_end - time_start}")
-
     mean_prior = (prior_gen_sum / max(1, prior_count)).item()
     mean_gnc = (succ_gen_sum / succ_count).item() if succ_count > 0 else float("nan")
+    variance_gnc = welford_M2 / (welford_count - 1) if welford_count > 1 else float("nan")
     if succ_count == 0:
         logging.warning(f"No GNC sensing losses for student dimension {student_dim} seed {seed}")
     
     # Log success count
     logging.info(f"GNC Total success count: {succ_count}")
-    # if succ_count > 0:
-    #     logging.info(f"GNC Success training losses: {succ_training_losses}")
-    #     logging.info(f"GNC Success gen losses: {succ_gen_losses}")
     
     if collect_training_losses:
-        return mean_prior, mean_gnc, training_losses
+        return mean_prior, mean_gnc, variance_gnc, training_losses
     else:
-        return mean_prior, mean_gnc
-
-
-def train_gnc_original(
-             seed: int,
-             student_dim: int,
-             device: torch.device,
-             alpha_teacher: float,
-             w_sequences: list,
-             eps_train: float,
-             num_samples: int,
-             batch_size: int,
-              ):
-    """
-    Original GNC training implementation for comparison.
-    """
-    # Accumulate losses on device to avoid per-sample CPU transfers
-    prior_gen_sum = torch.tensor(0.0, device=device)
-    prior_count = 0
-    succ_gen_sum = torch.tensor(0.0, device=device)
-    succ_count = 0
-    
-    total_students = 0
-
-    # Convert w_sequences to tensor if it's a list
-    if isinstance(w_sequences, list):
-        w_sequences = [w.to(device) for w in w_sequences]
-    
-    for batch in range(math.ceil(num_samples / batch_size)):
-        bs = min(batch_size, num_samples - batch * batch_size)
-        students = generate_students(student_dim, bs, device)
-        train_loss, gen_loss = get_losses_gd(students, w_sequences, alpha_teacher)
+        return mean_prior, mean_gnc, variance_gnc
         
-        succ_mask = train_loss < eps_train
-
-        # Update accumulators on device
-        # Only count finite values to avoid inf/nan issues
-        finite_mask = torch.isfinite(gen_loss)
-        if finite_mask.any():
-            prior_gen_sum = prior_gen_sum + gen_loss[finite_mask].sum()
-            prior_count += finite_mask.sum().item()
-
-        succ_mask = succ_mask.squeeze(-1)
-        if succ_mask.any():
-            # Only count finite values for successful students
-            succ_finite_mask = succ_mask & torch.isfinite(gen_loss)
-            if succ_finite_mask.any():
-                succ_gen_sum = succ_gen_sum + gen_loss[succ_finite_mask].sum()
-                succ_count += succ_finite_mask.sum().item()
-        
-        # Update statistics
-        total_students += bs
-        torch.cuda.empty_cache()
-
-    mean_prior = (prior_gen_sum / max(1, prior_count)).item()
-    mean_gnc = (succ_gen_sum / succ_count).item() if succ_count > 0 else float("nan")
-    if succ_count == 0:
-        logging.warning(f"No GNC sensing losses for student dimension {student_dim} seed {seed}")
-    
-    # Log success count
-    logging.info(f"GNC Total success count: {succ_count}")
-    
-    return mean_prior, mean_gnc

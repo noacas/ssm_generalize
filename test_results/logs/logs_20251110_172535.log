@@ -1,0 +1,115 @@
+2025-11-10 17:25:35,930 - INFO - Args: Namespace(num_seeds=4, seeds=[0, 1, 2, 3], sequence_length=5, num_sequences=1, student_dims=[10, 20, 50, 100, 150, 300], eps_train=0.001, w_that_minimizes_loss=False, w2_that_minimizes_loss=False, w2_that_maximizes_loss=False, data_file=PosixPath('alpha_w_pairs.json'), gnc=False, gnc_num_samples=100000000, gnc_batch_size=500000, gd=True, gd_lr=0.001, gd_epochs=1000000, gd_init_scale=0.01, gd_optimizer='adam', gd_scheduler='adaptive', gd_scheduler_params='{}', exp_gamma=None, step_size=None, step_gamma=None, cosine_eta_min=None, gd_init_type='regular', config=None, results_dir=PosixPath('test_results/results'), figures_dir=PosixPath('test_results/figures'), checkpoint_dir=PosixPath('test_results/checkpoints'), checkpoint_interval=3600, resume_from_checkpoint=False, log_dir=PosixPath('test_results/logs'), max_gpus=8, log_file=PosixPath('test_results/logs/logs_20251110_172535.log'))
+2025-11-10 17:25:35,930 - INFO - Using custom seeds: [0, 1, 2, 3]
+2025-11-10 17:25:35,969 - INFO - Using MPS
+2025-11-10 17:25:35,969 - INFO - Starting 1 processes on 1 GPUs
+2025-11-10 17:25:37,373 - INFO - Process 0 started on GPU mps, processing seeds [0, 1, 2, 3]
+2025-11-10 17:25:37,649 - INFO - for seed 0, loaded alpha_teacher=tensor([0.5000], device='mps:0'), loaded 1 sequences: [tensor([1., 0., 0., 0.], device='mps:0')]
+2025-11-10 17:25:37,650 - INFO - Process 0: Starting experiment - student_dim=10, seed=0
+2025-11-10 17:25:37,650 - INFO - No scheduler or scheduler type 'adaptive', using empty params
+2025-11-10 17:25:37,650 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-10 17:25:38,312 - ERROR - GD failed for student_dim=10, seed=0: object.__init__() takes exactly one argument (the instance to initialize)
+2025-11-10 17:25:38,313 - INFO - Process 0: Completed experiment - student_dim=10, seed=0
+2025-11-10 17:25:38,314 - INFO - No scheduler or scheduler type 'adaptive', using empty params
+2025-11-10 17:25:38,314 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-10 17:25:38,314 - ERROR - GD failed for student_dim=20, seed=0: object.__init__() takes exactly one argument (the instance to initialize)
+2025-11-10 17:25:38,314 - INFO - Process 0: Completed experiment - student_dim=20, seed=0
+2025-11-10 17:25:38,315 - INFO - No scheduler or scheduler type 'adaptive', using empty params
+2025-11-10 17:25:38,315 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-10 17:25:38,315 - ERROR - GD failed for student_dim=50, seed=0: object.__init__() takes exactly one argument (the instance to initialize)
+2025-11-10 17:25:38,315 - INFO - Process 0: Completed experiment - student_dim=50, seed=0
+2025-11-10 17:25:38,315 - INFO - No scheduler or scheduler type 'adaptive', using empty params
+2025-11-10 17:25:38,315 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-10 17:25:38,316 - ERROR - GD failed for student_dim=100, seed=0: object.__init__() takes exactly one argument (the instance to initialize)
+2025-11-10 17:25:38,316 - INFO - Process 0: Completed experiment - student_dim=100, seed=0
+2025-11-10 17:25:38,316 - INFO - No scheduler or scheduler type 'adaptive', using empty params
+2025-11-10 17:25:38,316 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-10 17:25:38,317 - ERROR - GD failed for student_dim=150, seed=0: object.__init__() takes exactly one argument (the instance to initialize)
+2025-11-10 17:25:38,317 - INFO - Process 0: Completed experiment - student_dim=150, seed=0
+2025-11-10 17:25:38,317 - INFO - No scheduler or scheduler type 'adaptive', using empty params
+2025-11-10 17:25:38,317 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-10 17:25:38,317 - ERROR - GD failed for student_dim=300, seed=0: object.__init__() takes exactly one argument (the instance to initialize)
+2025-11-10 17:25:38,317 - INFO - Process 0: Completed experiment - student_dim=300, seed=0
+2025-11-10 17:25:38,339 - INFO - for seed 1, loaded alpha_teacher=tensor([0.5000], device='mps:0'), loaded 1 sequences: [tensor([0.0100, 0.0100, 0.0100, 1.0000], device='mps:0')]
+2025-11-10 17:25:38,339 - INFO - No scheduler or scheduler type 'adaptive', using empty params
+2025-11-10 17:25:38,339 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-10 17:25:38,340 - ERROR - GD failed for student_dim=10, seed=1: object.__init__() takes exactly one argument (the instance to initialize)
+2025-11-10 17:25:38,340 - INFO - Process 0: Completed experiment - student_dim=10, seed=1
+2025-11-10 17:25:38,340 - INFO - No scheduler or scheduler type 'adaptive', using empty params
+2025-11-10 17:25:38,340 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-10 17:25:38,341 - ERROR - GD failed for student_dim=20, seed=1: object.__init__() takes exactly one argument (the instance to initialize)
+2025-11-10 17:25:38,341 - INFO - Process 0: Completed experiment - student_dim=20, seed=1
+2025-11-10 17:25:38,341 - INFO - No scheduler or scheduler type 'adaptive', using empty params
+2025-11-10 17:25:38,341 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-10 17:25:38,342 - ERROR - GD failed for student_dim=50, seed=1: object.__init__() takes exactly one argument (the instance to initialize)
+2025-11-10 17:25:38,342 - INFO - Process 0: Completed experiment - student_dim=50, seed=1
+2025-11-10 17:25:38,342 - INFO - No scheduler or scheduler type 'adaptive', using empty params
+2025-11-10 17:25:38,342 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-10 17:25:38,342 - ERROR - GD failed for student_dim=100, seed=1: object.__init__() takes exactly one argument (the instance to initialize)
+2025-11-10 17:25:38,342 - INFO - Process 0: Completed experiment - student_dim=100, seed=1
+2025-11-10 17:25:38,343 - INFO - Process 0: Starting experiment - student_dim=150, seed=1
+2025-11-10 17:25:38,343 - INFO - No scheduler or scheduler type 'adaptive', using empty params
+2025-11-10 17:25:38,343 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-10 17:25:38,343 - ERROR - GD failed for student_dim=150, seed=1: object.__init__() takes exactly one argument (the instance to initialize)
+2025-11-10 17:25:38,343 - INFO - Process 0: Completed experiment - student_dim=150, seed=1
+2025-11-10 17:25:38,343 - INFO - No scheduler or scheduler type 'adaptive', using empty params
+2025-11-10 17:25:38,343 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-10 17:25:38,344 - ERROR - GD failed for student_dim=300, seed=1: object.__init__() takes exactly one argument (the instance to initialize)
+2025-11-10 17:25:38,344 - INFO - Process 0: Completed experiment - student_dim=300, seed=1
+2025-11-10 17:25:38,353 - INFO - for seed 2, loaded alpha_teacher=tensor([0.5000], device='mps:0'), loaded 1 sequences: [tensor([0., 0., 0., 1.], device='mps:0')]
+2025-11-10 17:25:38,353 - INFO - No scheduler or scheduler type 'adaptive', using empty params
+2025-11-10 17:25:38,353 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-10 17:25:38,354 - ERROR - GD failed for student_dim=10, seed=2: object.__init__() takes exactly one argument (the instance to initialize)
+2025-11-10 17:25:38,354 - INFO - Process 0: Completed experiment - student_dim=10, seed=2
+2025-11-10 17:25:38,354 - INFO - No scheduler or scheduler type 'adaptive', using empty params
+2025-11-10 17:25:38,354 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-10 17:25:38,355 - ERROR - GD failed for student_dim=20, seed=2: object.__init__() takes exactly one argument (the instance to initialize)
+2025-11-10 17:25:38,355 - INFO - Process 0: Completed experiment - student_dim=20, seed=2
+2025-11-10 17:25:38,355 - INFO - No scheduler or scheduler type 'adaptive', using empty params
+2025-11-10 17:25:38,355 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-10 17:25:38,356 - ERROR - GD failed for student_dim=50, seed=2: object.__init__() takes exactly one argument (the instance to initialize)
+2025-11-10 17:25:38,356 - INFO - Process 0: Completed experiment - student_dim=50, seed=2
+2025-11-10 17:25:38,356 - INFO - No scheduler or scheduler type 'adaptive', using empty params
+2025-11-10 17:25:38,356 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-10 17:25:38,356 - ERROR - GD failed for student_dim=100, seed=2: object.__init__() takes exactly one argument (the instance to initialize)
+2025-11-10 17:25:38,356 - INFO - Process 0: Completed experiment - student_dim=100, seed=2
+2025-11-10 17:25:38,357 - INFO - No scheduler or scheduler type 'adaptive', using empty params
+2025-11-10 17:25:38,357 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-10 17:25:38,357 - ERROR - GD failed for student_dim=150, seed=2: object.__init__() takes exactly one argument (the instance to initialize)
+2025-11-10 17:25:38,357 - INFO - Process 0: Completed experiment - student_dim=150, seed=2
+2025-11-10 17:25:38,358 - INFO - No scheduler or scheduler type 'adaptive', using empty params
+2025-11-10 17:25:38,358 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-10 17:25:38,358 - ERROR - GD failed for student_dim=300, seed=2: object.__init__() takes exactly one argument (the instance to initialize)
+2025-11-10 17:25:38,358 - INFO - Process 0: Completed experiment - student_dim=300, seed=2
+2025-11-10 17:25:38,368 - INFO - for seed 3, loaded alpha_teacher=tensor([0.5000], device='mps:0'), loaded 1 sequences: [tensor([1., 1., 1., 1.], device='mps:0')]
+2025-11-10 17:25:38,368 - INFO - No scheduler or scheduler type 'adaptive', using empty params
+2025-11-10 17:25:38,369 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-10 17:25:38,369 - ERROR - GD failed for student_dim=10, seed=3: object.__init__() takes exactly one argument (the instance to initialize)
+2025-11-10 17:25:38,369 - INFO - Process 0: Completed experiment - student_dim=10, seed=3
+2025-11-10 17:25:38,369 - INFO - No scheduler or scheduler type 'adaptive', using empty params
+2025-11-10 17:25:38,369 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-10 17:25:38,370 - ERROR - GD failed for student_dim=20, seed=3: object.__init__() takes exactly one argument (the instance to initialize)
+2025-11-10 17:25:38,370 - INFO - Process 0: Completed experiment - student_dim=20, seed=3
+2025-11-10 17:25:38,370 - INFO - Process 0: Starting experiment - student_dim=50, seed=3
+2025-11-10 17:25:38,370 - INFO - No scheduler or scheduler type 'adaptive', using empty params
+2025-11-10 17:25:38,370 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-10 17:25:38,371 - ERROR - GD failed for student_dim=50, seed=3: object.__init__() takes exactly one argument (the instance to initialize)
+2025-11-10 17:25:38,371 - INFO - Process 0: Completed experiment - student_dim=50, seed=3
+2025-11-10 17:25:38,371 - INFO - No scheduler or scheduler type 'adaptive', using empty params
+2025-11-10 17:25:38,371 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-10 17:25:38,371 - ERROR - GD failed for student_dim=100, seed=3: object.__init__() takes exactly one argument (the instance to initialize)
+2025-11-10 17:25:38,371 - INFO - Process 0: Completed experiment - student_dim=100, seed=3
+2025-11-10 17:25:38,372 - INFO - No scheduler or scheduler type 'adaptive', using empty params
+2025-11-10 17:25:38,372 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-10 17:25:38,372 - ERROR - GD failed for student_dim=150, seed=3: object.__init__() takes exactly one argument (the instance to initialize)
+2025-11-10 17:25:38,372 - INFO - Process 0: Completed experiment - student_dim=150, seed=3
+2025-11-10 17:25:38,372 - INFO - No scheduler or scheduler type 'adaptive', using empty params
+2025-11-10 17:25:38,372 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-10 17:25:38,373 - ERROR - GD failed for student_dim=300, seed=3: object.__init__() takes exactly one argument (the instance to initialize)
+2025-11-10 17:25:38,373 - INFO - Process 0: Completed experiment - student_dim=300, seed=3
+2025-11-10 17:25:38,373 - INFO - Process 0 completed on GPU mps
+2025-11-10 17:25:48,297 - INFO - Process 0 completed
+2025-11-10 17:25:49,311 - INFO - Checkpoint saved: test_results/checkpoints/checkpoint_20251110_172549.pkl (0.0% complete)
+2025-11-10 17:25:49,312 - INFO - Final checkpoint saved
+2025-11-10 17:25:49,323 - INFO - Results saved to results__gd_seq_len=5_seeds=0-1-2-3_time=20251110_172535.csv
+2025-11-10 17:25:50,969 - INFO - Figures saved to plot__gd_seq_len=5_seeds=0-1-2-3_time=20251110_172535
+2025-11-10 17:25:50,969 - INFO - Finished experiments, results saved to results__gd_seq_len=5_seeds=0-1-2-3_time=20251110_172535.csv, figures saved to plot__gd_seq_len=5_seeds=0-1-2-3_time=20251110_172535

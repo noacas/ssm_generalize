@@ -1,0 +1,109 @@
+2025-11-10 17:46:24,078 - INFO - Args: Namespace(num_seeds=4, seeds=[0, 1, 2, 3], sequence_length=5, num_sequences=1, student_dims=[10, 20, 50, 100, 150, 300], eps_train=0.001, w_that_minimizes_loss=False, w2_that_minimizes_loss=False, w2_that_maximizes_loss=False, data_file=PosixPath('alpha_w_pairs.json'), gnc=False, gnc_num_samples=100000000, gnc_batch_size=500000, gd=True, gd_lr=0.001, gd_epochs=1000000, gd_init_scale=0.01, gd_optimizer='adam', gd_scheduler='adaptive', gd_scheduler_params='{}', exp_gamma=None, step_size=None, step_gamma=None, cosine_eta_min=None, gd_init_type='regular', config=None, results_dir=PosixPath('test_results/results'), figures_dir=PosixPath('test_results/figures'), checkpoint_dir=PosixPath('test_results/checkpoints'), checkpoint_interval=3600, resume_from_checkpoint=False, log_dir=PosixPath('test_results/logs'), max_gpus=8, log_file=PosixPath('test_results/logs/logs_20251110_174624.log'))
+2025-11-10 17:46:24,078 - INFO - Using custom seeds: [0, 1, 2, 3]
+2025-11-10 17:46:24,105 - INFO - Using MPS
+2025-11-10 17:46:24,105 - INFO - Starting 1 processes on 1 GPUs
+2025-11-10 17:46:25,196 - INFO - Process 0 started on GPU mps, processing seeds [0, 1, 2, 3]
+2025-11-10 17:46:25,403 - INFO - for seed 0, loaded alpha_teacher=tensor([0.5000], device='mps:0'), loaded 1 sequences: [tensor([1., 0., 0., 0.], device='mps:0')]
+2025-11-10 17:46:25,404 - INFO - Process 0: Starting experiment - student_dim=10, seed=0
+2025-11-10 17:46:25,404 - INFO - No scheduler or scheduler type 'adaptive', using empty params
+2025-11-10 17:46:25,404 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-10 17:46:26,054 - ERROR - GD failed for student_dim=10, seed=0: Inputs and outputs must be set using set_examples() before computing gradient norm
+2025-11-10 17:46:26,054 - INFO - Process 0: Completed experiment - student_dim=10, seed=0
+2025-11-10 17:46:26,056 - INFO - No scheduler or scheduler type 'adaptive', using empty params
+2025-11-10 17:46:26,056 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-10 17:46:26,056 - ERROR - GD failed for student_dim=20, seed=0: Inputs and outputs must be set using set_examples() before computing gradient norm
+2025-11-10 17:46:26,056 - INFO - Process 0: Completed experiment - student_dim=20, seed=0
+2025-11-10 17:46:26,057 - INFO - No scheduler or scheduler type 'adaptive', using empty params
+2025-11-10 17:46:26,057 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-10 17:46:26,057 - ERROR - GD failed for student_dim=50, seed=0: Inputs and outputs must be set using set_examples() before computing gradient norm
+2025-11-10 17:46:26,057 - INFO - Process 0: Completed experiment - student_dim=50, seed=0
+2025-11-10 17:46:26,057 - INFO - No scheduler or scheduler type 'adaptive', using empty params
+2025-11-10 17:46:26,057 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-10 17:46:26,058 - ERROR - GD failed for student_dim=100, seed=0: Inputs and outputs must be set using set_examples() before computing gradient norm
+2025-11-10 17:46:26,058 - INFO - Process 0: Completed experiment - student_dim=100, seed=0
+2025-11-10 17:46:26,058 - INFO - No scheduler or scheduler type 'adaptive', using empty params
+2025-11-10 17:46:26,058 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-10 17:46:26,059 - ERROR - GD failed for student_dim=150, seed=0: Inputs and outputs must be set using set_examples() before computing gradient norm
+2025-11-10 17:46:26,059 - INFO - Process 0: Completed experiment - student_dim=150, seed=0
+2025-11-10 17:46:26,059 - INFO - No scheduler or scheduler type 'adaptive', using empty params
+2025-11-10 17:46:26,059 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-10 17:46:26,059 - ERROR - GD failed for student_dim=300, seed=0: Inputs and outputs must be set using set_examples() before computing gradient norm
+2025-11-10 17:46:26,059 - INFO - Process 0: Completed experiment - student_dim=300, seed=0
+2025-11-10 17:46:26,080 - INFO - for seed 1, loaded alpha_teacher=tensor([0.5000], device='mps:0'), loaded 1 sequences: [tensor([0.0100, 0.0100, 0.0100, 1.0000], device='mps:0')]
+2025-11-10 17:46:26,080 - INFO - No scheduler or scheduler type 'adaptive', using empty params
+2025-11-10 17:46:26,080 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-10 17:46:26,080 - ERROR - GD failed for student_dim=10, seed=1: Inputs and outputs must be set using set_examples() before computing gradient norm
+2025-11-10 17:46:26,080 - INFO - Process 0: Completed experiment - student_dim=10, seed=1
+2025-11-10 17:46:26,081 - INFO - No scheduler or scheduler type 'adaptive', using empty params
+2025-11-10 17:46:26,081 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-10 17:46:26,081 - ERROR - GD failed for student_dim=20, seed=1: Inputs and outputs must be set using set_examples() before computing gradient norm
+2025-11-10 17:46:26,081 - INFO - Process 0: Completed experiment - student_dim=20, seed=1
+2025-11-10 17:46:26,081 - INFO - No scheduler or scheduler type 'adaptive', using empty params
+2025-11-10 17:46:26,081 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-10 17:46:26,082 - ERROR - GD failed for student_dim=50, seed=1: Inputs and outputs must be set using set_examples() before computing gradient norm
+2025-11-10 17:46:26,082 - INFO - Process 0: Completed experiment - student_dim=50, seed=1
+2025-11-10 17:46:26,082 - INFO - No scheduler or scheduler type 'adaptive', using empty params
+2025-11-10 17:46:26,082 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-10 17:46:26,083 - ERROR - GD failed for student_dim=100, seed=1: Inputs and outputs must be set using set_examples() before computing gradient norm
+2025-11-10 17:46:26,083 - INFO - Process 0: Completed experiment - student_dim=100, seed=1
+2025-11-10 17:46:26,083 - INFO - Process 0: Starting experiment - student_dim=150, seed=1
+2025-11-10 17:46:26,083 - INFO - No scheduler or scheduler type 'adaptive', using empty params
+2025-11-10 17:46:26,083 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-10 17:46:26,083 - ERROR - GD failed for student_dim=150, seed=1: Inputs and outputs must be set using set_examples() before computing gradient norm
+2025-11-10 17:46:26,083 - INFO - Process 0: Completed experiment - student_dim=150, seed=1
+2025-11-10 17:46:26,084 - INFO - No scheduler or scheduler type 'adaptive', using empty params
+2025-11-10 17:46:26,084 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-10 17:46:26,084 - ERROR - GD failed for student_dim=300, seed=1: Inputs and outputs must be set using set_examples() before computing gradient norm
+2025-11-10 17:46:26,084 - INFO - Process 0: Completed experiment - student_dim=300, seed=1
+2025-11-10 17:46:26,091 - INFO - for seed 2, loaded alpha_teacher=tensor([0.5000], device='mps:0'), loaded 1 sequences: [tensor([0., 0., 0., 1.], device='mps:0')]
+2025-11-10 17:46:26,091 - INFO - No scheduler or scheduler type 'adaptive', using empty params
+2025-11-10 17:46:26,091 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-10 17:46:26,092 - ERROR - GD failed for student_dim=10, seed=2: Inputs and outputs must be set using set_examples() before computing gradient norm
+2025-11-10 17:46:26,092 - INFO - Process 0: Completed experiment - student_dim=10, seed=2
+2025-11-10 17:46:26,092 - INFO - No scheduler or scheduler type 'adaptive', using empty params
+2025-11-10 17:46:26,092 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-10 17:46:26,093 - ERROR - GD failed for student_dim=20, seed=2: Inputs and outputs must be set using set_examples() before computing gradient norm
+2025-11-10 17:46:26,093 - INFO - Process 0: Completed experiment - student_dim=20, seed=2
+2025-11-10 17:46:26,093 - INFO - No scheduler or scheduler type 'adaptive', using empty params
+2025-11-10 17:46:26,093 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-10 17:46:26,094 - ERROR - GD failed for student_dim=50, seed=2: Inputs and outputs must be set using set_examples() before computing gradient norm
+2025-11-10 17:46:26,094 - INFO - Process 0: Completed experiment - student_dim=50, seed=2
+2025-11-10 17:46:26,094 - INFO - No scheduler or scheduler type 'adaptive', using empty params
+2025-11-10 17:46:26,095 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-10 17:46:26,095 - ERROR - GD failed for student_dim=100, seed=2: Inputs and outputs must be set using set_examples() before computing gradient norm
+2025-11-10 17:46:26,095 - INFO - Process 0: Completed experiment - student_dim=100, seed=2
+2025-11-10 17:46:26,095 - INFO - No scheduler or scheduler type 'adaptive', using empty params
+2025-11-10 17:46:26,095 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-10 17:46:26,096 - ERROR - GD failed for student_dim=150, seed=2: Inputs and outputs must be set using set_examples() before computing gradient norm
+2025-11-10 17:46:26,096 - INFO - Process 0: Completed experiment - student_dim=150, seed=2
+2025-11-10 17:46:26,096 - INFO - No scheduler or scheduler type 'adaptive', using empty params
+2025-11-10 17:46:26,096 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-10 17:46:26,096 - ERROR - GD failed for student_dim=300, seed=2: Inputs and outputs must be set using set_examples() before computing gradient norm
+2025-11-10 17:46:26,096 - INFO - Process 0: Completed experiment - student_dim=300, seed=2
+2025-11-10 17:46:26,105 - INFO - for seed 3, loaded alpha_teacher=tensor([0.5000], device='mps:0'), loaded 1 sequences: [tensor([1., 1., 1., 1.], device='mps:0')]
+2025-11-10 17:46:26,106 - INFO - No scheduler or scheduler type 'adaptive', using empty params
+2025-11-10 17:46:26,106 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-10 17:46:26,106 - ERROR - GD failed for student_dim=10, seed=3: Inputs and outputs must be set using set_examples() before computing gradient norm
+2025-11-10 17:46:26,106 - INFO - Process 0: Completed experiment - student_dim=10, seed=3
+2025-11-10 17:46:26,106 - INFO - No scheduler or scheduler type 'adaptive', using empty params
+2025-11-10 17:46:26,106 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-10 17:46:26,107 - ERROR - GD failed for student_dim=20, seed=3: Inputs and outputs must be set using set_examples() before computing gradient norm
+2025-11-10 17:46:26,107 - INFO - Process 0: Completed experiment - student_dim=20, seed=3
+2025-11-10 17:46:26,107 - INFO - Process 0: Starting experiment - student_dim=50, seed=3
+2025-11-10 17:46:26,107 - INFO - No scheduler or scheduler type 'adaptive', using empty params
+2025-11-10 17:46:26,107 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-10 17:46:26,108 - ERROR - GD failed for student_dim=50, seed=3: Inputs and outputs must be set using set_examples() before computing gradient norm
+2025-11-10 17:46:26,108 - INFO - Process 0: Completed experiment - student_dim=50, seed=3
+2025-11-10 17:46:26,108 - INFO - No scheduler or scheduler type 'adaptive', using empty params
+2025-11-10 17:46:26,108 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-10 17:46:26,108 - ERROR - GD failed for student_dim=100, seed=3: Inputs and outputs must be set using set_examples() before computing gradient norm
+2025-11-10 17:46:26,108 - INFO - Process 0: Completed experiment - student_dim=100, seed=3
+2025-11-10 17:46:26,109 - INFO - No scheduler or scheduler type 'adaptive', using empty params
+2025-11-10 17:46:26,109 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-10 17:46:26,109 - ERROR - GD failed for student_dim=150, seed=3: Inputs and outputs must be set using set_examples() before computing gradient norm
+2025-11-10 17:46:26,109 - INFO - Process 0: Completed experiment - student_dim=150, seed=3
+2025-11-10 17:46:26,109 - INFO - No scheduler or scheduler type 'adaptive', using empty params
+2025-11-10 17:46:26,109 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-10 17:46:26,110 - ERROR - GD failed for student_dim=300, seed=3: Inputs and outputs must be set using set_examples() before computing gradient norm
+2025-11-10 17:46:26,110 - INFO - Process 0: Completed experiment - student_dim=300, seed=3
+2025-11-10 17:46:26,110 - INFO - Process 0 completed on GPU mps

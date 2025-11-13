@@ -96,17 +96,17 @@ def process_worker(process_id, gpu_id, seed_list, args_dict, student_dims,
                     if args_dict['gnc']:
                         try:
                             batch_size = args_dict['gnc_batch_size']
-                            mean_prior, gnc_gen_loss = train_gnc(seed, student_dim, device, alpha_teacher, w_sequences,
+                            mean_prior, gnc_gen_loss, variance_gnc = train_gnc(seed, student_dim, device, alpha_teacher, w_sequences,
                                                                 args_dict['eps_train'], args_dict['gnc_num_samples'],
                                                                 batch_size, False)
                             results['gnc_gen_loss'] = gnc_gen_loss
                             results['gnc_mean_prior'] = mean_prior
-                            
+                            results['gnc_variance'] = variance_gnc
                             # Use first sequence for theoretical loss calculation (for backward compatibility)
                             theoretical_loss, theoretical_asymptotic_loss, delta_l_infinity = gnc_theoretical_loss(alpha_teacher, w_sequences, student_dim, device)
                             results['gnc_theoretical_loss'] = theoretical_loss.item()
                             results['gnc_theoretical_asymptotic_loss'] = theoretical_asymptotic_loss.item()
-                            logging.info(f"For seed {seed}, student_dim {student_dim}, G&C theoretical loss: {theoretical_loss.item()}, asymptotic loss: {theoretical_asymptotic_loss.item()}, G&C empirical loss: {gnc_gen_loss}")
+                            logging.info(f"For seed {seed}, student_dim {student_dim}, G&C theoretical loss: {theoretical_loss.item()}, asymptotic loss: {theoretical_asymptotic_loss.item()}, G&C empirical loss: {gnc_gen_loss}, G&C empirical variance: {variance_gnc}")
                         
                         except Exception as e:
                             logging.error(f"G&C failed for student_dim={student_dim}, seed={seed}: {e}")
