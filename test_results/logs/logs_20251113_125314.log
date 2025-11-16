@@ -1,0 +1,478 @@
+2025-11-13 12:53:14,121 - INFO - Args: Namespace(num_seeds=4, seeds=[0, 1, 2, 3], sequence_length=5, num_sequences=1, student_dims=[10, 20, 50, 100, 150, 300], eps_train=1e-05, w_that_minimizes_loss=False, w2_that_minimizes_loss=False, w2_that_maximizes_loss=False, data_file=PosixPath('alpha_w_pairs.json'), gnc=True, gnc_num_samples=1000000000, gnc_batch_size=500000, gd=True, gd_lr=0.001, gd_epochs=100000, gd_init_scale=0.01, gd_optimizer='adam', gd_scheduler='adaptive', gd_scheduler_params='{"base_lr": 0.00001}', exp_gamma=None, step_size=None, step_gamma=None, cosine_eta_min=None, gd_init_type='regular', gd_base_lr=0.001, gd_beta=0.8, gd_soft_const=1e-06, config=None, results_dir=PosixPath('test_results/results'), figures_dir=PosixPath('test_results/figures'), checkpoint_dir=PosixPath('test_results/checkpoints'), checkpoint_interval=3600, resume_from_checkpoint=False, log_dir=PosixPath('test_results/logs'), max_gpus=8, log_file=PosixPath('test_results/logs/logs_20251113_125314.log'))
+2025-11-13 12:53:14,122 - INFO - Using custom seeds: [0, 1, 2, 3]
+2025-11-13 12:53:14,319 - INFO - Using GPUs: [0, 1, 2, 3, 4, 5, 6, 7]
+2025-11-13 12:53:14,320 - INFO - Starting 8 processes on 8 GPUs
+2025-11-13 12:53:18,401 - INFO - Process 0 started on GPU 0, processing seeds [0]
+2025-11-13 12:53:18,416 - INFO - Process 1 started on GPU 1, processing seeds [1]
+2025-11-13 12:53:18,614 - INFO - Process 3 started on GPU 3, processing seeds [3]
+2025-11-13 12:53:18,675 - INFO - for seed 1, loaded alpha_teacher=tensor([0.5000], device='cuda:1'), loaded 1 sequences: [tensor([0.0100, 0.0100, 0.0100, 1.0000], device='cuda:1')]
+2025-11-13 12:53:18,675 - INFO - Process 1: Starting experiment - student_dim=10, seed=1
+2025-11-13 12:53:18,774 - INFO - Process 2 started on GPU 2, processing seeds [2]
+2025-11-13 12:53:18,795 - ERROR - G&C failed for student_dim=10, seed=1: cannot access local variable 'gnc_loss_variance' where it is not associated with a value
+2025-11-13 12:53:18,797 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 99, in process_worker
+    mean_prior, gnc_gen_loss, variance_gnc = train_gnc(seed, student_dim, device, alpha_teacher, w_sequences,
+                                             ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        args_dict['eps_train'], args_dict['gnc_num_samples'],
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        batch_size, False)
+                                        ^^^^^^^^^^^^^^^^^^
+  File "/home/fodl/noacaspi/ssm_generalize/training.py", line 259, in train_gnc
+    gnc_loss_variance += torch.var(gen_loss[finite_mask])
+    ^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'gnc_loss_variance' where it is not associated with a value
+
+2025-11-13 12:53:18,797 - INFO - Using adaptive scheduler with base_lr=None, beta=None, soft_const=None
+2025-11-13 12:53:18,798 - INFO - Calling train_gd with scheduler_params: {'base_lr': None, 'beta': None, 'soft_const': None}
+2025-11-13 12:53:18,820 - INFO - for seed 0, loaded alpha_teacher=tensor([0.5000], device='cuda:0'), loaded 1 sequences: [tensor([1., 0., 0., 0.], device='cuda:0')]
+2025-11-13 12:53:18,820 - INFO - Process 0: Starting experiment - student_dim=10, seed=0
+2025-11-13 12:53:18,835 - INFO - for seed 3, loaded alpha_teacher=tensor([0.5000], device='cuda:3'), loaded 1 sequences: [tensor([1., 1., 1., 1.], device='cuda:3')]
+2025-11-13 12:53:18,836 - INFO - Process 3: Starting experiment - student_dim=10, seed=3
+2025-11-13 12:53:18,937 - ERROR - G&C failed for student_dim=10, seed=0: cannot access local variable 'gnc_loss_variance' where it is not associated with a value
+2025-11-13 12:53:18,939 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 99, in process_worker
+    mean_prior, gnc_gen_loss, variance_gnc = train_gnc(seed, student_dim, device, alpha_teacher, w_sequences,
+                                             ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        args_dict['eps_train'], args_dict['gnc_num_samples'],
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        batch_size, False)
+                                        ^^^^^^^^^^^^^^^^^^
+  File "/home/fodl/noacaspi/ssm_generalize/training.py", line 259, in train_gnc
+    gnc_loss_variance += torch.var(gen_loss[finite_mask])
+    ^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'gnc_loss_variance' where it is not associated with a value
+
+2025-11-13 12:53:18,939 - INFO - Using adaptive scheduler with base_lr=None, beta=None, soft_const=None
+2025-11-13 12:53:18,939 - INFO - Calling train_gd with scheduler_params: {'base_lr': None, 'beta': None, 'soft_const': None}
+2025-11-13 12:53:18,954 - ERROR - G&C failed for student_dim=10, seed=3: cannot access local variable 'gnc_loss_variance' where it is not associated with a value
+2025-11-13 12:53:18,956 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 99, in process_worker
+    mean_prior, gnc_gen_loss, variance_gnc = train_gnc(seed, student_dim, device, alpha_teacher, w_sequences,
+                                             ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        args_dict['eps_train'], args_dict['gnc_num_samples'],
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        batch_size, False)
+                                        ^^^^^^^^^^^^^^^^^^
+  File "/home/fodl/noacaspi/ssm_generalize/training.py", line 259, in train_gnc
+    gnc_loss_variance += torch.var(gen_loss[finite_mask])
+    ^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'gnc_loss_variance' where it is not associated with a value
+
+2025-11-13 12:53:18,957 - INFO - Using adaptive scheduler with base_lr=None, beta=None, soft_const=None
+2025-11-13 12:53:18,957 - INFO - Calling train_gd with scheduler_params: {'base_lr': None, 'beta': None, 'soft_const': None}
+2025-11-13 12:53:18,978 - INFO - for seed 2, loaded alpha_teacher=tensor([0.5000], device='cuda:2'), loaded 1 sequences: [tensor([0., 0., 0., 1.], device='cuda:2')]
+2025-11-13 12:53:18,978 - INFO - Process 2: Starting experiment - student_dim=10, seed=2
+2025-11-13 12:53:19,098 - ERROR - G&C failed for student_dim=10, seed=2: cannot access local variable 'gnc_loss_variance' where it is not associated with a value
+2025-11-13 12:53:19,100 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 99, in process_worker
+    mean_prior, gnc_gen_loss, variance_gnc = train_gnc(seed, student_dim, device, alpha_teacher, w_sequences,
+                                             ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        args_dict['eps_train'], args_dict['gnc_num_samples'],
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        batch_size, False)
+                                        ^^^^^^^^^^^^^^^^^^
+  File "/home/fodl/noacaspi/ssm_generalize/training.py", line 259, in train_gnc
+    gnc_loss_variance += torch.var(gen_loss[finite_mask])
+    ^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'gnc_loss_variance' where it is not associated with a value
+
+2025-11-13 12:53:19,101 - INFO - Using adaptive scheduler with base_lr=None, beta=None, soft_const=None
+2025-11-13 12:53:19,101 - INFO - Calling train_gd with scheduler_params: {'base_lr': None, 'beta': None, 'soft_const': None}
+2025-11-13 12:53:23,194 - INFO - initial model: max A_j index: 0
+2025-11-13 12:53:23,194 - INFO - initial model: max A_j index: 0
+2025-11-13 12:53:23,195 - INFO - initial model: max A_j index: 4
+2025-11-13 12:53:23,195 - INFO - initial model: max A_j index: 7
+2025-11-13 12:53:23,230 - ERROR - GD failed for student_dim=10, seed=1: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-11-13 12:53:23,234 - INFO - Process 1: Completed experiment - student_dim=10, seed=1
+2025-11-13 12:53:23,237 - ERROR - GD failed for student_dim=10, seed=3: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-11-13 12:53:23,240 - INFO - Process 3: Completed experiment - student_dim=10, seed=3
+2025-11-13 12:53:23,245 - ERROR - GD failed for student_dim=10, seed=0: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-11-13 12:53:23,245 - ERROR - G&C failed for student_dim=20, seed=1: cannot access local variable 'gnc_loss_variance' where it is not associated with a value
+2025-11-13 12:53:23,246 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 99, in process_worker
+    mean_prior, gnc_gen_loss, variance_gnc = train_gnc(seed, student_dim, device, alpha_teacher, w_sequences,
+                                             ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        args_dict['eps_train'], args_dict['gnc_num_samples'],
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        batch_size, False)
+                                        ^^^^^^^^^^^^^^^^^^
+  File "/home/fodl/noacaspi/ssm_generalize/training.py", line 259, in train_gnc
+    gnc_loss_variance += torch.var(gen_loss[finite_mask])
+    ^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'gnc_loss_variance' where it is not associated with a value
+
+2025-11-13 12:53:23,246 - INFO - Using adaptive scheduler with base_lr=None, beta=None, soft_const=None
+2025-11-13 12:53:23,246 - INFO - Calling train_gd with scheduler_params: {'base_lr': None, 'beta': None, 'soft_const': None}
+2025-11-13 12:53:23,247 - INFO - initial model: max A_j index: 10
+2025-11-13 12:53:23,248 - ERROR - GD failed for student_dim=10, seed=2: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-11-13 12:53:23,248 - INFO - Process 0: Completed experiment - student_dim=10, seed=0
+2025-11-13 12:53:23,249 - ERROR - GD failed for student_dim=20, seed=1: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-11-13 12:53:23,252 - INFO - Process 2: Completed experiment - student_dim=10, seed=2
+2025-11-13 12:53:23,252 - INFO - Process 1: Completed experiment - student_dim=20, seed=1
+2025-11-13 12:53:23,253 - ERROR - G&C failed for student_dim=20, seed=3: cannot access local variable 'gnc_loss_variance' where it is not associated with a value
+2025-11-13 12:53:23,254 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 99, in process_worker
+    mean_prior, gnc_gen_loss, variance_gnc = train_gnc(seed, student_dim, device, alpha_teacher, w_sequences,
+                                             ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        args_dict['eps_train'], args_dict['gnc_num_samples'],
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        batch_size, False)
+                                        ^^^^^^^^^^^^^^^^^^
+  File "/home/fodl/noacaspi/ssm_generalize/training.py", line 259, in train_gnc
+    gnc_loss_variance += torch.var(gen_loss[finite_mask])
+    ^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'gnc_loss_variance' where it is not associated with a value
+
+2025-11-13 12:53:23,254 - INFO - Using adaptive scheduler with base_lr=None, beta=None, soft_const=None
+2025-11-13 12:53:23,254 - INFO - Calling train_gd with scheduler_params: {'base_lr': None, 'beta': None, 'soft_const': None}
+2025-11-13 12:53:23,255 - INFO - initial model: max A_j index: 14
+2025-11-13 12:53:23,258 - ERROR - GD failed for student_dim=20, seed=3: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-11-13 12:53:23,260 - ERROR - G&C failed for student_dim=20, seed=0: cannot access local variable 'gnc_loss_variance' where it is not associated with a value
+2025-11-13 12:53:23,261 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 99, in process_worker
+    mean_prior, gnc_gen_loss, variance_gnc = train_gnc(seed, student_dim, device, alpha_teacher, w_sequences,
+                                             ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        args_dict['eps_train'], args_dict['gnc_num_samples'],
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        batch_size, False)
+                                        ^^^^^^^^^^^^^^^^^^
+  File "/home/fodl/noacaspi/ssm_generalize/training.py", line 259, in train_gnc
+    gnc_loss_variance += torch.var(gen_loss[finite_mask])
+    ^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'gnc_loss_variance' where it is not associated with a value
+
+2025-11-13 12:53:23,261 - INFO - Process 3: Completed experiment - student_dim=20, seed=3
+2025-11-13 12:53:23,261 - INFO - Using adaptive scheduler with base_lr=None, beta=None, soft_const=None
+2025-11-13 12:53:23,261 - INFO - Calling train_gd with scheduler_params: {'base_lr': None, 'beta': None, 'soft_const': None}
+2025-11-13 12:53:23,262 - INFO - initial model: max A_j index: 18
+2025-11-13 12:53:23,263 - ERROR - G&C failed for student_dim=20, seed=2: cannot access local variable 'gnc_loss_variance' where it is not associated with a value
+2025-11-13 12:53:23,264 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 99, in process_worker
+    mean_prior, gnc_gen_loss, variance_gnc = train_gnc(seed, student_dim, device, alpha_teacher, w_sequences,
+                                             ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        args_dict['eps_train'], args_dict['gnc_num_samples'],
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        batch_size, False)
+                                        ^^^^^^^^^^^^^^^^^^
+  File "/home/fodl/noacaspi/ssm_generalize/training.py", line 259, in train_gnc
+    gnc_loss_variance += torch.var(gen_loss[finite_mask])
+    ^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'gnc_loss_variance' where it is not associated with a value
+
+2025-11-13 12:53:23,264 - INFO - Using adaptive scheduler with base_lr=None, beta=None, soft_const=None
+2025-11-13 12:53:23,264 - INFO - Calling train_gd with scheduler_params: {'base_lr': None, 'beta': None, 'soft_const': None}
+2025-11-13 12:53:23,264 - ERROR - GD failed for student_dim=20, seed=0: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-11-13 12:53:23,265 - INFO - initial model: max A_j index: 15
+2025-11-13 12:53:23,268 - INFO - Process 0: Completed experiment - student_dim=20, seed=0
+2025-11-13 12:53:23,268 - ERROR - GD failed for student_dim=20, seed=2: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-11-13 12:53:23,271 - INFO - Process 2: Completed experiment - student_dim=20, seed=2
+2025-11-13 12:53:23,273 - ERROR - G&C failed for student_dim=50, seed=1: cannot access local variable 'gnc_loss_variance' where it is not associated with a value
+2025-11-13 12:53:23,274 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 99, in process_worker
+    mean_prior, gnc_gen_loss, variance_gnc = train_gnc(seed, student_dim, device, alpha_teacher, w_sequences,
+                                             ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        args_dict['eps_train'], args_dict['gnc_num_samples'],
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        batch_size, False)
+                                        ^^^^^^^^^^^^^^^^^^
+  File "/home/fodl/noacaspi/ssm_generalize/training.py", line 259, in train_gnc
+    gnc_loss_variance += torch.var(gen_loss[finite_mask])
+    ^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'gnc_loss_variance' where it is not associated with a value
+
+2025-11-13 12:53:23,274 - INFO - Using adaptive scheduler with base_lr=None, beta=None, soft_const=None
+2025-11-13 12:53:23,274 - INFO - Calling train_gd with scheduler_params: {'base_lr': None, 'beta': None, 'soft_const': None}
+2025-11-13 12:53:23,275 - INFO - initial model: max A_j index: 39
+2025-11-13 12:53:23,276 - ERROR - GD failed for student_dim=50, seed=1: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-11-13 12:53:23,281 - INFO - Process 1: Completed experiment - student_dim=50, seed=1
+2025-11-13 12:53:23,281 - ERROR - G&C failed for student_dim=50, seed=3: cannot access local variable 'gnc_loss_variance' where it is not associated with a value
+2025-11-13 12:53:23,282 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 99, in process_worker
+    mean_prior, gnc_gen_loss, variance_gnc = train_gnc(seed, student_dim, device, alpha_teacher, w_sequences,
+                                             ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        args_dict['eps_train'], args_dict['gnc_num_samples'],
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        batch_size, False)
+                                        ^^^^^^^^^^^^^^^^^^
+  File "/home/fodl/noacaspi/ssm_generalize/training.py", line 259, in train_gnc
+    gnc_loss_variance += torch.var(gen_loss[finite_mask])
+    ^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'gnc_loss_variance' where it is not associated with a value
+
+2025-11-13 12:53:23,282 - INFO - Using adaptive scheduler with base_lr=None, beta=None, soft_const=None
+2025-11-13 12:53:23,282 - INFO - Calling train_gd with scheduler_params: {'base_lr': None, 'beta': None, 'soft_const': None}
+2025-11-13 12:53:23,283 - INFO - initial model: max A_j index: 30
+2025-11-13 12:53:23,285 - ERROR - GD failed for student_dim=50, seed=3: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-11-13 12:53:23,289 - ERROR - G&C failed for student_dim=50, seed=0: cannot access local variable 'gnc_loss_variance' where it is not associated with a value
+2025-11-13 12:53:23,290 - INFO - Process 3: Completed experiment - student_dim=50, seed=3
+2025-11-13 12:53:23,290 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 99, in process_worker
+    mean_prior, gnc_gen_loss, variance_gnc = train_gnc(seed, student_dim, device, alpha_teacher, w_sequences,
+                                             ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        args_dict['eps_train'], args_dict['gnc_num_samples'],
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        batch_size, False)
+                                        ^^^^^^^^^^^^^^^^^^
+  File "/home/fodl/noacaspi/ssm_generalize/training.py", line 259, in train_gnc
+    gnc_loss_variance += torch.var(gen_loss[finite_mask])
+    ^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'gnc_loss_variance' where it is not associated with a value
+
+2025-11-13 12:53:23,290 - INFO - Using adaptive scheduler with base_lr=None, beta=None, soft_const=None
+2025-11-13 12:53:23,290 - INFO - Calling train_gd with scheduler_params: {'base_lr': None, 'beta': None, 'soft_const': None}
+2025-11-13 12:53:23,291 - INFO - initial model: max A_j index: 43
+2025-11-13 12:53:23,292 - ERROR - G&C failed for student_dim=50, seed=2: cannot access local variable 'gnc_loss_variance' where it is not associated with a value
+2025-11-13 12:53:23,293 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 99, in process_worker
+    mean_prior, gnc_gen_loss, variance_gnc = train_gnc(seed, student_dim, device, alpha_teacher, w_sequences,
+                                             ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        args_dict['eps_train'], args_dict['gnc_num_samples'],
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        batch_size, False)
+                                        ^^^^^^^^^^^^^^^^^^
+  File "/home/fodl/noacaspi/ssm_generalize/training.py", line 259, in train_gnc
+    gnc_loss_variance += torch.var(gen_loss[finite_mask])
+    ^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'gnc_loss_variance' where it is not associated with a value
+
+2025-11-13 12:53:23,293 - INFO - Using adaptive scheduler with base_lr=None, beta=None, soft_const=None
+2025-11-13 12:53:23,293 - INFO - Calling train_gd with scheduler_params: {'base_lr': None, 'beta': None, 'soft_const': None}
+2025-11-13 12:53:23,294 - ERROR - GD failed for student_dim=50, seed=0: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-11-13 12:53:23,294 - INFO - initial model: max A_j index: 27
+2025-11-13 12:53:23,296 - ERROR - GD failed for student_dim=50, seed=2: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-11-13 12:53:23,298 - INFO - Process 0: Completed experiment - student_dim=50, seed=0
+2025-11-13 12:53:23,300 - INFO - Process 2: Completed experiment - student_dim=50, seed=2
+2025-11-13 12:53:23,318 - ERROR - G&C failed for student_dim=100, seed=1: cannot access local variable 'gnc_loss_variance' where it is not associated with a value
+2025-11-13 12:53:23,319 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 99, in process_worker
+    mean_prior, gnc_gen_loss, variance_gnc = train_gnc(seed, student_dim, device, alpha_teacher, w_sequences,
+                                             ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        args_dict['eps_train'], args_dict['gnc_num_samples'],
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        batch_size, False)
+                                        ^^^^^^^^^^^^^^^^^^
+  File "/home/fodl/noacaspi/ssm_generalize/training.py", line 259, in train_gnc
+    gnc_loss_variance += torch.var(gen_loss[finite_mask])
+    ^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'gnc_loss_variance' where it is not associated with a value
+
+2025-11-13 12:53:23,320 - INFO - Using adaptive scheduler with base_lr=None, beta=None, soft_const=None
+2025-11-13 12:53:23,320 - INFO - Calling train_gd with scheduler_params: {'base_lr': None, 'beta': None, 'soft_const': None}
+2025-11-13 12:53:23,321 - INFO - initial model: max A_j index: 44
+2025-11-13 12:53:23,322 - ERROR - GD failed for student_dim=100, seed=1: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-11-13 12:53:23,324 - ERROR - G&C failed for student_dim=100, seed=3: cannot access local variable 'gnc_loss_variance' where it is not associated with a value
+2025-11-13 12:53:23,325 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 99, in process_worker
+    mean_prior, gnc_gen_loss, variance_gnc = train_gnc(seed, student_dim, device, alpha_teacher, w_sequences,
+                                             ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        args_dict['eps_train'], args_dict['gnc_num_samples'],
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        batch_size, False)
+                                        ^^^^^^^^^^^^^^^^^^
+  File "/home/fodl/noacaspi/ssm_generalize/training.py", line 259, in train_gnc
+    gnc_loss_variance += torch.var(gen_loss[finite_mask])
+    ^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'gnc_loss_variance' where it is not associated with a value
+
+2025-11-13 12:53:23,325 - INFO - Using adaptive scheduler with base_lr=None, beta=None, soft_const=None
+2025-11-13 12:53:23,325 - INFO - Calling train_gd with scheduler_params: {'base_lr': None, 'beta': None, 'soft_const': None}
+2025-11-13 12:53:23,326 - INFO - initial model: max A_j index: 30
+2025-11-13 12:53:23,328 - INFO - Process 1: Completed experiment - student_dim=100, seed=1
+2025-11-13 12:53:23,328 - ERROR - GD failed for student_dim=100, seed=3: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-11-13 12:53:23,333 - ERROR - G&C failed for student_dim=100, seed=0: cannot access local variable 'gnc_loss_variance' where it is not associated with a value
+2025-11-13 12:53:23,333 - INFO - Process 3: Completed experiment - student_dim=100, seed=3
+2025-11-13 12:53:23,333 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 99, in process_worker
+    mean_prior, gnc_gen_loss, variance_gnc = train_gnc(seed, student_dim, device, alpha_teacher, w_sequences,
+                                             ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        args_dict['eps_train'], args_dict['gnc_num_samples'],
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        batch_size, False)
+                                        ^^^^^^^^^^^^^^^^^^
+  File "/home/fodl/noacaspi/ssm_generalize/training.py", line 259, in train_gnc
+    gnc_loss_variance += torch.var(gen_loss[finite_mask])
+    ^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'gnc_loss_variance' where it is not associated with a value
+
+2025-11-13 12:53:23,334 - INFO - Using adaptive scheduler with base_lr=None, beta=None, soft_const=None
+2025-11-13 12:53:23,334 - INFO - Calling train_gd with scheduler_params: {'base_lr': None, 'beta': None, 'soft_const': None}
+2025-11-13 12:53:23,335 - INFO - initial model: max A_j index: 59
+2025-11-13 12:53:23,336 - ERROR - G&C failed for student_dim=100, seed=2: cannot access local variable 'gnc_loss_variance' where it is not associated with a value
+2025-11-13 12:53:23,337 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 99, in process_worker
+    mean_prior, gnc_gen_loss, variance_gnc = train_gnc(seed, student_dim, device, alpha_teacher, w_sequences,
+                                             ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        args_dict['eps_train'], args_dict['gnc_num_samples'],
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        batch_size, False)
+                                        ^^^^^^^^^^^^^^^^^^
+  File "/home/fodl/noacaspi/ssm_generalize/training.py", line 259, in train_gnc
+    gnc_loss_variance += torch.var(gen_loss[finite_mask])
+    ^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'gnc_loss_variance' where it is not associated with a value
+
+2025-11-13 12:53:23,337 - INFO - Using adaptive scheduler with base_lr=None, beta=None, soft_const=None
+2025-11-13 12:53:23,337 - ERROR - GD failed for student_dim=100, seed=0: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-11-13 12:53:23,337 - INFO - Calling train_gd with scheduler_params: {'base_lr': None, 'beta': None, 'soft_const': None}
+2025-11-13 12:53:23,338 - INFO - initial model: max A_j index: 27
+2025-11-13 12:53:23,341 - ERROR - GD failed for student_dim=100, seed=2: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-11-13 12:53:23,343 - INFO - Process 0: Completed experiment - student_dim=100, seed=0
+2025-11-13 12:53:23,346 - INFO - Process 2: Completed experiment - student_dim=100, seed=2
+2025-11-13 12:53:23,380 - ERROR - G&C failed for student_dim=150, seed=1: cannot access local variable 'gnc_loss_variance' where it is not associated with a value
+2025-11-13 12:53:23,381 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 99, in process_worker
+    mean_prior, gnc_gen_loss, variance_gnc = train_gnc(seed, student_dim, device, alpha_teacher, w_sequences,
+                                             ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        args_dict['eps_train'], args_dict['gnc_num_samples'],
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        batch_size, False)
+                                        ^^^^^^^^^^^^^^^^^^
+  File "/home/fodl/noacaspi/ssm_generalize/training.py", line 259, in train_gnc
+    gnc_loss_variance += torch.var(gen_loss[finite_mask])
+    ^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'gnc_loss_variance' where it is not associated with a value
+
+2025-11-13 12:53:23,381 - INFO - Using adaptive scheduler with base_lr=None, beta=None, soft_const=None
+2025-11-13 12:53:23,381 - INFO - Calling train_gd with scheduler_params: {'base_lr': None, 'beta': None, 'soft_const': None}
+2025-11-13 12:53:23,382 - INFO - initial model: max A_j index: 120
+2025-11-13 12:53:23,383 - ERROR - GD failed for student_dim=150, seed=1: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-11-13 12:53:23,386 - ERROR - G&C failed for student_dim=150, seed=3: cannot access local variable 'gnc_loss_variance' where it is not associated with a value
+2025-11-13 12:53:23,387 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 99, in process_worker
+    mean_prior, gnc_gen_loss, variance_gnc = train_gnc(seed, student_dim, device, alpha_teacher, w_sequences,
+                                             ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        args_dict['eps_train'], args_dict['gnc_num_samples'],
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        batch_size, False)
+                                        ^^^^^^^^^^^^^^^^^^
+  File "/home/fodl/noacaspi/ssm_generalize/training.py", line 259, in train_gnc
+    gnc_loss_variance += torch.var(gen_loss[finite_mask])
+    ^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'gnc_loss_variance' where it is not associated with a value
+
+2025-11-13 12:53:23,387 - INFO - Using adaptive scheduler with base_lr=None, beta=None, soft_const=None
+2025-11-13 12:53:23,387 - INFO - Calling train_gd with scheduler_params: {'base_lr': None, 'beta': None, 'soft_const': None}
+2025-11-13 12:53:23,388 - INFO - initial model: max A_j index: 143
+2025-11-13 12:53:23,389 - INFO - Process 1: Completed experiment - student_dim=150, seed=1
+2025-11-13 12:53:23,390 - ERROR - GD failed for student_dim=150, seed=3: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-11-13 12:53:23,396 - ERROR - G&C failed for student_dim=150, seed=0: cannot access local variable 'gnc_loss_variance' where it is not associated with a value
+2025-11-13 12:53:23,396 - INFO - Process 3: Completed experiment - student_dim=150, seed=3
+2025-11-13 12:53:23,397 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 99, in process_worker
+    mean_prior, gnc_gen_loss, variance_gnc = train_gnc(seed, student_dim, device, alpha_teacher, w_sequences,
+                                             ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        args_dict['eps_train'], args_dict['gnc_num_samples'],
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        batch_size, False)
+                                        ^^^^^^^^^^^^^^^^^^
+  File "/home/fodl/noacaspi/ssm_generalize/training.py", line 259, in train_gnc
+    gnc_loss_variance += torch.var(gen_loss[finite_mask])
+    ^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'gnc_loss_variance' where it is not associated with a value
+
+2025-11-13 12:53:23,397 - INFO - Using adaptive scheduler with base_lr=None, beta=None, soft_const=None
+2025-11-13 12:53:23,397 - INFO - Calling train_gd with scheduler_params: {'base_lr': None, 'beta': None, 'soft_const': None}
+2025-11-13 12:53:23,398 - INFO - initial model: max A_j index: 59
+2025-11-13 12:53:23,399 - ERROR - G&C failed for student_dim=150, seed=2: cannot access local variable 'gnc_loss_variance' where it is not associated with a value
+2025-11-13 12:53:23,400 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 99, in process_worker
+    mean_prior, gnc_gen_loss, variance_gnc = train_gnc(seed, student_dim, device, alpha_teacher, w_sequences,
+                                             ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        args_dict['eps_train'], args_dict['gnc_num_samples'],
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        batch_size, False)
+                                        ^^^^^^^^^^^^^^^^^^
+  File "/home/fodl/noacaspi/ssm_generalize/training.py", line 259, in train_gnc
+    gnc_loss_variance += torch.var(gen_loss[finite_mask])
+    ^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'gnc_loss_variance' where it is not associated with a value
+
+2025-11-13 12:53:23,400 - INFO - Using adaptive scheduler with base_lr=None, beta=None, soft_const=None
+2025-11-13 12:53:23,400 - INFO - Calling train_gd with scheduler_params: {'base_lr': None, 'beta': None, 'soft_const': None}
+2025-11-13 12:53:23,401 - ERROR - GD failed for student_dim=150, seed=0: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-11-13 12:53:23,401 - INFO - initial model: max A_j index: 27
+2025-11-13 12:53:23,403 - ERROR - GD failed for student_dim=150, seed=2: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-11-13 12:53:23,407 - INFO - Process 0: Completed experiment - student_dim=150, seed=0
+2025-11-13 12:53:23,409 - INFO - Process 2: Completed experiment - student_dim=150, seed=2
+2025-11-13 12:53:23,495 - ERROR - G&C failed for student_dim=300, seed=1: cannot access local variable 'gnc_loss_variance' where it is not associated with a value
+2025-11-13 12:53:23,496 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 99, in process_worker
+    mean_prior, gnc_gen_loss, variance_gnc = train_gnc(seed, student_dim, device, alpha_teacher, w_sequences,
+                                             ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        args_dict['eps_train'], args_dict['gnc_num_samples'],
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        batch_size, False)
+                                        ^^^^^^^^^^^^^^^^^^
+  File "/home/fodl/noacaspi/ssm_generalize/training.py", line 259, in train_gnc
+    gnc_loss_variance += torch.var(gen_loss[finite_mask])
+    ^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'gnc_loss_variance' where it is not associated with a value
+
+2025-11-13 12:53:23,496 - INFO - Using adaptive scheduler with base_lr=None, beta=None, soft_const=None
+2025-11-13 12:53:23,496 - INFO - Calling train_gd with scheduler_params: {'base_lr': None, 'beta': None, 'soft_const': None}
+2025-11-13 12:53:23,497 - INFO - initial model: max A_j index: 120
+2025-11-13 12:53:23,498 - ERROR - GD failed for student_dim=300, seed=1: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-11-13 12:53:23,501 - ERROR - G&C failed for student_dim=300, seed=3: cannot access local variable 'gnc_loss_variance' where it is not associated with a value
+2025-11-13 12:53:23,501 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 99, in process_worker
+    mean_prior, gnc_gen_loss, variance_gnc = train_gnc(seed, student_dim, device, alpha_teacher, w_sequences,
+                                             ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        args_dict['eps_train'], args_dict['gnc_num_samples'],
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        batch_size, False)
+                                        ^^^^^^^^^^^^^^^^^^
+  File "/home/fodl/noacaspi/ssm_generalize/training.py", line 259, in train_gnc
+    gnc_loss_variance += torch.var(gen_loss[finite_mask])
+    ^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'gnc_loss_variance' where it is not associated with a value
+
+2025-11-13 12:53:23,502 - INFO - Using adaptive scheduler with base_lr=None, beta=None, soft_const=None
+2025-11-13 12:53:23,502 - INFO - Calling train_gd with scheduler_params: {'base_lr': None, 'beta': None, 'soft_const': None}
+2025-11-13 12:53:23,503 - INFO - initial model: max A_j index: 159
+2025-11-13 12:53:23,505 - ERROR - GD failed for student_dim=300, seed=3: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-11-13 12:53:23,506 - INFO - Process 1: Completed experiment - student_dim=300, seed=1
+2025-11-13 12:53:23,507 - INFO - Process 1 completed on GPU 1
+2025-11-13 12:53:23,512 - ERROR - G&C failed for student_dim=300, seed=0: cannot access local variable 'gnc_loss_variance' where it is not associated with a value
+2025-11-13 12:53:23,513 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 99, in process_worker
+    mean_prior, gnc_gen_loss, variance_gnc = train_gnc(seed, student_dim, device, alpha_teacher, w_sequences,
+                                             ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        args_dict['eps_train'], args_dict['gnc_num_samples'],
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        batch_size, False)
+                                        ^^^^^^^^^^^^^^^^^^
+  File "/home/fodl/noacaspi/ssm_generalize/training.py", line 259, in train_gnc
+    gnc_loss_variance += torch.var(gen_loss[finite_mask])
+    ^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'gnc_loss_variance' where it is not associated with a value
+
+2025-11-13 12:53:23,513 - INFO - Process 3: Completed experiment - student_dim=300, seed=3
+2025-11-13 12:53:23,513 - INFO - Using adaptive scheduler with base_lr=None, beta=None, soft_const=None
+2025-11-13 12:53:23,513 - INFO - Calling train_gd with scheduler_params: {'base_lr': None, 'beta': None, 'soft_const': None}
+2025-11-13 12:53:23,514 - INFO - Process 3 completed on GPU 3
+2025-11-13 12:53:23,514 - INFO - initial model: max A_j index: 59
+2025-11-13 12:53:23,514 - ERROR - G&C failed for student_dim=300, seed=2: cannot access local variable 'gnc_loss_variance' where it is not associated with a value
+2025-11-13 12:53:23,515 - ERROR - Traceback (most recent call last):
+  File "/home/fodl/noacaspi/ssm_generalize/main.py", line 99, in process_worker
+    mean_prior, gnc_gen_loss, variance_gnc = train_gnc(seed, student_dim, device, alpha_teacher, w_sequences,
+                                             ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        args_dict['eps_train'], args_dict['gnc_num_samples'],
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        batch_size, False)
+                                        ^^^^^^^^^^^^^^^^^^
+  File "/home/fodl/noacaspi/ssm_generalize/training.py", line 259, in train_gnc
+    gnc_loss_variance += torch.var(gen_loss[finite_mask])
+    ^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'gnc_loss_variance' where it is not associated with a value
+
+2025-11-13 12:53:23,515 - INFO - Using adaptive scheduler with base_lr=None, beta=None, soft_const=None
+2025-11-13 12:53:23,515 - INFO - Calling train_gd with scheduler_params: {'base_lr': None, 'beta': None, 'soft_const': None}
+2025-11-13 12:53:23,516 - INFO - initial model: max A_j index: 27
+2025-11-13 12:53:23,516 - ERROR - GD failed for student_dim=300, seed=0: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-11-13 12:53:23,518 - ERROR - GD failed for student_dim=300, seed=2: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-11-13 12:53:23,524 - INFO - Process 0: Completed experiment - student_dim=300, seed=0
+2025-11-13 12:53:23,525 - INFO - Process 2: Completed experiment - student_dim=300, seed=2
+2025-11-13 12:53:23,526 - INFO - Process 0 completed on GPU 0
+2025-11-13 12:53:23,527 - INFO - Process 2 completed on GPU 2
+2025-11-13 12:53:24,357 - INFO - Process 1 completed
+2025-11-13 12:53:25,358 - INFO - Process 3 completed

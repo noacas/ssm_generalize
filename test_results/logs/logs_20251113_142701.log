@@ -1,0 +1,36 @@
+2025-11-13 14:27:01,358 - INFO - Args: Namespace(num_seeds=4, seeds=[0, 1, 2, 3], sequence_length=5, num_sequences=1, student_dims=[10, 20, 50, 100, 150, 300], eps_train=1e-05, w_that_minimizes_loss=False, w2_that_minimizes_loss=False, w2_that_maximizes_loss=False, data_file=PosixPath('w.json'), gnc=True, gnc_num_samples=1000000000, gnc_batch_size=500000, gd=True, gd_lr=0.001, gd_epochs=10000, gd_init_scale=0.01, gd_optimizer='adam', gd_scheduler='adaptive', gd_scheduler_params='{"base_lr": 0.000001}', exp_gamma=None, step_size=None, step_gamma=None, cosine_eta_min=None, gd_init_type='regular', gd_base_lr=1e-05, gd_beta=0.8, gd_soft_const=1e-06, config=None, results_dir=PosixPath('test_results/results'), figures_dir=PosixPath('test_results/figures'), checkpoint_dir=PosixPath('test_results/checkpoints'), checkpoint_interval=3600, resume_from_checkpoint=False, log_dir=PosixPath('test_results/logs'), max_gpus=8, log_file=PosixPath('test_results/logs/logs_20251113_142701.log'))
+2025-11-13 14:27:01,359 - INFO - Using custom seeds: [0, 1, 2, 3]
+2025-11-13 14:27:01,560 - INFO - Using GPUs: [0, 1, 2, 3, 4, 5, 6, 7]
+2025-11-13 14:27:01,560 - INFO - Starting 8 processes on 8 GPUs
+2025-11-13 14:27:05,718 - INFO - Process 0 started on GPU 0, processing seeds [0]
+2025-11-13 14:27:06,167 - INFO - Process 3 started on GPU 3, processing seeds [3]
+2025-11-13 14:27:06,205 - INFO - Process 1 started on GPU 1, processing seeds [1]
+2025-11-13 14:27:06,219 - INFO - Process 2 started on GPU 2, processing seeds [2]
+2025-11-13 14:27:06,377 - INFO - for seed 3, loaded alpha_teacher=tensor([1.], device='cuda:3'), loaded 1 sequences: [tensor([1., 1., 1., 1.], device='cuda:3')]
+2025-11-13 14:27:06,377 - INFO - Process 3: Starting experiment - student_dim=10, seed=3
+2025-11-13 14:27:06,408 - INFO - for seed 1, loaded alpha_teacher=tensor([1.], device='cuda:1'), loaded 1 sequences: [tensor([0.0100, 0.0100, 0.0100, 1.0000], device='cuda:1')]
+2025-11-13 14:27:06,408 - INFO - Process 1: Starting experiment - student_dim=10, seed=1
+2025-11-13 14:27:06,423 - INFO - for seed 2, loaded alpha_teacher=tensor([1.], device='cuda:2'), loaded 1 sequences: [tensor([0., 0., 0., 1.], device='cuda:2')]
+2025-11-13 14:27:06,423 - INFO - Process 2: Starting experiment - student_dim=10, seed=2
+2025-11-13 14:27:06,691 - INFO - for seed 0, loaded alpha_teacher=tensor([1.], device='cuda:0'), loaded 1 sequences: [tensor([1., 0., 0., 0.], device='cuda:0')]
+2025-11-13 14:27:06,692 - INFO - Process 0: Starting experiment - student_dim=10, seed=0
+2025-11-13 14:27:13,794 - INFO - GNC Total success count: 296663
+2025-11-13 14:27:13,948 - INFO - GNC Total success count: 590357
+2025-11-13 14:27:13,975 - INFO - For seed 3, student_dim 10, G&C theoretical loss: 1.3998836278915405, asymptotic loss: 6.0, G&C empirical loss: 1.4201111793518066, G&C empirical variance: 1.8204418420791626
+2025-11-13 14:27:13,976 - INFO - Using adaptive scheduler with base_lr=1e-05, beta=0.8, soft_const=1e-06
+2025-11-13 14:27:13,976 - INFO - Calling train_gd with scheduler_params: {'base_lr': 1e-05, 'beta': 0.8, 'soft_const': 1e-06}
+2025-11-13 14:27:14,019 - INFO - GNC Total success count: 615785
+2025-11-13 14:27:14,160 - INFO - For seed 1, student_dim 10, G&C theoretical loss: 3.7456259727478027, asymptotic loss: 10203.0, G&C empirical loss: 5.246709823608398, G&C empirical variance: 25.774749755859375
+2025-11-13 14:27:14,160 - INFO - Using adaptive scheduler with base_lr=1e-05, beta=0.8, soft_const=1e-06
+2025-11-13 14:27:14,161 - INFO - Calling train_gd with scheduler_params: {'base_lr': 1e-05, 'beta': 0.8, 'soft_const': 1e-06}
+2025-11-13 14:27:14,166 - INFO - GNC Total success count: 1530464
+2025-11-13 14:27:14,199 - INFO - For seed 2, student_dim 10, G&C theoretical loss: 3.9656248092651367, asymptotic loss: nan, G&C empirical loss: 5.419347286224365, G&C empirical variance: 25.905101776123047
+2025-11-13 14:27:14,199 - INFO - Using adaptive scheduler with base_lr=1e-05, beta=0.8, soft_const=1e-06
+2025-11-13 14:27:14,200 - INFO - Calling train_gd with scheduler_params: {'base_lr': 1e-05, 'beta': 0.8, 'soft_const': 1e-06}
+2025-11-13 14:27:14,356 - INFO - For seed 0, student_dim 10, G&C theoretical loss: 1.3359999656677246, asymptotic loss: 2.0, G&C empirical loss: 1.3387056589126587, G&C empirical variance: 0.42328354716300964
+2025-11-13 14:27:14,356 - INFO - Using adaptive scheduler with base_lr=1e-05, beta=0.8, soft_const=1e-06
+2025-11-13 14:27:14,356 - INFO - Calling train_gd with scheduler_params: {'base_lr': 1e-05, 'beta': 0.8, 'soft_const': 1e-06}
+2025-11-13 14:27:17,479 - INFO - initial model: max A_j index: 0
+2025-11-13 14:27:17,481 - INFO - initial model: max A_j index: 7
+2025-11-13 14:27:17,484 - INFO - initial model: max A_j index: 0
+2025-11-13 14:27:17,485 - INFO - initial model: max A_j index: 4

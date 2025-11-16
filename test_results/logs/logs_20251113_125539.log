@@ -1,0 +1,72 @@
+2025-11-13 12:55:39,321 - INFO - Args: Namespace(num_seeds=4, seeds=[0, 1, 2, 3], sequence_length=5, num_sequences=1, student_dims=[10, 20, 50, 100, 150, 300], eps_train=1e-05, w_that_minimizes_loss=False, w2_that_minimizes_loss=False, w2_that_maximizes_loss=False, data_file=PosixPath('alpha_w_pairs.json'), gnc=True, gnc_num_samples=1000000000, gnc_batch_size=500000, gd=True, gd_lr=0.001, gd_epochs=100000, gd_init_scale=0.01, gd_optimizer='adam', gd_scheduler='adaptive', gd_scheduler_params='{"base_lr": 0.00001}', exp_gamma=None, step_size=None, step_gamma=None, cosine_eta_min=None, gd_init_type='regular', gd_base_lr=0.001, gd_beta=0.8, gd_soft_const=1e-06, config=None, results_dir=PosixPath('test_results/results'), figures_dir=PosixPath('test_results/figures'), checkpoint_dir=PosixPath('test_results/checkpoints'), checkpoint_interval=3600, resume_from_checkpoint=False, log_dir=PosixPath('test_results/logs'), max_gpus=8, log_file=PosixPath('test_results/logs/logs_20251113_125539.log'))
+2025-11-13 12:55:39,321 - INFO - Using custom seeds: [0, 1, 2, 3]
+2025-11-13 12:55:39,502 - INFO - Using GPUs: [0, 1, 2, 3, 4, 5, 6, 7]
+2025-11-13 12:55:39,502 - INFO - Starting 8 processes on 8 GPUs
+2025-11-13 12:55:43,163 - INFO - Process 0 started on GPU 0, processing seeds [0]
+2025-11-13 12:55:43,452 - INFO - Process 3 started on GPU 3, processing seeds [3]
+2025-11-13 12:55:43,521 - INFO - Process 2 started on GPU 2, processing seeds [2]
+2025-11-13 12:55:43,611 - INFO - Process 1 started on GPU 1, processing seeds [1]
+2025-11-13 12:55:43,690 - INFO - for seed 3, loaded alpha_teacher=tensor([0.5000], device='cuda:3'), loaded 1 sequences: [tensor([1., 1., 1., 1.], device='cuda:3')]
+2025-11-13 12:55:43,690 - INFO - Process 3: Starting experiment - student_dim=10, seed=3
+2025-11-13 12:55:43,706 - INFO - for seed 0, loaded alpha_teacher=tensor([0.5000], device='cuda:0'), loaded 1 sequences: [tensor([1., 0., 0., 0.], device='cuda:0')]
+2025-11-13 12:55:43,706 - INFO - Process 0: Starting experiment - student_dim=10, seed=0
+2025-11-13 12:55:43,726 - INFO - for seed 2, loaded alpha_teacher=tensor([0.5000], device='cuda:2'), loaded 1 sequences: [tensor([0., 0., 0., 1.], device='cuda:2')]
+2025-11-13 12:55:43,727 - INFO - Process 2: Starting experiment - student_dim=10, seed=2
+2025-11-13 12:55:43,851 - INFO - for seed 1, loaded alpha_teacher=tensor([0.5000], device='cuda:1'), loaded 1 sequences: [tensor([0.0100, 0.0100, 0.0100, 1.0000], device='cuda:1')]
+2025-11-13 12:55:43,852 - INFO - Process 1: Starting experiment - student_dim=10, seed=1
+2025-11-13 12:55:54,053 - INFO - GNC Total success count: 2228527
+2025-11-13 12:55:54,199 - INFO - GNC Total success count: 17788705
+2025-11-13 12:55:54,265 - INFO - For seed 0, student_dim 10, G&C theoretical loss: 0.975531280040741, asymptotic loss: 0.58203125, G&C empirical loss: 0.7939631938934326, G&C empirical variance: 1.527461290359497
+2025-11-13 12:55:54,266 - INFO - Using adaptive scheduler with base_lr=None, beta=None, soft_const=None
+2025-11-13 12:55:54,266 - INFO - Calling train_gd with scheduler_params: {'base_lr': None, 'beta': None, 'soft_const': None}
+2025-11-13 12:55:54,340 - INFO - GNC Total success count: 1854384
+2025-11-13 12:55:54,390 - INFO - For seed 1, student_dim 10, G&C theoretical loss: 1.7048759460449219, asymptotic loss: 32.22266387939453, G&C empirical loss: 0.99009108543396, G&C empirical variance: 1.3906774520874023
+2025-11-13 12:55:54,391 - INFO - Using adaptive scheduler with base_lr=None, beta=None, soft_const=None
+2025-11-13 12:55:54,391 - INFO - Calling train_gd with scheduler_params: {'base_lr': None, 'beta': None, 'soft_const': None}
+2025-11-13 12:55:54,432 - INFO - GNC Total success count: 18494662
+2025-11-13 12:55:54,529 - INFO - For seed 3, student_dim 10, G&C theoretical loss: 1.6203991174697876, asymptotic loss: 0.8984375, G&C empirical loss: 1.2297900915145874, G&C empirical variance: 3.426786422729492
+2025-11-13 12:55:54,530 - INFO - Using adaptive scheduler with base_lr=None, beta=None, soft_const=None
+2025-11-13 12:55:54,530 - INFO - Calling train_gd with scheduler_params: {'base_lr': None, 'beta': None, 'soft_const': None}
+2025-11-13 12:55:54,623 - INFO - For seed 2, student_dim 10, G&C theoretical loss: 1.6709471940994263, asymptotic loss: nan, G&C empirical loss: 0.9037445187568665, G&C empirical variance: 1.0592103004455566
+2025-11-13 12:55:54,623 - INFO - Using adaptive scheduler with base_lr=None, beta=None, soft_const=None
+2025-11-13 12:55:54,623 - INFO - Calling train_gd with scheduler_params: {'base_lr': None, 'beta': None, 'soft_const': None}
+2025-11-13 12:55:56,953 - INFO - initial model: max A_j index: 4
+2025-11-13 12:55:56,954 - INFO - initial model: max A_j index: 0
+2025-11-13 12:55:56,955 - INFO - initial model: max A_j index: 7
+2025-11-13 12:55:56,955 - INFO - initial model: max A_j index: 0
+2025-11-13 12:55:56,990 - ERROR - GD failed for student_dim=10, seed=3: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-11-13 12:55:56,997 - ERROR - GD failed for student_dim=10, seed=2: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-11-13 12:55:56,999 - ERROR - GD failed for student_dim=10, seed=0: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-11-13 12:55:57,003 - INFO - Process 3: Completed experiment - student_dim=10, seed=3
+2025-11-13 12:55:57,003 - INFO - Process 2: Completed experiment - student_dim=10, seed=2
+2025-11-13 12:55:57,004 - INFO - Process 0: Completed experiment - student_dim=10, seed=0
+2025-11-13 12:55:57,004 - ERROR - GD failed for student_dim=10, seed=1: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-11-13 12:55:57,009 - INFO - Process 1: Completed experiment - student_dim=10, seed=1
+2025-11-13 12:56:13,380 - INFO - GNC Total success count: 2107900
+2025-11-13 12:56:13,386 - INFO - For seed 3, student_dim 20, G&C theoretical loss: 1.2407886981964111, asymptotic loss: 0.8984375, G&C empirical loss: 1.0612609386444092, G&C empirical variance: 1.0030663013458252
+2025-11-13 12:56:13,386 - INFO - Using adaptive scheduler with base_lr=None, beta=None, soft_const=None
+2025-11-13 12:56:13,387 - INFO - Calling train_gd with scheduler_params: {'base_lr': None, 'beta': None, 'soft_const': None}
+2025-11-13 12:56:13,388 - INFO - initial model: max A_j index: 14
+2025-11-13 12:56:13,392 - ERROR - GD failed for student_dim=20, seed=3: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-11-13 12:56:13,397 - INFO - Process 3: Completed experiment - student_dim=20, seed=3
+2025-11-13 12:56:13,628 - INFO - GNC Total success count: 2228723
+2025-11-13 12:56:13,633 - INFO - For seed 0, student_dim 20, G&C theoretical loss: 0.6996562480926514, asymptotic loss: 0.58203125, G&C empirical loss: 0.6352576613426208, G&C empirical variance: 0.3214327096939087
+2025-11-13 12:56:13,634 - INFO - Using adaptive scheduler with base_lr=None, beta=None, soft_const=None
+2025-11-13 12:56:13,634 - INFO - Calling train_gd with scheduler_params: {'base_lr': None, 'beta': None, 'soft_const': None}
+2025-11-13 12:56:13,635 - INFO - initial model: max A_j index: 18
+2025-11-13 12:56:13,638 - ERROR - GD failed for student_dim=20, seed=0: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-11-13 12:56:13,644 - INFO - Process 0: Completed experiment - student_dim=20, seed=0
+2025-11-13 12:56:14,059 - INFO - GNC Total success count: 32935974
+2025-11-13 12:56:14,065 - INFO - For seed 1, student_dim 20, G&C theoretical loss: 1.6924042701721191, asymptotic loss: 32.22266387939453, G&C empirical loss: 1.3411067724227905, G&C empirical variance: 2.3500452041625977
+2025-11-13 12:56:14,065 - INFO - Using adaptive scheduler with base_lr=None, beta=None, soft_const=None
+2025-11-13 12:56:14,065 - INFO - Calling train_gd with scheduler_params: {'base_lr': None, 'beta': None, 'soft_const': None}
+2025-11-13 12:56:14,067 - INFO - initial model: max A_j index: 10
+2025-11-13 12:56:14,070 - ERROR - GD failed for student_dim=20, seed=1: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-11-13 12:56:14,076 - INFO - Process 1: Completed experiment - student_dim=20, seed=1
+2025-11-13 12:56:14,210 - INFO - GNC Total success count: 34930259
+2025-11-13 12:56:14,217 - INFO - For seed 2, student_dim 20, G&C theoretical loss: 1.6103515625, asymptotic loss: nan, G&C empirical loss: 1.2254277467727661, G&C empirical variance: 1.7193256616592407
+2025-11-13 12:56:14,217 - INFO - Using adaptive scheduler with base_lr=None, beta=None, soft_const=None
+2025-11-13 12:56:14,217 - INFO - Calling train_gd with scheduler_params: {'base_lr': None, 'beta': None, 'soft_const': None}
+2025-11-13 12:56:14,219 - INFO - initial model: max A_j index: 15
+2025-11-13 12:56:14,222 - ERROR - GD failed for student_dim=20, seed=2: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-11-13 12:56:14,228 - INFO - Process 2: Completed experiment - student_dim=20, seed=2

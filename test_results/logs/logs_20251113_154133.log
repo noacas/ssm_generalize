@@ -1,0 +1,414 @@
+2025-11-13 15:41:33,133 - INFO - Args: Namespace(num_seeds=4, seeds=[0, 1, 2, 3], sequence_length=5, num_sequences=1, student_dims=[10, 20, 50, 100, 150, 300], eps_train=1e-05, w_that_minimizes_loss=False, w2_that_minimizes_loss=False, w2_that_maximizes_loss=False, data_file=PosixPath('alpha_w_pairs.json'), gnc=True, gnc_num_samples=1000000000, gnc_batch_size=500000, gd=True, gd_lr=0.001, gd_epochs=10000, gd_init_scale=0.01, gd_optimizer='adam', gd_scheduler='adaptive', gd_scheduler_params='{}', exp_gamma=None, step_size=None, step_gamma=None, cosine_eta_min=None, gd_init_type='regular', gd_base_lr=1e-12, gd_beta=0.8, gd_soft_const=1e-06, config=None, results_dir=PosixPath('test_results/results'), figures_dir=PosixPath('test_results/figures'), checkpoint_dir=PosixPath('test_results/checkpoints'), checkpoint_interval=3600, resume_from_checkpoint=False, log_dir=PosixPath('test_results/logs'), max_gpus=8, log_file=PosixPath('test_results/logs/logs_20251113_154133.log'))
+2025-11-13 15:41:33,134 - INFO - Using custom seeds: [0, 1, 2, 3]
+2025-11-13 15:41:33,341 - INFO - Using GPUs: [0, 1, 2, 3, 4, 5, 6, 7]
+2025-11-13 15:41:33,341 - INFO - Starting 8 processes on 8 GPUs
+2025-11-13 15:41:37,309 - INFO - Process 0 started on GPU 0, processing seeds [0]
+2025-11-13 15:41:37,818 - INFO - Process 1 started on GPU 1, processing seeds [1]
+2025-11-13 15:41:37,870 - INFO - Process 2 started on GPU 2, processing seeds [2]
+2025-11-13 15:41:37,913 - INFO - Process 3 started on GPU 3, processing seeds [3]
+2025-11-13 15:41:38,018 - INFO - for seed 0, loaded alpha_teacher=tensor([0.5000], device='cuda:0'), loaded 1 sequences: [tensor([1., 0., 0., 0.], device='cuda:0')]
+2025-11-13 15:41:38,018 - INFO - Process 0: Starting experiment - student_dim=10, seed=0
+2025-11-13 15:41:38,053 - INFO - for seed 1, loaded alpha_teacher=tensor([0.5000], device='cuda:1'), loaded 1 sequences: [tensor([0.0100, 0.0100, 0.0100, 1.0000], device='cuda:1')]
+2025-11-13 15:41:38,054 - INFO - Process 1: Starting experiment - student_dim=10, seed=1
+2025-11-13 15:41:38,065 - INFO - for seed 2, loaded alpha_teacher=tensor([0.5000], device='cuda:2'), loaded 1 sequences: [tensor([0., 0., 0., 1.], device='cuda:2')]
+2025-11-13 15:41:38,065 - INFO - Process 2: Starting experiment - student_dim=10, seed=2
+2025-11-13 15:41:38,096 - INFO - for seed 3, loaded alpha_teacher=tensor([0.5000], device='cuda:3'), loaded 1 sequences: [tensor([1., 1., 1., 1.], device='cuda:3')]
+2025-11-13 15:41:38,097 - INFO - Process 3: Starting experiment - student_dim=10, seed=3
+2025-11-13 15:41:45,548 - INFO - GNC Total success count: 17788705
+2025-11-13 15:41:45,550 - INFO - GNC Total success count: 1854384
+2025-11-13 15:41:45,563 - INFO - GNC Total success count: 2228527
+2025-11-13 15:41:45,732 - INFO - For seed 1, student_dim 10, G&C theoretical loss: 1.7048759460449219, asymptotic loss: 32.22266387939453, G&C empirical loss: 0.99009108543396, G&C empirical variance: 1.3906774520874023
+2025-11-13 15:41:45,733 - INFO - Using adaptive scheduler with base_lr=1e-12, beta=0.8, soft_const=1e-06
+2025-11-13 15:41:45,733 - INFO - Calling train_gd with scheduler_params: {'base_lr': 1e-12, 'beta': 0.8, 'soft_const': 1e-06}
+2025-11-13 15:41:45,735 - INFO - For seed 3, student_dim 10, G&C theoretical loss: 1.6203991174697876, asymptotic loss: 0.8984375, G&C empirical loss: 1.2297900915145874, G&C empirical variance: 3.426786422729492
+2025-11-13 15:41:45,736 - INFO - Using adaptive scheduler with base_lr=1e-12, beta=0.8, soft_const=1e-06
+2025-11-13 15:41:45,736 - INFO - Calling train_gd with scheduler_params: {'base_lr': 1e-12, 'beta': 0.8, 'soft_const': 1e-06}
+2025-11-13 15:41:45,747 - INFO - For seed 0, student_dim 10, G&C theoretical loss: 0.975531280040741, asymptotic loss: 0.58203125, G&C empirical loss: 0.7939631938934326, G&C empirical variance: 1.527461290359497
+2025-11-13 15:41:45,747 - INFO - Using adaptive scheduler with base_lr=1e-12, beta=0.8, soft_const=1e-06
+2025-11-13 15:41:45,747 - INFO - Calling train_gd with scheduler_params: {'base_lr': 1e-12, 'beta': 0.8, 'soft_const': 1e-06}
+2025-11-13 15:41:45,911 - INFO - GNC Total success count: 18494662
+2025-11-13 15:41:46,088 - INFO - For seed 2, student_dim 10, G&C theoretical loss: 1.6709471940994263, asymptotic loss: nan, G&C empirical loss: 0.9037445187568665, G&C empirical variance: 1.0592103004455566
+2025-11-13 15:41:46,088 - INFO - Using adaptive scheduler with base_lr=1e-12, beta=0.8, soft_const=1e-06
+2025-11-13 15:41:46,088 - INFO - Calling train_gd with scheduler_params: {'base_lr': 1e-12, 'beta': 0.8, 'soft_const': 1e-06}
+2025-11-13 15:41:48,542 - INFO - initial model: max A_j index: 0
+2025-11-13 15:41:48,542 - INFO - initial model: max A_j index: 4
+2025-11-13 15:41:48,543 - INFO - initial model: max A_j index: 0
+2025-11-13 15:41:48,551 - INFO - initial model: max A_j index: 7
+2025-11-13 15:42:20,089 - INFO - final model: max A_j index: 0, max A_j value: 0.006613521371036768, alpha_teacher: tensor([0.5000], device='cuda:1')
+2025-11-13 15:42:20,145 - INFO - largest 10 A_j values: tensor([ 0.0066,  0.0062,  0.0038,  0.0027,  0.0006, -0.0017, -0.0045, -0.0056,
+        -0.0103, -0.0152], device='cuda:1', grad_fn=<TopkBackward0>)
+2025-11-13 15:42:20,146 - INFO - number of values below 0.01: 10
+2025-11-13 15:42:20,146 - INFO - number of values between 0.01 and 0.1: 0
+2025-11-13 15:42:20,146 - INFO - number of values between 0.1 and 0.3: 0
+2025-11-13 15:42:20,146 - INFO - number of values larger than 0.3: 0
+2025-11-13 15:42:20,146 - INFO - train loss is 0.005100652575492859
+2025-11-13 15:42:20,146 - INFO - impulse response loss is 0.3494715690612793
+2025-11-13 15:42:20,147 - INFO - For seed 1, student_dim 10, GD gen loss: 0.3494715690612793, GD train loss: 0.005100652575492859
+2025-11-13 15:42:20,151 - INFO - Process 1: Completed experiment - student_dim=10, seed=1
+2025-11-13 15:42:32,745 - INFO - GNC Total success count: 32935974
+2025-11-13 15:42:32,747 - INFO - For seed 1, student_dim 20, G&C theoretical loss: 1.6924042701721191, asymptotic loss: 32.22266387939453, G&C empirical loss: 1.3411067724227905, G&C empirical variance: 2.3500452041625977
+2025-11-13 15:42:32,747 - INFO - Using adaptive scheduler with base_lr=1e-12, beta=0.8, soft_const=1e-06
+2025-11-13 15:42:32,747 - INFO - Calling train_gd with scheduler_params: {'base_lr': 1e-12, 'beta': 0.8, 'soft_const': 1e-06}
+2025-11-13 15:42:32,748 - INFO - initial model: max A_j index: 10
+2025-11-13 15:42:46,118 - INFO - final model: max A_j index: 0, max A_j value: 0.01540996041148901, alpha_teacher: tensor([0.5000], device='cuda:0')
+2025-11-13 15:42:46,189 - INFO - final model: max A_j index: 4, max A_j value: 0.010453946888446808, alpha_teacher: tensor([0.5000], device='cuda:2')
+2025-11-13 15:42:46,205 - INFO - largest 10 A_j values: tensor([ 0.0154,  0.0084,  0.0057,  0.0040, -0.0029, -0.0040, -0.0072, -0.0108,
+        -0.0140, -0.0218], device='cuda:0', grad_fn=<TopkBackward0>)
+2025-11-13 15:42:46,205 - INFO - number of values below 0.01: 9
+2025-11-13 15:42:46,205 - INFO - number of values between 0.01 and 0.1: 1
+2025-11-13 15:42:46,205 - INFO - number of values between 0.1 and 0.3: 0
+2025-11-13 15:42:46,206 - INFO - number of values larger than 0.3: 0
+2025-11-13 15:42:46,206 - INFO - train loss is 0.2780151069164276
+2025-11-13 15:42:46,206 - INFO - impulse response loss is 0.3594399690628052
+2025-11-13 15:42:46,207 - INFO - For seed 0, student_dim 10, GD gen loss: 0.3594399690628052, GD train loss: 0.2780151069164276
+2025-11-13 15:42:46,212 - INFO - Process 0: Completed experiment - student_dim=10, seed=0
+2025-11-13 15:42:46,251 - INFO - largest 10 A_j values: tensor([ 0.0105,  0.0057,  0.0054,  0.0039, -0.0022, -0.0032, -0.0039, -0.0063,
+        -0.0104, -0.0121], device='cuda:2', grad_fn=<TopkBackward0>)
+2025-11-13 15:42:46,251 - INFO - number of values below 0.01: 9
+2025-11-13 15:42:46,251 - INFO - number of values between 0.01 and 0.1: 1
+2025-11-13 15:42:46,252 - INFO - number of values between 0.1 and 0.3: 0
+2025-11-13 15:42:46,252 - INFO - number of values larger than 0.3: 0
+2025-11-13 15:42:46,252 - INFO - train loss is 0.003906243946403265
+2025-11-13 15:42:46,252 - INFO - impulse response loss is 0.3445940315723419
+2025-11-13 15:42:46,252 - INFO - For seed 2, student_dim 10, GD gen loss: 0.3445940315723419, GD train loss: 0.003906243946403265
+2025-11-13 15:42:46,257 - INFO - Process 2: Completed experiment - student_dim=10, seed=2
+2025-11-13 15:42:46,532 - INFO - final model: max A_j index: 7, max A_j value: 0.010111158713698387, alpha_teacher: tensor([0.5000], device='cuda:3')
+2025-11-13 15:42:46,597 - INFO - largest 10 A_j values: tensor([ 0.0101,  0.0098,  0.0080,  0.0034,  0.0017,  0.0009,  0.0005, -0.0061,
+        -0.0137, -0.0144], device='cuda:3', grad_fn=<TopkBackward0>)
+2025-11-13 15:42:46,598 - INFO - number of values below 0.01: 9
+2025-11-13 15:42:46,598 - INFO - number of values between 0.01 and 0.1: 1
+2025-11-13 15:42:46,598 - INFO - number of values between 0.1 and 0.3: 0
+2025-11-13 15:42:46,598 - INFO - number of values larger than 0.3: 0
+2025-11-13 15:42:46,598 - INFO - train loss is 0.8771689534187317
+2025-11-13 15:42:46,598 - INFO - impulse response loss is 0.3314567506313324
+2025-11-13 15:42:46,599 - INFO - For seed 3, student_dim 10, GD gen loss: 0.3314567506313324, GD train loss: 0.8771689534187317
+2025-11-13 15:42:46,603 - INFO - Process 3: Completed experiment - student_dim=10, seed=3
+2025-11-13 15:42:59,151 - INFO - GNC Total success count: 34930259
+2025-11-13 15:42:59,154 - INFO - For seed 2, student_dim 20, G&C theoretical loss: 1.6103515625, asymptotic loss: nan, G&C empirical loss: 1.2254277467727661, G&C empirical variance: 1.7193256616592407
+2025-11-13 15:42:59,154 - INFO - Using adaptive scheduler with base_lr=1e-12, beta=0.8, soft_const=1e-06
+2025-11-13 15:42:59,154 - INFO - Calling train_gd with scheduler_params: {'base_lr': 1e-12, 'beta': 0.8, 'soft_const': 1e-06}
+2025-11-13 15:42:59,155 - INFO - initial model: max A_j index: 15
+2025-11-13 15:42:59,269 - INFO - GNC Total success count: 2228723
+2025-11-13 15:42:59,273 - INFO - For seed 0, student_dim 20, G&C theoretical loss: 0.6996562480926514, asymptotic loss: 0.58203125, G&C empirical loss: 0.6352576613426208, G&C empirical variance: 0.3214327096939087
+2025-11-13 15:42:59,273 - INFO - Using adaptive scheduler with base_lr=1e-12, beta=0.8, soft_const=1e-06
+2025-11-13 15:42:59,273 - INFO - Calling train_gd with scheduler_params: {'base_lr': 1e-12, 'beta': 0.8, 'soft_const': 1e-06}
+2025-11-13 15:42:59,274 - INFO - initial model: max A_j index: 18
+2025-11-13 15:42:59,409 - INFO - GNC Total success count: 2107900
+2025-11-13 15:42:59,412 - INFO - For seed 3, student_dim 20, G&C theoretical loss: 1.2407886981964111, asymptotic loss: 0.8984375, G&C empirical loss: 1.0612609386444092, G&C empirical variance: 1.0030663013458252
+2025-11-13 15:42:59,412 - INFO - Using adaptive scheduler with base_lr=1e-12, beta=0.8, soft_const=1e-06
+2025-11-13 15:42:59,413 - INFO - Calling train_gd with scheduler_params: {'base_lr': 1e-12, 'beta': 0.8, 'soft_const': 1e-06}
+2025-11-13 15:42:59,413 - INFO - initial model: max A_j index: 14
+2025-11-13 15:43:28,311 - INFO - final model: max A_j index: 10, max A_j value: 0.017674272879958153, alpha_teacher: tensor([0.5000], device='cuda:1')
+2025-11-13 15:43:28,315 - INFO - largest 10 A_j values: tensor([0.0177, 0.0172, 0.0117, 0.0087, 0.0081, 0.0044, 0.0034, 0.0028, 0.0024,
+        0.0006], device='cuda:1', grad_fn=<TopkBackward0>)
+2025-11-13 15:43:28,316 - INFO - number of values below 0.01: 17
+2025-11-13 15:43:28,316 - INFO - number of values between 0.01 and 0.1: 3
+2025-11-13 15:43:28,317 - INFO - number of values between 0.1 and 0.3: 0
+2025-11-13 15:43:28,317 - INFO - number of values larger than 0.3: 0
+2025-11-13 15:43:28,317 - INFO - train loss is 0.005073465872555971
+2025-11-13 15:43:28,317 - INFO - impulse response loss is 0.33076509833335876
+2025-11-13 15:43:28,318 - INFO - For seed 1, student_dim 20, GD gen loss: 0.33076509833335876, GD train loss: 0.005073465872555971
+2025-11-13 15:43:28,325 - INFO - Process 1: Completed experiment - student_dim=20, seed=1
+2025-11-13 15:43:41,326 - INFO - final model: max A_j index: 15, max A_j value: 0.017527764663100243, alpha_teacher: tensor([0.5000], device='cuda:2')
+2025-11-13 15:43:41,328 - INFO - largest 10 A_j values: tensor([0.0175, 0.0112, 0.0107, 0.0092, 0.0089, 0.0070, 0.0067, 0.0032, 0.0014,
+        0.0003], device='cuda:2', grad_fn=<TopkBackward0>)
+2025-11-13 15:43:41,329 - INFO - number of values below 0.01: 17
+2025-11-13 15:43:41,329 - INFO - number of values between 0.01 and 0.1: 3
+2025-11-13 15:43:41,329 - INFO - number of values between 0.1 and 0.3: 0
+2025-11-13 15:43:41,330 - INFO - number of values larger than 0.3: 0
+2025-11-13 15:43:41,330 - INFO - train loss is 0.0039062192663550377
+2025-11-13 15:43:41,330 - INFO - impulse response loss is 0.3321354389190674
+2025-11-13 15:43:41,330 - INFO - For seed 2, student_dim 20, GD gen loss: 0.3321354389190674, GD train loss: 0.0039062192663550377
+2025-11-13 15:43:41,338 - INFO - Process 2: Completed experiment - student_dim=20, seed=2
+2025-11-13 15:43:57,966 - INFO - final model: max A_j index: 18, max A_j value: 0.02004980482161045, alpha_teacher: tensor([0.5000], device='cuda:0')
+2025-11-13 15:43:57,969 - INFO - largest 10 A_j values: tensor([0.0200, 0.0185, 0.0159, 0.0144, 0.0139, 0.0126, 0.0095, 0.0093, 0.0060,
+        0.0047], device='cuda:0', grad_fn=<TopkBackward0>)
+2025-11-13 15:43:57,969 - INFO - number of values below 0.01: 14
+2025-11-13 15:43:57,970 - INFO - number of values between 0.01 and 0.1: 6
+2025-11-13 15:43:57,970 - INFO - number of values between 0.1 and 0.3: 0
+2025-11-13 15:43:57,970 - INFO - number of values larger than 0.3: 0
+2025-11-13 15:43:57,970 - INFO - train loss is 0.18541032075881958
+2025-11-13 15:43:57,970 - INFO - impulse response loss is 0.2662370204925537
+2025-11-13 15:43:57,971 - INFO - For seed 0, student_dim 20, GD gen loss: 0.2662370204925537, GD train loss: 0.18541032075881958
+2025-11-13 15:43:57,980 - INFO - Process 0: Completed experiment - student_dim=20, seed=0
+2025-11-13 15:43:59,088 - INFO - final model: max A_j index: 14, max A_j value: 0.024363970384001732, alpha_teacher: tensor([0.5000], device='cuda:3')
+2025-11-13 15:43:59,091 - INFO - largest 10 A_j values: tensor([0.0244, 0.0135, 0.0105, 0.0100, 0.0076, 0.0061, 0.0052, 0.0049, 0.0046,
+        0.0040], device='cuda:3', grad_fn=<TopkBackward0>)
+2025-11-13 15:43:59,092 - INFO - number of values below 0.01: 17
+2025-11-13 15:43:59,092 - INFO - number of values between 0.01 and 0.1: 3
+2025-11-13 15:43:59,093 - INFO - number of values between 0.1 and 0.3: 0
+2025-11-13 15:43:59,093 - INFO - number of values larger than 0.3: 0
+2025-11-13 15:43:59,093 - INFO - train loss is 0.7178053855895996
+2025-11-13 15:43:59,093 - INFO - impulse response loss is 0.25033217668533325
+2025-11-13 15:43:59,095 - INFO - For seed 3, student_dim 20, GD gen loss: 0.25033217668533325, GD train loss: 0.7178053855895996
+2025-11-13 15:43:59,102 - INFO - Process 3: Completed experiment - student_dim=20, seed=3
+2025-11-13 15:44:08,267 - INFO - GNC Total success count: 81423209
+2025-11-13 15:44:08,272 - INFO - For seed 1, student_dim 50, G&C theoretical loss: 1.7280616760253906, asymptotic loss: 32.22266387939453, G&C empirical loss: 1.658127784729004, G&C empirical variance: 2.601620674133301
+2025-11-13 15:44:08,272 - INFO - Using adaptive scheduler with base_lr=1e-12, beta=0.8, soft_const=1e-06
+2025-11-13 15:44:08,273 - INFO - Calling train_gd with scheduler_params: {'base_lr': 1e-12, 'beta': 0.8, 'soft_const': 1e-06}
+2025-11-13 15:44:08,274 - INFO - initial model: max A_j index: 39
+2025-11-13 15:44:13,806 - INFO - GNC Total success count: 87916506
+2025-11-13 15:44:13,808 - INFO - For seed 2, student_dim 50, G&C theoretical loss: 1.8678066730499268, asymptotic loss: nan, G&C empirical loss: 1.9654635190963745, G&C empirical variance: 3.235865831375122
+2025-11-13 15:44:13,808 - INFO - Using adaptive scheduler with base_lr=1e-12, beta=0.8, soft_const=1e-06
+2025-11-13 15:44:13,809 - INFO - Calling train_gd with scheduler_params: {'base_lr': 1e-12, 'beta': 0.8, 'soft_const': 1e-06}
+2025-11-13 15:44:13,809 - INFO - initial model: max A_j index: 27
+2025-11-13 15:44:30,543 - INFO - GNC Total success count: 2228793
+2025-11-13 15:44:30,546 - INFO - For seed 0, student_dim 50, G&C theoretical loss: 0.6146992444992065, asymptotic loss: 0.58203125, G&C empirical loss: 0.591518223285675, G&C empirical variance: 0.09792134165763855
+2025-11-13 15:44:30,546 - INFO - Using adaptive scheduler with base_lr=1e-12, beta=0.8, soft_const=1e-06
+2025-11-13 15:44:30,546 - INFO - Calling train_gd with scheduler_params: {'base_lr': 1e-12, 'beta': 0.8, 'soft_const': 1e-06}
+2025-11-13 15:44:30,547 - INFO - initial model: max A_j index: 43
+2025-11-13 15:44:31,605 - INFO - GNC Total success count: 2329525
+2025-11-13 15:44:31,608 - INFO - For seed 3, student_dim 50, G&C theoretical loss: 1.031679630279541, asymptotic loss: 0.8984375, G&C empirical loss: 0.9712743163108826, G&C empirical variance: 0.3258638381958008
+2025-11-13 15:44:31,608 - INFO - Using adaptive scheduler with base_lr=1e-12, beta=0.8, soft_const=1e-06
+2025-11-13 15:44:31,608 - INFO - Calling train_gd with scheduler_params: {'base_lr': 1e-12, 'beta': 0.8, 'soft_const': 1e-06}
+2025-11-13 15:44:31,609 - INFO - initial model: max A_j index: 30
+2025-11-13 15:45:06,539 - INFO - final model: max A_j index: 39, max A_j value: 0.020153917372226715, alpha_teacher: tensor([0.5000], device='cuda:1')
+2025-11-13 15:45:06,541 - INFO - largest 10 A_j values: tensor([0.0202, 0.0188, 0.0169, 0.0154, 0.0117, 0.0112, 0.0110, 0.0087, 0.0081,
+        0.0076], device='cuda:1', grad_fn=<TopkBackward0>)
+2025-11-13 15:45:06,541 - INFO - number of values below 0.01: 43
+2025-11-13 15:45:06,541 - INFO - number of values between 0.01 and 0.1: 7
+2025-11-13 15:45:06,541 - INFO - number of values between 0.1 and 0.3: 0
+2025-11-13 15:45:06,542 - INFO - number of values larger than 0.3: 0
+2025-11-13 15:45:06,542 - INFO - train loss is 0.005188566632568836
+2025-11-13 15:45:06,542 - INFO - impulse response loss is 0.4201948344707489
+2025-11-13 15:45:06,542 - INFO - For seed 1, student_dim 50, GD gen loss: 0.4201948344707489, GD train loss: 0.005188566632568836
+2025-11-13 15:45:06,549 - INFO - Process 1: Completed experiment - student_dim=50, seed=1
+2025-11-13 15:45:10,547 - INFO - final model: max A_j index: 27, max A_j value: 0.02763066627085209, alpha_teacher: tensor([0.5000], device='cuda:2')
+2025-11-13 15:45:10,549 - INFO - largest 10 A_j values: tensor([0.0276, 0.0185, 0.0183, 0.0175, 0.0159, 0.0117, 0.0113, 0.0112, 0.0107,
+        0.0101], device='cuda:2', grad_fn=<TopkBackward0>)
+2025-11-13 15:45:10,550 - INFO - number of values below 0.01: 40
+2025-11-13 15:45:10,550 - INFO - number of values between 0.01 and 0.1: 10
+2025-11-13 15:45:10,550 - INFO - number of values between 0.1 and 0.3: 0
+2025-11-13 15:45:10,551 - INFO - number of values larger than 0.3: 0
+2025-11-13 15:45:10,551 - INFO - train loss is 0.0039060553535819054
+2025-11-13 15:45:10,551 - INFO - impulse response loss is 0.3338701128959656
+2025-11-13 15:45:10,551 - INFO - For seed 2, student_dim 50, GD gen loss: 0.3338701128959656, GD train loss: 0.0039060553535819054
+2025-11-13 15:45:10,560 - INFO - Process 2: Completed experiment - student_dim=50, seed=2
+2025-11-13 15:45:14,150 - INFO - final model: max A_j index: 43, max A_j value: 0.034105025231838226, alpha_teacher: tensor([0.5000], device='cuda:0')
+2025-11-13 15:45:14,151 - INFO - largest 10 A_j values: tensor([0.0341, 0.0185, 0.0182, 0.0159, 0.0152, 0.0139, 0.0124, 0.0112, 0.0106,
+        0.0095], device='cuda:0', grad_fn=<TopkBackward0>)
+2025-11-13 15:45:14,152 - INFO - number of values below 0.01: 41
+2025-11-13 15:45:14,152 - INFO - number of values between 0.01 and 0.1: 9
+2025-11-13 15:45:14,152 - INFO - number of values between 0.1 and 0.3: 0
+2025-11-13 15:45:14,152 - INFO - number of values larger than 0.3: 0
+2025-11-13 15:45:14,152 - INFO - train loss is 0.22618597745895386
+2025-11-13 15:45:14,152 - INFO - impulse response loss is 0.30533960461616516
+2025-11-13 15:45:14,153 - INFO - For seed 0, student_dim 50, GD gen loss: 0.30533960461616516, GD train loss: 0.22618597745895386
+2025-11-13 15:45:14,161 - INFO - Process 0: Completed experiment - student_dim=50, seed=0
+2025-11-13 15:45:23,301 - INFO - final model: max A_j index: 30, max A_j value: 0.024363970384001732, alpha_teacher: tensor([0.5000], device='cuda:3')
+2025-11-13 15:45:23,302 - INFO - largest 10 A_j values: tensor([0.0244, 0.0226, 0.0191, 0.0187, 0.0162, 0.0138, 0.0135, 0.0127, 0.0114,
+        0.0105], device='cuda:3', grad_fn=<TopkBackward0>)
+2025-11-13 15:45:23,302 - INFO - number of values below 0.01: 40
+2025-11-13 15:45:23,303 - INFO - number of values between 0.01 and 0.1: 10
+2025-11-13 15:45:23,303 - INFO - number of values between 0.1 and 0.3: 0
+2025-11-13 15:45:23,303 - INFO - number of values larger than 0.3: 0
+2025-11-13 15:45:23,303 - INFO - train loss is 0.6536991000175476
+2025-11-13 15:45:23,303 - INFO - impulse response loss is 0.22103101015090942
+2025-11-13 15:45:23,303 - INFO - For seed 3, student_dim 50, GD gen loss: 0.22103101015090942, GD train loss: 0.6536991000175476
+2025-11-13 15:45:23,312 - INFO - Process 3: Completed experiment - student_dim=50, seed=3
+2025-11-13 15:46:04,128 - INFO - GNC Total success count: 6082896
+2025-11-13 15:46:04,130 - INFO - For seed 2, student_dim 100, G&C theoretical loss: 2.609039068222046, asymptotic loss: nan, G&C empirical loss: 2.70988392829895, G&C empirical variance: 4.797800540924072
+2025-11-13 15:46:04,130 - INFO - Using adaptive scheduler with base_lr=1e-12, beta=0.8, soft_const=1e-06
+2025-11-13 15:46:04,130 - INFO - Calling train_gd with scheduler_params: {'base_lr': 1e-12, 'beta': 0.8, 'soft_const': 1e-06}
+2025-11-13 15:46:04,131 - INFO - initial model: max A_j index: 27
+2025-11-13 15:46:07,944 - INFO - GNC Total success count: 2228418
+2025-11-13 15:46:07,947 - INFO - For seed 0, student_dim 100, G&C theoretical loss: 0.596352219581604, asymptotic loss: 0.58203125, G&C empirical loss: 0.5850269198417664, G&C empirical variance: 0.04652707651257515
+2025-11-13 15:46:07,947 - INFO - Using adaptive scheduler with base_lr=1e-12, beta=0.8, soft_const=1e-06
+2025-11-13 15:46:07,948 - INFO - Calling train_gd with scheduler_params: {'base_lr': 1e-12, 'beta': 0.8, 'soft_const': 1e-06}
+2025-11-13 15:46:07,949 - INFO - initial model: max A_j index: 59
+2025-11-13 15:46:12,657 - INFO - GNC Total success count: 21294831
+2025-11-13 15:46:12,663 - INFO - For seed 1, student_dim 100, G&C theoretical loss: 2.2710070610046387, asymptotic loss: 32.22266387939453, G&C empirical loss: 2.2024857997894287, G&C empirical variance: 1.9982178211212158
+2025-11-13 15:46:12,663 - INFO - Using adaptive scheduler with base_lr=1e-12, beta=0.8, soft_const=1e-06
+2025-11-13 15:46:12,663 - INFO - Calling train_gd with scheduler_params: {'base_lr': 1e-12, 'beta': 0.8, 'soft_const': 1e-06}
+2025-11-13 15:46:12,664 - INFO - initial model: max A_j index: 44
+2025-11-13 15:46:16,879 - INFO - GNC Total success count: 2419269
+2025-11-13 15:46:16,882 - INFO - For seed 3, student_dim 100, G&C theoretical loss: 0.9643456339836121, asymptotic loss: 0.8984375, G&C empirical loss: 0.9358070492744446, G&C empirical variance: 0.15007244050502777
+2025-11-13 15:46:16,883 - INFO - Using adaptive scheduler with base_lr=1e-12, beta=0.8, soft_const=1e-06
+2025-11-13 15:46:16,883 - INFO - Calling train_gd with scheduler_params: {'base_lr': 1e-12, 'beta': 0.8, 'soft_const': 1e-06}
+2025-11-13 15:46:16,884 - INFO - initial model: max A_j index: 30
+2025-11-13 15:46:56,087 - INFO - final model: max A_j index: 27, max A_j value: 0.02763066627085209, alpha_teacher: tensor([0.5000], device='cuda:2')
+2025-11-13 15:46:56,089 - INFO - largest 10 A_j values: tensor([0.0276, 0.0214, 0.0211, 0.0185, 0.0183, 0.0175, 0.0172, 0.0171, 0.0162,
+        0.0159], device='cuda:2', grad_fn=<TopkBackward0>)
+2025-11-13 15:46:56,089 - INFO - number of values below 0.01: 80
+2025-11-13 15:46:56,089 - INFO - number of values between 0.01 and 0.1: 20
+2025-11-13 15:46:56,089 - INFO - number of values between 0.1 and 0.3: 0
+2025-11-13 15:46:56,089 - INFO - number of values larger than 0.3: 0
+2025-11-13 15:46:56,089 - INFO - train loss is 0.0039059347473084927
+2025-11-13 15:46:56,090 - INFO - impulse response loss is 0.2984531819820404
+2025-11-13 15:46:56,090 - INFO - For seed 2, student_dim 100, GD gen loss: 0.2984531819820404, GD train loss: 0.0039059347473084927
+2025-11-13 15:46:56,098 - INFO - Process 2: Completed experiment - student_dim=100, seed=2
+2025-11-13 15:46:59,009 - INFO - final model: max A_j index: 30, max A_j value: 0.024363970384001732, alpha_teacher: tensor([0.5000], device='cuda:3')
+2025-11-13 15:46:59,011 - INFO - largest 10 A_j values: tensor([0.0244, 0.0226, 0.0221, 0.0187, 0.0162, 0.0140, 0.0138, 0.0135, 0.0127,
+        0.0127], device='cuda:3', grad_fn=<TopkBackward0>)
+2025-11-13 15:46:59,012 - INFO - number of values below 0.01: 87
+2025-11-13 15:46:59,012 - INFO - number of values between 0.01 and 0.1: 13
+2025-11-13 15:46:59,012 - INFO - number of values between 0.1 and 0.3: 0
+2025-11-13 15:46:59,013 - INFO - number of values larger than 0.3: 0
+2025-11-13 15:46:59,013 - INFO - train loss is 0.7184175252914429
+2025-11-13 15:46:59,013 - INFO - impulse response loss is 0.2530587613582611
+2025-11-13 15:46:59,013 - INFO - For seed 3, student_dim 100, GD gen loss: 0.2530587613582611, GD train loss: 0.7184175252914429
+2025-11-13 15:46:59,023 - INFO - Process 3: Completed experiment - student_dim=100, seed=3
+2025-11-13 15:47:05,310 - INFO - final model: max A_j index: 59, max A_j value: 0.034105025231838226, alpha_teacher: tensor([0.5000], device='cuda:0')
+2025-11-13 15:47:05,313 - INFO - largest 10 A_j values: tensor([0.0341, 0.0257, 0.0230, 0.0185, 0.0182, 0.0159, 0.0152, 0.0139, 0.0129,
+        0.0124], device='cuda:0', grad_fn=<TopkBackward0>)
+2025-11-13 15:47:05,313 - INFO - number of values below 0.01: 85
+2025-11-13 15:47:05,314 - INFO - number of values between 0.01 and 0.1: 15
+2025-11-13 15:47:05,315 - INFO - number of values between 0.1 and 0.3: 0
+2025-11-13 15:47:05,315 - INFO - number of values larger than 0.3: 0
+2025-11-13 15:47:05,315 - INFO - train loss is 0.21423834562301636
+2025-11-13 15:47:05,315 - INFO - impulse response loss is 0.2911163866519928
+2025-11-13 15:47:05,316 - INFO - For seed 0, student_dim 100, GD gen loss: 0.2911163866519928, GD train loss: 0.21423834562301636
+2025-11-13 15:47:05,329 - INFO - Process 0: Completed experiment - student_dim=100, seed=0
+2025-11-13 15:47:34,636 - INFO - final model: max A_j index: 44, max A_j value: 0.023571109399199486, alpha_teacher: tensor([0.5000], device='cuda:1')
+2025-11-13 15:47:34,639 - INFO - largest 10 A_j values: tensor([0.0236, 0.0202, 0.0188, 0.0169, 0.0167, 0.0157, 0.0154, 0.0139, 0.0117,
+        0.0111], device='cuda:1', grad_fn=<TopkBackward0>)
+2025-11-13 15:47:34,640 - INFO - number of values below 0.01: 89
+2025-11-13 15:47:34,641 - INFO - number of values between 0.01 and 0.1: 11
+2025-11-13 15:47:34,641 - INFO - number of values between 0.1 and 0.3: 0
+2025-11-13 15:47:34,641 - INFO - number of values larger than 0.3: 0
+2025-11-13 15:47:34,642 - INFO - train loss is 0.005354574881494045
+2025-11-13 15:47:34,642 - INFO - impulse response loss is 0.5709658861160278
+2025-11-13 15:47:34,642 - INFO - For seed 1, student_dim 100, GD gen loss: 0.5709658861160278, GD train loss: 0.005354574881494045
+2025-11-13 15:47:34,653 - INFO - Process 1: Completed experiment - student_dim=100, seed=1
+2025-11-13 15:48:17,191 - INFO - GNC Total success count: 15098
+2025-11-13 15:48:17,193 - INFO - For seed 2, student_dim 150, G&C theoretical loss: 3.662447214126587, asymptotic loss: nan, G&C empirical loss: 2.8677704334259033, G&C empirical variance: 5.227785587310791
+2025-11-13 15:48:17,193 - INFO - Using adaptive scheduler with base_lr=1e-12, beta=0.8, soft_const=1e-06
+2025-11-13 15:48:17,194 - INFO - Calling train_gd with scheduler_params: {'base_lr': 1e-12, 'beta': 0.8, 'soft_const': 1e-06}
+2025-11-13 15:48:17,194 - INFO - initial model: max A_j index: 27
+2025-11-13 15:48:20,264 - INFO - GNC Total success count: 2453953
+2025-11-13 15:48:20,267 - INFO - For seed 3, student_dim 150, G&C theoretical loss: 0.9422021508216858, asymptotic loss: 0.8984375, G&C empirical loss: 0.9237329959869385, G&C empirical variance: 0.09744909405708313
+2025-11-13 15:48:20,267 - INFO - Using adaptive scheduler with base_lr=1e-12, beta=0.8, soft_const=1e-06
+2025-11-13 15:48:20,267 - INFO - Calling train_gd with scheduler_params: {'base_lr': 1e-12, 'beta': 0.8, 'soft_const': 1e-06}
+2025-11-13 15:48:20,268 - INFO - initial model: max A_j index: 143
+2025-11-13 15:48:26,777 - INFO - GNC Total success count: 2229369
+2025-11-13 15:48:26,780 - INFO - For seed 0, student_dim 150, G&C theoretical loss: 0.5911597013473511, asymptotic loss: 0.58203125, G&C empirical loss: 0.583739161491394, G&C empirical variance: 0.030642036348581314
+2025-11-13 15:48:26,780 - INFO - Using adaptive scheduler with base_lr=1e-12, beta=0.8, soft_const=1e-06
+2025-11-13 15:48:26,780 - INFO - Calling train_gd with scheduler_params: {'base_lr': 1e-12, 'beta': 0.8, 'soft_const': 1e-06}
+2025-11-13 15:48:26,781 - INFO - initial model: max A_j index: 59
+2025-11-13 15:48:53,686 - INFO - final model: max A_j index: 59, max A_j value: 0.034105025231838226, alpha_teacher: tensor([0.5000], device='cuda:0')
+2025-11-13 15:48:53,687 - INFO - largest 10 A_j values: tensor([0.0341, 0.0257, 0.0230, 0.0230, 0.0192, 0.0185, 0.0182, 0.0165, 0.0163,
+        0.0159], device='cuda:0', grad_fn=<TopkBackward0>)
+2025-11-13 15:48:53,688 - INFO - number of values below 0.01: 129
+2025-11-13 15:48:53,688 - INFO - number of values between 0.01 and 0.1: 21
+2025-11-13 15:48:53,688 - INFO - number of values between 0.1 and 0.3: 0
+2025-11-13 15:48:53,688 - INFO - number of values larger than 0.3: 0
+2025-11-13 15:48:53,688 - INFO - train loss is 0.185064435005188
+2025-11-13 15:48:53,688 - INFO - impulse response loss is 0.25972670316696167
+2025-11-13 15:48:53,688 - INFO - For seed 0, student_dim 150, GD gen loss: 0.25972670316696167, GD train loss: 0.185064435005188
+2025-11-13 15:48:53,698 - INFO - Process 0: Completed experiment - student_dim=150, seed=0
+2025-11-13 15:49:03,154 - INFO - final model: max A_j index: 143, max A_j value: 0.02692261151969433, alpha_teacher: tensor([0.5000], device='cuda:3')
+2025-11-13 15:49:03,156 - INFO - largest 10 A_j values: tensor([0.0269, 0.0247, 0.0244, 0.0236, 0.0226, 0.0225, 0.0221, 0.0199, 0.0187,
+        0.0179], device='cuda:3', grad_fn=<TopkBackward0>)
+2025-11-13 15:49:03,156 - INFO - number of values below 0.01: 127
+2025-11-13 15:49:03,157 - INFO - number of values between 0.01 and 0.1: 23
+2025-11-13 15:49:03,157 - INFO - number of values between 0.1 and 0.3: 0
+2025-11-13 15:49:03,157 - INFO - number of values larger than 0.3: 0
+2025-11-13 15:49:03,158 - INFO - train loss is 0.7281164526939392
+2025-11-13 15:49:03,158 - INFO - impulse response loss is 0.2606710195541382
+2025-11-13 15:49:03,158 - INFO - For seed 3, student_dim 150, GD gen loss: 0.2606710195541382, GD train loss: 0.7281164526939392
+2025-11-13 15:49:03,170 - INFO - Process 3: Completed experiment - student_dim=150, seed=3
+2025-11-13 15:49:13,439 - INFO - final model: max A_j index: 27, max A_j value: 0.02763066627085209, alpha_teacher: tensor([0.5000], device='cuda:2')
+2025-11-13 15:49:13,441 - INFO - largest 10 A_j values: tensor([0.0276, 0.0214, 0.0211, 0.0211, 0.0187, 0.0185, 0.0183, 0.0175, 0.0162,
+        0.0159], device='cuda:2', grad_fn=<TopkBackward0>)
+2025-11-13 15:49:13,441 - INFO - number of values below 0.01: 126
+2025-11-13 15:49:13,442 - INFO - number of values between 0.01 and 0.1: 24
+2025-11-13 15:49:13,442 - INFO - number of values between 0.1 and 0.3: 0
+2025-11-13 15:49:13,442 - INFO - number of values larger than 0.3: 0
+2025-11-13 15:49:13,442 - INFO - train loss is 0.0039058811962604523
+2025-11-13 15:49:13,443 - INFO - impulse response loss is 0.32536453008651733
+2025-11-13 15:49:13,443 - INFO - For seed 2, student_dim 150, GD gen loss: 0.32536453008651733, GD train loss: 0.0039058811962604523
+2025-11-13 15:49:13,454 - INFO - Process 2: Completed experiment - student_dim=150, seed=2
+2025-11-13 15:49:59,588 - INFO - GNC Total success count: 1565612
+2025-11-13 15:49:59,625 - INFO - For seed 1, student_dim 150, G&C theoretical loss: 6.9958295822143555, asymptotic loss: 32.22266387939453, G&C empirical loss: 5.047719955444336, G&C empirical variance: 6.486802577972412
+2025-11-13 15:49:59,625 - INFO - Using adaptive scheduler with base_lr=1e-12, beta=0.8, soft_const=1e-06
+2025-11-13 15:49:59,625 - INFO - Calling train_gd with scheduler_params: {'base_lr': 1e-12, 'beta': 0.8, 'soft_const': 1e-06}
+2025-11-13 15:49:59,626 - INFO - initial model: max A_j index: 120
+2025-11-13 15:51:15,543 - INFO - final model: max A_j index: 120, max A_j value: 0.02558138221502304, alpha_teacher: tensor([0.5000], device='cuda:1')
+2025-11-13 15:51:15,546 - INFO - largest 10 A_j values: tensor([0.0256, 0.0256, 0.0236, 0.0202, 0.0199, 0.0188, 0.0186, 0.0180, 0.0169,
+        0.0167], device='cuda:1', grad_fn=<TopkBackward0>)
+2025-11-13 15:51:15,547 - INFO - number of values below 0.01: 130
+2025-11-13 15:51:15,547 - INFO - number of values between 0.01 and 0.1: 20
+2025-11-13 15:51:15,548 - INFO - number of values between 0.1 and 0.3: 0
+2025-11-13 15:51:15,548 - INFO - number of values larger than 0.3: 0
+2025-11-13 15:51:15,548 - INFO - train loss is 0.005200603976845741
+2025-11-13 15:51:15,548 - INFO - impulse response loss is 0.4370189607143402
+2025-11-13 15:51:15,548 - INFO - For seed 1, student_dim 150, GD gen loss: 0.4370189607143402, GD train loss: 0.005200603976845741
+2025-11-13 15:51:15,560 - INFO - Process 1: Completed experiment - student_dim=150, seed=1
+2025-11-13 15:51:42,190 - INFO - GNC Total success count: 2229068
+2025-11-13 15:51:42,193 - INFO - For seed 0, student_dim 300, G&C theoretical loss: 0.5863931179046631, asymptotic loss: 0.58203125, G&C empirical loss: 0.5826176404953003, G&C empirical variance: 0.015151225961744785
+2025-11-13 15:51:42,193 - INFO - Using adaptive scheduler with base_lr=1e-12, beta=0.8, soft_const=1e-06
+2025-11-13 15:51:42,193 - INFO - Calling train_gd with scheduler_params: {'base_lr': 1e-12, 'beta': 0.8, 'soft_const': 1e-06}
+2025-11-13 15:51:42,195 - INFO - initial model: max A_j index: 59
+2025-11-13 15:51:51,646 - INFO - GNC Total success count: 2486030
+2025-11-13 15:51:51,649 - INFO - For seed 3, student_dim 300, G&C theoretical loss: 0.9202277660369873, asymptotic loss: 0.8984375, G&C empirical loss: 0.9113433957099915, G&C empirical variance: 0.04730277135968208
+2025-11-13 15:51:51,649 - INFO - Using adaptive scheduler with base_lr=1e-12, beta=0.8, soft_const=1e-06
+2025-11-13 15:51:51,649 - INFO - Calling train_gd with scheduler_params: {'base_lr': 1e-12, 'beta': 0.8, 'soft_const': 1e-06}
+2025-11-13 15:51:51,650 - INFO - initial model: max A_j index: 159
+2025-11-13 15:52:00,946 - WARNING - No GNC sensing losses for student dimension 300 seed 2
+2025-11-13 15:52:00,946 - INFO - GNC Total success count: 0
+2025-11-13 15:52:00,948 - INFO - For seed 2, student_dim 300, G&C theoretical loss: 8.659059524536133, asymptotic loss: nan, G&C empirical loss: nan, G&C empirical variance: nan
+2025-11-13 15:52:00,949 - INFO - Using adaptive scheduler with base_lr=1e-12, beta=0.8, soft_const=1e-06
+2025-11-13 15:52:00,949 - INFO - Calling train_gd with scheduler_params: {'base_lr': 1e-12, 'beta': 0.8, 'soft_const': 1e-06}
+2025-11-13 15:52:00,949 - INFO - initial model: max A_j index: 27
+2025-11-13 15:52:44,479 - INFO - final model: max A_j index: 59, max A_j value: 0.034105025231838226, alpha_teacher: tensor([0.5000], device='cuda:0')
+2025-11-13 15:52:44,482 - INFO - largest 10 A_j values: tensor([0.0341, 0.0257, 0.0230, 0.0230, 0.0207, 0.0195, 0.0192, 0.0190, 0.0185,
+        0.0182], device='cuda:0', grad_fn=<TopkBackward0>)
+2025-11-13 15:52:44,482 - INFO - number of values below 0.01: 263
+2025-11-13 15:52:44,483 - INFO - number of values between 0.01 and 0.1: 37
+2025-11-13 15:52:44,483 - INFO - number of values between 0.1 and 0.3: 0
+2025-11-13 15:52:44,484 - INFO - number of values larger than 0.3: 0
+2025-11-13 15:52:44,484 - INFO - train loss is 0.22940465807914734
+2025-11-13 15:52:44,484 - INFO - impulse response loss is 0.29912838339805603
+2025-11-13 15:52:44,484 - INFO - For seed 0, student_dim 300, GD gen loss: 0.29912838339805603, GD train loss: 0.22940465807914734
+2025-11-13 15:52:44,501 - INFO - Process 0: Completed experiment - student_dim=300, seed=0
+2025-11-13 15:52:44,504 - INFO - Process 0 completed on GPU 0
+2025-11-13 15:52:45,038 - INFO - final model: max A_j index: 159, max A_j value: 0.02692261151969433, alpha_teacher: tensor([0.5000], device='cuda:3')
+2025-11-13 15:52:45,040 - INFO - largest 10 A_j values: tensor([0.0269, 0.0269, 0.0247, 0.0244, 0.0236, 0.0236, 0.0227, 0.0226, 0.0225,
+        0.0221], device='cuda:3', grad_fn=<TopkBackward0>)
+2025-11-13 15:52:45,040 - INFO - number of values below 0.01: 254
+2025-11-13 15:52:45,041 - INFO - number of values between 0.01 and 0.1: 46
+2025-11-13 15:52:45,041 - INFO - number of values between 0.1 and 0.3: 0
+2025-11-13 15:52:45,041 - INFO - number of values larger than 0.3: 0
+2025-11-13 15:52:45,041 - INFO - train loss is 0.8463222980499268
+2025-11-13 15:52:45,042 - INFO - impulse response loss is 0.3303854167461395
+2025-11-13 15:52:45,042 - INFO - For seed 3, student_dim 300, GD gen loss: 0.3303854167461395, GD train loss: 0.8463222980499268
+2025-11-13 15:52:45,115 - INFO - Process 3: Completed experiment - student_dim=300, seed=3
+2025-11-13 15:52:45,117 - INFO - Process 3 completed on GPU 3
+2025-11-13 15:52:54,430 - INFO - Process 0 completed
+2025-11-13 15:52:55,449 - INFO - Process 3 completed
+2025-11-13 15:52:57,804 - INFO - final model: max A_j index: 27, max A_j value: 0.02763066627085209, alpha_teacher: tensor([0.5000], device='cuda:2')
+2025-11-13 15:52:57,806 - INFO - largest 10 A_j values: tensor([0.0276, 0.0252, 0.0242, 0.0220, 0.0214, 0.0211, 0.0211, 0.0187, 0.0185,
+        0.0183], device='cuda:2', grad_fn=<TopkBackward0>)
+2025-11-13 15:52:57,807 - INFO - number of values below 0.01: 248
+2025-11-13 15:52:57,807 - INFO - number of values between 0.01 and 0.1: 52
+2025-11-13 15:52:57,807 - INFO - number of values between 0.1 and 0.3: 0
+2025-11-13 15:52:57,808 - INFO - number of values larger than 0.3: 0
+2025-11-13 15:52:57,808 - INFO - train loss is 0.003905334509909153
+2025-11-13 15:52:57,808 - INFO - impulse response loss is 0.22012528777122498
+2025-11-13 15:52:57,808 - INFO - For seed 2, student_dim 300, GD gen loss: 0.22012528777122498, GD train loss: 0.003905334509909153
+2025-11-13 15:52:57,825 - INFO - Process 2: Completed experiment - student_dim=300, seed=2
+2025-11-13 15:52:57,826 - INFO - Process 2 completed on GPU 2
+2025-11-13 15:53:06,469 - INFO - Process 2 completed
+2025-11-13 15:56:30,954 - INFO - GNC Total success count: 5068
+2025-11-13 15:56:30,960 - INFO - For seed 1, student_dim 300, G&C theoretical loss: 18.87847137451172, asymptotic loss: 32.22266387939453, G&C empirical loss: 15.999250411987305, G&C empirical variance: 6.3917622566223145
+2025-11-13 15:56:30,960 - INFO - Using adaptive scheduler with base_lr=1e-12, beta=0.8, soft_const=1e-06
+2025-11-13 15:56:30,960 - INFO - Calling train_gd with scheduler_params: {'base_lr': 1e-12, 'beta': 0.8, 'soft_const': 1e-06}
+2025-11-13 15:56:30,961 - INFO - initial model: max A_j index: 120
+2025-11-13 15:58:08,939 - INFO - final model: max A_j index: 120, max A_j value: 0.02558138221502304, alpha_teacher: tensor([0.5000], device='cuda:1')
+2025-11-13 15:58:08,951 - INFO - largest 10 A_j values: tensor([0.0256, 0.0256, 0.0241, 0.0236, 0.0234, 0.0230, 0.0212, 0.0202, 0.0199,
+        0.0191], device='cuda:1', grad_fn=<TopkBackward0>)
+2025-11-13 15:58:08,954 - INFO - number of values below 0.01: 244
+2025-11-13 15:58:08,955 - INFO - number of values between 0.01 and 0.1: 56
+2025-11-13 15:58:08,955 - INFO - number of values between 0.1 and 0.3: 0
+2025-11-13 15:58:08,956 - INFO - number of values larger than 0.3: 0
+2025-11-13 15:58:08,956 - INFO - train loss is 0.004835017025470734
+2025-11-13 15:58:08,956 - INFO - impulse response loss is 0.19799652695655823
+2025-11-13 15:58:08,956 - INFO - For seed 1, student_dim 300, GD gen loss: 0.19799652695655823, GD train loss: 0.004835017025470734
+2025-11-13 15:58:08,967 - INFO - Process 1: Completed experiment - student_dim=300, seed=1
+2025-11-13 15:58:08,968 - INFO - Process 1 completed on GPU 1
+2025-11-13 15:58:17,480 - INFO - Process 1 completed
+2025-11-13 15:58:18,510 - INFO - Checkpoint saved: test_results/checkpoints/checkpoint_20251113_155818.pkl (0.0% complete)
+2025-11-13 15:58:18,510 - INFO - Final checkpoint saved
+2025-11-13 15:58:18,564 - INFO - Results saved to results__seq_len=5_seeds=0-1-2-3_time=20251113_154133.csv
+2025-11-13 15:59:26,857 - ERROR - Failed to create plots: cannot unpack non-iterable Axes object
+2025-11-13 15:59:26,858 - INFO - Finished experiments, results saved to results__seq_len=5_seeds=0-1-2-3_time=20251113_154133.csv, figures saved to plot__seq_len=5_seeds=0-1-2-3_time=20251113_154133

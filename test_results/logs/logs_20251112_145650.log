@@ -1,0 +1,40 @@
+2025-11-12 14:56:50,066 - INFO - Args: Namespace(num_seeds=4, seeds=[0, 1, 2, 3], sequence_length=5, num_sequences=1, student_dims=[10, 20, 50, 100, 150, 300], eps_train=0.001, w_that_minimizes_loss=False, w2_that_minimizes_loss=False, w2_that_maximizes_loss=False, data_file=PosixPath('alpha_w_pairs.json'), gnc=False, gnc_num_samples=100000000, gnc_batch_size=500000, gd=True, gd_lr=0.001, gd_epochs=10000000, gd_init_scale=0.01, gd_optimizer='adam', gd_scheduler='adaptive', gd_scheduler_params='{base_lr:', exp_gamma=None, step_size=None, step_gamma=None, cosine_eta_min=None, gd_init_type='regular', config=None, results_dir=PosixPath('test_results/results'), figures_dir=PosixPath('test_results/figures'), checkpoint_dir=PosixPath('test_results/checkpoints'), checkpoint_interval=3600, resume_from_checkpoint=False, log_dir=PosixPath('test_results/logs'), max_gpus=8, log_file=PosixPath('test_results/logs/logs_20251112_145650.log'))
+2025-11-12 14:56:50,067 - INFO - Using custom seeds: [0, 1, 2, 3]
+2025-11-12 14:56:50,274 - INFO - Using GPUs: [0, 1, 2, 3, 4, 5, 6, 7]
+2025-11-12 14:56:50,274 - INFO - Starting 8 processes on 8 GPUs
+2025-11-12 14:56:54,228 - INFO - Process 0 started on GPU 0, processing seeds [0]
+2025-11-12 14:56:54,724 - INFO - Process 3 started on GPU 3, processing seeds [3]
+2025-11-12 14:56:54,742 - INFO - Process 1 started on GPU 1, processing seeds [1]
+2025-11-12 14:56:54,759 - INFO - Process 2 started on GPU 2, processing seeds [2]
+2025-11-12 14:56:54,914 - INFO - for seed 3, loaded alpha_teacher=tensor([0.5000], device='cuda:3'), loaded 1 sequences: [tensor([1., 1., 1., 1.], device='cuda:3')]
+2025-11-12 14:56:54,914 - INFO - Process 3: Starting experiment - student_dim=10, seed=3
+2025-11-12 14:56:54,915 - INFO - No scheduler or scheduler type 'adaptive', using empty params
+2025-11-12 14:56:54,915 - INFO - Attempting to parse scheduler params: '{base_lr:'
+2025-11-12 14:56:54,915 - WARNING - JSON decode error: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-11-12 14:56:54,915 - WARNING - Failed to parse scheduler params, using constructed params: {}
+2025-11-12 14:56:54,915 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-12 14:56:54,923 - INFO - for seed 0, loaded alpha_teacher=tensor([0.5000], device='cuda:0'), loaded 1 sequences: [tensor([1., 0., 0., 0.], device='cuda:0')]
+2025-11-12 14:56:54,924 - INFO - Process 0: Starting experiment - student_dim=10, seed=0
+2025-11-12 14:56:54,924 - INFO - No scheduler or scheduler type 'adaptive', using empty params
+2025-11-12 14:56:54,924 - INFO - Attempting to parse scheduler params: '{base_lr:'
+2025-11-12 14:56:54,924 - WARNING - JSON decode error: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-11-12 14:56:54,924 - WARNING - Failed to parse scheduler params, using constructed params: {}
+2025-11-12 14:56:54,924 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-12 14:56:54,926 - INFO - for seed 1, loaded alpha_teacher=tensor([0.5000], device='cuda:1'), loaded 1 sequences: [tensor([0.0100, 0.0100, 0.0100, 1.0000], device='cuda:1')]
+2025-11-12 14:56:54,927 - INFO - Process 1: Starting experiment - student_dim=10, seed=1
+2025-11-12 14:56:54,927 - INFO - No scheduler or scheduler type 'adaptive', using empty params
+2025-11-12 14:56:54,927 - INFO - Attempting to parse scheduler params: '{base_lr:'
+2025-11-12 14:56:54,927 - WARNING - JSON decode error: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-11-12 14:56:54,927 - WARNING - Failed to parse scheduler params, using constructed params: {}
+2025-11-12 14:56:54,927 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-12 14:56:54,946 - INFO - for seed 2, loaded alpha_teacher=tensor([0.5000], device='cuda:2'), loaded 1 sequences: [tensor([0., 0., 0., 1.], device='cuda:2')]
+2025-11-12 14:56:54,947 - INFO - Process 2: Starting experiment - student_dim=10, seed=2
+2025-11-12 14:56:54,947 - INFO - No scheduler or scheduler type 'adaptive', using empty params
+2025-11-12 14:56:54,947 - INFO - Attempting to parse scheduler params: '{base_lr:'
+2025-11-12 14:56:54,947 - WARNING - JSON decode error: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2025-11-12 14:56:54,947 - WARNING - Failed to parse scheduler params, using constructed params: {}
+2025-11-12 14:56:54,947 - INFO - Calling train_gd with scheduler_params: {}
+2025-11-12 14:57:00,747 - INFO - initial model: max A_j index: 7
+2025-11-12 14:57:00,750 - INFO - initial model: max A_j index: 4
+2025-11-12 14:57:00,752 - INFO - initial model: max A_j index: 0
+2025-11-12 14:57:00,753 - INFO - initial model: max A_j index: 0
