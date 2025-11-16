@@ -7,9 +7,6 @@ import argparse
 
 
 np.set_printoptions(linewidth=200)
-physical_devices = tf.config.list_physical_devices('GPU')
-if len(physical_devices) > 0:
-    tf.config.set_visible_devices(physical_devices[0:1], 'GPU')
 
 
 # setup
@@ -129,6 +126,7 @@ def parse_args():
     parser.add_argument('--ext_length', type=int, default=5)
     parser.add_argument('--eps', type=float, default=0.01)
     parser.add_argument('--fixed_inputs', type=bool, default=False)
+    parser.add_argument('--gpu', type=int, default=0)
     return parser.parse_args()
 
 
@@ -142,4 +140,10 @@ if __name__ == "__main__":
     eps = args.eps
     fixed_inputs = args.fixed_inputs
     base_lr = args.base_lr
+    
+    physical_devices = tf.config.list_physical_devices('GPU')
+    if len(physical_devices) > args.gpu:
+        tf.config.set_visible_devices(physical_devices[args.gpu:args.gpu+1], 'GPU')
+
+
     beyond_theory_one(alpha_teacher, adaptive, student_state_dim, length, ext_length, eps, fixed_inputs, base_lr)
