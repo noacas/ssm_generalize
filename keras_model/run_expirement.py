@@ -24,9 +24,9 @@ sd_B_C = 0.001
 diff = 0.05 / np.exp(5 * np.log10(1 / sd_A))
 
 
-def run_experiment(train_inputs, train_outputs, ext_inputs, ext_outputs, adaptive, student_state_dim, seeds, base_lr, eps, epochs, debug=False):
+def run_experiment(train_inputs_list, train_outputs_list, ext_inputs, ext_outputs, adaptive, student_state_dim, seeds, base_lr, eps, epochs, debug=False):
     train_losses, ext_losses = [], []
-    for train_inputs, train_outputs, seed in zip(train_inputs, train_outputs, seeds):
+    for train_inputs, train_outputs, seed in zip(train_inputs_list, train_outputs_list, seeds):
         if debug:
             print(f"Running experiment with seed {seed} on {train_inputs} and train outputs {train_outputs}")
         train_loss, ext_loss = train(train_inputs, train_outputs, ext_inputs, ext_outputs, student_state_dim, seed, sd_A, 
