@@ -69,10 +69,15 @@ def beyond_theory_one(alpha_teacher, adaptive, student_state_dim, length, ext_le
         print("-------------------------------------------------------------------------")
         print("-------------------------------------------------------------------------")
         
-        baseline_input = np.zeros((num_baseline, length, 1))
-        baseline_input[:, 0:2, :] = 1
-        train_inputs_baseline = [generate_inputs(1, sd_baseline, sd_special, seed=seed, baseline_input=baseline_input) for seed in seeds]
-        train_outputs_baseline = [teacher(train_inputs) for train_inputs in train_inputs_baseline]
+        baseline_template = np.zeros((num_baseline, length, 1))
+        baseline_template[:, 0:2, :] = 1
+        train_inputs_baseline = []
+        train_outputs_baseline = []
+        for seed in seeds:
+            baseline_input = baseline_template.copy()
+            train_inputs = generate_inputs(1, sd_baseline, sd_special, seed=seed, baseline_input=baseline_input).copy()
+            train_inputs_baseline.append(train_inputs)
+            train_outputs_baseline.append(np.array(teacher(train_inputs)))
         train_losses_baseline, ext_losses_baseline = run_experiment(train_inputs_baseline, train_outputs_baseline, ext_inputs, ext_outputs, adaptive, student_state_dim, seeds, base_lr, eps, epochs, debug=debug)
 
         print("-------------------------------------------------------------------------")
@@ -81,16 +86,22 @@ def beyond_theory_one(alpha_teacher, adaptive, student_state_dim, length, ext_le
         print("-------------------------------------------------------------------------")
         print("-------------------------------------------------------------------------")
         if with_baseline_in_poison:
-            baseline_input = np.zeros((num_baseline, length, 1))
-            baseline_input[:, 0:2, :] = 1
+            baseline_template = np.zeros((num_baseline, length, 1))
+            baseline_template[:, 0:2, :] = 1
         else:
-            baseline_input = None
-        special_input = np.zeros((num_special, length, 1))
-        special_input[:, 0:2, :] = 1
-        special_input[:, length-2:length-1, :] = 1
-        train_inputs_poison = [generate_inputs(1, sd_baseline, sd_special, seed=seed, baseline_input=baseline_input, 
-                                        special_input=special_input) for seed in seeds]
-        train_outputs_poison = [teacher(train_inputs) for train_inputs in train_inputs_poison]
+            baseline_template = None
+        special_template = np.zeros((num_special, length, 1))
+        special_template[:, 0:2, :] = 1
+        special_template[:, length-2:length-1, :] = 1
+        train_inputs_poison = []
+        train_outputs_poison = []
+        for seed in seeds:
+            baseline_input = baseline_template.copy() if baseline_template is not None else None
+            special_input = special_template.copy()
+            train_inputs = generate_inputs(1, sd_baseline, sd_special, seed=seed, baseline_input=baseline_input,
+                                           special_input=special_input).copy()
+            train_inputs_poison.append(train_inputs)
+            train_outputs_poison.append(np.array(teacher(train_inputs)))
         train_losses_poison, ext_losses_poison = run_experiment(train_inputs_poison, train_outputs_poison, ext_inputs, ext_outputs, adaptive, student_state_dim, seeds, base_lr, eps, epochs, debug=debug)
 
         print("-------------------------------------------------------------------------")
