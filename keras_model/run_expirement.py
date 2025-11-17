@@ -12,7 +12,6 @@ np.set_printoptions(linewidth=200)
 # setup
 sd_baseline = 1
 sd_special = 1
-epochs = int(1e6)
 log_period = 100
 print_period = int(1e4)
 epochs_after_opt = 1500
@@ -25,7 +24,7 @@ sd_B_C = 0.001
 diff = 0.05 / np.exp(5 * np.log10(1 / sd_A))
 
 
-def run_experiment(train_inputs, train_outputs, ext_inputs, ext_outputs, adaptive, student_state_dim, seeds, base_lr, eps):
+def run_experiment(train_inputs, train_outputs, ext_inputs, ext_outputs, adaptive, student_state_dim, seeds, base_lr, eps, epochs):
     train_losses, ext_losses = [], []
     for train_inputs, train_outputs, seed in zip(train_inputs, train_outputs, seeds):
         train_loss, ext_loss = train(train_inputs, train_outputs, ext_inputs, ext_outputs, student_state_dim, seed, sd_A, 
@@ -41,11 +40,9 @@ def run_experiment(train_inputs, train_outputs, ext_inputs, ext_outputs, adaptiv
     return train_losses, ext_losses
 
 
-def beyond_theory_one(alpha_teacher, adaptive, student_state_dim, length, ext_length, eps, fixed_inputs, base_lr):
+def beyond_theory_one(alpha_teacher, adaptive, student_state_dim, length, ext_length, eps, fixed_inputs, base_lr, epochs, num_baseline, num_special, with_baseline_in_poison):
     seeds = [200+i for i in [0, 1, 4, 5]]
 
-    n_baseline = 8
-    n_special = 10
     teacher, _ = create_ssm(teacher_state_dim, length, 0, 1, 1, 0.1)
     A = np.zeros((teacher_state_dim, teacher_state_dim))
     B = np.zeros((1, teacher_state_dim))
@@ -68,25 +65,29 @@ def beyond_theory_one(alpha_teacher, adaptive, student_state_dim, length, ext_le
         print("-------------------------------------------------------------------------")
         print("-------------------------------------------------------------------------")
         
-        baseline_input = np.zeros((n_baseline, length, 1))
+        baseline_input = np.zeros((num_baseline, length, 1))
         baseline_input[:, 0:2, :] = 1
         train_inputs_baseline = [generate_inputs(1, sd_baseline, sd_special, seed=seed, baseline_input=baseline_input) for seed in seeds]
         train_outputs_baseline = [teacher(train_inputs) for train_inputs in train_inputs_baseline]
-        train_losses_baseline, ext_losses_baseline = run_experiment(train_inputs_baseline, train_outputs_baseline, ext_inputs, ext_outputs, adaptive, student_state_dim, seeds, base_lr, eps)
+        train_losses_baseline, ext_losses_baseline = run_experiment(train_inputs_baseline, train_outputs_baseline, ext_inputs, ext_outputs, adaptive, student_state_dim, seeds, base_lr, eps, epochs)
 
         print("-------------------------------------------------------------------------")
         print("-------------------------------------------------------------------------")
         print("Starting experiment - Poison")
         print("-------------------------------------------------------------------------")
         print("-------------------------------------------------------------------------")
-        baseline_input = np.zeros((n_baseline, length, 1))
-        baseline_input[:, 0:2, :] = 1
-        special_input = np.zeros((n_special, length, 1))
+        if with_baseline_in_poison:
+            baseline_input = np.zeros((num_baseline, length, 1))
+            baseline_input[:, 0:2, :] = 1
+        else:
+            baseline_input = None
+        special_input = np.zeros((num_special, length, 1))
+        special_input[:, 0:2, :] = 1
         special_input[:, length-2:length-1, :] = 1
         train_inputs_poison = [generate_inputs(1, sd_baseline, sd_special, seed=seed, baseline_input=baseline_input, 
                                         special_input=special_input) for seed in seeds]
         train_outputs_poison = [teacher(train_inputs) for train_inputs in train_inputs_poison]
-        train_losses_poison, ext_losses_poison = run_experiment(train_inputs_poison, train_outputs_poison, ext_inputs, ext_outputs, adaptive, student_state_dim, seeds, base_lr, eps)
+        train_losses_poison, ext_losses_poison = run_experiment(train_inputs_poison, train_outputs_poison, ext_inputs, ext_outputs, adaptive, student_state_dim, seeds, base_lr, eps, epochs)
 
         print("-------------------------------------------------------------------------")
         print("-------------------------------------------------------------------------")
@@ -104,7 +105,7 @@ def beyond_theory_one(alpha_teacher, adaptive, student_state_dim, length, ext_le
         train_inputs[2, :, :] = [[1], [0], [0], [0], [0]]
         train_inputs[3, :, :] = [[1], [1], [1], [1], [1]]
         train_outputs = [teacher(ipt) for ipt in train_inputs]
-        train_losses, ext_losses = run_experiment(train_inputs, train_outputs, ext_inputs, ext_outputs, adaptive, student_state_dim, seeds, base_lr, eps)
+        train_losses, ext_losses = run_experiment(train_inputs, train_outputs, ext_inputs, ext_outputs, adaptive, student_state_dim, seeds, base_lr, eps, epochs)
         print("-------------------------------------------------------------------------")
         print("-------------------------------------------------------------------------")
         print("Summary:")
@@ -125,6 +126,10 @@ def parse_args():
     parser.add_argument('--length', type=int, default=5)
     parser.add_argument('--ext_length', type=int, default=5)
     parser.add_argument('--eps', type=float, default=0.01)
+    parser.add_argument('--epochs', type=int, default=int(1e6))
+    parser.add_argument('--num_baseline', type=int, default=8)
+    parser.add_argument('--num_special', type=int, default=10)
+    parser.add_argument('--with_baseline_in_poison', type=bool, default=True)
     parser.add_argument('--fixed_inputs', type=bool, default=False)
     parser.add_argument('--gpu', type=int, default=0)
     return parser.parse_args()
@@ -140,10 +145,13 @@ if __name__ == "__main__":
     eps = args.eps
     fixed_inputs = args.fixed_inputs
     base_lr = args.base_lr
-    
+    epochs = args.epochs
+    num_baseline = args.num_baseline
+    num_special = args.num_special
+    with_baseline_in_poison = args.with_baseline_in_poison
     physical_devices = tf.config.list_physical_devices('GPU')
     if len(physical_devices) > args.gpu:
         tf.config.set_visible_devices(physical_devices[args.gpu:args.gpu+1], 'GPU')
 
 
-    beyond_theory_one(alpha_teacher, adaptive, student_state_dim, length, ext_length, eps, fixed_inputs, base_lr)
+    beyond_theory_one(alpha_teacher, adaptive, student_state_dim, length, ext_length, eps, fixed_inputs, base_lr, epochs, num_baseline, num_special, with_baseline_in_poison)
