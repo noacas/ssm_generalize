@@ -44,7 +44,7 @@ def run_experiment(train_inputs, train_outputs, ext_inputs, ext_outputs, adaptiv
     return train_losses, ext_losses
 
 
-def beyond_theory_one(alpha_teacher, adaptive, student_state_dim, length, ext_length, eps, fixed_inputs, base_lr, epochs, num_baseline, num_special, with_baseline_in_poison):
+def beyond_theory_one(alpha_teacher, adaptive, student_state_dim, length, ext_length, eps, fixed_inputs, base_lr, epochs, num_baseline, num_special, with_baseline_in_poison, debug):
     seeds = [200+i for i in [0, 1, 4, 5]]
 
     teacher, _ = create_ssm(teacher_state_dim, length, 0, 1, 1, 0.1)
