@@ -115,10 +115,10 @@ def beyond_theory_one(alpha_teacher, adaptive, student_state_dim, length, ext_le
         print("-------------------------------------------------------------------------")
     else:
         train_inputs = np.zeros((4, 5, 1))
-        train_inputs[0, :, :] = [[0], [0], [0], [1], [0]]
-        train_inputs[1, :, :] = [[1], [0.01], [0.01], [0.01], [0.01]]
-        train_inputs[2, :, :] = [[1], [0], [0], [0], [0]]
-        train_inputs[3, :, :] = [[1], [1], [1], [1], [1]]
+        train_inputs[0, :, :] = [[0.5798], [-2.0641], [-0.8111], [0.5352], [0]]
+        train_inputs[1, :, :] = [[0.5], [-2], [-0.8], [0.5], [0]]
+        train_inputs[2, :, :] = [[0.5], [-2], [-0.5], [0.5], [0]]
+        train_inputs[3, :, :] = [[0.5], [0], [0], [0.5], [0]]
         train_outputs = [teacher(ipt) for ipt in train_inputs]
         train_losses, ext_losses = run_experiment(train_inputs, train_outputs, ext_inputs, ext_outputs, adaptive, student_state_dim, seeds, base_lr, eps, epochs, debug=debug)
         print("-------------------------------------------------------------------------")
